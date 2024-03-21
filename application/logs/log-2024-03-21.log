@@ -1,0 +1,2 @@
+ERROR - 2024-03-21 08:05:57 --> {controllers/session/login} Invalid login id or password for user=fadzrul
+ERROR - 2024-03-21 08:06:10 --> {controllers/session/login} Invalid login id or password for user=sa

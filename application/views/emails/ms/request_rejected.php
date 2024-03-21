@@ -20,22 +20,26 @@
     </head>
     <body>
         <h3>{Title}</h3>
-        Welcome to SKG LMS {Firstname} {Lastname}. Please use these credentials to <a href="{BaseURL}">login to the system</a> :
+        Dear {Firstname} {Lastname}, <br />
+        <br />
+        Unfortunately, the time off you requested has been rejected. Please contact your manager to discuss the matter. <br />
         <table border="0">
             <tr>
-                <td>Login</td><td>{Login}</td>
+                <td>From &nbsp;</td><td>{StartDate}&nbsp;({StartDateType})</td>
             </tr>
             <tr>
-                <?php if ($this->config->item('ldap_enabled') == FALSE) { ?>
-                <td>Password</td><td>{Password}</td>
-                <?php } else { ?>
-                <td>Password</td><td><i>The password you use in order to open a session on your operating system (Windows, Linux, etc.).</i></td>
-                <?php } ?>
-            </tr>            
+                <td>To &nbsp;</td><td>{EndDate}&nbsp;({EndDateType})</td>
+            </tr>
+            <tr>
+                <td>Type &nbsp;</td><td>{Type}</td>
+            </tr>
+            <tr>
+                <td>Reason &nbsp;</td><td>{Cause}</td>
+            </tr>
+            <tr>
+                <td>Last comment &nbsp;</td><td>{Comments}</td>
+            </tr>
         </table>
-        <?php if ($this->config->item('ldap_enabled') == FALSE) { ?>
-        Once connected, you can change your password, as explained <a href="https://jorani.org/how-to-change-my-password.html" title="Link to documentation" target="_blank">here</a>.
-        <?php } ?>
         <hr>
         <h5>*** This is an automatically generated message, please do not reply to this message ***</h5>
     </body>
