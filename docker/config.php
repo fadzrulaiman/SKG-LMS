@@ -409,7 +409,7 @@ $config['proxy_ips'] = '';
 
 /*
 |--------------------------------------------------------------------------
-| Jorani application settings
+| SKG-LMS application settings
 |--------------------------------------------------------------------------
 |
 |
@@ -422,8 +422,8 @@ $config['proxy_ips'] = '';
 //____________________________________________________________________________
 //default email from
 $config['from_mail'] = getEnv('FROM_MAIL') ?: 'do.not@reply.me';
-$config['from_name'] = 'Jorani';
-$config['subject_prefix'] = '[Jorani] ';
+$config['from_name'] = 'SKG-LMS';
+$config['subject_prefix'] = '[SKG-LMS] ';
 
 //____________________________________________________________________________
 //User management

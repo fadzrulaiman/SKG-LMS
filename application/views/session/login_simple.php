@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta charset="utf-8">
-    <title><?php echo $title ?> - Jorani</title>
-    <meta description="Jorani a free and open source leave management system. Workflow of approval; e-mail notifications; calendars; reports; export to Excel and more.">
+    <title><?php echo $title ?> - SKG-LMS</title>
+    <meta description="SKG-LMS a free and open source leave management system. Workflow of approval; e-mail notifications; calendars; reports; export to Excel and more.">
     <meta name="version" content="1.0.1">
     <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">

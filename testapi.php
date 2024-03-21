@@ -20,7 +20,7 @@ $configAsJson = json_encode($config);
     <body>
         <div class="container">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link" href="home" title="login to Jorani"><i class="mdi mdi-home nolink"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="home" title="login to SKG-LMS"><i class="mdi mdi-home nolink"></i></a></li>
                 <li class="nav-item"><a class="nav-link" href="requirements.php">Requirements</a></li>
                 <li class="nav-item"><a class="nav-link" href="testmail.php">Email</a></li>
                 <li class="nav-item"><a class="nav-link" href="testldap">LDAP</a></li>

@@ -16,13 +16,13 @@ if (!defined('LDAP_OPT_DIAGNOSTIC_MESSAGE')) {
 //This script may take some time especially if the LDAP is unreachable
 //-----------------------------------------------------------------
 //Please enter a valid username and password
-define('LDAP_LOGIN', '');  //This login must exist in Jorani and LDAP
+define('LDAP_LOGIN', '');  //This login must exist in SKG-LMS and LDAP
 define('LDAP_PASSWORD', '');  //This is the password we will use to bind to LDAP
 //-----------------------------------------------------------------
 ?>
 <html>
     <head>
-        <title>Jorani LDAP Configuration</title>
+        <title>SKG-LMS LDAP Configuration</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="32x32">
         <link rel="stylesheet" href="assets/dist/requirements.css">
@@ -31,7 +31,7 @@ define('LDAP_PASSWORD', '');  //This is the password we will use to bind to LDAP
     <body>
         <div class="container">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link" href="home" title="login to Jorani"><i class="mdi mdi-home nolink"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="home" title="login to SKG-LMS"><i class="mdi mdi-home nolink"></i></a></li>
                 <li class="nav-item"><a class="nav-link" href="requirements.php">Requirements</a></li>
                 <li class="nav-item"><a class="nav-link" href="testmail.php">Email</a></li>
                 <li class="nav-item"><a class="nav-link active" href="#">LDAP</a></li>
@@ -57,7 +57,7 @@ if (LDAP_LOGIN == '') {
             include $pathConfigFile;
             try {
                 if ($config['ldap_enabled'] == FALSE) {
-                    echo '<b>WARNING:</b> LDAP is disabled into Jorani configuration file.<br />' . PHP_EOL;
+                    echo '<b>WARNING:</b> LDAP is disabled into SKG-LMS configuration file.<br />' . PHP_EOL;
                 }
 
                 $ldapUrl = 'ldap://' . $config['ldap_host'] . ':' . $config['ldap_port'] . '/';
@@ -84,7 +84,7 @@ if (LDAP_LOGIN == '') {
                     $res = $stmt->get_result();
                     $row = $res->fetch_assoc();
                     if (count($row) == 0) {
-                        echo '<b>ERROR:</b> The user wasn\'t found into Jorani\'s database.<br />' . PHP_EOL;
+                        echo '<b>ERROR:</b> The user wasn\'t found into SKG-LMS\'s database.<br />' . PHP_EOL;
                     } else {
                         $basedn = $row['ldap_path'];
                         if ($basedn == "") {
@@ -123,7 +123,7 @@ if (LDAP_LOGIN == '') {
             <h3>Troubleshooting</h3>
             <p>In case of error, here are some additional steps:</p>
             <ul>
-                <li>Whether you are using LDAP or Microsoft Active Directory, the users must be created into Jorani (of course, we'll not use the password stored into DB).</li>
+                <li>Whether you are using LDAP or Microsoft Active Directory, the users must be created into SKG-LMS (of course, we'll not use the password stored into DB).</li>
                 <li>If you are using Microsoft Active Directory, you must enable LDAP v3 protocol.</li>
                 <li>Check the configuration with your IT Admin team. Ask them about the pattern to be used for binding to LDAP.</li>
                 <li>The LDAP port may be blocked by your organization/server's security policy (or firewall).</li>
@@ -134,7 +134,7 @@ $ setsebool -P httpd_can_network_connect 1
 </pre>
                         </p>
                     </li>
-                <li>Some LDAP servers require the application server (eg Jorani) to be whitelisted.</li>
+                <li>Some LDAP servers require the application server (eg SKG-LMS) to be whitelisted.</li>
             </ul>
 
             <h3>Examples of BaseURL</h3>

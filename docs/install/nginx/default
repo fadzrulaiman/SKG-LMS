@@ -1,5 +1,5 @@
 # 
-# Jorani nginx sample configuration file
+# SKG-LMS nginx sample configuration file
 # @copyright  Copyright (c) 2014-2023 Benjamin BALET
 # @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
 # @link            https://github.com/bbalet/jorani
@@ -8,7 +8,7 @@
 server { 
 	listen 80 default;
 	server_name localhost;
-# Jorani works perfectly over HTTPS and HTTP/2:
+# SKG-LMS works perfectly over HTTPS and HTTP/2:
 #        listen 443 ssl http2;
 #        server_name secure.jorani.org;
 #        ssl_certificate /etc/letsencrypt/live/secure.jorani.org/fullchain.pem;

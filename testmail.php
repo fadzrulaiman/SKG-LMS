@@ -24,7 +24,7 @@ define('EMAIL_ADDRESS', '');
 ?>
 <html>
     <head>
-        <title>Jorani Email Configuration</title>
+        <title>SKG-LMS Email Configuration</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="32x32">
         <link rel="stylesheet" href="assets/dist/requirements.css">
@@ -34,7 +34,7 @@ define('EMAIL_ADDRESS', '');
         <div class="container">
 
             <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link" href="home" title="login to Jorani"><i class="mdi mdi-home nolink"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="home" title="login to SKG-LMS"><i class="mdi mdi-home nolink"></i></a></li>
                 <li class="nav-item"><a class="nav-link" href="requirements.php">Requirements</a></li>
                 <li class="nav-item"><a class="nav-link active" href="#">Email</a></li>
                 <li class="nav-item"><a class="nav-link" href="testldap.php">LDAP</a></li>
@@ -106,7 +106,7 @@ if (EMAIL_ADDRESS == '') {
 
             $mail->CharSet = $config['charset'];
             $mail->AddAddress(EMAIL_ADDRESS, "Test e-mail");
-            $mail->SetFrom($config['from_mail'], "Jorani application");
+            $mail->SetFrom($config['from_mail'], "SKG-LMS application");
             $mail->Subject = "Test Message";
             $mail->Body = 'This is a test.';
             $mail->Send();
@@ -148,7 +148,7 @@ $ setsebool -P httpd_can_network_connect 1
                         </p>
                     </li>
                     <li>Some antivirus block STMP port by default.</li>
-                    <li>Some SMTP server require the application server sending emails (i.e. Jorani) to be whitelisted (on the SMTP server).</li>
+                    <li>Some SMTP server require the application server sending emails (i.e. SKG-LMS) to be whitelisted (on the SMTP server).</li>
                     <li>Your webhosting company may forbid email functions.</li>
                     <li>Maybe that the emails are sent but put into SPAM folder.</li>
                 </ul>

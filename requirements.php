@@ -87,7 +87,7 @@ if ($configFileExists) {
 ?>
 <html>
     <head>
-        <title>Jorani Requirements</title>
+        <title>SKG-LMS Requirements</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="32x32">
@@ -96,12 +96,12 @@ if ($configFileExists) {
     </head>
     <body>
         <noscript>
-            Javascript is disabled. Jorani requires Javascript to be enabled.
+            Javascript is disabled. SKG-LMS requires Javascript to be enabled.
         </noscript>
 
         <div class="container">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link" href="home" title="login to Jorani"><i class="mdi mdi-home nolink"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="home" title="login to SKG-LMS"><i class="mdi mdi-home nolink"></i></a></li>
                 <li class="nav-item"><a class="nav-link active" href="#">Requirements</a></li>
                 <li class="nav-item"><a class="nav-link" href="testmail.php">Email</a></li>
                 <li class="nav-item"><a class="nav-link" href="testldap.php">LDAP</a></li>
@@ -111,7 +111,7 @@ if ($configFileExists) {
             </ul>
 
             <h1>
-                Jorani Requirements
+                SKG-LMS Requirements
                 <button class="btn btn-light" onclick="export2csv();"><i class="mdi mdi-download"></i>&nbsp;Export to a CSV file</button>
             </h1>
 
@@ -171,15 +171,15 @@ if ($configFileExists) {
                       <?php } ?><td>PHP must be compiled with <a href="http://php.net/manual/en/json.installation.php" target="_blank">json support<a>.</td></tr>
 
                       <?php if (is_writable(realpath('application/logs/'))) {?>
-                      <tr><td><i class="mdi mdi-check"></i>&nbsp;Jorani can write into logs folder</td>
+                      <tr><td><i class="mdi mdi-check"></i>&nbsp;SKG-LMS can write into logs folder</td>
                       <?php } else { ?>
-                      <tr><td><i class="mdi mdi-alert"></i>&nbsp;Jorani can't write into logs folder</td>
+                      <tr><td><i class="mdi mdi-alert"></i>&nbsp;SKG-LMS can't write into logs folder</td>
                       <?php } ?><td>The folder application/logs/ must be writable.</td></tr>
 
                       <?php if (is_writable(realpath('local/upload/leaves/'))) {?>
-                      <tr><td><i class="mdi mdi-check"></i>&nbsp;Jorani can write files</td>
+                      <tr><td><i class="mdi mdi-check"></i>&nbsp;SKG-LMS can write files</td>
                       <?php } else { ?>
-                      <tr><td><i class="mdi mdi-alert"></i>&nbsp;Jorani can't write files</td>
+                      <tr><td><i class="mdi mdi-alert"></i>&nbsp;SKG-LMS can't write files</td>
                       <?php } ?><td>The folder local/upload/leaves/ must be writable.</td></tr>
 
                       <?php if (extension_loaded('pdo_mysql')) {?>

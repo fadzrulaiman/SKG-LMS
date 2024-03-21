@@ -17,11 +17,8 @@
             &nbsp;
         </div>
         <div class="span4 pull-right">
-              <?php switch ($language_code){
-                  case 'fr' : echo '<a class="anchor" href="https://fr.jorani.org/" target="_blank">Jorani</a>'; break;
-                  default : echo '<a class="anchor" href="https://jorani.org/" target="_blank">Jorani</a>'; break;
-              } ?>
-          &nbsp;v<?php echo $GLOBALS['versionOfJorani'];?>&nbsp;&copy;2014-2019 Benjamin BALET
+            <?php echo '<a class="anchor" href="https://www.sawitkinabalu.com.my/" target="_blank">SKG-LMS</a>'; ?>
+          &nbsp;v<?php echo $GLOBALS['versionOfJorani'];?>&nbsp;&copy; 2023-2024 SKG IT UNIT
         </div>
     </div>
     </div>

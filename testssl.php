@@ -19,7 +19,7 @@ define('KEY_SIZE', 1024);   //Change the RSA key size
 ?>
 <html>
     <head>
-        <title>Jorani OpenSSL Configuration</title>
+        <title>SKG-LMS OpenSSL Configuration</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="32x32">
@@ -30,7 +30,7 @@ define('KEY_SIZE', 1024);   //Change the RSA key size
         <div class="container">
 
             <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link" href="home" title="login to Jorani"><i class="mdi mdi-home nolink"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="home" title="login to SKG-LMS"><i class="mdi mdi-home nolink"></i></a></li>
                 <li class="nav-item"><a class="nav-link" href="requirements.php">Requirements</a></li>
                 <li class="nav-item"><a class="nav-link" href="testmail.php">Email</a></li>
                 <li class="nav-item"><a class="nav-link" href="testldap.php">LDAP</a></li>
@@ -98,7 +98,7 @@ $rsa = new \phpseclib\Crypt\RSA();
 echo "<tr><td>CRYPT_RSA_MODE</td><td>" . ((CRYPT_RSA_MODE==1)? 'MODE_INTERNAL' : 'MODE_OPENSSL')  . '</td></tr>';
 
 $rsa->setEncryptionMode(phpseclib\Crypt\RSA::ENCRYPTION_OAEP);
-$plaintext = 'Jorani is the best open source Leave Management System';
+$plaintext = 'SKG-LMS is the best open source Leave Management System';
 
 $rsa->loadKey($publicKey);
 $ciphertext = $rsa->encrypt($plaintext);

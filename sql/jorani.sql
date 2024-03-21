@@ -280,7 +280,7 @@ CREATE TABLE IF NOT EXISTS `organization` (
 -- Content of table `organization`
 --
 INSERT INTO `organization` (`id`, `name`, `parent_id`) VALUES
-(0, 'LMS root', -1);
+(0, 'SKG HQ', -1);
 
 --
 -- Structure of table `overtime`

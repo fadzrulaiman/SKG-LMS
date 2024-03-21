@@ -13,7 +13,7 @@ $env = is_null(getenv('CI_ENV'))?'':getenv('CI_ENV');
 ?>
 <html>
     <head>
-        <title>Jorani OAuth2 Configuration</title>
+        <title>SKG-LMS OAuth2 Configuration</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/x-icon" href="favicon.ico" sizes="32x32">
@@ -23,7 +23,7 @@ $env = is_null(getenv('CI_ENV'))?'':getenv('CI_ENV');
     <body>
         <div class="container">
             <ul class="nav nav-pills">
-                <li class="nav-item"><a class="nav-link" href="home" title="login to Jorani"><i class="mdi mdi-home nolink"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="home" title="login to SKG-LMS"><i class="mdi mdi-home nolink"></i></a></li>
                 <li class="nav-item"><a class="nav-link" href="requirements.php">Requirements</a></li>
                 <li class="nav-item"><a class="nav-link" href="testmail.php">Email</a></li>
                 <li class="nav-item"><a class="nav-link" href="testldap.php">LDAP</a></li>
@@ -91,9 +91,9 @@ if (function_exists('openssl_get_cert_locations')) {
     <li>Don't forget to save and to note Client ID and Client secret.</li>
 </ul>
 
-<h3>Setup Jorani</h3>
+<h3>Setup SKG-LMS</h3>
 
-<p>Setup Jorani by editing <code>application/config/config.php</code></p>
+<p>Setup SKG-LMS by editing <code>application/config/config.php</code></p>
 
 <ul>
     <li>Switch <code>oauth2_enabled</code> to <code>TRUE</code>.</li>
@@ -106,7 +106,7 @@ if (function_exists('openssl_get_cert_locations')) {
 
             <p>Depending on the version you are using, PHP will try to search for a <i>bundle</i> of certicates to be trusted. It is a file containing a list of public keys emitted by servers and APIs. Of course, the Google API must be listed prior trying to use the Google+ API for authentication purposes.</p>
 
-            <p>In case your system is not up-to-date, Jorani is bundled with a list of trusted certicates into <code>assets/keys/cacert.pem</code>. The absolute path to this file must be known by either:</p>
+            <p>In case your system is not up-to-date, SKG-LMS is bundled with a list of trusted certicates into <code>assets/keys/cacert.pem</code>. The absolute path to this file must be known by either:</p>
 
             <ul>
                 <li>OpenSSL, if your version of PHP is greater than 5.6.</li>

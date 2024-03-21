@@ -20,7 +20,7 @@
     </head>
     <body>
         <h3>{Title}</h3>
-        Welcome to Jorani {Firstname} {Lastname}. Please use these credentials to <a href="{BaseURL}">login to the system</a> :
+        Welcome to SKG-LMS {Firstname} {Lastname}. Please use these credentials to <a href="{BaseURL}">login to the system</a> :
         <table border="0">
             <tr>
                 <td>Login</td><td>{Login}</td>

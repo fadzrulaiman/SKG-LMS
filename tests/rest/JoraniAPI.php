@@ -1,30 +1,30 @@
 <?php
 /*
- * This file is part of Jorani.
+ * This file is part of SKG-LMS.
  *
- * Jorani is free software: you can redistribute it and/or modify
+ * SKG-LMS is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * Jorani is distributed in the hope that it will be useful,
+ * SKG-LMS is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with Jorani.  If not, see <http://www.gnu.org/licenses/>.
+ * along with SKG-LMS.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 /**
- * JoraniAPI is a wrapper for the REST API of Jorani
+ * JoraniAPI is a wrapper for the REST API of SKG-LMS
  * 
  * Please note that oauth_clients table must be initialised prior using the REST API
  * 
  * @author Benjamin BALET <benjamin.balet@gmail.com>
  */
 class JoraniAPI {
-    private $base_url = 'http://localhost/jorani/';
+    private $base_url = 'http://localhost/SKG-LMS/';
     private $token = NULL;
     
     const CURRENT_PERIOD = 1;          //The entitlement can be taken only during the current yearly period
