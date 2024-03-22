@@ -549,7 +549,7 @@ $config['ldap_search_pattern'] = 'cn=%s';   //Change the pattern, but let %s tha
 
 //____________________________________________________________________________
 //Oauth2 configuration
-$config['oauth2_enabled'] = FALSE;
+$config['oauth2_enabled'] = TRUE;
 $config['oauth2_provider'] = 'google';   //Supported providers: google
 $config['oauth2_client_id'] = '';
 $config['oauth2_client_secret'] = '';
