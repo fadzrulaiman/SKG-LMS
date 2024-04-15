@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2024 at 09:42 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.28
+-- Generation Time: Apr 15, 2024 at 03:46 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,20 +18,20 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `jorani`
+-- Database: `lms`
 --
 
 DELIMITER $$
 --
 -- Functions
 --
-CREATE DEFINER=`root`@`localhost` FUNCTION `GetAcronym` (`str` TEXT) RETURNS TEXT CHARSET utf8 READS SQL DATA SQL SECURITY INVOKER BEGIN
+CREATE DEFINER=`root`@`localhost` FUNCTION `GetAcronym` (`str` TEXT) RETURNS TEXT CHARSET utf8 COLLATE utf8_general_ci READS SQL DATA SQL SECURITY INVOKER BEGIN
     declare result text default '';
     set result = GetInitials( str, '[[:alnum:]]' );
     return result;
 END$$
 
-CREATE DEFINER=`root`@`localhost` FUNCTION `GetAncestry` (`GivenID` INT) RETURNS VARCHAR(1024) CHARSET utf8 READS SQL DATA SQL SECURITY INVOKER BEGIN
+CREATE DEFINER=`root`@`localhost` FUNCTION `GetAncestry` (`GivenID` INT) RETURNS VARCHAR(1024) CHARSET utf8 COLLATE utf8_general_ci READS SQL DATA SQL SECURITY INVOKER BEGIN
     DECLARE rv VARCHAR(1024);
     DECLARE cm CHAR(1);
     DECLARE ch INT;
@@ -50,7 +50,7 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `GetAncestry` (`GivenID` INT) RETURNS
     RETURN rv;
 END$$
 
-CREATE DEFINER=`root`@`localhost` FUNCTION `GetFamilyTree` (`GivenID` INT) RETURNS VARCHAR(1024) CHARSET utf8 READS SQL DATA SQL SECURITY INVOKER BEGIN
+CREATE DEFINER=`root`@`localhost` FUNCTION `GetFamilyTree` (`GivenID` INT) RETURNS VARCHAR(1024) CHARSET utf8 COLLATE utf8_general_ci READS SQL DATA SQL SECURITY INVOKER BEGIN
 
     DECLARE rv,q,queue,queue_children VARCHAR(1024);
     DECLARE queue_length,front_id,pos INT;
@@ -96,7 +96,7 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `GetFamilyTree` (`GivenID` INT) RETUR
     RETURN rv;
 END$$
 
-CREATE DEFINER=`root`@`localhost` FUNCTION `GetInitials` (`str` TEXT, `expr` TEXT) RETURNS TEXT CHARSET utf8 READS SQL DATA SQL SECURITY INVOKER BEGIN
+CREATE DEFINER=`root`@`localhost` FUNCTION `GetInitials` (`str` TEXT, `expr` TEXT) RETURNS TEXT CHARSET utf8 COLLATE utf8_general_ci READS SQL DATA SQL SECURITY INVOKER BEGIN
     declare result text default '';
     declare buffer text default '';
     declare i int default 1;
@@ -138,9 +138,9 @@ DELIMITER ;
 --
 
 CREATE TABLE `actions` (
-  `name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(45) NOT NULL,
   `mask` bit(16) NOT NULL,
-  `Description` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `Description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='List of possible actions';
 
 --
@@ -178,8 +178,8 @@ INSERT INTO `actions` (`name`, `mask`, `Description`) VALUES
 --
 
 CREATE TABLE `ci_sessions` (
-  `id` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ip_address` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(128) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
   `timestamp` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='CodeIgniter sessions (you can empty this table without consequence)';
@@ -197,7 +197,12 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('7s589a72o32gjm3go3fjtf35eqmrvki2', '::1', 1711005762, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731313030353533363b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a31363a226a75494a536c7374466475674f32303d223b),
 ('rd0jnelajcst94l1tts248lrhb3psect', '::1', 1711007069, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731313030373036393b6c616e67756167655f636f64657c733a323a226d73223b6c616e67756167657c733a353a226d616c6179223b73616c747c733a31363a224e39715254784f5a3737447070724f51223b),
 ('gg50545n40ncadbpu502e67t1p7gc0gj', '::1', 1711007374, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731313030373337343b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a31363a22332f325973797443412f56795346493d223b6c6173745f706167657c733a33393a22687474703a2f2f6c6f63616c686f73743a383030305c2f61646d696e2f646961676e6f73746963223b6c6173745f706167655f706172616d737c733a303a22223b6c6f67696e7c733a323a225341223b69647c733a313a2231223b66697273746e616d657c733a363a22537570657220223b6c6173746e616d657c733a353a2241646d696e223b69735f6d616e616765727c623a313b69735f61646d696e7c623a303b69735f68727c623a313b6d616e616765727c733a313a2231223b72616e646f6d5f686173687c733a32343a2235673556556d355a4b6635546b4b3038794d74754b786535223b6c6f676765645f696e7c623a313b),
-('qgl1e6nceiel8jiemtn2uiq4q9pq3om9', '::1', 1711007425, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731313030373337343b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a31363a22332f325973797443412f56795346493d223b6c6173745f706167657c733a34353a22687474703a2f2f6c6f63616c686f73743a383030305c2f72657175657374732f636f6c6c61626f7261746f7273223b6c6173745f706167655f706172616d737c733a303a22223b6c6f67696e7c733a323a225341223b69647c733a313a2231223b66697273746e616d657c733a363a22537570657220223b6c6173746e616d657c733a353a2241646d696e223b69735f6d616e616765727c623a313b69735f61646d696e7c623a303b69735f68727c623a313b6d616e616765727c733a313a2231223b72616e646f6d5f686173687c733a32343a2235673556556d355a4b6635546b4b3038794d74754b786535223b6c6f676765645f696e7c623a313b);
+('qgl1e6nceiel8jiemtn2uiq4q9pq3om9', '::1', 1711007425, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731313030373337343b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a31363a22332f325973797443412f56795346493d223b6c6173745f706167657c733a34353a22687474703a2f2f6c6f63616c686f73743a383030305c2f72657175657374732f636f6c6c61626f7261746f7273223b6c6173745f706167655f706172616d737c733a303a22223b6c6f67696e7c733a323a225341223b69647c733a313a2231223b66697273746e616d657c733a363a22537570657220223b6c6173746e616d657c733a353a2241646d696e223b69735f6d616e616765727c623a313b69735f61646d696e7c623a303b69735f68727c623a313b6d616e616765727c733a313a2231223b72616e646f6d5f686173687c733a32343a2235673556556d355a4b6635546b4b3038794d74754b786535223b6c6f676765645f696e7c623a313b),
+('v9t27jo56246am2i67u61ddaiv85c0j0', '::1', 1713144624, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731333134343632343b6c6173745f706167657c733a33353a22687474703a2f2f6c6f63616c686f73742f534b472d4c4d532f6c656176657479706573223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a31363a222b557463475839774d79522b787a6f3d223b6c6f67696e7c733a323a225341223b69647c693a313b66697273746e616d657c733a363a22537570657220223b6c6173746e616d657c733a353a2241646d696e223b69735f6d616e616765727c623a313b69735f61646d696e7c623a303b69735f68727c623a313b6d616e616765727c693a313b72616e646f6d5f686173687c733a32343a2235673556556d355a4b6635546b4b3038794d74754b786535223b6c6f676765645f696e7c623a313b),
+('8pelgujo0k42eku116i70phaq3rr78qb', '::1', 1713144925, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731333134343932353b6c6173745f706167657c733a34353a22687474703a2f2f6c6f63616c686f73742f534b472d4c4d532f636f6e7472616374732f312f63616c656e646172223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a31363a222b557463475839774d79522b787a6f3d223b6c6f67696e7c733a323a225341223b69647c693a313b66697273746e616d657c733a363a22537570657220223b6c6173746e616d657c733a353a2241646d696e223b69735f6d616e616765727c623a313b69735f61646d696e7c623a303b69735f68727c623a313b6d616e616765727c693a313b72616e646f6d5f686173687c733a32343a2235673556556d355a4b6635546b4b3038794d74754b786535223b6c6f676765645f696e7c623a313b),
+('uu90cu4vlvqcqubtrg3tisc5apbjes3t', '::1', 1713145265, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731333134353236353b6c6173745f706167657c733a33373a22687474703a2f2f6c6f63616c686f73742f534b472d4c4d532f75736572732f637265617465223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a31363a222b557463475839774d79522b787a6f3d223b6c6f67696e7c733a323a225341223b69647c693a313b66697273746e616d657c733a363a22537570657220223b6c6173746e616d657c733a353a2241646d696e223b69735f6d616e616765727c623a313b69735f61646d696e7c623a303b69735f68727c623a313b6d616e616765727c693a313b72616e646f6d5f686173687c733a32343a2235673556556d355a4b6635546b4b3038794d74754b786535223b6c6f676765645f696e7c623a313b),
+('ae3rjsr8d77pfrhnvpovmm2dqld8h88b', '::1', 1713145465, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731333134353236353b6c6173745f706167657c733a33303a22687474703a2f2f6c6f63616c686f73742f534b472d4c4d532f7573657273223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a31363a222b557463475839774d79522b787a6f3d223b6c6f67696e7c733a323a225341223b69647c693a313b66697273746e616d657c733a363a22537570657220223b6c6173746e616d657c733a353a2241646d696e223b69735f6d616e616765727c623a313b69735f61646d696e7c623a303b69735f68727c623a313b6d616e616765727c693a313b72616e646f6d5f686173687c733a32343a2235673556556d355a4b6635546b4b3038794d74754b786535223b6c6f676765645f696e7c623a313b6d73677c733a33373a22546865207573657220686173206265656e2073756363657366756c6c792063726561746564223b5f5f63695f766172737c613a313a7b733a333a226d7367223b733a333a226f6c64223b7d),
+('b1d6hu60k2g9g02j42ijfo6931tc1tta', '172.20.10.2', 1713145499, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731333134353438323b6c6173745f706167657c733a33323a22687474703a2f2f3137322e32302e31302e322f534b472d4c4d532f7573657273223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a32383a22415941484e572b56574f3230684a677579766f4e554b306c37773d3d223b6c6f67696e7c733a323a225341223b69647c693a313b66697273746e616d657c733a363a22537570657220223b6c6173746e616d657c733a353a2241646d696e223b69735f6d616e616765727c623a313b69735f61646d696e7c623a303b69735f68727c623a313b6d616e616765727c693a313b72616e646f6d5f686173687c733a32343a2235673556556d355a4b6635546b4b3038794d74754b786535223b6c6f676765645f696e7c623a313b);
 
 -- --------------------------------------------------------
 
@@ -207,9 +212,9 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 
 CREATE TABLE `contracts` (
   `id` int(11) NOT NULL COMMENT 'Unique identifier of a contract',
-  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Name of the contract',
-  `startentdate` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Day and month numbers of the left boundary',
-  `endentdate` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Day and month numbers of the right boundary',
+  `name` varchar(128) NOT NULL COMMENT 'Name of the contract',
+  `startentdate` varchar(5) NOT NULL COMMENT 'Day and month numbers of the left boundary',
+  `endentdate` varchar(5) NOT NULL COMMENT 'Day and month numbers of the right boundary',
   `weekly_duration` int(11) DEFAULT NULL COMMENT 'Approximate duration of work per week (in minutes)',
   `daily_duration` int(11) DEFAULT NULL COMMENT 'Approximate duration of work per day and (in minutes)',
   `default_leave_type` int(11) DEFAULT NULL COMMENT 'default leave type for the contract (overwrite default type set in config file).'
@@ -220,7 +225,7 @@ CREATE TABLE `contracts` (
 --
 
 INSERT INTO `contracts` (`id`, `name`, `startentdate`, `endentdate`, `weekly_duration`, `daily_duration`, `default_leave_type`) VALUES
-(1, 'Global', '01/01', '12/31', 2400, 480, 1);
+(1, 'Full Time Employees', '01/01', '12/31', 2400, 480, 0);
 
 -- --------------------------------------------------------
 
@@ -233,7 +238,7 @@ CREATE TABLE `dayoffs` (
   `contract` int(11) NOT NULL COMMENT 'Contract id',
   `date` date NOT NULL COMMENT 'Date of the day off',
   `type` int(11) NOT NULL COMMENT 'Half or full day',
-  `title` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Description of day off'
+  `title` varchar(128) NOT NULL COMMENT 'Description of day off'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='List of non working days';
 
 -- --------------------------------------------------------
@@ -263,7 +268,7 @@ CREATE TABLE `entitleddays` (
   `enddate` date DEFAULT NULL COMMENT 'Right boundary of the credit validity. Duration cannot exceed one year',
   `type` int(11) NOT NULL COMMENT 'Leave type',
   `days` decimal(10,2) NOT NULL COMMENT 'Number of days (can be negative so as to deduct/adjust entitlement)',
-  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Description of a credit / debit (entitlement / adjustment)'
+  `description` text DEFAULT NULL COMMENT 'Description of a credit / debit (entitlement / adjustment)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Add or substract entitlement on employees or contracts (can be the result of an OT)';
 
 -- --------------------------------------------------------
@@ -290,12 +295,12 @@ CREATE TABLE `leaves` (
   `enddate` date DEFAULT NULL COMMENT 'End date of the leave request',
   `status` int(11) DEFAULT NULL COMMENT 'Identifier of the status of the leave request (Requested, Accepted, etc.). See status table.',
   `employee` int(11) DEFAULT NULL COMMENT 'Employee requesting the leave request',
-  `cause` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Reason of the leave request',
-  `startdatetype` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Morning/Afternoon',
-  `enddatetype` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Morning/Afternoon',
+  `cause` text DEFAULT NULL COMMENT 'Reason of the leave request',
+  `startdatetype` varchar(12) DEFAULT NULL COMMENT 'Morning/Afternoon',
+  `enddatetype` varchar(12) DEFAULT NULL COMMENT 'Morning/Afternoon',
   `duration` decimal(10,3) DEFAULT NULL COMMENT 'Length of the leave request',
   `type` int(11) DEFAULT NULL COMMENT 'Identifier of the type of the leave request (Paid, Sick, etc.). See type table.',
-  `comments` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Comments on leave request (JSon)',
+  `comments` text DEFAULT NULL COMMENT 'Comments on leave request (JSon)',
   `document` blob DEFAULT NULL COMMENT 'Optional supporting document'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Leave requests';
 
@@ -311,12 +316,12 @@ CREATE TABLE `leaves_history` (
   `enddate` date DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `employee` int(11) DEFAULT NULL,
-  `cause` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `startdatetype` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `enddatetype` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cause` text DEFAULT NULL,
+  `startdatetype` varchar(12) DEFAULT NULL,
+  `enddatetype` varchar(12) DEFAULT NULL,
   `duration` decimal(10,2) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
-  `comments` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Comments on leave request',
+  `comments` text DEFAULT NULL COMMENT 'Comments on leave request',
   `document` blob DEFAULT NULL COMMENT 'Optional supporting document',
   `change_id` int(11) NOT NULL,
   `change_type` int(11) NOT NULL,
@@ -331,11 +336,11 @@ CREATE TABLE `leaves_history` (
 --
 
 CREATE TABLE `oauth_access_tokens` (
-  `access_token` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `client_id` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `access_token` varchar(40) NOT NULL,
+  `client_id` varchar(80) NOT NULL,
+  `user_id` varchar(255) DEFAULT NULL,
   `expires` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `scope` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `scope` varchar(2000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -346,7 +351,7 @@ CREATE TABLE `oauth_access_tokens` (
 
 CREATE TABLE `oauth_applications` (
   `user` int(11) NOT NULL COMMENT 'Identifier of Jorani user',
-  `client_id` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Identifier of an application using OAuth2'
+  `client_id` varchar(80) NOT NULL COMMENT 'Identifier of an application using OAuth2'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='List of allowed OAuth2 applications';
 
 -- --------------------------------------------------------
@@ -356,12 +361,12 @@ CREATE TABLE `oauth_applications` (
 --
 
 CREATE TABLE `oauth_authorization_codes` (
-  `authorization_code` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `client_id` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `redirect_uri` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `authorization_code` varchar(40) NOT NULL,
+  `client_id` varchar(80) NOT NULL,
+  `user_id` varchar(255) DEFAULT NULL,
+  `redirect_uri` varchar(2000) DEFAULT NULL,
   `expires` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `scope` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `scope` varchar(2000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -371,12 +376,12 @@ CREATE TABLE `oauth_authorization_codes` (
 --
 
 CREATE TABLE `oauth_clients` (
-  `client_id` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `client_secret` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `redirect_uri` varchar(2000) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `grant_types` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `scope` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `user_id` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `client_id` varchar(80) NOT NULL,
+  `client_secret` varchar(80) DEFAULT NULL,
+  `redirect_uri` varchar(2000) NOT NULL,
+  `grant_types` varchar(80) DEFAULT NULL,
+  `scope` varchar(100) DEFAULT NULL,
+  `user_id` varchar(80) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -386,9 +391,9 @@ CREATE TABLE `oauth_clients` (
 --
 
 CREATE TABLE `oauth_jwt` (
-  `client_id` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `subject` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `public_key` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `client_id` varchar(80) NOT NULL,
+  `subject` varchar(80) DEFAULT NULL,
+  `public_key` varchar(2000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -398,11 +403,11 @@ CREATE TABLE `oauth_jwt` (
 --
 
 CREATE TABLE `oauth_refresh_tokens` (
-  `refresh_token` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `client_id` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `refresh_token` varchar(40) NOT NULL,
+  `client_id` varchar(80) NOT NULL,
+  `user_id` varchar(255) DEFAULT NULL,
   `expires` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `scope` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `scope` varchar(2000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -412,7 +417,7 @@ CREATE TABLE `oauth_refresh_tokens` (
 --
 
 CREATE TABLE `oauth_scopes` (
-  `scope` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scope` text DEFAULT NULL,
   `is_default` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -423,10 +428,10 @@ CREATE TABLE `oauth_scopes` (
 --
 
 CREATE TABLE `oauth_users` (
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(2000) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `username` varchar(255) NOT NULL,
+  `password` varchar(2000) DEFAULT NULL,
+  `first_name` varchar(255) DEFAULT NULL,
+  `last_name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -437,7 +442,7 @@ CREATE TABLE `oauth_users` (
 
 CREATE TABLE `organization` (
   `id` int(11) NOT NULL COMMENT 'Unique identifier of the department',
-  `name` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Name of the department',
+  `name` varchar(512) DEFAULT NULL COMMENT 'Name of the department',
   `parent_id` int(11) DEFAULT NULL COMMENT 'Parent department (or -1 if root)',
   `supervisor` int(11) DEFAULT NULL COMMENT 'This user will receive a copy of accepted and rejected leave requests'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Tree of the organization';
@@ -458,7 +463,7 @@ INSERT INTO `organization` (`id`, `name`, `parent_id`, `supervisor`) VALUES
 CREATE TABLE `org_lists` (
   `id` int(11) NOT NULL COMMENT 'Unique identifier of a list',
   `user` int(11) NOT NULL COMMENT ' Identifier of Jorani user owning the list',
-  `name` varchar(512) COLLATE utf8mb4_unicode_ci NOT NULL
+  `name` varchar(512) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Custom lists of employees are an alternative to organization';
 
 -- --------------------------------------------------------
@@ -484,7 +489,7 @@ CREATE TABLE `overtime` (
   `employee` int(11) NOT NULL COMMENT 'Employee requesting the OT',
   `date` date NOT NULL COMMENT 'Date when the OT was done',
   `duration` decimal(10,3) NOT NULL COMMENT 'Duration of the OT',
-  `cause` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Reason why the OT was done',
+  `cause` text NOT NULL COMMENT 'Reason why the OT was done',
   `status` int(11) NOT NULL COMMENT 'Status of OT (Planned, Requested, Accepted, Rejected)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Overtime worked (extra time)';
 
@@ -495,10 +500,10 @@ CREATE TABLE `overtime` (
 --
 
 CREATE TABLE `parameters` (
-  `name` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(32) NOT NULL,
   `scope` int(11) NOT NULL COMMENT 'Either global(0) or user(1) scope',
-  `value` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'PHP/serialize value',
-  `entity_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Entity ID (eg. user id) to which the parameter is applied'
+  `value` text NOT NULL COMMENT 'PHP/serialize value',
+  `entity_id` text DEFAULT NULL COMMENT 'Entity ID (eg. user id) to which the parameter is applied'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Application parameters';
 
 -- --------------------------------------------------------
@@ -509,8 +514,8 @@ CREATE TABLE `parameters` (
 
 CREATE TABLE `positions` (
   `id` int(11) NOT NULL COMMENT 'Unique identifier of the position',
-  `name` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Name of the position',
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Description of the position'
+  `name` varchar(64) NOT NULL COMMENT 'Name of the position',
+  `description` text NOT NULL COMMENT 'Description of the position'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Position (job position) in the organization';
 
 --
@@ -518,7 +523,8 @@ CREATE TABLE `positions` (
 --
 
 INSERT INTO `positions` (`id`, `name`, `description`) VALUES
-(1, 'Employee', 'Employee.');
+(1, 'Employee', 'Department Employee.'),
+(2, 'Manager', 'Department Manager');
 
 -- --------------------------------------------------------
 
@@ -528,7 +534,7 @@ INSERT INTO `positions` (`id`, `name`, `description`) VALUES
 
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
-  `name` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `name` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Roles in the application (system table)';
 
 --
@@ -536,9 +542,9 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`) VALUES
-(1, 'admin'),
-(2, 'user'),
-(8, 'HR admin');
+(1, 'Admin'),
+(2, 'User'),
+(3, 'HR');
 
 -- --------------------------------------------------------
 
@@ -548,7 +554,7 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 
 CREATE TABLE `status` (
   `id` int(11) NOT NULL,
-  `name` varchar(45) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `name` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Status of the Leave Request (system table)';
 
 --
@@ -571,8 +577,8 @@ INSERT INTO `status` (`id`, `name`) VALUES
 
 CREATE TABLE `types` (
   `id` int(11) NOT NULL COMMENT 'Unique identifier of the type',
-  `name` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Name of the leave type',
-  `acronym` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Acronym of the leave type',
+  `name` varchar(128) NOT NULL COMMENT 'Name of the leave type',
+  `acronym` varchar(10) DEFAULT NULL COMMENT 'Acronym of the leave type',
   `deduct_days_off` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'Deduct days off when computing the balance of the leave type'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='List of leave types (LoV table)';
 
@@ -581,12 +587,8 @@ CREATE TABLE `types` (
 --
 
 INSERT INTO `types` (`id`, `name`, `acronym`, `deduct_days_off`) VALUES
-(0, 'compensate', NULL, 0),
-(1, 'paid leave', NULL, 0),
-(2, 'maternity leave', NULL, 0),
-(3, 'paternity leave', NULL, 0),
-(4, 'special leave', NULL, 0),
-(5, 'Sick leave', NULL, 0);
+(0, 'Annual Leave', 'AL', 0),
+(1, 'Sick Leave', 'SL', 0);
 
 -- --------------------------------------------------------
 
@@ -596,11 +598,11 @@ INSERT INTO `types` (`id`, `name`, `acronym`, `deduct_days_off`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL COMMENT 'Unique identifier of the user',
-  `firstname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'First name',
-  `lastname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Last name',
-  `login` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Identfier used to login (can be an email address)',
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Email address',
-  `password` varchar(512) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Password encrypted with BCRYPT or a similar method',
+  `firstname` varchar(255) DEFAULT NULL COMMENT 'First name',
+  `lastname` varchar(255) DEFAULT NULL COMMENT 'Last name',
+  `login` varchar(255) DEFAULT NULL COMMENT 'Identfier used to login (can be an email address)',
+  `email` varchar(255) DEFAULT NULL COMMENT 'Email address',
+  `password` varchar(512) DEFAULT NULL COMMENT 'Password encrypted with BCRYPT or a similar method',
   `role` int(11) DEFAULT NULL COMMENT 'Role of the employee (binary mask). See table roles.',
   `manager` int(11) DEFAULT NULL COMMENT 'Employee validating the requests of the employee',
   `country` int(11) DEFAULT NULL COMMENT 'Country code (for later use)',
@@ -608,14 +610,14 @@ CREATE TABLE `users` (
   `contract` int(11) DEFAULT NULL COMMENT 'Contract of the employee',
   `position` int(11) DEFAULT NULL COMMENT 'Position of the employee',
   `datehired` date DEFAULT NULL COMMENT 'Date hired / Started',
-  `identifier` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Internal/company identifier',
-  `language` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'en' COMMENT 'Language ISO code',
-  `ldap_path` varchar(1024) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'LDAP Path for complex authentication schemes',
+  `identifier` varchar(64) NOT NULL COMMENT 'Internal/company identifier',
+  `language` varchar(5) NOT NULL DEFAULT 'en' COMMENT 'Language ISO code',
+  `ldap_path` varchar(1024) DEFAULT NULL COMMENT 'LDAP Path for complex authentication schemes',
   `active` tinyint(1) DEFAULT 1 COMMENT 'Is user active',
-  `timezone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Timezone of user',
-  `calendar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'External Calendar address',
-  `random_hash` varchar(24) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Obfuscate public URLs',
-  `user_properties` text COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Entity ID (eg. user id) to which the parameter is applied',
+  `timezone` varchar(255) DEFAULT NULL COMMENT 'Timezone of user',
+  `calendar` varchar(255) DEFAULT NULL COMMENT 'External Calendar address',
+  `random_hash` varchar(24) DEFAULT NULL COMMENT 'Obfuscate public URLs',
+  `user_properties` text DEFAULT NULL COMMENT 'Entity ID (eg. user id) to which the parameter is applied',
   `picture` blob DEFAULT NULL COMMENT 'Profile picture of user for tabular calendar'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='List of employees / users having access to Jorani';
 
@@ -624,7 +626,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `manager`, `country`, `organization`, `contract`, `position`, `datehired`, `identifier`, `language`, `ldap_path`, `active`, `timezone`, `calendar`, `random_hash`, `user_properties`, `picture`) VALUES
-(1, 'Super ', 'Admin', 'SA', 'superadmin@email.com', '$2a$08$oGBYFua20ol1phNW56OAauUMbDlFodg2dJ1gmtjrbnxpgnaSbLB8G', 8, 1, NULL, 0, 1, 1, '2000-01-01', 'Super Admin', 'en', NULL, 1, NULL, NULL, '5g5VUm5ZKf5TkK08yMtuKxe5', NULL, NULL);
+(1, 'Super ', 'Admin', 'SA', 'superadmin@email.com', '$2a$08$7lz6h2QY9PqLJvUy6RhwfusbPecUMaQhaQQZA.uOsaMtDAxmXkBvG', 8, 1, NULL, 0, 1, 1, '2000-01-01', 'Super Admin', 'en', NULL, 1, NULL, NULL, '5g5VUm5ZKf5TkK08yMtuKxe5', NULL, NULL),
+(2, 'HR', 'STAFF', 'hr', 'hr@email.com', '$2a$08$7lz6h2QY9PqLJvUy6RhwfusbPecUMaQhaQQZA.uOsaMtDAxmXkBvG', 3, 2, NULL, 0, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuching', NULL, '62B8NLC30mwbWcK___AginUD', NULL, NULL),
+(3, 'IT', 'MANAGER', 'itmanager', 'itmanager@email.com', '$2a$08$eviV1Q6G8Vjty5EtoBpqEeoQ2qSWi.mBqmzXc9qGCz6eqDGJmMQAm', 2, 3, NULL, 0, 1, 2, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuching', NULL, 'mviYKg5tXRBDAa0-Os_nK08_', NULL, NULL),
+(4, 'IT', 'STAFF', 'istaff', 'itstaff@email.com', '$2a$08$wMWljUQr/Wz8rh/kj1bM4e2y6vdN.S2tTyQ3mpDquIqn/IaJZgTfm', 2, 3, NULL, 0, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuching', NULL, '7E78DQotcjdhGEU9ShvtUKLk', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -873,7 +878,7 @@ ALTER TABLE `overtime`
 -- AUTO_INCREMENT for table `positions`
 --
 ALTER TABLE `positions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the position', AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the position', AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `types`
@@ -885,7 +890,7 @@ ALTER TABLE `types`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the user', AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the user', AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
