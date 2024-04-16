@@ -463,26 +463,27 @@ $config['subject_prefix'] = '[SKG-LMS] ';
 
 //____________________________________________________________________________
 //User management
-$config['disable_capitalization'] = FALSE;    //Set this value to TRUE if you want to disable the capitalization of lastname
+$config['disable_capitalization'] = TRUE;    //Set this value to TRUE if you want to disable the capitalization of lastname
 $config['password_length'] = 8;                    //Password minimal length
 $config['default_role_id'] = 2;                       //Default role id (e.g. 2 for user)
 //Login pattern (automatically created from firstname and lastname)
-$config['login_pattern'] = 'jdoe';            //(default) First letter of firstname and lastname (up to field limit)
-//$config['login_pattern'] = 'john.doe';    //Firstname plus dot plus lastname (up to field limit)
-//$config['login_pattern'] = 'john_doe';    //Firstname plus underscore plus lastname (up to field limit)
+//$config['login_pattern'] = 'faiman';            //(default) First letter of firstname and lastname (up to field limit)
+//$config['login_pattern'] = 'fadzrul.aiman';    //Firstname plus dot plus lastname (up to field limit)
+//$config['login_pattern'] = 'fadzrul_aiman';    //Firstname plus underscore plus lastname (up to field limit)
+$config['login_pattern'] = 'fadzrulaiman';    //Firstname plus lastname (up to field limit)
 //$config['login_pattern'] = '#email';       //Copy another field of the form (use an existing field name with the pound sign)
 
 //____________________________________________________________________________
 //Set this value to TRUE if you want to create leaves at status requested instead of planned
-$config['leave_status_requested'] = FALSE;
+$config['leave_status_requested'] = TRUE;
 $config['default_leave_type'] = FALSE;      //Set this value with the default leave type identifier (integer).
 
 //Create a leave request / Allow overwrite of the duration
-$config['disable_edit_leave_duration'] = FALSE;             //Switch to read-only (the duration of leave is computed)
+$config['disable_edit_leave_duration'] = FALSE;   //Switch to read-only (the duration of leave is computed)
 
 //____________________________________________________________________________
 //Set this value to TRUE if you want to create extras at status requested instead of planned
-$config['extra_status_requested'] = FALSE;
+$config['extra_status_requested'] = TRUE;
 
 //____________________________________________________________________________
 //Set this value to TRUE if you want to allow manager to create leave requests in behalf of their collaborators
@@ -515,7 +516,7 @@ $config['fonts'] =
 
 //____________________________________________________________________________
 // Hide/Disable features
-$config['disable_overtime'] = FALSE; //Set this value to TRUE if you want to hide the menu entries related to overtime
+$config['disable_overtime'] = TRUE; //Set this value to TRUE if you want to hide the menu entries related to overtime
 $config['hide_global_cals_to_users'] = FALSE; //Set this value to TRUE if you want to hide global calendars (global/tabular) to users
 $config['disable_department_calendar'] = FALSE; //Set this value to TRUE in order to disable the menu entry 'departement'
 $config['disable_workmates_calendar'] = FALSE; //Set this value to TRUE in order to disable the menu entry 'my workmates'
