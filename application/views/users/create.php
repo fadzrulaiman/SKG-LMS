@@ -458,6 +458,10 @@ function generateLogin(firstname, lastname, pattern, max) {
         case 'fadzrulaiman':
             login = firstname.toLowerCase() + lastname.toLowerCase();
             break;
+        case 'fadzrul':
+            var firstWord = firstname.split(' ')[0];
+            login = firstWord.toLowerCase();
+            break;
         default:
             if (pattern.indexOf('#') != -1) {
                 login = $(pattern).val();

@@ -467,10 +467,11 @@ $config['disable_capitalization'] = TRUE;    //Set this value to TRUE if you wan
 $config['password_length'] = 8;                    //Password minimal length
 $config['default_role_id'] = 2;                       //Default role id (e.g. 2 for user)
 //Login pattern (automatically created from firstname and lastname)
-$config['login_pattern'] = 'faiman';            //(default) First letter of firstname and lastname (up to field limit)
+//$config['login_pattern'] = 'faiman';            //(default) First letter of firstname and lastname (up to field limit)
 //$config['login_pattern'] = 'fadzrul.aiman';    //Firstname plus dot plus lastname (up to field limit)
 //$config['login_pattern'] = 'fadzrul_aiman';    //Firstname plus underscore plus lastname (up to field limit)
 //$config['login_pattern'] = 'fadzrulaiman';    //Firstname plus lastname (up to field limit)
+$config['login_pattern'] = 'fadzrul';    //Firstname only (up to field limit)
 //$config['login_pattern'] = '#email';       //Copy another field of the form (use an existing field name with the pound sign)
 
 //____________________________________________________________________________
