@@ -21,8 +21,7 @@ class CCBPGraph {
     private $iColorSpec = array(
                 array('darkgreen:1.0','yellow:1.4','red:0.8','darkred:0.85'),
                 array('#c6e9af','#ffeeaa','#ffaaaa','#de8787'));
-    private $iMarginColor = array('darkgreen@0.7','darkgreen@0.9');                
-	private $iSubTitle='',$iTitle = 'CC Buffer penetration';
+    private $iMarginColor = array('darkgreen@0.7','darkgreen@0.9');           	private $iSubTitle='',$iTitle = 'CC Buffer penetration';
     /**
     * Construct a new instance of CCBPGraph 
     * 
@@ -109,8 +108,7 @@ class CCBPGraph {
 		// Margins
 		$lm=50; $rm=40;
 		$tm=60; $bm=40;
-        
-        if( $width <= 300 || $height <= 250 ) {
+           if( $width <= 300 || $height <= 250 ) {
             $labelsize = 8;
             $lm=25; $rm=25;
             $tm=45; $bm=25;
@@ -126,8 +124,7 @@ class CCBPGraph {
 		else {
 			$labelsize = 11;
 		}	
-        
-        if( $this->iSubTitle == '' ) {
+           if( $this->iSubTitle == '' ) {
             $tm -= $labelsize+4;
         } 	
 
@@ -153,11 +150,9 @@ class CCBPGraph {
 		
 		$graph->xaxis->HideZeroLabel();
 		$graph->yaxis->HideZeroLabel();
-		        
-        $graph->xaxis->SetLabelFormatString('%d%%');
+		           $graph->xaxis->SetLabelFormatString('%d%%');
         $graph->yaxis->SetLabelFormatString('%d%%');
-        
-		// For the x-axis we adjust the color so labels on the left of the Y-axis are in black
+   		// For the x-axis we adjust the color so labels on the left of the Y-axis are in black
 		$n1 = floor(abs($this->iXMin/25))+1;
 		$n2 = floor($this->iXMax/25);
         if( $this->iColorMap == 0 ) {
@@ -173,8 +168,7 @@ class CCBPGraph {
         }
         else {
             $graph->xaxis->SetColor('darkgray','darkgray:0.8');
-            $graph->yaxis->SetColor('darkgray','darkgray:0.8');            
-        }
+            $graph->yaxis->SetColor('darkgray','darkgray:0.8');               }
 		$graph->SetGridDepth(DEPTH_FRONT);
 		$graph->ygrid->SetColor('gray@0.6');
 		$graph->ygrid->SetLineStyle('dotted');
@@ -207,17 +201,14 @@ class CCBPGraph {
 		$graph->Add($time);
 
 		// Use an accumulated fille line graph to create the colored bands
-       
-        $n = 3;
+          $n = 3;
         for( $i=0; $i < $n; ++$i ) {
             $b = $this->iColorInd[$i][0];
             $k = ($this->iColorInd[$i][1] - $this->iColorInd[$i][0])/$this->iXMax;
             $colarea[$i] = array( array($lowx,$lowx*$k+$b), array($highx,$highx*$k+$b) );
         }
         $colarea[3] = array( array($lowx,$highy), array($highx,$highy) );
-        
-        
-		$cb = array();
+      		$cb = array();
 		for( $i=0; $i < 4; ++$i ) {
 			$cb[$i] = new LinePlot(array($colarea[$i][0][1],$colarea[$i][1][1]),
 								   array($colarea[$i][0][0],$colarea[$i][1][0]));
@@ -235,8 +226,7 @@ class CCBPGraph {
     */
     public function Add($aPlots) {
         if( is_array($aPlots) ) {
-            $this->iPlots = array_merge($this->iPlots,$aPlots);                
-        }
+            $this->iPlots = array_merge($this->iPlots,$aPlots);                   }
         else {
             $this->iPlots[] = $aPlots;
         }

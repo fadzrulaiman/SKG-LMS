@@ -1,17 +1,14 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Creating barcodes</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch27.html" title="Chapter 27. QR (2D-Barcode)"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Creating barcodes</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 27. QR (2D-Barcode)</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Creating barcodes"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2607930"></a>Creating barcodes</h2></div></div></div>
-        
-        <p>In order to use QR codes the module "<code class="filename">QR/qrencoder.inc.php</code>" must
+           <p>In order to use QR codes the module "<code class="filename">QR/qrencoder.inc.php</code>" must
             first be included.</p>
         <p>Usage of QR codes follows a similar schema as for the linear, PDF417 and Datamatrix
             barcodes with the concepts of an encoder and backend. The principle of the overall
             encodation process is shown in <a class="xref" href="ch26s02.html#fig.datamatrix-encodation-principle" title="Figure 26.4. Datamatrix encodation principle">Figure 26.4. Datamatrix encodation principle</a></p>
         <div class="figure"><a name="id2616655"></a><p class="title"><b>Figure 27.5. QR Encodation Process</b></p><div class="figure-contents">
-            
-            <div class="mediaobject"><img src="images/qr-encodation-principle.png" alt="QR Encodation Process"></div>
+                   <div class="mediaobject"><img src="images/qr-encodation-principle.png" alt="QR Encodation Process"></div>
         </div></div><br class="figure-break">
         <div class="sect2" title="Getting started"><div class="titlepage"><div><div><h3 class="title"><a name="id2616673"></a>Getting started</h3></div></div></div>
-            
-            <p>In order to use the QR barcodes the library module
+                   <p>In order to use the QR barcodes the library module
                     "<code class="filename">QR/qrencoder.inc.php</code>" must first be included in the
                 script.</p>
             <p>
@@ -80,8 +77,7 @@
                 library. The default exception will display a standard library image error box. An
                 example of this is shown in <a class="xref" href="ch27s02.html#fig.qr-errmsg" title="Figure 27.7. QR Error message">Figure 27.7. QR Error message</a></p>
             <div class="figure"><a name="fig.qr-errmsg"></a><p class="title"><b>Figure 27.7. QR Error message</b></p><div class="figure-contents">
-                
-                <div class="mediaobject"><img src="images/qr_errmsg.png" alt="QR Error message"></div>
+                           <div class="mediaobject"><img src="images/qr_errmsg.png" alt="QR Error message"></div>
             </div></div><br class="figure-break">
             <p>If some additional processing is necessary and to just display a text based
                 re-formatted error message we could change the above code to catch this exception as
@@ -180,8 +176,7 @@
             </p>
         </div>
         <div class="sect2" title="Error handling"><div class="titlepage"><div><div><h3 class="title"><a name="id2616978"></a>Error handling</h3></div></div></div>
-            
-            <p>As in other parts of the library the QR module throws an exception when an error
+                   <p>As in other parts of the library the QR module throws an exception when an error
                 occurs. As shown in the previous section an error image is the default if no
                 explicit <code class="code">try {} catch {}</code> statement is added to the script.</p>
             <p>
@@ -271,8 +266,7 @@
                 thrown by the QR code module (the table deliberately excludes internal error
                 messages)</p>
             <div class="table"><a name="table.qr-error-messages"></a><p class="title"><b>Table 27.4. QR Error messages</b></p><div class="table-contents">
-                
-                <table summary="QR Error messages" border="1"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th align="center">Error number</th><th align="center">Error string</th></tr></thead><tbody><tr><td class="error-number" align="center">1000</td><td class="error-text">
+                           <table summary="QR Error messages" border="1"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th align="center">Error number</th><th align="center">Error string</th></tr></thead><tbody><tr><td class="error-number" align="center">1000</td><td class="error-text">
                                 <p>Tilde processing is not yet supported for QR Barcodes.</p>
                             </td></tr><tr><td class="error-number" align="center">1001</td><td class="error-text">
                                 <p>Inverting the bit pattern is not supported for QR
@@ -375,8 +369,7 @@
             </div></div><br class="table-break">
         </div>
         <div class="sect2" title="Creating an encoder"><div class="titlepage"><div><div><h3 class="title"><a name="id2617132"></a>Creating an encoder</h3></div></div></div>
-            
-            <p>A QR encoder is created as an instance of <code class="code">class QREncoder</code>. The
+                   <p>A QR encoder is created as an instance of <code class="code">class QREncoder</code>. The
                 constructor have the following signature</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -404,8 +397,7 @@
             </p>
         </div>
         <div class="sect2" title="Encodation of input data options"><div class="titlepage"><div><div><h3 class="title"><a name="id2617978"></a>Encodation of input data options</h3></div></div></div>
-            
-            <p>The absolute simplest way of encoding data is simply to create a simple string
+                   <p>The absolute simplest way of encoding data is simply to create a simple string
                 representing the data to be encoded and then pass that string as the first argument
                 to the <code class="code">Stroke()</code> method in the backend. The encoder will then analyze
                 the input data and choose the most efficient space saving encoding schema for this
@@ -447,8 +439,7 @@
                 following structure must then be followed:</p>
             <p>
                 </p><div class="figure"><a name="id2618092"></a><p class="title"><b>Figure 27.10. Structure for manually specify QR encodation schema</b></p><div class="figure-contents">
-                    
-                    <pre class="screen">$data = array( array( &lt;encoding_mode1&gt; , &lt;data1&gt; ),
+                                   <pre class="screen">$data = array( array( &lt;encoding_mode1&gt; , &lt;data1&gt; ),
                array( &lt;encoding_mode2&gt; , &lt;data2&gt; ),
                          ...
                array( &lt;encoding_modeN&gt; , &lt;dataN&gt; ));</pre>
@@ -504,8 +495,7 @@
             </p>
         </div>
         <div class="sect2" title="Reading input data from a file"><div class="titlepage"><div><div><h3 class="title"><a name="id2618170"></a>Reading input data from a file</h3></div></div></div>
-            
-            <p>Normally the method Backend::Stroke($aData) is sued to create a QR code from the
+                   <p>Normally the method Backend::Stroke($aData) is sued to create a QR code from the
                 datastring given. This string can of course come from a database, user input or from
                 a file. The library provides a utility method </p>
             <p>
@@ -520,8 +510,7 @@
                 the same as the normal <code class="code">Backend::Stroke()</code>.</p>
         </div>
         <div class="sect2" title="Creating different backends"><div class="titlepage"><div><div><h3 class="title"><a name="id2618220"></a>Creating different backends</h3></div></div></div>
-            
-            <p>In order to create the actual output one or more backends must be created. The QR
+                   <p>In order to create the actual output one or more backends must be created. The QR
                 Code supports the following backends:</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -623,13 +612,11 @@
 </span><span class="hl-inlinetags">?&gt;</span></pre></td></tr></table></div></div></div><p><br class="example-break"> 
             </p>
             <div class="figure"><a name="id2618334"></a><p class="title"><b>Figure 27.11. QR Code - Example Postscript Output</b></p><div class="figure-contents">
-                
-                <div class="mediaobject"><img src="images/qr-postscript.png" alt="QR Code - Example Postscript Output"></div>
+                           <div class="mediaobject"><img src="images/qr-postscript.png" alt="QR Code - Example Postscript Output"></div>
             </div></div><br class="figure-break">
         </div>
         <div class="sect2" title="Generic backend methods"><div class="titlepage"><div><div><h3 class="title"><a name="id2618316"></a>Generic backend methods</h3></div></div></div>
-            
-            <p>The following methods are available to adjust the final look and feel of the
+                   <p>The following methods are available to adjust the final look and feel of the
                 barcode</p>
             <p>
                 </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
@@ -658,8 +645,7 @@
             </p>
         </div>
         <div class="sect2" title="Image backend methods"><div class="titlepage"><div><div><h3 class="title"><a name="id2618431"></a>Image backend methods</h3></div></div></div>
-            
-            <p>For the image backend it is possible to adjust the image encoding format with the
+                   <p>For the image backend it is possible to adjust the image encoding format with the
                 following method</p>
             <p>
                 </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
@@ -699,8 +685,7 @@
             </p>
         </div>
         <div class="sect2" title="Postscript backend methods"><div class="titlepage"><div><div><h3 class="title"><a name="id2618458"></a>Postscript backend methods</h3></div></div></div>
-            
-            <p>For postscript backend it is possible to select whether the postscript should be
+                   <p>For postscript backend it is possible to select whether the postscript should be
                 generated as encapsulated postscript. This is controlled by the method</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -709,8 +694,7 @@
             </p>
         </div>
         <div class="sect2" title="A template to create barcodes"><div class="titlepage"><div><div><h3 class="title"><a name="id2618569"></a>A template to create barcodes</h3></div></div></div>
-            
-            <p>The following (complete) script can be used as a starting point for creation of
+                   <p>The following (complete) script can be used as a starting point for creation of
                 more advanced barcode scripts</p>
             <p>
                 </p><div class="example"><a name="example.qr_template"></a><p class="title"><b>Example 27.5. A QR code template (<code class="filename">qr_template.php</code>) </b></p><div class="example-contents">  <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
@@ -780,8 +764,7 @@
             </p>
         </div>
         <div class="sect2" title="Sample application"><div class="titlepage"><div><div><h3 class="title"><a name="id2618643"></a>Sample application</h3></div></div></div>
-            
-            <p>As an example the library includes a WEB-based demo barcode creation application.
+                   <p>As an example the library includes a WEB-based demo barcode creation application.
                 This application can be used to easily create barcode through it's WEB interface. It
                 is available at '<code class="filename">qr/demoapp/index.html</code>'</p>
             <p>This application is primarily included as a demo on the features available in the
@@ -789,8 +772,7 @@
             <p><a class="xref" href="ch27s02.html#fig.qr-demo-app" title="Figure 27.13. QR Code WEB-based demo application">Figure 27.13. QR Code WEB-based demo application</a> shows a screen shot of the application
                 interface.</p>
             <div class="figure"><a name="fig.qr-demo-app"></a><p class="title"><b>Figure 27.13. QR Code WEB-based demo application</b></p><div class="figure-contents">
-                
-                <div class="mediaobject"><img src="images/qr-demoapp.png" alt="QR Code WEB-based demo application"></div>
+                           <div class="mediaobject"><img src="images/qr-demoapp.png" alt="QR Code WEB-based demo application"></div>
             </div></div><br class="figure-break">
         </div>
     </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"> </td><td width="20%" align="center"><a accesskey="u" href="ch27.html">Up</a></td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

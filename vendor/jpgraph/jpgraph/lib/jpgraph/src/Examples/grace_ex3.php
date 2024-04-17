@@ -36,8 +36,7 @@ $graph->xaxis->title->SetFont(FF_FONT2,FS_BOLD);
 // end exactly at the max value. 
 $graph->yaxis->scale->SetGrace(100);
 
-                              
-// Create a bar pot
+                         // Create a bar pot
 $bplot = new BarPlot($datay);
 $bplot->SetFillColor('darkblue');
 $bplot->SetColor('darkblue');

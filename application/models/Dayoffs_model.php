@@ -1,10 +1,7 @@
 <?php
 /**
  * This class contains the business logic and manages the persistence of non working days
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.1.0
+
  */
 
  if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
@@ -30,7 +27,6 @@ class Dayoffs_model extends CI_Model {
      * @param int $contract identifier of the contract
      * @param string $year year to be displayed on the calendar
      * @return array record of contracts
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getDaysOffForCivilYear($contract, $year) {
         $this->db->select('DAY(date) as d, MONTH(date) as m, YEAR(date) as y, type, title');
@@ -53,7 +49,6 @@ class Dayoffs_model extends CI_Model {
      * Get the list of dayofs for a contract (suitable fo ICS feed)
      * @param int $contract identifier of the contract
      * @return array record of contracts
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getDaysOffForContract($contract) {
         $this->db->where('contract', $contract);
@@ -68,7 +63,6 @@ class Dayoffs_model extends CI_Model {
      * @param int $contract Identifier of the contract
      * @param string $timestamp Date of the day off
      * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteDayOff($contract, $timestamp) {
         $this->db->where('contract', $contract);
@@ -80,7 +74,6 @@ class Dayoffs_model extends CI_Model {
      * Delete a day off into the day offs table
      * @param int $contract Identifier of the contract
      * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteDaysOffCascadeContract($contract) {
         $this->db->where('contract', $contract);
@@ -92,7 +85,6 @@ class Dayoffs_model extends CI_Model {
      * @param int $contract Identifier of the contract
      * @param string $dateList comma-separated list of dates
      * @return bool outcome of the query
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteListOfDaysOff($contract, $dateList) {
         $dates = explode(",", $dateList);
@@ -108,7 +100,6 @@ class Dayoffs_model extends CI_Model {
      * @param string $title Short description of the day off
      * @param string $dateList comma-separated list of dates
      * @return bool outcome of the query
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function addListOfDaysOff($contract, $type, $title, $dateList) {
         //Prepare a command in order to insert multiple rows with one query MySQL
@@ -132,7 +123,6 @@ class Dayoffs_model extends CI_Model {
      * @param int $destination identifier of the destination contract
      * @param string $year civil year (and not yearly period)
      * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function copyListOfDaysOff($source, $destination, $year) {
         //Delete all previous days off defined on the destination contract (avoid duplicated data)
@@ -217,7 +207,6 @@ class Dayoffs_model extends CI_Model {
      * @param int $type 1:day, 2:morning, 3:afternoon
      * @param string $title Short description of the day off
      * @return bool outcome of the query
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function addDayOff($contract, $timestamp, $type, $title) {
         $this->db->select('id');
@@ -250,7 +239,6 @@ class Dayoffs_model extends CI_Model {
      * @param int $contract Identifier of the contract
      * @param string $url URL of the source ICS feed (obviously, we must be able to open a connection)
      * @return string error message or empty string
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function importDaysOffFromICS($contract, $url) {
         $ical = VObject\Reader::read(fopen($url,'r'), VObject\Reader::OPTION_FORGIVING);
@@ -276,7 +264,6 @@ class Dayoffs_model extends CI_Model {
      * @param string $start Start date displayed on calendar
      * @param string $end End date displayed on calendar
      * @return string JSON encoded list of full calendar events
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function userDayoffs($user_id, $start = "", $end = "") {
         $this->lang->load('calendar', $this->session->userdata('language'));
@@ -337,7 +324,6 @@ class Dayoffs_model extends CI_Model {
      * @param integer $entity_id identifier of the entity
      * @param boolean $children include all sub entities or not
      * @return string JSON encoded list of full calendar events
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function allDayoffs($start, $end, $entity_id, $children) {
         $this->lang->load('calendar', $this->session->userdata('language'));
@@ -478,7 +464,6 @@ class Dayoffs_model extends CI_Model {
      * Purge the table by deleting the records prior $toDate
      * @param date $toDate
      * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function purgeDaysoff($toDate) {
         $this->db->where('date <= ', $toDate);
@@ -488,7 +473,6 @@ class Dayoffs_model extends CI_Model {
     /**
      * Count the number of rows into the table
      * @return int number of rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function count() {
         $this->db->select('count(*) as number', FALSE);
@@ -502,7 +486,6 @@ class Dayoffs_model extends CI_Model {
      * @param int $contract Contract to check
      * @param int $year Year to check
      * @return int number of rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function countDaysOff($contract, $year) {
         $this->db->select('count(*) as number', FALSE);
@@ -519,7 +502,6 @@ class Dayoffs_model extends CI_Model {
      * @param string $start Start date displayed on calendar
      * @param string $end End date displayed on calendar
      * @return array list of day offs
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function lengthDaysOffBetweenDatesForEmployee($id, $start, $end) {
         $this->db->select('dayoffs.*');
@@ -535,7 +517,6 @@ class Dayoffs_model extends CI_Model {
      * Check if days off have been defined for year - 1, year and year + 1
      * @param int $year Year to check
      * @return array (id, name, y-1, y, y+1)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function checkIfDefined($year) {
         $ym1 = intval($year) - 1;

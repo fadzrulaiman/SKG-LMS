@@ -1,10 +1,7 @@
 <?php
 /**
  * This view displays the leave requests of the collaborators of the connected user (if any).
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.1.0
+
  */
 ?>
 
@@ -29,8 +26,7 @@
         &nbsp;
         <?php } else {?>
         <span class="pull-right"><a id="lnkICS" href="#"><i class="mdi mdi-earth nolink"></i> ICS</a></span>
-        <?php }?>        
-    </div>
+        <?php }?>       </div>
 </div>
 
 <div id='calendar'></div>
@@ -113,8 +109,7 @@ $(document).ready(function() {
         eventAfterRender: function(event, element, view) {
             //Add tooltip to the element
             $(element).attr('title', event.title);
-            
-            if (event.enddatetype == "Morning" || event.startdatetype == "Afternoon") {
+                   if (event.enddatetype == "Morning" || event.startdatetype == "Afternoon") {
                 var nb_days = event.end.diff(event.start, "days");
                 var duration = 0.5;
                 var halfday_length = 0;
@@ -139,8 +134,7 @@ $(document).ready(function() {
                 }
             }
             $(element).css('width', length + "px");
-            
-            //Starting afternoon : shift the position of event to the right
+                   //Starting afternoon : shift the position of event to the right
             if (event.startdatetype == "Afternoon") {
                 $(element).css('margin-left', halfday_length + "px");
             }

@@ -2518,8 +2518,7 @@ class Graph {
     function StrokePlotGrad() {
         if( $this->plot_gradtype < 0  )
             return;
-            
-        $grad = new Gradient($this->img);
+               $grad = new Gradient($this->img);
         $xl = $this->img->left_margin;
         $yt = $this->img->top_margin;
         $xr = $xl + $this->img->plotwidth+1 ;
@@ -3143,8 +3142,7 @@ class Graph {
                         $this->inputValues['aYMax'],
                         $this->inputValues['aXMin'],
                         $this->inputValues['aXMax']
-                    );       
-            }
+                    );              }
         }
 
         $this->isRunningClear = false;
@@ -4076,8 +4074,7 @@ class Axis extends AxisPrototype {
                         ! $this->scale->ticks->HaveManualLabels() ) {
 
                         ++$label;
-                        
-                    }
+                                       }
                 }
 
                 if( $this->scale->type == "x" ) {

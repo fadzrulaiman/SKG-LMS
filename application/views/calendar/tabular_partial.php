@@ -147,8 +147,7 @@ if (count($tabular) > 0) {?>
                     break;
             }
           }
-          
-          //Detect overlapping cases
+               //Detect overlapping cases
           if (substr_count($day->display, ";") > 1) $overlapping = TRUE;
           switch ($class) {
                     case "plannedplanned":
@@ -158,8 +157,7 @@ if (count($tabular) > 0) {?>
                         $overlapping = TRUE;
               break;
           }
-          
-          // Current day class
+               // Current day class
           if($isCurrentMonth && $dayIterator === $currentDay){
               $class .= ' currentday-border';
           }
@@ -188,8 +186,7 @@ if (count($tabular) > 0) {?>
                 if (!$displayTypes) {
                     $acronym = "";
                 }
-                
-                if ($overlapping) {
+                           if ($overlapping) {
                     echo '<td title="' . $dayType . '" class="' . $class . '"><img src="' . base_url() . 'assets/images/date_error.png"></td>';
                 } else {
                     //Acronyms of types
@@ -221,8 +218,7 @@ if (count($tabular) > 0) {?>
             ?>
     <?php } ?>
           </tr>
-    <?php      
-    if (++$repeater>=10) {
+    <?php     if (++$repeater>=10) {
         $repeater = 0;?>
         <tr>
             <td>&nbsp;</td>

@@ -1,15 +1,13 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 21. Windrose</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="pt05.html" title="Part V. Additional graph types available in the professional version"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 21. Windrose</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Part V. Additional graph types available in the professional version</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="chapter" title="Chapter 21. Windrose"><div class="titlepage"><div><div><h2 class="title"><a name="id2586258"></a>Chapter 21. Windrose</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="ch21.html#id2586284">21.1. Introduction</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch21.html#id2586553">21.1.1. Features</a></span></dt><dt><span class="sect2"><a href="ch21.html#id2586667">21.1.2. Different types of Windrose plots</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch21s02.html">21.2. Creating and formatting basic Windrose graphs</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch21s02.html#id2587433">21.2.1. Specifying the windrose scale</a></span></dt><dt><span class="sect2"><a href="ch21s02.html#id2587804">21.2.2. Specifying direction labels</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch21s03.html">21.3. Formatting the plot</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch21s03.html#id2588150">21.3.1. Positioning the plot</a></span></dt><dt><span class="sect2"><a href="ch21s03.html#id2588191">21.3.2. Specifying the size of the plot</a></span></dt><dt><span class="sect2"><a href="ch21s03.html#id2588242">21.3.3. Specifying the size of the Zero-circle (middle circle)</a></span></dt><dt><span class="sect2"><a href="ch21s03.html#id2588292">21.3.4. Formatting the plot legend</a></span></dt><dt><span class="sect2"><a href="ch21s03.html#id2588295">21.3.5. Adjusting the grid colors</a></span></dt><dt><span class="sect2"><a href="ch21s03.html#id2588776">21.3.6. Adjusting the weight of the grid circles</a></span></dt><dt><span class="sect2"><a href="ch21s03.html#id2588868">21.3.7. Adding a box around the plot</a></span></dt><dt><span class="sect2"><a href="ch21s03.html#id2588901">21.3.8. Adjusting the size of the center zero circle</a></span></dt><dt><span class="sect2"><a href="ch21s03.html#sec.windrose-locale-compass">21.3.9. Localizing the default names for the compass directions</a></span></dt><dt><span class="sect2"><a href="ch21s03.html#id2589068">21.3.10. Adjusting the formatting of the windrose plot legs</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch21s04.html">21.4. Some more advanced formatting</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch21s04.html#id2589161">21.4.1. Turning off Anti-aliasing</a></span></dt><dt><span class="sect2"><a href="ch21s04.html#id2589188">21.4.2. More on formatting scale-labels</a></span></dt><dt><span class="sect2"><a href="ch21s04.html#id2589422">21.4.3. Formatting the legend </a></span></dt><dt><span class="sect2"><a href="ch21s04.html#id2589687">21.4.4. Highlighting specific compass directions</a></span></dt><dt><span class="sect2"><a href="ch21s04.html#id2589778">21.4.5. Including a graph in a PDF</a></span></dt><dt><span class="sect2"><a href="ch21s04.html#id2589844">21.4.6. Adding a background image</a></span></dt><dt><span class="sect2"><a href="ch21s04.html#id2589846">21.4.7. Adjusting the interpretation for ordinal keys in data</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch21s05.html">21.5. Adding icon and text objects to the graph</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch21s05.html#id2590083">21.5.1. Adding a text object</a></span></dt><dt><span class="sect2"><a href="ch21s05.html#id2590085">21.5.2. Adding icons to the graph</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch21s06.html">21.6. Using layout classes to position Windrose plots</a></span></dt><dt><span class="sect1"><a href="ch21s07.html">21.7. Example section</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch21s07.html#id2590489">21.7.1. Example 1</a></span></dt><dt><span class="sect2"><a href="ch21s07.html#id2590558">21.7.2. Example 2</a></span></dt><dt><span class="sect2"><a href="ch21s07.html#id2590662">21.7.3. Example 3</a></span></dt><dt><span class="sect2"><a href="ch21s07.html#id2590781">21.7.4. Example 4</a></span></dt><dt><span class="sect2"><a href="ch21s07.html#id2590808">21.7.5. Example 5</a></span></dt><dt><span class="sect2"><a href="ch21s07.html#id2591019">21.7.6. Example 6</a></span></dt><dt><span class="sect2"><a href="ch21s07.html#id2591106">21.7.7. Example 7</a></span></dt><dt><span class="sect2"><a href="ch21s07.html#id2591253">21.7.8. Example 8</a></span></dt><dt><span class="sect2"><a href="ch21s07.html#id2591304">21.7.9. Example 9</a></span></dt><dt><span class="sect2"><a href="ch21s07.html#sec.windrose-ex10">21.7.10. Example 10</a></span></dt></dl></dd></dl></div>
     
     <div class="sect1" title="Introduction"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2586284"></a>Introduction</h2></div></div></div>
-        
-        <div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>This module is only available in the pro-version of the library.</p></div>
+           <div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>This module is only available in the pro-version of the library.</p></div>
         <p>Windrose plots are usually used to display values which are related to compass
             directions. For example it could be used to illustrate measured wind strengths over a
             time period in different directions. <a class="xref" href="ch21.html#fig.windrose-intro" title="Figure 21.1. An basic Windrose plot">Figure 21.1. An basic Windrose plot</a>
             Illustrates a basic example of a windrose graph with one windrose plot.</p>
         <div class="figure"><a name="fig.windrose-intro"></a><p class="title"><b>Figure 21.1. An basic Windrose plot</b></p><div class="figure-contents">
-            
-            <div class="mediaobject"><img src="images/windrose_intro.png" alt="An basic Windrose plot"></div>
+                   <div class="mediaobject"><img src="images/windrose_intro.png" alt="An basic Windrose plot"></div>
         </div></div><br class="figure-break">
         <p>Windrose plots puts data in a number of ranges (or buckets). The number of data points
             in a certain bucket is visualized by the length of the particular bucket in that
@@ -22,8 +20,7 @@
             data values. See more on how to specify input data in ??</p>
         <p>
             </p><div class="table"><a name="table.windrose-default-buckets"></a><p class="title"><b>Table 21.1. Default windrose buckets</b></p><div class="table-contents">
-                
-                <table summary="Default windrose buckets" border="1"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>Bucket nr </th><th>Range of values </th></tr></thead><tbody><tr><td align="center">0</td><td>[0,1]</td></tr><tr><td align="center">1</td><td>[1,2]</td></tr><tr><td align="center">2</td><td>[2,3]</td></tr><tr><td align="center">3</td><td>[3,5]</td></tr><tr><td align="center">4</td><td>[5,6]</td></tr><tr><td align="center">5</td><td>[6,10]</td></tr><tr><td align="center">6</td><td>[10,13.5]</td></tr><tr><td align="center">7</td><td>[13.5,99]</td></tr></tbody></table>
+                           <table summary="Default windrose buckets" border="1"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>Bucket nr </th><th>Range of values </th></tr></thead><tbody><tr><td align="center">0</td><td>[0,1]</td></tr><tr><td align="center">1</td><td>[1,2]</td></tr><tr><td align="center">2</td><td>[2,3]</td></tr><tr><td align="center">3</td><td>[3,5]</td></tr><tr><td align="center">4</td><td>[5,6]</td></tr><tr><td align="center">5</td><td>[6,10]</td></tr><tr><td align="center">6</td><td>[10,13.5]</td></tr><tr><td align="center">7</td><td>[13.5,99]</td></tr></tbody></table>
             </div></div><p><br class="table-break">
         </p>
         <p>
@@ -43,8 +40,7 @@
             </div><p>
         </p>
         <div class="sect2" title="Features"><div class="titlepage"><div><div><h3 class="title"><a name="id2586553"></a>Features</h3></div></div></div>
-            
-            <p>The Windrose extension module supports all the usual library graph capabilities
+                   <p>The Windrose extension module supports all the usual library graph capabilities
                 like frames, shadows, colors, titles, cache. Some of the additional Windrose graphs
                 capabilities are: </p>
             <p>
@@ -92,8 +88,7 @@
             </p>
         </div>
         <div class="sect2" title="Different types of Windrose plots"><div class="titlepage"><div><div><h3 class="title"><a name="id2586667"></a>Different types of Windrose plots</h3></div></div></div>
-            
-            <p>There are two basic types of Windrose plots: </p>
+                   <p>There are two basic types of Windrose plots: </p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                         <p><span class="bold"><strong>Compass type. </strong></span></p>
@@ -146,28 +141,24 @@
                         <tr>
                             <td align="center">
                                 <div class="figure"><a name="id2586867"></a><p class="title"><b>Figure 21.2. <code class="code">WINDROSE_TYPE4</code></b></p><div class="figure-contents">
-                                    
-                                    <div class="mediaobject"><img src="images/windrose_type4.png" alt="WINDROSE_TYPE4"></div>
+                                                                   <div class="mediaobject"><img src="images/windrose_type4.png" alt="WINDROSE_TYPE4"></div>
                                 </div></div><br class="figure-break">
                             </td>
                             <td align="center">
                                 <div class="figure"><a name="id2586898"></a><p class="title"><b>Figure 21.3. <code class="code">WINDROSE_TYPE8</code></b></p><div class="figure-contents">
-                                    
-                                    <div class="mediaobject"><img src="images/windrose_type8.png" alt="WINDROSE_TYPE8"></div>
+                                                                   <div class="mediaobject"><img src="images/windrose_type8.png" alt="WINDROSE_TYPE8"></div>
                                 </div></div><br class="figure-break">
                             </td>
                         </tr>
                         <tr>
                             <td align="center">
                                 <div class="figure"><a name="id2586927"></a><p class="title"><b>Figure 21.4. <code class="code">WINDROSE_TYPE16</code></b></p><div class="figure-contents">
-                                    
-                                    <div class="mediaobject"><img src="images/windrose_type16.png" alt="WINDROSE_TYPE16"></div>
+                                                                   <div class="mediaobject"><img src="images/windrose_type16.png" alt="WINDROSE_TYPE16"></div>
                                 </div></div><br class="figure-break">
                             </td>
                             <td align="center">
                                 <div class="figure"><a name="id2586957"></a><p class="title"><b>Figure 21.5. <code class="code">WINDROSE_TYPEFREE</code></b></p><div class="figure-contents">
-                                    
-                                    <div class="mediaobject"><img src="images/windrose_typefree.png" alt="WINDROSE_TYPEFREE"></div>
+                                                                   <div class="mediaobject"><img src="images/windrose_typefree.png" alt="WINDROSE_TYPEFREE"></div>
                                 </div></div><br class="figure-break">
                             </td>
                         </tr>
@@ -192,8 +183,7 @@
                 </div><p>
             </p>
             <div class="sect3" title="Specifying input data"><div class="titlepage"><div><div><h4 class="title"><a name="id2587005"></a>Specifying input data</h4></div></div></div>
-                
-                <p>Input data is in the form of a data array. Each entry in the array is itself
+                           <p>Input data is in the form of a data array. Each entry in the array is itself
                     an array which gives the data for one direction. The data should be interpreted
                     as the percentage of the overall data that belongs to a certain direction and
                     bucket. This also means that the total sum of all data entries (for all
@@ -263,8 +253,7 @@
                     this works</p>
                 <p>
                     </p><div class="example"><a name="id2587141"></a><p class="title"><b>Example 21.1. Examples of input data for compass (regular) Windrose plots</b></p><div class="example-contents">
-                        
-                        <p><span class="italic">(Assuming we have all 16 axis
+                                           <p><span class="italic">(Assuming we have all 16 axis
                                 displayed)</span></p>
                         <p>
                             </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
@@ -285,8 +274,7 @@
                 </p>
                 <p>
                     </p><div class="example"><a name="id2587190"></a><p class="title"><b>Example 21.2.  Examples of input data for free Windrose plots</b></p><div class="example-contents">
-                        
-                        <p>What is special with the free type is that angles are no longer
+                                           <p>What is special with the free type is that angles are no longer
                             restricted to only the 16 compass directions but arbitrary directions as
                             well. </p>
                         <p>

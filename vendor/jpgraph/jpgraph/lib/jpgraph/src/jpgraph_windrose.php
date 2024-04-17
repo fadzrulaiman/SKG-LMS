@@ -556,8 +556,7 @@ class WindrosePlot {
     // Alias for SetPos()
     function SetCenterPos($aX,$aY) {
         $this->iX = $aX;
-        $this->iY = $aY;        
-    }
+        $this->iY = $aY;       }
     
     function SetPos($aX,$aY) {
         $this->iX = $aX;
@@ -956,8 +955,7 @@ class WindrosePlot {
             }
 
             //$da = 360-$da;
-            
-            if( !empty($this->iLabels[$keys[$i]]) ) {
+                   if( !empty($this->iLabels[$keys[$i]]) ) {
                 $lbl = $this->iLabels[$keys[$i]];
             }
             else {

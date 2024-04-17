@@ -21,8 +21,7 @@
         $("#cmdSearchOrg").click(function () {
             $("#organization").jstree("search", $("#txtSearch").val());
         });
-        
-        $('#organization').jstree({
+           $('#organization').jstree({
             rules : {
                 deletable  : false,
                 creatable  : false,

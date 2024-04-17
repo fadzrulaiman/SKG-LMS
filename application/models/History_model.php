@@ -1,10 +1,7 @@
 <?php
 /**
  * This class contains the business logic and manages the persistence of non working days
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.1.0
+
  */
 
  if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
@@ -30,14 +27,12 @@ class History_model extends CI_Model {
      * Default constructor
      */
     public function __construct() {
-        
-    }
+       }
     
     /**
      * Get the list of changes into the 'leaves' table
      * @param int $leaveId Identifier of the leave request
      * @return result rows as array of arrays
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getLeaveRequestsHistory($leaveId) {
         $this->db->select("CONCAT(users.firstname, ' ', users.lastname) as user_name", FALSE);
@@ -58,7 +53,6 @@ class History_model extends CI_Model {
      * Get the list of deleted leave requests
      * @param int $userId Identifier of the user
      * @return result rows as array of arrays
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getDeletedLeaveRequests($userId) {
         $this->db->select('DISTINCT leaves_history.id', FALSE);
@@ -80,7 +74,6 @@ class History_model extends CI_Model {
      * @param string $table Table modified
      * @param type $id Unique Identifier of the modification
      * @return result row as an array
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getHistoryDetail($table, $id) {
         $query = $this->db->get_where($table . '_history', array('modification_id' => $id));
@@ -93,7 +86,6 @@ class History_model extends CI_Model {
      * @param string $table Table modified
      * @param int $id Identifier of the object (can be returned by the last inserted id function)
      * @param int $user_id Identifier of the connected user
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function setHistory($type, $table, $id, $user_id) {
         $sql = 'INSERT INTO ' . $table . '_history';
@@ -109,7 +101,6 @@ class History_model extends CI_Model {
      * @param string $table Source Table
      * @param date $toDate 
      * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function purgeHistory($table, $toDate) {
         $this->db->where('change_date <= ', $toDate);
@@ -120,7 +111,6 @@ class History_model extends CI_Model {
      * Count the number of rows into the table
      * @param string $table Source Table
      * @return int number of rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function count($table) {
         $this->db->select('count(*) as number',false);

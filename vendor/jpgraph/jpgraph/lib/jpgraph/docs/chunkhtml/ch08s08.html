@@ -1,6 +1,5 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Character encoding</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch08.html" title="Chapter 8. Text and font handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Character encoding</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 8. Text and font handling</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Character encoding"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec1.character-encoding"></a>Character encoding</h2></div></div></div>
-            
-            <div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+                   <div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
                     <p>If you are not using Japanese, Chinese, Cyrillic , Greek or Hebrew
                         languages then this section can be safely skipped.</p>
                 </div><p>The core problem for the library is that it has no way of knowing in what
@@ -13,12 +12,10 @@
             <p>All defines mentioned below can be found in the file
                     "<code class="filename">jpgraph_ttf.inc.php</code>" </p>
             <div class="sect2" title="Japanese encoding options"><div class="titlepage"><div><div><h3 class="title"><a name="id2500277"></a>Japanese encoding options</h3></div></div></div>
-                
-                <p>There is only one possible option that can be specified.</p>
+                           <p>There is only one possible option that can be specified.</p>
                 <p>
                     </p><div class="table"><a name="id2500290"></a><p class="title"><b>Table 8.4. Japanese encoding options</b></p><div class="table-contents">
-                        
-                        <table summary="Japanese encoding options" border="1"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>Symbolic define</th><th>Possible values </th><th>Description</th></tr></thead><tbody><tr><td><code class="code">ASSUME_EUCJP_ENCODING</code></td><td>true/false</td><td>Assumes that Japanese text have been entered in EUC-JP
+                                           <table summary="Japanese encoding options" border="1"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>Symbolic define</th><th>Possible values </th><th>Description</th></tr></thead><tbody><tr><td><code class="code">ASSUME_EUCJP_ENCODING</code></td><td>true/false</td><td>Assumes that Japanese text have been entered in EUC-JP
                                         encoding. If this define is true then conversion from EUC-JP
                                         to UTF8 is done automatically in the library using the
                                             <code class="code">mbstring</code> module in PHP. Note that the
@@ -34,8 +31,7 @@
                     in <a class="xref" href="ch21s03.html#sec.windrose-locale-compass" title="Localizing the default names for the compass directions">Localizing the default names for the compass directions</a>.</p>
             </div>
             <div class="sect2" title="Chinese encoding options"><div class="titlepage"><div><div><h3 class="title"><a name="id2500408"></a>Chinese encoding options</h3></div></div></div>
-                
-                <p>There are no specific settings that control the encoding. The following rules
+                           <p>There are no specific settings that control the encoding. The following rules
                     are used depending on the font is specified. </p>
                 <p>
                     </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
@@ -63,15 +59,13 @@
                 </p>
             </div>
             <div class="sect2" title="Cyrillic encoding options"><div class="titlepage"><div><div><h3 class="title"><a name="id2500502"></a>Cyrillic encoding options</h3></div></div></div>
-                
-                <p>In order to do proper translation to unicode from cyrillic the
+                           <p>In order to do proper translation to unicode from cyrillic the
                         <code class="code">LANGUAGE_CYRILLIC</code> define should be set to true. If you are
                     running the library in multiuser environment it might be necessary to also
                     adjust the <code class="code">LANGUGAE_CHARSET</code> define as described below.</p>
                 <p>
                     </p><div class="table"><a name="id2500523"></a><p class="title"><b>Table 8.5. Cyrillic encoding options</b></p><div class="table-contents">
-                        
-                        <table summary="Cyrillic encoding options" border="1"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>Symbolic define</th><th>Possible values </th><th>Description</th></tr></thead><tbody><tr><td><code class="code">LANGUAGE_CYRILLIC</code></td><td>true/false</td><td>
+                                           <table summary="Cyrillic encoding options" border="1"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>Symbolic define</th><th>Possible values </th><th>Description</th></tr></thead><tbody><tr><td><code class="code">LANGUAGE_CYRILLIC</code></td><td>true/false</td><td>
                                         <p>Special unicode cyrillic language support</p>
                                     </td></tr><tr><td><code class="code">CYRILLIC_FROM_WINDOWS</code></td><td>true/false</td><td>
                                         <p>If you are setting this config to true the conversion
@@ -104,21 +98,18 @@
                 </p>
             </div>
             <div class="sect2" title="Hebrew encoding options"><div class="titlepage"><div><div><h3 class="title"><a name="id2500687"></a>Hebrew encoding options</h3></div></div></div>
-                
-                <p>There are no user adjustable settings. The conversion is made from iso to
+                           <p>There are no user adjustable settings. The conversion is made from iso to
                     unicode with the help of the PHP method "<code class="code">hebrev()</code>" which is used to
                     convert logical Hebrew text to visual text. This conversion is done
                     automatically when the font is one of <code class="code">FF_DAVID</code>,
                         <code class="code">FF_MIRIAM</code> or <code class="code">FF_AHRON</code></p>
             </div>
             <div class="sect2" title="Greek encoding options"><div class="titlepage"><div><div><h3 class="title"><a name="id2500718"></a>Greek encoding options</h3></div></div></div>
-                
-                <p>In order to do proper translation to unicode from greek the
+                           <p>In order to do proper translation to unicode from greek the
                         <code class="code">LANGUAGE_GREEK</code> define should be specified to true.</p>
                 <p>
                     </p><div class="table"><a name="id2500733"></a><p class="title"><b>Table 8.6. Greek encoding options</b></p><div class="table-contents">
-                        
-                        <table summary="Greek encoding options" border="1"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>Symbolic define</th><th>Possible values </th><th>Description</th></tr></thead><tbody><tr><td><code class="code">LANGUAGE_GREEK</code></td><td>true/false</td><td>Special unicode greek language support</td></tr><tr><td><code class="code">GREEK_FROM_WINDOWS</code></td><td>true/false</td><td>If you are setting this define to true the conversion of
+                                           <table summary="Greek encoding options" border="1"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>Symbolic define</th><th>Possible values </th><th>Description</th></tr></thead><tbody><tr><td><code class="code">LANGUAGE_GREEK</code></td><td>true/false</td><td>Special unicode greek language support</td></tr><tr><td><code class="code">GREEK_FROM_WINDOWS</code></td><td>true/false</td><td>If you are setting this define to true the conversion of
                                         greek characters will assume that the input text is windows
                                         1251</td></tr></tbody></table>
                     </div></div><p><br class="table-break">

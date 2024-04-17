@@ -1,6 +1,5 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Mixing several CSIM images in an HTML page with text</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch10.html" title="Chapter 10. Using CSIM (Client side image maps)"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Mixing several CSIM images in an HTML page with text</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 10. Using CSIM (Client side image maps)</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Mixing several CSIM images in an HTML page with text"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2536399"></a>Mixing several CSIM images in an HTML page with text</h2></div></div></div>
-            
-            <p>As was mentioned above using <code class="code">StrokeCSIM()</code> is very simple but it has
+                   <p>As was mentioned above using <code class="code">StrokeCSIM()</code> is very simple but it has
                 the drawback that it returns a single HTML page without any possibilities to add
                 additional text which makes its use fairly limited in real life situation where the
                 graph is part of a complex WEB-page. In this section we will discuss some best
@@ -27,8 +26,7 @@
                     library. In earlier versions more of this has to be done manually.</p>
             </div>
             <div class="sect2" title="Adding one CSIM graph in a HTML page"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.adding-csim-in-html"></a>Adding one CSIM graph in a HTML page</h3></div></div></div>
-                
-                <p>The library has been designed to make this as painless as possible but due to
+                           <p>The library has been designed to make this as painless as possible but due to
                     the way CSIM works there are some manual work that cannot be avoided. We will
                     start slowly and in detail walk through an example where we include one CSIM
                     graph in an arbitrary HTML page. There are a few things to keep in mind, the
@@ -53,8 +51,7 @@
                     suitable places. In principle the HTML page should have the structure shown in <a class="xref" href="ch10s06.html#ex.csim-html-ex1" title="Example 10.1. Principles of including CSIM graph in a HTML page">Example 10.1. Principles of including CSIM graph in a HTML page</a></p>
                 <p>
                     </p><div class="example"><a name="ex.csim-html-ex1"></a><p class="title"><b>Example 10.1. Principles of including CSIM graph in a HTML page</b></p><div class="example-contents">
-                        
-                        <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
+                                           <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
 3
 4
@@ -241,8 +238,7 @@ usemap=&quot;#__mapname987066__&quot; border=&quot;0&quot; width=&quot;400&quot;
                     in <a class="xref" href="ch10s06.html#ex.csim-targ-same-window" title="Example 10.2. Creating CSIM URL targets to open in same browser window">Example 10.2. Creating CSIM URL targets to open in same browser window</a></p>
                 <p>
                     </p><div class="example"><a name="ex.csim-targ-same-window"></a><p class="title"><b>Example 10.2. Creating CSIM URL targets to open in same browser window</b></p><div class="example-contents">
-                        
-                        <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
+                                           <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
 3
 4
@@ -287,8 +283,7 @@ usemap=&quot;#__mapname987066__&quot; border=&quot;0&quot; width=&quot;400&quot;
                     URL.</p>
                 <p>
                     </p><div class="example"><a name="ex.csim-targ-fresh-window"></a><p class="title"><b>Example 10.3. Creating CSIM URL targets to open in a fresh window</b></p><div class="example-contents">
-                        
-                        <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
+                                           <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
 3
 4
@@ -333,8 +328,7 @@ usemap=&quot;#__mapname987066__&quot; border=&quot;0&quot; width=&quot;400&quot;
                     script).</p>
             </div>
             <div class="sect2" title="Adding multiple CSIM graphs in a HTML page"><div class="titlepage"><div><div><h3 class="title"><a name="id2536476"></a>Adding multiple CSIM graphs in a HTML page</h3></div></div></div>
-                
-                <p>Having laid the foundation for inclusion of CSIM graphs in <a class="xref" href="ch10s06.html#sec2.adding-csim-in-html" title="Adding one CSIM graph in a HTML page">Adding one CSIM graph in a HTML page</a> it is now a simple exercise to
+                           <p>Having laid the foundation for inclusion of CSIM graphs in <a class="xref" href="ch10s06.html#sec2.adding-csim-in-html" title="Adding one CSIM graph in a HTML page">Adding one CSIM graph in a HTML page</a> it is now a simple exercise to
                     extend this to include multiple CSIM graphs in the same HTML page. The only
                     modifications we have to do is to make sure that:</p>
                 <p>
@@ -360,8 +354,7 @@ usemap=&quot;#__mapname987066__&quot; border=&quot;0&quot; width=&quot;400&quot;
                 <p>
                     </p><div class="example"><a name="ex.csim-html-two-graphs"></a><p class="title"><b>Example 10.4. Example of HTML page that includes two Graph CSIM scripts
                                 ("<code class="filename">Examples/csim_in_html_ex2.html</code>")</b></p><div class="example-contents">
-                        
-                        <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
+                                           <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
 3
 4
@@ -567,8 +560,7 @@ Note: For the Pie the center is counted as the first slice.
                     </p><div class="figure"><a name="id2537145"></a><p class="title"><b>Figure 10.2. Browser window after calling HTML page in <a class="xref" href="ch10s06.html#ex.csim-html-two-graphs" title='Example 10.4. Example of HTML page that includes two Graph CSIM scripts ("Examples/csim_in_html_ex2.html")'>Example 10.4. Example of HTML page that includes two Graph CSIM scripts
                                 ("<code class="filename">Examples/csim_in_html_ex2.html</code>")</a> (Note: The image has been
                             scaled down to better fit this manual.)</b></p><div class="figure-contents">
-                        
-                        <div class="mediaobject"><img src="images/csim-html-example-page.png" alt="Browser window after calling HTML page in (Note: The image has been scaled down to better fit this manual.)"></div>
+                                           <div class="mediaobject"><img src="images/csim-html-example-page.png" alt="Browser window after calling HTML page in (Note: The image has been scaled down to better fit this manual.)"></div>
                     </div></div><p><br class="figure-break">
                 </p>
             </div>

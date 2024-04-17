@@ -1,6 +1,5 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Contour graphs</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch15.html" title="Chapter 15. Different types of linear (cartesian) graph types"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Contour graphs </th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 15. Different types of linear (cartesian) graph types</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Contour graphs"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec.contour-graphs"></a>Contour graphs </h2></div></div></div>
-            
-            <p>In order to create Radar graphs the module
+                   <p>In order to create Radar graphs the module
                     "<code class="filename">jpgraph_contour.php</code>" must first be included.</p>
             <p>
                 </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
@@ -84,8 +83,7 @@
                 assumed to be numbered (0..n) where n is the number of points in the corresponding
                 direction and also corresponds to each entry in the input data matrix.</p>
             <div class="sect2" title="Input data for contour graphs"><div class="titlepage"><div><div><h3 class="title"><a name="id2562600"></a>Input data for contour graphs</h3></div></div></div>
-                
-                <p>The input data to a contour graph is a matrix. The value at each entry in the
+                           <p>The input data to a contour graph is a matrix. The value at each entry in the
                     matrix represents the heights at the specified (row,col) in the matrix. In all
                     of our example we will use the following data matrix</p>
                 <p>
@@ -148,8 +146,7 @@
                 </div>
             </div>
             <div class="sect2" title="Creating a contour graph"><div class="titlepage"><div><div><h3 class="title"><a name="sec.creating-contour-graph"></a>Creating a contour graph</h3></div></div></div>
-                
-                <p><a class="xref" href="ch15s06.html#fig.basic_contourex01" title="Figure 15.75. A basic contour graph (basic_contourex01.php)">Figure 15.75. A basic contour graph <code class="uri"><a class="uri" href="example_src/basic_contourex01.html" target="_top">(<code class="filename">basic_contourex01.php</code>)</a></code> </a> shows the most basic contour plot.
+                           <p><a class="xref" href="ch15s06.html#fig.basic_contourex01" title="Figure 15.75. A basic contour graph (basic_contourex01.php)">Figure 15.75. A basic contour graph <code class="uri"><a class="uri" href="example_src/basic_contourex01.html" target="_top">(<code class="filename">basic_contourex01.php</code>)</a></code> </a> shows the most basic contour plot.
                     This is crated by first instantiating a graph and then creating an instance of
                         <code class="code">class ContourPlot</code> which is added to the graph. </p>
                 <p>The constructor for <code class="code">class ContourPlot</code> has the following
@@ -242,8 +239,7 @@
                 </p>
             </div>
             <div class="sect2" title="Adjusting the color and number of isobar lines"><div class="titlepage"><div><div><h3 class="title"><a name="id2562850"></a>Adjusting the color and number of isobar lines</h3></div></div></div>
-                
-                <p>As mentioned above the library uses 10 isobar lines by default. The number of
+                           <p>As mentioned above the library uses 10 isobar lines by default. The number of
                     isobar lines can be adjusted by specifying a second integer argument to the
                     constructor of the contour plot. For example to use only 5 isobar lines the
                     construction of the contour plot would be changed to</p>
@@ -325,8 +321,7 @@ $cp-&gt;UseHighContrastColor( true );</span></pre></td></tr></table></div><p>
                 </p>
             </div>
             <div class="sect2" title="Understanding mesh interpolation"><div class="titlepage"><div><div><h3 class="title"><a name="sec.grid-interpolating"></a>Understanding mesh interpolation</h3></div></div></div>
-                
-                <p>As mentioned above it is possible to use mesh interpolation to generate
+                           <p>As mentioned above it is possible to use mesh interpolation to generate
                     smoother contour graphs. In order to better understand the effect of specifying
                     different interpolation factors we will show how what effect this have.</p>
                 <p>The data we will be using is given by the following data matrix</p>

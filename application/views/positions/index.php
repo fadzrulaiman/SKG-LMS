@@ -1,17 +1,13 @@
 <?php 
 /**
  * This view displays the list of positions.
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.1.0
+
  */
 ?>
 
 <div class="row-fluid">
     <div class="span12">
-      
-<h2><?php echo lang('positions_index_title');?> &nbsp;<?php echo $help;?></h2>
+ <h2><?php echo lang('positions_index_title');?> &nbsp;<?php echo $help;?></h2>
 
 <?php echo $flash_partial_view;?>
 

@@ -1,8 +1,7 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 26. Datamatrix (2D-Barcode)</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="pt06.html" title="Part VI. Barcodes"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 26. Datamatrix (2D-Barcode)</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Part VI. Barcodes</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="chapter" title="Chapter 26. Datamatrix (2D-Barcode)"><div class="titlepage"><div><div><h2 class="title"><a name="id2603428"></a>Chapter 26. Datamatrix (2D-Barcode)</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="ch26.html#id2603444">26.1. Principle of Datamatrix Barcodes</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch26.html#id2603529">26.1.1.  Summary of features offered in the library</a></span></dt><dt><span class="sect2"><a href="ch26.html#id2603714">26.1.2. Limitation of the JpGraph Datamatrix implementation</a></span></dt><dt><span class="sect2"><a href="ch26.html#id2603732">26.1.3. Datamatrix standard</a></span></dt><dt><span class="sect2"><a href="ch26.html#id2603763">26.1.4. Structure of Data Matrix codes</a></span></dt><dt><span class="sect2"><a href="ch26.html#sec.encodation-efficiency">26.1.5.  Encodation efficiency</a></span></dt><dt><span class="sect2"><a href="ch26.html#id2604233">26.1.6. More on ECC Datamatrix subsets</a></span></dt><dt><span class="sect2"><a href="ch26.html#id2604289">26.1.7. Symbology Data capacity</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch26s02.html">26.2. Creating barcodes</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch26s02.html#id2605827">26.2.1. Getting started</a></span></dt><dt><span class="sect2"><a href="ch26s02.html#id2606128">26.2.2. Error handling</a></span></dt><dt><span class="sect2"><a href="ch26s02.html#id2606133">26.2.3. Encodation options</a></span></dt><dt><span class="sect2"><a href="ch26s02.html#id2606704">26.2.4. Processing special input characters</a></span></dt><dt><span class="sect2"><a href="ch26s02.html#id2607268">26.2.5. Creating different backends</a></span></dt><dt><span class="sect2"><a href="ch26s02.html#id2607359">26.2.6. Generic backend methods</a></span></dt><dt><span class="sect2"><a href="ch26s02.html#id2607382">26.2.7. Image backend methods</a></span></dt><dt><span class="sect2"><a href="ch26s02.html#id2607457">26.2.8. Postscript backend format options</a></span></dt><dt><span class="sect2"><a href="ch26s02.html#id2607560">26.2.9. A template to create barcodes</a></span></dt><dt><span class="sect2"><a href="ch26s02.html#id2607586">26.2.10. Sample application</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch26s03.html">26.3. Example script</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch26s03.html#id2607662">26.3.1. Example 1 - Setting the shape</a></span></dt><dt><span class="sect2"><a href="ch26s03.html#id2607759">26.3.2. Example 2 - Writing to a file</a></span></dt><dt><span class="sect2"><a href="ch26s03.html#id2607790">26.3.3. Example 3 - Creating postscript output</a></span></dt><dt><span class="sect2"><a href="ch26s03.html#id2607848">26.3.4. Example 4 - Changing background color</a></span></dt></dl></dd></dl></div>
     
     <div class="sect1" title="Principle of Datamatrix Barcodes"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2603444"></a>Principle of Datamatrix Barcodes</h2></div></div></div>
-        
-        <p>Datamatrix (or Data Matrix) is a high density 2 dimensional barcode that can encode up
+           <p>Datamatrix (or Data Matrix) is a high density 2 dimensional barcode that can encode up
             to 3116 characters from the entire 256 byte ASCII character set. Compared with DF417
             barcode symbology the datamatrix barcode belongs to newer family of 2 dimensional
             barcodes that makes better use of both dimensions and thus can achieve higher data
@@ -24,8 +23,7 @@
             barcode.</p>
         <p>
             </p><div class="figure"><a name="fig.datamatrix-structure"></a><p class="title"><b>Figure 26.1. Datamatrix structure.</b></p><div class="figure-contents">
-                
-                <p>The image shows an annotated Datamatrix where the finder and synchronization
+                           <p>The image shows an annotated Datamatrix where the finder and synchronization
                     patterns have been highlighted.</p>
                 <div class="mediaobject"><img src="images/datamatrix-structure-details.png" alt="Datamatrix structure."></div>
             </div></div><p><br class="figure-break">
@@ -39,8 +37,7 @@
             Standards Institute" (ANSI) as a standard symbology and a number of industry standard
             associations (e.g. EIA, SEMI, AIAG, ATA) where it has been recommended for use.</p>
         <div class="sect2" title="Summary of features offered in the library"><div class="titlepage"><div><div><h3 class="title"><a name="id2603529"></a> Summary of features offered in the library</h3></div></div></div>
-            
-            <p>The following list summarizes the features that the library offers for Datamatrix
+                   <p>The following list summarizes the features that the library offers for Datamatrix
                 barcodes. Some of the terms used here assumes familiarity with Datamatrix barcodes.
                 All terms are also described in the remainder of this chapter.</p>
             <p>
@@ -96,21 +93,18 @@
             </p>
         </div>
         <div class="sect2" title="Limitation of the JpGraph Datamatrix implementation"><div class="titlepage"><div><div><h3 class="title"><a name="id2603714"></a>Limitation of the JpGraph Datamatrix implementation</h3></div></div></div>
-            
-            <p>This version of the library does not support the EDIFACT compaction standard due
+                   <p>This version of the library does not support the EDIFACT compaction standard due
                 to the very specialized and limited use of this encodation schema.</p>
         </div>
         <div class="sect2" title="Datamatrix standard"><div class="titlepage"><div><div><h3 class="title"><a name="id2603732"></a>Datamatrix standard</h3></div></div></div>
-            
-            <p>Datamatrix as a standard is fully described in the ISO/IEC 16022E International
+                   <p>Datamatrix as a standard is fully described in the ISO/IEC 16022E International
                 Standard and is available for purchase from the <code class="uri"><a class="uri" href="http://www.iso.ch/iso/en/CombinedQueryResult.CombinedQueryResult?queryString=datamatrix" target="_top">ISO Standard Organization.</a></code></p>
             <p>Additional information about Data Matrix code is available in the following United
                 States patents: 4,939,354; 5,053,609; 5,124,536. See <code class="uri"><a class="uri" href="http://patft.uspto.gov/netahtml/PTO/srchnum.htm" target="_top">US patent
                     Office</a></code> for full disclosures of these patents.</p>
         </div>
         <div class="sect2" title="Structure of Data Matrix codes"><div class="titlepage"><div><div><h3 class="title"><a name="id2603763"></a>Structure of Data Matrix codes</h3></div></div></div>
-            
-            <p>Datamatrix is a two-dimensional symbology in the shape of a rectangle. The size
+                   <p>Datamatrix is a two-dimensional symbology in the shape of a rectangle. The size
                 and shape of the symbol is usually chosen either automatically or by the user.
                 Usually it is chosen to be the smallest size that will have enough data capacity to
                 encode the given data. The symbol rectangle is build up by square dots whose size
@@ -129,13 +123,11 @@
                 </p><div class="informaltable">
                     <table border="0"><colgroup><col class="c1"><col class="c2"></colgroup><tbody><tr><td valign="top">
                                     <div class="figure"><a name="fig.datamatrix-square"></a><p class="title"><b>Figure 26.2. Datamatrix - Square symbol shape</b></p><div class="figure-contents">
-                                        
-                                        <div class="mediaobject"><img src="images/datamatrix_square.png" alt="Datamatrix - Square symbol shape"></div>
+                                                                           <div class="mediaobject"><img src="images/datamatrix_square.png" alt="Datamatrix - Square symbol shape"></div>
                                     </div></div><br class="figure-break">
                                 </td><td valign="top">
                                     <div class="figure"><a name="fig.datamatrix-rect"></a><p class="title"><b>Figure 26.3. Datamatrix - Rectangle symbol shape</b></p><div class="figure-contents">
-                                        
-                                        <div class="mediaobject"><img src="images/datamatrix_rect.png" alt="Datamatrix - Rectangle symbol shape"></div>
+                                                                           <div class="mediaobject"><img src="images/datamatrix_rect.png" alt="Datamatrix - Rectangle symbol shape"></div>
                                     </div></div><br class="figure-break">
                                 </td></tr></tbody></table>
                 </div><p>
@@ -176,8 +168,7 @@
                 the code itself to understand the details.</p>
         </div>
         <div class="sect2" title="Encodation efficiency"><div class="titlepage"><div><div><h3 class="title"><a name="sec.encodation-efficiency"></a> Encodation efficiency</h3></div></div></div>
-            
-            <p>As explained in the previous section several compaction schema are used to encode
+                   <p>As explained in the previous section several compaction schema are used to encode
                 the data to enable more data to fit in a given symbol. Depending on the actual data
                 there are several compaction schema that can be used in order to achieve the
                 greatest possible compression. The standard specifies six different schema. The
@@ -188,26 +179,22 @@
                 size.</p>
             <p>
                 </p><div class="table"><a name="table.datamatrix-encodation-efficiency"></a><p class="title"><b>Table 26.1. Datamatrix encodation efficiency</b></p><div class="table-contents">
-                    
-                    <table summary="Datamatrix encodation efficiency" border="1"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>
+                                   <table summary="Datamatrix encodation efficiency" border="1"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><thead><tr><th>
                                     <p>Encodation schema</p>
                                 </th><th>
                                     <p>Characters</p>
                                 </th><th>
                                     <p>Bits per character</p>
                                 </th></tr></thead><tbody><tr><td>ASCII</td><td><p>Double digit numerics</p> 
-                                        <p>ASCII 0-127 </p>                                    
-                                        <p>Extended ASCII 128-255</p>
+                                        <p>ASCII 0-127 </p>                                                                       <p>Extended ASCII 128-255</p>
                                     </td><td align="center"><p>4</p>
-                                        <p>8</p>                                    
-                                        <p>16</p>
+                                        <p>8</p>                                                                       <p>16</p>
                                     </td></tr><tr><td>C40</td><td>Primarily upper-case alphanumeric</td><td align="center">5.33</td></tr><tr><td>Text</td><td>Primarily lower-case alphanumeric</td><td align="center">5.33</td></tr><tr><td>X12</td><td>ANSI X12 EDI data set</td><td align="center">5.33</td></tr><tr><td>EDIFACT</td><td>ASCII values 32-94</td><td align="center">6</td></tr><tr><td>Base 256</td><td>All byte values 0-255</td><td align="center">8</td></tr></tbody></table>
                 </div></div><p><br class="table-break">
             </p>
         </div>
         <div class="sect2" title="More on ECC Datamatrix subsets"><div class="titlepage"><div><div><h3 class="title"><a name="id2604233"></a>More on ECC Datamatrix subsets</h3></div></div></div>
-            
-            <p>As was mentioned in the introduction there are two main subsets of Datamatrix
+                   <p>As was mentioned in the introduction there are two main subsets of Datamatrix
                 symbols. Those using convolutional codes for error correction which were used for
                 most of the initial installations of Datamatrix systems, these earlier versions are
                 referenced as ECC-000 to ECC-140 (the number specifies the level of convolutional
@@ -235,8 +222,7 @@
                 modern ECC-200 subset.</p>
         </div>
         <div class="sect2" title="Symbology Data capacity"><div class="titlepage"><div><div><h3 class="title"><a name="id2604289"></a>Symbology Data capacity</h3></div></div></div>
-            
-            <p>As was mentioned in the previous section the actual data capacity depends on the
+                   <p>As was mentioned in the previous section the actual data capacity depends on the
                 symbol size. By default the library will select the smallest possible symbol size
                 that will encode a given character string with the chosen encoding (possibly
                 automatic). Table 2 below gives the maximum capacity for the three most common

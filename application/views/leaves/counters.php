@@ -117,8 +117,7 @@ $(function () {
         url = "<?php echo base_url();?>leaves/counters/" + isoDate;
         window.location = url;
     });
-        
-    //Display tooltips
+       //Display tooltips
     $("[ data-toggle=tooltip]").tooltip({ placement: 'top'});
 });
 </script>

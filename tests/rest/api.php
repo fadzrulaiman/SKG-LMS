@@ -144,8 +144,7 @@ $result = file_get_contents($url, false, $context);
 
 //Get the result (of the SQL execution) => it should be the last inserted ID
 $result_array = json_decode($result);
-echo var_dump($result_array);            
-
+echo var_dump($result_array);       
 //____________________________________________________________________________________________________
 //Now, list the entitled days credited to this contract
 $url = 'http://localhost/jorani/api/entitleddayscontract/' . $contract;

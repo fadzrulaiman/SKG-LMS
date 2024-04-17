@@ -1,10 +1,7 @@
 <?php
 /**
  * This controller allows to manage the contracts
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.1.0
+
  */
 
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
@@ -20,7 +17,6 @@ class Contracts extends CI_Controller {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -31,7 +27,6 @@ class Contracts extends CI_Controller {
 
     /**
      * Display the list of all contracts defined in the system
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function index() {
         $this->auth->checkIfOperationIsAllowed('list_contracts');
@@ -50,7 +45,6 @@ class Contracts extends CI_Controller {
     /**
      * Display a form that allows to update a contract
      * @param int $id Contract identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function edit($id) {
         $this->auth->checkIfOperationIsAllowed('edit_contract');
@@ -96,7 +90,6 @@ class Contracts extends CI_Controller {
 
     /**
      * Display the form / action Create a new contract
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function create() {
         $this->auth->checkIfOperationIsAllowed('create_contract');
@@ -132,7 +125,6 @@ class Contracts extends CI_Controller {
     /**
      * Delete a given contract
      * @param int $id contract identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function delete($id) {
         $this->auth->checkIfOperationIsAllowed('delete_contract');
@@ -152,7 +144,6 @@ class Contracts extends CI_Controller {
      * off, bank holidays, etc. for a given contract
      * @param int $id contract identifier
      * @param int $year optional year number (4 digits), current year if empty
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function calendar($id, $year = 0) {
         $this->auth->checkIfOperationIsAllowed('calendar_contract');
@@ -197,7 +188,6 @@ class Contracts extends CI_Controller {
      * @param int $source source contract identifier
      * @param int $destination destination contract identifier
      * @param int $year year number (4 digits)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function copydayoff($source, $destination, $year) {
         $this->auth->checkIfOperationIsAllowed('calendar_contract');
@@ -211,7 +201,6 @@ class Contracts extends CI_Controller {
     /**
      * Display a form that allows to exclude some leave types from a contract
      * @param int $id Contract identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function excludeTypes($id) {
         $this->auth->checkIfOperationIsAllowed('edit_contract');
@@ -245,7 +234,6 @@ class Contracts extends CI_Controller {
      * Ajax endpoint : include a leave type into a contract
      * @param int $contractId identifier of the contract
      * @param int $typeId identifier of the leave type
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function includeTypeFromContract($contractId, $typeId) {
         if ($this->auth->isAllowed('edit_contract') === FALSE) {
@@ -261,7 +249,6 @@ class Contracts extends CI_Controller {
      * Ajax endpoint : exclude a leave type into a contract
      * @param int $contractId identifier of the contract
      * @param int $typeId identifier of the leave type
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function excludeTypeFromContract($contractId, $typeId) {
         if ($this->auth->isAllowed('edit_contract') === FALSE) {
@@ -274,7 +261,6 @@ class Contracts extends CI_Controller {
 
     /**
      * Ajax endpoint : add a day off to a contract
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function editdayoff() {
         if ($this->auth->isAllowed('adddayoff_contract') === FALSE) {
@@ -300,7 +286,6 @@ class Contracts extends CI_Controller {
 
     /**
      * Ajax endpoint : Edit a series of day offs for a given contract
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function series() {
         if ($this->auth->isAllowed('adddayoff_contract') === FALSE) {
@@ -353,7 +338,6 @@ class Contracts extends CI_Controller {
      * This is an experimental feature that doesn't work with half days
      * POST: contract id
      * POST: URL of ICS feed
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function import() {
         header("Content-Type: plain/text");
@@ -378,7 +362,6 @@ class Contracts extends CI_Controller {
      * Ajax endpoint : Send a list of fullcalendar events
      * List of day offs for the connected user
      * @param int $id employee id or connected user (from session)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function userDayoffs($id = 0) {
         header("Content-Type: application/json");
@@ -393,7 +376,6 @@ class Contracts extends CI_Controller {
      * Ajax endpoint : Send a list of fullcalendar events
      * List of all possible day offs
      * @param int $entity_id Entity identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function allDayoffs() {
         header("Content-Type: application/json");
@@ -422,7 +404,6 @@ class Contracts extends CI_Controller {
 
     /**
      * Action: export the list of all contracts into an Excel file
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function export() {
         $this->auth->checkIfOperationIsAllowed('export_contracts');

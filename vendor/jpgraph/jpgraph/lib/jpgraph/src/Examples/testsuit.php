@@ -13,8 +13,7 @@
 //
 // Usage: testsuit.php[?type=1]    Generates all non image map scripts
 //        testsuit.php?type=2      Generates client side image map scripts 
-//       
-//-------------------------------------------------------------------------
+//  //-------------------------------------------------------------------------
 class TestDriver {
     
     private $iType;

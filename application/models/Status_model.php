@@ -51,7 +51,6 @@ class Status_model extends CI_Model {
     /**
      * Get the list of status as an ordered associative array
      * @return array Associative array of types (id, name)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getStatusAsArray($id = 0) {
         $listOfTypes = array();

@@ -9,8 +9,7 @@ $targ = array("#1","#2","#3","#4","#5","#6","#7","#8","#9","#10");
 $alt = array(1,2,3,4,5,6,7,8,9,10); 
 
 // Create the graph. 
-$graph = new Graph(300,200);     
-$graph->SetScale("textlin"); 
+$graph = new Graph(300,200);$graph->SetScale("textlin"); 
 $graph->img->SetMargin(40,20,30,40); 
 $graph->title->Set("CSIM example with bar and line"); 
 $graph->title->SetFont(FF_FONT1,FS_BOLD);

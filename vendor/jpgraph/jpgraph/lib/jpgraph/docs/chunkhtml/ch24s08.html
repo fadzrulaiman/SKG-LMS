@@ -1,8 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Format options for barcodes</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch24.html" title="Chapter 24. Linear Barcodes (One Dimensional Barcodes)"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Format options for barcodes</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 24. Linear Barcodes (One Dimensional Barcodes)</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Format options for barcodes"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2596824"></a>Format options for barcodes</h2></div></div></div>
-            
-            <div class="sect2" title="Adjusting the encodation process"><div class="titlepage"><div><div><h3 class="title"><a name="id2596909"></a>Adjusting the encodation process</h3></div></div></div>
-                
-                <p>For the encoding there is basically only one modification available. </p>
+                   <div class="sect2" title="Adjusting the encodation process"><div class="titlepage"><div><div><h3 class="title"><a name="id2596909"></a>Adjusting the encodation process</h3></div></div></div>
+                           <p>For the encoding there is basically only one modification available. </p>
                 <p>For those symbologies that include an optional checksum it is possible to
                     enable or disable this calculation.</p>
                 <p>The following symbologies may have optional checksum character(s)</p>
@@ -41,14 +39,12 @@
                 <p>Which would give the result shown in <a class="xref" href="ch24s08.html#fig.adding-chk-c39" title='Figure 24.6. Encoding "ABC123" with CODE 39 adding checksum (checksum=4).'>Figure 24.6. Encoding "ABC123" with CODE 39 adding checksum (checksum=4).</a></p>
                 <p>
                     </p><div class="figure"><a name="fig.adding-chk-c39"></a><p class="title"><b>Figure 24.6. Encoding "ABC123" with CODE 39 adding checksum (checksum=4).</b></p><div class="figure-contents">
-                        
-                        <div class="mediaobject"><img src="images/barcode_c39_abc123_ex3.png" alt='Encoding "ABC123" with CODE 39 adding checksum (checksum=4).'></div>
+                                           <div class="mediaobject"><img src="images/barcode_c39_abc123_ex3.png" alt='Encoding "ABC123" with CODE 39 adding checksum (checksum=4).'></div>
                     </div></div><p><br class="figure-break">
                 </p>
             </div>
             <div class="sect2" title="Selecting output format"><div class="titlepage"><div><div><h3 class="title"><a name="id2597037"></a>Selecting output format</h3></div></div></div>
-                
-                <p>The output format can be adjusted by specifying/creating the appropriate
+                           <p>The output format can be adjusted by specifying/creating the appropriate
                     backend. The library supports image and postscript (and encapsulated postscript)
                     backends. </p>
                 <p>The backend is created by calling the static factory method </p>
@@ -125,8 +121,7 @@ $barcode-&gt;Stroke('ABC123','/tmp/barcode.png');</span></pre></td></tr></table>
                     as a string if everything went well.</p>
             </div>
             <div class="sect2" title="Writing barcodes to a file"><div class="titlepage"><div><div><h3 class="title"><a name="id2597044"></a>Writing barcodes to a file</h3></div></div></div>
-                
-                <p>This is done by adding a second argument, the file name, to the
+                           <p>This is done by adding a second argument, the file name, to the
                         <code class="code">Backend::Stroke()</code> method. This works for all backends. The file
                     name should be an absolute path name. Since it is the PHP process that writes
                     the file the permissions must allow the PHP process to write to the directory if
@@ -134,8 +129,7 @@ $barcode-&gt;Stroke('ABC123','/tmp/barcode.png');</span></pre></td></tr></table>
                     does of course not apply.</p>
             </div>
             <div class="sect2" title="Hiding the human readable text"><div class="titlepage"><div><div><h3 class="title"><a name="id2597234"></a>Hiding the human readable text</h3></div></div></div>
-                
-                <p>
+                           <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                             <p><code class="code">Backend::HideText($aHide=true)</code></p>
                         </li></ul></div><p>
@@ -144,8 +138,7 @@ $barcode-&gt;Stroke('ABC123','/tmp/barcode.png');</span></pre></td></tr></table>
                     bottom of the bar. By default this is enabled. </p>
             </div>
             <div class="sect2" title="Adjusting the module width"><div class="titlepage"><div><div><h3 class="title"><a name="id2597265"></a>Adjusting the module width</h3></div></div></div>
-                
-                <p>
+                           <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                             <p><code class="code">Backend::SetModuleWidth($aWidth)</code></p>
                         </li></ul></div><p>
@@ -193,14 +186,12 @@ $barcode-&gt;Stroke('ABC123','/tmp/barcode.png');</span></pre></td></tr></table>
                     below</p>
                 <p>
                     </p><div class="figure"><a name="fig.barcode-c39-ex2"></a><p class="title"><b>Figure 24.7. Encoding "ABC123" with CODE 39, hiding the text.</b></p><div class="figure-contents">
-                        
-                        <div class="mediaobject"><img src="images/barcode_c39_abc123_ex2.png" alt='Encoding "ABC123" with CODE 39, hiding the text.'></div>
+                                           <div class="mediaobject"><img src="images/barcode_c39_abc123_ex2.png" alt='Encoding "ABC123" with CODE 39, hiding the text.'></div>
                     </div></div><p><br class="figure-break">
                 </p>
             </div>
             <div class="sect2" title="Setting vertical or horizontal layout"><div class="titlepage"><div><div><h3 class="title"><a name="id2597395"></a> Setting vertical or horizontal layout</h3></div></div></div>
-                
-                <p>
+                           <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                             <p><code class="code">Backend::SetVertical($aVertical=true)</code></p>
                         </li></ul></div><p>
@@ -209,8 +200,7 @@ $barcode-&gt;Stroke('ABC123','/tmp/barcode.png');</span></pre></td></tr></table>
                     barcode.</p>
             </div>
             <div class="sect2" title="Adjusting height of bar code"><div class="titlepage"><div><div><h3 class="title"><a name="id2597418"></a>Adjusting height of bar code</h3></div></div></div>
-                
-                <p>
+                           <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                             <p>
                                 <code class="code">Backend::SetHeight($aHeight)</code></p>
@@ -222,8 +212,7 @@ $barcode-&gt;Stroke('ABC123','/tmp/barcode.png');</span></pre></td></tr></table>
                     = 1/72 inch)</p>
             </div>
             <div class="sect2" title="Scaling of bar codes"><div class="titlepage"><div><div><h3 class="title"><a name="id2597385"></a>Scaling of bar codes</h3></div></div></div>
-                
-                <p>
+                           <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                             <p><code class="code">Backend::SetScale($aScaleFactor)</code></p>
                         </li></ul></div><p>
@@ -232,8 +221,7 @@ $barcode-&gt;Stroke('ABC123','/tmp/barcode.png');</span></pre></td></tr></table>
                     barcode image. </p>
             </div>
             <div class="sect2" title="Add frame around bar code"><div class="titlepage"><div><div><h3 class="title"><a name="id2597465"></a>Add frame around bar code</h3></div></div></div>
-                
-                <p>
+                           <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                             <p><code class="code">Backend::ShowFrame($aFlag=true)</code></p>
                         </li></ul></div><p>
@@ -241,8 +229,7 @@ $barcode-&gt;Stroke('ABC123','/tmp/barcode.png');</span></pre></td></tr></table>
                 <p>This method will enable a frame around the edges of the barcode image</p>
             </div>
             <div class="sect2" title="Examples of adjusting the output"><div class="titlepage"><div><div><h3 class="title"><a name="id2597509"></a>Examples of adjusting the output</h3></div></div></div>
-                
-                <p>The following example outputs a postscript file representing the bar code with
+                           <p>The following example outputs a postscript file representing the bar code with
                     a module width of 1.2 pt, using a vertical layout and scaling the image 2 times.
                     For this example we are using CODE 39 with a checksum (which is automatically
                     generated) </p>

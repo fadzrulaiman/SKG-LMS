@@ -1,6 +1,5 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Scatter graphs</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch15.html" title="Chapter 15. Different types of linear (cartesian) graph types"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Scatter graphs</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 15. Different types of linear (cartesian) graph types</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Scatter graphs"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec1.creating-scatter-graphs"></a>Scatter graphs</h2></div></div></div>
-            
-            <p>Scatter plots are used to display a number of data points given by there x- and
+                   <p>Scatter plots are used to display a number of data points given by there x- and
                 y-coordinate. The difference from a line plot is that the x-coordinate must always
                 be specified. Each point is stroked on the image with a mark as with line plots. The
                 stroked marks can also be connected with an optional line.</p>
@@ -61,8 +60,7 @@
 </span><span class="hl-var">$graph</span><span class="hl-code"> = </span><span class="hl-reserved">new</span><span class="hl-code"> </span><span class="hl-identifier">Graph</span><span class="hl-brackets">(</span><span class="hl-number">300</span><span class="hl-code">,</span><span class="hl-number">200</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">SetScale</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">linlin</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">;
  
-</span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">img</span><span class="hl-code">-&gt;</span><span class="hl-identifier">SetMargin</span><span class="hl-brackets">(</span><span class="hl-number">40</span><span class="hl-code">,</span><span class="hl-number">40</span><span class="hl-code">,</span><span class="hl-number">40</span><span class="hl-code">,</span><span class="hl-number">40</span><span class="hl-brackets">)</span><span class="hl-code">;        
-</span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">SetShadow</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
+</span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">img</span><span class="hl-code">-&gt;</span><span class="hl-identifier">SetMargin</span><span class="hl-brackets">(</span><span class="hl-number">40</span><span class="hl-code">,</span><span class="hl-number">40</span><span class="hl-code">,</span><span class="hl-number">40</span><span class="hl-code">,</span><span class="hl-number">40</span><span class="hl-brackets">)</span><span class="hl-code">;   </span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">SetShadow</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
  
 </span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">title</span><span class="hl-code">-&gt;</span><span class="hl-identifier">Set</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">A simple scatter plot</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">title</span><span class="hl-code">-&gt;</span><span class="hl-identifier">SetFont</span><span class="hl-brackets">(</span><span class="hl-identifier">FF_FONT1</span><span class="hl-code">,</span><span class="hl-identifier">FS_BOLD</span><span class="hl-brackets">)</span><span class="hl-code">;
@@ -82,8 +80,7 @@
             <p>The marks are accessed through the instance variable
                     <code class="code">ScatterPlot::mark</code> (in complete analogy with line plots)</p>
             <div class="sect2" title="Combining marks with a line"><div class="titlepage"><div><div><h3 class="title"><a name="id2561472"></a>Combining marks with a line</h3></div></div></div>
-                
-                <p>It is possible to combine the individual data points with a line - a link. The
+                           <p>It is possible to combine the individual data points with a line - a link. The
                     properties for this link can be accessed by using the instance variable
                         <code class="code">ScatterPlot::link</code>.In order to enable the link the method
                         <code class="code">ScatterPlot::link::Show()</code> must first be called.</p>
@@ -132,8 +129,7 @@
                 </p>
             </div>
             <div class="sect2" title="Creating impulse (or stem) - plots"><div class="titlepage"><div><div><h3 class="title"><a name="id2561573"></a>Creating impulse (or stem) - plots</h3></div></div></div>
-                
-                <p>A variant of scatter plots often used electrical engineering is the stem plot
+                           <p>A variant of scatter plots often used electrical engineering is the stem plot
                     as shown in <a class="xref" href="ch15s02.html#fig.barplot-patterns" title="Figure 15.56. Supported pattern fills for bar plots">Figure 15.56. Supported pattern fills for bar plots</a></p>
                 <p>
                     </p><div class="figure"><a name="fig.impulsex1"></a><p class="title"><b>Figure 15.69. Stem plot <code class="uri"><a class="uri" href="example_src/impulsex1.html" target="_top">(<code class="filename">impulsex1.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/impulsex1.png" alt="Stem plot (impulsex1.php)"></span> </div></div><p><br class="figure-break">
@@ -166,8 +162,7 @@
                     create a "virtual" x-axis.</p>
             </div>
             <div class="sect2" title="Field plots"><div class="titlepage"><div><div><h3 class="title"><a name="sec1.creating-field-graphs"></a>Field plots</h3></div></div></div>
-                
-                <p>A variant of scatter plot is the so called Field Plots. </p>
+                           <p>A variant of scatter plot is the so called Field Plots. </p>
                 <p>This is basically a scatter plot where each scatter point is an arrow with a
                     direction between 0 to 359 degrees. This effectively allows the visualization of
                     3 parameters at each point (x,y and angle). </p>
@@ -199,8 +194,7 @@
                                     <a class="xref" href="ch15s05.html#fig.field-arrow-sizes" title="Figure 15.71. Possible sizes of arrow heads for field plots">Figure 15.71. Possible sizes of arrow heads for field plots</a>.</p>
                             <p>
                                 </p><div class="figure"><a name="fig.field-arrow-sizes"></a><p class="title"><b>Figure 15.71. Possible sizes of arrow heads for field plots</b></p><div class="figure-contents">
-                                    
-                                    <div class="mediaobject"><img src="images/field_arrow_sizes.png" alt="Possible sizes of arrow heads for field plots"></div>
+                                                                   <div class="mediaobject"><img src="images/field_arrow_sizes.png" alt="Possible sizes of arrow heads for field plots"></div>
                                 </div></div><p><br class="figure-break">
                             </p>
                         </li><li class="listitem">
@@ -224,8 +218,7 @@
                 </p>
             </div>
             <div class="sect2" title="Balloon plots"><div class="titlepage"><div><div><h3 class="title"><a name="sec1.creating-balloon-graphs"></a>Balloon plots</h3></div></div></div>
-                
-                <p>This is a variant of scatter plot where each data point is a filled circle and
+                           <p>This is a variant of scatter plot where each data point is a filled circle and
                     the size of the circle is dynamically adjusted. This makes it possible to
                     display three values at each data point (x,y,"size"). There is no need for a
                     specific plot type for this since these types of plots can be constructed with
@@ -336,8 +329,7 @@ $sp1-&gt;value-&gt;SetFont(FF_FONT1,FS_BOLD);</span></pre></td></tr></table></di
                 </p>
             </div>
             <div class="sect2" title="Creating Geo-maps"><div class="titlepage"><div><div><h3 class="title"><a name="sec1.creating-geo-maps"></a>Creating Geo-maps</h3></div></div></div>
-                
-                <p>Geo-maps (a.k.a. Geo-charts, push-pin graphs) is used to illustrate locations
+                           <p>Geo-maps (a.k.a. Geo-charts, push-pin graphs) is used to illustrate locations
                     around the world by putting markers on a flat projection of the earth. A Geo-map
                     is done by adding a Worldmap background to a standard scatter graph. The library
                     includes a suitable background in the "<code class="filename">Examples/</code>" directory

@@ -1,10 +1,7 @@
 <?php
 /**
  * This controller allows to manage the list of leave types
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.1.0
+
  */
 
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
@@ -16,7 +13,6 @@ class LeaveTypes extends CI_Controller {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -27,7 +23,6 @@ class LeaveTypes extends CI_Controller {
 
     /**
      * Display the list of leave types
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function index() {
         $this->auth->checkIfOperationIsAllowed('leavetypes_list');
@@ -44,7 +39,6 @@ class LeaveTypes extends CI_Controller {
 
     /**
      * Display a form that allows adding a leave type
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function create() {
         $this->auth->checkIfOperationIsAllowed('leavetypes_create');
@@ -68,7 +62,6 @@ class LeaveTypes extends CI_Controller {
     /**
      * Display a form that allows editing a leave type
      * @param int $id Identitier of the leave type
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function edit($id) {
         $this->auth->checkIfOperationIsAllowed('leavetypes_edit');
@@ -97,7 +90,6 @@ class LeaveTypes extends CI_Controller {
     /**
      * Action : delete a leave type
      * @param int $id leave type identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function delete($id) {
         $this->auth->checkIfOperationIsAllowed('leavetypes_delete');
@@ -116,7 +108,6 @@ class LeaveTypes extends CI_Controller {
 
     /**
      * Action: export the list of all leave types into an Excel file
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function export() {
         $this->auth->checkIfOperationIsAllowed('leavetypes_export');

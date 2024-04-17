@@ -1,6 +1,5 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Creating several graphs in the same image</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch15.html" title="Chapter 15. Different types of linear (cartesian) graph types"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Creating several graphs in the same image</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 15. Different types of linear (cartesian) graph types</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Creating several graphs in the same image"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2563880"></a>Creating several graphs in the same image</h2></div></div></div>
-            
-            <p>There are at least two reasons why one or several graphs should be combined into
+                   <p>There are at least two reasons why one or several graphs should be combined into
                 the same image.</p>
             <div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                         <p>To be able to create overall graphs that are strongly connected and
@@ -19,8 +18,7 @@
                 </p><div class="figure"><a name="fig.combgraphex1"></a><p class="title"><b>Figure 15.88. A combination of a line graph at top and a bar graph in the bottom <code class="uri"><a class="uri" href="example_src/combgraphex1.html" target="_top">(<code class="filename">combgraphex1.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/combgraphex1.png" alt="A combination of a line graph at top and a bar graph in the bottom (combgraphex1.php)"></span> </div></div><p><br class="figure-break">
             </p>
             <div class="sect2" title="Creating a combined graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2563975"></a>Creating a combined graph</h3></div></div></div>
-                
-                <p>In order to better understand what is involved in creating a combined graph we
+                           <p>In order to better understand what is involved in creating a combined graph we
                     will first show how this is done manually.</p>
                 <p>This is done by creating some PHP/GD code that creates a big enough empty
                     image with plain GD commands and then get the image handles from the graphs that
@@ -233,8 +231,7 @@
                     way as the normal <code class="code">Graph::Stroke()</code></p>
             </div>
             <div class="sect2" title="Adding background images"><div class="titlepage"><div><div><h3 class="title"><a name="id2564308"></a>Adding background images </h3></div></div></div>
-                
-                <p>In addition to the basic usage as shown above it is also possible to add a
+                           <p>In addition to the basic usage as shown above it is also possible to add a
                     background image in the combined graph. What is important to remember then is
                     that all the subgraphs are copied onto the combined graph so normally they will
                     be on top of the background image and hide it. </p>
@@ -286,8 +283,7 @@
                 </p>
             </div>
             <div class="sect2" title="Creating rotated combined graphs"><div class="titlepage"><div><div><h3 class="title"><a name="id2564429"></a>Creating rotated combined graphs</h3></div></div></div>
-                
-                <p>There are in principle no difference when combing graphs top/bottom or
+                           <p>There are in principle no difference when combing graphs top/bottom or
                     left/right. ?? shows an example of creating a graph that illustrates the
                     changing weather conditions measure by Wind direction, speed and temperature in
                     one graph with a detailed vertical scale showing the time. </p>
@@ -300,8 +296,7 @@
                 </p>
             </div>
             <div class="sect2" title="Some caveats when using MGraph"><div class="titlepage"><div><div><h3 class="title"><a name="id2564532"></a>Some caveats when using MGraph</h3></div></div></div>
-                
-                <p>There are some drawbacks using combined graphs</p>
+                           <p>There are some drawbacks using combined graphs</p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                             <p>CSIM Image maps can not be used with combined graphs. </p>

@@ -1,8 +1,7 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 27. QR (2D-Barcode)</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="pt06.html" title="Part VI. Barcodes"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 27. QR (2D-Barcode)</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Part VI. Barcodes</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="chapter" title="Chapter 27. QR (2D-Barcode)"><div class="titlepage"><div><div><h2 class="title"><a name="id2607914"></a>Chapter 27. QR (2D-Barcode)</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="ch27.html#id2607928">27.1. Principle of QR Barcodes</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch27.html#id2608051">27.1.1. Summary of library features</a></span></dt><dt><span class="sect2"><a href="ch27.html#id2608266">27.1.2. Limitation in the JpGraph QR implementation</a></span></dt><dt><span class="sect2"><a href="ch27.html#id2608289">27.1.3. QR Standard</a></span></dt><dt><span class="sect2"><a href="ch27.html#id2608327">27.1.4. Structure and capacity of QR barcodes</a></span></dt><dt><span class="sect2"><a href="ch27.html#id2608334">27.1.5. QR versions and symbol size</a></span></dt><dt><span class="sect2"><a href="ch27.html#id2616457">27.1.6. Error correction level</a></span></dt><dt><span class="sect2"><a href="ch27.html#id2616507">27.1.7. Comparing the visual output with other QR-generating software</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch27s02.html">27.2. Creating barcodes</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch27s02.html#id2616673">27.2.1. Getting started</a></span></dt><dt><span class="sect2"><a href="ch27s02.html#id2616978">27.2.2. Error handling</a></span></dt><dt><span class="sect2"><a href="ch27s02.html#id2617132">27.2.3. Creating an encoder</a></span></dt><dt><span class="sect2"><a href="ch27s02.html#id2617978">27.2.4. Encodation of input data options</a></span></dt><dt><span class="sect2"><a href="ch27s02.html#id2618170">27.2.5. Reading input data from a file</a></span></dt><dt><span class="sect2"><a href="ch27s02.html#id2618220">27.2.6. Creating different backends</a></span></dt><dt><span class="sect2"><a href="ch27s02.html#id2618316">27.2.7. Generic backend methods</a></span></dt><dt><span class="sect2"><a href="ch27s02.html#id2618431">27.2.8. Image backend methods</a></span></dt><dt><span class="sect2"><a href="ch27s02.html#id2618458">27.2.9. Postscript backend methods</a></span></dt><dt><span class="sect2"><a href="ch27s02.html#id2618569">27.2.10. A template to create barcodes</a></span></dt><dt><span class="sect2"><a href="ch27s02.html#id2618643">27.2.11. Sample application</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch27s03.html">27.3. Example scripts</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch27s03.html#id2618715">27.3.1. Example 1 - Store QR code to file</a></span></dt><dt><span class="sect2"><a href="ch27s03.html#id2618745">27.3.2. Example 2 - Specified error correction level</a></span></dt><dt><span class="sect2"><a href="ch27s03.html#id2618804">27.3.3. Example 3 - Manual specified encoding</a></span></dt><dt><span class="sect2"><a href="ch27s03.html#id2618868">27.3.4. Example 4 - JPEG image format</a></span></dt><dt><span class="sect2"><a href="ch27s03.html#id2618932">27.3.5. Example 5 - Multiple manual encoding</a></span></dt><dt><span class="sect2"><a href="ch27s03.html#id2619008">27.3.6. Example 6 - Reading data from file</a></span></dt><dt><span class="sect2"><a href="ch27s03.html#id2619074">27.3.7. Example 7 - Adjusting colors</a></span></dt><dt><span class="sect2"><a href="ch27s03.html#id2619119">27.3.8. Example 8 - Setting error correction level</a></span></dt><dt><span class="sect2"><a href="ch27s03.html#id2619201">27.3.9. Example 9 - Generating ASCII output</a></span></dt></dl></dd></dl></div>
     
     <div class="sect1" title="Principle of QR Barcodes"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2607928"></a>Principle of QR Barcodes</h2></div></div></div>
-        
-        <div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>This module is only available in the pro-version of the library.</p></div>
+           <div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>This module is only available in the pro-version of the library.</p></div>
         <p>QR is currently the highest capacity general two-dimensional matrix symbology
             available (up to ~7Kb numeric data can be encoded) and it is designed to encode the full
             256 byte ASCII character set as well as the Kanji (Shift-JIS character set). QR code
@@ -40,21 +39,18 @@
             a basic QR code. In this figure the special finding patterns and timing patterns have
             been highlighted in red and blue. </p>
         <div class="figure"><a name="fig.qr-structure-detailed"></a><p class="title"><b>Figure 27.1. QR Code high level structure</b></p><div class="figure-contents">
-            
-            <div class="mediaobject"><img src="images/qr-structure-details.png" alt="QR Code high level structure"></div>
+                   <div class="mediaobject"><img src="images/qr-structure-details.png" alt="QR Code high level structure"></div>
         </div></div><br class="figure-break">
         <p>The images below shows some real-life creative use of QR barcodes.</p>
         <p>
             </p><div class="figure"><a name="id2608042"></a><p class="title"><b>Figure 27.2. Creative usage of QR Barcodes</b></p><div class="figure-contents">
-                
-                <div class="informaltable">
+                           <div class="informaltable">
                     <table border="0"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><tbody><tr><td valign="bottom"><span class="inlinemediaobject"><img src="images/qr_usage1.jpg" alt="Creative usage of QR Barcodes"></span></td><td valign="bottom"><span class="inlinemediaobject"><img src="images/qr_usage2.jpg" alt="Creative usage of QR Barcodes"></span></td><td valign="bottom"><span class="inlinemediaobject"><img src="images/qr_usage3.jpg" alt="Creative usage of QR Barcodes"></span></td></tr></tbody></table>
                 </div>
             </div></div><p><br class="figure-break">
         </p>
         <div class="sect2" title="Summary of library features"><div class="titlepage"><div><div><h3 class="title"><a name="id2608051"></a>Summary of library features</h3></div></div></div>
-            
-            <p>
+                   <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                         <p>Output format</p>
                         <p>
@@ -94,8 +90,7 @@
             </p>
         </div>
         <div class="sect2" title="Limitation in the JpGraph QR implementation"><div class="titlepage"><div><div><h3 class="title"><a name="id2608266"></a>Limitation in the JpGraph QR implementation</h3></div></div></div>
-            
-            <p>This implementation is a faithful implementation of the ISO/IEC 18004E
+                   <p>This implementation is a faithful implementation of the ISO/IEC 18004E
                 International Standard with one important exception. Version 1.0 does not support
                 the encoding of 2 byte Shift-JIS character set. This means that two byte Kanji can
                 only be encoded using binary data format which is less efficient than the native
@@ -118,13 +113,11 @@
             </p>
         </div>
         <div class="sect2" title="QR Standard"><div class="titlepage"><div><div><h3 class="title"><a name="id2608289"></a>QR Standard</h3></div></div></div>
-            
-            <p>The QR code standard is fully described in the ISO/IEC 18004E International
+                   <p>The QR code standard is fully described in the ISO/IEC 18004E International
                 Standard and is available for purchase from the <code class="uri"><a class="uri" href="http://www.iso.ch/iso/en/CombinedQueryResult.CombinedQueryResult?queryString=qr" target="_top">ISO Standard Organization</a></code>. for a nominal fee.</p>
         </div>
         <div class="sect2" title="Structure and capacity of QR barcodes"><div class="titlepage"><div><div><h3 class="title"><a name="id2608327"></a>Structure and capacity of QR barcodes</h3></div></div></div>
-            
-            <p>All QR barcode have square layout made up of equal spaced square modules.
+                   <p>All QR barcode have square layout made up of equal spaced square modules.
                 Depending on the size of the QR code a certain number of finder patterns are
                 included in the code to aid in scanner decoding. The standard specifies 40 versions
                 (sizes) of the QR code from the smallest 21x21 up to 177x177 modules in size. </p>
@@ -133,13 +126,11 @@
                 </p><div class="informaltable">
                     <table border="0"><colgroup><col class="c1"><col class="c2"></colgroup><tbody><tr><td valign="top">
                                     <div class="figure"><a name="fig.qr-code-small"></a><p class="title"><b>Figure 27.3. A small sized QR Code (version=2) </b></p><div class="figure-contents">
-                                        
-                                        <div class="mediaobject"><img src="images/qr-code-small.png" alt="A small sized QR Code (version=2)"></div>
+                                                                           <div class="mediaobject"><img src="images/qr-code-small.png" alt="A small sized QR Code (version=2)"></div>
                                     </div></div><br class="figure-break">
                                 </td><td valign="top">
                                     <div class="figure"><a name="fig.qr-code-medium"></a><p class="title"><b>Figure 27.4. A medium sized QR code (version=13)</b></p><div class="figure-contents">
-                                        
-                                        <div class="mediaobject"><img src="images/qr-code-medium.png" alt="A medium sized QR code (version=13)"></div>
+                                                                           <div class="mediaobject"><img src="images/qr-code-medium.png" alt="A medium sized QR code (version=13)"></div>
                                     </div></div><br class="figure-break">
                                 </td></tr></tbody></table>
                 </div><p>
@@ -155,8 +146,7 @@
                 lowest possible error correction overhead) are given in <a class="xref" href="ch27.html#table.qr-capacity" title="Table 27.1. QR Data capacity">Table 27.1. QR Data capacity</a></p>
             <p>
                 </p><div class="table"><a name="table.qr-capacity"></a><p class="title"><b>Table 27.1. QR Data capacity</b></p><div class="table-contents">
-                    
-                    <table summary="QR Data capacity" border="1"><colgroup><col width="124.65pt" class="c1"><col width="256.26pt" class="c2"></colgroup><thead><tr><th>Encoding mode</th><th>Maximum capacity</th></tr></thead><tbody><tr><td>Numeric</td><td>7089 digits (Datamatrix=3116)</td></tr><tr><td>Alphanumeric</td><td>4296 characters (Datamatrix=2335)</td></tr><tr><td>Binary</td><td>2953 (Datamatrix=1555)</td></tr><tr><td>Kanji</td><td>1817 (Datamatrix NA)</td></tr></tbody></table>
+                                   <table summary="QR Data capacity" border="1"><colgroup><col width="124.65pt" class="c1"><col width="256.26pt" class="c2"></colgroup><thead><tr><th>Encoding mode</th><th>Maximum capacity</th></tr></thead><tbody><tr><td>Numeric</td><td>7089 digits (Datamatrix=3116)</td></tr><tr><td>Alphanumeric</td><td>4296 characters (Datamatrix=2335)</td></tr><tr><td>Binary</td><td>2953 (Datamatrix=1555)</td></tr><tr><td>Kanji</td><td>1817 (Datamatrix NA)</td></tr></tbody></table>
                 </div></div><p><br class="table-break">
             </p>
             <p>The exact number of characters that can fit in a QR symbol depends on the actual
@@ -192,8 +182,7 @@
                 the code itself to understand the details. </p>
         </div>
         <div class="sect2" title="QR versions and symbol size"><div class="titlepage"><div><div><h3 class="title"><a name="id2608334"></a>QR versions and symbol size</h3></div></div></div>
-            
-            <p>As mentioned in the previous section the QR standard specifies 40 different sizes
+                   <p>As mentioned in the previous section the QR standard specifies 40 different sizes
                 of the QR code and the maximum data capacity will also vary depending on the size.
                     <a class="xref" href="ch27.html#table.qr-symbol-sizes" title="Table 27.2. Maximum data capacity for the different symbol sizes in the QR-code.">Table 27.2. Maximum data capacity for the
                     different symbol sizes in the QR-code.</a> shows the defined sizes and for each
@@ -1592,8 +1581,7 @@
             </table>
         </div>
         <div class="sect2" title="Error correction level"><div class="titlepage"><div><div><h3 class="title"><a name="id2616457"></a>Error correction level</h3></div></div></div>
-            
-            <p>As shown in <a class="xref" href="ch27.html#table.qr-symbol-sizes" title="Table 27.2. Maximum data capacity for the different symbol sizes in the QR-code.">Table 27.2. Maximum data capacity for the
+                   <p>As shown in <a class="xref" href="ch27.html#table.qr-symbol-sizes" title="Table 27.2. Maximum data capacity for the different symbol sizes in the QR-code.">Table 27.2. Maximum data capacity for the
                     different symbol sizes in the QR-code.</a> the QR standard specifies
                 four different error correction levels. In the library the error correction can
                 either be set to be chosen automatically or specified manually. The properties of
@@ -1601,14 +1589,12 @@
                 the codewords that can be destroyed and the code still being decoded.</p>
             <p>
                 </p><div class="table"><a name="table.qr-error-correction-levels"></a><p class="title"><b>Table 27.3. QR Error correction levels</b></p><div class="table-contents">
-                    
-                    <table summary="QR Error correction levels" border="1"><colgroup><col width="85.16pt" class="c1"><col width="164.9pt" class="c2"><col width="168.0pt" class="c3"></colgroup><thead><tr><th align="center">Error level</th><th align="center">Symbolic constant</th><th align="center">Error correction capacity</th></tr></thead><tbody><tr><td align="center">L</td><td align="center"><code class="code">QRCapacity::ErrL</code></td><td align="center">5 %</td></tr><tr><td align="center">M</td><td align="center"><code class="code">QRCapacity::ErrM</code></td><td align="center">15 %</td></tr><tr><td align="center">Q</td><td align="center"><code class="code">QRCapacity::ErrQ</code></td><td align="center">25 %</td></tr><tr><td align="center">H</td><td align="center"><code class="code">QRCapacity::ErrH</code></td><td align="center">30 %</td></tr></tbody></table>
+                                   <table summary="QR Error correction levels" border="1"><colgroup><col width="85.16pt" class="c1"><col width="164.9pt" class="c2"><col width="168.0pt" class="c3"></colgroup><thead><tr><th align="center">Error level</th><th align="center">Symbolic constant</th><th align="center">Error correction capacity</th></tr></thead><tbody><tr><td align="center">L</td><td align="center"><code class="code">QRCapacity::ErrL</code></td><td align="center">5 %</td></tr><tr><td align="center">M</td><td align="center"><code class="code">QRCapacity::ErrM</code></td><td align="center">15 %</td></tr><tr><td align="center">Q</td><td align="center"><code class="code">QRCapacity::ErrQ</code></td><td align="center">25 %</td></tr><tr><td align="center">H</td><td align="center"><code class="code">QRCapacity::ErrH</code></td><td align="center">30 %</td></tr></tbody></table>
                 </div></div><p><br class="table-break">
             </p>
         </div>
         <div class="sect2" title="Comparing the visual output with other QR-generating software"><div class="titlepage"><div><div><h3 class="title"><a name="id2616507"></a>Comparing the visual output with other QR-generating software</h3></div></div></div>
-            
-            <p>It is possible that the JpGraph library gives a visually different result than
+                   <p>It is possible that the JpGraph library gives a visually different result than
                 some other available QR encoders. As a matter of fact many QR encoders gives a
                 different visual result from the same input. This does not mean that one QR encoder
                 is more correct than any other. This is a consequence of interpretation of the

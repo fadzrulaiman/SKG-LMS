@@ -156,11 +156,9 @@ class Bezier {
             $datax[$i] = $datumx;
             $datay[$i] = $datumy;
         }
-         
-        $datax[] = end($this->datax);
+            $datax[] = end($this->datax);
         $datay[] = end($this->datay);
-         
-        return array($datax, $datay);
+            return array($datax, $datay);
     }
 
     /**

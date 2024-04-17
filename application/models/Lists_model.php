@@ -19,7 +19,6 @@ class Lists_model extends CI_Model {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
 
@@ -29,7 +28,6 @@ class Lists_model extends CI_Model {
      * Get the list of custom lists for an employee (often the connected user)
      * @param int $user identifier of a user owing the lists
      * @return array record of lists
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getLists($user) {
         $query = $this->db->get_where('org_lists', array('user' => $user));
@@ -40,7 +38,6 @@ class Lists_model extends CI_Model {
      * Get the name of a org_lists
      * @param int $id identifier of a list
      * @return string name of the found list, empty string otherwise
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getName($id) {
         $this->db->from('org_lists');
@@ -59,7 +56,6 @@ class Lists_model extends CI_Model {
      * @param int $user User owning the list
      * @param string $name Name of the list
      * @return int last inserted id
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function setLists($user, $name) {
         $data = array(
@@ -75,7 +71,6 @@ class Lists_model extends CI_Model {
      * @param int $id identifier of the list
      * @param string $name name of the list
      * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function updateLists($id, $name) {
         $data = array(
@@ -88,7 +83,6 @@ class Lists_model extends CI_Model {
     /**
      * Delete a list from the database
      * @param int $id identifier of the list
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteList($id) {
         $this->db->delete('org_lists', array('id' => $id));
@@ -98,7 +92,6 @@ class Lists_model extends CI_Model {
      * Add employees into a list
      * @param int $id identifier of the list
      * @param array $employees List of employees
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function addEmployees($id, $employees) {
         $data = array();
@@ -162,7 +155,6 @@ class Lists_model extends CI_Model {
      * Remove a list of employees from a list
      * @param int $id identifier of the list
      * @param array $employees List of employees
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function removeEmployees($id, $employees) {
         $this->db->where('list', $id);
@@ -177,7 +169,6 @@ class Lists_model extends CI_Model {
      * Get the list of employees for the given list identifier
      * @param int $id Identifier of the list of employees
      * @return array record of employees
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getListOfEmployees($id) {
         $this->db->select('org_lists_employees.user as id');

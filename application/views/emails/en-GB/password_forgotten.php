@@ -1,10 +1,7 @@
 <?php
 /**
  * Email template.You can change the content of this template
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.1.0
+
  */
 ?>
 <html lang="en">
@@ -27,8 +24,7 @@
             </tr>
             <tr>
                 <td>Password</td><td>{Password}</td>
-            </tr>            
-        </table>
+            </tr>               </table>
         Once connected, you can change your password, as explained <a href="https://jorani.org/how-to-change-my-password.html" title="Link to documentation" target="_blank">here</a>.
         <hr>
         <h5>*** This is an automatically generated message, please do not reply to this message ***</h5>

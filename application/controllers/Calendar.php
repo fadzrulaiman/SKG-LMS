@@ -17,7 +17,6 @@ class Calendar extends CI_Controller {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -28,7 +27,6 @@ class Calendar extends CI_Controller {
      * Display a yearly individual calendar
      * @param int $id identifier of the employee
      * @param int $year Year number
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function year($employee = 0, $year = 0) {
         setUserContext($this);
@@ -86,7 +84,6 @@ class Calendar extends CI_Controller {
     /**
      * Display the page of the individual calendar (of the connected user)
      * Data (calendar events) is retrieved by AJAX from leaves' controller
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function individual() {
         setUserContext($this);
@@ -108,7 +105,6 @@ class Calendar extends CI_Controller {
      * Display the page of the team calendar (users having the same manager
      * than the connected user)
      * Data (calendar events) is retrieved by AJAX from leaves' controller
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function workmates() {
         setUserContext($this);
@@ -126,7 +122,6 @@ class Calendar extends CI_Controller {
     /**
      * Display the calendar of the employees managed by the connected user
      * Data (calendar events) is retrieved by AJAX from leaves' controller
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function collaborators() {
         setUserContext($this);
@@ -145,7 +140,6 @@ class Calendar extends CI_Controller {
      * Display the calendar of the employees working in the same department
      * than the connected user.
      * Data (calendar events) is retrieved by AJAX from leaves' controller
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function department() {
         setUserContext($this);
@@ -171,7 +165,6 @@ class Calendar extends CI_Controller {
     /**
      * Display a global calendar filtered by organization/entity
      * Data (calendar events) is retrieved by AJAX from leaves' controller
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function organization() {
         $month = date('m');
@@ -219,7 +212,6 @@ class Calendar extends CI_Controller {
      * Ajax endpoint : Send a list of fullcalendar events
      * This code is duplicated from controller/leaves for public access
      * @param int $entity_id Entity identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function publicOrganization($entity_id) {
         $this->output->set_content_type('application/json');
@@ -260,7 +252,6 @@ class Calendar extends CI_Controller {
      * @param int $year Year number
      * @param bool $children If TRUE, includes children entity, FALSE otherwise
      * @param bool $displayTypes If TRUE, display leave types, FALSE otherwise
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function tabular($id=-1, $month=0, $year=0, $children=TRUE, $displayTypes=TRUE) {
         if (($this->config->item('public_calendar') === TRUE) && (!$this->session->userdata('logged_in'))) {
@@ -322,7 +313,6 @@ class Calendar extends CI_Controller {
      * @param int $year Year number
      * @param bool $children If TRUE, includes children entity, FALSE otherwise
      * @param bool $displayTypes If TRUE, display leave types, FALSE otherwise
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function tabularPartial($id=-1, $month=0, $year=0, $children=TRUE, $displayTypes=TRUE) {
         if (($this->config->item('public_calendar') === TRUE) && (!$this->session->userdata('logged_in'))) {
@@ -369,7 +359,6 @@ class Calendar extends CI_Controller {
      * @param int $month Month number
      * @param int $year Year number
      * @param bool $displayTypes If TRUE, display leave types, FALSE otherwise
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function tabularPartialFromList($id, $month=0, $year=0, $displayTypes=TRUE) {
         setUserContext($this);
@@ -396,7 +385,6 @@ class Calendar extends CI_Controller {
      * @param int $month Month number
      * @param int $year Year number
      * @param bool $displayTypes If TRUE, display leave types, FALSE otherwise
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function exportTabularFromList($id=-1, $month=0, $year=0, $displayTypes=TRUE) {
         $data = array();
@@ -427,7 +415,6 @@ class Calendar extends CI_Controller {
      * @param int $year Year number
      * @param bool $children If TRUE, includes children entity, FALSE otherwise
      * @param bool $displayTypes If TRUE, display leave types, FALSE otherwise
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function exportTabular($id=-1, $month=0, $year=0, $children=TRUE, $displayTypes=TRUE) {
         $data = array();
@@ -463,7 +450,6 @@ class Calendar extends CI_Controller {
      * We'll get one line for the morning and one line for the afternoon
      * @param int $id identifier of the employee
      * @param int $year Year number
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function exportYear($employee = 0, $year = 0) {
         setUserContext($this);

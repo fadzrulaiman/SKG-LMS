@@ -210,7 +210,6 @@ $(document).ready(function() {
         Cookies.set('rep_entity', entity);
         Cookies.set('rep_entityName', entityName);
         Cookies.set('rep_includeChildren', includeChildren);
-        Cookies.set('rep_leaveDetails', leaveDetails);        
-    }
+        Cookies.set('rep_leaveDetails', leaveDetails);       }
 });
 </script>

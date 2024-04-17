@@ -1,14 +1,12 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Bar graphs</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch15.html" title="Chapter 15. Different types of linear (cartesian) graph types"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Bar graphs</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 15. Different types of linear (cartesian) graph types</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Bar graphs"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec1.creating-bar-graphs"></a>Bar graphs</h2></div></div></div>
-            
-            <p>The library supports 2D vertical and horizontal bar plots as was shown in the
+                   <p>The library supports 2D vertical and horizontal bar plots as was shown in the
                 introduction section . To use bar plots the bar plot module
                     "<code class="filename">jpgraph_bar.php</code>" must be included in the script.</p>
             <p>There are eight fundamental types of bar graphs supported by the library. Examples
                 of the available types are shown in <a class="xref" href="ch15s02.html#fig.types-of-barplots" title="Figure 15.33. Different types of supported bar graphs">Figure 15.33. Different types of supported bar graphs</a></p>
             <p>
                 </p><div class="figure"><a name="fig.types-of-barplots"></a><p class="title"><b>Figure 15.33. Different types of supported bar graphs</b></p><div class="figure-contents">
-                    
-                    <div class="informaltable">
+                                   <div class="informaltable">
                         <table border="0"><colgroup><col class="c1"><col class="c2"></colgroup><tbody><tr><td align="center">
                                         <p><span class="inlinemediaobject"><img src="images/img_mmbar.png" alt="Different types of supported bar graphs"></span></p>
                                         <p><span class="bold"><strong>a)</strong></span> Vertical
@@ -105,8 +103,7 @@
                     </li></ul></div><p>
             </p>
             <div class="sect2" title="Accumulated bar plots"><div class="titlepage"><div><div><h3 class="title"><a name="id2558886"></a>Accumulated bar plots</h3></div></div></div>
-                
-                <p>Accumulated bar plots will show several data series stacked on top of each
+                           <p>Accumulated bar plots will show several data series stacked on top of each
                     other in each bar. They are the barplot variant of accumulated area plots as was
                     discussed previously.</p>
                 <p>An accumulated bar plot is made by aggregating one or more basic bar plots in
@@ -244,8 +241,7 @@
                 </p>
             </div>
             <div class="sect2" title="Grouped bar plots"><div class="titlepage"><div><div><h3 class="title"><a name="id2559176"></a>Grouped bar plots</h3></div></div></div>
-                
-                <p>This uses the same principle as accumulated bar plots but instead of stacking
+                           <p>This uses the same principle as accumulated bar plots but instead of stacking
                     the data series on top of each other they are shown together for the same
                     x-value.</p>
                 <p>These types of bar graph is used to easy group two or more bars together
@@ -313,8 +309,7 @@
                 </p>
             </div>
             <div class="sect2" title="Grouped accumulated bar graphs"><div class="titlepage"><div><div><h3 class="title"><a name="id2559365"></a>Grouped accumulated bar graphs</h3></div></div></div>
-                
-                <p>It is perfectly possible to combine the previous bar types to have a grouped
+                           <p>It is perfectly possible to combine the previous bar types to have a grouped
                     accumulated bar plot. This is done in a similar way by aggregating a number of
                     accumulated plots in a group bar plot. The following code snippte shows how this
                     can be done</p>
@@ -369,8 +364,7 @@
                 </p>
             </div>
             <div class="sect2" title="Horizontal bar graphs"><div class="titlepage"><div><div><h3 class="title"><a name="id2559425"></a>Horizontal bar graphs</h3></div></div></div>
-                
-                <p>If a large number of values to needs to be display in a bar graph it is often
+                           <p>If a large number of values to needs to be display in a bar graph it is often
                     better to rotated the bar graph 90 degree so that the bars are horizontal
                     instead. There is no special graph type for this so this is achieved by rotating
                     a standard vertical bar graph 90 degrees, usually with a call to</p>
@@ -398,11 +392,9 @@
                 </p>
             </div>
             <div class="sect2" title="Adjusting the appearance of bar graphs"><div class="titlepage"><div><div><h3 class="title"><a name="id2559503"></a>Adjusting the appearance of bar graphs</h3></div></div></div>
-                
-                <p></p>
+                           <p></p>
                 <div class="sect3" title="Adjusting the width and colors"><div class="titlepage"><div><div><h4 class="title"><a name="id2559576"></a>Adjusting the width and colors</h4></div></div></div>
-                    
-                    <p>The width of each individual bar can be specified in either an absolute
+                                   <p>The width of each individual bar can be specified in either an absolute
                         pixel size or as a fraction of the width between the major tick marks. The
                         method used for this is</p>
                     <p>
@@ -418,8 +410,7 @@
                     <p></p>
                 </div>
                 <div class="sect3" title="Using gradient fill"><div class="titlepage"><div><div><h4 class="title"><a name="id2559620"></a>Using gradient fill</h4></div></div></div>
-                    
-                    <p>It is possible to use color gradient fill for the individual bars in the
+                                   <p>It is possible to use color gradient fill for the individual bars in the
                         bar graph.</p>
                     <p>Color gradient fill fills a rectangle with a smooth transition between two
                         colors. In what direction the transition goes (from left to right, down and
@@ -429,8 +420,7 @@
                         below.</p>
                     <p>
                         </p><div class="figure"><a name="fig.bar-grad-fills"></a><p class="title"><b>Figure 15.46. Supported gradient fills for bar plots</b></p><div class="figure-contents">
-                            
-                            <div class="informaltable">
+                                                   <div class="informaltable">
                                 <table border="0"><colgroup><col class="c1"><col class="c2"></colgroup><tbody><tr><td>
                                                 <div class="figure"><a name="fig.bargradsmallex1"></a><p class="title"><b>Figure 15.47. GRAD_MIDVER <code class="uri"><a class="uri" href="example_src/bargradsmallex1.html" target="_top">(<code class="filename">bargradsmallex1.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/bargradsmallex1.png" alt="Supported gradient fills for bar plots"></span> </div></div><br class="figure-break">
                                             </td><td>
@@ -471,15 +461,13 @@
                     </p>
                 </div>
                 <div class="sect3" title="Using pattern fills"><div class="titlepage"><div><div><h4 class="title"><a name="id2560074"></a>Using pattern fills</h4></div></div></div>
-                    
-                    <p>As an alternative to solid and gradient fill the bars can also have a
+                                   <p>As an alternative to solid and gradient fill the bars can also have a
                         number of patterns. This is useful for the case where black and white copies
                         needs to be printed. The library supports the following nine different
                         patterns as shown in <a class="xref" href="ch15s02.html#fig.barplot-patterns" title="Figure 15.56. Supported pattern fills for bar plots">Figure 15.56. Supported pattern fills for bar plots</a></p>
                     <p>
                         </p><div class="figure"><a name="fig.barplot-patterns"></a><p class="title"><b>Figure 15.56. Supported pattern fills for bar plots</b></p><div class="figure-contents">
-                            
-                            <div class="informaltable">
+                                                   <div class="informaltable">
                                 <table border="0"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><tbody><tr><td>
                                                 <p><span class="inlinemediaobject"><img src="images/bar_pattern1.png" alt="Supported pattern fills for bar plots"></span></p>
                                             </td><td>
@@ -516,8 +504,7 @@
                     </p>
                 </div>
                 <div class="sect3" title="Displaying and formatting the value of the bar"><div class="titlepage"><div><div><h4 class="title"><a name="id2560338"></a>Displaying and formatting the value of the bar</h4></div></div></div>
-                    
-                    <p>In the same way as values could be displayed on line plots they can also
+                                   <p>In the same way as values could be displayed on line plots they can also
                         be displayed on bar graphs. The formatting options for bar graphs, apart
                         from the basic font,color and angle, also allows the specification on where
                         on the bar the values should be displayed. This can be</p>
@@ -587,8 +574,7 @@ $graph-&gt;Add($bplot);</span></pre></td></tr></table></div><p>
                     </p>
                 </div>
                 <div class="sect3" title="Adding a drop shadow to the bars"><div class="titlepage"><div><div><h4 class="title"><a name="id2560460"></a>Adding a drop shadow to the bars</h4></div></div></div>
-                    
-                    <p>Each bar can also have a drop shadow. This is enabled by calling</p>
+                                   <p>Each bar can also have a drop shadow. This is enabled by calling</p>
                     <p>
                         </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                                 <p><code class="code">BarPlot::SetShadow($aColor="black",$aHSize=3,$aVSize=3,$aShow=true)</code></p>

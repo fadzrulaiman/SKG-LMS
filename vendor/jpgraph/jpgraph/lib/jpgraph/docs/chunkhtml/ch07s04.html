@@ -1,8 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Fine tuning the color</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch07.html" title="Chapter 7. Color handling"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Fine tuning the color</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 7. Color handling</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Fine tuning the color"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2496338"></a>Fine tuning the color</h2></div></div></div>
-            
-            <div class="sect2" title="Specifying the alpha channel (color transparency)"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.alpha-channel"></a>Specifying the alpha channel (color transparency)</h3></div></div></div>
-                
-                <p>Colors can also be made semi-transparent by specifying a transparency value
+                   <div class="sect2" title="Specifying the alpha channel (color transparency)"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.alpha-channel"></a>Specifying the alpha channel (color transparency)</h3></div></div></div>
+                           <p>Colors can also be made semi-transparent by specifying a transparency value
                     (or as it is also known an <span class="italic">alpha channel value</span>). This will instruct the
                     library to mix the foreground color with a certain amount of the background
                     colors creating a "shine-through" effect.</p>
@@ -26,8 +24,7 @@
                     visible.</p>
                 <p>
                     </p><div class="figure"><a name="fig.alpha-channel"></a><p class="title"><b>Figure 7.1. Using alpha channel modifiers</b></p><div class="figure-contents">
-                        
-                        <div class="mediaobject"><img src="images/alpha-channel.png" alt="Using alpha channel modifiers"></div>
+                                           <div class="mediaobject"><img src="images/alpha-channel.png" alt="Using alpha channel modifiers"></div>
                     </div></div><p><br class="figure-break">
                 </p>
                 <p>As a final example of how to use transparency we show a graph in <a class="xref" href="ch07s04.html#fig.barlinealphaex1" title="Figure 7.2. Making use of transparency to combine two plots (barlinealphaex1.php)">Figure 7.2. Making use of transparency to combine two plots <code class="uri"><a class="uri" href="example_src/barlinealphaex1.html" target="_top">(<code class="filename">barlinealphaex1.php</code>)</a></code> </a> that uses transparency to allow an area
@@ -42,8 +39,7 @@
                 </div>
             </div>
             <div class="sect2" title="Adjusting the brightness"><div class="titlepage"><div><div><h3 class="title"><a name="id2496356"></a>Adjusting the brightness</h3></div></div></div>
-                
-                <p>Since all colors that can be displayed on a computer can be modeled with the
+                           <p>Since all colors that can be displayed on a computer can be modeled with the
                     appropriate RGB triple the above ways will allow you to specify any colors you
                     might need. However, conceptually it might be easier to think of colors in terms
                     of "a light blue" instead of a modified RGB triple so the library allows you to
@@ -70,12 +66,10 @@
                         </li></ul></div><p>
                 </p>
                 <div class="figure"><a name="fig.orange-scale"></a><p class="title"><b>Figure 7.3. Adjusting brightness of named color specifier</b></p><div class="figure-contents">
-                    
-                    <div class="mediaobject"><img src="images/orange-scale.png" alt="Adjusting brightness of named color specifier"></div>
+                                   <div class="mediaobject"><img src="images/orange-scale.png" alt="Adjusting brightness of named color specifier"></div>
                 </div></div><br class="figure-break">
                 <div class="figure"><a name="fig.blueish-scale"></a><p class="title"><b>Figure 7.4. Adjusting brightness of a HTML color specifier</b></p><div class="figure-contents">
-                    
-                    <div class="mediaobject"><img src="images/blueish-scale.png" alt="Adjusting brightness of a HTML color specifier"></div>
+                                   <div class="mediaobject"><img src="images/blueish-scale.png" alt="Adjusting brightness of a HTML color specifier"></div>
                 </div></div><br class="figure-break">
                 <div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
                     <p>The brightness factor is a purely linear factor but due to the human eyes
@@ -86,8 +80,7 @@
                 </div>
             </div>
             <div class="sect2" title="Combining brightness and transparency adjustment"><div class="titlepage"><div><div><h3 class="title"><a name="id2496665"></a>Combining brightness and transparency adjustment</h3></div></div></div>
-                
-                <p>It is also possible to combine the two previous discussed modifiers. This is
+                           <p>It is also possible to combine the two previous discussed modifiers. This is
                     done by first adding the transparency specifier and then the brightness
                     adjustment as the following examples demonstrates.</p>
                 <p>

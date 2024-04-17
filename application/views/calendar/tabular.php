@@ -183,8 +183,7 @@
         children = includeChildren();
         displayTypes = displayLeaveTypes();
         statuses = buildStatusesFilter();
-        
-        if (source == 'treeview') {
+           if (source == 'treeview') {
             url = '<?php echo base_url();?>calendar/tabular/partial/' +
                 entity + '/' + (month + 1) + '/' + year + '/' + children + '/' +
                 displayTypes + statuses;

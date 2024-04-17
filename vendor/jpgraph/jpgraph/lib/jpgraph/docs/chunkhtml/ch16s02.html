@@ -1,6 +1,5 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Radar graphs</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch16.html" title="Chapter 16. Non-Linear graph types"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Radar graphs</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 16. Non-Linear graph types</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Radar graphs"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec.radar-graphs"></a>Radar graphs</h2></div></div></div>
-            
-            <p>In order to create Radar graphs the module
+                   <p>In order to create Radar graphs the module
                 "<code class="filename">jpgraph_radar.php</code>" must first be included. </p>
             <p>Radar plots are most often used to display how a number of results compare to some
                 set targets. They make good use of the human ability to spot symmetry (or rather
@@ -43,8 +42,7 @@
                 plot colors, fill colors etc. can be adjusted. The rest of this sections will show
                 some of the typical formatting options available.</p>
             <div class="sect2" title="Adding radar plots to a radar graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2567444"></a>Adding radar plots to a radar graph</h3></div></div></div>
-                
-                <p>The principle is exactly the same as for line plots but instead of an x-y
+                           <p>The principle is exactly the same as for line plots but instead of an x-y
                     coordinate each data point represents a value on one of the axis. The number of
                     axis will automatically be the same as the number of data points. Even through
                     the library itself does not impose any restrictions on the number of axis there
@@ -157,8 +155,7 @@ $graph-&gt;stroke()
                     described in <a class="xref" href="ch14s04.html" title="Adjusting the position and layout of the legend">Adjusting the position and layout of the legend</a>).</p>
             </div>
             <div class="sect2" title="Adding plot-marks to radar plots"><div class="titlepage"><div><div><h3 class="title"><a name="id2567446"></a>Adding plot-marks to radar plots</h3></div></div></div>
-                
-                <p>In exactly the same way as for line graphs it is possible to add plot marks in
+                           <p>In exactly the same way as for line graphs it is possible to add plot marks in
                     radar plots. The mark property is accessed through the instance variable</p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -179,8 +176,7 @@ $graph-&gt;stroke()
                 </p>
             </div>
             <div class="sect2" title="Client Side Image maps"><div class="titlepage"><div><div><h3 class="title"><a name="id2567709"></a>Client Side Image maps</h3></div></div></div>
-                
-                <p>(See <a class="xref" href="ch10.html" title="Chapter 10. Using CSIM (Client side image maps)">Chapter 10. <i>Using CSIM (Client side image maps)</i></a> for a full description on the usage
+                           <p>(See <a class="xref" href="ch10.html" title="Chapter 10. Using CSIM (Client side image maps)">Chapter 10. <i>Using CSIM (Client side image maps)</i></a> for a full description on the usage
                     of CSIM together with the library)</p>
                 <p>If markers are shown for the polar plot (by setting the mark property of the
                     plot) each marker can be a hot spot in a client side image map. The target URL
@@ -208,8 +204,7 @@ $graph-&gt;stroke()
                 </p>
             </div>
             <div class="sect2" title="Adjusting the overall properties of the radar graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2567731"></a>Adjusting the overall properties of the radar graph</h3></div></div></div>
-                
-                <p>The scale of the axis can be either a linear or a logarithmic scale and is
+                           <p>The scale of the axis can be either a linear or a logarithmic scale and is
                     specified with the method</p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -240,8 +235,7 @@ $graph-&gt;stroke()
                 </p>
             </div>
             <div class="sect2" title="Adjusting the axis formatting"><div class="titlepage"><div><div><h3 class="title"><a name="id2567884"></a>Adjusting the axis formatting</h3></div></div></div>
-                
-                <p>All axis have the same formatting and the axis is access through the "$axis"
+                           <p>All axis have the same formatting and the axis is access through the "$axis"
                     property of the RadarGraph class. For example make the axis 2 pixels wide the
                     following lines would be needed</p>
                 <p>
@@ -281,8 +275,7 @@ $radargraph-&gt;axis-&gt;SetWeight(2);</span></pre></td></tr></table></div><p>
                                 and where each entry specifies a text string which is the title of
                                 the axis.</p>
                             <div class="example"><a name="id2568024"></a><p class="title"><b>Example 16.4. Having the name of the months as title of the axis</b></p><div class="example-contents">
-                                
-                                <p>The easiest way to have the month name as titles is to use the
+                                                           <p>The easiest way to have the month name as titles is to use the
                                     library global variable "<code class="code">$gDateLocale</code>" as
                                     follows</p>
                                 <p>
@@ -323,8 +316,7 @@ $radargraph-&gt;SetTitles( $titles );</span></pre></td></tr></table></div><p>
                 </p>
             </div>
             <div class="sect2" title="Adjusting grid lines for the radar graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2568086"></a>Adjusting grid lines for the radar graph</h3></div></div></div>
-                
-                <p>Each major tick mark can also be connected together to create a grid in the
+                           <p>Each major tick mark can also be connected together to create a grid in the
                     graph. The grid is accessed through the '<code class="code">$grid</code>' property of the
                     graph. To enable the grid and set the line style to "dotted" the following two
                     lines must be added</p>
@@ -370,8 +362,7 @@ $radargraph-&gt;grid-&gt;SetLineStyle( 'dashed' );</span></pre></td></tr></table
                 </p>
             </div>
             <div class="sect2" title="Using a logarithmic scale"><div class="titlepage"><div><div><h3 class="title"><a name="id2568340"></a>Using a logarithmic scale</h3></div></div></div>
-                
-                <p>In order to change the (default) linear scale o the axis to use logarithmic
+                           <p>In order to change the (default) linear scale o the axis to use logarithmic
                     scale the following line must be added: </p>
                 <p>
                     </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
@@ -385,8 +376,7 @@ $radargraph-&gt;grid-&gt;SetLineStyle( 'dashed' );</span></pre></td></tr></table
                 </p>
             </div>
             <div class="sect2" title="Enabling anti-aliasing for radar graphs"><div class="titlepage"><div><div><h3 class="title"><a name="id2568414"></a>Enabling anti-aliasing for radar graphs</h3></div></div></div>
-                
-                <p>Radar graph are an excellent example where enabling anti-alias can make a
+                           <p>Radar graph are an excellent example where enabling anti-alias can make a
                     large visual difference. In order to enable anti-aliasing the method </p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -412,8 +402,7 @@ $radargraph-&gt;grid-&gt;SetLineStyle( 'dashed' );</span></pre></td></tr></table
                 </p>
             </div>
             <div class="sect2" title="A final example"><div class="titlepage"><div><div><h3 class="title"><a name="id2568558"></a>A final example</h3></div></div></div>
-                
-                <p>As a final example we shown a radar graphs were we have adjusted many of the
+                           <p>As a final example we shown a radar graphs were we have adjusted many of the
                     available properties, such as specifying a manual scale, to achieve the result
                     shown in <a class="xref" href="ch16s02.html#fig.fixscale_radarex1" title="Figure 16.41. A more complex example of a radar graph with a manual scale (fixscale_radarex1.php)">Figure 16.41. A more complex example of a radar graph with a manual scale <code class="uri"><a class="uri" href="example_src/fixscale_radarex1.html" target="_top">(<code class="filename">fixscale_radarex1.php</code>)</a></code> </a></p>
                 <p>

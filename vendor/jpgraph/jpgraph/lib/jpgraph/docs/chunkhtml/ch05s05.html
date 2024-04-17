@@ -1,6 +1,5 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>How to generate images with JpGraph library</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch05.html" title="Chapter 5. Fundamentals of dynamic graph generation"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">How to generate images with JpGraph library</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 5. Fundamentals of dynamic graph generation</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="How to generate images with JpGraph library"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2494304"></a>How to generate images with JpGraph library</h2></div></div></div>
-            
-            <p>The two common steps for creating and using a Graph on your Web-page are</p>
+                   <p>The two common steps for creating and using a Graph on your Web-page are</p>
             <p>
                 </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
                         <p>Create a script that constructs the graph, by getting the data and
@@ -31,8 +30,7 @@
                     discussed in ?? (Getting hold of the data to be displayed)</p>
             </div>
             <div class="sect2" title="The standard steps of setting up a graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2494467"></a>The standard steps of setting up a graph</h3></div></div></div>
-                
-                <p>When it comes to the structure of your imaging script they will generally have
+                           <p>When it comes to the structure of your imaging script they will generally have
                     the following structure </p>
                 <p>
                     </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
@@ -128,8 +126,7 @@
                 </p>
             </div>
             <div class="sect2" title="Choosing the image compression format for JpGraph"><div class="titlepage"><div><div><h3 class="title"><a name="id2494641"></a>Choosing the image compression format for JpGraph</h3></div></div></div>
-                
-                <p>By default JpGraph automatically chooses the image format to use in the order
+                           <p>By default JpGraph automatically chooses the image format to use in the order
                     PNG, JPEG and GIF. The exact format depends on what is available on the system
                     the library is installed on. There are two ways you can influence the way the
                     graphic format is chosen:</p>
@@ -155,8 +152,7 @@
                 </p>
             </div>
             <div class="sect2" title="Sending back the image to the browser"><div class="titlepage"><div><div><h3 class="title"><a name="id2494706"></a>Sending back the image to the browser</h3></div></div></div>
-                
-                <p>The very last statement in almost all graph scripts is the line</p>
+                           <p>The very last statement in almost all graph scripts is the line</p>
                 <p>
                     </p><pre class="screen">$graph-&gt;Stroke();</pre><p>
                 </p>
@@ -192,8 +188,7 @@
                         </li></ol></div><p>
                 </p>
                 <div class="warning" title="The dreaded: Headers has already been sent error" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">The dreaded: Headers has already been sent error</h3>
-                    
-                    <p>This is an error that everyone, and we really mean everyone, will see one
+                                   <p>This is an error that everyone, and we really mean everyone, will see one
                         time or the other when producing dynamic images with PHP.</p>
                     <p>First, this is not a problem with JpGraph per se. What has happened is
                         that your PHP script which produces the image has already returned some data
@@ -226,8 +221,7 @@
                 </div>
             </div>
             <div class="sect2" title="Writing the image directly to a file"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.writing-miage-to-file"></a>Writing the image directly to a file</h3></div></div></div>
-                
-                <p>In addition to just streaming the file back to the browser it is also possible
+                           <p>In addition to just streaming the file back to the browser it is also possible
                     to write the file directly to a named file. The file name is given as an
                     argument to the Graph::Stroke() method. For example as </p>
                 <p><code class="code">$graph-&gt;Stroke('/tmp/myimage.png');</code></p>
@@ -245,8 +239,7 @@
                         </li></ol></div>
                 <div class="tip" title="Writing the image to both a file and stream it back to the browser" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Writing the image to both a file and stream it back to the
                         browser</h3>
-                    
-                    <p>In this case you should instead use the method
+                                   <p>In this case you should instead use the method
                             <code class="code">Graph::StrokeStore($aFileName)</code> which was introduced in
                         version 2.5 of the library. If you are on a previous version and for various
                         reasons cannot upgrade then you can use the following "trick" to achieve
@@ -303,8 +296,7 @@
                 </div>
             </div>
             <div class="sect2" title="Alternatives to streaming or storing the image"><div class="titlepage"><div><div><h3 class="title"><a name="id2494959"></a>Alternatives to streaming or storing the image</h3></div></div></div>
-                
-                <p>There are also two predefined filenames which have special meaning when
+                           <p>There are also two predefined filenames which have special meaning when
                     supplied as argument ot the <code class="code">Stoke()</code> method.</p>
                 <p>
                     </p><div class="variablelist"><dl><dt><span class="term"><code class="code">_IMG_AUTO</code></span></dt><dd>
@@ -324,8 +316,7 @@
                 </p>
             </div>
             <div class="sect2" title="Forcing the browser to update your graph"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.forcing-browser-update"></a>Forcing the browser to update your graph</h3></div></div></div>
-                
-                <p>Some browser may not send back a request to the HTTP server unless the user
+                           <p>Some browser may not send back a request to the HTTP server unless the user
                     presses "Refresh" (F5 - in most browsers). This can lead to problems that the
                     user is seeing old data since the file stamp of the script might not change but
                     the data the script is using to create the image/graph is. A simple trick is to
@@ -345,8 +336,7 @@
                     it should and can use the old browser cached version.</p>
             </div>
             <div class="sect2" title="Printing the generated image"><div class="titlepage"><div><div><h3 class="title"><a name="id2495089"></a>Printing the generated image</h3></div></div></div>
-                
-                <p>Some browsers, most notable IE (&lt; v7) can have issues printing a dynamic
+                           <p>Some browsers, most notable IE (&lt; v7) can have issues printing a dynamic
                     image. This is because the designers of IE assumed that all images are
                     traditional images that are available as static image files. Not that they could
                     be dynamically generated. This unfortunately have some implications.</p>

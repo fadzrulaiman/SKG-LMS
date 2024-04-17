@@ -1,10 +1,7 @@
 <?php
 /**
  * This Class contains all the business logic and the persistence layer for the roles.
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.1.0
+
  */
 
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
@@ -36,7 +33,6 @@ class Roles_model extends CI_Model {
      * Get the list of roles or one role
      * @param int $id optional id of one role
      * @return array record of roles
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getRoles($id = 0) {
         if ($id === 0) {

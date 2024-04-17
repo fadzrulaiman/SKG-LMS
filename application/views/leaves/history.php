@@ -95,8 +95,7 @@ if (!empty($leave)) {
 }
 
 ?>
-        
-    <?php foreach ($history as $objLeave): ?>
+       <?php foreach ($history as $objLeave): ?>
     <tr>
         <td class="muted"><i class="<?php echo $objLeave->typeIcon; ?>"></i></td>
         <td class="muted"><?php echo $objLeave->changedDate; ?></td>

@@ -1,8 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Graphing the number of sun spots during the 19th Century</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch04.html" title="Chapter 4. Your first graph script"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Graphing the number of sun spots during the 19th Century</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 4. Your first graph script</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Graphing the number of sun spots during the 19th Century"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec1.graphing-sun-spots"></a>Graphing the number of sun spots during the 19th Century</h2></div></div></div>
-            
-            <div class="sect2" title="The historic data"><div class="titlepage"><div><div><h3 class="title"><a name="id2492934"></a>The historic data</h3></div></div></div>
-                
-                <p>It is a well known fact that sun spots have a certain pattern and regularity.
+                   <div class="sect2" title="The historic data"><div class="titlepage"><div><div><h3 class="title"><a name="id2492934"></a>The historic data</h3></div></div></div>
+                           <p>It is a well known fact that sun spots have a certain pattern and regularity.
                     The cause of these regular patterns are not currently fully understood (even
                     though investigation into this phenomenon has been made since beginning of the
                     17:th century). The fact that solar storms affects the earth in terms of
@@ -15,8 +13,7 @@
                     number of sun spots per year since 1700.. </p>
             </div>
             <div class="sect2" title="Preparing the data"><div class="titlepage"><div><div><h3 class="title"><a name="sec.preparing-sunspots-data"></a>Preparing the data</h3></div></div></div>
-                
-                <p>The first step is to get the data into our PHP script which makes for a first
+                           <p>The first step is to get the data into our PHP script which makes for a first
                     good discussion since all graphs needs to get data from some source. The library
                     itself is agnostic in regards to from where the data is collected and only needs
                     (and requires) data stored in a PHP array of numbers (integers or floats). </p>
@@ -48,8 +45,7 @@
                 <p>
                     </p><div class="figure"><a name="fig.first-ten-sunspot"></a><p class="title"><b>Figure 4.1. The first ten rows of data of sunspot activities from year
                             1700</b></p><div class="figure-contents">
-                        
-                        <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
+                                           <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
 3
 4
@@ -77,8 +73,7 @@
                     script file the function in <a class="xref" href="ch04s02.html#fig.getsunspots" title="Figure 4.2. Reading numeric tabulated sunspot data from a file">Figure 4.2. Reading numeric tabulated sunspot data from a file</a>will read the data into two arrays</p>
                 <p>
                     </p><div class="figure"><a name="fig.getsunspots"></a><p class="title"><b>Figure 4.2. Reading numeric tabulated sunspot data from a file</b></p><div class="figure-contents">
-                        
-                        <a name="pl.getsunspots"></a><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
+                                           <a name="pl.getsunspots"></a><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
 3
 4
@@ -150,8 +145,7 @@
                     some variations and then show the data in a bar graph.</p>
             </div>
             <div class="sect2" title="A basic line graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2492973"></a>A basic line graph</h3></div></div></div>
-                
-                <p>As the very first start we will create a line graph which shows sun spots as a
+                           <p>As the very first start we will create a line graph which shows sun spots as a
                     line graph. To keep the code focused on the graph we do not include the previous
                     function to read the data again in the code snippet shown below. Before we get
                     into the code we start by briefly discuss how your script can include the
@@ -316,8 +310,7 @@
                     </p><div class="figure"><a name="fig.sunspotsex2"></a><p class="title"><b>Figure 4.4. Displaying sun spots with a semi filled line graph <code class="uri"><a class="uri" href="example_src/sunspotsex2.html" target="_top">(<code class="filename">sunspotsex2.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/sunspotsex2.png" alt="Displaying sun spots with a semi filled line graph (sunspotsex2.php)"></span> </div></div><p><br class="figure-break">
                 </p>
                 <div class="sect3" title="Adding tick labels to the X-axis"><div class="titlepage"><div><div><h4 class="title"><a name="id2493501"></a>Adding tick labels to the X-axis</h4></div></div></div>
-                    
-                    <p>
+                                   <p>
                         </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
                             <p>This section can be skipped at first reading since it contains
                                 some slightly more advanced material. The reason why we have
@@ -464,8 +457,7 @@
                 </div>
             </div>
             <div class="sect2" title="A basic bar graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2493198"></a>A basic bar graph</h3></div></div></div>
-                
-                <p>As a final illustration we will show how easy it is to change the plot type.
+                           <p>As a final illustration we will show how easy it is to change the plot type.
                     We will make a small modification of the previous script and display the sun
                     spots as a bar graph instead. In order to do this we take the code from <a class="xref" href="ch04s02.html#fig.sunspotsex2" title="Figure 4.4. Displaying sun spots with a semi filled line graph (sunspotsex2.php)">Figure 4.4. Displaying sun spots with a semi filled line graph <code class="uri"><a class="uri" href="example_src/sunspotsex2.html" target="_top">(<code class="filename">sunspotsex2.php</code>)</a></code> </a> and just change the creation of an instance
                     of the <code class="code">LinePlot()</code> class to instead be an instance of the

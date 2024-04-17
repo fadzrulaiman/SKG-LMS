@@ -1,8 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Method reference</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch25.html" title="Chapter 25. PDF417 (2D-Barcode)"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Method reference</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 25. PDF417 (2D-Barcode)</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Method reference"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2602315"></a>Method reference</h2></div></div></div>
-        
-        <div class="sect2" title="Encoder methods"><div class="titlepage"><div><div><h3 class="title"><a name="id2602322"></a>Encoder methods</h3></div></div></div>
-            
-            <p>All encoder methods are accessed on an instance of <code class="code">class
+           <div class="sect2" title="Encoder methods"><div class="titlepage"><div><div><h3 class="title"><a name="id2602322"></a>Encoder methods</h3></div></div></div>
+                   <p>All encoder methods are accessed on an instance of <code class="code">class
                     PDF417Barcode</code>
             </p>
             <p>
@@ -14,8 +12,7 @@ $encoder = new PDF417Barcode($columns,$errlevel);
 ...</span></pre></td></tr></table></div><p>
             </p>
             <div class="sect3" title="PDF417Barcode"><div class="titlepage"><div><div><h4 class="title"><a name="id2602345"></a>PDF417Barcode</h4></div></div></div>
-                
-                <p><code class="code">PDF417Barcode($aNumCols=10, $aErrLevel=2)</code></p>
+                           <p><code class="code">PDF417Barcode($aNumCols=10, $aErrLevel=2)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>To create a new PDF417 encoder with a chosen number of columns and error
                     level. Please note that these parameters can also be adjusted using the methods
@@ -35,8 +32,7 @@ $encoder = new PDF417Barcode(20);</span></pre></td></tr></table></div><p>
                 </p>
             </div>
             <div class="sect3" title="SetColumns"><div class="titlepage"><div><div><h4 class="title"><a name="id2602389"></a>SetColumns</h4></div></div></div>
-                
-                <p><code class="code">SetColumns($aCols)</code></p>
+                           <p><code class="code">SetColumns($aCols)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>Specify number of data columns. This should be a value in the range [2-30]
                     (inclusively) . Note that it is also possible to specify the number of columns
@@ -56,8 +52,7 @@ $encoder-&gt;SetColumns(20);</span></pre></td></tr></table></div><p>
                     of rows is not directly user configurable.</p>
             </div>
             <div class="sect3" title="SetErrLevel"><div class="titlepage"><div><div><h4 class="title"><a name="id2602416"></a>SetErrLevel</h4></div></div></div>
-                
-                <p><code class="code">SetErrLevel($aErrLevel)</code></p>
+                           <p><code class="code">SetErrLevel($aErrLevel)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>Specify the chosen level of error correction. </p>
                 <p><span class="bold"><strong>Example:</strong></span></p>
@@ -72,8 +67,7 @@ $encoder-&gt;SetErrLevel(5);</span></pre></td></tr></table></div><p>
                     number of data in the label is fixed.</p>
             </div>
             <div class="sect3" title="SetTruncated"><div class="titlepage"><div><div><h4 class="title"><a name="id2602519"></a>SetTruncated</h4></div></div></div>
-                
-                <p><code class="code">SetTruncated($aTrunc=true)</code></p>
+                           <p><code class="code">SetTruncated($aTrunc=true)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>Specify that barcode should use the truncated PDF format. This will make the
                     barcode slightly narrower and might be used where the physical space is at
@@ -90,8 +84,7 @@ $encoder-&gt;SetTruncated ();</span></pre></td></tr></table></div><p>
             </div>
         </div>
         <div class="sect2" title="Common backend methods"><div class="titlepage"><div><div><h3 class="title"><a name="id2602572"></a>Common backend methods</h3></div></div></div>
-            
-            <p>The backend is responsible for the actual output of the barcode (see <a class="xref" href="ch25s03.html#fig.pdf417-encodation-overview" title="Figure 25.4. Overview of the interaction between encoder and backends">Figure 25.4. Overview of the interaction between encoder and backends</a>). </p>
+                   <p>The backend is responsible for the actual output of the barcode (see <a class="xref" href="ch25s03.html#fig.pdf417-encodation-overview" title="Figure 25.4. Overview of the interaction between encoder and backends">Figure 25.4. Overview of the interaction between encoder and backends</a>). </p>
             <p>It is possible to either create an image or a postscript backend. In the creation
                 of the backend an instance of the encoder is given as the second argument. The
                 actual output from the script (to create the barcode label) is done with a call to
@@ -126,8 +119,7 @@ catch(JpGraphException $e) {
                 constant <code class="code">BACKEND_IMAGE</code>) by default the image format used will be PNG
                 which is also the recommended format.</p>
             <div class="sect3" title="Stroke"><div class="titlepage"><div><div><h4 class="title"><a name="id2602634"></a>Stroke</h4></div></div></div>
-                
-                <p><code class="code">Stroke($aData, $aFile='')</code></p>
+                           <p><code class="code">Stroke($aData, $aFile='')</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>Encode a specific data string entered as the first argument and send the
                     barcode output, depending on backend, either directly back to the browser as an
@@ -159,8 +151,7 @@ catch(JpGraphException $e) {
                 </p>
             </div>
             <div class="sect3" title="SetVertical"><div class="titlepage"><div><div><h4 class="title"><a name="id2602647"></a>SetVertical</h4></div></div></div>
-                
-                <p><code class="code">SetVertical($aFlg=true)</code></p>
+                           <p><code class="code">SetVertical($aFlg=true)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>Draw the barcode vertically instead of the default horizontal direction</p>
                 <p><span class="bold"><strong>Example:</strong></span></p>
@@ -170,8 +161,7 @@ catch(JpGraphException $e) {
                 </p>
             </div>
             <div class="sect3" title="SetScale"><div class="titlepage"><div><div><h4 class="title"><a name="id2602715"></a>SetScale</h4></div></div></div>
-                
-                <p><code class="code">SetScale($aScale)</code></p>
+                           <p><code class="code">SetScale($aScale)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>Will arbitrary scale the generated barcode image. Scale factor is specified as
                     a floating point number . </p>
@@ -182,8 +172,7 @@ catch(JpGraphException $e) {
                 </p>
             </div>
             <div class="sect3" title="SetModuleWidth"><div class="titlepage"><div><div><h4 class="title"><a name="id2602754"></a>SetModuleWidth</h4></div></div></div>
-                
-                <p><code class="code">SetModuleWidth($aWidth)</code></p>
+                           <p><code class="code">SetModuleWidth($aWidth)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>Specifies the module width to be used in the barcode. The module width is
                     interpretated differently depending on whether it is applied on an image or a
@@ -213,8 +202,7 @@ catch(JpGraphException $e) {
                 </p>
             </div>
             <div class="sect3" title="SetHeight"><div class="titlepage"><div><div><h4 class="title"><a name="id2602757"></a>SetHeight</h4></div></div></div>
-                
-                <p><code class="code">SetHeight($aHeight)</code></p>
+                           <p><code class="code">SetHeight($aHeight)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>Specified the height to width ratio for the individual rows in the barcode. By
                     default the ratio is 3, which means that the height of the rows in the barcode
@@ -236,8 +224,7 @@ catch(JpGraphException $e) {
                 </p>
             </div>
             <div class="sect3" title="SetColor"><div class="titlepage"><div><div><h4 class="title"><a name="id2602882"></a>SetColor</h4></div></div></div>
-                
-                <p><code class="code">SetColor($aFrgColor,$aBkgColor)</code></p>
+                           <p><code class="code">SetColor($aFrgColor,$aBkgColor)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>Specify the foreground and background color for the barcode. </p>
                 <p><span class="bold"><strong>Example:</strong></span></p>
@@ -247,8 +234,7 @@ catch(JpGraphException $e) {
                 </p>
             </div>
             <div class="sect3" title="ShowFrame"><div class="titlepage"><div><div><h4 class="title"><a name="id2602930"></a> ShowFrame</h4></div></div></div>
-                
-                <p><code class="code">ShowFrame($aFlg=true)</code></p>
+                           <p><code class="code">ShowFrame($aFlg=true)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>Draw a 1 pixel frame around the barcode. This is not recommended in production
                     since it might disturb some scanners reading. This is only useful if you need a
@@ -260,8 +246,7 @@ catch(JpGraphException $e) {
                 </p>
             </div>
             <div class="sect3" title="ShowText"><div class="titlepage"><div><div><h4 class="title"><a name="id2602973"></a>ShowText</h4></div></div></div>
-                
-                <p><code class="code">ShowText($aFlg=true)</code></p>
+                           <p><code class="code">ShowText($aFlg=true)</code></p>
                 <p>
                     </p><div class="caution" title="Caution" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Caution</h3>
                         <p>This is an extension specific to JpGraph. Human readable text is not
@@ -280,8 +265,7 @@ catch(JpGraphException $e) {
                 </p>
             </div>
             <div class="sect3" title="SetFont"><div class="titlepage"><div><div><h4 class="title"><a name="id2602917"></a>SetFont</h4></div></div></div>
-                
-                <p><code class="code">SetFont($aFontFam,$aFontStyle,$aFontSize)</code></p>
+                           <p><code class="code">SetFont($aFontFam,$aFontStyle,$aFontSize)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p> Specify the font for the human readable text underneath the barcode label. </p>
                 <p><span class="bold"><strong>Example:</strong></span></p>
@@ -292,10 +276,8 @@ catch(JpGraphException $e) {
             </div>
         </div>
         <div class="sect2" title="Image backend methods"><div class="titlepage"><div><div><h3 class="title"><a name="id2603037"></a>Image backend methods</h3></div></div></div>
-            
-            <div class="sect3" title="SetImgFormat"><div class="titlepage"><div><div><h4 class="title"><a name="id2603067"></a> SetImgFormat</h4></div></div></div>
-                
-                <p><code class="code">SetImgFormat($aFormat)</code></p>
+                   <div class="sect3" title="SetImgFormat"><div class="titlepage"><div><div><h4 class="title"><a name="id2603067"></a> SetImgFormat</h4></div></div></div>
+                           <p><code class="code">SetImgFormat($aFormat)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>Specify image format. Possible values are </p>
                 <p>
@@ -317,11 +299,9 @@ catch(JpGraphException $e) {
             </div>
         </div>
         <div class="sect2" title="Postscript backend methods"><div class="titlepage"><div><div><h3 class="title"><a name="id2603084"></a>Postscript backend methods</h3></div></div></div>
-            
-            <p></p>
+                   <p></p>
             <div class="sect3" title="SetEPS($aFlg=true)"><div class="titlepage"><div><div><h4 class="title"><a name="id2603155"></a>SetEPS($aFlg=true)</h4></div></div></div>
-                
-                <p><code class="code">SetEPS($aFlg=true)</code></p>
+                           <p><code class="code">SetEPS($aFlg=true)</code></p>
                 <p><span class="bold"><strong>Purpose:</strong></span></p>
                 <p>Format the output as Encapsulated Postcript. This adds a bounding box
                     information to the output and makes this format suitable to be included in other

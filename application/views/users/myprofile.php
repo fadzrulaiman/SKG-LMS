@@ -51,8 +51,7 @@
             <div class="span6"><?php
         if (!is_null($user['datehired'])) {
             $date = new DateTime($user['datehired']);
-            echo $date->format(lang('global_date_format'));            
-        }
+            echo $date->format(lang('global_date_format'));               }
         ?></div>
         </div>
 

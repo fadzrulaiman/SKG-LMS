@@ -1,10 +1,7 @@
 <?php
 /**
  * This controller contains the actions allowing an employee to list and manage its overtime requests
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.1.0
+
  */
 
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
@@ -21,7 +18,6 @@ class Extra extends CI_Controller {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -33,7 +29,6 @@ class Extra extends CI_Controller {
 
     /**
      * Display the list of the overtime requests by the connected employee
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function index() {
         $this->auth->checkIfOperationIsAllowed('list_extra');
@@ -53,7 +48,6 @@ class Extra extends CI_Controller {
      * Display an overtime request
      * @param string $source Page source (extra, overtime) (self, manager)
      * @param int $id identifier of the overtime request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function view($source, $id) {
         $this->auth->checkIfOperationIsAllowed('view_extra');
@@ -99,7 +93,6 @@ class Extra extends CI_Controller {
 
     /**
      * Create an overtime request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function create() {
         $this->auth->checkIfOperationIsAllowed('create_extra');
@@ -146,7 +139,6 @@ class Extra extends CI_Controller {
     /**
      * Edit an overtime request
      * @param int $id identifier of the overtime request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function edit($id) {
         $this->auth->checkIfOperationIsAllowed('edit_extra');
@@ -208,7 +200,6 @@ class Extra extends CI_Controller {
     /**
      * Send a overtime request email to the manager of the connected employee
      * @param int $id overtime request identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     private function sendMail($id) {
         $this->load->model('users_model');
@@ -259,7 +250,6 @@ class Extra extends CI_Controller {
     /**
      * Delete an overtime request
      * @param int $id identifier of the overtime request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function delete($id) {
         $can_delete = FALSE;
@@ -291,7 +281,6 @@ class Extra extends CI_Controller {
 
     /**
      * Export the list of all ovetime requests of the connected user into an Excel file
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function export() {
         $this->load->view('extra/export');

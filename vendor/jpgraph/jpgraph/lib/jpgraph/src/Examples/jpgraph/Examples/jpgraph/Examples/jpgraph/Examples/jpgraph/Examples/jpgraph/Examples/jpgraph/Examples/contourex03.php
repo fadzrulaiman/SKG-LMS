@@ -17,8 +17,7 @@ $data = array(
 
 
 // Setup a basic graph context with some generous margins to be able
-// to fit the legend            
-$graph = new Graph(500,380);
+// to fit the legend       $graph = new Graph(500,380);
 $graph->SetMargin(40,140,60,40);	
 
 // Enable antialias. Note with antiaaliasing only line weight=1 is supported.

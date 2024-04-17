@@ -65,8 +65,7 @@
                         "<code class="filename">/usr/share/php</code>" or perhaps
                         "<code class="filename">/usr/local/php</code>" depending on Your PHP configuration. </p><p> An even simpler way is to just store the library in a directory where Your
                     scripts are executed from. However , this is not really recommended. </p></td></tr>
-        
-            <tr class="question" title="C.2."><td align="left" valign="top"><a name="id2623132"></a><a name="id2623134"></a><p><b>C.2.</b></p></td><td align="left" valign="top"><p>Can I use JpGraph with Windows/Unix/Linux etc? </p></td></tr>
+               <tr class="question" title="C.2."><td align="left" valign="top"><a name="id2623132"></a><a name="id2623134"></a><p><b>C.2.</b></p></td><td align="left" valign="top"><p>Can I use JpGraph with Windows/Unix/Linux etc? </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Yes. The library itself is OS-agnostic. As long as you have a WEB server
                     which supports PHP 4.3.x (or above) and have the GD library. Please note though
                     that the behavior of PHP/Apache on Unix and Windows seems to have some subtle
@@ -77,16 +76,14 @@
                             are currently no plans to address this in the near future.</p>
                     </div><p>
                 </p></td></tr>
-        
-            <tr class="question" title="C.3."><td align="left" valign="top"><a name="id2623153"></a><a name="id2623168"></a><p><b>C.3.</b></p></td><td align="left" valign="top"><p> My Web-admin does not allow PHP any write permissions and hence I can't use
+               <tr class="question" title="C.3."><td align="left" valign="top"><a name="id2623153"></a><a name="id2623168"></a><p><b>C.3.</b></p></td><td align="left" valign="top"><p> My Web-admin does not allow PHP any write permissions and hence I can't use
                     the cache feature of JpGraph. Is there any way to completely turn off the
                     caching feature?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Yes, set the constant "<code class="code">USE_CACHE</code>" to <code class="code">FALSE</code> in
                     jpg-config.php. This way will skip writing file even if a filename has been
                     submitted in the Graph() creation call. You can also accomplish this by not
                     having any file name at all in the call to Graph().</p></td></tr>
-        
-            <tr class="question" title="C.4."><td align="left" valign="top"><a name="id2623188"></a><a name="id2623198"></a><p><b>C.4.</b></p></td><td align="left" valign="top"><p> After installation all I get is an empty page when I try any of the
+               <tr class="question" title="C.4."><td align="left" valign="top"><a name="id2623188"></a><a name="id2623198"></a><p><b>C.4.</b></p></td><td align="left" valign="top"><p> After installation all I get is an empty page when I try any of the
                     examples?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> If the HTTP server response is truly absolutely empty (verify that by looking
                     at the source of the page that gets returned to the browser) then the only
@@ -111,8 +108,7 @@
                             <p>... disable output buffering to get errors send back to the
                                 browser as soon as possible (in <code class="filename">php.ini</code>)</p>
                         </li></ul></div></td></tr>
-        
-            <tr class="question" title="C.5."><td align="left" valign="top"><a name="id2623207"></a><a name="id2623284"></a><p><b>C.5.</b></p></td><td align="left" valign="top"><p> How can I send the generated graph to both the browser and a file at the same
+               <tr class="question" title="C.5."><td align="left" valign="top"><a name="id2623207"></a><a name="id2623284"></a><p><b>C.5.</b></p></td><td align="left" valign="top"><p> How can I send the generated graph to both the browser and a file at the same
                     time?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This is not directly supported by means of any particular option or setting
                     in the library but with small "trick" this is easy enough to accomplish. </p><p> The idea is to use the _IMG_HANDLER option that forces the
@@ -148,20 +144,17 @@
 </span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">img</span><span class="hl-code">-&gt;</span><span class="hl-identifier">Headers</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">; 
 </span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">img</span><span class="hl-code">-&gt;</span><span class="hl-identifier">Stream</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-inlinetags">?&gt;</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.6."><td align="left" valign="top"><a name="id2623322"></a><a name="id2623324"></a><p><b>C.6.</b></p></td><td align="left" valign="top"><p> What is this 'auto' I see in all the Graph() creating in the Examples
+               <tr class="question" title="C.6."><td align="left" valign="top"><a name="id2623322"></a><a name="id2623324"></a><p><b>C.6.</b></p></td><td align="left" valign="top"><p> What is this 'auto' I see in all the Graph() creating in the Examples
                     directory? Do I need it?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> No. The third argument in the graph call is an optional cache file name and
                     is not necessary unless You want to use the caching feature of JpGraph. By
                     specifying 'auto' the filename is automatically created based on the name of the
                     script file.</p></td></tr>
-        
-            <tr class="question" title="C.7."><td align="left" valign="top"><a name="id2623344"></a><a name="id2623346"></a><p><b>C.7.</b></p></td><td align="left" valign="top"><p> The Client side image map examples does not work on my machine?</p></td></tr>
+               <tr class="question" title="C.7."><td align="left" valign="top"><a name="id2623344"></a><a name="id2623346"></a><p><b>C.7.</b></p></td><td align="left" valign="top"><p> The Client side image map examples does not work on my machine?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> In order to run the examples the code generates HTML to read the image from
                     the cache directory as Apache sees it. You must adjust the image tag to have the
                     correct path to your cache directory. </p></td></tr>
-        
-            <tr class="question" title="C.8."><td align="left" valign="top"><a name="id2623366"></a><a name="id2623368"></a><p><b>C.8.</b></p></td><td align="left" valign="top"><p> When I run 'testsuit_jpgraph.php' I get a warning "Due to insufficient
+               <tr class="question" title="C.8."><td align="left" valign="top"><a name="id2623366"></a><a name="id2623368"></a><p><b>C.8.</b></p></td><td align="left" valign="top"><p> When I run 'testsuit_jpgraph.php' I get a warning "Due to insufficient
                     permission the source files can't be automatically created"</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This is not a serious problem. When the testsuit is run it tries to create a
                     symbolic link with the same base name as the individual testfile but with
@@ -170,8 +163,7 @@
                     directory where 'testsuit_jpgraph.php' is executed from you will get this
                     warning.</p><p> If you want to use this feature just change the permissions so Apache may
                     write to the directory.</p></td></tr>
-        
-            <tr class="question" title="C.9."><td align="left" valign="top"><a name="id2623393"></a><a name="id2623395"></a><p><b>C.9.</b></p></td><td align="left" valign="top"><p> How can I pass data to my image generating script?</p></td></tr>
+               <tr class="question" title="C.9."><td align="left" valign="top"><a name="id2623393"></a><a name="id2623395"></a><p><b>C.9.</b></p></td><td align="left" valign="top"><p> How can I pass data to my image generating script?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> There are basically three(four) ways:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                         <p>Read the data from a file</p>
                     </li><li class="listitem">
@@ -189,8 +181,7 @@
                             to read the data from a file or from a DB to construct the data
                             vectors.</p>
                     </li></ul></div></td></tr>
-        
-            <tr class="question" title="C.10."><td align="left" valign="top"><a name="id2623433"></a><a name="id2623464"></a><p><b>C.10.</b></p></td><td align="left" valign="top"><p> How can I use data from an Excel spreadsheet?</p></td></tr>
+               <tr class="question" title="C.10."><td align="left" valign="top"><a name="id2623433"></a><a name="id2623464"></a><p><b>C.10.</b></p></td><td align="left" valign="top"><p> How can I use data from an Excel spreadsheet?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Export the data from Excel as a CSV (Comma separated Values) file to be able
                     to easily read the file. Then either write your own routine to read and parse
                     the data from that file or use the utility class "ReadCSV" in
@@ -215,8 +206,7 @@
 </span><span class="hl-reserved">include</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">../jpgraph_line.php</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">; 
 </span><span class="hl-reserved">include</span><span class="hl-code"> </span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">../jpgraph_utils.inc</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">;  
 </span><span class="hl-var">$n</span><span class="hl-code"> = </span><span class="hl-identifier">ReadFileData</span><span class="hl-code">::</span><span class="hl-identifier">FromCSV</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">data.csv</span><span class="hl-quotes">'</span><span class="hl-code">,</span><span class="hl-var">$datay</span><span class="hl-brackets">)</span><span class="hl-code">; 
-</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$n</span><span class="hl-code"> == </span><span class="hl-reserved">false</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">     
-    </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">Can't read data.csv.</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">; 
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$n</span><span class="hl-code"> == </span><span class="hl-reserved">false</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">    </span><span class="hl-reserved">die</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">Can't read data.csv.</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">; 
 </span><span class="hl-brackets">}</span><span class="hl-code">  
  
 </span><span class="hl-comment">//</span><span class="hl-comment"> Setup the graph $graph = new Graph(400,300);</span><span class="hl-comment"></span><span class="hl-code">
@@ -227,8 +217,7 @@
 </span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">Add</span><span class="hl-brackets">(</span><span class="hl-var">$l1</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">Stroke</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">; 
 </span><span class="hl-inlinetags">?&gt;</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.11."><td align="left" valign="top"><a name="id2623494"></a><a name="id2623496"></a><p><b>C.11.</b></p></td><td align="left" valign="top"><p> How do I pass data from a Database (e.g. MySQL) to a script to produce a
+               <tr class="question" title="C.11."><td align="left" valign="top"><a name="id2623494"></a><a name="id2623496"></a><p><b>C.11.</b></p></td><td align="left" valign="top"><p> How do I pass data from a Database (e.g. MySQL) to a script to produce a
                     graph?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> By adding some SQL statements in Your graph scripts that creates the data
                     arrays from the DB. </p><p> Watch out for empty values and strings. JpGraph doesn't know how to plot
@@ -237,8 +226,7 @@
                     on how to read data from file Reading from file. </p><p> See <code class="uri"><a class="uri" href="http://jpgraph.intellit.nl/viewtopic.php?t=8" target="_top">How to
                         populate arrays from mySQL</a></code>
                 </p></td></tr>
-        
-            <tr class="question" title="C.12."><td align="left" valign="top"><a name="id2623533"></a><a name="id2623524"></a><p><b>C.12.</b></p></td><td align="left" valign="top"><p> I change my data but my image does not get updated? The old image is still
+               <tr class="question" title="C.12."><td align="left" valign="top"><a name="id2623533"></a><a name="id2623524"></a><p><b>C.12.</b></p></td><td align="left" valign="top"><p> I change my data but my image does not get updated? The old image is still
                     send back to the browser?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> What you are seeing is a cached version of Your image. Depending on your
                     setup it could either be that the browser has a cached image or You are using
@@ -265,8 +253,7 @@
                                 re-generated if the cached image is older then the specified timeout
                                 value in the call to Graph().</p>
                         </li></ul></div></td></tr>
-        
-            <tr class="question" title="C.13."><td align="left" valign="top"><a name="id2623628"></a><a name="id2623630"></a><p><b>C.13.</b></p></td><td align="left" valign="top"><p> Can I run JpGraph in batch-mode just outputting an image directly to a file
+               <tr class="question" title="C.13."><td align="left" valign="top"><a name="id2623628"></a><a name="id2623630"></a><p><b>C.13.</b></p></td><td align="left" valign="top"><p> Can I run JpGraph in batch-mode just outputting an image directly to a file
                     and not streamed back to the browser? </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Yes. Just specify an absolute file name in the call to Graph::Stroke(). To
                     store the image in the local temp directory use: </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
@@ -274,19 +261,16 @@
                         <p>Note: You must match the file ending Yourself to the format you have
                             chosen to generate the image in.</p>
                     </div></td></tr>
-        
-            <tr class="question" title="C.14."><td align="left" valign="top"><a name="id2623649"></a><a name="id2623660"></a><p><b>C.14.</b></p></td><td align="left" valign="top"><p> Is there a mailing list for JpGraph? </p></td></tr>
+               <tr class="question" title="C.14."><td align="left" valign="top"><a name="id2623649"></a><a name="id2623660"></a><p><b>C.14.</b></p></td><td align="left" valign="top"><p> Is there a mailing list for JpGraph? </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> No, but there is a user <code class="uri"><a class="uri" href="http://jpgraph.intellit.nl/index.php" target="_top">community forum</a></code> at
                         <code class="uri"><a class="uri" href="http://jpgraph.intellit.nl/index.php" target="_top">http://jpgraph.intellit.nl/index.php</a></code> where users discuss various
                     aspects of the library.</p></td></tr>
-        
-            <tr class="question" title="C.15."><td align="left" valign="top"><a name="id2623669"></a><a name="id2623694"></a><p><b>C.15.</b></p></td><td align="left" valign="top"><p> Do you offer a commercial version of JpGraph with full support and no
+               <tr class="question" title="C.15."><td align="left" valign="top"><a name="id2623669"></a><a name="id2623694"></a><p><b>C.15.</b></p></td><td align="left" valign="top"><p> Do you offer a commercial version of JpGraph with full support and no
                     QPL?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Yes, For commercial (non-open-source) you will need to get the "JpGraph
                     Professional License". This allows you you deploy JpGraph in a commercial
                     context. Further details upon contact.</p></td></tr>
-        
-            <tr class="question" title="C.16."><td align="left" valign="top"><a name="id2623712"></a><a name="id2623714"></a><p><b>C.16.</b></p></td><td align="left" valign="top"><p> Some of my script just return a blank image and no error messages? </p></td></tr>
+               <tr class="question" title="C.16."><td align="left" valign="top"><a name="id2623712"></a><a name="id2623714"></a><p><b>C.16.</b></p></td><td align="left" valign="top"><p> Some of my script just return a blank image and no error messages? </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This could potentially be a lot of things depending on which browser you are
                     using. One thing you might want to check is that your script doesn't take to
                     long time. In that case they might hit the time limit for running a PHP script
@@ -294,8 +278,7 @@
                     set_time_limit().</p><p> If You are seeing just an empty page (really empty) then this is a sign that
                     Your server has crashed. Most likely an old version of PHP is being used which
                     has taken down the HTTP server process. </p></td></tr>
-        
-            <tr class="question" title="C.17."><td align="left" valign="top"><a name="id2623726"></a><a name="id2623742"></a><p><b>C.17.</b></p></td><td align="left" valign="top"><p> I can see the generated image fine in the browser but I can't print it?
+               <tr class="question" title="C.17."><td align="left" valign="top"><a name="id2623726"></a><a name="id2623742"></a><p><b>C.17.</b></p></td><td align="left" valign="top"><p> I can see the generated image fine in the browser but I can't print it?
                 </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This is again browser dependent. Some browser does not like to print an image
                     which is generated on-line and does exist as a *.jpg, *.png etc file. No good
@@ -303,8 +286,7 @@
                     versions) can print others not. The only real safe way (if you need printing) is
                     to generate the image on disk and then have the browser read the image from
                     there. </p></td></tr>
-        
-            <tr class="question" title="C.18."><td align="left" valign="top"><a name="id2623764"></a><a name="id2623766"></a><p><b>C.18.</b></p></td><td align="left" valign="top"><p> How can I generate an image directly to disk without streaming it back to the
+               <tr class="question" title="C.18."><td align="left" valign="top"><a name="id2623764"></a><a name="id2623766"></a><p><b>C.18.</b></p></td><td align="left" valign="top"><p> How can I generate an image directly to disk without streaming it back to the
                     browser?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Two ways: (Preferred way) If you supply a filename in the call to
                     $graph-&gt;Stroke() the image will be written to that file and not be streamed back
@@ -317,8 +299,7 @@
                     script name. The 0 indicates that we have no timeout. The advantage with this
                     method is that you can specify a timeout to avoid having the image generated to
                     often. </p></td></tr>
-        
-            <tr class="question" title="C.19."><td align="left" valign="top"><a name="id2623786"></a><a name="id2623797"></a><p><b>C.19.</b></p></td><td align="left" valign="top"><p> When I try to plot graphs with many 1000:s of data points I only get a blank
+               <tr class="question" title="C.19."><td align="left" valign="top"><a name="id2623786"></a><a name="id2623797"></a><p><b>C.19.</b></p></td><td align="left" valign="top"><p> When I try to plot graphs with many 1000:s of data points I only get a blank
                     page. Is there a limit in JpGraph to the number of data points you can plot?
                 </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> No, there is no such limit. The problem is most likely that your script takes
@@ -330,8 +311,7 @@
                     which is to low for a complex JpGraph script. Try increasing the memory limit to
                     a minimum of 16Mb. For very complex graphs with 1000s of data points there might
                     be a need to increase the memory even further. </p></td></tr>
-        
-            <tr class="question" title="C.20."><td align="left" valign="top"><a name="id2623785"></a><a name="id2623827"></a><p><b>C.20.</b></p></td><td align="left" valign="top"><p> How can I use an image in a dynamically created PDF?</p></td></tr>
+               <tr class="question" title="C.20."><td align="left" valign="top"><a name="id2623785"></a><a name="id2623827"></a><p><b>C.20.</b></p></td><td align="left" valign="top"><p> How can I use an image in a dynamically created PDF?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You can do this in two ways, you can either stroke the image created with the
                     library directly to a file where it can be used with Your PDF library of choice.
                     For example, using FPDF (<code class="uri"><a class="uri" href="http://www.fpdf.org/" target="_top">www.fpdf.org</a></code>) the Image() function would have to be used to read an
@@ -417,8 +397,7 @@
 </span><span class="hl-comment">//</span><span class="hl-comment"> .. and clean up </span><span class="hl-comment"></span><span class="hl-code">
 </span><span class="hl-identifier">pdf_delete</span><span class="hl-brackets">(</span><span class="hl-var">$pdf</span><span class="hl-brackets">)</span><span class="hl-code">;  
 </span><span class="hl-inlinetags">?&gt;</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.21."><td align="left" valign="top"><a name="id2623880"></a><a name="id2623882"></a><p><b>C.21.</b></p></td><td align="left" valign="top"><p> How can I force the user to get a question to download the generated image
+               <tr class="question" title="C.21."><td align="left" valign="top"><a name="id2623880"></a><a name="id2623882"></a><p><b>C.21.</b></p></td><td align="left" valign="top"><p> How can I force the user to get a question to download the generated image
                     instead of just displaying it in the browser? </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Change your code for creating the image: </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
@@ -449,8 +428,7 @@
                         <p>If you directly open chart.php, the image is directly streamed to the
                             browser and the download dialog will not open. </p>
                     </div></td></tr>
-        
-            <tr class="question" title="C.22."><td align="left" valign="top"><a name="id2623909"></a><a name="id2623921"></a><p><b>C.22.</b></p></td><td align="left" valign="top"><p> How can I open up a CSIM link in a graph in a separate window?</p></td></tr>
+               <tr class="question" title="C.22."><td align="left" valign="top"><a name="id2623909"></a><a name="id2623921"></a><p><b>C.22.</b></p></td><td align="left" valign="top"><p> How can I open up a CSIM link in a graph in a separate window?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> To open a target CSIM (drill down) in a separate window some javascript in
                     the target link is necessary since this action must be performed in the browser.
                     The target URL needs top be in the form of an action to open up a window (with
@@ -487,12 +465,9 @@ void(0)</span><span class="hl-quotes">&quot;</span><span class="hl-code">;
 </span><span class="hl-var">$n</span><span class="hl-code"> = </span><span class="hl-identifier">count</span><span class="hl-brackets">(</span><span class="hl-var">$datay</span><span class="hl-brackets">)</span><span class="hl-code">; 
 </span><span class="hl-var">$targ</span><span class="hl-code">=</span><span class="hl-reserved">array</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">;
 </span><span class="hl-var">$alts</span><span class="hl-code">=</span><span class="hl-reserved">array</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">; 
-</span><span class="hl-reserved">for</span><span class="hl-brackets">(</span><span class="hl-var">$i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-var">$i</span><span class="hl-code"> &lt; </span><span class="hl-var">$n</span><span class="hl-code">; ++</span><span class="hl-var">$i</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">     
-    </span><span class="hl-var">$targ</span><span class="hl-brackets">[</span><span class="hl-var">$i</span><span class="hl-brackets">]</span><span class="hl-code"> = </span><span class="hl-identifier">sprintf</span><span class="hl-brackets">(</span><span class="hl-var">$fmtStr</span><span class="hl-code">,</span><span class="hl-var">$i</span><span class="hl-code">+</span><span class="hl-number">1</span><span class="hl-brackets">)</span><span class="hl-code">;     
-    </span><span class="hl-var">$alts</span><span class="hl-brackets">[</span><span class="hl-var">$i</span><span class="hl-brackets">]</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">val=%d</span><span class="hl-quotes">'</span><span class="hl-code">; 
+</span><span class="hl-reserved">for</span><span class="hl-brackets">(</span><span class="hl-var">$i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-var">$i</span><span class="hl-code"> &lt; </span><span class="hl-var">$n</span><span class="hl-code">; ++</span><span class="hl-var">$i</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">    </span><span class="hl-var">$targ</span><span class="hl-brackets">[</span><span class="hl-var">$i</span><span class="hl-brackets">]</span><span class="hl-code"> = </span><span class="hl-identifier">sprintf</span><span class="hl-brackets">(</span><span class="hl-var">$fmtStr</span><span class="hl-code">,</span><span class="hl-var">$i</span><span class="hl-code">+</span><span class="hl-number">1</span><span class="hl-brackets">)</span><span class="hl-code">;    </span><span class="hl-var">$alts</span><span class="hl-brackets">[</span><span class="hl-var">$i</span><span class="hl-brackets">]</span><span class="hl-code"> = </span><span class="hl-quotes">'</span><span class="hl-string">val=%d</span><span class="hl-quotes">'</span><span class="hl-code">; 
 </span><span class="hl-brackets">}</span><span class="hl-code">
-                    
-</span><span class="hl-var">$bplot</span><span class="hl-code">-&gt;</span><span class="hl-identifier">SetCSIMTargets</span><span class="hl-brackets">(</span><span class="hl-var">$targ</span><span class="hl-code">,</span><span class="hl-var">$alts</span><span class="hl-brackets">)</span><span class="hl-code">; 
+               </span><span class="hl-var">$bplot</span><span class="hl-code">-&gt;</span><span class="hl-identifier">SetCSIMTargets</span><span class="hl-brackets">(</span><span class="hl-var">$targ</span><span class="hl-code">,</span><span class="hl-var">$alts</span><span class="hl-brackets">)</span><span class="hl-code">; 
 </span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">Add</span><span class="hl-brackets">(</span><span class="hl-var">$bplot</span><span class="hl-brackets">)</span><span class="hl-code">; 
 ... 
 </span><span class="hl-comment">//</span><span class="hl-comment"> Send back the HTML page to browser </span><span class="hl-comment"></span><span class="hl-code">
@@ -501,8 +476,7 @@ void(0)</span><span class="hl-quotes">&quot;</span><span class="hl-code">;
                     window name '_new' which means that a new window will be opened each time a user
                     clicks on a bar. By giving the window a specific name the same window would be
                     re-used every time. </p></td></tr>
-        
-            <tr class="question" title="C.23."><td align="left" valign="top"><a name="id2623967"></a><a name="id2623969"></a><p><b>C.23.</b></p></td><td align="left" valign="top"><p> No TTF fonts are displayed.</p></td></tr>
+               <tr class="question" title="C.23."><td align="left" valign="top"><a name="id2623967"></a><a name="id2623969"></a><p><b>C.23.</b></p></td><td align="left" valign="top"><p> No TTF fonts are displayed.</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> There are potentially many reasons for this Please start by trying the
                     following bare bones PHP script to see if basic TTF support is available in the
                     PHP setup. </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
@@ -600,27 +574,23 @@ void(0)</span><span class="hl-quotes">&quot;</span><span class="hl-code">;
 --with-iconv</span></pre></td></tr></table></div><p> If there is still no TTF fonts displayed then the next step is to upgrade
                     Your TTF libraries to the latest version. The FreeType version 2.1.9 is known to
                     work well. </p></td></tr>
-        
-            <tr class="question" title="C.24."><td align="left" valign="top"><a name="id2624032"></a><a name="id2624034"></a><p><b>C.24.</b></p></td><td align="left" valign="top"><p> All my TTF fonts are yellow no matter what color I specify?</p></td></tr>
+               <tr class="question" title="C.24."><td align="left" valign="top"><a name="id2624032"></a><a name="id2624034"></a><p><b>C.24.</b></p></td><td align="left" valign="top"><p> All my TTF fonts are yellow no matter what color I specify?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You have a old buggy version of the FreeType library, most likely the old
                     FreeType I library is being used. Please upgrade to the latest version of
                     FreeType II.</p></td></tr>
-        
-            <tr class="question" title="C.25."><td align="left" valign="top"><a name="id2624050"></a><a name="id2624052"></a><p><b>C.25.</b></p></td><td align="left" valign="top"><p> I get an error "This PHP build has not been configured with TTF support. You
+               <tr class="question" title="C.25."><td align="left" valign="top"><a name="id2624050"></a><a name="id2624052"></a><p><b>C.25.</b></p></td><td align="left" valign="top"><p> I get an error "This PHP build has not been configured with TTF support. You
                     need to recompile your PHP installation with FreeType support."</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This error is reported if the built-in PHP/GD function <code class="uri"><a class="uri" href="http://www.php.net/manual/en/function.imagettfbbox.php" target="_top">"imagettfbbox()"</a></code> is not available. This is a crucial method to make
                     TTF fonts work with JpGraph. The most likely reason for this problem is that the
                     PHP configuration is faulty and does not have correct support for TTF fonts.
                     Please recompile PHP as shown above and make sure that the built-in version of
                     GD is being used and not the stand-alone library. </p></td></tr>
-        
-            <tr class="question" title="C.26."><td align="left" valign="top"><a name="id2624075"></a><a name="id2624085"></a><p><b>C.26.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Fatal error: Font cant be
+               <tr class="question" title="C.26."><td align="left" valign="top"><a name="id2624075"></a><a name="id2624085"></a><p><b>C.26.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Fatal error: Font cant be
                         found"</span></p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You have either not specified a correct path where your fonts are stored (see
                     top of jpg-config.inc) or you have tried to use a font you do not have
                     installed.</p></td></tr>
-        
-            <tr class="question" title="C.27."><td align="left" valign="top"><a name="id2624110"></a><a name="id2624112"></a><p><b>C.27.</b></p></td><td align="left" valign="top"><p> I get the error <span class="errmsg">"Can't find font file
+               <tr class="question" title="C.27."><td align="left" valign="top"><a name="id2624110"></a><a name="id2624112"></a><p><b>C.27.</b></p></td><td align="left" valign="top"><p> I get the error <span class="errmsg">"Can't find font file
                         FONT_PATHarial.ttf"</span> (or some other font)</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You are most likely running on Windows. This seems to be caused by a bug in
                     PHP/Apache (or PHP/IIS) specifically on Windows. The problem seems to be that
@@ -628,8 +598,7 @@ void(0)</span><span class="hl-quotes">&quot;</span><span class="hl-code">;
                     simple workaround is to hard-code the font path in class TTF in file
                     jpgraph.php. Note: If you have this problem you will most likely also have a
                     problem with the path to the cache directory.</p></td></tr>
-        
-            <tr class="question" title="C.28."><td align="left" valign="top"><a name="id2624140"></a><a name="id2624016"></a><p><b>C.28.</b></p></td><td align="left" valign="top"><p> I get an error <span class="emphasis"><em>"Font file ... is not readable or does not
+               <tr class="question" title="C.28."><td align="left" valign="top"><a name="id2624140"></a><a name="id2624016"></a><p><b>C.28.</b></p></td><td align="left" valign="top"><p> I get an error <span class="emphasis"><em>"Font file ... is not readable or does not
                         exist"</em></span></p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This error is caused by the inability of PHP/JpGraph to read the font file.
                     This could have several reasons: </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -663,22 +632,18 @@ void(0)</span><span class="hl-quotes">&quot;</span><span class="hl-code">;
 </span><span class="hl-reserved">DEFINE</span><span class="hl-brackets">(</span><span class="hl-quotes">&quot;</span><span class="hl-string">TTF_FONTFILE</span><span class="hl-quotes">&quot;</span><span class="hl-code">,</span><span class="hl-quotes">&quot;</span><span class="hl-string">arial.ttf</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">;  
  
 </span><span class="hl-var">$f</span><span class="hl-code"> = </span><span class="hl-identifier">TTF_DIR</span><span class="hl-code">.</span><span class="hl-identifier">TTF_FONTFILE</span><span class="hl-code">; 
-</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-identifier">file_exists</span><span class="hl-brackets">(</span><span class="hl-var">$f</span><span class="hl-brackets">)</span><span class="hl-code"> === </span><span class="hl-reserved">false</span><span class="hl-code"> || </span><span class="hl-identifier">is_readable</span><span class="hl-brackets">(</span><span class="hl-var">$f</span><span class="hl-brackets">)</span><span class="hl-code"> === </span><span class="hl-reserved">false</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">     
-    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">&quot;</span><span class="hl-string">FAIL: Can not read font file </span><span class="hl-special">\&quot;</span><span class="hl-var">$f</span><span class="hl-special">\&quot;</span><span class="hl-string">.</span><span class="hl-quotes">&quot;</span><span class="hl-code">; 
-</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">     
-    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">&quot;</span><span class="hl-string">PASS: Successfully read font file </span><span class="hl-special">\&quot;</span><span class="hl-var">$f</span><span class="hl-special">\&quot;</span><span class="hl-string">.</span><span class="hl-quotes">&quot;</span><span class="hl-code">; 
+</span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-identifier">file_exists</span><span class="hl-brackets">(</span><span class="hl-var">$f</span><span class="hl-brackets">)</span><span class="hl-code"> === </span><span class="hl-reserved">false</span><span class="hl-code"> || </span><span class="hl-identifier">is_readable</span><span class="hl-brackets">(</span><span class="hl-var">$f</span><span class="hl-brackets">)</span><span class="hl-code"> === </span><span class="hl-reserved">false</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">&quot;</span><span class="hl-string">FAIL: Can not read font file </span><span class="hl-special">\&quot;</span><span class="hl-var">$f</span><span class="hl-special">\&quot;</span><span class="hl-string">.</span><span class="hl-quotes">&quot;</span><span class="hl-code">; 
+</span><span class="hl-brackets">}</span><span class="hl-code"> </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">    </span><span class="hl-reserved">echo</span><span class="hl-code"> </span><span class="hl-quotes">&quot;</span><span class="hl-string">PASS: Successfully read font file </span><span class="hl-special">\&quot;</span><span class="hl-var">$f</span><span class="hl-special">\&quot;</span><span class="hl-string">.</span><span class="hl-quotes">&quot;</span><span class="hl-code">; 
 </span><span class="hl-brackets">}</span><span class="hl-code"> 
 </span><span class="hl-inlinetags">?&gt;</span></pre></td></tr></table></div>
                         <p> If the script reports <span class="emphasis"><em>FAIL</em></span> then it must be
                             investigated whether the file names or permissions are wrong. </p>
                     </li></ul></div></td></tr>
-        
-            <tr class="question" title="C.29."><td align="left" valign="top"><a name="id2624180"></a><a name="id2624074"></a><p><b>C.29.</b></p></td><td align="left" valign="top"><p> How can I install additional TTF font families? </p></td></tr>
+               <tr class="question" title="C.29."><td align="left" valign="top"><a name="id2624180"></a><a name="id2624074"></a><p><b>C.29.</b></p></td><td align="left" valign="top"><p> How can I install additional TTF font families? </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> See the <code class="uri"><a class="uri" href="phptip04.php" target="_top">Adding additional TTF font
                         families</a></code> section on this site for a full explanation of the necessary
                     steps.</p></td></tr>
-        
-            <tr class="question" title="C.30."><td align="left" valign="top"><a name="id2624094"></a><a name="id2624231"></a><p><b>C.30.</b></p></td><td align="left" valign="top"><p> How can I display special characters that isn't available on the
+               <tr class="question" title="C.30."><td align="left" valign="top"><a name="id2624094"></a><a name="id2624231"></a><p><b>C.30.</b></p></td><td align="left" valign="top"><p> How can I display special characters that isn't available on the
                     keyboard?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> By using the standard "&amp;#dddd" encoding of the symbol in a text string.
                     For example, to get the character for the "copyright" symbol &amp;copy; which
@@ -724,8 +689,7 @@ $integral = SymChar::Get('int');
 // &amp;#8776; (approximation sign) 
 $approx = SymChar::Get('approx');</span></pre></td></tr></table></div>
                 </div></td></tr>
-        
-            <tr class="question" title="C.31."><td align="left" valign="top"><a name="id2624261"></a><a name="id2624281"></a><p><b>C.31.</b></p></td><td align="left" valign="top"><p> When I put a text object on a graph and use Set90AndMargin() it doesn't
+               <tr class="question" title="C.31."><td align="left" valign="top"><a name="id2624261"></a><a name="id2624281"></a><p><b>C.31.</b></p></td><td align="left" valign="top"><p> When I put a text object on a graph and use Set90AndMargin() it doesn't
                     show?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> The main cause for this behaviour is that the text object position is rotated
                     90 degrees. For example, putting a text object at Pos(0,0) it will become
@@ -741,8 +705,7 @@ $approx = SymChar::Get('approx');</span></pre></td></tr></table></div>
                     <p>Start with an image that is equal in W and H since this makes it easier to
                         understand the rotation.</p>
                 </div></td></tr>
-        
-            <tr class="question" title="C.32."><td align="left" valign="top"><a name="id2624327"></a><a name="id2624336"></a><p><b>C.32.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Error: Cannot add header information
+               <tr class="question" title="C.32."><td align="left" valign="top"><a name="id2624327"></a><a name="id2624336"></a><p><b>C.32.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Error: Cannot add header information
                         - headers already sent ..."</span>
                 </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> First, this is not a problem with JpGraph per se. What has happened is that
@@ -761,25 +724,21 @@ $approx = SymChar::Get('approx');</span></pre></td></tr></table></div>
                     "&lt;?php" and after "?&gt;" These "dirty characters" will stop the JpGraph
                     being properly sent back because they are included in the image streaming.
                 </p></td></tr>
-        
-            <tr class="question" title="C.33."><td align="left" valign="top"><a name="id2624383"></a><a name="id2624385"></a><p><b>C.33.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Unknown function
+               <tr class="question" title="C.33."><td align="left" valign="top"><a name="id2624383"></a><a name="id2624385"></a><p><b>C.33.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Unknown function
                             <code class="code">imagecreate</code>"</span></p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You have not compiled PHP with support for the GD graphic library. See PHP
                     documentation for details. Note that you also need to configure PHP to use GD
                     and/or TTF fonts to get JpGraph full functionality</p></td></tr>
-        
-            <tr class="question" title="C.34."><td align="left" valign="top"><a name="id2624416"></a><a name="id2624418"></a><p><b>C.34.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Unknown function
+               <tr class="question" title="C.34."><td align="left" valign="top"><a name="id2624416"></a><a name="id2624418"></a><p><b>C.34.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Unknown function
                             <code class="code">imagecreatejpeg</code>"</span></p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You have not compiled PHP with support for the JPG format. See PHP
                     documentation for details</p></td></tr>
-        
-            <tr class="question" title="C.35."><td align="left" valign="top"><a name="id2624444"></a><a name="id2624446"></a><p><b>C.35.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Warning: MkDir failed (Permission
+               <tr class="question" title="C.35."><td align="left" valign="top"><a name="id2624444"></a><a name="id2624446"></a><p><b>C.35.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Warning: MkDir failed (Permission
                         denied) in jpgraph.php on line XXXX"</span></p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This is a permission problem. To use the cache Apache/PHP must have write
                     permission to the cache directory. Make sure that Apache/PHP have sufficient
                     permissions to write to the specified cache directory.</p></td></tr>
-        
-            <tr class="question" title="C.36."><td align="left" valign="top"><a name="id2624472"></a><a name="id2624474"></a><p><b>C.36.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Fatal error: Undefined class name
+               <tr class="question" title="C.36."><td align="left" valign="top"><a name="id2624472"></a><a name="id2624474"></a><p><b>C.36.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Fatal error: Undefined class name
                         "parent" in jpgraph.php on line xxxx"</span></p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You are using an older version of PHP. JpGraph 1.x requires at least PHP
                     4.3</p><p>
@@ -788,8 +747,7 @@ $approx = SymChar::Get('approx');</span></pre></td></tr></table></div>
                             maintained.</p>
                     </div><p>
                 </p></td></tr>
-        
-            <tr class="question" title="C.37."><td align="left" valign="top"><a name="id2624508"></a><a name="id2624510"></a><p><b>C.37.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Your data contains non-numeric
+               <tr class="question" title="C.37."><td align="left" valign="top"><a name="id2624508"></a><a name="id2624510"></a><p><b>C.37.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Your data contains non-numeric
                         values."</span></p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Most likely Your data really contains non-numeric data which You need to
                     further investigate (for example by printing out the array with a
@@ -797,40 +755,34 @@ $approx = SymChar::Get('approx');</span></pre></td></tr></table></div>
                     data looks like ".56" (or "-.56") which is a shortform of "0.56". The problem is
                     that the number starts with an "." (dot) which is non-numeric. The solution is
                     to replace the single dot with a "0."</p></td></tr>
-        
-            <tr class="question" title="C.38."><td align="left" valign="top"><a name="id2624542"></a><a name="id2624544"></a><p><b>C.38.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Date is outside specified scale
+               <tr class="question" title="C.38."><td align="left" valign="top"><a name="id2624542"></a><a name="id2624544"></a><p><b>C.38.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Date is outside specified scale
                         range"</span> trying to create a Gantt chart</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> As the error says, you start or end date for a activity is larger/smaller
                     than the max/min value in the scale. If you get this error and you are using
                     automatic scale then you are probably using a null value (empty string "") as
                     start or end date. Check your data</p></td></tr>
-        
-            <tr class="question" title="C.39."><td align="left" valign="top"><a name="id2624570"></a><a name="id2624572"></a><p><b>C.39.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Invalid file handle in jpgraph.php at
+               <tr class="question" title="C.39."><td align="left" valign="top"><a name="id2624570"></a><a name="id2624572"></a><p><b>C.39.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Invalid file handle in jpgraph.php at
                         line XXXX"</span></p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This is a permission problem. Check that your cache directory has the right
                     permissions to let JpGraph access and write to it. </p></td></tr>
-        
-            <tr class="question" title="C.40."><td align="left" valign="top"><a name="id2624518"></a><a name="id2624596"></a><p><b>C.40.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Fatal error: Call to undefined
+               <tr class="question" title="C.40."><td align="left" valign="top"><a name="id2624518"></a><a name="id2624596"></a><p><b>C.40.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Fatal error: Call to undefined
                         function: getcsimareas() ..."</span>
                 </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You have enabled the <code class="code">DEFINE("JPG_DEBUG",true)</code> in jpgraph.php.
                     This is an internal debug flag which should always be left untouched. </p></td></tr>
-        
-            <tr class="question" title="C.41."><td align="left" valign="top"><a name="id2624550"></a><a name="id2624625"></a><p><b>C.41.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Fatal error: Call to undefined
+               <tr class="question" title="C.41."><td align="left" valign="top"><a name="id2624550"></a><a name="id2624625"></a><p><b>C.41.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Fatal error: Call to undefined
                         function: imagetypes()"</span></p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You have not installed the core GD library correct. <code class="code">imagetypes()</code>
                     is a standard GD function. Please refer to the installation section in the
                     manual for more information on how to verify You setup.</p></td></tr>
-        
-            <tr class="question" title="C.42."><td align="left" valign="top"><a name="id2624654"></a><a name="id2624656"></a><p><b>C.42.</b></p></td><td align="left" valign="top"><p> I get an error saying something like <span class="errmsg">"Error:
+               <tr class="question" title="C.42."><td align="left" valign="top"><a name="id2624654"></a><a name="id2624656"></a><p><b>C.42.</b></p></td><td align="left" valign="top"><p> I get an error saying something like <span class="errmsg">"Error:
                         'parent::' not valid in context..."</span></p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You are most likely using the Zend cache. There is a bug with some versions
                     of the Zend cache together with the "parent" meta class. If the referenced
                     parent class is in another file that is included this problem seems to occur.
                     The workaround seems to be to put all classes in the same physical file or
                     upgrade the Zend cache to a more recent version.</p></td></tr>
-        
-            <tr class="question" title="C.43."><td align="left" valign="top"><a name="id2624682"></a><a name="id2624684"></a><p><b>C.43.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Image cannot be displayed because it
+               <tr class="question" title="C.43."><td align="left" valign="top"><a name="id2624682"></a><a name="id2624684"></a><p><b>C.43.</b></p></td><td align="left" valign="top"><p> I get an error <span class="errmsg">"Image cannot be displayed because it
                         contains errors.."</span></p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> First of all this is an error message from the browser and not the library.
                     There could be various reasons for this but the most likely scenario is that
@@ -845,8 +797,7 @@ $approx = SymChar::Get('approx');</span></pre></td></tr></table></div>
                     to the image which of course is nonsense. </p><p> The solution is to disable output-buffering until You are convinced that Your
                     code is without any problem. On a development server it is recommended to always
                     have output buffering disabled. </p></td></tr>
-        
-            <tr class="question" title="C.44."><td align="left" valign="top"><a name="id2624727"></a><a name="id2624729"></a><p><b>C.44.</b></p></td><td align="left" valign="top"><p> When I use PHP5 + JpGraph 2.x I get <span class="errmsg">"A plot has an
+               <tr class="question" title="C.44."><td align="left" valign="top"><a name="id2624727"></a><a name="id2624729"></a><p><b>C.44.</b></p></td><td align="left" valign="top"><p> When I use PHP5 + JpGraph 2.x I get <span class="errmsg">"A plot has an
                         illegal scale..."</span></p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> There have been a few reports of this problem and it seems to be due to a
                     faulty PHP 5.x installation. For example a standard SuSE 9.3 PHP5 installation
@@ -907,8 +858,7 @@ $approx = SymChar::Get('approx');</span></pre></td></tr></table></div>
 --enable-inline-optimization \ 
 --with-bz2 \ 
 --with-iconv</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.45."><td align="left" valign="top"><a name="id2624776"></a><a name="id2624802"></a><p><b>C.45.</b></p></td><td align="left" valign="top"><p> I try to mix bar and line graphs and the bars doesn't get centered and the
+               <tr class="question" title="C.45."><td align="left" valign="top"><a name="id2624776"></a><a name="id2624802"></a><p><b>C.45.</b></p></td><td align="left" valign="top"><p> I try to mix bar and line graphs and the bars doesn't get centered and the
                     labels are not correctly aligned?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This is a known problem. The best way to partly solve this is to make sure
                     you add the bar plot as the last plot to the graph. The reason behind this
@@ -916,22 +866,19 @@ $approx = SymChar::Get('approx');</span></pre></td></tr></table></div>
                     to the alignment of the plot. Since each plot does not know what other plot has
                     been added it will happily overwrite previous plots settings in the graph. Hence
                     the workaround by adding the bar last. conflicting settings.)</p></td></tr>
-        
-            <tr class="question" title="C.46."><td align="left" valign="top"><a name="id2624663"></a><a name="id2624823"></a><p><b>C.46.</b></p></td><td align="left" valign="top"><p> How do I turn off anti-aliasing for TTF fonts?</p></td></tr>
+               <tr class="question" title="C.46."><td align="left" valign="top"><a name="id2624663"></a><a name="id2624823"></a><p><b>C.46.</b></p></td><td align="left" valign="top"><p> How do I turn off anti-aliasing for TTF fonts?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> There is not any built in support in JpGraph to do this. Since the whole
                     purpose of TTF fonts is to provide a smooth font experience there is really no
                     point in wanting to do this. If you want non-aliased fonts you should use the
                     built-in bitmap fonts.</p></td></tr>
-        
-            <tr class="question" title="C.47."><td align="left" valign="top"><a name="id2624842"></a><a name="id2624844"></a><p><b>C.47.</b></p></td><td align="left" valign="top"><p> The auto-scaling algorithm chooses very tight limits around my Y-values. How
+               <tr class="question" title="C.47."><td align="left" valign="top"><a name="id2624842"></a><a name="id2624844"></a><p><b>C.47.</b></p></td><td align="left" valign="top"><p> The auto-scaling algorithm chooses very tight limits around my Y-values. How
                     do I get more "space" between the end of the scale and the min/max values?
                 </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Use the <code class="code">SetGrace()</code> to specify some extra space (as percentage of
                     the scale) between the min/max value and the limits of the scale. For example
                         <code class="code">$graph-&gt;yscale-&gt;SetGrace(10)</code> gives 10% extra space at the
                     ends.</p></td></tr>
-        
-            <tr class="question" title="C.48."><td align="left" valign="top"><a name="id2624861"></a><a name="id2624874"></a><p><b>C.48.</b></p></td><td align="left" valign="top"><p> I want to use autoscaling to handle the maximum value but I always want the
+               <tr class="question" title="C.48."><td align="left" valign="top"><a name="id2624861"></a><a name="id2624874"></a><p><b>C.48.</b></p></td><td align="left" valign="top"><p> I want to use autoscaling to handle the maximum value but I always want the
                     Y-axis to start at 0 regardless of the actual minimum value?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Use the <code class="code">SetAutoMin()</code> method. For example as in </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
@@ -946,8 +893,7 @@ $graph-&gt;yaxis-&gt;scale-&gt;SetAutoMin(0);
                     <p>If you need to limit the maximum value but auto-scale the minimum value
                         use the <code class="code">SetAutoMax() </code>method.</p>
                 </div></td></tr>
-        
-            <tr class="question" title="C.49."><td align="left" valign="top"><a name="id2624902"></a><a name="id2624916"></a><p><b>C.49.</b></p></td><td align="left" valign="top"><p> I want the position of the X-axis to be at the bottom of the Y-scale and not
+               <tr class="question" title="C.49."><td align="left" valign="top"><a name="id2624902"></a><a name="id2624916"></a><p><b>C.49.</b></p></td><td align="left" valign="top"><p> I want the position of the X-axis to be at the bottom of the Y-scale and not
                     always at the position Y=0?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> To adjust the position of the Axis Use the <code class="code">Axis::SetPos()</code>
                     method. The argument to this method can be either the numerical scale value on
@@ -963,8 +909,7 @@ $graph-&gt;xaxis-&gt;SetPos(&quot;min&quot;);
                     Will put the X-axis at the lowest value of the Y-axis. </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
                         <p>The same positioning is possible for the Y-axis.</p>
                     </div></td></tr>
-        
-            <tr class="question" title="C.50."><td align="left" valign="top"><a name="id2624946"></a><a name="id2624954"></a><p><b>C.50.</b></p></td><td align="left" valign="top"><p> I specify color X in the image but the color displayed is not exactly what I
+               <tr class="question" title="C.50."><td align="left" valign="top"><a name="id2624946"></a><a name="id2624954"></a><p><b>C.50.</b></p></td><td align="left" valign="top"><p> I specify color X in the image but the color displayed is not exactly what I
                     specified?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This is a result of a finite color palette for GIF, PNG formats. If you are
                     using anti-aliasing, perhaps a background image or even gradient fill you might
@@ -979,8 +924,7 @@ $graph-&gt;xaxis-&gt;SetPos(&quot;min&quot;);
                     <p>This problem is only seen in very, very old installations that use GD 1.x
                         library which has been deprecated since around 2005</p>
                 </div></td></tr>
-        
-            <tr class="question" title="C.51."><td align="left" valign="top"><a name="id2624988"></a><a name="id2624997"></a><p><b>C.51.</b></p></td><td align="left" valign="top"><p> Can I have labels at an arbitrary angle on the X-axis? </p></td></tr>
+               <tr class="question" title="C.51."><td align="left" valign="top"><a name="id2624988"></a><a name="id2624997"></a><p><b>C.51.</b></p></td><td align="left" valign="top"><p> Can I have labels at an arbitrary angle on the X-axis? </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Yes, almost any text can be stroked at an arbitrary angle. For example to
                     have the labels at 45 degrees angle use </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
@@ -993,8 +937,7 @@ $graph-&gt;xaxis-&gt;SetLabelAngle(45);
                     <p>Internal fonts support 0 and 90 degrees text. If you need to use, say 45
                         degree (or any other arbitrary angle), you must use TTF fonts. </p>
                 </div></td></tr>
-        
-            <tr class="question" title="C.52."><td align="left" valign="top"><a name="id2625029"></a><a name="id2625031"></a><p><b>C.52.</b></p></td><td align="left" valign="top"><p> How do I invert the Y-scale so that it has the minimum value on top and the
+               <tr class="question" title="C.52."><td align="left" valign="top"><a name="id2625029"></a><a name="id2625031"></a><p><b>C.52.</b></p></td><td align="left" valign="top"><p> How do I invert the Y-scale so that it has the minimum value on top and the
                     largest value at the bottom?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> The easiest way to do this is by following a two step process</p><p>a) Negating all Your values and then </p><p>b) Create a callback function for the Y-axis that negates all the display
                     values. </p><p> What will happen now is that after the negative values have been feed into
@@ -1022,14 +965,12 @@ $graph-&gt;xaxis-&gt;SetLabelAngle(45);
 19
 20
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">... // Callback to negate the argument
-function _cb_negate($aVal) {     
-    return round(-$aVal); 
+function _cb_negate($aVal) {    return round(-$aVal); 
 }  // A fake depth curve
 $ydata = ....  
 // Negate all data 
 $n = count($ydata); 
-for($i=0; $i&lt;$n; ++$i) {     
-    $ydata[$i] = -$ydata[$i]; 
+for($i=0; $i&lt;$n; ++$i) {    $ydata[$i] = -$ydata[$i]; 
 }  
  
 // Basic graph setup 
@@ -1044,29 +985,24 @@ $graph-&gt;Stroke();</span></pre></td></tr></table></div><p> Two scripts that us
                         <code class="filename">Examples/</code> directory in the distribution,
                         <code class="filename">"inyaxisex1.php"</code> and
                         <code class="filename">"inyaxisex2.php"</code>. </p></td></tr>
-        
-            <tr class="question" title="C.53."><td align="left" valign="top"><a name="id2625086"></a><a name="id2625089"></a><p><b>C.53.</b></p></td><td align="left" valign="top"><p> Can I have the auto-scaling algorithm restrict itself to whole
+               <tr class="question" title="C.53."><td align="left" valign="top"><a name="id2625086"></a><a name="id2625089"></a><p><b>C.53.</b></p></td><td align="left" valign="top"><p> Can I have the auto-scaling algorithm restrict itself to whole
                     numbers?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Yes, use the "int" scale specification, for example
                         <code class="code">$graph-&gt;SetScale('inttext')</code> will make the Y-axis have an
                     integer scale and the X-axis a text-scale</p></td></tr>
-        
-            <tr class="question" title="C.54."><td align="left" valign="top"><a name="id2625104"></a><a name="id2625113"></a><p><b>C.54.</b></p></td><td align="left" valign="top"><p> Is it possible to have horizontal bar graphs?</p></td></tr>
+               <tr class="question" title="C.54."><td align="left" valign="top"><a name="id2625104"></a><a name="id2625113"></a><p><b>C.54.</b></p></td><td align="left" valign="top"><p> Is it possible to have horizontal bar graphs?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Yes, Just create a normal bar and call the method
                         <code class="code">Set90AndMargin()</code> to rotate the graph.</p></td></tr>
-        
-            <tr class="question" title="C.55."><td align="left" valign="top"><a name="id2625124"></a><a name="id2625137"></a><p><b>C.55.</b></p></td><td align="left" valign="top"><p> Line weight does not seem to work in my graphs? I specify a thick line but
+               <tr class="question" title="C.55."><td align="left" valign="top"><a name="id2625124"></a><a name="id2625137"></a><p><b>C.55.</b></p></td><td align="left" valign="top"><p> Line weight does not seem to work in my graphs? I specify a thick line but
                     still get a thin line?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You have probably enabled Anti-aliasing. If anti-aliasing is enabled setting
                     line-weight will have no affect.</p></td></tr>
-        
-            <tr class="question" title="C.56."><td align="left" valign="top"><a name="id2625155"></a><a name="id2625157"></a><p><b>C.56.</b></p></td><td align="left" valign="top"><p> How can I have more space between the Y-axis and the title? </p></td></tr>
+               <tr class="question" title="C.56."><td align="left" valign="top"><a name="id2625155"></a><a name="id2625157"></a><p><b>C.56.</b></p></td><td align="left" valign="top"><p> How can I have more space between the Y-axis and the title? </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Use the <code class="code">Axis::SetTitleMargin()</code> method. For example to have a 25
                     pixels margin for the Y-title you could use:
                     </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$mygraph-&gt;yaxis-&gt;SetTitleMargin(25);</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.57."><td align="left" valign="top"><a name="id2625168"></a><a name="id2625184"></a><p><b>C.57.</b></p></td><td align="left" valign="top"><p> How can I display both X and Y values above each data point in a line, bar or
+               <tr class="question" title="C.57."><td align="left" valign="top"><a name="id2625168"></a><a name="id2625184"></a><p><b>C.57.</b></p></td><td align="left" valign="top"><p> How can I display both X and Y values above each data point in a line, bar or
                     scatter plot?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You need to use a value formatting callback. The callback function is called
                     for each data point and is passed the Y-value as argument. This means that if
@@ -1115,36 +1051,30 @@ $graph-&gt;Stroke();</span></pre></td></tr></table></div><p> Two scripts that us
  
 </span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">Stroke</span><span class="hl-brackets">(</span><span class="hl-brackets">)</span><span class="hl-code">; 
 </span><span class="hl-inlinetags">?&gt;</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.58."><td align="left" valign="top"><a name="id2625213"></a><a name="id2625215"></a><p><b>C.58.</b></p></td><td align="left" valign="top"><p> Can I display stock box-charts (open, close, high, low) with JpGraph? </p></td></tr>
+               <tr class="question" title="C.58."><td align="left" valign="top"><a name="id2625213"></a><a name="id2625215"></a><p><b>C.58.</b></p></td><td align="left" valign="top"><p> Can I display stock box-charts (open, close, high, low) with JpGraph? </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Yes, just create a <code class="code">StockPlot()</code> graph.</p></td></tr>
-        
-            <tr class="question" title="C.59."><td align="left" valign="top"><a name="id2625231"></a><a name="id2625239"></a><p><b>C.59.</b></p></td><td align="left" valign="top"><p> Is there any way to specify a newline in the legend box for a specific
+               <tr class="question" title="C.59."><td align="left" valign="top"><a name="id2625231"></a><a name="id2625239"></a><p><b>C.59.</b></p></td><td align="left" valign="top"><p> Is there any way to specify a newline in the legend box for a specific
                     legend?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Yes. From version 1.8 full multi-line text paragraphs are supported. Just
                     make sure that your text uses double-quotes and a newline character. </p></td></tr>
-        
-            <tr class="question" title="C.60."><td align="left" valign="top"><a name="id2625258"></a><a name="id2625260"></a><p><b>C.60.</b></p></td><td align="left" valign="top"><p> How can I print unicode characters?</p></td></tr>
+               <tr class="question" title="C.60."><td align="left" valign="top"><a name="id2625258"></a><a name="id2625260"></a><p><b>C.60.</b></p></td><td align="left" valign="top"><p> How can I print unicode characters?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Use &amp;#XXXX; format in your strings where XXXX is the decimal value for
                     the unicode character. You may find a list of Unicode characters and there
                     encodings at <code class="uri"><a class="uri" href="http://www.unicode.org/charts/" target="_top">www.unicode.org</a></code> Please observe that the encoding in the lists are
                     given in hexadecimal and these values must be converted to decimal. </p><p> Note: If You are working in an UTF-8 environment then the characters may be
                     input directly.</p></td></tr>
-        
-            <tr class="question" title="C.61."><td align="left" valign="top"><a name="id2625220"></a><a name="id2625295"></a><p><b>C.61.</b></p></td><td align="left" valign="top"><p> My background images doesn't display properly. It just shows a black solid
+               <tr class="question" title="C.61."><td align="left" valign="top"><a name="id2625220"></a><a name="id2625295"></a><p><b>C.61.</b></p></td><td align="left" valign="top"><p> My background images doesn't display properly. It just shows a black solid
                     square? </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You are using a very old GD version (probably 2.0.1). Background images only
                     work with a truecolor image, (enable the USE_TRUECOLOR constant). Some people
                     have reported that it works as long as the background image is not in PNG
                     format. The drawback with truecolor images is that truefont doesn't work
                     properly in GD versions &lt; 2.0.8 </p></td></tr>
-        
-            <tr class="question" title="C.62."><td align="left" valign="top"><a name="id2625314"></a><a name="id2625316"></a><p><b>C.62.</b></p></td><td align="left" valign="top"><p> How do I make each bar in a bar plot have it's own color?</p></td></tr>
+               <tr class="question" title="C.62."><td align="left" valign="top"><a name="id2625314"></a><a name="id2625316"></a><p><b>C.62.</b></p></td><td align="left" valign="top"><p> How do I make each bar in a bar plot have it's own color?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Specify an array as argument to <code class="code">BarPlot::SetColor()</code> as in
                     </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$mybarplot-&gt;SetColor(array(&quot;red&quot;,&quot;green&quot;,&quot;blue&quot;,&quot;gray&quot;));</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.63."><td align="left" valign="top"><a name="id2625331"></a><a name="id2625341"></a><p><b>C.63.</b></p></td><td align="left" valign="top"><p> How can I adjust the position of the axis title?</p></td></tr>
+               <tr class="question" title="C.63."><td align="left" valign="top"><a name="id2625331"></a><a name="id2625341"></a><p><b>C.63.</b></p></td><td align="left" valign="top"><p> How can I adjust the position of the axis title?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> You can add an alignment parameter when you specify the title. You specify
                     one of "high", "low" or "center" as in </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
@@ -1152,23 +1082,19 @@ $graph-&gt;Stroke();</span></pre></td></tr></table></div><p> Two scripts that us
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$mygraph-&gt;xaxis-&gt;SetTitle(&quot;mytitle&quot;,&quot;high&quot;);
 $mygraph-&gt;xaxis-&gt;SetTitle(&quot;mytitle&quot;,&quot;center&quot;);
 $mygraph-&gt;xaxis-&gt;SetTitle(&quot;mytitle&quot;,&quot;low&quot;);</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.64."><td align="left" valign="top"><a name="id2625364"></a><a name="id2625367"></a><p><b>C.64.</b></p></td><td align="left" valign="top"><p> How can I change the image format, i.e jpeg, gif or png? </p></td></tr>
+               <tr class="question" title="C.64."><td align="left" valign="top"><a name="id2625364"></a><a name="id2625367"></a><p><b>C.64.</b></p></td><td align="left" valign="top"><p> How can I change the image format, i.e jpeg, gif or png? </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Use the <code class="code">Image::SetImgFormat()</code> method at runtime. You can also
                     change the default value with the <code class="code">DEFAULT_GFORMAT</code> define in
                     jpg-config.php. This is normally set to 'auto' format which means that JpGraph
                     will automatically choose the format depending on what is available.</p><p>For example to use the JPEG format :</p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$graph-&gt;img-&gt;SetImgFormat('jpeg');</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.65."><td align="left" valign="top"><a name="id2625346"></a><a name="id2625403"></a><p><b>C.65.</b></p></td><td align="left" valign="top"><p> How do I specify the font for legends?</p></td></tr>
+               <tr class="question" title="C.65."><td align="left" valign="top"><a name="id2625346"></a><a name="id2625403"></a><p><b>C.65.</b></p></td><td align="left" valign="top"><p> How do I specify the font for legends?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Use the Legend::SetFont() method. As in </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$graph-&gt;legend-&gt;SetFont(FF_FONT1,FS_BOLD);</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.66."><td align="left" valign="top"><a name="id2625424"></a><a name="id2625426"></a><p><b>C.66.</b></p></td><td align="left" valign="top"><p> When I rotate text and labels the text is not rotated correctly?</p></td></tr>
+               <tr class="question" title="C.66."><td align="left" valign="top"><a name="id2625424"></a><a name="id2625426"></a><p><b>C.66.</b></p></td><td align="left" valign="top"><p> When I rotate text and labels the text is not rotated correctly?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Red Hat 7.2 has a bug in it's TTF libraries (FreeType 2.0.3) that comes with
                     the distribution. Upgrade to FreeType 2.0.9.</p></td></tr>
-        
-            <tr class="question" title="C.67."><td align="left" valign="top"><a name="id2625406"></a><a name="id2625445"></a><p><b>C.67.</b></p></td><td align="left" valign="top"><p> When I rotate a paragraph (multi-line) text the paragraph is always left
+               <tr class="question" title="C.67."><td align="left" valign="top"><a name="id2625406"></a><a name="id2625445"></a><p><b>C.67.</b></p></td><td align="left" valign="top"><p> When I rotate a paragraph (multi-line) text the paragraph is always left
                     aligned even though I have specified another alignment. It seems fine for
                     non-rotated paragraphs though. What is the problem? </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This is a limitation with the current implementation. (The reason is that GD
@@ -1176,8 +1102,7 @@ $mygraph-&gt;xaxis-&gt;SetTitle(&quot;mytitle&quot;,&quot;low&quot;);</span></pr
                     libraries string-layout engine. </p><p> At the moment the logic only implements this paragraph alignment for
                     non-rotated paragraphs.) For rotated paragraphs left-alignment will always be
                     used regardless of specified paragraph alignment.</p></td></tr>
-        
-            <tr class="question" title="C.68."><td align="left" valign="top"><a name="id2625472"></a><a name="id2625474"></a><p><b>C.68.</b></p></td><td align="left" valign="top"><p> I have a huge number of data points and I only want labels (which I want to
+               <tr class="question" title="C.68."><td align="left" valign="top"><a name="id2625472"></a><a name="id2625474"></a><p><b>C.68.</b></p></td><td align="left" valign="top"><p> I have a huge number of data points and I only want labels (which I want to
                     specify as text string) and ticks on every n:th data. Can I do this?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Yes. What most users stumble on is the fact that the label array must still
                     contain data for all the data points even though only every n:th data label is
@@ -1192,16 +1117,14 @@ $mygraph-&gt;xaxis-&gt;SetTitle(&quot;mytitle&quot;,&quot;low&quot;);</span></pr
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">// Setup the X-axis 
 $graph-&gt;xaxis-&gt;SetTickLabels($datax);
 $graph-&gt;xaxis-&gt;SetTextTickInterval( ... );</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.69."><td align="left" valign="top"><a name="id2625497"></a><a name="id2625515"></a><p><b>C.69.</b></p></td><td align="left" valign="top"><p> How can I make the labels have a 1000 comma separator?</p></td></tr>
+               <tr class="question" title="C.69."><td align="left" valign="top"><a name="id2625497"></a><a name="id2625515"></a><p><b>C.69.</b></p></td><td align="left" valign="top"><p> How can I make the labels have a 1000 comma separator?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> The easiest way is to use the PHP built-in function
                         "<code class="code">number_format()</code>" as a callback (see php manual. <code class="uri"><a class="uri" href="http://www.php.net/manual/en/function.number-format.php" target="_top">number_format()</a></code>)</p><p>For example, to have the line plot display values using this format first
                     setup and install the callback function as: </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$lineplot-&gt;value-&gt;SetFormatCallback(&quot;number_format&quot;);</span></pre></td></tr></table></div><p> If you instead want the Y-axis label to use this kind of formatting install
                     the callback using </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$graph-&gt;yaxis-&gt;SetLabelFormatCallback(&quot;number_format&quot;);</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.70."><td align="left" valign="top"><a name="id2625536"></a><a name="id2625562"></a><p><b>C.70.</b></p></td><td align="left" valign="top"><p> The Y2 axis is no longer positioned at the right side of the graph</p></td></tr>
+               <tr class="question" title="C.70."><td align="left" valign="top"><a name="id2625536"></a><a name="id2625562"></a><p><b>C.70.</b></p></td><td align="left" valign="top"><p> The Y2 axis is no longer positioned at the right side of the graph</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This will happen after that You have manually specified the sclae and/or the
                     tick spacing. If the user manipulates the default scale the library defaults to
                     setting the position of the Y2 axis to the 0 X-position. It is easy to re-adjust
@@ -1211,8 +1134,7 @@ $graph-&gt;xaxis-&gt;SetTextTickInterval( ... );</span></pre></td></tr></table><
 2
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$graph-&gt;y2axis-&gt;SetPos('max');
 $graph-&gt;y2axis-&gt;SetTitleSide('right');</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.71."><td align="left" valign="top"><a name="id2625573"></a><a name="id2625587"></a><p><b>C.71.</b></p></td><td align="left" valign="top"><p> How can I include several graphs in the same image?</p></td></tr>
+               <tr class="question" title="C.71."><td align="left" valign="top"><a name="id2625573"></a><a name="id2625587"></a><p><b>C.71.</b></p></td><td align="left" valign="top"><p> How can I include several graphs in the same image?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This can be solved by a bit of extra GD code since the library by default do
                     not directly support this functionality. The easiest way to solve this is to
                     manually create a big enough empty graph with plain GD commands. Then get the
@@ -1271,16 +1193,13 @@ imagecopy($image, $handle1,$x2,$y2,0,0,$WIDTH3,$HEIGHT3);
 // Stream the result back as a PNG 
 image header(&quot;Content-type: image/png&quot;); 
 imagepng ($image);</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.72."><td align="left" valign="top"><a name="id2625627"></a><a name="id2625629"></a><p><b>C.72.</b></p></td><td align="left" valign="top"><p> How can I have an exploded slice with 3D pie plots?</p></td></tr>
+               <tr class="question" title="C.72."><td align="left" valign="top"><a name="id2625627"></a><a name="id2625629"></a><p><b>C.72.</b></p></td><td align="left" valign="top"><p> How can I have an exploded slice with 3D pie plots?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Use either <code class="code">Pi3DPLot::ExplodeSlice()</code> or
                         <code class="code">Pie3DPlot::Explode()</code>
                 </p></td></tr>
-        
-            <tr class="question" title="C.73."><td align="left" valign="top"><a name="id2625654"></a><a name="id2625656"></a><p><b>C.73.</b></p></td><td align="left" valign="top"><p> How can I display values for each slice close to the pie?</p></td></tr>
+               <tr class="question" title="C.73."><td align="left" valign="top"><a name="id2625654"></a><a name="id2625656"></a><p><b>C.73.</b></p></td><td align="left" valign="top"><p> How can I display values for each slice close to the pie?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Use the method <code class="code">PiePlot::value::Show()</code></p></td></tr>
-        
-            <tr class="question" title="C.74."><td align="left" valign="top"><a name="id2625667"></a><a name="id2625678"></a><p><b>C.74.</b></p></td><td align="left" valign="top"><p> How can I change between percentage and absolute values for pie slices?
+               <tr class="question" title="C.74."><td align="left" valign="top"><a name="id2625667"></a><a name="id2625678"></a><p><b>C.74.</b></p></td><td align="left" valign="top"><p> How can I change between percentage and absolute values for pie slices?
                 </p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Use <code class="code">PiePlot::SetValueType($aType)</code> where <code class="code">$aType</code> is
                     either <code class="code">PIE_VALUE_ABS</code> or <code class="code">PIE_VALUE_PERCENTAGE</code>. To
@@ -1295,19 +1214,16 @@ imagepng ($image);</span></pre></td></tr></table></div></td></tr>
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$mypieplot-&gt;value-&gt;SetFormat(&quot;%d%%&quot;);
 $mypieplot-&gt;value-&gt;Show(); // Defaults to TRUE
 $mypieplot-&gt;SetValueType(PIE_VALUE_PERCENTAGE);</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.75."><td align="left" valign="top"><a name="id2625719"></a><a name="id2625721"></a><p><b>C.75.</b></p></td><td align="left" valign="top"><p> Can I display the actual value as labels on the pie bar instead of the
+               <tr class="question" title="C.75."><td align="left" valign="top"><a name="id2625719"></a><a name="id2625721"></a><p><b>C.75.</b></p></td><td align="left" valign="top"><p> Can I display the actual value as labels on the pie bar instead of the
                     percentage?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Yes, use
                     </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$pieplot-&gt;SetLabelType(PIE_LABEL_ABS);</span></pre></td></tr></table></div><p> and
                     make sure labels are not hidden. </p></td></tr>
-        
-            <tr class="question" title="C.76."><td align="left" valign="top"><a name="id2625742"></a><a name="id2625744"></a><p><b>C.76.</b></p></td><td align="left" valign="top"><p> How can I adust the start angle of the first slice?</p></td></tr>
+               <tr class="question" title="C.76."><td align="left" valign="top"><a name="id2625742"></a><a name="id2625744"></a><p><b>C.76.</b></p></td><td align="left" valign="top"><p> How can I adust the start angle of the first slice?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> Use </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$pieplot-&gt;SetStartAngle(45);</span></pre></td></tr></table></div></td></tr>
-        
-            <tr class="question" title="C.77."><td align="left" valign="top"><a name="id2625757"></a><a name="id2625764"></a><p><b>C.77.</b></p></td><td align="left" valign="top"><p> When I use IE v5 or v6 I can only save the generated graph image in the
+               <tr class="question" title="C.77."><td align="left" valign="top"><a name="id2625757"></a><a name="id2625764"></a><p><b>C.77.</b></p></td><td align="left" valign="top"><p> When I use IE v5 or v6 I can only save the generated graph image in the
                     browser as a BMP file even if it was generated as a JPEG or PNG encoded
                     image?</p></td></tr>
             <tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p> This is a bug in the way IE handles HTTP headers. By default the library
@@ -1317,8 +1233,7 @@ $mypieplot-&gt;SetValueType(PIE_VALUE_PERCENTAGE);</span></pre></td></tr></table
                     by thinking it has already fetched the graph before. </p><p> The only known workaround is to tell the library not to send back any
                     no-cache headers as illustrated below. </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
-</pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$graph-&gt;img-&gt;SetExpired(false);                     
-$graph-&gt;Stroke();</span></pre></td></tr></table></div><p> The <code class="code">SetExpired(false)</code> call instructs the library to not send
+</pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$graph-&gt;img-&gt;SetExpired(false);                $graph-&gt;Stroke();</span></pre></td></tr></table></div><p> The <code class="code">SetExpired(false)</code> call instructs the library to not send
                     back any has-expired headers.</p></td></tr>
         </tbody></table></div>
 </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"> </td><td width="20%" align="center"><a accesskey="u" href="pt09.html">Up</a></td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

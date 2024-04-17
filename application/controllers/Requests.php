@@ -1,10 +1,7 @@
 <?php
 /**
  * This controller allows a manager to list and manage leave requests submitted to him
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
- * @since         0.1.0
+
  */
 
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
@@ -21,7 +18,6 @@ class Requests extends CI_Controller {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -35,7 +31,6 @@ class Requests extends CI_Controller {
      * Display the list of all requests submitted to you
      * Status is submitted or accepted/rejected depending on the filter parameter.
      * @param string $name Filter the list of submitted leave requests (all or requested)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function index($filter = 'requested') {
         $this->auth->checkIfOperationIsAllowed('list_requests');
@@ -64,7 +59,6 @@ class Requests extends CI_Controller {
     /**
      * Accept a leave request
      * @param int $id leave request identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function accept($id) {
         $this->auth->checkIfOperationIsAllowed('accept_requests');
@@ -95,7 +89,6 @@ class Requests extends CI_Controller {
     /**
      * Reject a leave request
      * @param int $id leave request identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function reject($id) {
         $this->auth->checkIfOperationIsAllowed('reject_requests');
@@ -130,7 +123,6 @@ class Requests extends CI_Controller {
     /**
      * Accept the cancellation of a leave request
      * @param int $id leave request identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function acceptCancellation($id) {
         $this->auth->checkIfOperationIsAllowed('accept_requests');
@@ -161,7 +153,6 @@ class Requests extends CI_Controller {
     /**
      * Reject the cancellation of a leave request
      * @param int $id leave request identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function rejectCancellation($id) {
         $this->auth->checkIfOperationIsAllowed('reject_requests');
@@ -196,7 +187,6 @@ class Requests extends CI_Controller {
 
     /**
      * Display the list of all requests submitted to the line manager (Status is submitted)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function collaborators() {
         $this->auth->checkIfOperationIsAllowed('list_collaborators');
@@ -216,7 +206,6 @@ class Requests extends CI_Controller {
     /**
      * Display the list of delegations
      * @param int $id Identifier of the manager (from HR/Employee) or 0 if self
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function delegations($id = 0) {
         if ($id == 0) $id = $this->user_id;
@@ -244,7 +233,6 @@ class Requests extends CI_Controller {
 
     /**
      * Ajax endpoint : Delete a delegation for a manager
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteDelegations() {
         $manager = $this->input->post('manager_id', TRUE);
@@ -265,7 +253,6 @@ class Requests extends CI_Controller {
 
     /**
      * Ajax endpoint : Add a delegation for a manager
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function addDelegations() {
         $manager = $this->input->post('manager_id', TRUE);
@@ -291,7 +278,6 @@ class Requests extends CI_Controller {
     /**
      * Create a leave request in behalf of a collaborator
      * @param int $id Identifier of the employee
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function createleave($id) {
         $this->lang->load('hr', $this->language);
@@ -347,7 +333,6 @@ class Requests extends CI_Controller {
      * Send a leave request email to the employee that requested the leave.
      * @param int $id Leave request identifier
      * @param int $transition Transition in the workflow of leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     private function sendMail($id, $transition)
     {
@@ -435,7 +420,6 @@ class Requests extends CI_Controller {
     /**
      * Export the list of all leave requests (sent to the connected user) into an Excel file
      * @param string $filter Filter the list of submitted leave requests (all or requested)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function export($filter = 'requested') {
         $data['filter'] = $filter;
@@ -446,7 +430,6 @@ class Requests extends CI_Controller {
      * Leave balance report limited to the subordinates of the connected manager
      * Status is submitted or accepted/rejected depending on the filter parameter.
      * @param int $dateTmp (Timestamp) date of report
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function balance($dateTmp = NULL) {
         $this->auth->checkIfOperationIsAllowed('list_requests');

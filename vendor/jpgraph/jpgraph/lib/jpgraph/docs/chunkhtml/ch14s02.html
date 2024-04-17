@@ -1,6 +1,5 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Specifying and formatting the overall displayed graph</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch14.html" title="Chapter 14. Common features for all Cartesian (x,y) graph types"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Specifying and formatting the overall displayed graph</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 14. Common features for all Cartesian (x,y) graph types</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Specifying and formatting the overall displayed graph"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec.overall-graph-formatting"></a>Specifying and formatting the overall displayed graph</h2></div></div></div>
-            
-            <p>The overall look and feel of the graph can be adjusted in a number of ways.</p>
+                   <p>The overall look and feel of the graph can be adjusted in a number of ways.</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                         <p>color of the plot area</p>
@@ -18,8 +17,7 @@
                     </li></ul></div><p>
             </p>
             <div class="sect2" title="Adjusting size, margins and frame"><div class="titlepage"><div><div><h3 class="title"><a name="id2541423"></a>Adjusting size, margins and frame</h3></div></div></div>
-                
-                <p>The overall size of the graph is specified in the initial creation of the
+                           <p>The overall size of the graph is specified in the initial creation of the
                         "<code class="code">$graph</code>" instance. This is mandatory. </p>
                 <p>
                     </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
@@ -55,8 +53,7 @@
                     and margin.</p>
             </div>
             <div class="sect2" title="Adding drop shadow to the graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2541500"></a>Adding drop shadow to the graph</h3></div></div></div>
-                
-                <p>A graph can have a drop shadow specified with the method
+                           <p>A graph can have a drop shadow specified with the method
                         <code class="code">SetShadow()</code> which has the signature</p>
                 <p>
                     </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
@@ -66,8 +63,7 @@
                     straight simple shadow and has no Gaussian blur.</p>
             </div>
             <div class="sect2" title="Formatting and specifying the titles of the graph"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.fomratting-graph-titles"></a>Formatting and specifying the titles of the graph</h3></div></div></div>
-                
-                <p>There are three possible standard titles in the graph</p>
+                           <p>There are three possible standard titles in the graph</p>
                 <p>
                     </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
                             <p><code class="code">$graph-&gt;title</code></p>
@@ -111,8 +107,7 @@
 $graph-&gt;tabtitle-&gt;SetFont(FF_ARIAL,FS_BOLD,10);</span></pre></td></tr></table></div><p>
                 </p>
                 <div class="sect3" title="Adding special background to the title"><div class="titlepage"><div><div><h4 class="title"><a name="id2541803"></a>Adding special background to the title</h4></div></div></div>
-                    
-                    <p>There is one more way to make the graph title stand out that. This feature
+                                   <p>There is one more way to make the graph title stand out that. This feature
                         is probably one of the least known ways to adjust the graph title and is
                         used to put a lot of emphasis on the title by having a separate color (and
                         style) for the background of the graph title.</p>
@@ -324,8 +319,7 @@ $graph-&gt;tabtitle-&gt;SetFont(FF_ARIAL,FS_BOLD,10);</span></pre></td></tr></ta
                 </div>
             </div>
             <div class="sect2" title="Specifying the image format to use"><div class="titlepage"><div><div><h3 class="title"><a name="id2542819"></a>Specifying the image format to use</h3></div></div></div>
-                
-                <p>As described in <a class="xref" href="ch03s02.html" title="Necessary system requirements for the library">Necessary system requirements for the library</a> the actual image compression
+                           <p>As described in <a class="xref" href="ch03s02.html" title="Necessary system requirements for the library">Necessary system requirements for the library</a> the actual image compression
                     available depends on the system setup. Assuming the needed sewtup is done then
                     the image format can be specified by using the method
                         <code class="code">Graph::SetImgFormat()</code> and specifying the wanted format as a
@@ -339,8 +333,7 @@ $graph-&gt;tabtitle-&gt;SetFont(FF_ARIAL,FS_BOLD,10);</span></pre></td></tr></ta
                     applicable together with JPG formatting.</p>
             </div>
             <div class="sect2" title="Generic line formatting"><div class="titlepage"><div><div><h3 class="title"><a name="id2542875"></a>Generic line formatting</h3></div></div></div>
-                
-                <p>Any lines in the library can have a number of formatting option. Attributes
+                           <p>Any lines in the library can have a number of formatting option. Attributes
                     that can be adjusted are</p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -371,8 +364,7 @@ $graph-&gt;tabtitle-&gt;SetFont(FF_ARIAL,FS_BOLD,10);</span></pre></td></tr></ta
                                 example of different line formatting styles</p>
                             <p>
                                 </p><div class="figure"><a name="fig.different-line-styles"></a><p class="title"><b>Figure 14.9. Different line formatting</b></p><div class="figure-contents">
-                                    
-                                    <div class="informaltable">
+                                                                   <div class="informaltable">
                                         <table border="0"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><tbody><tr><td>
                                                   <p><span class="inlinemediaobject"><img src="images/linestyle_standard.png" alt="Different line formatting"></span></p>
                                                   <p>Standard</p>
@@ -417,8 +409,7 @@ $graph-&gt;tabtitle-&gt;SetFont(FF_ARIAL,FS_BOLD,10);</span></pre></td></tr></ta
                 </p>
             </div>
             <div class="sect2" title="Adding a footer to the graph"><div class="titlepage"><div><div><h3 class="title"><a name="sec.adding-footer"></a>Adding a footer to the graph</h3></div></div></div>
-                
-                <p>It is possible to add a footer to the graph as well. The footer can have a
+                           <p>It is possible to add a footer to the graph as well. The footer can have a
                     left, center and right part. The footer is accessed trough the footer property
                     of the Graph class and its three parts "left", "right" and "center". These parts
                     are instances of the <code class="code">Text</code> class and hence all normal text
@@ -435,14 +426,12 @@ $graph-&gt;tabtitle-&gt;SetFont(FF_ARIAL,FS_BOLD,10);</span></pre></td></tr></ta
                 <p>An example of using a footer is shown in <a class="xref" href="ch14s02.html#fig.footerex1" title="Figure 14.11. Adding a left,right and center footer (footerex1.php)">Figure 14.11. Adding a left,right and center footer <code class="uri"><a class="uri" href="example_src/footerex1.html" target="_top">(<code class="filename">footerex1.php</code>)</a></code> </a></p>
                 <p>
                     </p><div class="figure"><a name="id2543242"></a><p class="title"><b>Figure 14.10. Using a footer in a graph</b></p><div class="figure-contents">
-                        
-                        <div class="figure"><a name="fig.footerex1"></a><p class="title"><b>Figure 14.11. Adding a left,right and center footer <code class="uri"><a class="uri" href="example_src/footerex1.html" target="_top">(<code class="filename">footerex1.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/footerex1.png" alt="Using a footer in a graph"></span> </div></div><br class="figure-break">
+                                           <div class="figure"><a name="fig.footerex1"></a><p class="title"><b>Figure 14.11. Adding a left,right and center footer <code class="uri"><a class="uri" href="example_src/footerex1.html" target="_top">(<code class="filename">footerex1.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/footerex1.png" alt="Using a footer in a graph"></span> </div></div><br class="figure-break">
                     </div></div><p><br class="figure-break">
                 </p>
             </div>
             <div class="sect2" title="Adding timing of graphs"><div class="titlepage"><div><div><h3 class="title"><a name="id2543252"></a>Adding timing of graphs</h3></div></div></div>
-                
-                <p>The footer in the bottom of the graph can also be used to show an
+                           <p>The footer in the bottom of the graph can also be used to show an
                     approximative timing of the graph generation. This is done with the help of
                         <code class="code">class JpgTimer</code>. This timer class offers two methods</p>
                 <p>

@@ -97,8 +97,7 @@ abstract class Theme {
         }
 
         $this->color_index = $old_index;
-        
-        return $result_list;
+           return $result_list;
     }
 
     /**

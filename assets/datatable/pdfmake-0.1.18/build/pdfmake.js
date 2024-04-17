@@ -19734,8 +19734,7 @@
 	      this._fontSize = 12;
 	      this._font = null;
 	      this._registeredFonts = {};
-	      
-	    },
+	 	    },
 	    font: function(src, family, size) {
 	      var cacheKey, font, id, _ref;
 	      if (typeof family === 'number') {

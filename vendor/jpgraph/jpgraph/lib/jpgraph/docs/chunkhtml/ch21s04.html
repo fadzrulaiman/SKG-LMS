@@ -1,8 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Some more advanced formatting</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch21.html" title="Chapter 21. Windrose"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Some more advanced formatting</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 21. Windrose</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Some more advanced formatting"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2589154"></a>Some more advanced formatting</h2></div></div></div>
-        
-        <div class="sect2" title="Turning off Anti-aliasing"><div class="titlepage"><div><div><h3 class="title"><a name="id2589161"></a>Turning off Anti-aliasing</h3></div></div></div>
-            
-            <p>By default anti-aliasing is enabled. This has a speed penalty together with
+           <div class="sect2" title="Turning off Anti-aliasing"><div class="titlepage"><div><div><h3 class="title"><a name="id2589161"></a>Turning off Anti-aliasing</h3></div></div></div>
+                   <p>By default anti-aliasing is enabled. This has a speed penalty together with
                 restrictions that no background images can be used in this version of the library. </p>
             <p>If you want to use background images or improve performance anti-aliasing can be
                 turned off with a call to the method </p>
@@ -13,12 +11,10 @@
             </p>
         </div>
         <div class="sect2" title="More on formatting scale-labels"><div class="titlepage"><div><div><h3 class="title"><a name="id2589188"></a>More on formatting scale-labels</h3></div></div></div>
-            
-            <p>Since scale labels are normal text element all normal text formatting can be used
+                   <p>Since scale labels are normal text element all normal text formatting can be used
                 to enhance the look &amp;feel of the scale labels. </p>
             <div class="sect3" title="Adding background colors"><div class="titlepage"><div><div><h4 class="title"><a name="id2589207"></a>Adding background colors</h4></div></div></div>
-                
-                <p>A simple enhancement to make the labels more visible is to add a box and a
+                           <p>A simple enhancement to make the labels more visible is to add a box and a
                     background color for the label. This is done with a call to the method </p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -36,8 +32,7 @@
                 </p>
             </div>
             <div class="sect3" title="Adjusting the alignment of the scale labels"><div class="titlepage"><div><div><h4 class="title"><a name="id2589251"></a>Adjusting the alignment of the scale labels</h4></div></div></div>
-                
-                <p>By default the scale labels are centered on the intersection between the
+                           <p>By default the scale labels are centered on the intersection between the
                     radial line and the grid circle. It is possible to also have the label
                     positioned slightly outside the circular grid. This is all controlled by the
                     method </p>
@@ -57,8 +52,7 @@
                 </p>
             </div>
             <div class="sect3" title="Specifying number formats"><div class="titlepage"><div><div><h4 class="title"><a name="id2589318"></a>Specifying number formats</h4></div></div></div>
-                
-                <p>The final formatting option is to specify the number format of the label. This
+                           <p>The final formatting option is to specify the number format of the label. This
                     is specified as an ordinary "<code class="code">printf()</code>" format string. The format is
                     specified with a call to </p>
                 <p>
@@ -74,8 +68,7 @@
                 </p>
             </div>
             <div class="sect3" title="Hiding the labels"><div class="titlepage"><div><div><h4 class="title"><a name="id2589396"></a>Hiding the labels</h4></div></div></div>
-                
-                <p>Finally it is possible to completely hide the scale labels with a call to </p>
+                           <p>Finally it is possible to completely hide the scale labels with a call to </p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                             <p><code class="code">WindrosePlotScale::Hide($aFlg=true)</code></p>
@@ -84,12 +77,10 @@
             </div>
         </div>
         <div class="sect2" title="Formatting the legend"><div class="titlepage"><div><div><h3 class="title"><a name="id2589422"></a>Formatting the legend </h3></div></div></div>
-            
-            <p>All the property for the legend is access through the legend property of the
+                   <p>All the property for the legend is access through the legend property of the
                 windrose plot as shown in the examples below. </p>
             <div class="sect3" title="Turning off the legend"><div class="titlepage"><div><div><h4 class="title"><a name="id2589434"></a>Turning off the legend</h4></div></div></div>
-                
-                <p>By default the legend is shown for each plot. It can be turned off with a call
+                           <p>By default the legend is shown for each plot. It can be turned off with a call
                     to </p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -103,8 +94,7 @@
                 </p>
             </div>
             <div class="sect3" title="Adjusting the legend position"><div class="titlepage"><div><div><h4 class="title"><a name="id2589474"></a>Adjusting the legend position</h4></div></div></div>
-                
-                <p>In version 1.0 of Windrose plot it is not possible to fully adjust the
+                           <p>In version 1.0 of Windrose plot it is not possible to fully adjust the
                     position of the plot legend. However, it is possible to manually adjust the
                     margin between</p>
                 <p>
@@ -133,8 +123,7 @@
                     used.</p>
             </div>
             <div class="sect3" title="Adjusting the length of each legend window leg"><div class="titlepage"><div><div><h4 class="title"><a name="id2589551"></a>Adjusting the length of each legend window leg</h4></div></div></div>
-                
-                <p>By default the length of each legend leg is just long enough (with a little
+                           <p>By default the length of each legend leg is just long enough (with a little
                     bit to spare) to cover the range labels just on top of the legend legs. It can
                     never be set to smaller than that but it can be made larger with a call to </p>
                 <p>
@@ -144,8 +133,7 @@
                 </p>
             </div>
             <div class="sect3" title="Adjusting how the range is displayed"><div class="titlepage"><div><div><h4 class="title"><a name="id2589570"></a>Adjusting how the range is displayed</h4></div></div></div>
-                
-                <p>By default the range labels is displayed so that the end label of bucket
+                           <p>By default the range labels is displayed so that the end label of bucket
                         <span class="italic">n</span> is the same as the start label in
                     bucket (<span class="italic">n+1</span>). This behaviour can be
                     controlled with the method</p>
@@ -166,14 +154,12 @@
                 <p><a class="xref" href="ch21s04.html#fig.windrose-legend-lstyles" title="Figure 21.14. Different legend label styles">Figure 21.14. Different legend label styles</a> shows the difference between
                     the two legend styles</p>
                 <div class="figure"><a name="fig.windrose-legend-lstyles"></a><p class="title"><b>Figure 21.14. Different legend label styles</b></p><div class="figure-contents">
-                    
-                    <div class="mediaobject"><img src="images/wind-legend-styles.png" alt="Different legend label styles"></div>
+                                   <div class="mediaobject"><img src="images/wind-legend-styles.png" alt="Different legend label styles"></div>
                 </div></div><br class="figure-break">
             </div>
         </div>
         <div class="sect2" title="Highlighting specific compass directions"><div class="titlepage"><div><div><h3 class="title"><a name="id2589687"></a>Highlighting specific compass directions</h3></div></div></div>
-            
-            <p>In order to emphasize certain directions it is possible to individually adjust the
+                   <p>In order to emphasize certain directions it is possible to individually adjust the
                 radial lines look &amp; feel. </p>
             <p>For example, assume that the direction 134º in a free plot is especially
                 important. In order to emphasize this we can make the radial line, solid and red
@@ -209,8 +195,7 @@
                 (as specified by <code class="code">SetGridWeight()</code>).</p>
         </div>
         <div class="sect2" title="Including a graph in a PDF"><div class="titlepage"><div><div><h3 class="title"><a name="id2589778"></a>Including a graph in a PDF</h3></div></div></div>
-            
-            <p>This information assumes that the PDFlib in installed and available in the PHP
+                   <p>This information assumes that the PDFlib in installed and available in the PHP
                 setup being used. This very short paragraph is in no way a replacement for reading
                 the full PDFlib documentation. It is just intended to give some ideas on how this
                 can be done. This information is to large extent a repetition of what can be read in
@@ -304,8 +289,7 @@ pdf_delete($pdf);
             </p>
         </div>
         <div class="sect2" title="Adding a background image"><div class="titlepage"><div><div><h3 class="title"><a name="id2589844"></a>Adding a background image</h3></div></div></div>
-            
-            <p>In the same way as with the other types of plots in the library there is a
+                   <p>In the same way as with the other types of plots in the library there is a
                 possibility to add a background image in the graph. However, due to limitations with
                 the way the extended anti-alias in windroses is implemented it is not possible to
                 use background images when this (default) behavior is enabled. </p>
@@ -338,8 +322,7 @@ pdf_delete($pdf);
             </p>
         </div>
         <div class="sect2" title="Adjusting the interpretation for ordinal keys in data"><div class="titlepage"><div><div><h3 class="title"><a name="id2589846"></a>Adjusting the interpretation for ordinal keys in data</h3></div></div></div>
-            
-            <p>As previously stated the position for data values in the plot, (when the ' key is
+                   <p>As previously stated the position for data values in the plot, (when the ' key is
                 specified as an integer), is the index of the displayed axis counted
                 counter-clockwise from "East". </p>
             <p>Another possibility which seems to be standard in some application of Windrose
