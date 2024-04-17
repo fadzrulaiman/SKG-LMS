@@ -10,7 +10,7 @@ class RestTest extends TestCase
     /**
      * Create a common HTTP client for all test cases pointing to 
      * the API URL defined as environment variable (or by phpunit.xml)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function setUp()
     {
@@ -21,7 +21,7 @@ class RestTest extends TestCase
 
     /**
      * Free resources after this test case
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function tearDown() {
         $this->httpClient = null;
@@ -32,7 +32,7 @@ class RestTest extends TestCase
      * It should be inerited from MY_RestController::options
      * But relying of what is set into the parent's constructor
      * @covers Rest::options
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function testPreflightCORS()
     {

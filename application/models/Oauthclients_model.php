@@ -2,9 +2,8 @@
 /**
  * This Class contains all the business logic and the persistence layer 
  * for the service accounts (OAuth clients and sessions).
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.6.0
  */
 
@@ -24,7 +23,7 @@ class OAuthClients_model extends CI_Model {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function __construct() {
         
@@ -34,7 +33,7 @@ class OAuthClients_model extends CI_Model {
      * Get the list of OAuth clients or one client
      * @param string $clientId optional id of a OAuth client
      * @return array record of clients
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getOAuthClients($clientId = '') {
         if ($clientId === '') {
@@ -48,7 +47,7 @@ class OAuthClients_model extends CI_Model {
     /**
      * Insert a new OAuth client. Data are taken from HTML form.
      * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function setOAuthClients() {
         $grantTypes = ($this->input->post('grant_types') === FALSE)? NULL: $this->input->post('grant_types');
@@ -68,7 +67,7 @@ class OAuthClients_model extends CI_Model {
     /**
      * Delete a leave type from the database
      * @param string $id identifier of the leave type
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function deleteOAuthClients($clientId) {
         $this->db->delete('oauth_clients', array('client_id' => $clientId));
@@ -80,7 +79,7 @@ class OAuthClients_model extends CI_Model {
      * @param string $name name of the type
      * @param bool $deduct Deduct days off
      * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function updateOAuthUsers($id, $name, $deduct) {
         $data = array(
@@ -94,7 +93,7 @@ class OAuthClients_model extends CI_Model {
     /**
      * Get the list of OAuth access tokens
      * @return array record of tokens
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getAccessTokens() {
         $this->db->limit(5000);
@@ -105,7 +104,7 @@ class OAuthClients_model extends CI_Model {
     
     /**
      * Purge the table of OAtuh2 tokens
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function purgeAccessTokens() {
         $this->db->truncate('oauth_access_tokens');
@@ -116,7 +115,7 @@ class OAuthClients_model extends CI_Model {
      * @param string $clientId id of a OAuth client
      * @param string $userId id of a Jorani user
      * @return bool TRUE if the application is allowed
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function isOAuthAppAllowed($clientId, $userId) {
         $query = $this->db->get_where('oauth_applications',
@@ -132,7 +131,7 @@ class OAuthClients_model extends CI_Model {
      * List applications authorized by a user
      * @param string $userId id of a Jorani user
      * @return array List of client names (name, url)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function listOAuthApps($userId) {
         $this->db->select('oauth_applications.client_id, redirect_uri');
@@ -158,7 +157,7 @@ class OAuthClients_model extends CI_Model {
      * Revoke an OAuth2 application
      * @param string $clientId id of a OAuth client
      * @param string $userId id of a Jorani user
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function revokeOAuthApp($clientId, $userId) {
         $this->db->delete('oauth_applications', 
@@ -172,7 +171,7 @@ class OAuthClients_model extends CI_Model {
      * Allow an OAuth2 application
      * @param string $clientId id of a OAuth client
      * @param string $userId id of a Jorani user
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function allowOAuthApp($clientId, $userId) {
         $data = array(

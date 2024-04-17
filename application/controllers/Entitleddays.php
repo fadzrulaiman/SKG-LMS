@@ -1,9 +1,8 @@
 <?php
 /**
  * This controller serves the ajax endpoints that manages entitled days
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.1.0
  */
 
@@ -17,7 +16,7 @@ class Entitleddays extends CI_Controller {
    
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -30,7 +29,7 @@ class Entitleddays extends CI_Controller {
      * Display an ajax-based form that list entitled days of a user
      * and allow updating the list by adding or removing one item
      * @param int $id User identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function user($id) {
         $this->auth->checkIfOperationIsAllowed('entitleddays_user');
@@ -68,7 +67,7 @@ class Entitleddays extends CI_Controller {
      * Display an ajax-based form that list entitled days of a contract
      * and allow updating the list by adding or removing one item
      * @param int $id contract identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function contract($id) {
         $this->auth->checkIfOperationIsAllowed('entitleddays_contract');
@@ -98,7 +97,7 @@ class Entitleddays extends CI_Controller {
      * Ajax endpoint : delete an entitled days credit (to an employee)
      * and returns the number of rows affected
      * @param int $id entitled days credit identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function userdelete($id) {
         $this->auth->checkIfOperationIsAllowed('entitleddays_user_delete');
@@ -110,7 +109,7 @@ class Entitleddays extends CI_Controller {
      * Ajax endpoint : delete an entitled days credit (to a contract)
      * and returns the number of rows affected
      * @param int $id entitled days credit identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function contractdelete($id) {
         $this->auth->checkIfOperationIsAllowed('entitleddays_contract_delete');
@@ -120,7 +119,7 @@ class Entitleddays extends CI_Controller {
     
     /**
      * Ajax endpoint : insert into the list of entitled days for a given user
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function ajax_user() {
         if ($this->auth->isAllowed('entitleddays_user') == FALSE) {
@@ -144,7 +143,7 @@ class Entitleddays extends CI_Controller {
     
     /**
      * Ajax endpoint : insert into the list of entitled days for a given contract
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function ajax_contract() {
         if ($this->auth->isAllowed('entitleddays_user') == FALSE) {
@@ -173,7 +172,7 @@ class Entitleddays extends CI_Controller {
      * operation : "increase" or "decrease" by 1 (the number can be negative).
      *                  "credit" modify the value of the credit
      *                  "update" update all the value of the credit line
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function ajax_update() {
         if ($this->auth->isAllowed('entitleddays_user') == FALSE) {

@@ -1,9 +1,8 @@
 <?php
 /**
  * This controller serves all the ICS (webcal, ical) feeds exposed by Jorani.
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.4.0
  */
 
@@ -27,7 +26,7 @@ class Ics extends CI_Controller {
     /**
      * Default constructor
      * Initializing of Sabre VObjets library
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -88,7 +87,7 @@ class Ics extends CI_Controller {
      * Get the list of dayoffs for a given contract identifier
      * @param int $userId identifier of the user wanting to view the list (mind timezone)
      * @param int $contract identifier of a contract
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function dayoffs($userId, $contract) {
         //Get timezone and language of the user
@@ -135,7 +134,7 @@ class Ics extends CI_Controller {
     /**
      * Get the list of leaves for a given employee identifier
      * @param int $userId identifier of an employee
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function individual($userId) {
         $this->load->model('leaves_model');
@@ -181,7 +180,7 @@ class Ics extends CI_Controller {
      * @param int $userId identifier of the user wanting to view the list (mind timezone)
      * @param int $entity identifier of an entity
      * @param bool $children TRUE include sub-entity, FALSE otherwise (default)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function entity($userId, $entity, $children) {
         $this->load->model('leaves_model');
@@ -223,7 +222,7 @@ class Ics extends CI_Controller {
     /**
      * Get the list of leaves of the collaborators of the connected user (manager)
      * @param int $userId identifier of the user wanting to view the list (mind timezone)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function collaborators($userId) {
         $this->load->model('leaves_model');
@@ -264,7 +263,7 @@ class Ics extends CI_Controller {
     /**
      * Action : download an iCal event corresponding to a leave request
      * @param int leave request id
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function ical($id) {
         header('Content-type: text/calendar; charset=utf-8');

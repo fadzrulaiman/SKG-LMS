@@ -3,9 +3,8 @@
  * This controller is the entry point for the REST API used by mobile and HTML5
  * Clients. They use CORS requests. Each call to end points uses BasicAuth 
  * except the preflight exchange. So it should be used with a TLS connection
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.3.0
  */
 
@@ -21,7 +20,7 @@ class RestRequests extends MY_RestController {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -32,7 +31,7 @@ class RestRequests extends MY_RestController {
      * Display the list of all requests submitted to you
      * Status is submitted or accepted/rejected depending on the filter parameter.
      * @param string $name Filter the list of submitted leave requests ("all" or "requested")
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function requests($filter = 'requested') {
         log_message('debug', '++requests filter=' . $filter);

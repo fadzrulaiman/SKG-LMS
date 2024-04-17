@@ -3,9 +3,8 @@
  * This controller is the entry point for the REST API used by mobile and HTML5
  * Clients. They use CORS requests. Each call to end points uses BasicAuth 
  * except the preflight exchange. So it should be used with a TLS connection
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.3.0
  */
 
@@ -21,7 +20,7 @@ class RestLeaves extends MY_RestController {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -32,7 +31,7 @@ class RestLeaves extends MY_RestController {
     /**
      * Get the list of leave requests of the connected employee
      * @param int $leaveId Unique identifier of a leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function leaves($leaveId = 0) {
         log_message('debug', '++leaves id=' . $leaveId);
@@ -75,7 +74,7 @@ class RestLeaves extends MY_RestController {
 
     /**
      * Create a leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function create() {
         log_message('debug', '++create');
@@ -130,7 +129,7 @@ class RestLeaves extends MY_RestController {
     /**
      * Edit a leave request
      * @param int $leaveId Identifier of the leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function edit($leaveId) {
         log_message('debug', '++edit / LR = ' . $leaveId);
@@ -217,7 +216,7 @@ class RestLeaves extends MY_RestController {
     /**
      * Delete a leave request
      * @param int $leaveId identifier of the leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function delete($leaveId) {
         log_message('debug', '++delete / Leave ID = ' . $leaveId);
@@ -252,7 +251,7 @@ class RestLeaves extends MY_RestController {
      * Send a leave request creation email to the manager of the connected employee
      * @param int $leaveId Leave request identifier
      * @param int $reminder In case where the employee wants to send a reminder
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     private function sendMailOnLeaveRequestCreation($leaveId, $reminder=FALSE) {
         log_message('debug', '++sendMailOnLeaveRequestCreation');
@@ -300,7 +299,7 @@ class RestLeaves extends MY_RestController {
      * @param $title Email Title
      * @param $detailledSubject Email detailled Subject
      * @param $emailModel template email to use
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      *
      */
     private function sendGenericMail($leave, $user, $manager, $lang_mail, $title, $detailledSubject, $emailModel) {

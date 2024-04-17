@@ -3,9 +3,8 @@
  * This controller is the entry point for the REST API used by mobile and HTML5
  * Clients. They use CORS requests. Each call to end points uses BasicAuth 
  * except the preflight exchange. So it should be used with a TLS connection
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.3.0
  */
 
@@ -30,7 +29,7 @@ class RestAdmin extends MY_RestController {
     /**
      * Get the current log messages or the log file for a given date
      * @param string $dateLogFile Date of the log file (optional)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function logs($dateLogFile = '') {
         log_message('debug', '++logs = ' . $table);

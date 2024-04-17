@@ -3,9 +3,8 @@
  * This diagnostic page helps you to check openssl setup and to generate a pair of keys.
  * Please note that the configuration is not exposed by this page and that the pair of keys
  * is calculated each time the page is reloaded.
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.4.3
  */
 

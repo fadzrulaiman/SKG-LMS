@@ -2,9 +2,8 @@
 /**
  * Utility script that converts PHP array i18n files to a PO file
  * This tool is used in order to retrieve a translation that was done from the source files.
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.4.4
  */
 

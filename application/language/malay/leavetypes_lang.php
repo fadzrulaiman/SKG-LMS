@@ -1,7 +1,7 @@
 <?php
 /**
  * Fail terjemahan
- * @hakcipta  Hakcipta (c) 2014-2023 Benjamin BALET
+ * @hakcipta  Hakcipta (c) Fadzrul Aiman
  * @lesen      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @pautan     https://github.com/bbalet/jorani
  * @sejak      0.1.0

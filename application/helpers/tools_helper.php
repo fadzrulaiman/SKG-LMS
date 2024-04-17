@@ -1,9 +1,8 @@
 <?php
 /**
  * This helper contains a list of functions used throughout the application
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.2.0
  */
 
@@ -13,7 +12,7 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
  * Check if user is connected, redirect to login form otherwise
  * Set the user context by retrieving infos from session
  * @param CI_Controller $controller reference to CI Controller object
- * @author Benjamin BALET <benjamin.balet@gmail.com>
+       * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
  */
 function setUserContext(CI_Controller $controller) {
     //Memorize the last displayed page except for Ajax queries
@@ -44,7 +43,7 @@ function setUserContext(CI_Controller $controller) {
  * Prepare an array containing information about the current user
  * @param CI_Controller $controller reference to CI Controller object
  * @return array data to be passed to the view
- * @author Benjamin BALET <benjamin.balet@gmail.com>
+       * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
  */
 function getUserContext(CI_Controller $controller)
 {
@@ -74,7 +73,7 @@ function getUserContext(CI_Controller $controller)
  * Set the user context by retrieving infos from session
  * and load these data into the array passed to the view
  * @see setUserContext and getUserContext
- * @author Benjamin BALET <benjamin.balet@gmail.com>
+       * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
  */
 function getCIUserContext() {
     $controller = & get_instance();
@@ -86,7 +85,7 @@ function getCIUserContext() {
  * Sanitizes an input (GET/POST) coming from outside a form (eg Ajax request)
  * @param string $value value to be cleansed from characters that prevent Jorani to work
  * @return string value where problematic characters have been removed
- * @author Benjamin BALET <benjamin.balet@gmail.com>
+       * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
  */
 function sanitize($value)
 {
@@ -105,7 +104,7 @@ function sanitize($value)
  * @param string $message Message of the e-mail
  * @param string $to Recipient of the e-mail
  * @param string $cc (optional) Copied to recipients
- * @author Benjamin BALET <benjamin.balet@gmail.com>
+       * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
  */
 function sendMailByWrapper(CI_Controller $controller, $subject, $message, $to, $cc = NULL)
 {
@@ -133,7 +132,7 @@ function sendMailByWrapper(CI_Controller $controller, $subject, $message, $to, $
  * Finalize the export to a spreadsheet. Called from an export view.
  * @param $spreadsheet reference to the spreadsheet to be exported
  * @param $exportName Excel filename
- * @author Benjamin BALET <benjamin.balet@gmail.com>
+       * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
  */
 function writeSpreadsheet(&$spreadsheet, $exportName='')
 {
@@ -169,7 +168,7 @@ function writeSpreadsheet(&$spreadsheet, $exportName='')
  * would return F
  * @param int $number Column index
  * @return string Excel representation of the column index
- * @author Benjamin BALET <benjamin.balet@gmail.com>
+       * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
  */
 function columnName($number) {
     if ($number < 27) {

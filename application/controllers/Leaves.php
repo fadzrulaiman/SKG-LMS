@@ -1,9 +1,8 @@
 <?php
 /**
  * This controller contains the actions allowing an employee to list and manage its leave requests
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.1.0
  */
 
@@ -21,7 +20,7 @@ class Leaves extends CI_Controller {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -34,7 +33,7 @@ class Leaves extends CI_Controller {
 
     /**
      * Display the list of the leave requests of the connected user
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function index() {
         $this->auth->checkIfOperationIsAllowed('list_leaves');
@@ -58,7 +57,7 @@ class Leaves extends CI_Controller {
     /**
      * Display the history of changes of a leave request
      * @param int $id Identifier of the leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function history($id) {
         $this->auth->checkIfOperationIsAllowed('list_leaves');
@@ -73,7 +72,7 @@ class Leaves extends CI_Controller {
     /**
      * Display the details of leaves taken/entitled for the connected user
      * @param string $refDate Date (e.g. 2011-10-05)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function counters($refDate = NULL) {
         $this->auth->checkIfOperationIsAllowed('counters_leaves');
@@ -105,7 +104,7 @@ class Leaves extends CI_Controller {
      * Display a leave request
      * @param string $source Page source (leaves, requests) (self, manager)
      * @param int $id identifier of the leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function view($source, $id) {
         $this->auth->checkIfOperationIsAllowed('view_leaves');
@@ -200,7 +199,7 @@ class Leaves extends CI_Controller {
 
     /**
      * Create a leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function create() {
         $this->auth->checkIfOperationIsAllowed('create_leaves');
@@ -271,7 +270,7 @@ class Leaves extends CI_Controller {
     /**
      * Edit a leave request
      * @param int $id Identifier of the leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function edit($id) {
         $this->auth->checkIfOperationIsAllowed('edit_leaves');
@@ -411,7 +410,7 @@ class Leaves extends CI_Controller {
      * Send an email reminder (so as to remind to the manager that he
      * must either accept/reject a request or a cancellation)
      * @param int $id Identifier of the leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function reminder($id) {
         $this->auth->checkIfOperationIsAllowed('create_leaves');
@@ -437,7 +436,7 @@ class Leaves extends CI_Controller {
      * Send a leave request creation email to the manager of the connected employee
      * @param int $id Leave request identifier
      * @param int $reminder In case where the employee wants to send a reminder
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     private function sendMailOnLeaveRequestCreation($id, $reminder=FALSE) {
         $this->load->model('users_model');
@@ -480,7 +479,7 @@ class Leaves extends CI_Controller {
      * Send a notification to the manager of the connected employee when the
      * leave request has been canceled by its collaborator.
      * @param int $id Leave request identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     private function sendMailOnLeaveRequestCanceled($id) {
         $this->load->model('users_model');
@@ -619,7 +618,7 @@ class Leaves extends CI_Controller {
     /**
      * Delete a leave request
      * @param int $id identifier of the leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function delete($id) {
         $can_delete = FALSE;
@@ -667,7 +666,7 @@ class Leaves extends CI_Controller {
      *  - Only the connected user can reject its own requests.
      *  - If the cancellation request is accepted, it goes on accepted
      * @param int $id identifier of the leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function cancellation($id) {
         //Test if the leave request exists
@@ -699,7 +698,7 @@ class Leaves extends CI_Controller {
      * Send a notification to the line manager.
      * Next status is 'Canceled'
      * @param int $id identifier of the leave request
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function cancel($id) {
         //Test if the leave request exists
@@ -727,7 +726,7 @@ class Leaves extends CI_Controller {
 
     /**
      * Export the list of all leaves into an Excel file
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function export() {
         $this->load->view('leaves/export');
@@ -736,7 +735,7 @@ class Leaves extends CI_Controller {
     /**
      * Ajax endpoint : Send a list of fullcalendar events
      * @param int $id employee id or connected user (from session)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function individual($id = 0) {
         header("Content-Type: application/json");
@@ -748,7 +747,7 @@ class Leaves extends CI_Controller {
 
     /**
      * Ajax endpoint : Send a list of fullcalendar events
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function workmates() {
         header("Content-Type: application/json");
@@ -759,7 +758,7 @@ class Leaves extends CI_Controller {
 
     /**
      * Ajax endpoint : Send a list of fullcalendar events
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function collaborators() {
         header("Content-Type: application/json");
@@ -771,7 +770,7 @@ class Leaves extends CI_Controller {
     /**
      * Ajax endpoint : Send a list of fullcalendar events
      * @param int $entity_id Entity identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function organization($entity_id) {
         header("Content-Type: application/json");
@@ -797,7 +796,7 @@ class Leaves extends CI_Controller {
 
     /**
      * Ajax endpoint : Send a list of fullcalendar events
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function department() {
         header("Content-Type: application/json");
@@ -814,7 +813,7 @@ class Leaves extends CI_Controller {
      *  - try to calculate the duration of the leave
      *  - try to detect overlapping leave requests
      *  If the user is linked to a contract, returns end date of the yearly leave period or NULL
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function validate() {
         header("Content-Type: application/json");

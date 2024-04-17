@@ -3,8 +3,8 @@
 -- DO NOT execute this script on your production database as changes are
 -- not reversible.
 -- 
--- @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
--- @copyright  Copyright (c) 2014-2023 Benjamin BALET
+
+-- @copyright  Copyright (c) Fadzrul Aiman
 
 -- Behaviour:
 -- Generate a new firstname and lastname

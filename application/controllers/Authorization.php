@@ -5,7 +5,7 @@
  * docuementation of PHP OAuth2 server:
  * http://bshaffer.github.io/oauth2-server-php-docs/cookbook/
  * 
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
+ * @copyright  Copyright (c) Fadzrul Aiman
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
  * @link       https://github.com/bbalet/jorani
  * @since      0.6.0
@@ -28,7 +28,7 @@ class Authorization extends CI_Controller {
     /**
      * Default constructor
      * Initializing of OAuth2 server
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -56,7 +56,7 @@ class Authorization extends CI_Controller {
 
     /**
      * OAuth2 authorize endpoint 
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function authorize() {
         $request = OAuth2\Request::createFromGlobals();
@@ -132,7 +132,7 @@ class Authorization extends CI_Controller {
     
     /**
      * Get the details of the connected user
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function userinfo() {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -149,7 +149,7 @@ class Authorization extends CI_Controller {
     
     /**
      * Handle the Simplified login form for OAuth authorization
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function login() {
         //Decrypt password
@@ -191,7 +191,7 @@ class Authorization extends CI_Controller {
      * Generate a random string by using openssl, dev/urandom or random
      * @param int $length optional length of the string
      * @return string random string
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     private function generateRandomString($length = 10) {
         if(function_exists('openssl_random_pseudo_bytes')) {

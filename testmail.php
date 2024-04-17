@@ -2,9 +2,8 @@
 /**
  * This diagnostic page helps you to check email settings.
  * You can use this script in order to try to send an email with a debug trace.
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.4.0
  */
 

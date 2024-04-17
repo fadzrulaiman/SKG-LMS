@@ -2,9 +2,8 @@
 /**
  * This view displays the list of collaborators of the connected employee.
  * e.g. users having the connected user as their line manager.
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.4.0
  */
 ?>

@@ -1,9 +1,8 @@
 <?php
 /**
  * This Model contains all the business logic and the persistence layer for leave request objects.
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.1.0
  */
 
@@ -25,7 +24,7 @@ class Leaves_model extends CI_Model {
      * Get the list of all leave requests or one leave
      * @param int $id Id of the leave request
      * @return array list of records
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getLeaves($id = 0) {
         $this->db->select('leaves.*');
@@ -45,7 +44,7 @@ class Leaves_model extends CI_Model {
      * Id are replaced by label
      * @param int $employee ID of the employee
      * @return array list of records
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getLeavesOfEmployee($employee) {
         $this->db->select('leaves.*');
@@ -90,7 +89,7 @@ class Leaves_model extends CI_Model {
      * @param int $employee ID of the employee
      * @param string $start Start date
      * @param string $end End date
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getAcceptedLeavesBetweenDates($employee, $start, $end) {
         $this->db->select('leaves.*, types.name as type');
@@ -113,7 +112,7 @@ class Leaves_model extends CI_Model {
      * @param string $startdatetype start date type of leave request being created (Morning or Afternoon)
      * @param string $enddatetype end date type of leave request being created (Morning or Afternoon)
      * @return float length of leave
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function length($employee, $start, $end, $startdatetype, $enddatetype) {
         $this->db->select('sum(CASE `type` WHEN 1 THEN 1 WHEN 2 THEN 0.5 WHEN 3 THEN 0.5 END) as days');
@@ -151,7 +150,7 @@ class Leaves_model extends CI_Model {
      * @param array $daysoff List of non-working days
      * @param bool $deductDayOff Deduct days off when evaluating the actual length
      * @return array (length=>length of leave, overlapping=>excat match with a non-working day, daysoff=>sum of days off)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function actualLengthAndDaysOff($employee, $startdate, $enddate,
             $startdatetype, $enddatetype, $daysoff, $deductDayOff = FALSE) {
@@ -240,7 +239,7 @@ class Leaves_model extends CI_Model {
      * @param int $contract contract identifier
      * @param string $refDate Date of execution
      * @return array Array of entitled days associated to the key type id
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getSumEntitledDays($employee, $contract, $refDate) {
         $this->db->select('types.id as type_id, types.name as type_name');
@@ -270,7 +269,7 @@ class Leaves_model extends CI_Model {
      * @param bool $sum_extra TRUE: sum compensate summary
      * @param string $refDate tmp of the Date of reference (or current date if NULL)
      * @return array computed aggregated taken/entitled leaves
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getLeaveBalanceForEmployee($id, $sum_extra = FALSE, $refDate = NULL) {
         //Determine if we use current date or another date
@@ -384,7 +383,7 @@ class Leaves_model extends CI_Model {
      * @param string $type leave type name
      * @param date $startdate Start date of leave request or null
      * @return int number of available days or NULL if the user has no contract
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getLeavesTypeBalanceForEmployee($id, $type, $startdate = NULL) {
         $summary = $this->getLeaveBalanceForEmployee($id, TRUE, $startdate);
@@ -409,7 +408,7 @@ class Leaves_model extends CI_Model {
      * @param string $enddatetype end date type of leave request being created (Morning or Afternoon)
      * @param int $leave_id When this function is used for editing a leave request, we must not collide with this leave request
      * @return boolean TRUE if another leave request has been emmitted, FALSE otherwise
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function detectOverlappingLeaves($id, $startdate, $enddate, $startdatetype, $enddatetype, $leave_id=NULL) {
         $overlapping = FALSE;
@@ -454,7 +453,7 @@ class Leaves_model extends CI_Model {
      * Create a leave request
      * @param int $employeeId Identifier of the employee
      * @return int id of the newly created leave request into the db
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function setLeaves($employeeId) {
         $data = array(
@@ -492,7 +491,7 @@ class Leaves_model extends CI_Model {
      * @param int $status status of the leave
      * @param array $employees List of DB Ids of the affected employees
      * @return int Result
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function createRequestForUserList($type, $duration, $startdate, $enddate, $startdatetype, $enddatetype, $cause, $status, $employees) {
         $affectedRows = 0;
@@ -542,7 +541,7 @@ class Leaves_model extends CI_Model {
      * @param string $comments (optional) JSON encoded comment
      * @param string $document Base64 encoded document
      * @return int id of the newly acreated leave request into the db
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function createLeaveByApi($startdate, $enddate, $status, $employee, $cause,
             $startdatetype, $enddatetype, $duration, $type,
@@ -577,7 +576,7 @@ class Leaves_model extends CI_Model {
      * Update a leave request in the database with the values posted by an HTTP POST
      * @param int $leaveId of the leave request
      * @param int $userId Identifier of the user (optional)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function updateLeaves($leaveId, $userId = 0) {
         if ($userId == 0) {
@@ -624,7 +623,7 @@ class Leaves_model extends CI_Model {
      * @param int $leaveId leave request identifier
      * @param int $userId Identifier of the user (optional)
      * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function deleteLeave($leaveId, $userId = 0) {
         //Trace the modification if the feature is enabled
@@ -643,7 +642,7 @@ class Leaves_model extends CI_Model {
      * listed into config/constants.php
      * @param int $id leave request identifier
      * @param int $status Next Status
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function switchStatus($id, $status) {
         $json = $this->prepareCommentOnStatusChanged($id, $status);
@@ -709,7 +708,7 @@ class Leaves_model extends CI_Model {
     /**
      * Delete leaves attached to a user
      * @param int $employee identifier of an employee
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function deleteLeavesCascadeUser($employee) {
         //Select the leaves of a users (if history feature is enabled)
@@ -730,7 +729,7 @@ class Leaves_model extends CI_Model {
      * @param string $start Unix timestamp / Start date displayed on calendar
      * @param string $end Unix timestamp / End date displayed on calendar
      * @return string JSON encoded list of full calendar events
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function individual($user_id, $start = "", $end = "") {
         $this->db->select('leaves.*, types.name as type');
@@ -799,7 +798,7 @@ class Leaves_model extends CI_Model {
      * @param string $start Unix timestamp / Start date displayed on calendar
      * @param string $end Unix timestamp / End date displayed on calendar
      * @return string JSON encoded list of full calendar events
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function workmates($user_id, $start = "", $end = "") {
         $this->db->join('users', 'users.id = leaves.employee');
@@ -867,7 +866,7 @@ class Leaves_model extends CI_Model {
      * @param string $start Unix timestamp / Start date displayed on calendar
      * @param string $end Unix timestamp / End date displayed on calendar
      * @return string JSON encoded list of full calendar events
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function collaborators($user_id, $start = "", $end = "") {
         $this->db->join('users', 'users.id = leaves.employee');
@@ -936,7 +935,7 @@ class Leaves_model extends CI_Model {
      * @param bool $children Include sub department in the query
      * @param string $statusFilter optional filter on status
      * @return string JSON encoded list of full calendar events
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function department($entity_id, $start = "", $end = "", $children = FALSE, $statusFilter = NULL) {
         $this->db->select('users.firstname, users.lastname, users.manager');
@@ -1149,7 +1148,7 @@ class Leaves_model extends CI_Model {
      * @param int $entity_id Entity identifier (the department)
      * @param bool $children Include sub department in the query
      * @return array List of leave requests (DB records)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function entity($entity_id, $children = FALSE) {
         $this->db->select('users.firstname, users.lastname,  leaves.*, types.name as type');
@@ -1181,7 +1180,7 @@ class Leaves_model extends CI_Model {
      * @param int $manager connected user
      * @param bool $all TRUE all requests, FALSE otherwise
      * @return array Recordset (can be empty if no requests or not a manager)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getLeavesRequestedToManager($manager, $all = FALSE) {
         $this->load->model('delegations_model');
@@ -1254,7 +1253,7 @@ class Leaves_model extends CI_Model {
      * Count leave requests submitted to the connected user (or if delegate of a manager)
      * @param int $manager connected user
      * @return int number of requests
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function countLeavesRequestedToManager($manager) {
         $this->load->model('delegations_model');
@@ -1277,7 +1276,7 @@ class Leaves_model extends CI_Model {
      * Purge the table by deleting the records prior $toDate
      * @param date $toDate
      * @return int number of affected rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function purgeLeaves($toDate) {
         //TODO : if one day we use this function, should what should we do with the history feature?
@@ -1288,7 +1287,7 @@ class Leaves_model extends CI_Model {
     /**
      * Count the number of rows into the table
      * @return int number of rows
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function count() {
         $this->db->select('count(*) as number', FALSE);
@@ -1301,7 +1300,7 @@ class Leaves_model extends CI_Model {
      * All leaves between two timestamps, no filters
      * @param string $startDate Start date displayed on calendar
      * @param string $endDate End date displayed on calendar
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function all($startDate, $endDate) {
         $this->db->select("users.id as user_id, users.firstname, users.lastname, leaves.*", FALSE);
@@ -1321,7 +1320,7 @@ class Leaves_model extends CI_Model {
      * @param string $statusFilter optional filter on status
      * @param boolean $calendar Is this function called to display a calendar
      * @return array Array of objects containing leave details
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function tabular(&$entity=-1, &$month=0, &$year=0, &$children=TRUE, $statusFilter=NULL, $calendar=FALSE) {
         //Find default values for parameters (passed by ref)
@@ -1371,7 +1370,7 @@ class Leaves_model extends CI_Model {
      * @param int $year Year number
      * @param string $statusFilter optional filter on status
      * @return array Array of objects containing leave details
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function tabularList($list, &$month=0, &$year=0, $statusFilter=NULL) {
         //Find default values for parameters (passed by ref)
@@ -1405,7 +1404,7 @@ class Leaves_model extends CI_Model {
      * Count the total duration of leaves for the month. Only accepted leaves are taken into account
      * @param array $linear linear calendar for one employee
      * @return int total of leaves duration
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function monthlyLeavesDuration($linear) {
         $total = 0;
@@ -1430,7 +1429,7 @@ class Leaves_model extends CI_Model {
      * Only accepted leaves are taken into account.
      * @param array $linear linear calendar for one employee
      * @return array key/value array (k:leave type label, v:sum for the month)
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function monthlyLeavesByType($linear) {
         $by_types = array();
@@ -1464,7 +1463,7 @@ class Leaves_model extends CI_Model {
      * @param boolean $canceled Include leave requests with status canceled
      * @param boolean $calendar Is this function called to display a calendar
      * @return array Array of objects containing leave details
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function linear($employee_id, $month, $year,
             $planned = FALSE, $requested = FALSE, $accepted = FALSE,
@@ -1627,7 +1626,7 @@ class Leaves_model extends CI_Model {
      * List all duplicated leave requests (exact same dates, status, etc.)
      * Note: this doesn't detect overlapping requests.
      * @return array List of duplicated leave requests
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function detectDuplicatedRequests() {
         $this->db->select('leaves.id, CONCAT(users.firstname, \' \', users.lastname) as user_label', FALSE);
@@ -1651,7 +1650,7 @@ class Leaves_model extends CI_Model {
     /**
      * List all leave requests with a wrong date type (starting afternoon and ending morning of the same day)
      * @return array List of wrong leave requests
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function detectWrongDateTypes() {
         $this->db->select('leaves.*, CONCAT(users.firstname, \' \', users.lastname) as user_label', FALSE);
@@ -1671,7 +1670,7 @@ class Leaves_model extends CI_Model {
      * List of leave requests for which they are not entitled days on contracts or employee
      * Note: this might be an expected behaviour (avoid to track them into the balance report).
      * @return array List of duplicated leave requests
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function detectBalanceProblems() {
         $query = $this->db->query('SELECT CONCAT(users.firstname, \' \', users.lastname) AS user_label,
@@ -1696,7 +1695,7 @@ class Leaves_model extends CI_Model {
     /**
      * List of leave requests overlapping on two yearly periods.
      * @return array List of overlapping leave requests
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function detectOverlappingProblems() {
         $query = $this->db->query('SELECT CONCAT(users.firstname, \' \', users.lastname) AS user_label,

@@ -1,9 +1,8 @@
 <?php
 /**
  * This controller serves all the actions performed on postions
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.1.0
  */
 
@@ -18,7 +17,7 @@ class Positions extends CI_Controller {
 
     /**
      * Default constructor
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -29,7 +28,7 @@ class Positions extends CI_Controller {
 
     /**
      * Display list of positions
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function index() {
         $this->auth->checkIfOperationIsAllowed('list_positions');
@@ -47,7 +46,7 @@ class Positions extends CI_Controller {
 
     /**
      * Display a popup showing the list of positions
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function select() {
         $this->auth->checkIfOperationIsAllowed('list_positions');
@@ -59,7 +58,7 @@ class Positions extends CI_Controller {
 
     /**
      * Display a form that allows adding a position
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function create() {
         $this->auth->checkIfOperationIsAllowed('create_positions');
@@ -86,7 +85,7 @@ class Positions extends CI_Controller {
     /**
      * Display a form that allows to edit a position
      * @param int $id position identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function edit($id) {
         $this->auth->checkIfOperationIsAllowed('edit_positions');
@@ -117,7 +116,7 @@ class Positions extends CI_Controller {
     /**
      * Delete a position
      * @param int $id position identifier
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function delete($id) {
         $this->auth->checkIfOperationIsAllowed('delete_positions');
@@ -128,7 +127,7 @@ class Positions extends CI_Controller {
 
     /**
      * Export the list of all positions into an Excel file
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function export() {
         $this->auth->checkIfOperationIsAllowed('export_positions');

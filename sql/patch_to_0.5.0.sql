@@ -2,7 +2,7 @@
 -- Jorani Schema upgrade to 0.5.0
 -- 
 -- @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
--- @copyright  Copyright (c) 2014-2023 Benjamin BALET
+-- @copyright  Copyright (c) Fadzrul Aiman
 
 -- New features:
 --      * Bug fix on table dayoffs

@@ -1,9 +1,8 @@
 <?php
 /**
  * This view allows to create a new employee
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.1.0
  */
 ?>
@@ -411,7 +410,7 @@ function submit_form() {
  * Generate a password of the specified length
  * @param int len Length of password to be generated
  * @returns string generated password
- * @author Benjamin BALET <benjamin.balet@gmail.com>
+       * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
  */
 function password_generator(len) {
     var length = (len) ? (len) : (10);
@@ -441,7 +440,7 @@ function password_generator(len) {
  * @param string pattern of the combination
  * @param int max Maximum length of the generated login (default 32)
  * @returns string Combination of firstname and lastname
- * @author Benjamin BALET <benjamin.balet@gmail.com>
+       * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
  */
 function generateLogin(firstname, lastname, pattern, max) {
     max = typeof max !== 'undefined' ? max : 32;

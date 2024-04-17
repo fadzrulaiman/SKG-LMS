@@ -1,9 +1,8 @@
 <?php
 /**
  * This class contains the business logic and manages the persistence of delegations
- * @copyright  Copyright (c) 2014-2023 Benjamin BALET
- * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link            https://github.com/bbalet/jorani
+ * @copyright  Copyright (c) Fadzrul Aiman
+
  * @since         0.1.0
  */
 
@@ -27,7 +26,7 @@ class Delegations_model extends CI_Model {
      * Get the list of delegations for a manager
      * @param int $manager id of manager
      * @return array record of users
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function listDelegationsForManager($manager) {
         $this->db->select('delegations.*, CONCAT(firstname, \' \', lastname) as delegate_name', FALSE);
@@ -41,7 +40,7 @@ class Delegations_model extends CI_Model {
      * @param int $employee id of the employee to be checked
      * @param int $manager id of a manager
      * @return bool is delegate
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function isDelegateOfManager($employee, $manager) {
         $this->db->from('delegations');
@@ -59,7 +58,7 @@ class Delegations_model extends CI_Model {
      * Return TRUE if an employee has any delegation, FALSE otherwise
      * @param int $employee id of the employee to be checked
      * @return bool has delegation
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function hasDelegation($employee) {
         $this->db->from('delegations');
@@ -76,7 +75,7 @@ class Delegations_model extends CI_Model {
      * Get the list of manager ids for which an employee has the delegation
      * @param int $employee id of an employee
      * @return array of employee identifiers
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function listManagersGivingDelegation($id) {
         $this->db->select("manager_id");
@@ -94,7 +93,7 @@ class Delegations_model extends CI_Model {
      * Get the list of e-mails of employees having the delegation from a manager
      * @param int $id id of a manager
      * @return array record of users
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function listMailsOfDelegates($id) {
         $this->db->select("GROUP_CONCAT(email SEPARATOR ',') as list", FALSE);
@@ -116,7 +115,7 @@ class Delegations_model extends CI_Model {
      * @param int $manager id of a manager giving the delegation
      * @param int $delegate id of a employee to whom the delegation is given
      * @return bool outcome of the query
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function addDelegate($manager, $delegate) {
         $data = array(
@@ -130,7 +129,7 @@ class Delegations_model extends CI_Model {
     /**
      * Delete a delegation from the database
      * @param int $id identifier of the delegation
-     * @author Benjamin BALET <benjamin.balet@gmail.com>
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function deleteDelegation($id) {
         $this->db->delete('delegations', array('id' => $id));
