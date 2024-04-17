@@ -1,0 +1,5 @@
+ERROR - 2024-04-17 04:48:43 --> Severity: error --> Exception: count(): Argument #1 ($value) must be of type Countable|array, null given C:\xampp\htdocs\SKG-LMS\application\controllers\Requests.php 485
+ERROR - 2024-04-17 04:48:43 --> Severity: error --> Exception: count(): Argument #1 ($value) must be of type Countable|array, null given C:\xampp\htdocs\SKG-LMS\application\controllers\Requests.php 485
+ERROR - 2024-04-17 04:48:43 --> Severity: error --> Exception: count(): Argument #1 ($value) must be of type Countable|array, null given C:\xampp\htdocs\SKG-LMS\application\controllers\Requests.php 485
+ERROR - 2024-04-17 04:48:44 --> Severity: error --> Exception: count(): Argument #1 ($value) must be of type Countable|array, null given C:\xampp\htdocs\SKG-LMS\application\controllers\Requests.php 485
+ERROR - 2024-04-17 04:48:54 --> Severity: error --> Exception: count(): Argument #1 ($value) must be of type Countable|array, null given C:\xampp\htdocs\SKG-LMS\application\controllers\Requests.php 485
