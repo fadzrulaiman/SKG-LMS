@@ -19,6 +19,7 @@ class Reports extends CI_Controller {
 
     /**
      * Default constructor
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -29,6 +30,7 @@ class Reports extends CI_Controller {
 
     /**
      * List the available custom reports (provided they are described into local/reports/*.ini)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function index() {
         $this->auth->checkIfOperationIsAllowed('report_list');
@@ -62,6 +64,7 @@ class Reports extends CI_Controller {
     /**
      * Landing page of the shipped-in balance report
      * @param string $refTmp Optional Unix timestamp (set a date of reference for the report).
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function balance($refTmp = NULL) {
         $this->auth->checkIfOperationIsAllowed('native_report_balance');
@@ -81,6 +84,7 @@ class Reports extends CI_Controller {
 
     /**
      * Ajax end-point : execute the balance report
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function executeBalanceReport() {
         $this->auth->checkIfOperationIsAllowed('native_report_balance');
@@ -169,6 +173,7 @@ class Reports extends CI_Controller {
 
     /**
      * Export the balance report into Excel
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function exportBalanceReport() {
         $this->auth->checkIfOperationIsAllowed('native_report_balance');
@@ -185,6 +190,7 @@ class Reports extends CI_Controller {
 
     /**
      * Landing page of the shipped-in leaves report
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      * @since 0.4.3
      */
     public function leaves() {
@@ -201,6 +207,7 @@ class Reports extends CI_Controller {
     /**
      * Report leaves request for a month and an entity
      * This report is inspired by the monthly presence report, but applicable to a set of employee.
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      * @since 0.4.3
      */
     public function executeLeavesReport() {
@@ -362,6 +369,7 @@ class Reports extends CI_Controller {
 
     /**
      * Export the leaves report into Excel
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      * @since 0.4.3
      */
     public function exportLeavesReport() {

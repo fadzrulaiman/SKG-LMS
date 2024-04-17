@@ -1,5 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Installing the library</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch03.html" title="Chapter 3. The Long Version: Installing the Library"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Installing the library</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 3. The Long Version: Installing the Library</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Installing the library"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec1.installing-library"></a>Installing the library</h2></div></div></div>
-                   <p>When you have verified the necessary preconditions as described in the previous
+            
+            <p>When you have verified the necessary preconditions as described in the previous
                 paragraphs it is time to install the library. The "installing" part is nothing more
                 than copying the files in the distribution to a place in the directory structure
                 where you script can find the library files. On a Unix system it is common to
@@ -26,8 +27,10 @@ root:/tmp&gt; ln -s /usr/shar/php/jpgraph-2.5 /usr/shar/php/jpgraph</pre><p>
                 to make any changes in your scripts. You just point out a different version of the
                 library in the symbolic link.</p>
             <div class="sect2" title="Configuring JpGraph/PHP on a development server"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.config-dev-server"></a>Configuring JpGraph/PHP on a development server</h3></div></div></div>
-                           <div class="sect3" title="Setting up your php.ini file"><div class="titlepage"><div><div><h4 class="title"><a name="sec3.setting-up-php-ini"></a>Setting up your php.ini file</h4></div></div></div>
-                                   <p>
+                
+                <div class="sect3" title="Setting up your php.ini file"><div class="titlepage"><div><div><h4 class="title"><a name="sec3.setting-up-php-ini"></a>Setting up your php.ini file</h4></div></div></div>
+                    
+                    <p>
                         </p><div class="tip" title="Tip" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Tip</h3>
                             <p>To find the location of your <code class="filename">php.ini</code> file
                                 create and run a script with the single line <code class="code">&lt;?php
@@ -227,7 +230,8 @@ root:/tmp&gt; ln -s /usr/shar/php/jpgraph-2.5 /usr/shar/php/jpgraph</pre><p>
                     </p>
                 </div>
                 <div class="sect3" title="Setting up your jpg-config.inc.php"><div class="titlepage"><div><div><h4 class="title"><a name="id2491276"></a>Setting up your jpg-config.inc.php</h4></div></div></div>
-                                   <p>Apart from the standard configuration described in <a class="xref" href="ch03s04.html" title="Installing and configuring Font support">Installing and configuring Font support</a> and <a class="xref" href="ch03s05.html" title="Adapting and customizing the installation">Adapting and customizing the installation</a> there is only one important
+                    
+                    <p>Apart from the standard configuration described in <a class="xref" href="ch03s04.html" title="Installing and configuring Font support">Installing and configuring Font support</a> and <a class="xref" href="ch03s05.html" title="Adapting and customizing the installation">Adapting and customizing the installation</a> there is only one important
                         configuration that is specific for a development server and that is the
                         localization setting for error messages. </p>
                     <p>As of version 3.0.0 there are three localization options</p>
@@ -270,8 +274,10 @@ root:/tmp&gt; ln -s /usr/shar/php/jpgraph-2.5 /usr/shar/php/jpgraph</pre><p>
                 </div>
             </div>
             <div class="sect2" title="Configuring JpGraph/PHP on a production server"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.config-prod-server"></a>Configuring JpGraph/PHP on a production server</h3></div></div></div>
-                           <div class="sect3" title="Setting up your php.ini file"><div class="titlepage"><div><div><h4 class="title"><a name="id2491419"></a>Setting up your php.ini file</h4></div></div></div>
-                                   <p>Apart from what is applicable to a development server as described in <a class="xref" href="ch03s03.html#sec2.config-dev-server" title="Configuring JpGraph/PHP on a development server">Configuring JpGraph/PHP on a development server</a> the following changes should be
+                
+                <div class="sect3" title="Setting up your php.ini file"><div class="titlepage"><div><div><h4 class="title"><a name="id2491419"></a>Setting up your php.ini file</h4></div></div></div>
+                    
+                    <p>Apart from what is applicable to a development server as described in <a class="xref" href="ch03s03.html#sec2.config-dev-server" title="Configuring JpGraph/PHP on a development server">Configuring JpGraph/PHP on a development server</a> the following changes should be
                         considered in a production environment.</p>
                     <p>
                         <span class="bold"><strong>Setting the memory limits</strong></span>
@@ -326,7 +332,8 @@ root:/tmp&gt; ln -s /usr/shar/php/jpgraph-2.5 /usr/shar/php/jpgraph</pre><p>
                     </div>
                 </div>
                 <div class="sect3" title="Setting up your jpg-config.inc.php"><div class="titlepage"><div><div><h4 class="title"><a name="id2491421"></a>Setting up your <code class="filename">jpg-config.inc.php</code></h4></div></div></div>
-                                   <p>On a production server it is best not to show detailed error messages to
+                    
+                    <p>On a production server it is best not to show detailed error messages to
                         an end user. Instead it is better to have a generic error message that
                         indicates a server problem and give an error code which can be decoded by
                         looking it up in the table in <a class="xref" href="aph.html" title="Appendix H. Error messages">Appendix H. <i>Error messages</i></a> Using a generic error message is achieved by
@@ -335,7 +342,8 @@ root:/tmp&gt; ln -s /usr/shar/php/jpgraph-2.5 /usr/shar/php/jpgraph</pre><p>
                 </div>
             </div>
             <div class="sect2" title="Adjusting PHP include path"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.adjusting-php-include-path"></a>Adjusting PHP include path</h3></div></div></div>
-                           <p>As was mentioned before the library should be installed somewhere in the PHP
+                
+                <p>As was mentioned before the library should be installed somewhere in the PHP
                     include path. There are two ways of configuring the include path:</p>
                 <p>
                     </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
@@ -353,7 +361,8 @@ root:/tmp&gt; ln -s /usr/shar/php/jpgraph-2.5 /usr/shar/php/jpgraph</pre><p>
                 <p><code class="code">require_once( 'jpgraph/jpgraph.php')</code></p>
             </div>
             <div class="sect2" title="Using Apache2 alias configuration during development"><div class="titlepage"><div><div><h3 class="title"><a name="id2491659"></a>Using Apache2 alias configuration during development</h3></div></div></div>
-                           <p>
+                
+                <p>
                     </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
                         <p>This section only discusses alias setting using the Apache HTTP server
                             so this section can be skipped at first time reading the manual without
@@ -408,7 +417,8 @@ root:/tmp&gt; ln -s /usr/shar/php/jpgraph-2.5 /usr/shar/php/jpgraph</pre><p>
                 <p>
                     </p><div class="example"><a name="id2491770"></a><p class="title"><b>Example 3.5. Alias configuration for a development server running Apache with
                             Eclipse-PDT</b></p><div class="example-contents">
-                                           <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
+                        
+                        <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
 3
 4

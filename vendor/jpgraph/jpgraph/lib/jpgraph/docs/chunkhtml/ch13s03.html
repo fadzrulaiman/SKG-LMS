@@ -1,5 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Sending data to a graph script with URI arguments (GET and POST)</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch13.html" title="Chapter 13. Getting hold of the data to be displayed"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Sending data to a graph script with URI arguments (GET and POST)</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 13. Getting hold of the data to be displayed</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Sending data to a graph script with URI arguments (GET and POST)"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2538267"></a>Sending data to a graph script with URI arguments (GET and POST)</h2></div></div></div>
-                   <p>In order to send data between different HTML pages (or to a specific page) there
+            
+            <p>In order to send data between different HTML pages (or to a specific page) there
                 are two ways to do this. Either by including the parameters in the URI directly,
                 (e.g. <code class="code">http://localhost/mygraph.php?d1=12</code>) or by creating a POST request
                 and send to a page. The details of these two methods are discussed below.</p>
@@ -28,7 +29,8 @@
                 </div><p>
             </p>
             <div class="sect2" title="Using GET arguments"><div class="titlepage"><div><div><h3 class="title"><a name="id2538350"></a>Using GET arguments</h3></div></div></div>
-                           <p>GET arguments are the arguments that can be added as part of the URI. For
+                
+                <p>GET arguments are the arguments that can be added as part of the URI. For
                     example as</p>
                 <p>
                     </p><pre class="screen">http://localhost/mygraph.php?id=12&amp;start=20081223&amp;end=20090115</pre><p>
@@ -76,7 +78,8 @@
                     be used in various context to display wanted data.</p>
             </div>
             <div class="sect2" title="Using a POST request"><div class="titlepage"><div><div><h3 class="title"><a name="id2538499"></a>Using a POST request</h3></div></div></div>
-                           <p>
+                
+                <p>
                     </p><div class="warning" title="Warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3>
                         <p>This is a fairly advanced topic and it is recommended to use the other
                             methods of sending data to a script unless the specifications explicitly
@@ -124,7 +127,8 @@
                         </li></ul></div><p>
                 </p>
                 <div class="figure"><a name="id2538657"></a><p class="title"><b>Figure 13.1. Post vs. header() data direction</b></p><div class="figure-contents">
-                                   <div class="mediaobject"><img src="images/post_vs_header.png" alt="Post vs. header() data direction"><div class="caption">
+                    
+                    <div class="mediaobject"><img src="images/post_vs_header.png" alt="Post vs. header() data direction"><div class="caption">
                             <p>Note that the image is greatly simplified to help illustrate the
                                 vital point on data direction. For example the post request shown to
                                 originate from a browser could originate from any client, for
@@ -177,7 +181,8 @@
                     the first phase when the request is sent to the B side</p>
                 <p>
                     </p><div class="figure"><a name="id2538810"></a><p class="title"><b>Figure 13.2. The request phase of a POST header</b></p><div class="figure-contents">
-                                           <div class="mediaobject"><img src="images/post_request_phase1.png" alt="The request phase of a POST header"><div class="caption">
+                        
+                        <div class="mediaobject"><img src="images/post_request_phase1.png" alt="The request phase of a POST header"><div class="caption">
                                 <p>1. The request is initially made by calling the a.php script,
                                     e.g. http://localhost/a.php in the browser</p>
                                 <p>2. When the a.php script is executed it will create the POST
@@ -189,7 +194,8 @@
                     </div></div><p><br class="figure-break">
                 </p>
                 <div class="figure"><a name="id2538834"></a><p class="title"><b>Figure 13.3. The reply phase of a POST request</b></p><div class="figure-contents">
-                                   <div class="mediaobject"><img src="images/post_request_phase2.png" alt="The reply phase of a POST request"><div class="caption">
+                    
+                    <div class="mediaobject"><img src="images/post_request_phase2.png" alt="The reply phase of a POST request"><div class="caption">
                             <p>3. The b.php returns a reply by fir example echoing back a reply
                                 code</p>
                             <p>4. The script running the browser receives its final data (which

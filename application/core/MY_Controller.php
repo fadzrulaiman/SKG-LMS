@@ -26,6 +26,7 @@ class MY_RestController extends CI_Controller {
     /**
      * Default constructor
      * Check user credentials
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct()
     {
@@ -92,7 +93,8 @@ class MY_RestController extends CI_Controller {
                         log_message('debug', 'Client sent us acceptable language codes: ' . $_SERVER['HTTP_ACCEPT_LANGUAGE']);
                         $availableLanguages = explode(",", $this->config->item('languages'));
                         log_message('debug', 'Jorani currently support one of these lang codes: ' . $this->config->item('languages'));
-                                           $possibleLanguage = $this->preferedLanguages($availableLanguages, $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+                        
+                        $possibleLanguage = $this->preferedLanguages($availableLanguages, $_SERVER['HTTP_ACCEPT_LANGUAGE']);
                         $langCode = $this->polyglot->language2code($this->config->item('language'));
                         if (count($possibleLanguage) > 0) {
                             if (!in_array($langCode, $availableLanguages)) {
@@ -127,6 +129,7 @@ class MY_RestController extends CI_Controller {
      * @param array $availableLanguages list of languages supported by Jorani
      * @param string $httpAcceptLanguage HTTP Request Header (accept-language)
      * @return array associative array langCode/Score (eg. [en] => 0.8, [es] => 0.4)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     private function preferedLanguages($availableLanguages, $httpAcceptLanguage) {
         $availableLanguages = array_flip($availableLanguages);
@@ -153,6 +156,7 @@ class MY_RestController extends CI_Controller {
 
     /**
      * Pre-flight check for CORS requests
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function options() {
         log_message('debug', '__options');

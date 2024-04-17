@@ -1,11 +1,13 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Adjusting the appearance of the scale labels</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch14.html" title="Chapter 14. Common features for all Cartesian (x,y) graph types"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Adjusting the appearance of the scale labels</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 14. Common features for all Cartesian (x,y) graph types</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Adjusting the appearance of the scale labels"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="sec1.adv-scale-label-handling"></a>Adjusting the appearance of the scale labels</h2></div></div></div>
-                   <p>Since scale labels play such an important part of producing a visually pleasing
+            
+            <p>Since scale labels play such an important part of producing a visually pleasing
                 graph there are a number of ways to fine tune this appearance. In the section below
                 we have tried to logically group the different options to make it easier to get an
                 overview.</p>
             <p></p>
             <div class="sect2" title="Adjusting the position"><div class="titlepage"><div><div><h3 class="title"><a name="id2546048"></a>Adjusting the position</h3></div></div></div>
-                           <p>The exact position of the labels can be adjusted with the methods</p>
+                
+                <p>The exact position of the labels can be adjusted with the methods</p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                             <p><code class="code">Axis::SetLabelAlign($aHAlign,$aVAlign='top',$aParagraphAlign='left')</code></p>
@@ -42,7 +44,8 @@
                 </p>
             </div>
             <div class="sect2" title="Adjusting font and color"><div class="titlepage"><div><div><h3 class="title"><a name="id2546113"></a>Adjusting font and color</h3></div></div></div>
-                           <p>By default the color of the labels will be the same as for the axis but it is
+                
+                <p>By default the color of the labels will be the same as for the axis but it is
                     possible to use a different color for the labels by supplying a second argument
                     to the <code class="code">SetColor()</code> method for the axis.</p>
                 <p>
@@ -66,7 +69,8 @@
                     fonts guaranteed to be available everywhere)</p>
                 <p>
                     </p><div class="example"><a name="id2546229"></a><p class="title"><b>Example 14.1. Adjusting the axis font and color</b></p><div class="example-contents">
-                                           <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
+                        
+                        <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 2
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$graph-&gt;xaxis-&gt;SetFont(FF_ARIAL,FS_NORMAL,9);
 $graph-&gt;xaxis-&gt;SetColor('black','blue');</span></pre></td></tr></table></div>
@@ -74,7 +78,8 @@ $graph-&gt;xaxis-&gt;SetColor('black','blue');</span></pre></td></tr></table></d
                 </p>
             </div>
             <div class="sect2" title="Adjusting the background of the labels"><div class="titlepage"><div><div><h3 class="title"><a name="id2546240"></a>Adjusting the background of the labels</h3></div></div></div>
-                           <p>As a kind of a very special formatting it is also possible to set a specific
+                
+                <p>As a kind of a very special formatting it is also possible to set a specific
                     background for just the labels on the graph. This is most often used when there
                     is background image that risks of hiding the clarity of the labels. In those
                     cases it can be suitable to have a some lighter background to make it easier to
@@ -146,7 +151,8 @@ $graph-&gt;xaxis-&gt;SetColor('black','blue');</span></pre></td></tr></table></d
                 </p>
             </div>
             <div class="sect2" title="Hiding and rotating labels"><div class="titlepage"><div><div><h3 class="title"><a name="id2546732"></a>Hiding and rotating labels</h3></div></div></div>
-                           <p>For the x-axis it is common to rotate the label to better fit long text
+                
+                <p>For the x-axis it is common to rotate the label to better fit long text
                     labels. This is done with a call to</p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -179,7 +185,8 @@ $graph-&gt;xaxis-&gt;SetColor('black','blue');</span></pre></td></tr></table></d
                 </p>
             </div>
             <div class="sect2" title="Fine tuning the automatic scales"><div class="titlepage"><div><div><h3 class="title"><a name="id2546838"></a>Fine tuning the automatic scales</h3></div></div></div>
-                           <p>By default the auto-scaling algorithm tries ot find as tight upper and lower
+                
+                <p>By default the auto-scaling algorithm tries ot find as tight upper and lower
                     bands as possible as long as they are even multiple of the chosen major step
                     size. In some instances some more space is needed. For example to have extra
                     room at the top of the graph to show data labels. In order to have some extra
@@ -258,7 +265,8 @@ $graph-&gt;xaxis-&gt;SetColor('black','blue');</span></pre></td></tr></table></d
                 </p>
             </div>
             <div class="sect2" title="Manually altering the appearance of tick marks"><div class="titlepage"><div><div><h3 class="title"><a name="id2547269"></a>Manually altering the appearance of tick marks</h3></div></div></div>
-                           <p>To adjust the appearance of the tick marks the following three methods can be
+                
+                <p>To adjust the appearance of the tick marks the following three methods can be
                     used</p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -290,7 +298,8 @@ $graph-&gt;xaxis-&gt;SetColor('black','blue');</span></pre></td></tr></table></d
                 </p>
             </div>
             <div class="sect2" title="Manually specifying scale labels"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.manually-spec-labels"></a>Manually specifying scale labels</h3></div></div></div>
-                           <p>As was mentioned before it is perfectly possible to manually specify the scale
+                
+                <p>As was mentioned before it is perfectly possible to manually specify the scale
                     labels. This is normally done for "text" scales that are most commonly used with
                     bar graphs. </p>
                 <p>Specifying a text scale for the axis (normally the x-axis) will "reserve" a
@@ -317,7 +326,8 @@ $graph-&gt;xaxis-&gt;SetColor('black','blue');</span></pre></td></tr></table></d
                 </div>
                 <p>
                     </p><div class="figure"><a name="id2547469"></a><p class="title"><b>Figure 14.39. Manual text scale example </b></p><div class="figure-contents">
-                                           <div class="figure"><a name="fig.manual_textscale_ex1"></a><p class="title"><b>Figure 14.40. Manual text scale with month labels <code class="uri"><a class="uri" href="example_src/manual_textscale_ex1.html" target="_top">(<code class="filename">manual_textscale_ex1.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/manual_textscale_ex1.png" alt="Manual text scale example"></span> </div></div><br class="figure-break">
+                        
+                        <div class="figure"><a name="fig.manual_textscale_ex1"></a><p class="title"><b>Figure 14.40. Manual text scale with month labels <code class="uri"><a class="uri" href="example_src/manual_textscale_ex1.html" target="_top">(<code class="filename">manual_textscale_ex1.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/manual_textscale_ex1.png" alt="Manual text scale example"></span> </div></div><br class="figure-break">
                     </div></div><p><br class="figure-break">
                 </p>
                 <p>Since the manual text scale sets a scale label for every single data point
@@ -333,7 +343,8 @@ $graph-&gt;xaxis-&gt;SetColor('black','blue');</span></pre></td></tr></table></d
                                 clarifies how this works</p>
                             <p>
                                 </p><div class="example"><a name="id2547540"></a><p class="title"><b>Example 14.2. Adjusting manual text tick interval </b></p><div class="example-contents">
-                                                                   <div class="figure"><a name="fig.manual_textscale_ex2"></a><p class="title"><b>Figure 14.41. Setting text tick interval=2 <code class="uri"><a class="uri" href="example_src/manual_textscale_ex2.html" target="_top">(<code class="filename">manual_textscale_ex2.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/manual_textscale_ex2.png" alt="Setting text tick interval=2 (manual_textscale_ex2.php)"></span> </div></div><br class="figure-break">
+                                    
+                                    <div class="figure"><a name="fig.manual_textscale_ex2"></a><p class="title"><b>Figure 14.41. Setting text tick interval=2 <code class="uri"><a class="uri" href="example_src/manual_textscale_ex2.html" target="_top">(<code class="filename">manual_textscale_ex2.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/manual_textscale_ex2.png" alt="Setting text tick interval=2 (manual_textscale_ex2.php)"></span> </div></div><br class="figure-break">
                                 </div></div><p><br class="example-break">
                             </p>
                             <p>In the above example only ever second text tick mark is set and
@@ -354,7 +365,8 @@ $graph-&gt;xaxis-&gt;SetColor('black','blue');</span></pre></td></tr></table></d
                                 this method instead.</p>
                             <p>
                                 </p><div class="example"><a name="id2547630"></a><p class="title"><b>Example 14.3. Adjusting the interval for the labels</b></p><div class="example-contents">
-                                                                   <div class="figure"><a name="fig.manual_textscale_ex3"></a><p class="title"><b>Figure 14.42. Labels at every 2:nd tick mark <code class="uri"><a class="uri" href="example_src/manual_textscale_ex3.html" target="_top">(<code class="filename">manual_textscale_ex3.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/manual_textscale_ex3.png" alt="Labels at every 2:nd tick mark (manual_textscale_ex3.php)"></span> </div></div><br class="figure-break">
+                                    
+                                    <div class="figure"><a name="fig.manual_textscale_ex3"></a><p class="title"><b>Figure 14.42. Labels at every 2:nd tick mark <code class="uri"><a class="uri" href="example_src/manual_textscale_ex3.html" target="_top">(<code class="filename">manual_textscale_ex3.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/manual_textscale_ex3.png" alt="Labels at every 2:nd tick mark (manual_textscale_ex3.php)"></span> </div></div><br class="figure-break">
                                 </div></div><p><br class="example-break">
                             </p>
                         </li></ul></div><p>
@@ -375,7 +387,8 @@ $graph-&gt;xaxis-&gt;SetColor('black','blue');</span></pre></td></tr></table></d
                 </p>
                 <p>
                     </p><div class="example"><a name="id2547704"></a><p class="title"><b>Example 14.4. Adjusting both text tick mark and label interval</b></p><div class="example-contents">
-                                           <div class="figure"><a name="fig.manual_textscale_ex4"></a><p class="title"><b>Figure 14.43. Tick marks every 40 points and labels every 2:nd tick mark <code class="uri"><a class="uri" href="example_src/manual_textscale_ex4.html" target="_top">(<code class="filename">manual_textscale_ex4.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/manual_textscale_ex4.png" alt="Tick marks every 40 points and labels every 2:nd tick mark (manual_textscale_ex4.php)"></span> </div></div><br class="figure-break">
+                        
+                        <div class="figure"><a name="fig.manual_textscale_ex4"></a><p class="title"><b>Figure 14.43. Tick marks every 40 points and labels every 2:nd tick mark <code class="uri"><a class="uri" href="example_src/manual_textscale_ex4.html" target="_top">(<code class="filename">manual_textscale_ex4.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/manual_textscale_ex4.png" alt="Tick marks every 40 points and labels every 2:nd tick mark (manual_textscale_ex4.php)"></span> </div></div><br class="figure-break">
                     </div></div><p><br class="example-break">
                 </p>
                 <p>In addition to the text scale is it in principle also possible to use a manual
@@ -396,7 +409,8 @@ $graph-&gt;xaxis-&gt;SetColor('black','blue');</span></pre></td></tr></table></d
                 </p>
             </div>
             <div class="sect2" title="Emphasize of parts of the scale"><div class="titlepage"><div><div><h3 class="title"><a name="id2547382"></a>Emphasize of parts of the scale</h3></div></div></div>
-                           <p>Sometimes it is a good idea to emphasize part of the scale. It can be on
+                
+                <p>Sometimes it is a good idea to emphasize part of the scale. It can be on
                     either the x- or the y-axis. The library offers the possibility to add a band
                     with a separate background color for part of the scale in either x, y (or both)
                     directions.</p>
@@ -423,7 +437,8 @@ $graph-&gt;Add($band);</span></pre></td></tr></table></div><p>
                     below</p>
                 <p>
                     </p><div class="example"><a name="ex.types-of-plotbands"></a><p class="title"><b>Example 14.5. Different densities for plot bands</b></p><div class="example-contents">
-                                           <div class="informaltable">
+                        
+                        <div class="informaltable">
                             <table border="0"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><tbody><tr><td>
                                             <p>
                                                 </p><div class="figure"><a name="fig.smallstaticbandsex1"></a><p class="title"><b>Figure 14.44. BAND_RDIAG <code class="uri"><a class="uri" href="example_src/smallstaticbandsex1.html" target="_top">(<code class="filename">smallstaticbandsex1.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/smallstaticbandsex1.png" alt="BAND_RDIAG (smallstaticbandsex1.php)"></span> </div></div><p><br class="figure-break">
@@ -469,7 +484,8 @@ $graph-&gt;Add($band);</span></pre></td></tr></table></div><p>
                     with different density parameters.</p>
                 <p>
                     </p><div class="example"><a name="ex.plotband-densities"></a><p class="title"><b>Example 14.6. Different densities for various plot bands</b></p><div class="example-contents">
-                                           <div class="informaltable">
+                        
+                        <div class="informaltable">
                             <table border="0"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><tbody><tr><td>
                                             <p>
                                                 </p><div class="figure"><a name="fig.plotbanddensity_ex0"></a><p class="title"><b>Figure 14.52. SetDensity(10) <code class="uri"><a class="uri" href="example_src/plotbanddensity_ex0.html" target="_top">(<code class="filename">plotbanddensity_ex0.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/plotbanddensity_ex0.png" alt="SetDensity(10) (plotbanddensity_ex0.php)"></span> </div></div><p><br class="figure-break">
@@ -500,12 +516,14 @@ $graph-&gt;Add($band);</span></pre></td></tr></table></div><p>
                     plot bands in <a class="xref" href="ch14s08.html#fig.staticbandbarex7" title="Figure 14.56. Creative use of plot bands (staticbandbarex7.php)">Figure 14.56. Creative use of plot bands <code class="uri"><a class="uri" href="example_src/staticbandbarex7.html" target="_top">(<code class="filename">staticbandbarex7.php</code>)</a></code> </a></p>
                 <p>
                     </p><div class="figure"><a name="id2548462"></a><p class="title"><b>Figure 14.55. Creative use of plot bands</b></p><div class="figure-contents">
-                                           <div class="figure"><a name="fig.staticbandbarex7"></a><p class="title"><b>Figure 14.56. Creative use of plot bands <code class="uri"><a class="uri" href="example_src/staticbandbarex7.html" target="_top">(<code class="filename">staticbandbarex7.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/staticbandbarex7.png" alt="Creative use of plot bands"></span> </div></div><br class="figure-break">
+                        
+                        <div class="figure"><a name="fig.staticbandbarex7"></a><p class="title"><b>Figure 14.56. Creative use of plot bands <code class="uri"><a class="uri" href="example_src/staticbandbarex7.html" target="_top">(<code class="filename">staticbandbarex7.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/staticbandbarex7.png" alt="Creative use of plot bands"></span> </div></div><br class="figure-break">
                     </div></div><p><br class="figure-break">
                 </p>
             </div>
             <div class="sect2" title="Adding static lines for specific scale values in the graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2548494"></a>Adding static lines for specific scale values in the graph</h3></div></div></div>
-                           <p>In addition to the plot band it is possible to add static lines to emphasize a
+                
+                <p>In addition to the plot band it is possible to add static lines to emphasize a
                     specific scale value. A pot line is added to the graph by creating an instance
                     of the <code class="code">class PlotLine</code> in much the same way as for plot bands. The
                     following code snippets show how this can be done</p>
@@ -524,7 +542,8 @@ $graph-&gt;AddLine($line);</span></pre></td></tr></table></div><p>
                         <a class="xref" href="ch14s08.html#fig.impulsex4" title="Figure 14.58. Adding a static line at y=0 to simulate an extra 0-axis (impulsex4.php)">Figure 14.58. Adding a static line at y=0 to simulate an extra 0-axis <code class="uri"><a class="uri" href="example_src/impulsex4.html" target="_top">(<code class="filename">impulsex4.php</code>)</a></code> </a> shows.</p>
                 <p>
                     </p><div class="figure"><a name="id2548541"></a><p class="title"><b>Figure 14.57. Use of a static line to simulate an extra x-axis at y=0</b></p><div class="figure-contents">
-                                           <div class="figure"><a name="fig.impulsex4"></a><p class="title"><b>Figure 14.58. Adding a static line at y=0 to simulate an extra 0-axis <code class="uri"><a class="uri" href="example_src/impulsex4.html" target="_top">(<code class="filename">impulsex4.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/impulsex4.png" alt="Use of a static line to simulate an extra x-axis at y=0"></span> </div></div><br class="figure-break">
+                        
+                        <div class="figure"><a name="fig.impulsex4"></a><p class="title"><b>Figure 14.58. Adding a static line at y=0 to simulate an extra 0-axis <code class="uri"><a class="uri" href="example_src/impulsex4.html" target="_top">(<code class="filename">impulsex4.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/impulsex4.png" alt="Use of a static line to simulate an extra x-axis at y=0"></span> </div></div><br class="figure-break">
                     </div></div><p><br class="figure-break">
                 </p>
             </div>

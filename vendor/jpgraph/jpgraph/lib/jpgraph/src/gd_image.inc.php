@@ -504,7 +504,8 @@ class Image {
 
                 $x -= $rect_width/2;
                 $x += sin($dir*M_PI/180)*$height;
-                $y += $rect_height/2;           
+                $y += $rect_height/2;                
+
             } elseif( $dir >= 270 && $dir <= 360 ) {
 
                 $x -= $rect_width/2;
@@ -754,7 +755,8 @@ class Image {
         // box is sometimes coinciding with the first pixel of the text
         //$bbox[0] -= 1;
         //$bbox[6] -= 1;
-           // For roatated text we need to add extra width for rotated
+        
+        // For roatated text we need to add extra width for rotated
         // text since the kerning and stroking of the TTF is not the same as for
         // text at a 0 degree angle
 
@@ -906,7 +908,8 @@ class Image {
 
             if( $this->text_valign != 'basepoint' ) {
                 // Align x,y ot lower left corner of bbox
-           
+                
+
                 if( $this->text_halign=='right' ) {
                     $x -= $width;
                     $x -= $bbox[0];
@@ -1334,7 +1337,8 @@ class Image {
         if( $this->use_anti_aliasing ) {
 //            JpGraphError::RaiseL(25129); // Anti-alias can not be used with dashed lines. Please disable anti-alias or use solid lines.
         }
-           $x1 = round($x1);
+        
+        $x1 = round($x1);
         $x2 = round($x2);
         $y1 = round($y1);
         $y2 = round($y2);
@@ -1361,11 +1365,13 @@ class Image {
         if( $this->use_anti_aliasing ) {
 //            JpGraphError::RaiseL(25129); // Anti-alias can not be used with dashed lines. Please disable anti-alias or use solid lines.
         }
-           $x1 = round($x1);
+        
+        $x1 = round($x1);
         $x2 = round($x2);
         $y1 = round($y1);
         $y2 = round($y2);
-           /*
+        
+        /*
         $dash_length *= $this->scale;
         $dash_space  *= $this->scale;
         */
@@ -1756,7 +1762,8 @@ class Image {
 
         $dist_x = $weight * (sin($angle)) / 2;
         $dist_y = $weight * (cos($angle)) / 2;
-           $p1x=ceil(($x1 + $dist_x));
+        
+        $p1x=ceil(($x1 + $dist_x));
         $p1y=ceil(($y1 + $dist_y));
         $p2x=ceil(($x2 + $dist_x));
         $p2y=ceil(($y2 + $dist_y));
@@ -1802,7 +1809,8 @@ class Image {
             $pts[] = $x2 - $weight; $pts[] = $y2;
 
         } else {
-                   var_dump($x1, $x2, $y1, $y2);
+            
+            var_dump($x1, $x2, $y1, $y2);
             $length = sqrt(pow($x2 - $x1, 2) + pow($y2 - $y1, 2));
             var_dump($length);exit;
             exit;

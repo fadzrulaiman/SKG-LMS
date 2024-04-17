@@ -1,7 +1,8 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 23. Filled contour graphs</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="pt05.html" title="Part V. Additional graph types available in the professional version"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 23. Filled contour graphs</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Part V. Additional graph types available in the professional version</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="chapter" title="Chapter 23. Filled contour graphs"><div class="titlepage"><div><div><h2 class="title"><a name="chapter.filled-contour-graphs"></a>Chapter 23. Filled contour graphs</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="ch23.html#id2594434">23.1. Filled Contour graphs</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch23.html#id2594607">23.1.1. Creating a filled contour graph</a></span></dt><dt><span class="sect2"><a href="ch23.html#id2594628">23.1.2. Enabling and disabling contour lines</a></span></dt><dt><span class="sect2"><a href="ch23.html#id2594656">23.1.3. Specifying a filled contour</a></span></dt><dt><span class="sect2"><a href="ch23.html#id2594673">23.1.4. Adjusting the labels in the contour</a></span></dt><dt><span class="sect2"><a href="ch23.html#id2595002">23.1.5. Selecting the adaptive method to use</a></span></dt></dl></dd></dl></div>
     
     <div class="sect1" title="Filled Contour graphs"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2594434"></a>Filled Contour graphs</h2></div></div></div>
-           <p>
+        
+        <p>
             </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
                 <p>This section describes additional functionality available in the pro-version
                     v3.1p and above.</p>
@@ -39,7 +40,8 @@
             lines are handled in exactly the same way as described in the previous section for basic
             contours.</p>
         <div class="sect2" title="Creating a filled contour graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2594607"></a>Creating a filled contour graph</h3></div></div></div>
-                   <p>The filled contour graph follows the exact same principles as for the non filled
+            
+            <p>The filled contour graph follows the exact same principles as for the non filled
                 graph described above. The core difference is that a filled graph is created as an
                 instance of <code class="code">class FilledContourPlot</code>, i.e.</p>
             <p>
@@ -52,7 +54,8 @@
             </p>
         </div>
         <div class="sect2" title="Enabling and disabling contour lines"><div class="titlepage"><div><div><h3 class="title"><a name="id2594628"></a>Enabling and disabling contour lines</h3></div></div></div>
-                   <p>Contour lines are controlled with the method</p>
+            
+            <p>Contour lines are controlled with the method</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                         <p><code class="code">FilledContourPlot::ShowLines($aFlg,$aColorWithFilled='black')</code></p>
@@ -65,7 +68,8 @@
             </p>
         </div>
         <div class="sect2" title="Specifying a filled contour"><div class="titlepage"><div><div><h3 class="title"><a name="id2594656"></a>Specifying a filled contour</h3></div></div></div>
-                   <p>In order to have the contour filled the method</p>
+            
+            <p>In order to have the contour filled the method</p>
             <div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                     <p><code class="code">ContourPlot::SetFilled($aFlg)</code> Determines if the contour
                         should be filled or not.</p>
@@ -121,7 +125,8 @@
                 plot algorithm (class ContourPlot) using an interpolation factor of ~3-4.</p>
         </div>
         <div class="sect2" title="Adjusting the labels in the contour"><div class="titlepage"><div><div><h3 class="title"><a name="id2594673"></a>Adjusting the labels in the contour</h3></div></div></div>
-                   <p>In order to make it easier to follow the contour labels can be added inside the
+            
+            <p>In order to make it easier to follow the contour labels can be added inside the
                 contour. The labels are placed using a heuristic algorithm that tries to place
                 enough labels to make the plot easy to read but not as many labels as to make it
                 crowded.</p>
@@ -161,7 +166,8 @@
             </p>
         </div>
         <div class="sect2" title="Selecting the adaptive method to use"><div class="titlepage"><div><div><h3 class="title"><a name="id2595002"></a>Selecting the adaptive method to use</h3></div></div></div>
-                   <p>
+            
+            <p>
                 </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
                     <p>This section can be skipped without loss of continuity. The default method
                         "rectangular" recursive adaptation is good enough for most
@@ -201,15 +207,18 @@
                 </p><div class="informaltable">
                     <table border="0"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><tbody><tr><td align="center">
                                     <div class="figure"><a name="id2595141"></a><p class="title"><b>Figure 23.6. Triangulation step 0</b></p><div class="figure-contents">
-                                                                           <div class="mediaobject"><img src="images/tri_step0.png" alt="Triangulation step 0"></div>
+                                        
+                                        <div class="mediaobject"><img src="images/tri_step0.png" alt="Triangulation step 0"></div>
                                     </div></div><br class="figure-break">
                                 </td><td align="center">
                                     <div class="figure"><a name="id2595170"></a><p class="title"><b>Figure 23.7. Triangulation step 1</b></p><div class="figure-contents">
-                                                                           <div class="mediaobject"><img src="images/tri_step1.png" alt="Triangulation step 1"></div>
+                                        
+                                        <div class="mediaobject"><img src="images/tri_step1.png" alt="Triangulation step 1"></div>
                                     </div></div><br class="figure-break">
                                 </td><td align="center">
                                     <div class="figure"><a name="id2595196"></a><p class="title"><b>Figure 23.8. Triangulation step 2</b></p><div class="figure-contents">
-                                                                           <div class="mediaobject"><img src="images/tri_step2.png" alt="Triangulation step 2"></div>
+                                        
+                                        <div class="mediaobject"><img src="images/tri_step2.png" alt="Triangulation step 2"></div>
                                     </div></div><br class="figure-break">
                                 </td></tr></tbody></table>
                 </div><p>
@@ -220,15 +229,18 @@
                 </p><div class="informaltable">
                     <table border="0"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><tbody><tr><td align="center">
                                     <div class="figure"><a name="id2595278"></a><p class="title"><b>Figure 23.9. "Rectangularization" step 0</b></p><div class="figure-contents">
-                                                                           <div class="mediaobject"><img src="images/rect_step0.png" alt='"Rectangularization" step 0'></div>
+                                        
+                                        <div class="mediaobject"><img src="images/rect_step0.png" alt='"Rectangularization" step 0'></div>
                                     </div></div><br class="figure-break">
                                 </td><td align="center">
                                     <div class="figure"><a name="id2595302"></a><p class="title"><b>Figure 23.10. "Rectangularization" step 1</b></p><div class="figure-contents">
-                                                                           <div class="mediaobject"><img src="images/rect_step1.png" alt='"Rectangularization" step 1'></div>
+                                        
+                                        <div class="mediaobject"><img src="images/rect_step1.png" alt='"Rectangularization" step 1'></div>
                                     </div></div><br class="figure-break">
                                 </td><td align="center">
                                     <div class="figure"><a name="id2595327"></a><p class="title"><b>Figure 23.11. "Rectangularization" step 2</b></p><div class="figure-contents">
-                                                                           <div class="mediaobject"><img src="images/rect_step2.png" alt='"Rectangularization" step 2'></div>
+                                        
+                                        <div class="mediaobject"><img src="images/rect_step2.png" alt='"Rectangularization" step 2'></div>
                                     </div></div><br class="figure-break">
                                 </td></tr></tbody></table>
                 </div><p>
@@ -280,12 +292,14 @@
                                 <tr>
                                     <td>
                                         <div class="figure"><a name="id2595567"></a><p class="title"><b>Figure 23.14. Rectangular sub-division</b></p><div class="figure-contents">
-                                                                                   <div class="mediaobject"><img src="images/contour_rectang.png" alt="Rectangular sub-division"></div>
+                                            
+                                            <div class="mediaobject"><img src="images/contour_rectang.png" alt="Rectangular sub-division"></div>
                                         </div></div><br class="figure-break">
                                     </td>
                                     <td>
                                         <div class="figure"><a name="id2595593"></a><p class="title"><b>Figure 23.15. Triangular sub-division</b></p><div class="figure-contents">
-                                                                                   <div class="mediaobject"><img src="images/contour_triangulation.png" alt="Triangular sub-division"></div>
+                                            
+                                            <div class="mediaobject"><img src="images/contour_triangulation.png" alt="Triangular sub-division"></div>
                                         </div></div><br class="figure-break">
                                     </td>
                                 </tr>

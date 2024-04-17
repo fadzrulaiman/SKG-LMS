@@ -21,6 +21,7 @@ class RestLeaves extends MY_RestController {
 
     /**
      * Default constructor
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -31,10 +32,12 @@ class RestLeaves extends MY_RestController {
     /**
      * Get the list of leave requests of the connected employee
      * @param int $leaveId Unique identifier of a leave request
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function leaves($leaveId = 0) {
         log_message('debug', '++leaves id=' . $leaveId);
-           //Format and translate according to Accept-Language Header
+        
+        //Format and translate according to Accept-Language Header
         $langRest = new CI_Lang();
         $langRest->load('global', $this->language);
 
@@ -72,6 +75,7 @@ class RestLeaves extends MY_RestController {
 
     /**
      * Create a leave request
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function create() {
         log_message('debug', '++create');
@@ -95,7 +99,8 @@ class RestLeaves extends MY_RestController {
                     $_POST['status'] = LMS_REQUESTED;
                 }
             }
-                   //Users must use an existing leave type, otherwise
+            
+            //Users must use an existing leave type, otherwise
             //force leave type to default leave type
             $this->load->model('contracts_model');
             $leaveTypesDetails = $this->contracts_model->getLeaveTypesDetailsOTypesForUser($this->user->id);
@@ -125,6 +130,7 @@ class RestLeaves extends MY_RestController {
     /**
      * Edit a leave request
      * @param int $leaveId Identifier of the leave request
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function edit($leaveId) {
         log_message('debug', '++edit / LR = ' . $leaveId);
@@ -189,14 +195,16 @@ class RestLeaves extends MY_RestController {
             v::oneOf(v::equals('Morning'), v::equals('Afternoon')
                     )->assert($this->input->post('enddatetype'));
             v::numeric()->assert($this->input->post('duration'));
-                   $this->leaves_model->updateLeaves($leaveId, $this->user->id);       //We don't use the return value
+            
+            $this->leaves_model->updateLeaves($leaveId, $this->user->id);       //We don't use the return value
 
         } catch (AllOfException $exception) {
             log_message('error', 'An exception occured while editing the leave request' . 
                 $exception->getFullMessage());
             $this->badRequest();
         }
-           //If the status is requested or cancellation, send an email to the manager
+        
+        //If the status is requested or cancellation, send an email to the manager
         if ($this->input->post('status') == LMS_REQUESTED) {
             $this->sendMailOnLeaveRequestCreation($leaveId);
         }
@@ -209,6 +217,7 @@ class RestLeaves extends MY_RestController {
     /**
      * Delete a leave request
      * @param int $leaveId identifier of the leave request
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function delete($leaveId) {
         log_message('debug', '++delete / Leave ID = ' . $leaveId);
@@ -243,6 +252,7 @@ class RestLeaves extends MY_RestController {
      * Send a leave request creation email to the manager of the connected employee
      * @param int $leaveId Leave request identifier
      * @param int $reminder In case where the employee wants to send a reminder
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     private function sendMailOnLeaveRequestCreation($leaveId, $reminder=FALSE) {
         log_message('debug', '++sendMailOnLeaveRequestCreation');
@@ -290,6 +300,7 @@ class RestLeaves extends MY_RestController {
      * @param $title Email Title
      * @param $detailledSubject Email detailled Subject
      * @param $emailModel template email to use
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      *
      */
     private function sendGenericMail($leave, $user, $manager, $lang_mail, $title, $detailledSubject, $emailModel) {

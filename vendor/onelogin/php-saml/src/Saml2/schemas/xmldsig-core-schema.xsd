@@ -134,7 +134,8 @@
 
 <element name="KeyInfo" type="ds:KeyInfoType"/> 
 <complexType name="KeyInfoType" mixed="true">
-  <choice maxOccurs="unbounded">    <element ref="ds:KeyName"/> 
+  <choice maxOccurs="unbounded">     
+    <element ref="ds:KeyName"/> 
     <element ref="ds:KeyValue"/> 
     <element ref="ds:RetrievalMethod"/> 
     <element ref="ds:X509Data"/> 

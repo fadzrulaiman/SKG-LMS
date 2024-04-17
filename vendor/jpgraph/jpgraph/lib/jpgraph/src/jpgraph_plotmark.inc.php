@@ -162,6 +162,7 @@ class PlotMark {
             $this->csimareas .= " />\n";
         }
     }
+     
     function Stroke($img,$x,$y) {
         if( !$this->show ) return;
 
@@ -281,7 +282,8 @@ class PlotMark {
 
             $w = $img->GetWidth($this->markimg);
             $h = $img->GetHeight($this->markimg);
-                    $dw = round($imgscale * $w );
+             
+            $dw = round($imgscale * $w );
             $dh = round($imgscale * $h );
 
             // Do potential rotation
@@ -289,8 +291,10 @@ class PlotMark {
 
             $dx = round($x-$dw*$anchor_x);
             $dy = round($y-$dh*$anchor_y);
-                    $this->width = max($dx,$dy);
-                    $img->Copy($this->markimg,$dx,$dy,0,0,$dw,$dh,$w,$h);
+             
+            $this->width = max($dx,$dy);
+             
+            $img->Copy($this->markimg,$dx,$dy,0,0,$dw,$dh,$w,$h);
             if( !empty($this->csimtarget) ) {
                 $this->csimareas = "<area shape=\"rect\" coords=\"".
                 $dx.','.$dy.','.round($dx+$dw).','.round($dy+$dh).'" '.
@@ -306,7 +310,8 @@ class PlotMark {
                 }
                 $this->csimareas .= " />\n";
             }
-                    // Stroke title
+             
+            // Stroke title
             $this->title->Align("center","top");
             $this->title->Stroke($img,$x,$y+round($dh/2));
             return;

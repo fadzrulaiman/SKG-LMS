@@ -17,6 +17,7 @@ class RestUsers extends MY_RestController {
 
     /**
      * Default constructor
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -29,6 +30,7 @@ class RestUsers extends MY_RestController {
 
     /**
      * Display the list of all users or one user
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function users($userID = 0) {
         log_message('debug', '++users / userID = ' . $userID);
@@ -49,6 +51,7 @@ class RestUsers extends MY_RestController {
     /**
      * Enable a user
      * @param int $userID User identifier
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function enable($userID) {
         log_message('debug', '++enable');
@@ -63,6 +66,7 @@ class RestUsers extends MY_RestController {
     /**
      * Disable a user
      * @param int $userID User identifier
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function disable($userID) {
         log_message('debug', '++disable');

@@ -61,11 +61,13 @@ if ($language_code != 'en') { ?>
 <script type="text/javascript">
     function validate_form() {
         var fieldname = "";
-           //Call custom trigger defined into local/triggers/leave.js
+        
+        //Call custom trigger defined into local/triggers/leave.js
         if (typeof triggerValidateCreateForm == 'function') { 
            if (triggerValidateCreateForm() == false) return false;
         }
-           if ($('#viz_date').val() == "") fieldname = "<?php echo lang('extra_create_field_date');?>";
+        
+        if ($('#viz_date').val() == "") fieldname = "<?php echo lang('extra_create_field_date');?>";
         if ($('#duration').val() == "") fieldname = "<?php echo lang('extra_create_field_duration');?>";
         if ($('#cause').val() == "") fieldname = "<?php echo lang('extra_create_field_cause');?>";
         if (fieldname == "") {
@@ -96,13 +98,15 @@ if ($language_code != 'en') { ?>
             altFormat: "yy-mm-dd",
             altField: "#date"
         }, $.datepicker.regional['<?php echo $language_code;?>']);
-           //Force decimal separator whatever the locale is
+        
+        //Force decimal separator whatever the locale is
         $("#duration").keyup(function() {
             var value = $("#duration").val();
             value = value.replace(",", ".");
             $("#duration").val(value);
         });
-           $("#cmdCreateExtra").click(function() {
+        
+        $("#cmdCreateExtra").click(function() {
             if (validate_form()) {
                 $("#frmCreateExtra").submit();
             }

@@ -1,7 +1,10 @@
 <?php
 /**
  * This class contains the business logic and manages the persistence of entitled days.
-
+ * @copyright  Copyright (c) 2014-2023 Benjamin BALET
+ * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
+ * @link            https://github.com/bbalet/jorani
+ * @since         0.1.0
  */
 
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
@@ -16,12 +19,14 @@ class Entitleddays_model extends CI_Model {
      * Default constructor
      */
     public function __construct() {
-       }
+        
+    }
 
     /**
      * Get the list of entitled days or one entitled day record associated to a contract
      * @param int $id optional id of a contract
      * @return array record of entitled days
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getEntitledDaysForContract($contract) {
         $this->db->select('entitleddays.*, types.name as type_name');
@@ -36,6 +41,7 @@ class Entitleddays_model extends CI_Model {
      * Get the list of entitled days or one entitled day record associated to an employee
      * @param int $id optional id of an employee
      * @return array record of entitled days
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getEntitledDaysForEmployee($employee) {
         $this->db->select('entitleddays.*, types.name as type_name');
@@ -55,6 +61,7 @@ class Entitleddays_model extends CI_Model {
      * @param int $type Leave type (of the entitled days line)
      * @param int $description Description of the entitled days line
      * @return int last inserted id
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function addEntitledDaysToContract($contract_id, $startdate, $enddate, $days, $type, $description) {
         $data = array(
@@ -78,6 +85,7 @@ class Entitleddays_model extends CI_Model {
      * @param int $type Leave type (of the entitled days line)
      * @param int $description Description of the entitled days line
      * @return int last inserted id
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function addEntitledDaysToEmployee($user_id, $startdate, $enddate, $days, $type, $description) {
         $data = array(
@@ -96,6 +104,7 @@ class Entitleddays_model extends CI_Model {
      * Delete an entitled days record from the database (for an employee or a contract)
      * @param int $id identifier of the entitleddays record
      * @return int number of rows affected
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteEntitledDays($id) {
         return $this->db->delete('entitleddays', array('id' => $id));
@@ -104,6 +113,7 @@ class Entitleddays_model extends CI_Model {
     /**
      * Delete entitled days attached to a user
      * @param int $id identifier of an employee
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteEntitledDaysCascadeUser($id) {
         $this->db->delete('entitleddays', array('employee' => $id));
@@ -112,6 +122,7 @@ class Entitleddays_model extends CI_Model {
     /**
      * Delete a entitled days attached to a contract
      * @param int $id identifier of a contract
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteEntitledDaysCascadeContract($id) {
         $this->db->delete('entitleddays', array('contract' => $id));
@@ -126,6 +137,7 @@ class Entitleddays_model extends CI_Model {
      * @param int $type Leave type (of the entitled days line)
      * @param int $description Description of the entitled days line
      * @return number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function updateEntitledDays($id, $startdate, $enddate, $days, $type, $description) {
         $data = array(
@@ -145,6 +157,7 @@ class Entitleddays_model extends CI_Model {
      * @param int $id row identifier
      * @param float $step increment step
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function increase($id, $step) {
         if (!is_numeric($step)) $step = 1;
@@ -158,6 +171,7 @@ class Entitleddays_model extends CI_Model {
      * @param int $id row identifier
      * @param float $step increment step
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function decrease($id, $step) {
         if (!is_numeric($step)) $step = 1;
@@ -171,6 +185,7 @@ class Entitleddays_model extends CI_Model {
      * @param int $id row identifier
      * @param float $days credit in days
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function updateNbOfDaysOfEntitledDaysRecord($id, $days) {
         if (!is_numeric($days)) $days = 1;
@@ -183,6 +198,7 @@ class Entitleddays_model extends CI_Model {
      * Purge the table by deleting the records prior $toDate
      * @param date $toDate 
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function purgeEntitleddays($toDate) {
         $this->db->where('enddate <= ', $toDate);
@@ -192,6 +208,7 @@ class Entitleddays_model extends CI_Model {
     /**
      * Count the number of rows into the table
      * @return int number of rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function count() {
         $this->db->select('count(*) as number', FALSE);
@@ -203,6 +220,7 @@ class Entitleddays_model extends CI_Model {
     /**
      * List all entitlements overflowing (more than one year).
      * @return array List of possible duplicated leave requests
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function detectOverflow() {
         //Note: the query below detects deletion problems:

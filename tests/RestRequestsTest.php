@@ -10,6 +10,7 @@ class RestRequestsTest extends TestCase
     /**
      * Create a common HTTP client for all test cases pointing to 
      * the API URL defined as environment variable (or by phpunit.xml)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function setUp()
     {
@@ -20,6 +21,7 @@ class RestRequestsTest extends TestCase
 
     /**
      * Free resources after this test case
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function tearDown() {
         $this->httpClient = null;
@@ -30,6 +32,7 @@ class RestRequestsTest extends TestCase
      * It should be inerited from MY_RestController::options
      * But relying of what is set into the parent's constructor
      * @covers RestRequests::options
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testPreflightCORS()
     {
@@ -45,6 +48,7 @@ class RestRequestsTest extends TestCase
     /**
      * Creates a leave request (jdoe to his manager bbalet)
      * @covers RestRequests::requests
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testCreateLeaveRequestForManager()
     {

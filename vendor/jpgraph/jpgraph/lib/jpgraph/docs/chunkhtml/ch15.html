@@ -1,7 +1,9 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 15. Different types of linear (cartesian) graph types</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="pt04.html" title="Part IV. Creating linear and non-linear graphs"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 15. Different types of linear (cartesian) graph types</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Part IV. Creating linear and non-linear graphs</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="chapter" title="Chapter 15. Different types of linear (cartesian) graph types"><div class="titlepage"><div><div><h2 class="title"><a name="id2554010"></a>Chapter 15. Different types of linear (cartesian) graph types</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="ch15.html#id2553962">15.1. Basic Line and area graphs</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch15.html#sec2.creating-line-graph">15.1.1. Creating a line graph</a></span></dt><dt><span class="sect2"><a href="ch15.html#id2554907">15.1.2. Automatic interpolation of unknown data</a></span></dt><dt><span class="sect2"><a href="ch15.html#sec.adding-marks">15.1.3. Adding marks to the plot (a.k.a. plot marks)</a></span></dt><dt><span class="sect2"><a href="ch15.html#id2555079">15.1.4. Displaying the values at the data points</a></span></dt><dt><span class="sect2"><a href="ch15.html#id2555706">15.1.5. Adding several data series to the same graph</a></span></dt><dt><span class="sect2"><a href="ch15.html#id2555784">15.1.6. Adding a second Y-axis</a></span></dt><dt><span class="sect2"><a href="ch15.html#id2555973">15.1.7. Adding a legend box to the graph</a></span></dt><dt><span class="sect2"><a href="ch15.html#id2556231">15.1.8. Changing the style of the line plot - using the step-style</a></span></dt><dt><span class="sect2"><a href="ch15.html#id2556258">15.1.9. Optimizing line plot using "fast drawing"</a></span></dt><dt><span class="sect2"><a href="ch15.html#sec2.creating-area-graph">15.1.10. Creating a filled line graphs (a.k.a. area plots)</a></span></dt><dt><span class="sect2"><a href="ch15.html#id2557119">15.1.11. Partially filled area graphs</a></span></dt><dt><span class="sect2"><a href="ch15.html#id2557375">15.1.12. Filled lines with NULL values</a></span></dt><dt><span class="sect2"><a href="ch15.html#id2557421">15.1.13. Accumulated line graphs</a></span></dt><dt><span class="sect2"><a href="ch15.html#id2557468">15.1.14. Accumulated line graphs with given X-labels</a></span></dt><dt><span class="sect2"><a href="ch15.html#sec2.creating-cubic-splines">15.1.15. Constructing smooth line plots with Cubic Splines</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch15s02.html">15.2. Bar graphs</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch15s02.html#id2558886">15.2.1. Accumulated bar plots</a></span></dt><dt><span class="sect2"><a href="ch15s02.html#id2559176">15.2.2. Grouped bar plots</a></span></dt><dt><span class="sect2"><a href="ch15s02.html#id2559365">15.2.3. Grouped accumulated bar graphs</a></span></dt><dt><span class="sect2"><a href="ch15s02.html#id2559425">15.2.4. Horizontal bar graphs</a></span></dt><dt><span class="sect2"><a href="ch15s02.html#id2559503">15.2.5. Adjusting the appearance of bar graphs</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch15s03.html">15.3. Error plot graphs</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch15s03.html#id2560625">15.3.1. Line error plots</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch15s04.html">15.4. Stock graphs</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch15s04.html#id2561152">15.4.1. Stock plot variant: Boxplot</a></span></dt><dt><span class="sect2"><a href="ch15s04.html#id2561251">15.4.2.  Image maps for Box and Stock charts</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch15s05.html">15.5. Scatter graphs</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch15s05.html#id2561472">15.5.1. Combining marks with a line</a></span></dt><dt><span class="sect2"><a href="ch15s05.html#id2561573">15.5.2. Creating impulse (or stem) - plots</a></span></dt><dt><span class="sect2"><a href="ch15s05.html#sec1.creating-field-graphs">15.5.3. Field plots</a></span></dt><dt><span class="sect2"><a href="ch15s05.html#sec1.creating-balloon-graphs">15.5.4. Balloon plots</a></span></dt><dt><span class="sect2"><a href="ch15s05.html#sec1.creating-geo-maps">15.5.5. Creating Geo-maps</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch15s06.html">15.6. Contour graphs </a></span></dt><dd><dl><dt><span class="sect2"><a href="ch15s06.html#id2562600">15.6.1. Input data for contour graphs</a></span></dt><dt><span class="sect2"><a href="ch15s06.html#sec.creating-contour-graph">15.6.2. Creating a contour graph</a></span></dt><dt><span class="sect2"><a href="ch15s06.html#id2562850">15.6.3. Adjusting the color and number of isobar lines</a></span></dt><dt><span class="sect2"><a href="ch15s06.html#sec.grid-interpolating">15.6.4. Understanding mesh interpolation</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch15s07.html">15.7. Combining several different plot types in the same graph</a></span></dt><dt><span class="sect1"><a href="ch15s08.html">15.8. Creating several graphs in the same image</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch15s08.html#id2563975">15.8.1. Creating a combined graph</a></span></dt><dt><span class="sect2"><a href="ch15s08.html#id2564308">15.8.2. Adding background images </a></span></dt><dt><span class="sect2"><a href="ch15s08.html#id2564429">15.8.3. Creating rotated combined graphs</a></span></dt><dt><span class="sect2"><a href="ch15s08.html#id2564532">15.8.4. Some caveats when using MGraph</a></span></dt></dl></dd></dl></div>
-           <p>
+        
+        <p>
             </p><div class="figure"><a name="id2554057"></a><p class="title"><b>Figure 15.1. Supported linear graph types in the library</b></p><div class="figure-contents">
-                           <div class="informaltable">
+                
+                <div class="informaltable">
                     <table border="0"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><tbody><tr><td align="center">
                                     <p><span class="inlinemediaobject"><img src="images/ploticon_line.png" alt="Supported linear graph types in the library"></span></p>
                                     <p>a) Line plot</p>
@@ -55,14 +57,16 @@
             </div></div><p><br class="figure-break">
         </p>
         <div class="sect1" title="Basic Line and area graphs"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2553962"></a>Basic Line and area graphs</h2></div></div></div>
-                   <p>Line graphs (we will use the term line graph to refer to an entire graph and the
+            
+            <p>Line graphs (we will use the term line graph to refer to an entire graph and the
                 term line plot to refer to a single data series in a line graph) is together with
                 bar graphs the simplest and perhaps the most commonly used graph type. In <a class="xref" href="ch04s02.html" title="Graphing the number of sun spots during the 19th Century">Graphing the number of sun spots during the 19th Century</a> we have already shown an example of a
                 line graph without explaining to much of the details. The remainder of the section
                 will go into some more details on the options available when creating a line
                 graph.</p>
             <div class="sect2" title="Creating a line graph"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.creating-line-graph"></a>Creating a line graph</h3></div></div></div>
-                           <p>A line graph always make use of one or several instances of the <code class="code">class
+                
+                <p>A line graph always make use of one or several instances of the <code class="code">class
                         LinePlot</code> which represent one plotted data series in the graph. In all
                     our example we follow the naming convention to always name the instance of the
                     LinePlot class as "<code class="code">$lineplot</code>"</p>
@@ -278,7 +282,8 @@
                 </p>
             </div>
             <div class="sect2" title="Automatic interpolation of unknown data"><div class="titlepage"><div><div><h3 class="title"><a name="id2554907"></a>Automatic interpolation of unknown data</h3></div></div></div>
-                           <p>Line graphs supports automatic linear interpolation of missing data point if
+                
+                <p>Line graphs supports automatic linear interpolation of missing data point if
                     the missing data point is replaced by a '-' (hyphen character) for more on
                     handling of NULLs in the input data see <a class="xref" href="ch13s06.html" title="Different types of NULL data handling">Different types of NULL data handling</a>. </p>
                 <p>
@@ -309,7 +314,8 @@
                 </p>
             </div>
             <div class="sect2" title="Adding marks to the plot (a.k.a. plot marks)"><div class="titlepage"><div><div><h3 class="title"><a name="sec.adding-marks"></a>Adding marks to the plot (a.k.a. plot marks)</h3></div></div></div>
-                           <p>Another common embellishment of plots is to add markers for each data point.
+                
+                <p>Another common embellishment of plots is to add markers for each data point.
                     The library supports a large number of built-in plot marks as well as the
                     ability to use arbitrary images as plot marks. Plot marks are instantiated as an
                     instance of <code class="code">class PlotMark</code> defined in the module
@@ -434,7 +440,8 @@
                     this.</p>
             </div>
             <div class="sect2" title="Displaying the values at the data points"><div class="titlepage"><div><div><h3 class="title"><a name="id2555079"></a>Displaying the values at the data points</h3></div></div></div>
-                           <p>Lets continue the previous example by making some minor adjustments to also
+                
+                <p>Lets continue the previous example by making some minor adjustments to also
                     show the values at each data point. The data label at each data point is
                     represented by the instance variable "$value". This is an instance of the
                         <code class="code">class DisplayValue</code> and all normal text attributes can be
@@ -504,7 +511,8 @@
                 </p>
             </div>
             <div class="sect2" title="Adding several data series to the same graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2555706"></a>Adding several data series to the same graph</h3></div></div></div>
-                           <p>Up to now all examples we have shown have only had one data series. As was
+                
+                <p>Up to now all examples we have shown have only had one data series. As was
                     mentioned in the introduction a graph can have an unlimited number of data
                     series (plots) although from a practical consideration (and "viewability") it is
                     probably best to restrict the number of data series in one graph to less than
@@ -565,7 +573,8 @@
                 </p>
             </div>
             <div class="sect2" title="Adding a second Y-axis"><div class="titlepage"><div><div><h3 class="title"><a name="id2555784"></a>Adding a second Y-axis</h3></div></div></div>
-                           <p>As was discussed in <a class="xref" href="ch14s06.html" title="Using multiple y-axis">Using multiple y-axis</a> it is possible
+                
+                <p>As was discussed in <a class="xref" href="ch14s06.html" title="Using multiple y-axis">Using multiple y-axis</a> it is possible
                     to add multiple y-axis to a graph. The most common use of this feature is to
                     just use one extra y-axis with a different scale on the right side of the graph.
                     To make this common case as easy as possible to manage the library provides some
@@ -611,7 +620,8 @@
                 </p>
             </div>
             <div class="sect2" title="Adding a legend box to the graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2555973"></a>Adding a legend box to the graph</h3></div></div></div>
-                           <p>Once we have multiple data series there is a need to separate them and that is
+                
+                <p>Once we have multiple data series there is a need to separate them and that is
                     usually done by adding a legend box with suitable titles. As was shown in <a class="xref" href="ch14s04.html" title="Adjusting the position and layout of the legend">Adjusting the position and layout of the legend</a> it is possible to both add a
                     legend box and adjusts its position. Lets now continue the previous example by
                     adding a suitable legend box to separate the two data series.</p>
@@ -672,7 +682,8 @@
                 </p>
             </div>
             <div class="sect2" title="Changing the style of the line plot - using the step-style"><div class="titlepage"><div><div><h3 class="title"><a name="id2556231"></a>Changing the style of the line plot - using the step-style</h3></div></div></div>
-                           <p>Step style refers to an alternate way of rendering line plots by not drawing a
+                
+                <p>Step style refers to an alternate way of rendering line plots by not drawing a
                     direct line between two adjacent points but rather draw two segments. The first
                     segment being a horizontal line to the next X-value and then a vertical line
                     from that point to the correct Y-value at that instance. This is also known as
@@ -691,7 +702,8 @@
                 </p>
             </div>
             <div class="sect2" title='Optimizing line plot using "fast drawing"'><div class="titlepage"><div><div><h3 class="title"><a name="id2556258"></a>Optimizing line plot using "fast drawing"</h3></div></div></div>
-                           <p>For line plots with a large amount of data point that is drawn with a solid
+                
+                <p>For line plots with a large amount of data point that is drawn with a solid
                     line it is possible to speed up the construction of the graph by calling the method:</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                             <p><code class="code">LinePlot::SetFastStroke($aFlg=true)</code></p>
                         </li></ul></div>
@@ -714,7 +726,8 @@
                     substantially and in the order of 40-50% speedup.</p>
             </div>
             <div class="sect2" title="Creating a filled line graphs (a.k.a. area plots)"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.creating-area-graph"></a>Creating a filled line graphs (a.k.a. area plots)</h3></div></div></div>
-                           <p>A filled line plot (also known as an area plot) can be created in two ways
+                
+                <p>A filled line plot (also known as an area plot) can be created in two ways
                     depending on whether automatic color handling is sufficient or there is a need
                     to manually specify the color.</p>
                 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
@@ -800,7 +813,8 @@
                     </p>
                 </div>
                 <div class="sect3" title="Filling from the top"><div class="titlepage"><div><div><h4 class="title"><a name="id2556711"></a>Filling from the top</h4></div></div></div>
-                                   <p>As was mentioned in the previous paragraph the fill normally goes from the
+                    
+                    <p>As was mentioned in the previous paragraph the fill normally goes from the
                         bottom and up to the line specified by the data series. Another variant is
                         to have the fill go from the top of the plot area down to the line. </p>
                     <p>There is primary one use for this type of fill and that is to create a
@@ -846,7 +860,8 @@
                     </p>
                 </div>
                 <div class="sect3" title="Filling from 0 or from bottom"><div class="titlepage"><div><div><h4 class="title"><a name="id2556721"></a>Filling from 0 or from bottom</h4></div></div></div>
-                                   <p>As a complement to what was described in the previous section it is also
+                    
+                    <p>As a complement to what was described in the previous section it is also
                         possible to fill from the bottom. By default an area is filled from the
                         0-line to the boundary of the data series as is shown in <a class="xref" href="ch15.html#fig.manualtickex3" title="Figure 15.23. Filling from the 0-line (The default) (manualtickex3.php)">Figure 15.23. Filling from the 0-line (The default) <code class="uri"><a class="uri" href="example_src/manualtickex3.html" target="_top">(<code class="filename">manualtickex3.php</code>)</a></code> </a> below</p>
                     <p>
@@ -871,7 +886,8 @@
                     </p>
                 </div>
                 <div class="sect3" title="Using gradient fills"><div class="titlepage"><div><div><h4 class="title"><a name="id2556978"></a>Using gradient fills</h4></div></div></div>
-                                   <p>In addition to the solid color fill it is also possible to use gradient
+                    
+                    <p>In addition to the solid color fill it is also possible to use gradient
                         fills for are graphs. To specify a gradient fill for a line graph the
                         following method in LinePlot class is used</p>
                     <p>
@@ -904,7 +920,8 @@
                 </div>
             </div>
             <div class="sect2" title="Partially filled area graphs"><div class="titlepage"><div><div><h3 class="title"><a name="id2557119"></a>Partially filled area graphs</h3></div></div></div>
-                           <p>In addition to filling the entire area between the line plot and the x-axis
+                
+                <p>In addition to filling the entire area between the line plot and the x-axis
                     (at y=0) the library also offers the possibility to add areas limited by the
                     line and a specified interval on the x-axis. Several such areas can be added and
                     each area having a different color. In ?? a basic example of how this can look
@@ -942,7 +959,8 @@
                 </p>
             </div>
             <div class="sect2" title="Filled lines with NULL values"><div class="titlepage"><div><div><h3 class="title"><a name="id2557375"></a>Filled lines with NULL values</h3></div></div></div>
-                           <p>The NULL value handling follows the same principle as was described for line
+                
+                <p>The NULL value handling follows the same principle as was described for line
                     plots. If the NULL value is specified as '-' the line will be interpretated but
                     if it is specified as 'x' it will be broken up as is shown in <a class="xref" href="ch15.html#fig.filledlineex03" title="Figure 15.29. Area plot with 'x' NULL values (filledlineex03.php)">Figure 15.29. Area plot with 'x' NULL values <code class="uri"><a class="uri" href="example_src/filledlineex03.html" target="_top">(<code class="filename">filledlineex03.php</code>)</a></code> </a></p>
                 <p>
@@ -950,7 +968,8 @@
                 </p>
             </div>
             <div class="sect2" title="Accumulated line graphs"><div class="titlepage"><div><div><h3 class="title"><a name="id2557421"></a>Accumulated line graphs</h3></div></div></div>
-                           <p>Accumulated line graphs are line graphs that are "stacked" on top of each
+                
+                <p>Accumulated line graphs are line graphs that are "stacked" on top of each
                     other. That is, the values in the supplied data for the Y-axis is not the
                     absolute value but rather the relative value from graph below. For example if
                     you have two line graphs with three points each, say [3,7,5] and [6,9,7]. The
@@ -997,7 +1016,8 @@
                 </p>
             </div>
             <div class="sect2" title="Accumulated line graphs with given X-labels"><div class="titlepage"><div><div><h3 class="title"><a name="id2557468"></a>Accumulated line graphs with given X-labels</h3></div></div></div>
-                           <p>Creating an accumulated line plot, (or a filled accumulated area plot), with
+                
+                <p>Creating an accumulated line plot, (or a filled accumulated area plot), with
                     multiple data sets at given x-coordinates poses some specific problems when the
                     coordinates for the different data sets are not given at the same x-coordinates.
                     This is a generic problem and has nothing to do with library in particular. This
@@ -1064,7 +1084,8 @@ data set 2 == (0,7), (1,12), (2,5),  (5,10)
                     One could argue that accumulated data plots can only be done for data series
                     with the same X-coordinates. </p>
                 <div class="sect3" title="Preparing the input data"><div class="titlepage"><div><div><h4 class="title"><a name="id2557648"></a>Preparing the input data</h4></div></div></div>
-                                   <p>So what if we are still required to do an accumulated plot even when we
+                    
+                    <p>So what if we are still required to do an accumulated plot even when we
                         don't have all the data sets at the same X-coordinates? Going back to our
                         original two data sets, hereafter referrered to as DS1 and DS2 there are 2
                         manual steps (as described above) that needs to happen. </p>
@@ -1125,7 +1146,8 @@ data set 2 == (0,7), (1,12), (2, 5), (3, 2), (4, 6), (5,10)
                         outlined above to create proper data sets before reading on.</p>
                 </div>
                 <div class="sect3" title="Creating plots with non-trivial X-coordinates"><div class="titlepage"><div><div><h4 class="title"><a name="id2557650"></a>Creating plots with non-trivial X-coordinates</h4></div></div></div>
-                                   <p>With non-trivial X-coordinates we mean for example timestamps or perhaps
+                    
+                    <p>With non-trivial X-coordinates we mean for example timestamps or perhaps
                         real numbers. For timestamps it is not so difficult. What we need to do is
                         to identify the proper interval (in the original timestamp domain) and then
                         create a mapping between that domain and the natural numbers (0,1,2,3,...). </p>
@@ -1228,7 +1250,8 @@ $graph-&gt;xaxis-&gt;SetLabelAngle(90);</span></pre></td></tr></table></div><p>
                         implicit X-coordinates assumed by the library. </p>
                 </div>
                 <div class="sect3" title="A full example"><div class="titlepage"><div><div><h4 class="title"><a name="id2557943"></a>A full example</h4></div></div></div>
-                                   <p>In the example below we artifically create some data sets where all the
+                    
+                    <p>In the example below we artifically create some data sets where all the
                         sets have values at all specified timestamps with the following code </p>
                     <p>
                         </p><div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
@@ -1371,7 +1394,8 @@ array_walk($time,'formatDate');</span></pre></td></tr></table></div><p>
                     </p>
                 </div>
                 <div class="sect3" title="Helper function to create interpolated data"><div class="titlepage"><div><div><h4 class="title"><a name="id2558063"></a>Helper function to create interpolated data</h4></div></div></div>
-                                   <p>The function <code class="code">InterpolateData()</code> below takes two array of
+                    
+                    <p>The function <code class="code">InterpolateData()</code> below takes two array of
                         arrays and one integer as arguments. The first array of arrays contains the
                         X-coordinates for each data set and the second array of arrays contains the
                         Y-coordinates for all the data sets. The final integer argument is the
@@ -1577,7 +1601,8 @@ array_walk($time,'formatDate');</span></pre></td></tr></table></div><p>
     </span><span class="hl-var">$ny</span><span class="hl-code"> = </span><span class="hl-identifier">count</span><span class="hl-brackets">(</span><span class="hl-var">$aYData</span><span class="hl-brackets">)</span><span class="hl-code">;
     </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$nx</span><span class="hl-code"> != </span><span class="hl-var">$ny</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
         </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-reserved">array</span><span class="hl-brackets">(</span><span class="hl-reserved">false</span><span class="hl-code">,-</span><span class="hl-number">1</span><span class="hl-brackets">)</span><span class="hl-code">;
-       </span><span class="hl-reserved">for</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-var">$i</span><span class="hl-code"> &lt; </span><span class="hl-var">$nx</span><span class="hl-code">; ++</span><span class="hl-var">$i</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+        
+    </span><span class="hl-reserved">for</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$i</span><span class="hl-code">=</span><span class="hl-number">0</span><span class="hl-code">; </span><span class="hl-var">$i</span><span class="hl-code"> &lt; </span><span class="hl-var">$nx</span><span class="hl-code">; ++</span><span class="hl-var">$i</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
          </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-identifier">count</span><span class="hl-brackets">(</span><span class="hl-var">$aXData</span><span class="hl-brackets">[</span><span class="hl-var">$i</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code"> != </span><span class="hl-identifier">count</span><span class="hl-brackets">(</span><span class="hl-var">$aYData</span><span class="hl-brackets">[</span><span class="hl-var">$i</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code">
              </span><span class="hl-reserved">return</span><span class="hl-code"> </span><span class="hl-reserved">array</span><span class="hl-brackets">(</span><span class="hl-reserved">false</span><span class="hl-code">,-</span><span class="hl-number">2</span><span class="hl-brackets">)</span><span class="hl-code">;
     </span><span class="hl-brackets">}</span><span class="hl-code">
@@ -1671,7 +1696,8 @@ array_walk($time,'formatDate');</span></pre></td></tr></table></div><p>
                         </span><span class="hl-reserved">while</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$j</span><span class="hl-code">+</span><span class="hl-var">$cnt</span><span class="hl-code"> &lt; </span><span class="hl-var">$length</span><span class="hl-code"> &amp;&amp; </span><span class="hl-var">$aYData</span><span class="hl-brackets">[</span><span class="hl-var">$i</span><span class="hl-brackets">]</span><span class="hl-brackets">[</span><span class="hl-var">$j</span><span class="hl-code">+</span><span class="hl-var">$cnt</span><span class="hl-brackets">]</span><span class="hl-code">===</span><span class="hl-reserved">NULL</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
                             ++</span><span class="hl-var">$cnt</span><span class="hl-code">;
                         </span><span class="hl-brackets">}</span><span class="hl-code">
-                           </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$cnt</span><span class="hl-code"> == </span><span class="hl-number">1</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
+        
+                        </span><span class="hl-reserved">if</span><span class="hl-brackets">(</span><span class="hl-code"> </span><span class="hl-var">$cnt</span><span class="hl-code"> == </span><span class="hl-number">1</span><span class="hl-code"> </span><span class="hl-brackets">)</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
                             </span><span class="hl-var">$aYData</span><span class="hl-brackets">[</span><span class="hl-var">$i</span><span class="hl-brackets">]</span><span class="hl-brackets">[</span><span class="hl-var">$j</span><span class="hl-brackets">]</span><span class="hl-code"> = </span><span class="hl-brackets">(</span><span class="hl-var">$aYData</span><span class="hl-brackets">[</span><span class="hl-var">$i</span><span class="hl-brackets">]</span><span class="hl-brackets">[</span><span class="hl-var">$j</span><span class="hl-code">-</span><span class="hl-number">1</span><span class="hl-brackets">]</span><span class="hl-code">+</span><span class="hl-var">$aYData</span><span class="hl-brackets">[</span><span class="hl-var">$i</span><span class="hl-brackets">]</span><span class="hl-brackets">[</span><span class="hl-var">$j</span><span class="hl-code">+</span><span class="hl-number">1</span><span class="hl-brackets">]</span><span class="hl-brackets">)</span><span class="hl-code">/</span><span class="hl-number">2</span><span class="hl-code">;
                         </span><span class="hl-brackets">}</span><span class="hl-code">
                         </span><span class="hl-reserved">else</span><span class="hl-code"> </span><span class="hl-brackets">{</span><span class="hl-code">
@@ -1722,7 +1748,8 @@ array_walk($time,'formatDate');</span></pre></td></tr></table></div><p>
                 </div>
             </div>
             <div class="sect2" title="Constructing smooth line plots with Cubic Splines"><div class="titlepage"><div><div><h3 class="title"><a name="sec2.creating-cubic-splines"></a>Constructing smooth line plots with Cubic Splines</h3></div></div></div>
-                           <p>The library support interpolation between data point by the use of cubic
+                
+                <p>The library support interpolation between data point by the use of cubic
                     splines. This will make the implicit assumption that the underlying phenomenon
                     that is plotted can be represented by a 3:rd degree polynomial between the given
                     data points (also known as a control points).</p>
@@ -1784,4 +1811,11 @@ array_walk($time,'formatDate');</span></pre></td></tr></table></div><p>
                 </p>
             </div>
         </div>
-                         </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"> </td><td width="20%" align="center"><a accesskey="u" href="pt04.html">Up</a></td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+        
+        
+        
+        
+        
+        
+        
+    </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"> </td><td width="20%" align="center"><a accesskey="u" href="pt04.html">Up</a></td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

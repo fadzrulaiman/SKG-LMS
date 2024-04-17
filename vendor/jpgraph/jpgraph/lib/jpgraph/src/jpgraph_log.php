@@ -177,7 +177,8 @@ class LogTicks extends Ticks{
             // left or right side.
             $a=$pos + $this->direction*$this->GetMinTickAbsSize();
             $a2=$pos + $this->direction*$this->GetMajTickAbsSize();
-                    $count=1;
+             
+            $count=1;
             $this->maj_ticks_pos[0]=$scale->Translate($start);
             $this->maj_ticklabels_pos[0]=$scale->Translate($start);
             if( $this->supress_first )

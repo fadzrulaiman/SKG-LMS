@@ -21,7 +21,7 @@
  * 
  * Please note that oauth_clients table must be initialised prior using the REST API
  * 
- 
+ * @author Benjamin BALET <benjamin.balet@gmail.com>
  */
 class JoraniAPI {
     private $base_url = 'http://localhost/SKG-LMS/';
@@ -48,6 +48,7 @@ class JoraniAPI {
      * @param string $username username of OAtuh2 user
      * @param string $password password of OAtuh2 user
      * @return string Authentication Token
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     private function getToken($username, $password) {
         $url = $this->base_url . 'api/token';
@@ -71,6 +72,7 @@ class JoraniAPI {
      * Get a list of employees or an employee
      * @param int $employee Identifier of the employee or NULL to get the list of all employees
      * @return array list of employees
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getEmployees($employee = NULL) {
         if (is_null($employee)) {
@@ -96,6 +98,7 @@ class JoraniAPI {
      * Return the list of entitled days credited to an employee
      * @param int $employee Identifier of the employee into the database
      * @return array list of entitled days
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getEntitledDaysListForEmployee($employee) {
         $url = $this->base_url . 'api/entitleddaysemployee/' . $employee;
@@ -122,6 +125,7 @@ class JoraniAPI {
      * @param int $type Leave type
      * @param string $description Description of the record (eg 'inserted by Robot')
      * @return int Id of the inserted record
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function addEntitledDaysEmployee($employee, $startdate, $enddate, $days, $type, $description) {
         $url = $this->base_url . 'api/addentitleddaysemployee/' . $employee;
@@ -154,6 +158,7 @@ class JoraniAPI {
      * @param int $type Leave type
      * @param string $description Description of the record (eg 'inserted by Robot')
      * @return int Id of the inserted record
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function addEntitledDaysContract($contract, $startdate, $enddate, $days, $type, $description) {
         $url = $this->base_url . 'api/addentitleddayscontract/' . $contract;
@@ -180,6 +185,7 @@ class JoraniAPI {
     /**
      * Get the list of all contracts or a given contract by its ID
      * @param int $contract Identifier of the contract or NULL to get the list of all contracts
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getContracts($contract = NULL) {
         if (is_null($contract)) {
@@ -205,6 +211,7 @@ class JoraniAPI {
      * Get the list of employees attached to a given entity
      * @param int $entity Identifier of the entity
      * @param bool $children If TRUE, we include sub-entities, FALSE otherwise
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getListOfEmployeesInEntity($entity, $children = TRUE) {
         $url = $this->base_url . 'api/getListOfEmployeesInEntity/' . $entity . '/' . (($children === TRUE)?'true':'false');

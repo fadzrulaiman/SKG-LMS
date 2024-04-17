@@ -17,6 +17,7 @@ class Admin extends CI_Controller {
     
     /**
      * Default constructor
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -27,6 +28,7 @@ class Admin extends CI_Controller {
     
     /**
      * Display the settings of the system (extract of config.php)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function settings() {
         $this->auth->checkIfOperationIsAllowed('list_settings');
@@ -41,6 +43,7 @@ class Admin extends CI_Controller {
     
     /**
      * Display the diagnostic of the content (duplicated requests, etc.) and configuration
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function diagnostic() {
         $this->auth->checkIfOperationIsAllowed('diagnostic');
@@ -60,7 +63,8 @@ class Admin extends CI_Controller {
         $data['unusedContracts'] = $this->contracts_model->notUsedContracts();
         $data['leaveBalance'] = $this->leaves_model->detectBalanceProblems();
         $data['overlappingLeaves'] = $this->leaves_model->detectOverlappingProblems();
-           //Count the number of items (will be used for badges in tab 
+        
+        //Count the number of items (will be used for badges in tab 
         $data['duplicatedLeaves_count'] = count($data['duplicatedLeaves']);
         $data['wrongDateType_count'] = count($data['wrongDateType']);
         $data['entitlmentOverflow_count'] = count($data['entitlmentOverflow']);
@@ -82,6 +86,7 @@ class Admin extends CI_Controller {
     
     /**
      * Display the list of OAuth clients
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function oauthClients() {
         $this->auth->checkIfOperationIsAllowed('oauth_clients');
@@ -100,6 +105,7 @@ class Admin extends CI_Controller {
 
     /**
      * Ajax action: create an OAuth clients
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function oauthClientsCreate() {
         if ($this->auth->isAllowed('oauth_clients') == FALSE) {
@@ -126,6 +132,7 @@ class Admin extends CI_Controller {
 
     /**
      * Ajax action: delete an OAuth client
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function oauthClientsDelete() {
         if ($this->auth->isAllowed('oauth_clients') == FALSE) {
@@ -147,6 +154,7 @@ class Admin extends CI_Controller {
     
     /**
      * purgeAccessTokens
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function oauthTokensPurge() {
         $this->auth->checkIfOperationIsAllowed('oauth_clients');

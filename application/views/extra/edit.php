@@ -37,7 +37,8 @@ if (isset($_GET['source'])) {
 n>
         <?php if ($is_hr) {?>
         <option value="3" <?php if ($extra['status'] == 3) echo 'selected'; ?>><?php echo lang('Accepted');?></option>
-        <option value="4" <?php if ($extra['status'] == 4) echo 'selected'; ?>><?php echo lang('Rejected');?></option>           <?php } ?>
+        <option value="4" <?php if ($extra['status'] == 4) echo 'selected'; ?>><?php echo lang('Rejected');?></option>        
+        <?php } ?>
     </select><br />
 </form>
     
@@ -69,11 +70,13 @@ if ($language_code != 'en') { ?>
     
     function validate_form() {
         var fieldname = "";
-           //Call custom trigger defined into local/triggers/leave.js
+        
+        //Call custom trigger defined into local/triggers/leave.js
         if (typeof triggerValidateEditForm == 'function') { 
            if (triggerValidateEditForm() == false) return false;
         }
-           if ($('#viz_date').val() == "") fieldname = "<?php echo lang('extra_edit_field_date');?>";
+        
+        if ($('#viz_date').val() == "") fieldname = "<?php echo lang('extra_edit_field_date');?>";
         if ($('#duration').val() == "") fieldname = "<?php echo lang('extra_edit_field_duration');?>";
         if ($('#cause').val() == "") fieldname = "<?php echo lang('extra_edit_field_cause');?>";
         if (fieldname == "") {
@@ -103,13 +106,15 @@ if ($language_code != 'en') { ?>
             altFormat: "yy-mm-dd",
             altField: "#date"
         }, $.datepicker.regional['<?php echo $language_code;?>']);
-           //Force decimal separator whatever the locale is
+        
+        //Force decimal separator whatever the locale is
         $( "#duration" ).keyup(function() {
             var value = $("#duration").val();
             value = value.replace(",", ".");
             $("#duration").val(value);
         });
-           $("#cmdEditExtra").click(function() {
+        
+        $("#cmdEditExtra").click(function() {
             if (validate_form()) {
                 $("#frmEditExtra").submit();
             }

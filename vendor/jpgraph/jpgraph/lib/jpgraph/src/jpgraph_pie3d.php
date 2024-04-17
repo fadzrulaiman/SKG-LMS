@@ -123,7 +123,8 @@ class PiePlot3D extends PiePlot {
             if( !empty($this->csimwintargets[$i]) ) {
                 $this->csimareas .= " target=\"".$this->csimwintargets[$i]."\" ";
             }
-                    if( !empty($this->csimalts[$i]) ) {
+             
+            if( !empty($this->csimalts[$i]) ) {
                 $tmp=sprintf($this->csimalts[$i],$this->data[$i]);
                 $this->csimareas .= "alt=\"$tmp\" title=\"$tmp\" ";
             }
@@ -377,7 +378,8 @@ class PiePlot3D extends PiePlot {
             $pt[] = $xc;
             $pt[] = $yc;
         }
-            $img->PushColor($fillcolor.":".$shadow);
+         
+        $img->PushColor($fillcolor.":".$shadow);
         $img->FilledPolygon($p);
         $img->PopColor();
 
@@ -593,7 +595,8 @@ class PiePlot3D extends PiePlot {
 
         // First stroke all the slices between 90 and 270 (left half circle)
         // counterclockwise
-            while( $angles[$j][0] < 270  && $aaoption !== 2 ) {
+         
+        while( $angles[$j][0] < 270  && $aaoption !== 2 ) {
 
             list($x,$y) = $adjexplode[$j];
 
@@ -610,7 +613,8 @@ class PiePlot3D extends PiePlot {
             }
             ++$cnt;
         }
-            $slice_left = $n-$cnt;
+         
+        $slice_left = $n-$cnt;
         $j=$start-1;
         if($j<0) $j=$n-1;
         $cnt = 0;
@@ -668,7 +672,8 @@ class PiePlot3D extends PiePlot {
                 }
 
                 $this->StrokeLabels($l,$img,$labeldata[$i][0]*M_PI/180,$x,$y,$z);
-                            $this->Add3DSliceToCSIM($i,$labeldata[$i][1],$labeldata[$i][2],$h*2,$d*2,$z,
+                 
+                $this->Add3DSliceToCSIM($i,$labeldata[$i][1],$labeldata[$i][2],$h*2,$d*2,$z,
                 $originalangles[$i][0],$originalangles[$i][1]);
             }
         }
@@ -698,7 +703,8 @@ class PiePlot3D extends PiePlot {
                 $fulledge = false;
             }
         }
-    
+         
+
         for($i=0; $i < count($data); ++$i, ++$idx ) {
 
             $da = $data[$i]/$sum * 2*M_PI;
@@ -716,7 +722,8 @@ class PiePlot3D extends PiePlot {
             $la = ($sa+$ea)/2;
             $xc += $exploderadius*cos($la);
             $yc -= $exploderadius*sin($la) * ($h/$w) ;
-                }
+             
+        }
 
         $p = array($xc,$yc,$xc+$w*cos($sa),$yc-$h*sin($sa));
 
@@ -834,7 +841,8 @@ class PiePlot3D extends PiePlot {
             $thick = $width/12;
         }
         $a = $this->angle;
-           if( $a <= 30 ) $thick *= 1.6;
+        
+        if( $a <= 30 ) $thick *= 1.6;
         elseif( $a <= 40 ) $thick *= 1.4;
         elseif( $a <= 50 ) $thick *= 1.2;
         elseif( $a <= 60 ) $thick *= 1.0;
@@ -887,10 +895,12 @@ class PiePlot3D extends PiePlot {
         else {
             $w=$img->GetTextWidth($label);
         }
-           while( $a > 2*M_PI ) {
+        
+        while( $a > 2*M_PI ) {
             $a -= 2*M_PI;
         }
-           if( $a>=7*M_PI/4 || $a <= M_PI/4 ) $dx=0;
+        
+        if( $a>=7*M_PI/4 || $a <= M_PI/4 ) $dx=0;
         if( $a>=M_PI/4 && $a <= 3*M_PI/4 ) $dx=($a-M_PI/4)*2/M_PI;
         if( $a>=3*M_PI/4 && $a <= 5*M_PI/4 ) $dx=1;
         if( $a>=5*M_PI/4 && $a <= 7*M_PI/4 ) $dx=(1-($a-M_PI*5/4)*2/M_PI);

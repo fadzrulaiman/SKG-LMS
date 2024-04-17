@@ -104,7 +104,8 @@ $fonts=array(
     array("Vera serif normal",FF_VERASERIF,FS_NORMAL),
     array("",FF_VERASERIF,FS_ITALIC),
     array("Vera serif bold",FF_VERASERIF,FS_BOLD),    
-           array("DejaVu sans serif",FF_DV_SANSSERIF,FS_NORMAL),
+            
+    array("DejaVu sans serif",FF_DV_SANSSERIF,FS_NORMAL),
     array("DejaVu sans serif",FF_DV_SANSSERIF,FS_ITALIC),
     array("DejaVu sans serif",FF_DV_SANSSERIF,FS_BOLD),
 

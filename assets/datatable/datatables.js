@@ -28902,7 +28902,8 @@ module.exports = ZStream;
 	      this._fontSize = 12;
 	      this._font = null;
 	      this._registeredFonts = {};
-	 	    },
+	      
+	    },
 	    font: function(src, family, size) {
 	      var cacheKey, font, id, _ref;
 	      if (typeof family === 'number') {
@@ -101280,7 +101281,8 @@ $.extend( Scroller.prototype, {
 	 *          o.oScroller.fnScrollToRow( 1000 );
 	 *        }
 	 *      } );
-	 *	 *      // Sometime later on use the following to scroll to row 500...
+	 *     
+	 *      // Sometime later on use the following to scroll to row 500...
 	 *          var oSettings = $('#example').dataTable().fnSettings();
 	 *      oSettings.oScroller.fnScrollToRow( 500 );
 	 *    } );
@@ -101349,7 +101351,8 @@ $.extend( Scroller.prototype, {
 	 *          o.oScroller.fnScrollToRow( 1000 );
 	 *        }
 	 *      } );
-	 *	 *      setTimeout( function () {
+	 *     
+	 *      setTimeout( function () {
 	 *        // Make the example container visible and recalculate the scroller sizes
 	 *        document.getElementById('container').style.display = "block";
 	 *        oTable.fnSettings().oScroller.fnMeasure();

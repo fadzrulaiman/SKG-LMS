@@ -102,11 +102,13 @@
             "holes" the dates must be continues.</p>
     </div>
     <div class="sect2" title="The structure of a Gantt chart"><div class="titlepage"><div><div><h3 class="title"><a name="id2570143"></a>The structure of a Gantt chart</h3></div></div></div>
-           <p>To understand the terminology used for Gantt chart <a class="xref" href="ch16s04.html#fig.gantt-building-blocks" title="Figure 16.54. Building block of a Gantt chart">Figure 16.54. Building block of a Gantt chart</a> shows a typical chart with indications of
+        
+        <p>To understand the terminology used for Gantt chart <a class="xref" href="ch16s04.html#fig.gantt-building-blocks" title="Figure 16.54. Building block of a Gantt chart">Figure 16.54. Building block of a Gantt chart</a> shows a typical chart with indications of
             the name of each main building block of the chart.</p>
         <p>
             </p><div class="figure"><a name="fig.gantt-building-blocks"></a><p class="title"><b>Figure 16.54. Building block of a Gantt chart</b></p><div class="figure-contents">
-                           <div class="mediaobject"><img src="images/gantt-properties-original-amended-small.png" alt="Building block of a Gantt chart"></div>
+                
+                <div class="mediaobject"><img src="images/gantt-properties-original-amended-small.png" alt="Building block of a Gantt chart"></div>
             </div></div><p><br class="figure-break">
         </p>
         <p>In addition to the specific Gantt formatting that will be discussed in the following
@@ -162,7 +164,8 @@
             basic default values will give the charts a very simple look.</p>
     </div>
     <div class="sect2" title="Creating a Gantt graph"><div class="titlepage"><div><div><h3 class="title"><a name="id2570178"></a>Creating a Gantt graph</h3></div></div></div>
-           <p>In order to create a Gantt graph the module "<code class="filename">jpgraph_gantt.php</code>"
+        
+        <p>In order to create a Gantt graph the module "<code class="filename">jpgraph_gantt.php</code>"
             must be included together with the core module "<code class="filename">jpgraph.php</code>"</p>
         <p>A Gantt graph is created as an instance of <code class="code">class GanttGraph</code> which
             inherits much of the same formatting options available for standard x-y graphs, for
@@ -239,7 +242,8 @@
         </div>
     </div>
     <div class="sect2" title="Adjusting the scale headers"><div class="titlepage"><div><div><h3 class="title"><a name="id2570317"></a>Adjusting the scale headers</h3></div></div></div>
-           <p>A gantt chart must always have at least one scale header and at most six scale headers
+        
+        <p>A gantt chart must always have at least one scale header and at most six scale headers
             (see <a class="xref" href="ch16s04.html#fig.gantt-building-blocks" title="Figure 16.54. Building block of a Gantt chart">Figure 16.54. Building block of a Gantt chart</a>). Usually it is not advisable to
             use more than three scale headers at the same time. Having multiple scale headers allow
             the specification of the same date range but with different resolutions.</p>
@@ -311,7 +315,8 @@
             chart</p>
         <p>
             </p><div class="figure"><a name="fig.gantt-scale-headers"></a><p class="title"><b>Figure 16.55. The Gantt scale properties</b></p><div class="figure-contents">
-                           <div class="mediaobject"><img src="images/gantt-scale-headers-amended.png" alt="The Gantt scale properties"></div>
+                
+                <div class="mediaobject"><img src="images/gantt-scale-headers-amended.png" alt="The Gantt scale properties"></div>
             </div></div><p><br class="figure-break">
         </p>
         <p>All the headers are an instance of <code class="code">class HeaderProperty</code> and supports the
@@ -389,7 +394,8 @@ $graph-&gt;scale-&gt;week-&gt;grid-&gt;SetColor( 'red' );</span></pre></td></tr>
             </div><p>
         </p>
         <div class="sect3" title="Minute scale"><div class="titlepage"><div><div><h4 class="title"><a name="sec.minute-scale-header"></a>Minute scale</h4></div></div></div>
-                   <p>Minute scale is enabled by adding the <code class="code">GANTT_HMIN</code> in the
+            
+            <p>Minute scale is enabled by adding the <code class="code">GANTT_HMIN</code> in the
                     <code class="code">GanttGraph::ShowHeaders()</code> call, for example as the following line
                 shows</p>
             <p>
@@ -414,7 +420,8 @@ $graph-&gt;scale-&gt;week-&gt;grid-&gt;SetColor( 'red' );</span></pre></td></tr>
             </p>
         </div>
         <div class="sect3" title="Hour scale"><div class="titlepage"><div><div><h4 class="title"><a name="sec.hour-scale-header"></a>Hour scale</h4></div></div></div>
-                   <p>Minute scale is enabled by adding the <code class="code">GANTT_HHOUR</code> in the
+            
+            <p>Minute scale is enabled by adding the <code class="code">GANTT_HHOUR</code> in the
                     <code class="code">GanttGraph::ShowHeaders()</code> call, for example as the following line
                 shows</p>
             <p>
@@ -478,7 +485,8 @@ $graph-&gt;scale-&gt;week-&gt;grid-&gt;SetColor( 'red' );</span></pre></td></tr>
             </p>
         </div>
         <div class="sect3" title="Day scale"><div class="titlepage"><div><div><h4 class="title"><a name="sec.day-scale-header"></a>Day scale</h4></div></div></div>
-                   <p>The <code class="code">SetStyle($aStyle)</code> method supports the following label
+            
+            <p>The <code class="code">SetStyle($aStyle)</code> method supports the following label
                 styles</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -573,7 +581,8 @@ $graph-&gt;scale-&gt;UseWeekendBackground(false);</span></pre></td></tr></table>
             </p>
         </div>
         <div class="sect3" title="Week scale"><div class="titlepage"><div><div><h4 class="title"><a name="sec.week-scale-header"></a>Week scale</h4></div></div></div>
-                   <p>Week scales, if enabled, by default shows the week number in range 1 to 53 (as
+            
+            <p>Week scales, if enabled, by default shows the week number in range 1 to 53 (as
                 defined by ISO-8601)</p>
             <p>
                 </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
@@ -637,7 +646,8 @@ $graph-&gt;scale-&gt;UseWeekendBackground(false);</span></pre></td></tr></table>
             </p>
         </div>
         <div class="sect3" title="Month scale"><div class="titlepage"><div><div><h4 class="title"><a name="sec.month-scale-header"></a>Month scale</h4></div></div></div>
-                   <p>The <code class="code">SetStyle($aStyle)</code> method supports the following label
+            
+            <p>The <code class="code">SetStyle($aStyle)</code> method supports the following label
                 styles</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -676,12 +686,14 @@ $graph-&gt;scale-&gt;UseWeekendBackground(false);</span></pre></td></tr></table>
             </p>
         </div>
         <div class="sect3" title="Year scale"><div class="titlepage"><div><div><h4 class="title"><a name="sec.year-scale-header"></a>Year scale</h4></div></div></div>
-                   <p>Year scale has no extra formatting possibilities it is always displayed as a four
+            
+            <p>Year scale has no extra formatting possibilities it is always displayed as a four
                 digit number , e.g. "<code class="code">2009</code>"</p>
         </div>
     </div>
     <div class="sect2" title="Adding gantt objects to the chart"><div class="titlepage"><div><div><h3 class="title"><a name="id2570487"></a>Adding gantt objects to the chart</h3></div></div></div>
-           <p>Gantt objects are primarily instances of one of two classes</p>
+        
+        <p>Gantt objects are primarily instances of one of two classes</p>
         <p>
             </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
                     <p><code class="code">class GanttBar</code></p>
@@ -796,7 +808,8 @@ $graph-&gt;scale-&gt;UseWeekendBackground(false);</span></pre></td></tr></table>
                 </li></ol></div><p>
         </p>
         <div class="sect3" title="Adding Gantt activity bars"><div class="titlepage"><div><div><h4 class="title"><a name="sect.adding-gantt-activity-bars"></a>Adding Gantt activity bars</h4></div></div></div>
-                   <p>Instances of <code class="code">class GanttBar</code> is created with the constructor</p>
+            
+            <p>Instances of <code class="code">class GanttBar</code> is created with the constructor</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                         <p><code class="code">GanttBar::__construct($aPos,$aLabel,$aStart,$aEnd,$aCaption="",$aHeightFactor=0.6)</code></p>
@@ -890,7 +903,8 @@ $graph-&gt;scale-&gt;UseWeekendBackground(false);</span></pre></td></tr></table>
                 the new width.</p>
         </div>
         <div class="sect3" title="Adding milestones"><div class="titlepage"><div><div><h4 class="title"><a name="id2572326"></a>Adding milestones</h4></div></div></div>
-                   <p>Instances of <code class="code">class Milestone</code> is created with the constructor</p>
+            
+            <p>Instances of <code class="code">class Milestone</code> is created with the constructor</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                         <p><code class="code">MileStone::__construct($aVPos,$aLabel,$aDate,$aCaption='')</code></p>
@@ -940,7 +954,8 @@ $ms5 = new MileStone(3, 'Ready for test', '2002-01-06');</span></pre></td></tr><
             </p>
         </div>
         <div class="sect3" title="Adding vertical lines (GanttVLine)"><div class="titlepage"><div><div><h4 class="title"><a name="id2572634"></a>Adding vertical lines (GanttVLine)</h4></div></div></div>
-                   <p>Instances of <code class="code">class GanttVLine</code> is created with the constructor</p>
+            
+            <p>Instances of <code class="code">class GanttVLine</code> is created with the constructor</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                         <p><code class="code">GanttVLine::__construct($aDate,$aTitle='',$aColor='darkred',$aWeight=2,$aStyle='solid')</code></p>
@@ -1018,7 +1033,8 @@ $graph-&gt;Add( $vline );</span></pre></td></tr></table></div><p>
             </p>
         </div>
         <div class="sect3" title="Illustrating break in activities"><div class="titlepage"><div><div><h4 class="title"><a name="id2573105"></a>Illustrating break in activities</h4></div></div></div>
-                   <p>Since the position of each activity is specified by row and date there is nothing
+            
+            <p>Since the position of each activity is specified by row and date there is nothing
                 that prevents adding multiple activity bars to the same row. This observation makes
                 it possible to illustrate breaks in activities during a certain period. <a class="xref" href="ch16s04.html#fig.gantt_samerowex1" title="Figure 16.63. Adding several activity bars on the same row (gantt_samerowex1.php)">Figure 16.63. Adding several activity bars on the same row <code class="uri"><a class="uri" href="example_src/gantt_samerowex1.html" target="_top">(<code class="filename">gantt_samerowex1.php</code>)</a></code> </a> shows an example of this</p>
             <p>
@@ -1045,8 +1061,10 @@ $graph-&gt;Add( $vline );</span></pre></td></tr></table></div><p>
         </div>
     </div>
     <div class="sect2" title="Additional formatting for activity bars (Gantt bars)"><div class="titlepage"><div><div><h3 class="title"><a name="id2573237"></a>Additional formatting for activity bars (Gantt bars)</h3></div></div></div>
-           <div class="sect3" title="Adding markers to the Gantt bars"><div class="titlepage"><div><div><h4 class="title"><a name="sec.adding-gantt-markers"></a>Adding markers to the Gantt bars</h4></div></div></div>
-                   <p>Each gantt bar can have a marker either at the left or to the right of the bar.
+        
+        <div class="sect3" title="Adding markers to the Gantt bars"><div class="titlepage"><div><div><h4 class="title"><a name="sec.adding-gantt-markers"></a>Adding markers to the Gantt bars</h4></div></div></div>
+            
+            <p>Each gantt bar can have a marker either at the left or to the right of the bar.
                 The markers are accessed through the properties</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -1088,7 +1106,8 @@ $graph-&gt;Add( $vline );</span></pre></td></tr></table></div><p>
             <p>This would give the effect shown in <a class="xref" href="ch16s04.html#fig.adding-right-marker" title="Figure 16.65. Example of adding a right marker to the activity bar">Figure 16.65. Example of adding a right marker to the activity bar</a></p>
             <p>
                 </p><div class="figure"><a name="fig.adding-right-marker"></a><p class="title"><b>Figure 16.65. Example of adding a right marker to the activity bar</b></p><div class="figure-contents">
-                                   <div class="mediaobject"><img src="images/gantt-bar_rightmarker.png" alt="Example of adding a right marker to the activity bar"></div>
+                    
+                    <div class="mediaobject"><img src="images/gantt-bar_rightmarker.png" alt="Example of adding a right marker to the activity bar"></div>
                 </div></div><p><br class="figure-break">
             </p>
             <div class="caution" title="Caution" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Caution</h3>
@@ -1111,7 +1130,8 @@ $graph-&gt;Add( $vline );</span></pre></td></tr></table></div><p>
             </p>
         </div>
         <div class="sect3" title="Specifying a fill pattern for the activity bar"><div class="titlepage"><div><div><h4 class="title"><a name="id2573438"></a>Specifying a fill pattern for the activity bar</h4></div></div></div>
-                   <p>The pattern and color for an activity bar is specified with the method</p>
+            
+            <p>The pattern and color for an activity bar is specified with the method</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                         <p><code class="code">GanttBar::function
@@ -1121,7 +1141,8 @@ $graph-&gt;Add( $vline );</span></pre></td></tr></table></div><p>
             <p>The available patterns together with the symbolic names are given in <a class="xref" href="ch16s04.html#tab.grad-bar-patterns" title="Table 16.1. Gantt bar patterns">Table 16.1. Gantt bar patterns</a>.</p>
             <p>
                 </p><div class="table"><a name="tab.grad-bar-patterns"></a><p class="title"><b>Table 16.1. Gantt bar patterns</b></p><div class="table-contents">
-                                   <table summary="Gantt bar patterns" border="1"><colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"></colgroup><tbody><tr><td>
+                    
+                    <table summary="Gantt bar patterns" border="1"><colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"></colgroup><tbody><tr><td>
                                     <p><span class="inlinemediaobject"><img src="images/gantt-bar_ldiag.png"></span></p>
                                     <p><code class="code">GANTT_LDIAG</code></p>
                                 </td><td>
@@ -1158,7 +1179,8 @@ $graph-&gt;Add( $vline );</span></pre></td></tr></table></div><p>
             </p>
         </div>
         <div class="sect3" title="Adding captions to activities"><div class="titlepage"><div><div><h4 class="title"><a name="id2573692"></a>Adding captions to activities</h4></div></div></div>
-                   <p>The caption text is a text string that is shown to the right of the activity bar.
+            
+            <p>The caption text is a text string that is shown to the right of the activity bar.
                 It can have different usages, for example a common use is to show the initials of
                 the person (or persons) responsible for completing a specific activity.</p>
             <p>The caption is accessed through the "<code class="code">$caption</code>" property of the bar.
@@ -1179,7 +1201,8 @@ $graph-&gt;Add( $vline );</span></pre></td></tr></table></div><p>
                 chart that shows the typical appearance of a gantt bar caption.</p>
             <p>
                 </p><div class="figure"><a name="fig.gantt-bar-caption"></a><p class="title"><b>Figure 16.67. Adding a caption to a Gantt bar</b></p><div class="figure-contents">
-                                   <div class="mediaobject"><img src="images/gantt-bar_caption.png" alt="Adding a caption to a Gantt bar"></div>
+                    
+                    <div class="mediaobject"><img src="images/gantt-bar_caption.png" alt="Adding a caption to a Gantt bar"></div>
                 </div></div><p><br class="figure-break">
             </p>
             <p>In addition to specifying the caption as shown above the caption text can also be
@@ -1204,7 +1227,8 @@ $graph-&gt;Add( $vline );</span></pre></td></tr></table></div><p>
             </p>
         </div>
         <div class="sect3" title="Adding progress indicators"><div class="titlepage"><div><div><h4 class="title"><a name="sec.gantt-progress"></a>Adding progress indicators</h4></div></div></div>
-                   <p>To indicate the progress of a specific activity it is also possible to add a
+            
+            <p>To indicate the progress of a specific activity it is also possible to add a
                 progress indicator to each bar. This progress indicator consists of a smaller bar
                 within the bar. By default this progress bar is black and 70% of the height of the
                 bar. These parameter can all be changed.</p>
@@ -1243,7 +1267,8 @@ $graph-&gt;Add( $vline );</span></pre></td></tr></table></div><p>
         </div>
     </div>
     <div class="sect2" title="Adding visual indication of constraints between gantt objects"><div class="titlepage"><div><div><h3 class="title"><a name="sec.add-constraints"></a>Adding visual indication of constraints between gantt objects</h3></div></div></div>
-           <p>With Gantt charts there is often the need to illustrate constrains between one or
+        
+        <p>With Gantt charts there is often the need to illustrate constrains between one or
             several activities. One of the most common constrain is that on activity can't start
             before some other activity has finished. The constrain is visualized as an arrow between
             two gantt objects.</p>
@@ -1253,28 +1278,32 @@ $graph-&gt;Add( $vline );</span></pre></td></tr></table></div><p>
                 <table border="1"><colgroup><col class="c1"><col class="c2"></colgroup><tbody><tr><td align="center">
                                 <p>
                                     </p><div class="figure"><a name="id2574041"></a><p class="title"><b>Figure 16.70. Start to end constraint</b></p><div class="figure-contents">
-                                                                           <div class="mediaobject"><img src="images/gantt-constraint-start-to-end.png" alt="Start to end constraint"></div>
+                                        
+                                        <div class="mediaobject"><img src="images/gantt-constraint-start-to-end.png" alt="Start to end constraint"></div>
                                     </div></div><p><br class="figure-break">
                                 </p>
                                 <p>Start to End</p>
                             </td><td align="center">
                                 <p>
                                     </p><div class="figure"><a name="id2574073"></a><p class="title"><b>Figure 16.71. Start to start constraint</b></p><div class="figure-contents">
-                                                                           <div class="mediaobject"><img src="images/gantt-constraint-start-to-start.png" alt="Start to start constraint"></div>
+                                        
+                                        <div class="mediaobject"><img src="images/gantt-constraint-start-to-start.png" alt="Start to start constraint"></div>
                                     </div></div><p><br class="figure-break">
                                 </p>
                                 <p>Start to Start</p>
                             </td></tr><tr><td align="center">
                                 <p>
                                     </p><div class="figure"><a name="id2574110"></a><p class="title"><b>Figure 16.72. End to start constraint</b></p><div class="figure-contents">
-                                                                           <div class="mediaobject"><img src="images/gantt-constraint-end-to-start.png" alt="End to start constraint"></div>
+                                        
+                                        <div class="mediaobject"><img src="images/gantt-constraint-end-to-start.png" alt="End to start constraint"></div>
                                     </div></div><p><br class="figure-break">
                                 </p>
                                 <p>End to Start</p>
                             </td><td align="center">
                                 <p>
                                     </p><div class="figure"><a name="id2574144"></a><p class="title"><b>Figure 16.73. End to end constraint</b></p><div class="figure-contents">
-                                                                           <div class="mediaobject"><img src="images/gantt-constraint-end-to-end.png" alt="End to end constraint"></div>
+                                        
+                                        <div class="mediaobject"><img src="images/gantt-constraint-end-to-end.png" alt="End to end constraint"></div>
                                     </div></div><p><br class="figure-break">
                                 </p>
                                 <p>End to End</p>
@@ -1354,7 +1383,8 @@ $activity2 = new GanttBar(1,'Second activity','2001-02-01','2001-04-15');</span>
         </p>
     </div>
     <div class="sect2" title="Grouping activities"><div class="titlepage"><div><div><h3 class="title"><a name="sec.gouping-activities"></a>Grouping activities</h3></div></div></div>
-           <p>It is common to group activities. There is no special type for activity bars that are
+        
+        <p>It is common to group activities. There is no special type for activity bars that are
             used to illustrate grouping. The common way of illustrating this (as have been used
             above) is to add "half" a triangle marker at both ends of the bar. </p>
         <p>The library provides two special types of marks that are handled slightly different
@@ -1385,7 +1415,8 @@ $activity2 = new GanttBar(1,'Second activity','2001-02-01','2001-04-15');</span>
             activity bar as can bee seen in <a class="xref" href="ch16s04.html#fig.group-markers" title="Figure 16.74. Group markers">Figure 16.74. Group markers</a></p>
         <p>
             </p><div class="figure"><a name="fig.group-markers"></a><p class="title"><b>Figure 16.74. Group markers</b></p><div class="figure-contents">
-                           <div class="mediaobject"><img src="images/gantt-group-illustration.png" alt="Group markers"></div>
+                
+                <div class="mediaobject"><img src="images/gantt-group-illustration.png" alt="Group markers"></div>
             </div></div><p><br class="figure-break">
         </p>
         <p>
@@ -1397,7 +1428,8 @@ $activity2 = new GanttBar(1,'Second activity','2001-02-01','2001-04-15');</span>
         </p>
     </div>
     <div class="sect2" title="Simplifying creation of basic Gantt charts"><div class="titlepage"><div><div><h3 class="title"><a name="id2574437"></a>Simplifying creation of basic Gantt charts</h3></div></div></div>
-           <p>As we have shown in the previous examples constructing a Gantt chart consists of a
+        
+        <p>As we have shown in the previous examples constructing a Gantt chart consists of a
             number of repetitive tasks; Create the individual activity bars, add possible
             constraints, format them and finally add them to the graph. </p>
         <p>Since many basic Gantt charts that doesn't need a very high degree of customization
@@ -1581,7 +1613,8 @@ $activity2 = new GanttBar(1,'Second activity','2001-02-01','2001-04-15');</span>
         </p>
     </div>
     <div class="sect2" title="Using multiple title columns"><div class="titlepage"><div><div><h3 class="title"><a name="id2574887"></a>Using multiple title columns</h3></div></div></div>
-           <p>It is often of interest not only to show one title for a gantt bar but often one wants
+        
+        <p>It is often of interest not only to show one title for a gantt bar but often one wants
             to show, title, start date, end date, duration or effort and so on. Up until now we
             have, to keep things simple only shown a single title for each activity. We will now
             show how to use an arbitrary number of columns/titles for each gantt activity (gantt bar
@@ -1682,7 +1715,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
                 setup they must have a big enough width to cater for all the strings.</p>
         </div>
         <div class="sect3" title="Adjusting the individual fonts for each column"><div class="titlepage"><div><div><h4 class="title"><a name="id2575159"></a>Adjusting the individual fonts for each column</h4></div></div></div>
-                   <p><span class="italic">Note: This feature is only available in versions &gt;= 3.0.3
+            
+            <p><span class="italic">Note: This feature is only available in versions &gt;= 3.0.3
                     of the library.</span></p>
             <p>When using the method <code class="code">GanttBar::title::SetFont()</code> the same font will
                 be applied to all columns for that particular activity. To specify individual fonts
@@ -1711,7 +1745,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
             </p>
         </div>
         <div class="sect3" title="Adding an overview title for all columns"><div class="titlepage"><div><div><h4 class="title"><a name="id2575229"></a>Adding an overview title for all columns</h4></div></div></div>
-                   <p>It is possible to add a title that spans all the defined title columns. An example
+            
+            <p>It is possible to add a title that spans all the defined title columns. An example
                 of this is shown in <a class="xref" href="ch16s04.html#fig.ganttmonthyearex4" title="Figure 16.78. Adding a spanning title over all title columns (ganttmonthyearex4.php)">Figure 16.78. Adding a spanning title over all title columns <code class="uri"><a class="uri" href="example_src/ganttmonthyearex4.html" target="_top">(<code class="filename">ganttmonthyearex4.php</code>)</a></code> </a>. This title is
                 specified with the property "<code class="code">$tableTitle</code>" of the scale. Specifying a
                 table title will automatically adjust the height of the column titles to fit the
@@ -1744,7 +1779,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
         </div>
     </div>
     <div class="sect2" title="Built-in icons for use in activity titles"><div class="titlepage"><div><div><h3 class="title"><a name="id2575300"></a>Built-in icons for use in activity titles</h3></div></div></div>
-           <p>To assist in getting visual clues to how to interpret activities in the Gantt chart it
+        
+        <p>To assist in getting visual clues to how to interpret activities in the Gantt chart it
             is possible to add icons in the title columns. These icons can also act as hot-spots in
             CSIM graphs. The available built-in icons are listed in <a class="xref" href="ch16s04.html#fig.gantt-icons" title="Figure 16.79. Built-in icons for Gantt charts">Figure 16.79. Built-in icons for Gantt charts</a> together with there symbolic names.</p>
         <p>In order to add an icon in a title column first an instance of <code class="code">class
@@ -1787,7 +1823,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
         </p>
         <p>
             </p><div class="figure"><a name="fig.gantt-icons"></a><p class="title"><b>Figure 16.79. Built-in icons for Gantt charts</b></p><div class="figure-contents">
-                           <div class="informaltable">
+                
+                <div class="informaltable">
                     <table border="1"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup><tbody><tr><td align="center">
                                     <p><span class="inlinemediaobject"><img src="images/gantticon_error.png" alt="Built-in icons for Gantt charts"></span></p>
                                     <p><code class="code">GICON_WARNINGYELLOW</code></p>
@@ -1837,7 +1874,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
         </p>
     </div>
     <div class="sect2" title="More general Gantt formatting"><div class="titlepage"><div><div><h3 class="title"><a name="id2575812"></a>More general Gantt formatting</h3></div></div></div>
-           <p>In this section we will show a few more ways by which you may customize the gantt
+        
+        <p>In this section we will show a few more ways by which you may customize the gantt
             chart itself. This include among other thing</p>
         <p>
             </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -1850,7 +1888,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
                 </li></ul></div><p>
         </p>
         <div class="sect3" title="Adjusting the scale zoom factor"><div class="titlepage"><div><div><h4 class="title"><a name="sec.zoom-factor"></a>Adjusting the scale zoom factor</h4></div></div></div>
-                   <p>By default the scale will be just wide enough to fit the chosen scale headers with
+            
+            <p>By default the scale will be just wide enough to fit the chosen scale headers with
                 some small margins on each side. It is possible to adjust the width when using
                 automatic graph sizing by setting a zoom factor for the scale. The default width
                 corresponds to a zoom factor of 1.0.</p>
@@ -1879,7 +1918,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
             </p>
         </div>
         <div class="sect3" title="Adding a table title"><div class="titlepage"><div><div><h4 class="title"><a name="id2575994"></a>Adding a table title</h4></div></div></div>
-                   <p>The (default) white area in the top left of the gantt table may have a title. This
+            
+            <p>The (default) white area in the top left of the gantt table may have a title. This
                 is accessed by the '<code class="code">tableTitle</code>' property of the gantt scale. Using this
                 is straightforward as the following code snippet shows.</p>
             <p>
@@ -1905,14 +1945,16 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
             </p>
         </div>
         <div class="sect3" title="Modifying the divider lines"><div class="titlepage"><div><div><h4 class="title"><a name="id2576032"></a>Modifying the divider lines</h4></div></div></div>
-                   <p>The vertical and horizontal lines between the activity titles and the plot area
+            
+            <p>The vertical and horizontal lines between the activity titles and the plot area
                 and the bars can be modified by accessing the vertical divider
                 '<code class="code">divider</code>' and the horizontal divider '<code class="code">dividerh</code>' properties
                 of the scale. <a class="xref" href="ch16s04.html#fig.gantt-divider-lines" title="Figure 16.84. Gantt divider lines">Figure 16.84. Gantt divider lines</a> shows the exact location
                 of the divider lines.</p>
             <p>
                 </p><div class="figure"><a name="fig.gantt-divider-lines"></a><p class="title"><b>Figure 16.84. Gantt divider lines</b></p><div class="figure-contents">
-                                   <div class="mediaobject"><img src="images/gantt-divider-lines-original-amended.png" alt="Gantt divider lines"></div>
+                    
+                    <div class="mediaobject"><img src="images/gantt-divider-lines-original-amended.png" alt="Gantt divider lines"></div>
                 </div></div><p><br class="figure-break">
             </p>
             <p>Again, this is straightforward as the following code snippet shows.</p>
@@ -1933,7 +1975,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
             <p>An example of this can be seen in <a class="xref" href="ch16s04.html#fig.ganttex18" title="Figure 16.85. Adjusting the plot box around the gantt chart (ganttex18.php)">Figure 16.85. Adjusting the plot box around the gantt chart <code class="uri"><a class="uri" href="example_src/ganttex18.html" target="_top">(<code class="filename">ganttex18.php</code>)</a></code> </a></p>
         </div>
         <div class="sect3" title="Modifying the box around the plot"><div class="titlepage"><div><div><h4 class="title"><a name="id2576136"></a>Modifying the box around the plot</h4></div></div></div>
-                   <p>In a similar manner to the other plots in the library the Box around the plot can
+            
+            <p>In a similar manner to the other plots in the library the Box around the plot can
                 be modified with the gantt graph method '<code class="code">GanttGraph::SetBox()</code>' . The
                 following line will result in a thicker plot box around the plot area as can be seen
                 in <a class="xref" href="ch16s04.html#fig.ganttex18" title="Figure 16.85. Adjusting the plot box around the gantt chart (ganttex18.php)">Figure 16.85. Adjusting the plot box around the gantt chart <code class="uri"><a class="uri" href="example_src/ganttex18.html" target="_top">(<code class="filename">ganttex18.php</code>)</a></code> </a></p>
@@ -1946,7 +1989,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
             </p>
         </div>
         <div class="sect3" title="Horizontal grids and alternating line colors"><div class="titlepage"><div><div><h4 class="title"><a name="id2576209"></a>Horizontal grids and alternating line colors</h4></div></div></div>
-                   <p>In order to make large charts easier to read it is possible to specify alternating
+            
+            <p>In order to make large charts easier to read it is possible to specify alternating
                 an horizontal grid and optional alternating line colors in the background for Gantt
                 charts. The horizontal grid is accessed through the <code class="code">Graph::hgrid</code>
                 property and the line (used in the grid) is accessed through the
@@ -1978,7 +2022,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
             <p>An example,of this is shown in <a class="xref" href="ch16s04.html#fig.gantthgridex1" title="Figure 16.86.  (gantthgridex1.php)">Figure 16.86.  <code class="uri"><a class="uri" href="example_src/gantthgridex1.html" target="_top">(<code class="filename">gantthgridex1.php</code>)</a></code> </a></p>
         </div>
         <div class="sect3" title="Adding icons to Gantt graphs"><div class="titlepage"><div><div><h4 class="title"><a name="id2576277"></a>Adding icons to Gantt graphs</h4></div></div></div>
-                   <p>In the same way as for ordinary x-y graphs it is possible to add small images (or
+            
+            <p>In the same way as for ordinary x-y graphs it is possible to add small images (or
                 icons) to a Gantt graph by creating an instance of <code class="code">class IconPlot</code> and
                 then adding that instance to the graph. </p>
             <p>For example the following line will add an icon (similar to what was shown in ??)
@@ -2000,7 +2045,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
             </p>
         </div>
         <div class="sect3" title="Adjusting the vertical spacing between activity bars"><div class="titlepage"><div><div><h4 class="title"><a name="id2576317"></a>Adjusting the vertical spacing between activity bars</h4></div></div></div>
-                   <p>By default the library adds 20% margin above and below each activity bar. In order
+            
+            <p>By default the library adds 20% margin above and below each activity bar. In order
                 to set the activities closer or further away from each other the method</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -2026,7 +2072,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
             </p>
         </div>
         <div class="sect3" title="Adjusting the margins with auto-sizing"><div class="titlepage"><div><div><h4 class="title"><a name="id2576346"></a>Adjusting the margins with auto-sizing</h4></div></div></div>
-                   <p>It is possible to use <code class="code">GanttGraph::SetMargin()</code> to specify the margin
+            
+            <p>It is possible to use <code class="code">GanttGraph::SetMargin()</code> to specify the margin
                 for a Gantt graph even when the vertical height is determined automatically. For
                 example to generate a graph with no left, right or bottom margin the following lines
                 would be needed</p>
@@ -2042,7 +2089,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
             </p>
         </div>
         <div class="sect3" title="Limiting the date range for the Gantt chart"><div class="titlepage"><div><div><h4 class="title"><a name="id2576439"></a>Limiting the date range for the Gantt chart</h4></div></div></div>
-                   <p>By default the scale will be wide enough to make room for all specified
+            
+            <p>By default the scale will be wide enough to make room for all specified
                 activities. It is however possible to manually set the scale range to limit the size
                 of the Gantt chart.</p>
             <p>This is done by calling the method</p>
@@ -2059,7 +2107,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
             </p>
         </div>
         <div class="sect3" title="Specifying the first day in the week"><div class="titlepage"><div><div><h4 class="title"><a name="id2576440"></a>Specifying the first day in the week</h4></div></div></div>
-                   <p>By default Monday is the first day of the week. It is possible to manually set an
+            
+            <p>By default Monday is the first day of the week. It is possible to manually set an
                 arbitrary start day by calling the method</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -2070,7 +2119,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
             </p>
         </div>
         <div class="sect3" title="Adding plot icons to the graph"><div class="titlepage"><div><div><h4 class="title"><a name="id2576511"></a>Adding plot icons to the graph</h4></div></div></div>
-                   <p>In the same way as was described in <a class="xref" href="ch14s14.html" title="Adding icons (and small images) to the graph">Adding icons (and small images) to the graph</a> for x-y graphs it is possible to add icons and country flags to a Gantt chart.
+            
+            <p>In the same way as was described in <a class="xref" href="ch14s14.html" title="Adding icons (and small images) to the graph">Adding icons (and small images) to the graph</a> for x-y graphs it is possible to add icons and country flags to a Gantt chart.
                 The following code snippet adds a Norwegian flag to the top left corner of a
                 graph</p>
             <p>
@@ -2124,7 +2174,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
             <p>For more details on adding icons to a graph see <a class="xref" href="ch14s14.html" title="Adding icons (and small images) to the graph">Adding icons (and small images) to the graph</a> .</p>
         </div>
         <div class="sect3" title="Adding text strings to the graph"><div class="titlepage"><div><div><h4 class="title"><a name="id2576573"></a>Adding text strings to the graph</h4></div></div></div>
-                   <p>In exactly the same way as was described in <a class="xref" href="ch14s17.html" title="Adding arbitrary texts to the graph">Adding arbitrary texts to the graph</a> it is also possible to add arbitrary
+            
+            <p>In exactly the same way as was described in <a class="xref" href="ch14s17.html" title="Adding arbitrary texts to the graph">Adding arbitrary texts to the graph</a> it is also possible to add arbitrary
                 formatted text paragraphs to the gantt chart. </p>
             <p>The position of the text strings is specified as either an absolute position in
                 pixels (as usual the top left corner is (0,0)) or the position can be specified as a
@@ -2196,7 +2247,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
         </div>
     </div>
     <div class="sect2" title="Localizing the Gantt chart scale"><div class="titlepage"><div><div><h3 class="title"><a name="sec.gantt-localizing"></a>Localizing the Gantt chart scale</h3></div></div></div>
-           <p>Since the name of the week and months are constructed by the library it must be
+        
+        <p>Since the name of the week and months are constructed by the library it must be
             possible to adjust which locale should be used to construct the names.</p>
         <p>Depending on the server setup of PHP there might be support for several locales. By
             default the locale is set to use the default locale on the server.</p>
@@ -2213,7 +2265,8 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
         </p>
         <p>
             </p><div class="figure"><a name="fig.gantt-locale-error"></a><p class="title"><b>Figure 16.89. Error message when using an unsupported Locale in Gantt chart</b></p><div class="figure-contents">
-                           <div class="mediaobject"><img src="images/gantt-locale-error.png" alt="Error message when using an unsupported Locale in Gantt chart"></div>
+                
+                <div class="mediaobject"><img src="images/gantt-locale-error.png" alt="Error message when using an unsupported Locale in Gantt chart"></div>
             </div></div><p><br class="figure-break">
         </p>
         <p>To set the locale the following method is used</p>
@@ -2239,10 +2292,12 @@ $bar = new GanttBar(0 , $title1 . &quot;\t&quot; . $title2, &quot;2003-11-23&quo
         </p>
     </div>
     <div class="sect2" title="CSIM Support in Gantt charts"><div class="titlepage"><div><div><h3 class="title"><a name="id2576896"></a>CSIM Support in Gantt charts</h3></div></div></div>
-           <p>The generic description on how to use CSIM (Client side image maps) together with the
+        
+        <p>The generic description on how to use CSIM (Client side image maps) together with the
             library is fully described in <a class="xref" href="ch10.html" title="Chapter 10. Using CSIM (Client side image maps)">Chapter 10. <i>Using CSIM (Client side image maps)</i></a> .</p>
         <div class="sect3" title="Adding CSIM (Client side Image Maps) to Gantt charts"><div class="titlepage"><div><div><h4 class="title"><a name="id2576932"></a>Adding CSIM (Client side Image Maps) to Gantt charts</h4></div></div></div>
-                   <p>Gantt charts can have independent (different targets) hot spots in both the
+            
+            <p>Gantt charts can have independent (different targets) hot spots in both the
                 activities and in the associated title (or titles) for each activity. For activities
                 both activity bars and milestones support CSIM functionality.</p>
             <p>The targets and the associated "Alt" text for an activity bar is set by using one
@@ -2279,7 +2334,8 @@ $bar-&gt;title-&gt;SetCSIMTarget( &quot;http://localhost/abc&quot;, &quot;Alt Te
             </p>
         </div>
         <div class="sect3" title="Specifying CSIM entries for column titles"><div class="titlepage"><div><div><h4 class="title"><a name="id2577044"></a>Specifying CSIM entries for column titles</h4></div></div></div>
-                   <p>In exactly the same way as for a single title it is possible to specify individual
+            
+            <p>In exactly the same way as for a single title it is possible to specify individual
                 CSIM targets for each of the title columns. This is accomplished by specifying an
                 array for both the target and the alt text instead of a single string as arguments
                 for <code class="code">SetCSIMTarget()</code> The following code snippet shows how to specify
@@ -2295,11 +2351,13 @@ $bar-&gt;title-&gt;SetCSIMTarget( &quot;http://localhost/abc&quot;, &quot;Alt Te
         </div>
     </div>
     <div class="sect2" title="Some final Gantt graph examples"><div class="titlepage"><div><div><h3 class="title"><a name="id2577062"></a>Some final Gantt graph examples</h3></div></div></div>
-           <p>The example given below illustrates one or more of the features available for the
+        
+        <p>The example given below illustrates one or more of the features available for the
             gantt graphs and shows how they may be combined to achive the wanted effect.</p>
         <p></p>
         <div class="sect3" title="Examples of using hours and minute scales"><div class="titlepage"><div><div><h4 class="title"><a name="id2577082"></a>Examples of using hours and minute scales</h4></div></div></div>
-                   <p>
+            
+            <p>
                 </p><div class="figure"><a name="fig.gantthourminex1"></a><p class="title"><b>Figure 16.91. Using multiple title columns with a scale of one day <code class="uri"><a class="uri" href="example_src/gantthourminex1.html" target="_top">(<code class="filename">gantthourminex1.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/gantthourminex1.png" alt="Using multiple title columns with a scale of one day (gantthourminex1.php)"></span> </div></div><p><br class="figure-break">
             </p>
             <p>
@@ -2310,12 +2368,14 @@ $bar-&gt;title-&gt;SetCSIMTarget( &quot;http://localhost/abc&quot;, &quot;Alt Te
             </p>
         </div>
         <div class="sect3" title="Adding multiple activities with markers and indenting titles"><div class="titlepage"><div><div><h4 class="title"><a name="id2577145"></a>Adding multiple activities with markers and indenting titles</h4></div></div></div>
-                   <p>
+            
+            <p>
                 </p><div class="figure"><a name="fig.ganttex30"></a><p class="title"><b>Figure 16.92. Using multiple markers and indenting titles in the Gantt chart <code class="uri"><a class="uri" href="example_src/ganttex30.html" target="_top">(<code class="filename">ganttex30.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/ganttex30.png" alt="Using multiple markers and indenting titles in the Gantt chart (ganttex30.php)"></span> </div></div><p><br class="figure-break">
             </p>
         </div>
         <div class="sect3" title="Using grouping of bars together with constraints"><div class="titlepage"><div><div><h4 class="title"><a name="id2577161"></a>Using grouping of bars together with constraints</h4></div></div></div>
-                   <p>
+            
+            <p>
                 </p><div class="figure"><a name="fig.ganttconstrainex2"></a><p class="title"><b>Figure 16.93. Using a grouping bar together with constraints <code class="uri"><a class="uri" href="example_src/ganttconstrainex2.html" target="_top">(<code class="filename">ganttconstrainex2.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/ganttconstrainex2.png" alt="Using a grouping bar together with constraints (ganttconstrainex2.php)"></span> </div></div><p><br class="figure-break">
             </p>
         </div>

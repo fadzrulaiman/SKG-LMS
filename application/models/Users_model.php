@@ -1,7 +1,10 @@
 <?php
 /**
  * This model contains the business logic and manages the persistence of users (employees)
-
+ * @copyright  Copyright (c) 2014-2023 Benjamin BALET
+ * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
+ * @link            https://github.com/bbalet/jorani
+ * @since         0.1.0
  */
 
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
@@ -23,6 +26,7 @@ class Users_model extends CI_Model {
      * Get the list of users or one user
      * @param int $id optional id of one user
      * @return array record of users
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getUsers($id = 0) {
         $this->db->select('users.*');
@@ -37,6 +41,7 @@ class Users_model extends CI_Model {
     /**
      * Get the list of users and their roles
      * @return array record of users
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getUsersAndRoles() {
         $this->db->select('users.id, active, firstname, lastname, login, email');
@@ -50,6 +55,7 @@ class Users_model extends CI_Model {
     /**
      * Get the list of employees
      * @return array record of users
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getAllEmployees() {
         $this->db->select('id, firstname, lastname, email');
@@ -60,6 +66,7 @@ class Users_model extends CI_Model {
     /**
      * Get the list of employees and the name of their entities
      * @return array record of users
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getAllEmployeesAndTheirEntities() {
         $this->db->select('users.id, firstname, lastname');
@@ -76,6 +83,7 @@ class Users_model extends CI_Model {
      * Get the name of a given user
      * @param int $id Identifier of employee
      * @return string firstname and lastname of the employee
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getName($id) {
         $record = $this->getUsers($id);
@@ -88,6 +96,7 @@ class Users_model extends CI_Model {
      * Get the list of employees that are the collaborators of the given user
      * @param int $id identifier of the manager
      * @return array record of users
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getCollaboratorsOfManager($id = 0) {
         $this->db->select('users.*');
@@ -108,6 +117,7 @@ class Users_model extends CI_Model {
      * @param int $employee identifier of the collaborator
      * @param int $manager identifier of the manager
      * @return bool TRUE if the employee is a collaborator, FALSE otherwise
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function isCollaboratorOfManager($employee, $manager) {
         $this->db->from('users');
@@ -121,6 +131,7 @@ class Users_model extends CI_Model {
      * Check if a login can be used before creating the user
      * @param string $login login identifier
      * @return bool TRUE if available, FALSE otherwise
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function isLoginAvailable($login) {
         $this->db->from('users');
@@ -137,6 +148,7 @@ class Users_model extends CI_Model {
     /**
      * Delete a user from the database
      * @param int $id identifier of the user
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteUser($id) {
         $this->db->delete('users', array('id' => $id));
@@ -157,6 +169,7 @@ class Users_model extends CI_Model {
     /**
      * Insert a new user into the database. Inserted data are coming from an HTML form
      * @return string deciphered password (so as to send it by e-mail in clear)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function setUsers() {
         //Decipher the password value (RSA encoded -> base64 -> decode -> decrypt)
@@ -247,6 +260,7 @@ class Users_model extends CI_Model {
      * @param string $userProperties JSON encoded user properties or NULL
      * @param string $picture Base64 encoded avatar picture or NULL
      * @return int Inserted User Identifier
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function insertUserByApi($firstname, $lastname, $login, $email, $password, $role,
             $manager = NULL,
@@ -298,6 +312,7 @@ class Users_model extends CI_Model {
      * @param int $id Id of the user
      * @param array $data Associative array of fields to be updated
      * @return int Number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function updateUserByApi($id, $data) {
         if (isset($password)){
@@ -313,6 +328,7 @@ class Users_model extends CI_Model {
     /**
      * Update a given user in the database. Update data are coming from an HTML form
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function updateUsers() {
 
@@ -362,6 +378,7 @@ class Users_model extends CI_Model {
     /**
      * Update a given user in the database. Update data are coming from an HTML form
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function resetPassword($id, $CipheredNewPassword) {
         //Decipher the password value (RSA encoded -> base64 -> decode -> decrypt)
@@ -390,6 +407,7 @@ class Users_model extends CI_Model {
      * Reset a password. Generate a new password and store its hash into db.
      * @param int $id User identifier
      * @return string clear password
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function resetClearPassword($id) {
         //generate a random password of length 10
@@ -410,6 +428,7 @@ class Users_model extends CI_Model {
      * Generate a random password
      * @param int $length length of the generated password
      * @return string generated password
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function randomPassword($length) {
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -470,6 +489,7 @@ class Users_model extends CI_Model {
      * @param string $login user login
      * @param string $password password
      * @return bool TRUE if the user is succesfully authenticated, FALSE otherwise
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function checkCredentials($login, $password) {
         $this->db->from('users');
@@ -499,6 +519,7 @@ class Users_model extends CI_Model {
      * It is the LDAP binding operation that checks if Password is correct.
      * @param string $login user login
      * @return bool TRUE if user was found into the database, FALSE otherwise
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function checkCredentialsLDAP($login) {
         $this->db->from('users');
@@ -520,6 +541,7 @@ class Users_model extends CI_Model {
      * @param string $email E-mail address of the user
      * @param string $password Optional password
      * @return bool TRUE if user was found into the database, FALSE otherwise
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function checkCredentialsEmail($email, $password = NULL) {
         $this->db->from('users');
@@ -548,6 +570,7 @@ class Users_model extends CI_Model {
      * @param string $type login type could be "internal", "ldap", or "sso"
      * @param string $password password
      * @return stdClass user properties if the user is succesfully authenticated, NULL otherwise
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function checkCredentialsForREST($login, $type = "internal", $password = NULL) {
         log_message('debug', '++checkCredentialsForREST / login=' . $login . ' / type=' . $type);
@@ -620,6 +643,7 @@ class Users_model extends CI_Model {
      * Get the LDAP Authentication path of a user
      * @param string $login user login
      * @return string LDAP Authentication path, empty string otherwise
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getBaseDN($login) {
         $this->db->select('ldap_path');
@@ -644,6 +668,7 @@ class Users_model extends CI_Model {
      * @param string $criterion2 "lesser" or "greater" (optional)
      * @param string $date2 Date Hired (optional)
      * @return array record of users
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function employeesOfEntity($id = 0, $children = TRUE, $filterActive = "all",
             $criterion1 = NULL, $date1 = NULL, $criterion2 = NULL, $date2 = NULL) {
@@ -702,6 +727,7 @@ class Users_model extends CI_Model {
      * Update all employees when a contract is deleted (set the field to NULL)
      * @param int $id Contract ID
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function updateUsersCascadeContract($id) {
         $this->db->set('contract', NULL);
@@ -715,6 +741,7 @@ class Users_model extends CI_Model {
      * @param int $id User identifier
      * @param bool $active active (TRUE) or inactive (FALSE)
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function setActive($id, $active) {
         $this->db->set('active', $active);
@@ -726,6 +753,7 @@ class Users_model extends CI_Model {
      * Check if a user is active (TRUE) or inactive (FALSE)
      * @param string $login login of a user
      * @return bool active (TRUE) or inactive (FALSE)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function isActive($login) {
         $this->db->from('users');
@@ -743,6 +771,7 @@ class Users_model extends CI_Model {
      * Check if a user is active (TRUE) or inactive (FALSE)
      * @param string $email e-mail of a user
      * @return bool active (TRUE) or inactive (FALSE)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function isActiveByEmail($login) {
         $this->db->from('users');
@@ -760,6 +789,7 @@ class Users_model extends CI_Model {
      * Try to return the user information from the login field
      * @param string $login Login
      * @return User data row or null if no user was found
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getUserByLogin($login) {
         $this->db->from('users');
@@ -777,6 +807,7 @@ class Users_model extends CI_Model {
      * Check if a given hash is associated to an existing user
      * @param string $randomHash Random Hash associated to user
      * @return bool TRUE if the user was found, FALSE otherwise
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function checkUserByHash($randomHash) {
         $this->db->from('users');
@@ -793,6 +824,7 @@ class Users_model extends CI_Model {
      * Generate some random bytes by using openssl, dev/urandom or random
      * @param int $count length of the random string
      * @return string a string of pseudo-random bytes (must be encoded)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     protected function getRandomBytes($length) {
         if(function_exists('openssl_random_pseudo_bytes')) {
@@ -824,6 +856,7 @@ class Users_model extends CI_Model {
      * @param int $managerId DB Identifier of the manager
      * @param array $usersList List of DB ID of the affected employees
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function updateManagerForUserList($managerId, $usersList) {
         $data = array(
@@ -839,6 +872,7 @@ class Users_model extends CI_Model {
      * @param int $entityId DB Identifier of the entity
      * @param array $usersList List of DB ID of the affected employees
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function updateEntityForUserList($entityId, $usersList) {
         $data = array(
@@ -854,6 +888,7 @@ class Users_model extends CI_Model {
      * @param int $contractId DB Identifier of the contract
      * @param array $usersList List of DB ID of the affected employees
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function updateContractForUserList($contractId, $usersList) {
         $data = array(

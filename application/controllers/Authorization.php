@@ -28,6 +28,7 @@ class Authorization extends CI_Controller {
     /**
      * Default constructor
      * Initializing of OAuth2 server
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -36,7 +37,8 @@ class Authorization extends CI_Controller {
         $this->server = new OAuth2\Server($storage);
         $this->server->addGrantType(new OAuth2\GrantType\ClientCredentials($storage));
         $this->server->addGrantType(new OAuth2\GrantType\AuthorizationCode($storage));
-           if ($this->session->userdata('language') === FALSE) {
+        
+        if ($this->session->userdata('language') === FALSE) {
             $availableLanguages = explode(",", $this->config->item('languages'));
             $this->load->library('polyglot');
             $languageCode = $this->polyglot->language2code($this->config->item('language'));
@@ -54,6 +56,7 @@ class Authorization extends CI_Controller {
 
     /**
      * OAuth2 authorize endpoint 
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function authorize() {
         $request = OAuth2\Request::createFromGlobals();
@@ -64,7 +67,8 @@ class Authorization extends CI_Controller {
             $response->send();
             die;
         }
-           //OAuth2 payload
+        
+        //OAuth2 payload
         $state = $this->input->get('state');
         $responseType = $this->input->get('response_type');
         $redirectUri = $this->input->get_post('redirect_uri');
@@ -73,7 +77,8 @@ class Authorization extends CI_Controller {
         $data['responseType'] = $responseType;
         $data['redirectUri'] = $redirectUri;
         $data['clientId'] = $clientId;
-           //Display simple login form if the user is not logged-in
+        
+        //Display simple login form if the user is not logged-in
         if (!$this->session->userdata('logged_in')) {
             $data['title'] = lang('session_login_title');
             if (empty($_POST)) {
@@ -86,7 +91,8 @@ class Authorization extends CI_Controller {
                 $this->load->view('session/login_simple', $data);
             }
         }
-           if ($this->session->userdata('logged_in')) {
+        
+        if ($this->session->userdata('logged_in')) {
             $userId = $this->session->userdata('id');
             $this->load->model('oauthclients_model');
 
@@ -126,6 +132,7 @@ class Authorization extends CI_Controller {
     
     /**
      * Get the details of the connected user
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function userinfo() {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -142,6 +149,7 @@ class Authorization extends CI_Controller {
     
     /**
      * Handle the Simplified login form for OAuth authorization
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function login() {
         //Decrypt password
@@ -169,7 +177,8 @@ class Authorization extends CI_Controller {
                 $this->session->set_flashdata('msg', lang('session_login_flash_account_disabled'));
             }
         }
-           //Redirect to the OAtuh2 endpoint whatever the outcome
+        
+        //Redirect to the OAtuh2 endpoint whatever the outcome
         $state = $this->input->get_post('state');
         $responseType = $this->input->get_post('response_type');
         $redirectUri = $this->input->get_post('redirect_uri');
@@ -182,6 +191,7 @@ class Authorization extends CI_Controller {
      * Generate a random string by using openssl, dev/urandom or random
      * @param int $length optional length of the string
      * @return string random string
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     private function generateRandomString($length = 10) {
         if(function_exists('openssl_random_pseudo_bytes')) {

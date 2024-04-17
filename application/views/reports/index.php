@@ -10,7 +10,8 @@
 
 <div class="row-fluid">
     <div class="span12">
-           <h2><?php echo lang('reports_index_title');?></h2>
+        
+        <h2><?php echo lang('reports_index_title');?></h2>
 
         <table cellpadding="0" cellspacing="0" border="0" class="display" id="reports" width="100%">
             <thead>
@@ -28,7 +29,8 @@
         <?php endforeach ?>
             </tbody>
         </table>
-       </div>
+        
+    </div>
 </div>
 
 <link href="<?php echo base_url();?>assets/datatable/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">

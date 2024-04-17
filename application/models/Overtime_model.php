@@ -1,7 +1,10 @@
 <?php
 /**
  * This Class contains all the business logic and the persistence layer for the overtime requests.
-
+ * @copyright  Copyright (c) 2014-2023 Benjamin BALET
+ * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
+ * @link            https://github.com/bbalet/jorani
+ * @since         0.1.0
  */
 
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
@@ -18,12 +21,14 @@ class Overtime_model extends CI_Model {
      * Default constructor
      */
     public function __construct() {
-       }
+        
+    }
 
     /**
      * Get the list of all overtime requests or one overtime request
      * @param int $id Id of the overtime request
      * @return array list of records
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getExtras($id = 0) {
         $this->db->select('overtime.*');
@@ -41,6 +46,7 @@ class Overtime_model extends CI_Model {
      * Get the the list of overtime requested by a given employee
      * @param int $employee ID of the employee
      * @return array list of records
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getExtrasOfEmployee($employee) {
         $this->db->select('overtime.*');
@@ -55,6 +61,7 @@ class Overtime_model extends CI_Model {
     /**
      * Create an overtime request. Data are coming from an HTTP POSTed form
      * @return int id of the overtime request into the db
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function setExtra() {
         $data = array(
@@ -87,6 +94,7 @@ class Overtime_model extends CI_Model {
     /**
      * Accept an overtime request
      * @param int $id overtime request identifier
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function acceptExtra($id) {
         $data = array(
@@ -124,6 +132,7 @@ class Overtime_model extends CI_Model {
      * Reject an overtime request
      * @param int $id overtime request identifier
      * @return bool result of update in database
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function rejectExtra($id) {
         //delete linked entitlement
@@ -139,6 +148,7 @@ class Overtime_model extends CI_Model {
      * Delete an overtime request from the database
      * @param int $id overtime request identifier
      * @return bool result of update in database
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteExtra($id) {
         //delete linked entitlement
@@ -149,11 +159,13 @@ class Overtime_model extends CI_Model {
     /**
      * Delete overtime rquests attached to a user (when it is deleted)
      * @param int $id identifier of an employee
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteExtrasCascadeUser($id) {
         $this->db->delete('overtime', array('employee' => $id));
     }
-       /**
+        
+    /**
      * List all overtime requests submitted to the connected user (or if delegate of a manager)
      * Can be filtered with "Requested" status.
      * @param int $user_id connected user
@@ -185,6 +197,7 @@ class Overtime_model extends CI_Model {
      * Count extra requests submitted to the connected user (or if delegate of a manager)
      * @param int $manager connected user
      * @return int number of requests
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function countExtraRequestedToManager($manager) {
         $this->load->model('delegations_model');
@@ -207,6 +220,7 @@ class Overtime_model extends CI_Model {
      * Purge the table by deleting the records prior $toDate
      * @param date $toDate 
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function purgeOvertime($toDate) {
         $this->db->where(' <= ', $toDate);
@@ -216,6 +230,7 @@ class Overtime_model extends CI_Model {
     /**
      * Count the number of rows into the table
      * @return int number of rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function count() {
         $this->db->select('count(*) as number', FALSE);
@@ -227,6 +242,7 @@ class Overtime_model extends CI_Model {
     /**
      * Detect overtime with a negative duration. This is a warning as it substract entitled days to user.
      * @return array list of invalid requests
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function detectNegativeOvertime() {
         $this->db->select('overtime.*, CONCAT(users.firstname, \' \', users.lastname) as user_label', FALSE);

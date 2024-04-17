@@ -1,5 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Creating and formatting basic Windrose graphs</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch21.html" title="Chapter 21. Windrose"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Creating and formatting basic Windrose graphs</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 21. Windrose</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Creating and formatting basic Windrose graphs"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2587220"></a>Creating and formatting basic Windrose graphs</h2></div></div></div>
-           <p>Creation of windrose graphs first requires the inclusion of the library extension
+        
+        <p>Creation of windrose graphs first requires the inclusion of the library extension
             module "<code class="filename">jpgraph_windrose.php</code>"</p>
         <p>The creation of Windrose graphs otherwise follows the traditional steps in the library
             of creating a graph and then adding one or several windrose plots to the canvas.</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
@@ -176,7 +177,8 @@
 </span><span class="hl-inlinetags">?&gt;</span></pre></td></tr></table></div></div></div><p><br class="example-break">  </p><div class="figure"><a name="fig.windrose_2plots_ex1"></a><p class="title"><b>Figure 21.7. Adding two windrose plots to the same graph <code class="uri"><a class="uri" href="example_src/windrose_2plots_ex1.html" target="_top">(<code class="filename">windrose_2plots_ex1.php</code>)</a></code> </b></p><div class="figure-contents">  <span class="inlinemediaobject"><img src="images/windrose_2plots_ex1.png" alt="Adding two windrose plots to the same graph (windrose_2plots_ex1.php)"></span> </div></div><p><br class="figure-break">
         </p>
         <div class="sect2" title="Specifying the windrose scale"><div class="titlepage"><div><div><h3 class="title"><a name="id2587433"></a>Specifying the windrose scale</h3></div></div></div>
-                   <p>The scale is a property of each plot and is access though the instance variable
+            
+            <p>The scale is a property of each plot and is access though the instance variable
                     <code class="code">WindrosePlot::scale</code>. The scale consists of the epi-centric circles
                 that radiates from the center of the Windrose plot. The step between each circle can
                 be set manually or it can be done automatically by the library depending on the data
@@ -226,7 +228,8 @@
             </p>
             <p>Examples of how to use these methods are shown in the following sections.</p>
             <div class="sect3" title="Specifying fonts and font colors"><div class="titlepage"><div><div><h4 class="title"><a name="id2587654"></a>Specifying fonts and font colors</h4></div></div></div>
-                           <p>Fonts can be specified for both the labels on the scale as well as separately
+                
+                <p>Fonts can be specified for both the labels on the scale as well as separately
                     for the label in the center of the plot. The following code snippet shows how to
                     do this (we assume we have already created a windrose plot called
                         "<code class="code">windplot</code>") </p>
@@ -241,13 +244,15 @@
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">// Font and color for scale labels
 $windplot-&gt;scale-&gt;SetFont(FF_VERDANA,FS_NORMAL,10);
 $windplot-&gt;scale-&gt;SetFontColor('navy');
-                   // Font and color for the center (Zero circle) label
+                        
+// Font and color for the center (Zero circle) label
 $windplot-&gt;scale-&gt;SetZFont(FF_VERDANA,FS_NORMAL,10);
 $windplot-&gt;scale-&gt;SetZFontColor('navy');</span></pre></td></tr></table></div><p>
                 </p>
             </div>
             <div class="sect3" title="Manually specifying the scale"><div class="titlepage"><div><div><h4 class="title"><a name="id2587682"></a>Manually specifying the scale</h4></div></div></div>
-                           <p>By default the library automatically determines a scale range and step size
+                
+                <p>By default the library automatically determines a scale range and step size
                     taking into account the maximum value of data, size of the plot and the font
                     size specified for the scale labels. </p>
                 <p>However it is possible to force a manual scale and step size with a call to
@@ -286,7 +291,8 @@ $windplot-&gt;scale-&gt;Set(40);</span></pre></td></tr></table></div><p>
                 </p>
             </div>
             <div class="sect3" title="Specifying the label angle"><div class="titlepage"><div><div><h4 class="title"><a name="id2587738"></a>Specifying the label angle</h4></div></div></div>
-                           <p>The labels for the scale is placed along a line radiating from the center of
+                
+                <p>The labels for the scale is placed along a line radiating from the center of
                     the windrose plots. The angle for the labels can be either manually or
                     automatically determined. </p>
                 <p>The labels for the scale is placed along one of the sixteen compass directions
@@ -311,7 +317,8 @@ $windplot-&gt;scale-&gt;SetAngle('auto');</span></pre></td></tr></table></div><p
                 </p>
             </div>
             <div class="sect3" title="Specifying number formats for scale labels"><div class="titlepage"><div><div><h4 class="title"><a name="id2587797"></a>Specifying number formats for scale labels</h4></div></div></div>
-                           <p>In the same way as for other scales in the library it is possible to specify a
+                
+                <p>In the same way as for other scales in the library it is possible to specify a
                     "printf()" format string to adjust the appearance of the labels. By default the
                     label format is the same as</p>
                 <p>
@@ -321,12 +328,14 @@ $windplot-&gt;scale-&gt;SetAngle('auto');</span></pre></td></tr></table></div><p
             </div>
         </div>
         <div class="sect2" title="Specifying direction labels"><div class="titlepage"><div><div><h3 class="title"><a name="id2587804"></a>Specifying direction labels</h3></div></div></div>
-                   <p>With direction labels we mean the names of the compass directions surrounding the
+            
+            <p>With direction labels we mean the names of the compass directions surrounding the
                 windrose plot. By default they are given the English short form for the 16 discrete
                 compass named directions. This can also be localized (described in ??).</p>
             <div class="sect3" title="Specifying fonts and font colors for the axis titles (direction labels)"><div class="titlepage"><div><div><h4 class="title"><a name="id2587835"></a>Specifying fonts and font colors for the axis titles (direction
                     labels)</h4></div></div></div>
-                           <p>Fonts for the axis titles are specified with (with the usual arguments)</p>
+                
+                <p>Fonts for the axis titles are specified with (with the usual arguments)</p>
                 <div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                             <p><code class="code">WindrosePlot::SetFont()</code></p>
                         </li><li class="listitem">
@@ -341,7 +350,8 @@ $windplot-&gt;SetFontColor('darkgreen');</span></pre></td></tr></table></div><p>
                 <p>Which for example could give a Windrose plot as shown in <a class="xref" href="ch21s07.html#fig.windrose_ex4" title="Figure 21.22.  (windrose_ex4.php)">Figure 21.22.  <code class="uri"><a class="uri" href="example_src/windrose_ex4.html" target="_top">(<code class="filename">windrose_ex4.php</code>)</a></code> </a></p>
             </div>
             <div class="sect3" title="Setting arbitrary text for data directions"><div class="titlepage"><div><div><h4 class="title"><a name="id2587887"></a>Setting arbitrary text for data directions</h4></div></div></div>
-                           <p>Wen using the free direction windrose plots the default label is the direction
+                
+                <p>Wen using the free direction windrose plots the default label is the direction
                     for the data in degrees. This is fully customizable by using the following
                     method. </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                             <p><code class="code">WindrosePlot::SetLabels($aLabels)</code></p>
@@ -375,7 +385,8 @@ $windplot-&gt;SetLabels($labels);</span></pre></td></tr></table></div><p>
                 <p>An example of this can be seen in <a class="xref" href="ch21s07.html#fig.windrose_ex6" title="Figure 21.24.  (windrose_ex6.php)">Figure 21.24.  <code class="uri"><a class="uri" href="example_src/windrose_ex6.html" target="_top">(<code class="filename">windrose_ex6.php</code>)</a></code> </a></p>
             </div>
             <div class="sect3" title="Adjusting the alignment and margin"><div class="titlepage"><div><div><h4 class="title"><a name="id2587959"></a>Adjusting the alignment and margin</h4></div></div></div>
-                           <p>There are two basic ways of adjusting the position of the compass labels
+                
+                <p>There are two basic ways of adjusting the position of the compass labels
                     around the plot: </p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -420,12 +431,14 @@ $windplot-&gt;SetLabelPosition(LBLPOSITION_EDGE);</span></pre></td></tr></table>
                         <tr>
                             <td>
                                 <div class="figure"><a name="id2588081"></a><p class="title"><b>Figure 21.8. Positioning with LBLPOSITION_CENTER</b></p><div class="figure-contents">
-                                                                   <div class="mediaobject"><img src="images/windrose_label-align1.png" alt="Positioning with LBLPOSITION_CENTER"></div>
+                                    
+                                    <div class="mediaobject"><img src="images/windrose_label-align1.png" alt="Positioning with LBLPOSITION_CENTER"></div>
                                 </div></div><br class="figure-break">
                             </td>
                             <td>
                                 <div class="figure"><a name="id2588101"></a><p class="title"><b>Figure 21.9. Positioning with LBLPOSITION_EDGE</b></p><div class="figure-contents">
-                                                                   <div class="mediaobject"><img src="images/windrose_label-align2.png" alt="Positioning with LBLPOSITION_EDGE"></div>
+                                    
+                                    <div class="mediaobject"><img src="images/windrose_label-align2.png" alt="Positioning with LBLPOSITION_EDGE"></div>
                                 </div></div><br class="figure-break">
                             </td>
                         </tr>

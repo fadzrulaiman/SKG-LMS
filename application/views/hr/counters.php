@@ -15,7 +15,8 @@
         <p><?php echo lang('hr_summary_date_field');?>&nbsp;
             <input type="text" id="refdate" />
         </p>
-           <table id="counters" cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
+        
+        <table id="counters" cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
         <thead>
             <tr>
               <th><?php echo lang('hr_summary_thead_type');?></th>
@@ -154,7 +155,8 @@ if ($language_code != 'en') { ?>
                     window.location = url;
             }
         });
-           //Transform the HTML tables into fancy datatables
+        
+        //Transform the HTML tables into fancy datatables
         $('#counters').dataTable({
             order: [[ 0, "desc" ]],
             language: {
@@ -181,7 +183,8 @@ if ($language_code != 'en') { ?>
                 }
             }
         });
-           $('#entitleddayscontract').dataTable({
+        
+        $('#entitleddayscontract').dataTable({
             order: [[ 0, "desc" ]],
             language: {
                 decimal:            "<?php echo lang('datatable_sInfoThousands');?>",
@@ -207,7 +210,8 @@ if ($language_code != 'en') { ?>
                 }
             }
         });
-               $('#entitleddaysemployee').dataTable({
+            
+        $('#entitleddaysemployee').dataTable({
             order: [[ 0, "desc" ]],
             language: {
                 decimal:            "<?php echo lang('datatable_sInfoThousands');?>",

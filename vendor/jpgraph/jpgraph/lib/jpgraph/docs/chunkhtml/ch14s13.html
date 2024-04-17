@@ -1,5 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Using anti-aliasing in the graph generation</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch14.html" title="Chapter 14. Common features for all Cartesian (x,y) graph types"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Using anti-aliasing in the graph generation</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 14. Common features for all Cartesian (x,y) graph types</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Using anti-aliasing in the graph generation"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2551867"></a>Using anti-aliasing in the graph generation</h2></div></div></div>
-                   <p>The library have partial support for the use of anti-aliasing when crating graphs.
+            
+            <p>The library have partial support for the use of anti-aliasing when crating graphs.
                 The level of support is different depending on the actual graph type and there are
                 some caveats to be aware of.</p>
             <p>
@@ -18,7 +19,8 @@
                 </div><p>
             </p>
             <div class="sect2" title="Anti-aliasing for line drawing graphs"><div class="titlepage"><div><div><h3 class="title"><a name="id2551920"></a>Anti-aliasing for line drawing graphs</h3></div></div></div>
-                           <p>This applies to all graphs that makes use if line drawing. For example line
+                
+                <p>This applies to all graphs that makes use if line drawing. For example line
                     plots and radar charts. This is the only "true" anti-aliasing done in the
                     library. </p>
                 <p>This anti aliasing is enabled by calling the method</p>
@@ -96,7 +98,8 @@
                             </p><div class="figure"><a name="id2552190"></a><p class="title"><b>Figure 14.82. Anti-aliasing up-close. The figure shows the difference
                                     between a standard line (on-top) and the corresponding
                                     anti-aliased line (on-the bottom)</b></p><div class="figure-contents">
-                                                           <div class="informaltable">
+                                
+                                <div class="informaltable">
                                     <table border="0"><colgroup><col class="c1"></colgroup><tbody><tr><td align="center">
                                                   <p><span class="inlinemediaobject"><img src="images/aalias_line.jpg" alt="Anti-aliasing up-close. The figure shows the difference between a standard line (on-top) and the corresponding anti-aliased line (on-the bottom)"></span></p>
                                                 </td></tr></tbody></table>
@@ -108,7 +111,8 @@
                 <p></p>
             </div>
             <div class="sect2" title="Anti-aliasing in pie graphs"><div class="titlepage"><div><div><h3 class="title"><a name="id2552235"></a>Anti-aliasing in pie graphs</h3></div></div></div>
-                           <p>For Pie plots a full image anti-aliasing algorithm is used. The original image
+                
+                <p>For Pie plots a full image anti-aliasing algorithm is used. The original image
                     is scaled to twice it's specified with and then down sampled to the required
                     size. This will give a low pass filtering effect which takes the edges away from
                     the image and gives a smooth appearance. However the filtering is quite
@@ -130,7 +134,8 @@
                     3D Pie plots.</p>
                 <p>
                     </p><div class="figure"><a name="id2552311"></a><p class="title"><b>Figure 14.83. Affects of using anti-alias for Pie-graphs</b></p><div class="figure-contents">
-                                           <div class="informaltable">
+                        
+                        <div class="informaltable">
                             <table border="0"><colgroup><col class="c1"><col class="c2"></colgroup><tbody><tr><td>
                                             <p><span class="inlinemediaobject"><img src="images/pie2dnoaa.png" alt="Affects of using anti-alias for Pie-graphs"></span></p>
                                         </td><td>
@@ -145,11 +150,13 @@
                 </p>
             </div>
             <div class="sect2" title="Anti-aliasing in Windrose plots"><div class="titlepage"><div><div><h3 class="title"><a name="id2552417"></a>Anti-aliasing in Windrose plots</h3></div></div></div>
-                           <p>This uses the same algorithm as the Pie plots with similar restrictions and
+                
+                <p>This uses the same algorithm as the Pie plots with similar restrictions and
                     limitations.</p>
             </div>
             <div class="sect2" title="Anti-aliasing for Contour plots"><div class="titlepage"><div><div><h3 class="title"><a name="id2552434"></a>Anti-aliasing for Contour plots</h3></div></div></div>
-                           <p>This uses almost the same algorithm as Pie plots. The additional feature here
+                
+                <p>This uses almost the same algorithm as Pie plots. The additional feature here
                     is that it is possible to specify the size of the over-sampling. This can be
                     value between 2-5. However, using an oversampling larger than 3 has very little
                     additional visual improvement but will significantly increase the processing

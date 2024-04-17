@@ -1,5 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 9. Using the JpGraph cache system</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="pt02.html" title="Part II. Basic graph creation"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 9. Using the JpGraph cache system</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Part II. Basic graph creation</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="chapter" title="Chapter 9. Using the JpGraph cache system"><div class="titlepage"><div><div><h2 class="title"><a name="chap.using-cache"></a>Chapter 9. Using the JpGraph cache system</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="ch09.html#id2500903">9.1. Enabling the library cache system</a></span></dt><dt><span class="sect1"><a href="ch09s02.html">9.2. Permission settings for the cache files</a></span></dt><dt><span class="sect1"><a href="ch09s03.html">9.3. Using the cache in your script</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch09s03.html#id2535216">9.3.1. Manually controlling the cached image</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch09s04.html">9.4. Using the cache with Client Side Image Maps (CSIM)</a></span></dt></dl></div>
-           <p>To reduce load on the web server JpGraph implements an advanced caching system which
+        
+        <p>To reduce load on the web server JpGraph implements an advanced caching system which
             avoids the burden of always having to run the full image script. The library supports
             two primary ways of significantly increase performance, using the built in cache system
             described in this section and the use of a PHP accelerator described in <a class="xref" href="ch11.html" title="Chapter 11. NuSphere PHP accelerator">Chapter 11. <i>NuSphere PHP accelerator</i></a></p>
@@ -9,7 +10,8 @@
         <p><a class="xref" href="ch09.html#fig.cache-overview" title="Figure 9.1. Library cache principle">Figure 9.1. Library cache principle</a>shows an overview of the cache system in the library.</p>
         <p>
             </p><div class="figure"><a name="fig.cache-overview"></a><p class="title"><b>Figure 9.1. Library cache principle</b></p><div class="figure-contents">
-                           <div class="mediaobject"><img src="images/cache_principles.png" alt="Library cache principle"></div>
+                
+                <div class="mediaobject"><img src="images/cache_principles.png" alt="Library cache principle"></div>
             </div></div><p><br class="figure-break">
         </p>
         <p>The rationale behind this is the observation that very few graphs are really
@@ -20,7 +22,8 @@
             data, the graph script must be called at each instance to get the latest available data,
             most probably from a database.</p>
         <div class="sect1" title="Enabling the library cache system"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2500903"></a>Enabling the library cache system</h2></div></div></div>
-                   <p>The enabling and disabling of the cache system is controlled by three defines in
+            
+            <p>The enabling and disabling of the cache system is controlled by three defines in
                     <code class="filename">jpg-config.php</code></p>
             <p>
                 </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
@@ -53,4 +56,7 @@
                 </div><p>
             </p>
         </div>
-             </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"> </td><td width="20%" align="center"><a accesskey="u" href="pt02.html">Up</a></td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>
+        
+        
+        
+    </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"> </td><td width="20%" align="center"><a accesskey="u" href="pt02.html">Up</a></td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

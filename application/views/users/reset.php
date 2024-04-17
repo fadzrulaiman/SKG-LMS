@@ -27,7 +27,8 @@ echo form_open('users/reset/' . $target_user_id, $attributes); ?>
                 $('#target').submit();
             });
         });
-           //Validate the form if the user press enter key in password field
+        
+        //Validate the form if the user press enter key in password field
         $('#password').keypress(function(e){
             if(e.keyCode==13)
             $('#send').click();

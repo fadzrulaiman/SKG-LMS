@@ -37,8 +37,10 @@
             particular server setup as this can vary from system to system. </p>
     </div>
     <div class="sect1" title="Compiling PHP4"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2654072"></a>Compiling PHP4</h2></div></div></div>
-           <div class="sect2" title="Client version"><div class="titlepage"><div><div><h3 class="title"><a name="id2654077"></a>Client version</h3></div></div></div>
-                   <pre class="screen">#! /bin/sh
+        
+        <div class="sect2" title="Client version"><div class="titlepage"><div><div><h3 class="title"><a name="id2654077"></a>Client version</h3></div></div></div>
+            
+            <pre class="screen">#! /bin/sh
 ./configure --prefix=/usr/share --datadir=/usr/share/php \
 --libdir=/usr/share/php --includedir=/usr/include \
 --bindir=/usr/bin \
@@ -63,7 +65,8 @@
 </pre>
         </div>
         <div class="sect2" title="Apache module"><div class="titlepage"><div><div><h3 class="title"><a name="id2654090"></a>Apache module</h3></div></div></div>
-                   <pre class="screen">#! /bin/sh
+            
+            <pre class="screen">#! /bin/sh
 ./configure --prefix=/usr/share --datadir=/usr/share/php --with-apxs2=/usr/sbin/apxs2 \
 --libdir=/usr/share --includedir=/usr/include \
 --bindir=/usr/bin \
@@ -90,7 +93,8 @@
 </pre>
         </div>
         <div class="sect2" title="CGI extension"><div class="titlepage"><div><div><h3 class="title"><a name="id2654100"></a>CGI extension</h3></div></div></div>
-                   <pre class="screen">#! /bin/sh
+            
+            <pre class="screen">#! /bin/sh
 ./configure --prefix=/usr/share --datadir=/usr/share/php \
 --libdir=/usr/share --includedir=/usr/include \
 --bindir=/usr/bin \

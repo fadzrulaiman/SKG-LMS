@@ -92,6 +92,7 @@ class ErrMsgText {
         return $msg;
     }
 }
+     
 //
 // A wrapper class that is used to access the specified error object
 // (to hide the global error parameter and avoid having a GLOBAL directive
@@ -267,7 +268,8 @@ class JpGraphErrObjectImg extends JpGraphErrObject {
      'vd69OLMddVOPCGVnmrFD8bVYd3JXfxXPtLR/+mtv59/ALWiiMx'.
      'qL72fwAAAABJRU5ErkJggg==' ;
 
-           if( function_exists("imagetypes") ) {
+        
+        if( function_exists("imagetypes") ) {
             $supported = imagetypes();
         } else {
             $supported = 0;
@@ -276,7 +278,8 @@ class JpGraphErrObjectImg extends JpGraphErrObject {
         if( !function_exists('imagecreatefromstring') ) {
             $supported = 0;
         }
-           if( ob_get_length() || headers_sent() || !($supported & IMG_PNG) ) {
+        
+        if( ob_get_length() || headers_sent() || !($supported & IMG_PNG) ) {
             // Special case for headers already sent or that the installation doesn't support
             // the PNG format (which the error icon is encoded in).
             // Dont return an image since it can't be displayed

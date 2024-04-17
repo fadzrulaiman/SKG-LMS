@@ -1,7 +1,8 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Chapter 25. PDF417 (2D-Barcode)</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="pt06.html" title="Part VI. Barcodes"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 25. PDF417 (2D-Barcode)</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Part VI. Barcodes</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="chapter" title="Chapter 25. PDF417 (2D-Barcode)"><div class="titlepage"><div><div><h2 class="title"><a name="chap.pdf417"></a>Chapter 25. PDF417 (2D-Barcode)</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="ch25.html#id2599362">25.1. Principle of PDF417 Barcodes</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch25.html#id2599518">25.1.1. PDF417 standard</a></span></dt><dt><span class="sect2"><a href="ch25.html#id2599540">25.1.2. Data capacity</a></span></dt><dt><span class="sect2"><a href="ch25.html#id2599627">25.1.3. Structure of PDF417 barcodes</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch25s02.html">25.2. Creating barcodes</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch25s02.html#id2599905">25.2.1. Introduction</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch25s03.html">25.3. Creating barcodes</a></span></dt><dt><span class="sect1"><a href="ch25s04.html">25.4. Specifying the PDF417 parameters</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch25s04.html#id2600768">25.4.1. Specifying encoding and input data</a></span></dt><dt><span class="sect2"><a href="ch25s04.html#id2601186">25.4.2. Encoder option: Adjusting the number of data columns</a></span></dt><dt><span class="sect2"><a href="ch25s04.html#id2601209">25.4.3. Encoder option: Adjusting the error level</a></span></dt><dt><span class="sect2"><a href="ch25s04.html#id2601957">25.4.4. Truncated PDF417</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch25s05.html">25.5. Adjusting the output</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch25s05.html#id2602136">25.5.1. Output format</a></span></dt><dt><span class="sect2"><a href="ch25s05.html#id2602186">25.5.2. Summary of user settings for the backend</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch25s06.html">25.6. A template to create barcodes</a></span></dt><dt><span class="sect1"><a href="ch25s07.html">25.7. Method reference</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch25s07.html#id2602322">25.7.1. Encoder methods</a></span></dt><dt><span class="sect2"><a href="ch25s07.html#id2602572">25.7.2. Common backend methods</a></span></dt><dt><span class="sect2"><a href="ch25s07.html#id2603037">25.7.3. Image backend methods</a></span></dt><dt><span class="sect2"><a href="ch25s07.html#id2603084">25.7.4. Postscript backend methods</a></span></dt></dl></dd><dt><span class="sect1"><a href="ch25s08.html">25.8. Example scripts</a></span></dt><dd><dl><dt><span class="sect2"><a href="ch25s08.html#id2603211">25.8.1. Showing human readable text</a></span></dt><dt><span class="sect2"><a href="ch25s08.html#id2603267">25.8.2. Altering colors</a></span></dt><dt><span class="sect2"><a href="ch25s08.html#id2603338">25.8.3. Creating postscript output</a></span></dt><dt><span class="sect2"><a href="ch25s08.html#id2603350">25.8.4. Manually selecting compaction schema</a></span></dt></dl></dd></dl></div>
     
     <div class="sect1" title="Principle of PDF417 Barcodes"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2599362"></a>Principle of PDF417 Barcodes</h2></div></div></div>
-           <div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+        
+        <div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
             <p>This module is only available in the pro-version of the library.</p>
         </div>
         <p>
@@ -31,11 +32,13 @@
             how a single data character is encoded (4 bars and 4 spaces in a 17 module wide
             structure).</p>
         <div class="sect2" title="PDF417 standard"><div class="titlepage"><div><div><h3 class="title"><a name="id2599518"></a>PDF417 standard</h3></div></div></div>
-                   <p>The PDF417 is high capacity two dimensional barcode and is fully described in the
+            
+            <p>The PDF417 is high capacity two dimensional barcode and is fully described in the
                 official standard ISO/IEC 15438:2001 available for purchase from <code class="uri"><a class="uri" href="http://www.iso.ch/iso/en/CombinedQueryResult.CombinedQueryResult?queryString=pdf417" target="_top">ISO Standard Organization</a></code>. </p>
         </div>
         <div class="sect2" title="Data capacity"><div class="titlepage"><div><div><h3 class="title"><a name="id2599540"></a>Data capacity</h3></div></div></div>
-                   <p>PDF417 is a row based 2 dimensional barcode that consists of a maximum of 90 rows
+            
+            <p>PDF417 is a row based 2 dimensional barcode that consists of a maximum of 90 rows
                 and 30 columns. The maximum number of data is dependent on </p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -61,7 +64,8 @@
                 correction)</p>
         </div>
         <div class="sect2" title="Structure of PDF417 barcodes"><div class="titlepage"><div><div><h3 class="title"><a name="id2599627"></a>Structure of PDF417 barcodes</h3></div></div></div>
-                   <p>A high level overview of the structure of a PDF417 barcode is shown in <a class="xref" href="ch25.html#fig.pdf417-structure-overview" title="Figure 25.1. PDF417 Structure - Overview">Figure 25.1. PDF417 Structure - Overview</a> . A PDF417 barcode can be thought
+            
+            <p>A high level overview of the structure of a PDF417 barcode is shown in <a class="xref" href="ch25.html#fig.pdf417-structure-overview" title="Figure 25.1. PDF417 Structure - Overview">Figure 25.1. PDF417 Structure - Overview</a> . A PDF417 barcode can be thought
                 of as a number of linear barcode stapled on top of each other. Each row in the
                 barcode is constructed in a similar way.</p>
             <p>Each data word (symbol character) consists of 4 bars and four spaces in a 17
@@ -102,7 +106,8 @@
             </p>
             <p>
                 </p><div class="figure"><a name="fig.pdf417-structure-overview"></a><p class="title"><b>Figure 25.1. PDF417 Structure - Overview</b></p><div class="figure-contents">
-                                   <div class="mediaobject"><img src="images/pdf417-structure-overview-smaller.png" alt="PDF417 Structure - Overview"></div>
+                    
+                    <div class="mediaobject"><img src="images/pdf417-structure-overview-smaller.png" alt="PDF417 Structure - Overview"></div>
                 </div></div><p><br class="figure-break">
             </p>
             <p>In <a class="xref" href="ch25.html#fig.pdf417-structure-details" title="Figure 25.2. PDF417 Structure - Details of a real barcode">Figure 25.2. PDF417 Structure - Details of a real barcode</a> the distinct data column
@@ -111,7 +116,8 @@
                 the total number of data words + error correction words encoded are 8x5 = 40.</p>
             <p>
                 </p><div class="figure"><a name="fig.pdf417-structure-details"></a><p class="title"><b>Figure 25.2. PDF417 Structure - Details of a real barcode</b></p><div class="figure-contents">
-                                   <div class="mediaobject"><img src="images/pdf417-structure-details.png" alt="PDF417 Structure - Details of a real barcode"></div>
+                    
+                    <div class="mediaobject"><img src="images/pdf417-structure-details.png" alt="PDF417 Structure - Details of a real barcode"></div>
                 </div></div><p><br class="figure-break">
             </p>
             <p>The data to be converted into a barcode has to go through a number of steps which

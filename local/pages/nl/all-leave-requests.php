@@ -30,7 +30,8 @@ $rows = $this->db->get()->result_array();
                     <th><?php echo lang('requests_index_thead_id');?></th>
                     <th><?php echo lang('requests_index_thead_fullname');?></th>
                     <th><?php echo lang('requests_index_thead_startdate');?></th>
-                    <th><?php echo lang('requests_index_thead_enddate');?></th>                           <th><?php echo lang('requests_index_thead_duration');?></th>
+                    <th><?php echo lang('requests_index_thead_enddate');?></th>            
+                    <th><?php echo lang('requests_index_thead_duration');?></th>
                     <th><?php echo lang('requests_index_thead_type');?></th>
                     <th><?php echo lang('requests_index_thead_status');?></th>
                 </tr>

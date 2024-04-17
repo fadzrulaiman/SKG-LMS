@@ -39,7 +39,8 @@ if ($argc > 1) {
         $pkey = '';
         openssl_pkey_export($private, $pkey);
         $phar->setSignatureAlgorithm(Phar::OPENSSL, $pkey);
-           /**
+        
+        /**
          * Save the corresponding public key to the file
          */
         if (!@is_readable($dist.'/random_compat.phar.pubkey')) {

@@ -21,6 +21,7 @@ class RestRequests extends MY_RestController {
 
     /**
      * Default constructor
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -31,6 +32,7 @@ class RestRequests extends MY_RestController {
      * Display the list of all requests submitted to you
      * Status is submitted or accepted/rejected depending on the filter parameter.
      * @param string $name Filter the list of submitted leave requests ("all" or "requested")
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function requests($filter = 'requested') {
         log_message('debug', '++requests filter=' . $filter);

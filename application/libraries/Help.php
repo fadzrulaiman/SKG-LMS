@@ -22,6 +22,7 @@ class Help {
 
     /**
      * Default constructor
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         $this->CI = & get_instance();
@@ -34,6 +35,7 @@ class Help {
      * Test if a help page is available and returns a help link if so
      * @param string $page name of a page of the application
      * @return string link to Help page or empty string
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function create_help_link($page) {
         if (lang($page) != "") {
@@ -50,6 +52,7 @@ class Help {
      * NOT USED AT THE MOMENT. MIGHT BE USED LATER
      * @param string $page name of a page of the application
      * @return string Default Help link
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function get_default_help_page($page) {
         if (lang('global_link_doc_page_calendar_organization') == "") {

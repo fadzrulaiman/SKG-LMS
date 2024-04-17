@@ -16,14 +16,17 @@ class Types_model extends CI_Model {
 
     /**
      * Default constructor
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
-       }
+        
+    }
 
     /**
      * Get the list of types or one type
      * @param int $id optional id of a type
      * @return array record of types
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getTypes($id = 0) {
         if ($id === 0) {
@@ -38,6 +41,7 @@ class Types_model extends CI_Model {
      * Get the list of types or one type
      * @param string $name type name
      * @return array record of a leave type
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getTypeByName($name) {
         $query = $this->db->get_where('types', array('name' => $name));
@@ -47,6 +51,7 @@ class Types_model extends CI_Model {
     /**
      * Get the list of types as an ordered associative array
      * @return array Associative array of types (id, name)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getTypesAsArray($id = 0) {
         $listOfTypes = array();
@@ -63,6 +68,7 @@ class Types_model extends CI_Model {
      * Get the name of a given type id
      * @param int $id ID of the type
      * @return string label of the type
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function getName($id) {
         $type = $this->getTypes($id);
@@ -72,6 +78,7 @@ class Types_model extends CI_Model {
     /**
      * Insert a new leave type. Data are taken from HTML form.
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function setTypes() {
         $deduct = ($this->input->post('deduct_days_off') == 'on')?TRUE:FALSE;
@@ -86,6 +93,7 @@ class Types_model extends CI_Model {
     /**
      * Delete a leave type from the database
      * @param int $id identifier of the leave type
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function deleteType($id) {
         $this->db->delete('types', array('id' => $id));
@@ -98,6 +106,7 @@ class Types_model extends CI_Model {
      * @param bool $deduct Deduct days off
      * @param string $acronym Acronym of leave type
      * @return int number of affected rows
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function updateTypes($id, $name, $deduct, $acronym) {
         $deduct = ($deduct == 'on')?TRUE:FALSE;
@@ -113,6 +122,7 @@ class Types_model extends CI_Model {
     /**
      * Count the number of time a leave type is used into the database
      * @param int $id identifier of the leave type record
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function usage($id) {
         $this->db->select('COUNT(*)');

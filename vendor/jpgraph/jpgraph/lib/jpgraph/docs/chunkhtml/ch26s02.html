@@ -1,14 +1,17 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Creating barcodes</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch26.html" title="Chapter 26. Datamatrix (2D-Barcode)"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Creating barcodes</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 26. Datamatrix (2D-Barcode)</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Creating barcodes"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2603445"></a>Creating barcodes</h2></div></div></div>
-           <p>In order to use datamatrix barcodes the module
+        
+        <p>In order to use datamatrix barcodes the module
                 "<code class="filename">datamatrix/datamatrix.inc.php</code>" must first be included.</p>
         <p>Usage of Datamatrix barcodes follows a similar schema as for the linear and PDF417
             barcodes with concepts of an encoder and backend. The principle of the overall
             encodation process is shown in <a class="xref" href="ch26s02.html#fig.datamatrix-encodation-principle" title="Figure 26.4. Datamatrix encodation principle">Figure 26.4. Datamatrix encodation principle</a></p>
         <div class="figure"><a name="fig.datamatrix-encodation-principle"></a><p class="title"><b>Figure 26.4. Datamatrix encodation principle</b></p><div class="figure-contents">
-                   <div class="mediaobject"><img src="images/datamatrix-encodation-principle.png" alt="Datamatrix encodation principle"></div>
+            
+            <div class="mediaobject"><img src="images/datamatrix-encodation-principle.png" alt="Datamatrix encodation principle"></div>
         </div></div><br class="figure-break">
         <div class="sect2" title="Getting started"><div class="titlepage"><div><div><h3 class="title"><a name="id2605827"></a>Getting started</h3></div></div></div>
-                   <p>Assuming that the library is installed where it can be found by PHP it is now very
+            
+            <p>Assuming that the library is installed where it can be found by PHP it is now very
                 simple to create a basic Data Matrix symbol using just default values. We first show
                 the complete first example and then discuss it. In the following scripts we will
                 assume that the include path has the core JpGraph directory in its path.</p>
@@ -64,7 +67,8 @@
                 library. The default exception will display a standard library image error box. An
                 example of this is shown in <a class="xref" href="ch26s02.html#fig.datamatrix-error-image" title="Figure 26.6. Datamatrix error image">Figure 26.6. Datamatrix error image</a>. </p>
             <div class="figure"><a name="fig.datamatrix-error-image"></a><p class="title"><b>Figure 26.6. Datamatrix error image</b></p><div class="figure-contents">
-                           <div class="mediaobject"><img src="images/datamatrix_errormsg.png" alt="Datamatrix error image"></div>
+                
+                <div class="mediaobject"><img src="images/datamatrix_errormsg.png" alt="Datamatrix error image"></div>
             </div></div><br class="figure-break">
             <p>If some additional processing is necessary and just display a text based
                 re-formatted error message we could change the above code to catch this exception as
@@ -152,7 +156,8 @@
             </p>
         </div>
         <div class="sect2" title="Error handling"><div class="titlepage"><div><div><h3 class="title"><a name="id2606128"></a>Error handling</h3></div></div></div>
-                   <p>As in other parts of the library the Datamatrix module throws an exception when an
+            
+            <p>As in other parts of the library the Datamatrix module throws an exception when an
                 error occurs. As shown in the previous section an error image is the default if no
                 explicit <code class="code">try {} catch {}</code> statement is added to the script.</p>
             <p>The script below shows how to catch the error, do some possible clean up and then
@@ -231,7 +236,8 @@
                 messages).</p>
             <p>
                 </p><div class="table"><a name="table.datamatrix-error-messages"></a><p class="title"><b>Table 26.3. Datamatrix error messages</b></p><div class="table-contents">
-                                   <table summary="Datamatrix error messages" border="1"><colgroup><col class="newCol1"><col class="c1"></colgroup><thead><tr><th align="center">Error number</th><th align="center">Error messages</th></tr></thead><tbody><tr><td class="error-number" align="center">-1</td><td class="error-text">Data is too long to fit specified symbol
+                    
+                    <table summary="Datamatrix error messages" border="1"><colgroup><col class="newCol1"><col class="c1"></colgroup><thead><tr><th align="center">Error number</th><th align="center">Error messages</th></tr></thead><tbody><tr><td class="error-number" align="center">-1</td><td class="error-text">Data is too long to fit specified symbol
                                     size</td></tr><tr><td class="error-number" align="center">-2</td><td class="error-text">The BASE256 data is too long to fit
                                     available symbol size</td></tr><tr><td class="error-number" align="center">-3</td><td class="error-text">Data must have at least three characters
                                     for C40 encodation</td></tr><tr><td class="error-number" align="center">-4</td><td class="error-text">Data must have at least three characters
@@ -270,7 +276,8 @@
             </p>
         </div>
         <div class="sect2" title="Encodation options"><div class="titlepage"><div><div><h3 class="title"><a name="id2606133"></a>Encodation options</h3></div></div></div>
-                   <p>The primary encodation option is to manually specify the shape of the Datamatrix
+            
+            <p>The primary encodation option is to manually specify the shape of the Datamatrix
                 barcode. By default the symbol size will be chosen as the smallest possible. However
                 some application require that usage of a fixed size symbol shape. </p>
             <p>The available shapes are listed in <a class="xref" href="ch26.html#table.datamatrix-ecc200-size" title="Table 26.2. Maximum data capacity for the different symbol sizes in ECC-200 Data Matrix subset.">Table 26.2. Maximum data capacity for the different symbol sizes in ECC-200 Data
@@ -309,7 +316,8 @@
             </p>
             <p>The encoding is specified as one of the symbolic constants shown in <a class="xref" href="ch26s02.html#table.datamatrix-symbikc-encoding" title="Table 26.4. Datamatrix encodation schemas">Table 26.4. Datamatrix encodation schemas</a></p>
             <div class="table"><a name="table.datamatrix-symbikc-encoding"></a><p class="title"><b>Table 26.4. Datamatrix encodation schemas</b></p><div class="table-contents">
-                           <table summary="Datamatrix encodation schemas" border="1"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Symbolic constant</th><th>Encoding schema</th><th>Character set</th></tr></thead><tbody><tr><td>ENCODING_AUTO</td><td>--</td><td>An optimal combination of all encodation schema</td></tr><tr><td>ENCODING_ASCII</td><td>ASCII</td><td>Most efficient for numeric data</td></tr><tr><td>ENCODING_C40</td><td>C40</td><td>Primarily upper-case alphanumeric</td></tr><tr><td>ENCODING_TEXT</td><td>Text</td><td>Primarily lower-case alphanumeric</td></tr><tr><td>ENCODING_X12</td><td>X12</td><td>ANSI X12 EDI data set</td></tr><tr><td>ENCODING_EDIFACT</td><td>EDIFACT</td><td>ASCII values 32-94</td></tr><tr><td>ENCODING_BASE256</td><td>Base 256</td><td>All byte values 0-255</td></tr></tbody></table>
+                
+                <table summary="Datamatrix encodation schemas" border="1"><colgroup><col class="c1"><col class="c2"><col class="newCol3"></colgroup><thead><tr><th>Symbolic constant</th><th>Encoding schema</th><th>Character set</th></tr></thead><tbody><tr><td>ENCODING_AUTO</td><td>--</td><td>An optimal combination of all encodation schema</td></tr><tr><td>ENCODING_ASCII</td><td>ASCII</td><td>Most efficient for numeric data</td></tr><tr><td>ENCODING_C40</td><td>C40</td><td>Primarily upper-case alphanumeric</td></tr><tr><td>ENCODING_TEXT</td><td>Text</td><td>Primarily lower-case alphanumeric</td></tr><tr><td>ENCODING_X12</td><td>X12</td><td>ANSI X12 EDI data set</td></tr><tr><td>ENCODING_EDIFACT</td><td>EDIFACT</td><td>ASCII values 32-94</td></tr><tr><td>ENCODING_BASE256</td><td>Base 256</td><td>All byte values 0-255</td></tr></tbody></table>
             </div></div><br class="table-break">
             <p>The following example sets the ASCII encodation schema</p>
             <p>
@@ -323,7 +331,8 @@
             </p>
         </div>
         <div class="sect2" title="Processing special input characters"><div class="titlepage"><div><div><h3 class="title"><a name="id2606704"></a>Processing special input characters</h3></div></div></div>
-                   <p>In order to allow the specification of special input data in normal ASCII
+            
+            <p>In order to allow the specification of special input data in normal ASCII
                 encodation for easy entering from a keyboard the library supports what is commonly
                 known as "tilde" processing. When this is enabled (it is disabled by default)
                 certain character sequences that begins with a tilde sign (i.e. "~") will be
@@ -339,7 +348,8 @@
                 that will then be enabled on the input data. Some of the translations are technical
                 and requires full understanding of Datamatrix standard to be used.</p>
             <div class="table"><a name="table.datamatrix-tilde-processing"></a><p class="title"><b>Table 26.5. Tilde processing translating</b></p><div class="table-contents">
-                           <table summary="Tilde processing translating" border="1"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>Input sequence</th><th>Translation</th></tr></thead><tbody><tr><td>~X : where 'X' is a character in the range [@-Z]</td><td>Translates to ASCII value 0-25, i.e. ~@==0, ~A==1, ~B==2 ,
+                
+                <table summary="Tilde processing translating" border="1"><colgroup><col class="c1"><col class="c2"></colgroup><thead><tr><th>Input sequence</th><th>Translation</th></tr></thead><tbody><tr><td>~X : where 'X' is a character in the range [@-Z]</td><td>Translates to ASCII value 0-25, i.e. ~@==0, ~A==1, ~B==2 ,
                                 ...</td></tr><tr><td>~1</td><td>Represents the character FNC1. Alternate Data Type Identifier.
                                 See Table 6: ISO 16022</td></tr><tr><td>~2nnmmfffggg</td><td>
                                 <p>Structured Append. This code is only allowed in the first
@@ -389,7 +399,8 @@
             </div></div><br class="table-break">
         </div>
         <div class="sect2" title="Creating different backends"><div class="titlepage"><div><div><h3 class="title"><a name="id2607268"></a>Creating different backends</h3></div></div></div>
-                   <p>In order to create the actual output one or more backends must be created. The
+            
+            <p>In order to create the actual output one or more backends must be created. The
                 Datamatrix supports the following backends:</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -462,7 +473,8 @@ $backend = DatamatrixBackendFactory::Create($encoder, BACKEND_IMAGE);</span></pr
             </p>
         </div>
         <div class="sect2" title="Generic backend methods"><div class="titlepage"><div><div><h3 class="title"><a name="id2607359"></a>Generic backend methods</h3></div></div></div>
-                   <p>The following methods are available to adjust the final look and feel of the
+            
+            <p>The following methods are available to adjust the final look and feel of the
                 barcode</p>
             <p>
                 </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
@@ -487,7 +499,8 @@ $backend = DatamatrixBackendFactory::Create($encoder, BACKEND_IMAGE);</span></pr
             </p>
         </div>
         <div class="sect2" title="Image backend methods"><div class="titlepage"><div><div><h3 class="title"><a name="id2607382"></a>Image backend methods</h3></div></div></div>
-                   <p>For the image backend it is possible to adjust the image encoding format with the
+            
+            <p>For the image backend it is possible to adjust the image encoding format with the
                 following method</p>
             <p>
                 </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
@@ -517,7 +530,8 @@ $backend = DatamatrixBackendFactory::Create($encoder, BACKEND_IMAGE);</span></pr
             </p>
         </div>
         <div class="sect2" title="Postscript backend format options"><div class="titlepage"><div><div><h3 class="title"><a name="id2607457"></a>Postscript backend format options</h3></div></div></div>
-                   <p>For postscript backend it is possible to select whether the postscript should be
+            
+            <p>For postscript backend it is possible to select whether the postscript should be
                 generated as encapsulated postscript. This is controlled by the method</p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -526,7 +540,8 @@ $backend = DatamatrixBackendFactory::Create($encoder, BACKEND_IMAGE);</span></pr
             </p>
         </div>
         <div class="sect2" title="A template to create barcodes"><div class="titlepage"><div><div><h3 class="title"><a name="id2607560"></a>A template to create barcodes</h3></div></div></div>
-                   <p>In the example directory in the distribution
+            
+            <p>In the example directory in the distribution
                     ('<code class="filename">datamatrix/examples</code>') you can find many more examples on
                 how to create barcodes. As a good start the following (simple) template may be used
                 as a base for further customizations.</p>
@@ -610,7 +625,8 @@ $backend = DatamatrixBackendFactory::Create($encoder, BACKEND_IMAGE);</span></pr
             </p>
         </div>
         <div class="sect2" title="Sample application"><div class="titlepage"><div><div><h3 class="title"><a name="id2607586"></a>Sample application</h3></div></div></div>
-                   <p>As an example the library includes a WEB-based demo barcode creation application.
+            
+            <p>As an example the library includes a WEB-based demo barcode creation application.
                 This application can be used to easily create barcode through it's WEB interface. It
                 is available at '<code class="filename">datamatrix/demoapp/index.html</code>'</p>
             <p>This application is primarily included as a demo on the features available in the
@@ -618,7 +634,8 @@ $backend = DatamatrixBackendFactory::Create($encoder, BACKEND_IMAGE);</span></pr
             <p><a class="xref" href="ch26s02.html#fig.datamatrix-demoapp" title="Figure 26.9. Datamatrix WEB-based demo application">Figure 26.9. Datamatrix WEB-based demo application</a> shows a screen shot of the
                 application interface.</p>
             <div class="figure"><a name="fig.datamatrix-demoapp"></a><p class="title"><b>Figure 26.9. Datamatrix WEB-based demo application</b></p><div class="figure-contents">
-                           <div class="mediaobject"><img src="images/datamatrix-demoapp.png" alt="Datamatrix WEB-based demo application"></div>
+                
+                <div class="mediaobject"><img src="images/datamatrix-demoapp.png" alt="Datamatrix WEB-based demo application"></div>
             </div></div><br class="figure-break">
         </div>
     </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"> </td><td width="20%" align="center"><a accesskey="u" href="ch26.html">Up</a></td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

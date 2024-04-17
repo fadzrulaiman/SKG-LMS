@@ -30,6 +30,7 @@ class RestAdmin extends MY_RestController {
     /**
      * Get the current log messages or the log file for a given date
      * @param string $dateLogFile Date of the log file (optional)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function logs($dateLogFile = '') {
         log_message('debug', '++logs = ' . $table);

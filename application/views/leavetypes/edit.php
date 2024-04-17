@@ -50,7 +50,8 @@ echo form_open('leavetypes/edit/' . $id, $attributes); ?>
                 $('#formEditLeaveType').submit();
             }
         });
-           //Suggest an acronym by using the first letters of the leave type name
+        
+        //Suggest an acronym by using the first letters of the leave type name
         $('#cmdSuggestAcronym').click(function() {
             var toMatch = $('#name').val();
             var result = toMatch.replace(/(\w)\w*\W*/g, function (_, i) {

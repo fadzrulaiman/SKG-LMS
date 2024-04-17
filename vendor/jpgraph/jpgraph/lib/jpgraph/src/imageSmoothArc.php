@@ -25,7 +25,8 @@
     Changelog:
     version 1.1
         - improved the rendering speed by ~20%
-           - Thanks to Matthias Mächler for fixing some small errors:
+        
+        - Thanks to Matthias Mächler for fixing some small errors:
             * uninitialized variables
             * deprecated passing of $img reference in imageSmoothArc ()
     
@@ -72,10 +73,13 @@ function imageSmoothArcDrawSegment (&$img, $cx, $cy, $a, $b, $aaAngleX, $aaAngle
     //$xp = +1; $yp = -1; $xa = +1; $ya = 0;
     for ( $x = 0; $x < $a; $x += 1 ) {
         /*$y = $b * sqrt( 1 - ($x*$x)/($a*$a) );
-           $error = $y - (int)($y);
+        
+        $error = $y - (int)($y);
         $y = (int)($y);
-           $diffColor = imageColorExactAlpha( $img, $color[0], $color[1], $color[2], 127-(127-$color[3])*$error );*/
-           $_y1 = $dyStop*$x;
+        
+        $diffColor = imageColorExactAlpha( $img, $color[0], $color[1], $color[2], 127-(127-$color[3])*$error );*/
+        
+        $_y1 = $dyStop*$x;
         $_y2 = $dyStart*$x;
         if ($xStart > $xStop)
         {
@@ -97,7 +101,8 @@ function imageSmoothArcDrawSegment (&$img, $cx, $cy, $a, $b, $aaAngleX, $aaAngle
         if ($aaStartX)
             $diffColor2 = imageColorExactAlpha( $img, $color[0], $color[1], $color[2], 127-(127-$color[3])*$error2 );
         */
-           if ($seg == 0 || $seg == 2)
+        
+        if ($seg == 0 || $seg == 2)
         {
             $i = $seg;
             if (!($start > $i*M_PI/2 && $x > $xStart)) {
@@ -109,7 +114,8 @@ function imageSmoothArcDrawSegment (&$img, $cx, $cy, $a, $b, $aaAngleX, $aaAngle
                 if ( $stop < ($i+1)*(M_PI/2) && $x <= $xStop ) {
                     $diffColor1 = imageColorExactAlpha( $img, $color[0], $color[1], $color[2], 127-(127-$color[3])*$error1 );
                     $y1 = $_y1; if ($aaStopX) imageSetPixel($img, $cx+$xp*($x)+$xa, $cy+$yp*($y1+1)+$ya, $diffColor1);
-                               } else {
+                    
+                } else {
                     $y = $b * sqrt( 1 - ($x*$x)/($a*$a) );
                     $error = $y - (int)($y);
                     $y = (int)($y);
@@ -125,7 +131,8 @@ function imageSmoothArcDrawSegment (&$img, $cx, $cy, $a, $b, $aaAngleX, $aaAngle
                 if ($y2 <= $y1) imageLine($img, $cx+$xp*$x+$xa, $cy+$yp*$y1+$ya , $cx+$xp*$x+$xa, $cy+$yp*$y2+$ya, $fillColor);
             }
         }
-           if ($seg == 1 || $seg == 3)
+        
+        if ($seg == 1 || $seg == 3)
         {
             $i = $seg;
             if (!($stop < ($i+1)*M_PI/2 && $x > $xStop)) {
@@ -137,7 +144,8 @@ function imageSmoothArcDrawSegment (&$img, $cx, $cy, $a, $b, $aaAngleX, $aaAngle
                 if ( $start > $i*M_PI/2 && $x < $xStart ) {
                     $diffColor2 = imageColorExactAlpha( $img, $color[0], $color[1], $color[2], 127-(127-$color[3])*$error2 );
                     $y1 = $_y2; if ($aaStartX) imageSetPixel($img, $cx+$xp*$x+$xa, $cy+$yp*($y1+1)+$ya, $diffColor2);
-                               } else {
+                    
+                } else {
                     $y = $b * sqrt( 1 - ($x*$x)/($a*$a) );
                     $error = $y - (int)($y);
                     $y = (int) $y;
@@ -159,9 +167,11 @@ function imageSmoothArcDrawSegment (&$img, $cx, $cy, $a, $b, $aaAngleX, $aaAngle
     
     for ( $y = 0; $y < $b; $y += 1 ) {
         /*$x = $a * sqrt( 1 - ($y*$y)/($b*$b) );
-           $error = $x - (int)($x);
+        
+        $error = $x - (int)($x);
         $x = (int)($x);
-           $diffColor = imageColorExactAlpha( $img, $color[0], $color[1], $color[2], 127-(127-$color[3])*$error );
+        
+        $diffColor = imageColorExactAlpha( $img, $color[0], $color[1], $color[2], 127-(127-$color[3])*$error );
         */
         $_x1 = $dxStop*$y;
         $_x2 = $dxStart*$y;
@@ -185,7 +195,8 @@ function imageSmoothArcDrawSegment (&$img, $cx, $cy, $a, $b, $aaAngleX, $aaAngle
         if (!$aaStartX)
             $diffColor2 = imageColorExactAlpha( $img, $color[0], $color[1], $color[2], 127-(127-$color[3])*$error2 );
 */
-           if ($seg == 0 || $seg == 2)
+        
+        if ($seg == 0 || $seg == 2)
         {
             $i = $seg;
             if (!($start > $i*M_PI/2 && $y > $yStop)) {
@@ -210,7 +221,8 @@ function imageSmoothArcDrawSegment (&$img, $cx, $cy, $a, $b, $aaAngleX, $aaAngle
                 }
             }
         }
-           if ($seg == 1 || $seg == 3)
+        
+        if ($seg == 1 || $seg == 3)
         {
             $i = $seg;
             if (!($stop < ($i+1)*M_PI/2 && $y > $yStart)) {

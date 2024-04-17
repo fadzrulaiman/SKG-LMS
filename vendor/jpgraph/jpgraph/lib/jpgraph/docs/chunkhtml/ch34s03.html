@@ -1,5 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Step 2: Creating the graph</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch34.html" title="Chapter 34. Showing SPAM statistics"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Step 2: Creating the graph</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 34. Showing SPAM statistics</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Step 2: Creating the graph"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2620783"></a>Step 2: Creating the graph</h2></div></div></div>
-                   <p>We will use a basic accumulated bar graphs with a text scale and integer y-scale.
+            
+            <p>We will use a basic accumulated bar graphs with a text scale and integer y-scale.
                 The remainder of the script should be fairly self explanatory since this is a
                 straightforward graph with no "tricks".</p>
             <p>
@@ -139,7 +140,8 @@
         </span><span class="hl-var">$abar</span><span class="hl-code">-&gt;</span><span class="hl-identifier">value</span><span class="hl-code">-&gt;</span><span class="hl-identifier">SetFormat</span><span class="hl-brackets">(</span><span class="hl-quotes">'</span><span class="hl-string">%d</span><span class="hl-quotes">'</span><span class="hl-brackets">)</span><span class="hl-code">;
         </span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">Add</span><span class="hl-brackets">(</span><span class="hl-var">$abar</span><span class="hl-brackets">)</span><span class="hl-code">;
         </span><span class="hl-var">$graph</span><span class="hl-code">-&gt;</span><span class="hl-identifier">Stroke</span><span class="hl-brackets">(</span><span class="hl-var">$aFile</span><span class="hl-brackets">)</span><span class="hl-code">;
-           </span><span class="hl-identifier">syslog</span><span class="hl-brackets">(</span><span class="hl-identifier">LOG_INFO</span><span class="hl-code">,</span><span class="hl-quotes">&quot;</span><span class="hl-string">Created spam image in </span><span class="hl-var">$aFile</span><span class="hl-string">.</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">; 
+        
+        </span><span class="hl-identifier">syslog</span><span class="hl-brackets">(</span><span class="hl-identifier">LOG_INFO</span><span class="hl-code">,</span><span class="hl-quotes">&quot;</span><span class="hl-string">Created spam image in </span><span class="hl-var">$aFile</span><span class="hl-string">.</span><span class="hl-quotes">&quot;</span><span class="hl-brackets">)</span><span class="hl-code">; 
     </span><span class="hl-brackets">}</span><span class="hl-code">
 </span><span class="hl-brackets">}</span><span class="hl-code">
   

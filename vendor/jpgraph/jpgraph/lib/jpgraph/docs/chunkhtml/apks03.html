@@ -1,6 +1,8 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Detailing the issue</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="apk.html" title="Appendix K. Why it is not possible to add a SVG backend to JpGraph"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Detailing the issue</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Appendix K. Why it is not possible to add a SVG backend to JpGraph</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Detailing the issue"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2655344"></a>Detailing the issue</h2></div></div></div>
-                   <div class="sect2" title="The core problem"><div class="titlepage"><div><div><h3 class="title"><a name="id2655351"></a>The core problem</h3></div></div></div>
-                           <p>It all boils down to one critical issue: </p>
+            
+            <div class="sect2" title="The core problem"><div class="titlepage"><div><div><h3 class="title"><a name="id2655351"></a>The core problem</h3></div></div></div>
+                
+                <p>It all boils down to one critical issue: </p>
                 <p>With the current SVG 1.1 (and draft 1.2) standard there is no way to
                     statically find out the bounding box of an arbitrary text string for later usage
                     in the SVG script. </p>
@@ -24,7 +26,8 @@
                 </div>
             </div>
             <div class="sect2" title="Why is this a problem ?"><div class="titlepage"><div><div><h3 class="title"><a name="id2655400"></a>Why is this a problem ?</h3></div></div></div>
-                           <p>There are many places in the library where it is absolutely essential to find
+                
+                <p>There are many places in the library where it is absolutely essential to find
                     out the bounding box of a text string to adjust the position of other object in
                     the graph. For example margins for titles, column width in gantt charts and
                     legends and so on. Without this functionality it will be impossible to add SVG
@@ -33,7 +36,8 @@
                     brought upon us by the use of SVG. </p>
             </div>
             <div class="sect2" title="Possible workarounds"><div class="titlepage"><div><div><h3 class="title"><a name="id2655415"></a>Possible workarounds</h3></div></div></div>
-                           <p>Looking at this from a more positive view instead of explaining why it cannot
+                
+                <p>Looking at this from a more positive view instead of explaining why it cannot
                     be done there are in principal only two workarounds (neither which is a 100%
                     solution) </p>
                 <div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
@@ -55,7 +59,8 @@
                     </li></ol></div>
             </div>
             <div class="sect2" title="What would be required ?"><div class="titlepage"><div><div><h3 class="title"><a name="id2655446"></a>What would be required ?</h3></div></div></div>
-                           <p>What would be required in the standard to solve this is a new basis element
+                
+                <p>What would be required in the standard to solve this is a new basis element
                     which could be used to record the bounding box of a particular text string for
                     later reference. To just give some idea on what is needed some "pseudo-SVG" that
                     we would need is something along the lines of: </p>
@@ -90,7 +95,8 @@
                     it with a 10 units margin all around.</p>
             </div>
             <div class="sect2" title="DOM scripting and GetBBox()"><div class="titlepage"><div><div><h3 class="title"><a name="id2655488"></a>DOM scripting and GetBBox()</h3></div></div></div>
-                           <p>Since we make no claim to be experts in all aspects of the SVG standard (which
+                
+                <p>Since we make no claim to be experts in all aspects of the SVG standard (which
                     is fairly big) it might be possible that there is some way to still solve this
                     that has eluded us so we would be very interested in getting a second opinion of
                     these findings. We are aware of the SVG method GetBBox() but this would not work
@@ -109,7 +115,8 @@
                 </p>
             </div>
             <div class="sect2" title="A final comment"><div class="titlepage"><div><div><h3 class="title"><a name="id2655518"></a>A final comment</h3></div></div></div>
-                           <p>Since we still find it very hard to believe this giant oversight in the
+                
+                <p>Since we still find it very hard to believe this giant oversight in the
                     standard we would be happy to receive comments on these conclusions. </p>
             </div>
         </div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"> </td><td width="20%" align="center"><a accesskey="u" href="apk.html">Up</a></td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top"> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></body></html>

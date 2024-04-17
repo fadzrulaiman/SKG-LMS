@@ -1,5 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Using StrokeCSIM()</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch10.html" title="Chapter 10. Using CSIM (Client side image maps)"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Using StrokeCSIM()</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 10. Using CSIM (Client side image maps)</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Using StrokeCSIM()"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2536011"></a>Using StrokeCSIM()</h2></div></div></div>
-                   <p>The simplest way of creating a creating a CSIM image is with the
+            
+            <p>The simplest way of creating a creating a CSIM image is with the
                     <code class="code">StrokeCSIM()</code> method. As mentioned before this method actually
                 returns a (small) HTML page containing both the image-tag as well as the image map
                 specification. Hence it is not possible to use a script that ends with this method
@@ -31,7 +32,8 @@
                 strait forward. Replace all existing calls to <code class="code">Stroke()</code> with the
                 equivalent calls to <code class="code">StrokeCSIM()</code>.</p>
             <div class="sect2" title="Optional argument to StrokeCSIM()"><div class="titlepage"><div><div><h3 class="title"><a name="id2536113"></a>Optional argument to StrokeCSIM()</h3></div></div></div>
-                           <p>Once difference compared with Stroke() is that if a filename is supplied to
+                
+                <p>Once difference compared with Stroke() is that if a filename is supplied to
                     the <code class="code">StrokeCSIM()</code> method it does not specify a file to write an
                     image to as is the case with Stroke(). The signature for the method is</p>
                 <p>
@@ -66,7 +68,8 @@
                     not.</p>
             </div>
             <div class="sect2" title="How does StrokeCSIM() work?"><div class="titlepage"><div><div><h3 class="title"><a name="id2536192"></a>How does StrokeCSIM() work?</h3></div></div></div>
-                           <p>Knowledge of the exact technical details of the way <code class="code">StrokeCSIM()</code>
+                
+                <p>Knowledge of the exact technical details of the way <code class="code">StrokeCSIM()</code>
                     works is probably not needed by many people but for completeness we outline
                     those details in this short section.</p>
                 <p>The fundamental issue we have to solve is that we must be able to call the
@@ -94,7 +97,8 @@
                 </p>
                 <p>
                     </p><div class="figure"><a name="fig.generated-csim-html-code"></a><p class="title"><b>Figure 10.1. Example of generated HTML code for StrokeCSIM()</b></p><div class="figure-contents">
-                                           <pre class="screen">&lt;map name="__mapname1828__" id="__mapname1828__" &gt;
+                        
+                        <pre class="screen">&lt;map name="__mapname1828__" id="__mapname1828__" &gt;
 &lt;area shape="poly" coords="74, 210, 74, 165, 92, 165, 92, 210"  href="bar_clsmex1.php#1" title="val=12" alt="val=12"  /&gt;
 &lt;area shape="poly" coords="118, 210, 118, 112, 136, 112, 136, 210"  href="bar_clsmex1.php#2" title="val=26" alt="val=26"  /&gt;
 &lt;area shape="poly" coords="162, 210, 162, 176, 180, 176, 180, 210"  href="bar_clsmex1.php#3" title="val=9" alt="val=9"  /&gt;
@@ -118,7 +122,8 @@
                 </p>
             </div>
             <div class="sect2" title="Image maps and the cache system"><div class="titlepage"><div><div><h3 class="title"><a name="id2536305"></a>Image maps and the cache system</h3></div></div></div>
-                           <p>For version 1.9 and later the cache system has been extended to include the
+                
+                <p>For version 1.9 and later the cache system has been extended to include the
                     CSIM maps as well. For each CSIM graph two files are stored in the cache, the
                     image file itself as well as the wrapper HTML with the actual image map. </p>
             </div>

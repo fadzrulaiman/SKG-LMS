@@ -1,5 +1,6 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Using a date/time scale</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch14.html" title="Chapter 14. Common features for all Cartesian (x,y) graph types"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Using a date/time scale</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 14. Common features for all Cartesian (x,y) graph types</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Using a date/time scale"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2548591"></a>Using a date/time scale</h2></div></div></div>
-                   <p>The easiest way to get a date time scale for the X-axis is to use the pre-defined
+            
+            <p>The easiest way to get a date time scale for the X-axis is to use the pre-defined
                     "<code class="code">dat</code>" scale. To be able to use that it is first necessary to
                 include the module "<code class="filename">jpgraph_date.php</code>" and then specify the
                 scale, for example as "<code class="code">datlin</code>" in the call to
@@ -33,7 +34,8 @@
             <p>Bot the y- and the x-axis can have a date scale but the most common case is to
                 only use date scale on the x-axis.</p>
             <div class="sect2" title="Specifying the input data"><div class="titlepage"><div><div><h3 class="title"><a name="id2549071"></a>Specifying the input data</h3></div></div></div>
-                           <p>No matter how the formatting is done the input data is assumed to be a
+                
+                <p>No matter how the formatting is done the input data is assumed to be a
                     timestamp value, i.e. the number of seconds since epoch (as defined on the local
                     system executing the graph). In PHP the current timestamp value is returned by
                     the function <code class="code">time()</code>.</p>
@@ -60,7 +62,8 @@
                     will base all further examples on this.</p>
             </div>
             <div class="sect2" title="Adjusting the start and end date alignment"><div class="titlepage"><div><div><h3 class="title"><a name="id2549170"></a>Adjusting the start and end date alignment</h3></div></div></div>
-                           <p>As can be seen from the example in <a class="xref" href="ch14s10.html#fig.dateaxisex2" title="Figure 14.65. A first date scale example (dateaxisex2.php)">Figure 14.65. A first date scale example <code class="uri"><a class="uri" href="example_src/dateaxisex2.html" target="_top">(<code class="filename">dateaxisex2.php</code>)</a></code> </a> the
+                
+                <p>As can be seen from the example in <a class="xref" href="ch14s10.html#fig.dateaxisex2" title="Figure 14.65. A first date scale example (dateaxisex2.php)">Figure 14.65. A first date scale example <code class="uri"><a class="uri" href="example_src/dateaxisex2.html" target="_top">(<code class="filename">dateaxisex2.php</code>)</a></code> </a> the
                     scale starts slightly before the first data point. </p>
                 <p>Why? </p>
                 <p>This is of course by purpose in order to make the first time label start on an
@@ -185,19 +188,22 @@
                 <p>
                     </p><div class="example"><a name="id2549577"></a><p class="title"><b>Example 14.7. We want the time adjustment to start on an even quarter of an hour,
                             i.e. an even 15 minute period.</b></p><div class="example-contents">
-                                           <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
+                        
+                        <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$graph-&gt;xaxis-&gt;scale-&gt;SetTimeAlign( MINADJ_15 );</span></pre></td></tr></table></div>
                     </div></div><p><br class="example-break">
                 </p>
                 <p>
                     </p><div class="example"><a name="id2549591"></a><p class="title"><b>Example 14.8. We want the time to start on an even 2 hour</b></p><div class="example-contents">
-                                           <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
+                        
+                        <div class="hl-main"><table class="hl-table" width="100%"><tr><td class="hl-gutter" align="right" valign="top"><pre>1
 </pre></td><td class="hl-main" valign="top"><pre><span class="hl-code">$graph-&gt;xaxis-&gt;scale-&gt;SetTimeAlign( HOURADJ_2 );</span></pre></td></tr></table></div>
                     </div></div><p><br class="example-break">
                 </p>
             </div>
             <div class="sect2" title="Manually adjusting the ticks"><div class="titlepage"><div><div><h3 class="title"><a name="id2549601"></a>Manually adjusting the ticks</h3></div></div></div>
-                           <p>Since a date scale is special case of an integer scale (the underlying format
+                
+                <p>Since a date scale is special case of an integer scale (the underlying format
                     of dates a timestamps which are large integers) it is perfectly possible to
                     manually adjust the interval between each label. The interval is specified in
                     seconds with a call to the usual</p>
@@ -244,7 +250,8 @@
                 </p>
             </div>
             <div class="sect2" title="Adjusting the label format"><div class="titlepage"><div><div><h3 class="title"><a name="id2549687"></a>Adjusting the label format</h3></div></div></div>
-                           <p>The default label format always tries to use the shortest possible unique
+                
+                <p>The default label format always tries to use the shortest possible unique
                     string. To manually set a label format the method </p>
                 <p>
                     </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -270,7 +277,8 @@
                 </p>
             </div>
             <div class="sect2" title="Adjusting the automatic density of date labels"><div class="titlepage"><div><div><h3 class="title"><a name="id2549799"></a>Adjusting the automatic density of date labels</h3></div></div></div>
-                           <p>As with the linear scale it is possible to indicate what density of scale
+                
+                <p>As with the linear scale it is possible to indicate what density of scale
                     ticks is needed. This is (as usual) specified with a call to
                         <code class="code">Graph::SetTickDensity($aMajDensity, $aMinDensity)</code> for example
                     as</p>
@@ -280,7 +288,8 @@
                 </p>
             </div>
             <div class="sect2" title="Creating a date/time scale with a manual label call-back"><div class="titlepage"><div><div><h3 class="title"><a name="id2549829"></a>Creating a date/time scale with a manual label call-back</h3></div></div></div>
-                           <p>In the following we will assume that all data points are specified by a tuple
+                
+                <p>In the following we will assume that all data points are specified by a tuple
                         <span class="italic">(time-value, date-value)</span> where the
                     date/time is specified as a timestamp in seconds in the same format as is
                     returned by the PHP function <code class="code">time()</code>.</p>
@@ -460,7 +469,8 @@ function  TimeCallback ( $aVal ) {
                 </p>
             </div>
             <div class="sect2" title='Using the "DateScaleUtils" class to make manual date scale'><div class="titlepage"><div><div><h3 class="title"><a name="id2549831"></a>Using the "DateScaleUtils" class to make manual date scale</h3></div></div></div>
-                           <p>In this section we will show a very common use case where the x-axis have the
+                
+                <p>In this section we will show a very common use case where the x-axis have the
                     unit of timestamps and where the start of each month is labeled. This is
                     difficult (impossible) to do with the automatic tick marks since this requires
                     the distance between consecutive tick marks to be different.</p>
@@ -644,7 +654,8 @@ function  TimeCallback ( $aVal ) {
                 </p>
             </div>
             <div class="sect2" title="When to use manual and when to use automatic date scale?"><div class="titlepage"><div><div><h3 class="title"><a name="id2550589"></a>When to use manual and when to use automatic date scale?</h3></div></div></div>
-                           <p>The previous sections showed how to make use of the utility class
+                
+                <p>The previous sections showed how to make use of the utility class
                         <code class="code">DateScaleUtils</code> to manually set the tick marks. The astute
                     reader will also recall the possibility to use a "date" scale, i.e. specifying
                     the scale for example as</p>

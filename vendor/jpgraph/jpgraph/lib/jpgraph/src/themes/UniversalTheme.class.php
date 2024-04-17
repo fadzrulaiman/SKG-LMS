@@ -61,7 +61,8 @@ class UniversalTheme extends Theme
         $graph->xaxis->HideTicks();
         $graph->xaxis->SetTitleMargin(15);
         //$graph->xaxis->SetLabelMargin(30);
-                   // yaxis
+                
+        // yaxis
         $graph->yaxis->title->SetColor($this->font_color);  
         $graph->yaxis->SetColor($this->axis_color, $this->font_color);    
         $graph->yaxis->SetTickSide(SIDE_LEFT);

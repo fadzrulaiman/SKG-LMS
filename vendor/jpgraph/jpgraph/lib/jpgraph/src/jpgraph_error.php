@@ -105,6 +105,7 @@ class ErrorLinePlot extends ErrorPlot {
         $graph->legend->Add($this->legend,$this->color);
         $this->line->Legend($graph);
     }
+     
     function Stroke($img,$xscale,$yscale) {
         parent::Stroke($img,$xscale,$yscale);
         $this->line->Stroke($img,$xscale,$yscale);
@@ -144,6 +145,7 @@ class LineErrorPlot extends ErrorPlot {
         $graph->legend->Add($this->legend,$this->color);
         $this->line->Legend($graph);
     }
+     
     function Stroke($img,$xscale,$yscale) {
         parent::Stroke($img,$xscale,$yscale);
         $this->line->Stroke($img,$xscale,$yscale);

@@ -35,7 +35,8 @@ $graph->subtitle->Set('(With "hidden" y-axis)');
 $graph->title->SetFont(FF_FONT2,FS_BOLD);
 $graph->xaxis->title->Set("Year 2002");
 $graph->xaxis->title->SetFont(FF_FONT2,FS_BOLD);
-                         // Create a bar pot
+                              
+// Create a bar pot
 $bplot = new BarPlot($datay);
 $bplot->SetFillColor('darkblue');
 $bplot->SetColor('darkblue');

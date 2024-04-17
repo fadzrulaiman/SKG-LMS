@@ -4,7 +4,7 @@
  * This function is called just before saving the leave request.
  * A reference to the instance of the CI Controller is passed so you can change everything.
  * @param reference to CI Controller object
- 
+ * @author Benjamin BALET <benjamin.balet@gmail.com>
  */
 function triggerCreateLeaveRequest(CI_Controller $controller)
 {

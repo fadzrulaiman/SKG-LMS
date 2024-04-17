@@ -33,7 +33,8 @@ class HTMLPurifier_AttrTransform_TargetBlank extends HTMLPurifier_AttrTransform
 
         // XXX Kind of inefficient
         $url = $this->parser->parse($attr['href']);
-           // Ignore invalid schemes (e.g. `javascript:`)
+        
+        // Ignore invalid schemes (e.g. `javascript:`)
         if (!($scheme = $url->getSchemeObj($config, $context))) {
             return $attr;
         }

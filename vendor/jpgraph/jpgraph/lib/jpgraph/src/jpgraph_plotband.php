@@ -204,7 +204,8 @@ class RectPatternRDiag extends RectPattern {
                 $x0 += $this->linespacing;
                 $x1 += $this->linespacing;
             }
-                    $y0=$this->rect->y + ($x0-$xe);
+             
+            $y0=$this->rect->y + ($x0-$xe);
             $x0=$xe;
         }
         else {
@@ -218,7 +219,8 @@ class RectPatternRDiag extends RectPattern {
                 $y1 += $this->linespacing;
                 $y0 += $this->linespacing;
             }
-                    $diff = $y1-$ye;
+             
+            $diff = $y1-$ye;
             $y1 = $ye;
             $x1 = $diff + $this->rect->x;
         }
@@ -269,7 +271,8 @@ class RectPatternLDiag extends RectPattern {
                 $x0 += $this->linespacing;
                 $x1 += $this->linespacing;
             }
-                    $y0=$this->rect->ye - ($x0-$xe);
+             
+            $y0=$this->rect->ye - ($x0-$xe);
             $x0=$xe;
         }
         else {
@@ -593,7 +596,8 @@ class PlotBand {
 
             // Only draw the bar if it actually appears in the range
             if ($this->min < $aYScale->GetMaxVal() && $this->max > $aYScale->GetMinVal()) {
-                            // Trucate to limit of axis
+                 
+                // Trucate to limit of axis
                 $this->min = max($this->min, $aYScale->GetMinVal());
                 $this->max = min($this->max, $aYScale->GetMaxVal());
 
@@ -611,7 +615,8 @@ class PlotBand {
 
             // Only draw the bar if it actually appears in the range
             if ($this->min < $aXScale->GetMaxVal() && $this->max > $aXScale->GetMinVal()) {
-                            // Trucate to limit of axis
+                 
+                // Trucate to limit of axis
                 $this->min = max($this->min, $aXScale->GetMinVal());
                 $this->max = min($this->max, $aXScale->GetMaxVal());
 

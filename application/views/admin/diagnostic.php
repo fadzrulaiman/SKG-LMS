@@ -320,7 +320,8 @@ $overlappingLeaves_badge = ($overlappingLeaves_count == 0)?'':'<span class="badg
                 <a target="_blank" href="<?php echo base_url();?>contracts/edit/<?php echo $leave['contract_id'];?>"><?php echo $leave['contract_label'];?></a>
             </td>
             <td><?php echo $startdate;?></td>
-            <td><?php echo $enddate;?></td>                   <td><?php echo $leave['status_label'];?></td>
+            <td><?php echo $enddate;?></td>            
+            <td><?php echo $leave['status_label'];?></td>
         </tr>
         <?php endforeach ?>
       </tbody>

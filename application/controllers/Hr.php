@@ -1,7 +1,10 @@
 <?php
 /**
  * This controller serves all the actions performed by human resources department
-
+ * @copyright  Copyright (c) 2014-2023 Benjamin BALET
+ * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
+ * @link            https://github.com/bbalet/jorani
+ * @since         0.1.0
  */
 
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
@@ -15,6 +18,7 @@ class Hr extends CI_Controller {
 
     /**
      * Default constructor
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -26,6 +30,7 @@ class Hr extends CI_Controller {
 
     /**
      * Display the list of all employees
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function employees() {
         $this->auth->checkIfOperationIsAllowed('list_employees');
@@ -56,6 +61,7 @@ class Hr extends CI_Controller {
      * @param string $date1 Date Hired (optional)
      * @param string $criterion2 "lesser" or "greater" (optional)
      * @param string $date2 Date Hired (optional)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function employeesOfEntity($id = 0, $children = TRUE, $filterActive = "all",
             $criterion1 = NULL, $date1 = NULL, $criterion2 = NULL, $date2 = NULL) {
@@ -103,6 +109,7 @@ class Hr extends CI_Controller {
 
     /**
      * Ajax endpoint: edit the manager for a list of employees
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function editManager() {
         header("Content-Type: application/json");
@@ -120,6 +127,7 @@ class Hr extends CI_Controller {
 
     /**
      * Ajax endpoint: edit the entity for a list of employees
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function editEntity() {
         header("Content-Type: application/json");
@@ -137,6 +145,7 @@ class Hr extends CI_Controller {
 
     /**
      * Ajax endpoint: edit the contract for a list of employees
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function editContract() {
         header("Content-Type: application/json");
@@ -154,6 +163,7 @@ class Hr extends CI_Controller {
 
     /**
      * Ajax endpoint: create a leave request for a list of employees
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function createLeaveRequest() {
         header("Content-Type: application/json");
@@ -180,6 +190,7 @@ class Hr extends CI_Controller {
 
     /**
      * Ajax endpoint : insert into the list of entitled days for a list of employees
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function editEntitlements() {
         if ($this->auth->isAllowed('entitleddays_user') == FALSE) {
@@ -207,6 +218,7 @@ class Hr extends CI_Controller {
     /**
      * Display the list of leaves for a given employee
      * @param int $id employee id
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function leaves($id) {
         $this->auth->checkIfOperationIsAllowed('list_employees');
@@ -239,6 +251,7 @@ class Hr extends CI_Controller {
     /**
      * Display the list of overtime requests for a given employee
      * @param int $id employee id
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function overtime($id) {
         $this->auth->checkIfOperationIsAllowed('list_employees');
@@ -266,6 +279,7 @@ class Hr extends CI_Controller {
      * @param string $source page calling the report (employees, collaborators)
      * @param int $id Identifier of the employee
      * @param string $refTmp Timestamp (reference date)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function counters($source, $id, $refTmp = NULL) {
         if ($source == 'collaborators') { $this->auth->checkIfOperationIsAllowed('list_collaborators'); }
@@ -314,6 +328,7 @@ class Hr extends CI_Controller {
     /**
      * Create a leave request in behalf of an employee
      * @param int $id Identifier of the employee
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function createleave($id) {
         $this->auth->checkIfOperationIsAllowed('list_employees');
@@ -361,6 +376,7 @@ class Hr extends CI_Controller {
      * @param int $id employee id
      * @param int $month Month number or 0 for last month (default)
      * @param int $year Year number or 0 for current year (default)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function presence($source, $id, $month=0, $year=0) {
         if ($source == 'collaborators') { $this->auth->checkIfOperationIsAllowed('list_collaborators'); }
@@ -438,6 +454,7 @@ class Hr extends CI_Controller {
     /**
      * Export the list of all leave requests of an employee into an Excel file
      * @param int $id employee id
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function exportLeaves($id) {
         $this->load->model('leaves_model');
@@ -449,6 +466,7 @@ class Hr extends CI_Controller {
     /**
      * Export the list of all overtime requests of an employee into an Excel file
      * @param int $id employee id
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function exportOvertime($id) {
         $this->load->model('overtime_model');
@@ -466,6 +484,7 @@ class Hr extends CI_Controller {
      * @param string $date1 Date Hired (optional)
      * @param string $criterion2 "lesser" or "greater" (optional)
      * @param string $date2 Date Hired (optional)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function exportEmployees($id = 0, $children = TRUE, $filterActive = "all",
                             $criterion1 = NULL, $date1 = NULL, $criterion2 = NULL, $date2 = NULL) {
@@ -486,6 +505,7 @@ class Hr extends CI_Controller {
      * @param int $id employee id
      * @param int $month Month number or 0 for last month (default)
      * @param int $year Year number or 0 for current year (default)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function exportPresence($source,$id, $month=0, $year=0) {
         if ($source == 'collaborators') { $this->auth->checkIfOperationIsAllowed('list_collaborators'); }

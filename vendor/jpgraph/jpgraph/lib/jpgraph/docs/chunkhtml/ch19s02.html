@@ -1,8 +1,10 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Constructing tables</title><link rel="stylesheet" type="text/css" href="manual.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.0"><link rel="home" href="index.html" title="JpGraph Manual"><link rel="up" href="ch19.html" title="Chapter 19. Graphical tables"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Constructing tables</th></tr><tr><td width="20%" align="left"> </td><th width="60%" align="center">Chapter 19. Graphical tables</th><td width="20%" align="right"> </td></tr></table><hr></div><div class="sect1" title="Constructing tables"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="id2579640"></a>Constructing tables</h2></div></div></div>
-           <p>In this section we will introduce the basic concepts of tables and explain the basic
+        
+        <p>In this section we will introduce the basic concepts of tables and explain the basic
             formatting possibilities that are available. </p>
         <div class="sect2" title="Basic tables"><div class="titlepage"><div><div><h3 class="title"><a name="id2579767"></a>Basic tables</h3></div></div></div>
-                   <p>A table is created as an instance of the <code class="code">class GTextTable</code> and can be
+            
+            <p>A table is created as an instance of the <code class="code">class GTextTable</code> and can be
                 managed in much the same way as for example Icons, Texts or other plot objects. It
                 can be added to the graph (at specified X and Y coordinates) using the standard
                     <code class="code">Graph::Add()</code> method. </p>
@@ -169,7 +171,8 @@ $table-&gt;Set($data)</span></pre></td></tr></table></div><p>
                 will focus on the structure of the table and introduce the merge operation. </p>
         </div>
         <div class="sect2" title="Merging cells"><div class="titlepage"><div><div><h3 class="title"><a name="id2579770"></a>Merging cells</h3></div></div></div>
-                   <p>The only way to change the structure (as opposed to the look &amp; feel) of the
+            
+            <p>The only way to change the structure (as opposed to the look &amp; feel) of the
                 table is by merging two or more cells. The merge operation is done via one of three
                 method calls: </p>
             <p>
@@ -230,7 +233,8 @@ $table-&gt;Set($data)</span></pre></td></tr></table></div><p>
             </p>
         </div>
         <div class="sect2" title="Font adjustment"><div class="titlepage"><div><div><h3 class="title"><a name="id2580253"></a>Font adjustment</h3></div></div></div>
-                   <p>The most basic way to change the look and feel of the table is to adjust the font
+            
+            <p>The most basic way to change the look and feel of the table is to adjust the font
                 that is used in the different cells in the table. To adjust the font within the
                 table the following methods are available </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
                         <p><code class="code">SetFont()</code>, Specify the default font for the entire table
@@ -287,7 +291,8 @@ $table-&gt;Set($data)</span></pre></td></tr></table></div><p>
             </p>
         </div>
         <div class="sect2" title="Color adjustment"><div class="titlepage"><div><div><h3 class="title"><a name="id2580295"></a>Color adjustment</h3></div></div></div>
-                   <p>In order to adjust the look and feel of the table it is possible to set the
+            
+            <p>In order to adjust the look and feel of the table it is possible to set the
                 following colors of the table: </p>
             <p>
                 </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
@@ -429,7 +434,8 @@ $table-&gt;SetRowColor(0,'darkred');</span></pre></td></tr></table></div><p>
                 both achieve the same effect. </p>
         </div>
         <div class="sect2" title="Adjusting table and cell sizes"><div class="titlepage"><div><div><h3 class="title"><a name="id2580500"></a>Adjusting table and cell sizes</h3></div></div></div>
-                   <p>The exact size of the table can only be indirectly controlled by specifying the
+            
+            <p>The exact size of the table can only be indirectly controlled by specifying the
                 width of the columns and the height of the rows. The width/height can either be
                 controlled individually on a row by row (or column by column) basis or by giving all
                 rows/columns the same width/height. This is accomplished by the methods </p>
@@ -468,7 +474,8 @@ $table-&gt;SetMinColWidth(35);
             </p>
         </div>
         <div class="sect2" title="Fine tuning cell alignment and cell padding"><div class="titlepage"><div><div><h3 class="title"><a name="id2580951"></a>Fine tuning cell alignment and cell padding</h3></div></div></div>
-                   <p>The final bit of important formatting is the ability to specify the alignment of
+            
+            <p>The final bit of important formatting is the ability to specify the alignment of
                 the data in each of the cells within the table. It is possible to specify both the
                 horizontal and vertical alignment. The alignment can be specified as one of </p>
             <p>
@@ -507,7 +514,8 @@ $table-&gt;SetMinColWidth(35);
             </p>
         </div>
         <div class="sect2" title="Adjusting border and grid lines"><div class="titlepage"><div><div><h3 class="title"><a name="id2581054"></a>Adjusting border and grid lines</h3></div></div></div>
-                   <p>The final formatting option available is the shape, size and color of the border
+            
+            <p>The final formatting option available is the shape, size and color of the border
                 and grid lines in the table. As of this writing the library supports the following
                 styles of grid lines. </p>
             <p>
@@ -592,7 +600,8 @@ $table-&gt;SetRowGrid(2,1,'black',TGRID_DOUBLE2);
             </p>
         </div>
         <div class="sect2" title="Specific number formatting"><div class="titlepage"><div><div><h3 class="title"><a name="id2581394"></a>Specific number formatting</h3></div></div></div>
-                   <p>The final method of formatting we will briefly touch upon is the number
+            
+            <p>The final method of formatting we will briefly touch upon is the number
                 formatting. By setting a specific number formatting it is possible to have numeric
                 values formatted in a uniform way regardless of the original format. The number
                 format is the same format string that would be used with the <code class="code">printf()</code>
@@ -632,7 +641,8 @@ $table-&gt;SetRowGrid(2,1,'black',TGRID_DOUBLE2);
             </p>
         </div>
         <div class="sect2" title="Using images and country flags in the table"><div class="titlepage"><div><div><h3 class="title"><a name="id2581540"></a>Using images and country flags in the table</h3></div></div></div>
-                   <p>In addition to ordinary text it is also possible to have arbitrary images (read
+            
+            <p>In addition to ordinary text it is also possible to have arbitrary images (read
                 from a file) or use one of the built-in country flags available in the library as
                 background images in the table cells. </p>
             <p>

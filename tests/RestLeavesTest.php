@@ -9,6 +9,7 @@ class RestLeavesTest extends TestCase
     /**
      * Create a common HTTP client for all test cases pointing to 
      * the API URL defined as environment variable (or by phpunit.xml)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function setUp()
     {
@@ -19,6 +20,7 @@ class RestLeavesTest extends TestCase
 
     /**
      * Free resources after this test case
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function tearDown() {
         $this->httpClient = null;
@@ -29,6 +31,7 @@ class RestLeavesTest extends TestCase
      * It should be inerited from MY_RestController::options
      * But relying of what is set into the parent's constructor
      * @covers RestLeaves::options
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testPreflightCORS()
     {
@@ -44,6 +47,7 @@ class RestLeavesTest extends TestCase
     /**
      * Creates a leave request
      * @covers RestLeaves::create
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testCreateLeaveRequest()
     {
@@ -72,6 +76,7 @@ class RestLeavesTest extends TestCase
      * We don't send the preferred language, 
      * so US English formatting should be returned
      * @depends testCreateLeaveRequest
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testViewLeaveRequest(int $leaveId)
     {
@@ -98,6 +103,7 @@ class RestLeavesTest extends TestCase
     /**
      * A non admin user shouldn't be able to force the LR
      * status to something else than planned or requested
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testForceStatus()
     {
@@ -131,6 +137,7 @@ class RestLeavesTest extends TestCase
     /**
      * Delete a LR and then try to display it again
      * @depends testCreateLeaveRequest
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testDeleteLeaveRequests(int $leaveId)
     {
@@ -149,6 +156,7 @@ class RestLeavesTest extends TestCase
 
     /**
      * Employee (non admin) must not be able to see the LR of another employee
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testIllegalAccessToLeaveRequest()
     {
@@ -169,7 +177,8 @@ class RestLeavesTest extends TestCase
         $this->assertEquals(200, $response->getStatusCode());
         $body = (string) $response->getBody();
         $leaveId = intval(json_decode($body));
-           $response = $this->httpClient->request('GET', 'leaves/' . $leaveId,
+        
+        $response = $this->httpClient->request('GET', 'leaves/' . $leaveId,
             [  'http_errors' => false,
                 'auth' => ['jdoe', 'jdoe']
             ]);
@@ -178,6 +187,7 @@ class RestLeavesTest extends TestCase
 
     /**
      * Try to display a LR that doesn't exist
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testLeaveRequestNotFound()
     {
@@ -191,6 +201,7 @@ class RestLeavesTest extends TestCase
 
     /**
      * Update a leave request with normal values
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testEditLeaveRequest()
     {
@@ -251,6 +262,7 @@ class RestLeavesTest extends TestCase
     /**
      * Tries to create a leave request with invalid data
      * @covers RestLeaves::create
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testCreateLeaveRequestWithIllegalValues()
     {
@@ -275,6 +287,7 @@ class RestLeavesTest extends TestCase
     /**
      * Try to update the leave request of another employee
      * while non admin and non HR
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testIllegalEditLeaveRequest()
     {
@@ -316,6 +329,7 @@ class RestLeavesTest extends TestCase
 
     /**
      * Try to update the leave request with invalid data
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function testEditLeaveRequestWithIllegalValues()
     {

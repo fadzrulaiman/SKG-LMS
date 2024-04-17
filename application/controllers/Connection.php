@@ -1,7 +1,10 @@
 <?php
 /**
  * This controller manages the connection to the application
-
+ * @copyright  Copyright (c) 2014-2023 Benjamin BALET
+ * @license      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
+ * @link            https://github.com/bbalet/jorani
+ * @since         0.1.0
  */
 
 if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
@@ -15,6 +18,7 @@ class Connection extends CI_Controller {
 
     /**
      * Default constructor
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -38,6 +42,7 @@ class Connection extends CI_Controller {
      * Generate a random string by using openssl, dev/urandom or random
      * @param int $length optional length of the string
      * @return string random string
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     private function generateRandomString($length = 10) {
         if(function_exists('openssl_random_pseudo_bytes')) {
@@ -66,6 +71,7 @@ class Connection extends CI_Controller {
     
     /**
      * Login form
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function login() {
         //The login form is not used with SAML2 authentication mode
@@ -76,7 +82,8 @@ class Connection extends CI_Controller {
         if ($this->session->userdata('logged_in') === TRUE) {
             redirect('home');
         }
-           $data['title'] = lang('session_login_title');
+        
+        $data['title'] = lang('session_login_title');
         $data['help'] = $this->help->create_help_link('global_link_doc_page_login');
         $this->load->helper('form');
         $this->load->library('form_validation');
@@ -99,7 +106,8 @@ class Connection extends CI_Controller {
             //Set language
             $this->session->set_userdata('language_code', $this->input->post('language'));
             $this->session->set_userdata('language', $this->polyglot->code2language($this->input->post('language')));
-                   //Decipher the password value (RSA encoded -> base64 -> decode -> decrypt) and remove the salt!
+            
+            //Decipher the password value (RSA encoded -> base64 -> decode -> decrypt) and remove the salt!
             $password = '';
             if (function_exists('openssl_pkey_get_private')) {
                 $privateKey = openssl_pkey_get_private(file_get_contents('./assets/keys/private.pem', TRUE));
@@ -117,7 +125,8 @@ class Connection extends CI_Controller {
             //Remove the salt
             $len_salt = strlen($this->session->userdata('salt')) * (-1);
             $password = substr($password, 0, $len_salt);
-                   $loggedin = FALSE;
+            
+            $loggedin = FALSE;
             if ($this->config->item('ldap_enabled') === TRUE) {
                 if ($password != "") { //Bind to MS-AD with blank password might return OK
                     $ldap = ldap_connect($this->config->item('ldap_host'), $this->config->item('ldap_port'));
@@ -171,6 +180,7 @@ class Connection extends CI_Controller {
 
     /**
      * Logout the user and destroy the session data
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function logout() {
         $this->session->sess_destroy();
@@ -179,6 +189,7 @@ class Connection extends CI_Controller {
 
     /**
      * Change the language and redirect to last page (i.e. page that submit the language form)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function language() {
         $this->load->helper('form');
@@ -200,6 +211,7 @@ class Connection extends CI_Controller {
     /**
      * If the user has a target page (e.g. link in an e-mail), redirect to this destination
      * @param string $page Force the redirection to a given page
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     private function redirectToLastPage($page = "") {
         if ($page!=="") {
@@ -224,6 +236,7 @@ class Connection extends CI_Controller {
      * Ajax : Send the password by e-mail to a user requesting it
      * POST: string login Login of the user
      * RETURN: UNKNOWN if the login was not found, OK otherwise
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function forgetpassword() {
         $this->output->set_content_type('text/plain');
@@ -263,6 +276,7 @@ class Connection extends CI_Controller {
     
     /**
      * Try to authenticate the user using one of the OAuth2 providers
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function loginOAuth2() {
         $oauth2Enabled = $this->config->item('oauth2_enabled');
@@ -274,7 +288,8 @@ class Connection extends CI_Controller {
             return;
         }
         $authCode = $this->input->post('auth_code');
-           if (!is_null($authCode)) {
+        
+        if (!is_null($authCode)) {
             $this->load->model('users_model');
             switch ($oauth2Provider) {
                 case 'google':
@@ -310,6 +325,7 @@ class Connection extends CI_Controller {
 
     /**
      * Returns the metadata needed for SAML2 Authentication
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function metadata() {
         require_once APPPATH . 'config/saml.php';
@@ -329,6 +345,7 @@ class Connection extends CI_Controller {
     
     /**
      * SAML2 SSO endpoint that starts the login via SSO
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function sso() {
         require_once APPPATH . 'config/saml.php';
@@ -340,6 +357,7 @@ class Connection extends CI_Controller {
      * SAML2 Logout endpoint that perfom the logout
      * This feature is not supported by all IdP (eg. Google)
      * That why a message might appear to explain that you are not logged from the IdP
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function slo() {
         require_once APPPATH . 'config/saml.php';
@@ -370,6 +388,7 @@ class Connection extends CI_Controller {
     
     /**
      * SAML2 sls endpoint
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function sls() {
         require_once APPPATH . 'config/saml.php';
@@ -391,6 +410,7 @@ class Connection extends CI_Controller {
 
     /**
      * SAML2 acs endpoint. Called by the IdP to perform the connection
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function acs() {
         require_once APPPATH . 'config/saml.php';
@@ -420,7 +440,8 @@ class Connection extends CI_Controller {
             if ($loggedin === TRUE) {
                 $this->redirectToLastPage();
             }
-                   if ($loggedin === FALSE) {
+            
+            if ($loggedin === FALSE) {
                 $data['title'] = lang('session_login_title');
                 $data['help'] = $this->help->create_help_link('global_link_doc_page_login');
                 $data['language'] = $this->session->userdata('language');

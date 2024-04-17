@@ -50,6 +50,7 @@ class Api extends CI_Controller {
     /**
      * Default constructor
      * Initializing of OAuth2 server
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function __construct() {
         parent::__construct();
@@ -63,6 +64,7 @@ class Api extends CI_Controller {
     /**
      * Generate a documentation of the library on the fly
      * The doc is compliant with OpenAPI 3.0
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function doc() {
         $openapi = \OpenApi\Generator::scan([__FILE__]);
@@ -73,6 +75,7 @@ class Api extends CI_Controller {
 
     /**
      * Get a OAuth2 token
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function token() {
         $this->server->handleTokenRequest(OAuth2\Request::createFromGlobals())->send();
@@ -120,6 +123,7 @@ class Api extends CI_Controller {
      *     }
      * )
      * @param int $contractId Unique identifier of a contract
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function contracts($contractId = 0) {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -166,6 +170,7 @@ class Api extends CI_Controller {
      *     }
      * )
      * @param int $contractId Unique identifier of an contract
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function entitleddayscontract($contractId) {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -226,6 +231,7 @@ class Api extends CI_Controller {
      * )
      * Add entitled days to a given contract
      * @param int $contractId Unique identifier of an contract
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function addentitleddayscontract($contractId) {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -283,6 +289,7 @@ class Api extends CI_Controller {
      * )
      * Get the list of entitled days for a given employee
      * @param int $employeeId Unique identifier of an employee
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function entitleddaysemployee($employeeId) {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -347,6 +354,7 @@ class Api extends CI_Controller {
      * )
      * Add entitled days to a given employee
      * @param int $id Unique identifier of an employee
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function addentitleddaysemployee($employeeId) {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -444,6 +452,7 @@ class Api extends CI_Controller {
      * Get the leaves counter of a given employee
      * @param int $employeeId Unique identifier of an employee
      * @param string $refTmp tmp of the Date of reference (or current date if NULL)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function leavessummary($employeeId, $refTmp = NULL) {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -521,6 +530,7 @@ class Api extends CI_Controller {
      *  Get all the leaves requests
      * @param string $startDate tmp or string (YYYY-MM-DD) of the Start Date
      * @param string $endDate tmp or string (YYYY-MM-DD) of the End Date
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function leavesInRange($startDate, $endDate) {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -573,6 +583,7 @@ class Api extends CI_Controller {
      *     }
      * )
      * Get the list of leave types (useful to get the labels into a cache)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function leavetypes() {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -611,6 +622,7 @@ class Api extends CI_Controller {
      * )
      * Accept a leave request
      * @param int $leaveId identifier of the leave request to accept
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      * @since 0.4.4
      */
     public function acceptleave($leaveId) {
@@ -653,6 +665,7 @@ class Api extends CI_Controller {
      * )
      * Reject a leave request
      * @param int $leaveId identifier of leave request to reject
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      * @since 0.4.4
      */
     public function rejectleave($leaveId) {
@@ -688,6 +701,7 @@ class Api extends CI_Controller {
      *     }
      * )
      * Get the list of positions (useful to get the labels into a cache)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function positions() {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -728,6 +742,7 @@ class Api extends CI_Controller {
      * )
      * Get the department details of a given employee
      * @param int $employeeId Identifier of an employee (attached to an entity)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function userdepartment($employeeId) {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -798,6 +813,7 @@ class Api extends CI_Controller {
      * Get the list of users or a specific user. 
      * The password, picture, and random_hash fields are removed from the result set
      * @param int $id Unique identifier of a user
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function users($id = 0) {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -863,6 +879,7 @@ class Api extends CI_Controller {
      * )
      * Get the list of leaves for a given employee
      * @param int $employeeId Unique identifier of an employee
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function userleaves($employeeId) {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -913,6 +930,7 @@ class Api extends CI_Controller {
      * )
      *  Get the list of extra for a given employee
      * @param int $employeeId Unique identifier of an employee
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      */
     public function userextras($employeeId) {
         if (!$this->server->verifyResourceRequest(OAuth2\Request::createFromGlobals())) {
@@ -925,7 +943,8 @@ class Api extends CI_Controller {
                 $this->output->set_header("HTTP/1.1 404 Not Found");
                 return;
             }
-                   $this->load->model('overtime_model');
+            
+            $this->load->model('overtime_model');
             $result = $this->overtime_model->getExtrasOfEmployee($employeeId);
             $this->output
                 ->set_content_type('application/json')
@@ -980,6 +999,7 @@ class Api extends CI_Controller {
      * @param int $employeeId Unique identifier of an employee
      * @param int $month Month number [1-12]
      * @param int $year Year number (XXXX)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      * @since 0.4.0
      */
     public function monthlypresence($employeeId, $month, $year) {
@@ -1042,6 +1062,7 @@ class Api extends CI_Controller {
      * Delete a user from the database
      * This is not recommended. Consider moving it into an archive entity of your organization
      * @param int $userId Unique identifier of an employee
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      * @since 0.4.0
      */
     public function deleteuser($userId) {
@@ -1112,6 +1133,7 @@ class Api extends CI_Controller {
      * Updated fields are passed by POST parameters or in the input stream for PATCH
      * Note that for PATCH method, you need to send a compliant content type (multipart/x-www-form-urlencoded)
      * @param int $userId Unique identifier of an employee
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      * @since 0.4.0
      */
     public function updateuser($userId) {
@@ -1316,6 +1338,7 @@ class Api extends CI_Controller {
      * Create an employee (fields are passed by POST parameters)
      * Returns the new inserted id
      * @param bool $sendEmail Send an Email to the new employee (FALSE by default)
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      * @since 0.4.0
      */
     public function createuser($sendEmail = FALSE) {
@@ -1345,12 +1368,14 @@ class Api extends CI_Controller {
             $calendar = $this->input->post('calendar'); //Not used
             $userProperties = $this->input->post('user_properties');
             $picture = $this->input->post('picture');
-                   //Set default values
+            
+            //Set default values
             $this->load->library('polyglot');
             if (empty($language)) {
                 $language = $this->polyglot->language2code($this->config->item('language'));
             }
-                   //Generate a random password if the field is empty
+            
+            //Generate a random password if the field is empty
             if (empty($password)) {
                 $password = $this->users_model->randomPassword(8);
             }
@@ -1369,7 +1394,8 @@ class Api extends CI_Controller {
                     $result = $this->users_model->insertUserByApi($firstname, $lastname, $login, $email, $password, $role,
                         $manager, $organization, $contract, $position, $datehired, $identifier, $language, $timezone,
                         $ldap_path, TRUE, $country, $calendar);
-                                   if($sendEmail == TRUE) {
+                    
+                    if($sendEmail == TRUE) {
                         //Send an e-mail to the user so as to inform that its account has been created
                         $this->load->library('email');
                         $userLang = $this->polyglot->code2language($language);
@@ -1448,6 +1474,7 @@ class Api extends CI_Controller {
      * Create a leave request (fields are passed by POST parameters).
      * This function doesn't send e-mails and it is used for imposed leaves
      * Returns the new inserted id.
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      * @since 0.4.0
      */
     public function createleave() {
@@ -1465,7 +1492,8 @@ class Api extends CI_Controller {
             $type = $this->input->post('type');
             $comments = $this->input->post('comments');
             $document = $this->input->post('document');
-                  //Check mandatory fields
+           
+            //Check mandatory fields
             if (empty($startdate) || empty($enddate) || empty($status) || empty($employee) 
                     || empty($startdatetype) || empty($enddatetype) || empty($duration) || empty($type)) {
                 $this->output->set_header("HTTP/1.1 422 Unprocessable entity");
@@ -1551,6 +1579,7 @@ class Api extends CI_Controller {
      * Get the list of employees attached to an entity
      * @param int $entityId Identifier of the entity
      * @param bool $children If TRUE, we include sub-entities, FALSE otherwise
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      * @since 0.4.3
      */
     public function getListOfEmployeesInEntity($entityId, $children) {
@@ -1578,6 +1607,7 @@ class Api extends CI_Controller {
      * Get the list of users with all their attributes
      * Requires scope users (see tests/rest/api3.php)
      * Not documented with OpenAPI, might be deprecated in a near future
+     * @author Benjamin BALET <benjamin.balet@gmail.com>
      * @since 0.6.0
      */
     public function usersExt() {

@@ -25,11 +25,13 @@ class ImgData_Balls extends ImgData {
      'darkgray','greengray','gray','green',
      'greenblue','lightblue','lightred',
      'purple','red','white','yellow');
+     
 
     private $index_2 =  array('blue'=>9,'bluegreen'=>13,'brown'=>8,'cyan'=>12,
      'darkgray'=>5,'greengray'=>6,'gray'=>2,'green'=>10,
      'greenblue'=>3,'lightblue'=>1,'lightred'=>14,
      'purple'=>7,'red'=>0,'white'=>11,'yellow'=>4);
+     
     private $maxidx_2 = 14 ;
 
 
