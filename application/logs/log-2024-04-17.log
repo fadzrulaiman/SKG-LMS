@@ -6,3 +6,4 @@ ERROR - 2024-04-17 04:48:54 --> Severity: error --> Exception: count(): Argument
 ERROR - 2024-04-17 05:53:55 --> Severity: error --> Exception: in_array(): Argument #2 ($haystack) must be of type array, int given C:\xampp\htdocs\SKG-LMS\application\views\users\edit.php 94
 ERROR - 2024-04-17 05:54:21 --> Severity: error --> Exception: in_array(): Argument #2 ($haystack) must be of type array, int given C:\xampp\htdocs\SKG-LMS\application\views\users\edit.php 94
 ERROR - 2024-04-17 05:56:18 --> Severity: error --> Exception: in_array(): Argument #2 ($haystack) must be of type array, int given C:\xampp\htdocs\SKG-LMS\application\views\users\edit.php 94
+ERROR - 2024-04-17 09:14:25 --> User #28 has been deleted by user #27

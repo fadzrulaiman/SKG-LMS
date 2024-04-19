@@ -1,0 +1,23 @@
+ERROR - 2024-04-18 01:32:32 --> User #29 has been deleted by user #1
+ERROR - 2024-04-18 02:49:50 --> User #30 has been deleted by user #1
+ERROR - 2024-04-18 02:51:15 --> User #31 has been deleted by user #1
+ERROR - 2024-04-18 02:53:38 --> User #32 has been deleted by user #1
+ERROR - 2024-04-18 04:20:54 --> User #33 has been deleted by user #1
+ERROR - 2024-04-18 04:30:48 --> openssl error message=error:0A000197:SSL routines::shutdown while in init
+ERROR - 2024-04-18 04:31:29 --> Severity: Warning --> Undefined array key "name" C:\xampp\htdocs\SKG-LMS\application\models\Types_model.php 74
+ERROR - 2024-04-18 04:31:59 --> Severity: Warning --> Undefined array key "name" C:\xampp\htdocs\SKG-LMS\application\models\Types_model.php 74
+ERROR - 2024-04-18 04:34:43 --> openssl error message=error:0A000197:SSL routines::shutdown while in init
+ERROR - 2024-04-18 04:36:47 --> Severity: Warning --> Undefined array key "name" C:\xampp\htdocs\SKG-LMS\application\models\Types_model.php 74
+ERROR - 2024-04-18 04:37:45 --> Severity: Warning --> Undefined array key "name" C:\xampp\htdocs\SKG-LMS\application\models\Types_model.php 74
+ERROR - 2024-04-18 04:38:24 --> Severity: Warning --> Undefined array key "name" C:\xampp\htdocs\SKG-LMS\application\models\Types_model.php 74
+ERROR - 2024-04-18 04:45:03 --> Severity: Warning --> Undefined array key "name" C:\xampp\htdocs\SKG-LMS\application\models\Types_model.php 74
+ERROR - 2024-04-18 04:46:01 --> Severity: Warning --> Undefined array key "name" C:\xampp\htdocs\SKG-LMS\application\models\Types_model.php 74
+ERROR - 2024-04-18 04:56:34 --> Severity: Warning --> Undefined array key "name" C:\xampp\htdocs\SKG-LMS\application\models\Types_model.php 74
+ERROR - 2024-04-18 05:07:34 --> {controllers/session/login} Invalid login id or password for user=tan
+ERROR - 2024-04-18 05:11:06 --> Severity: Warning --> Undefined array key "name" C:\xampp\htdocs\SKG-LMS\application\models\Types_model.php 74
+ERROR - 2024-04-18 05:15:20 --> User #17 illegally tried to accept leave #11
+ERROR - 2024-04-18 05:19:38 --> Severity: Warning --> Undefined array key "employee" C:\xampp\htdocs\SKG-LMS\application\controllers\Leaves.php 121
+ERROR - 2024-04-18 05:19:38 --> Severity: Warning --> Undefined array key "employee" C:\xampp\htdocs\SKG-LMS\application\controllers\Leaves.php 124
+ERROR - 2024-04-18 05:19:38 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\SKG-LMS\application\controllers\Leaves.php 125
+ERROR - 2024-04-18 05:19:38 --> Severity: Warning --> Trying to access array offset on value of type null C:\xampp\htdocs\SKG-LMS\application\controllers\Leaves.php 127
+ERROR - 2024-04-18 05:19:38 --> User #17 illegally tried to view leave #7
