@@ -45,7 +45,7 @@ function getLeaveLength(refreshInfos) {
         }
         if (refreshInfos) getLeaveInfos(false);
     }
-}
+} 
 
 //Get the leave credit, duration and detect overlapping cases (Ajax request)
 //Default behavour is to set the duration field. pass false if you want to disable this behaviour

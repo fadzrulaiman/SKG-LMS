@@ -3,7 +3,7 @@
  * This view displays the counters (number of available leave) for an employee.
  * @copyright  Copyright (c) Fadzrul Aiman
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link       https://github.com/bbalet/jorani
+ * @link       https://github.com/fadzrulaiman/SKG-LMS
  * @since      0.2.0
  */
 ?>

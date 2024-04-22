@@ -3,7 +3,7 @@
  * This view is included into all desktop full views. It contains HTML and CSS definitions.
  * @copyright  Copyright (c) Fadzrul Aiman
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link       https://github.com/bbalet/jorani
+ * @link       https://github.com/fadzrulaiman/SKG-LMS
  * @since      0.1.0
  */
 ?><!DOCTYPE html>

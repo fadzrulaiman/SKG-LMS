@@ -3,7 +3,7 @@
  * This view allows a manager or HR admin to visualize the leave balance (taken/available/entitled) of an employee.
  * @copyright  Copyright (c) Fadzrul Aiman
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link       https://github.com/bbalet/jorani
+ * @link       https://github.com/fadzrulaiman/SKG-LMS
  * @since      0.2.0
  */
 ?>

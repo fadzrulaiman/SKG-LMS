@@ -3,7 +3,7 @@
  * Fail terjemahan
  * @hakcipta  Hakcipta (c) Fadzrul Aiman
  * @lesen      http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @pautan     https://github.com/bbalet/jorani
+ * @pautan     https://github.com/fadzrulaiman/SKG-LMS
  * @sejak      0.1.0
  */
 

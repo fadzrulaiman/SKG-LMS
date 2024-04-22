@@ -6,7 +6,7 @@
  * choose a list).
  * @copyright  Copyright (c) Fadzrul Aiman
  * @license    http://opensource.org/licenses/AGPL-3.0 AGPL-3.0
- * @link       https://github.com/bbalet/jorani
+ * @link       https://github.com/fadzrulaiman/SKG-LMS
  * @since      0.6.0
  */
 ?>
