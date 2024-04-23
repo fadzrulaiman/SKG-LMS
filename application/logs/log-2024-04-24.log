@@ -1,0 +1,3 @@
+ERROR - 2024-04-24 01:28:46 --> {controllers/session/login} Invalid login id or password for user=sa
+ERROR - 2024-04-24 01:28:47 --> openssl error message=error:02000079:rsa routines::oaep decoding error
+ERROR - 2024-04-24 01:28:47 --> {controllers/session/login} Invalid login id or password for user=sa

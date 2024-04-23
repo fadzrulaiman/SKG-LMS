@@ -25,102 +25,169 @@ function start() {
 body {
     background-image: url('<?php echo base_url();?>assets/images/login-bg.jpg');
     background-size: cover;
+    font-family: Arial, sans-serif;
 }
 
-
-
 .vertical-center {
-    min-height: 90%;
-    /* Fallback for browsers not supporting vh unit */
     min-height: 90vh;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 .form-box {
-    padding: 20px;
-    border: 1px #e4e4e4 solid;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #e4e4e4;
     border-radius: 4px;
-    box-shadow: 0 0 6px #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #fff;
+    width: 500px;
+    /* Remove max-width */
+    display: inline-block;
+    /* Set display to inline-block */
+    text-align: center;
+    /* Align contents center */
+}
+
+.form-box h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    color: #333;
+}
+
+.form-box label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.form-box input[type="text"],
+.form-box input[type="password"],
+.form-box select {
+    width: calc(100% - 20px);
+    /* Adjusted width for inputs */
+    padding: 15px;
+    /* Increased padding */
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-box button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 15px;
+    /* Increased padding */
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-box button:hover {
+    background-color: #0056b3;
+}
+
+.form-box .btn-google {
+    background-color: #db4437;
+}
+
+.form-box .btn-google:hover {
+    background-color: #c13505;
+}
+
+.form-box .btn-forget {
+    background-color: #dc3545;
+}
+
+.form-box .btn-forget:hover {
+    background-color: #bd2130;
+}
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    width: 320px; /* Set the desired width */
+    height: 256px; /* Set the desired height */
+}
+
+
+.logo-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    /* Added margin-bottom */
+}
+
+.language-select {
+    margin-top: 20px;
+    /* Added margin-top */
 }
 </style>
 
-<div class="row vertical-center">
-    <div class="span3">&nbsp;</div>
-    <div class="span6 form-box">
-        <div class="row-fluid">
-            <div class="span6">
-                <h2><?php echo lang('session_login_title');?><?php echo $help;?></h2>
-
-                <?php echo $flash_partial_view;?>
-
-                <?php echo validation_errors(); ?>
-
-                <?php
-$attributes = array('id' => 'loginFrom');
-echo form_open('session/login', $attributes);
-$languages = $this->polyglot->nativelanguages($this->config->item('languages'));?>
-
-                <input type="hidden" name="last_page" value="session/login" />
-                <?php if (count($languages) == 1) { ?>
-                <input type="hidden" name="language" value="<?php echo $language_code; ?>" />
-                <?php } else { ?>
-                <label for="language"><?php echo lang('session_login_field_language');?></label>
-                <select class="input-medium" name="language" id="language">
-                    <?php foreach ($languages as $lang_code => $lang_name) { ?>
-                    <option value="<?php echo $lang_code; ?>"
-                        <?php if ($language_code == $lang_code) echo 'selected'; ?>><?php echo $lang_name; ?></option>
-                    <?php }?>
-                </select>
-                <br />
-                <?php } ?>
-                <label for="login"><?php echo lang('session_login_field_login');?></label>
-                <input type="text" class="input-medium" name="login" id="login"
-                    value="<?php echo (ENVIRONMENT=='demo')?'bbalet':set_value('login'); ?>" required />
-                <input type="hidden" name="CipheredValue" id="CipheredValue" />
-                </form>
-                <input type="hidden" name="salt" id="salt" value="<?php echo $salt; ?>" />
-                <label for="password"><?php echo lang('session_login_field_password');?></label>
-                <input class="input-medium" type="password" name="password" id="password"
-                    value="<?php echo (ENVIRONMENT=='demo')?'bbalet':''; ?>" /><br />
-                <br />
-                <button id="send" class="btn btn-primary"><i
-                        class="mdi mdi-login"></i>&nbsp;<?php echo lang('session_login_button_login');?></button>
-                <?php if ($this->config->item('oauth2_enabled') == TRUE) { ?>
-                <?php if ($this->config->item('oauth2_provider') == 'google') { ?>
-                <button id="cmdGoogleSignIn" class="btn btn-primary"><i
-                        class="mdi mdi-google"></i>&nbsp;<?php echo lang('session_login_button_login');?></button>
-                <?php } ?>
-                <?php } ?>
-                <br /><br />
-                <?php if (($this->config->item('ldap_enabled') == FALSE) && (ENVIRONMENT!='demo')) { ?>
-                <button id="cmdForgetPassword" class="btn btn-danger"><i
-                        class="mdi mdi-email"></i>&nbsp;<?php echo lang('session_login_button_forget_password');?></button>
-                <?php } ?>
-
-                <textarea id="pubkey" style="visibility:hidden;"><?php echo $public_key; ?></textarea>
-            </div>
-            <div class="span6" style="height:100%;">
-                <div class="row-fluid">
-                    <div class="span12">
-                        <img src="<?php echo base_url();?>assets/images/logo_simple.png">
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">&nbsp;</div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <span style="font-size: 250%; font-weight: bold; line-height: 100%;">
-                            <center><?php echo lang('Leave Management System');?></center>
-                        </span>
-                    </div>
-                </div>
-            </div>
+<div class="vertical-center">
+    <div class="form-box">
+        <img src="<?php echo base_url();?>assets/images/logo_simple.png" class="logo" alt="Logo">
+        <div class="logo-text">
+            <span><?php echo lang('Leave Management System');?></span>
         </div>
+        <h2><?php echo lang('session_login_title');?><?php echo $help;?></h2>
+        <?php echo $flash_partial_view;?>
+        <?php echo validation_errors(); ?>
+        <?php
+        $attributes = array('id' => 'loginFrom');
+        echo form_open('session/login', $attributes);
+        $languages = $this->polyglot->nativelanguages($this->config->item('languages'));
+        ?>
+        <input type="hidden" name="last_page" value="session/login" />
+        <label for="login"><?php echo lang('session_login_field_login');?></label>
+        <input type="text" class="form-control" name="login" id="login"
+            value="<?php echo (ENVIRONMENT=='demo')?'bbalet':set_value('login'); ?>" required />
+        <input type="hidden" name="CipheredValue" id="CipheredValue" />
+        <label for="password"><?php echo lang('session_login_field_password');?></label>
+        <input class="form-control" type="password" name="password" id="password"
+            value="<?php echo (ENVIRONMENT=='demo')?'bbalet':''; ?>" /><br />
+        <button id="send" class="btn btn-primary btn-block"><i
+                class="mdi mdi-login"></i>&nbsp;<?php echo lang('session_login_button_login');?></button>
+        <?php if ($this->config->item('oauth2_enabled') == TRUE) { ?>
+        <?php if ($this->config->item('oauth2_provider') == 'google') { ?>
+        <button id="cmdGoogleSignIn" class="btn btn-primary btn-google btn-block"><i
+                class="mdi mdi-google"></i>&nbsp;<?php echo lang('session_login_button_login');?></button>
+        <?php } ?>
+        <?php } ?>
+        <?php if (($this->config->item('ldap_enabled') == FALSE) && (ENVIRONMENT!='demo')) { ?>
+        <button id="cmdForgetPassword" class="btn btn-danger btn-forget btn-block"><i
+                class="mdi mdi-email"></i>&nbsp;<?php echo lang('session_login_button_forget_password');?></button>
+        <?php } ?>
+        <div class="language-select">
+            <?php if (!empty($languages) && is_array($languages)) { ?>
+            <?php if (count($languages) > 1) { ?>
+            <label for="language"><?php echo lang('session_login_field_language');?></label>
+            <select class="form-control" name="language" id="language">
+                <?php foreach ($languages as $lang_code => $lang_name) { ?>
+                <option value="<?php echo $lang_code; ?>" <?php if ($language_code == $lang_code) echo 'selected'; ?>>
+                    <?php echo $lang_name; ?></option>
+                <?php }?>
+            </select>
+            <?php } else { ?>
+            <input type="hidden" name="language" value="<?php echo $language_code; ?>" />
+            <?php } ?>
+            <?php } ?>
+        </div>
+        <textarea id="pubkey" style="visibility:hidden;"><?php echo $public_key; ?></textarea>
+        <?php echo form_close(); ?>
     </div>
-    <div class="span3">&nbsp;</div>
 </div>
 
 <div class="modal hide" id="frmModalAjaxWait" data-backdrop="static" data-keyboard="false">
@@ -238,12 +305,12 @@ $(function() {
                                     case "OK":
                                         bootbox.alert(
                                             "<?php echo lang('session_login_msg_password_sent');?>"
-                                            );
+                                        );
                                         break;
                                     case "UNKNOWN":
                                         bootbox.alert(
                                             "<?php echo lang('session_login_flash_bad_credentials');?>"
-                                            );
+                                        );
                                         break;
                                 }
                             });
