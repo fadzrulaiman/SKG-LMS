@@ -8,21 +8,17 @@
  */
 ?>
 
-            </div><!-- /container -->
-        <div id="push"></div>
-    </div><!-- /wrap -->
-    <!-- FOOTER -->
-    <div class="row" id="footer">
-        <div class="span8 pull-left" id="rum_info">
-            &nbsp;
-        </div>
-        <div class="span4 pull-right">
-            <?php echo '<a class="anchor" href="https://www.sawitkinabalu.com.my/" target="_blank">SKG-LMS</a>'; ?>
-          &nbsp;v<?php echo $GLOBALS['versionOfJorani'];?>&nbsp;&copy; 2023-2024 SKG IT UNIT
-        </div>
-    </div>
-    </div>
-    <!--Minimal profiling info //-->
+</div><!-- /container -->
+<div id="push"></div>
+</div><!-- /wrap -->
+<!-- FOOTER -->
+<div class="row" id="footer">
+<div class="copy-center" style="text-align: center;">
+    <span class="copy_left">&copy; Sawit Kinabalu HRMS, <?php echo date('Y');?></span>
+    <span class="copy_right">By IT Unit <a href="https://www.sawitkinabalu.com.my/" target="new" style="text-decoration: none; color: #3a8cb1">Sawit Kinabalu</a></span>
+</div>
+</div>
+<!--Minimal profiling info //-->
 <?php
 if ($this->config->item("enable_apm_rum")) {
     //See. http://techblog.constantcontact.com/software-development/measure-page-load-times-using-the-user-timing-api/
@@ -85,7 +81,7 @@ function displayRUMInfo() {
   content += pageLoadTime + ' ms ';
   $("#rum_info").html(content);
 }
- </script>
+</script>
 <?php } ?>
 </body>
 </html>
