@@ -6,7 +6,7 @@
  * @link       https://github.com/bbalet/jorani
  * @since      0.3.0
  */
-
+/**test */
 define('BASEPATH','.');//Make this script works with nginx
 define('ENVIRONMENT','');//Compatibility with CI3 new index
 
