@@ -27,10 +27,8 @@ body {
     background-size: cover;
 }
 
-
-
 .vertical-center {
-    min-height: 90%;
+    min-height: 10%;
     /* Fallback for browsers not supporting vh unit */
     min-height: 90vh;
     display: flex;
@@ -61,7 +59,6 @@ body {
 $attributes = array('id' => 'loginFrom');
 echo form_open('session/login', $attributes);
 $languages = $this->polyglot->nativelanguages($this->config->item('languages'));?>
-
                 <input type="hidden" name="last_page" value="session/login" />
                 <?php if (count($languages) == 1) { ?>
                 <input type="hidden" name="language" value="<?php echo $language_code; ?>" />
@@ -87,18 +84,19 @@ $languages = $this->polyglot->nativelanguages($this->config->item('languages'));
                 <br />
                 <button id="send" class="btn btn-primary"><i
                         class="mdi mdi-login"></i>&nbsp;<?php echo lang('session_login_button_login');?></button>
+                        <!--
                 <?php if ($this->config->item('oauth2_enabled') == TRUE) { ?>
                 <?php if ($this->config->item('oauth2_provider') == 'google') { ?>
                 <button id="cmdGoogleSignIn" class="btn btn-primary"><i
                         class="mdi mdi-google"></i>&nbsp;<?php echo lang('session_login_button_login');?></button>
                 <?php } ?>
+                -->
                 <?php } ?>
                 <br /><br />
                 <?php if (($this->config->item('ldap_enabled') == FALSE) && (ENVIRONMENT!='demo')) { ?>
                 <button id="cmdForgetPassword" class="btn btn-danger"><i
                         class="mdi mdi-email"></i>&nbsp;<?php echo lang('session_login_button_forget_password');?></button>
                 <?php } ?>
-
                 <textarea id="pubkey" style="visibility:hidden;"><?php echo $public_key; ?></textarea>
             </div>
             <div class="span6" style="height:100%;">
@@ -131,7 +129,6 @@ $languages = $this->polyglot->nativelanguages($this->config->item('languages'));
         <img src="<?php echo base_url();?>assets/images/loading.gif" align="middle">
     </div>
 </div>
-
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
 <script type="text/javascript">
 //Encrypt the password using RSA and send the ciphered value into the form

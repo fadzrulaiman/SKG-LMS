@@ -14,7 +14,7 @@
 <!-- FOOTER -->
 <div class="row" id="footer">
 <div class="copy-center" style="text-align: center;">
-    <span class="copy_left">&copy; Sawit Kinabalu HRMS, <?php echo date('Y');?></span>
+    <span class="copy_left">&copy; Sawit Kinabalu Leave Management System, <?php echo date('Y');?></span>
     <span class="copy_right">By IT Unit <a href="https://www.sawitkinabalu.com.my/" target="new" style="text-decoration: none; color: #3a8cb1">Sawit Kinabalu</a></span>
 </div>
 </div>
