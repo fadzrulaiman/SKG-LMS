@@ -3,7 +3,7 @@
  * This diagnostic page helps you to check your setup.
 
  */
-
+/**test */
 define('BASEPATH','.');//Make this script works with nginx
 define('ENVIRONMENT','');//Compatibility with CI3 new index
 
