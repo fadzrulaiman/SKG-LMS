@@ -413,7 +413,7 @@ class Leaves_model extends CI_Model {
     public function detectOverlappingLeaves($id, $startdate, $enddate, $startdatetype, $enddatetype, $leave_id=NULL) {
         $overlapping = FALSE;
         $this->db->where('employee', $id);
-        $this->db->where('status != 4');
+        $this->db->where_not_in('status', array(6, 4));
         $this->db->where('(startdate <= DATE(\'' . $enddate . '\') AND enddate >= DATE(\'' . $startdate . '\'))');
         if (!is_null($leave_id)) {
             $this->db->where('id != ', $leave_id);

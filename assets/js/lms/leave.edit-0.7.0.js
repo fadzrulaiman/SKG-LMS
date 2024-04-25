@@ -47,69 +47,85 @@ function getLeaveLength(refreshInfos) {
     }
 } 
 
-//Get the leave credit, duration and detect overlapping cases (Ajax request)
-//Default behavour is to set the duration field. pass false if you want to disable this behaviour
+// Get the leave credit, duration, and detect overlapping cases (Ajax request)
+// Default behavior is to set the duration field. Pass false if you want to disable this behavior
 function getLeaveInfos(preventDefault) {
-        $('#frmModalAjaxWait').modal('show');
-        var start = moment($('#startdate').val());
-        var end = moment($('#enddate').val());
-        $.ajax({
+    $('#frmModalAjaxWait').modal('show');
+    var start = moment($('#startdate').val());
+    var end = moment($('#enddate').val());
+    $.ajax({
         type: "POST",
         url: baseURL + "leaves/validate",
-        data: {   id: userId,
-                    type: $("#type option:selected").text(),
-                    startdate: $('#startdate').val(),
-                    enddate: $('#enddate').val(),
-                    startdatetype: $('#startdatetype').val(),
-                    enddatetype: $('#enddatetype').val(),
-                    leave_id: leaveId
-                }
-        })
-        .done(function(leaveInfo) {
-            if (typeof leaveInfo.length !== 'undefined') {
-                var duration = parseFloat(leaveInfo.length);
-                duration = Math.round(duration * 1000) / 1000;  //Round to 3 decimals only if necessary
-                if (!preventDefault) {
-                    if (start.isValid() && end.isValid()) {
-                        $('#duration').val(duration);
-                    }
-                }
-            }
-            if (typeof leaveInfo.credit !== 'undefined') {
-                var credit = parseFloat(leaveInfo.credit);
-                var duration = parseFloat($("#duration").val());
-                if (duration > credit) {
-                    $("#lblCreditAlert").show();
-                } else {
-                    $("#lblCreditAlert").hide();
-                }
-                if (leaveInfo.credit != null) {
-                    $("#lblCredit").text('(' + leaveInfo.credit + ')');
+        data: {
+            id: userId,
+            type: $("#type option:selected").text(),
+            startdate: $('#startdate').val(),
+            enddate: $('#enddate').val(),
+            startdatetype: $('#startdatetype').val(),
+            enddatetype: $('#enddatetype').val(),
+            leave_id: leaveId
+        }
+    })
+    .done(function(leaveInfo) {
+        if (typeof leaveInfo.length !== 'undefined') {
+            var duration = parseFloat(leaveInfo.length);
+            duration = Math.round(duration * 1000) / 1000; // Round to 3 decimals only if necessary
+            if (!preventDefault) {
+                if (start.isValid() && end.isValid()) {
+                    $('#duration').val(duration);
                 }
             }
-            //Check if the current request overlaps with another one
-            showOverlappingMessage(leaveInfo);
-            //Or overlaps with a non-working day
-            showOverlappingDayOffMessage(leaveInfo);
-            //Check if the employee has a contract
-            if (leaveInfo.hasContract == false) {
-                bootbox.alert(noContractMsg);
+        }
+        if (typeof leaveInfo.credit !== 'undefined') {
+            var credit = parseFloat(leaveInfo.credit);
+            var duration = parseFloat($("#duration").val());
+            if (duration > credit) {
+                $("#lblCreditAlert").show();
             } else {
-                //If the employee has a contract, check if the current leave request is not on two yearly leave periods
-                var periodStartDate = moment(leaveInfo.PeriodStartDate);
-                var periodEndDate = moment(leaveInfo.PeriodEndDate);
-                if (start.isValid() && end.isValid() && periodEndDate.isValid()) {
-                    if (start.isBefore(periodEndDate) && periodEndDate.isBefore(end)) {
-                        bootbox.alert(noTwoPeriodsMsg);
-                    }
-                    if (start.isBefore(periodStartDate)) {
-                        bootbox.alert(noTwoPeriodsMsg);
-                    }
+                $("#lblCreditAlert").hide();
+            }
+            if (leaveInfo.credit != null) {
+                $("#lblCredit").text('(' + leaveInfo.credit + ')');
+            }
+        }
+        // Check if the current request overlaps with another one
+        showOverlappingMessage(leaveInfo);
+        // Or overlaps with a non-working day
+        showOverlappingDayOffMessage(leaveInfo);
+        // Check if the user has a contract
+        if (leaveInfo.hasContract == false) {
+            bootbox.alert(noContractMsg);
+        } else {
+            // If the user has a contract, check if the current leave request is not on two yearly leave periods
+            var periodStartDate = moment(leaveInfo.PeriodStartDate);
+            var periodEndDate = moment(leaveInfo.PeriodEndDate);
+            if (start.isValid() && end.isValid() && periodEndDate.isValid()) {
+                if (start.isBefore(periodEndDate) && periodEndDate.isBefore(end)) {
+                    bootbox.alert(noTwoPeriodsMsg);
+                }
+                if (start.isBefore(periodStartDate)) {
+                    bootbox.alert(noTwoPeriodsMsg);
                 }
             }
-            showListDayOff(leaveInfo);
-            $('#frmModalAjaxWait').modal('hide');
-        });
+        }
+        showListDayOff(leaveInfo);
+        // Disable the Requested button if there are any alerts visible
+        if ($("#lblCreditAlert").is(":visible") || $("#lblOverlappingAlert").is(":visible") || $("#lblOverlappingDayOffAlert").is(":visible")) {
+            $("button[name='status'][value='2']").prop("disabled", true);
+        } else {
+            $("button[name='status'][value='2']").prop("disabled", false);
+        }
+        $('#frmModalAjaxWait').modal('hide');
+        // Disable the Requested button if there are any alerts visible for HR 
+        if ($("#lblCreditAlert").is(":visible") || $("#lblOverlappingAlert").is(":visible") || $("#lblOverlappingDayOffAlert").is(":visible")) {
+            $("select[name='status']").prop("disabled", true);
+            $("button[name='request']").prop("disabled", true);
+        } else {
+            $("select[name='status']").prop("disabled", false);
+            $("button[name='request']").prop("disabled", true);
+        }
+        $('#frmModalAjaxWait').modal('hide');
+    });
 }
 
 //When editing/viewing a leave request, refresh the information about overlapping and days off in the period

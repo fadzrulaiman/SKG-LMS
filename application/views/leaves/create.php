@@ -50,9 +50,6 @@ echo form_open('leaves/create', $attributes) ?>
     <?php } else { ?>
     <input type="text" name="duration" id="duration" value="<?php echo set_value('duration'); ?>" />
     <?php } ?>
-
-    <span style="margin-left: 2px;position: relative;top: -5px;" id="spnDayType"></span>
-
     <div class="alert hide alert-error" id="lblCreditAlert" onclick="$('#lblCreditAlert').hide();">
         <button type="button" class="close">&times;</button>
         <?php echo lang('leaves_create_field_duration_message');?>
