@@ -101,19 +101,19 @@ class Reports extends CI_Controller {
         $include_children = filter_var($_GET['children'], FILTER_VALIDATE_BOOLEAN);
         $users = $this->organization_model->allEmployees($_GET['entity'], $include_children);
         foreach ($users as $user) {
-            $result[$user->id]['identifier'] = $user->identifier;
-            $result[$user->id]['firstname'] = $user->firstname;
-            $result[$user->id]['lastname'] = $user->lastname;
+            $result[$user->id]['Identifier'] = $user->identifier;
+            $result[$user->id]['First Name'] = $user->firstname;
+            $result[$user->id]['Last Name'] = $user->lastname;
     // Add a check for null or empty datehired
     if (!empty($user->datehired)) {
         $date = new DateTime($user->datehired);
-        $result[$user->id]['datehired'] = $date->format(lang('global_date_format'));
+        $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));
     } else {
-        $result[$user->id]['datehired'] = ''; // Or any default value you prefer
-    }            $result[$user->id]['datehired'] = $date->format(lang('global_date_format'));
-            $result[$user->id]['department'] = $user->department;
-            $result[$user->id]['position'] = $user->position;
-            $result[$user->id]['contract'] = $user->contract;
+        $result[$user->id]['Date Hired'] = ''; // Or any default value you prefer
+    }            $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));
+            $result[$user->id]['Department'] = $user->department;
+            $result[$user->id]['Position'] = $user->position;
+            $result[$user->id]['Contract'] = $user->contract;
             //Init type columns
             foreach ($types as $type) {
                 $result[$user->id][$type['name']] = '';
@@ -248,20 +248,20 @@ class Reports extends CI_Controller {
         $leave_requests = array();
 
         foreach ($users as $user) {
-            $result[$user->id]['identifier'] = $user->identifier;
-            $result[$user->id]['firstname'] = $user->firstname;
-            $result[$user->id]['lastname'] = $user->lastname;
+            $result[$user->id]['Identifier'] = $user->identifier;
+            $result[$user->id]['First Name'] = $user->firstname;
+            $result[$user->id]['Last Name'] = $user->lastname;
                 // Add a check for null or empty datehired
     if (!empty($user->datehired)) {
         $date = new DateTime($user->datehired);
-        $result[$user->id]['datehired'] = $date->format(lang('global_date_format'));
+        $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));
     } else {
-        $result[$user->id]['datehired'] = '';
+        $result[$user->id]['Date Hired'] = '';
     }
-            $result[$user->id]['datehired'] = $date->format(lang('global_date_format'));
-            $result[$user->id]['department'] = $user->department;
-            $result[$user->id]['position'] = $user->position;
-            $result[$user->id]['contract'] = $user->contract;
+           // $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));
+            $result[$user->id]['Department'] = $user->department;
+            $result[$user->id]['Position'] = $user->position;
+            $result[$user->id]['Contract'] = $user->contract;
             $non_working_days = $this->dayoffs_model->lengthDaysOffBetweenDates($user->contract_id, $start, $end);
             $opened_days = $total_days - $non_working_days;
 
@@ -302,10 +302,10 @@ class Reports extends CI_Controller {
                     }
                 }
             }
-            $result[$user->id]['leave_duration'] = $leave_duration;
-            $result[$user->id]['total_days'] = $total_days;
-            $result[$user->id]['non_working_days'] = $non_working_days;
-            $result[$user->id]['work_duration'] = $work_duration;
+            $result[$user->id]['Leave Duration'] = $leave_duration;
+            $result[$user->id]['Total Days'] = $total_days;
+            $result[$user->id]['Weekend & Public Holiday Days'] = $non_working_days;
+            $result[$user->id]['Work Days'] = $work_duration;
         }
 
         $table = '';
