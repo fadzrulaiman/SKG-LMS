@@ -449,36 +449,39 @@ class Leaves_model extends CI_Model {
         return $overlapping;
     }
 
-    /**
-     * Create a leave request
-     * @param int $employeeId Identifier of the employee
-     * @return int id of the newly created leave request into the db
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
-     */
-    public function setLeaves($employeeId) {
-        $data = array(
-            'startdate' => $this->input->post('startdate'),
-            'startdatetype' => $this->input->post('startdatetype'),
-            'enddate' => $this->input->post('enddate'),
-            'enddatetype' => $this->input->post('enddatetype'),
-            'duration' => abs($this->input->post('duration')),
-            'type' => $this->input->post('type'),
-            'cause' => $this->input->post('cause'),
-            'status' => $this->input->post('status'),
-            'employee' => $employeeId
-        );
-        $this->db->insert('leaves', $data);
-        $newId = $this->db->insert_id();
+/**
+ * Create a leave request with an attachment
+ * @param int $employeeId Identifier of the employee
+ * @return int ID of the newly created leave request in the database
+ * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+ */
+public function setLeaves($employeeId, $attachmentPath) {
+    // Capture leave request data
+    $data = array(
+        'startdate' => $this->input->post('startdate'),
+        'startdatetype' => $this->input->post('startdatetype'),
+        'enddate' => $this->input->post('enddate'),
+        'enddatetype' => $this->input->post('enddatetype'),
+        'duration' => abs($this->input->post('duration')),
+        'type' => $this->input->post('type'),
+        'cause' => $this->input->post('cause'),
+        'status' => $this->input->post('status'),
+        'employee' => $employeeId,
+        'attachment' => $attachmentPath // Add attachment path to data array
+    );
 
-        //Trace the modification if the feature is enabled
-        if ($this->config->item('enable_history') === TRUE) {
-            $this->load->model('history_model');
-            $this->history_model->setHistory(1, 'leaves', $newId, $employeeId);
-        }
+    // Insert the leave request into the database
+    $this->db->insert('leaves', $data);
+    $newId = $this->db->insert_id();
 
-        return $newId;
+    // Trace the modification if the feature is enabled
+    if ($this->config->item('enable_history') === TRUE) {
+        $this->load->model('history_model');
+        $this->history_model->setHistory(1, 'leaves', $newId, $employeeId);
     }
 
+    return $newId;
+}
     /**
      * Create the same leave request for a list of employees
      * @param int $type Identifier of the leave type

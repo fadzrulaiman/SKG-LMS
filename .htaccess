@@ -1,7 +1,7 @@
-SetEnv ALLOW_OVERWRITE On
-SetEnv HTTP_MOD_GZIP Off
+# Require all denied
+Require all granted
 
-# You can define various environments and load the correponding config files:
+# You can define various environments and load the corresponding config files:
 # If not set, application/config/config.php
 # application/config/development/config.php
 # application/config/testing/config.php

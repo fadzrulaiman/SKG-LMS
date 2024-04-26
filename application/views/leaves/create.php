@@ -15,7 +15,7 @@
 <?php echo validation_errors(); ?>
 
 <?php
-$attributes = array('id' => 'frmLeaveForm');
+$attributes = array('id' => 'frmLeaveForm', 'enctype' => 'multipart/form-data');
 echo form_open('leaves/create', $attributes) ?>
 
     <label for="type">
@@ -65,9 +65,12 @@ echo form_open('leaves/create', $attributes) ?>
         <?php echo lang('leaves_flash_msg_overlap_dayoff');?>
     </div>
 
+    <label for="attachment">Attachment</label>
+    <input type="file" name="attachment" id="attachment" accept="image/*, .pdf">
+
     <label for="cause"><?php echo lang('leaves_create_field_cause');?></label>
     <textarea name="cause"><?php echo set_value('cause'); ?></textarea>
-
+    
     <br/><br/>
     <!--<button name="status" value="1" type="submit" class="btn btn-primary"><i class="mdi mdi-calendar-question" aria-hidden="true"></i>&nbsp; <?php echo lang('Planned');?></button>
     &nbsp;&nbsp;-->
