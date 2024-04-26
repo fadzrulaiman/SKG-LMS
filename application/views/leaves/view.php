@@ -2,8 +2,7 @@
 /**
  * This view allows users to view a leave request in read-only mode
  * @copyright  Copyright (c) Fadzrul Aiman
-
- * @since         0.1.0
+ * @since      0.1.0
  */
 ?>
 <h2><?php echo lang('leaves_view_title');?><?php echo $leave['id']; if ($name != "") {?>&nbsp;<span
@@ -41,15 +40,6 @@
 
                 <label for="cause"><?php echo lang('leaves_view_field_cause');?></label>
                 <textarea name="cause" readonly><?php echo $leave['cause']; ?></textarea>
-
-                <?php if (!empty($attachment_path)): ?>
-                <div class="attachment">
-                    <h3>Attachment:</h3>
-                    <embed src="<?php echo base_url($attachment_path); ?>" width="500" height="375"
-                        type='application/pdf' />
-                </div>
-                <?php endif; ?>
-
 
                 <?php $style= "dropdown-rejected";
 switch ($leave['status']) {
@@ -91,16 +81,12 @@ switch ($leave['status']) {
         </div>
     </div>
     <div class="span6">
-
         <h4><?php echo lang('leaves_comment_title');?></h4>
-        <?php
-  if(isset($leave["comments"])){
-
-    echo "<div class='accordion' id='accordion'>";
-    $i=1;
-    foreach ($leave["comments"]->comments as $comments_item) {
-      $date=new DateTime($comments_item->date);
-      $dateFormat=$date->format(lang('global_date_format'));
+        <?php if(isset($leave["comments"])){echo "<div class='accordion' id='accordion'>";
+        $i=1;
+        foreach ($leave["comments"]->comments as $comments_item) {
+        $date=new DateTime($comments_item->date);
+        $dateFormat=$date->format(lang('global_date_format'));
 
       if($comments_item->type == "comment"){
         echo "<div class='accordion-group'>";
@@ -150,4 +136,12 @@ switch ($leave['status']) {
             &nbsp;
         </form>
     </div>
+    <?php if (!empty($attachment_path)): ?>
+    <div class="span6">
+        <div class="attachment">
+            <h3>Attachment:</h3>
+            <embed src="<?php echo base_url($attachment_path); ?>" width="100%" height="600" type='application/pdf' />
+        </div>
+    </div>
+    <?php endif; ?>
 </div>

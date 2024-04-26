@@ -268,14 +268,14 @@ public function view($source, $id) {
             } else {
                 // File uploaded successfully
                 $attachment_data = $this->upload->data();
-                $attachment_path = $attachment_data['full_path']; // Get the full path of the uploaded file
+                $attachment_path = 'assets/uploads/' . $attachment_data['file_name']; // Get the relative path of the uploaded file
                 // You can store this path in the database or perform further processing
             }
         }
     
         return $attachment_path;
     }
-    
+        
     /**
      * Edit a leave request
      * @param int $id Identifier of the leave request
