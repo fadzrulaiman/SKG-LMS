@@ -15,7 +15,7 @@
 
 <?php echo validation_errors(); ?>
 
-<?php $attributes = array('id' => 'frmLeaveForm');
+<?php $attributes = array('id' => 'frmLeaveForm', 'enctype' => 'multipart/form-data');
 echo form_open($form_action, $attributes) ?>
 
     <label for="type" required>
@@ -47,7 +47,7 @@ echo form_open($form_action, $attributes) ?>
     <label for="duration" required><?php echo lang('hr_leaves_create_field_duration');?> <span id="tooltipDayOff"></span></label>
     <input type="text" name="duration" id="duration" value="<?php echo set_value('duration'); ?>" />
 
-    <span style="margin-left: 2px;position: relative;top: -5px;" id="spnDayType"></span>
+    <!--<span style="margin-left: 2px;position: relative;top: -5px;" id="spnDayType"></span>-->
 
     <div class="alert hide alert-error" id="lblCreditAlert" onclick="$('#lblCreditAlert').hide();">
         <button type="button" class="close">&times;</button>
@@ -66,6 +66,10 @@ echo form_open($form_action, $attributes) ?>
 
     <label for="cause"><?php echo lang('hr_leaves_create_field_cause');?></label>
     <textarea name="cause"><?php echo set_value('cause'); ?></textarea>
+
+    <label for="attachment">Attachment</label>
+    <input type="file" name="attachment" id="attachment" accept="image/*, .pdf">
+
 
     <label for="status" required><?php echo lang('hr_leaves_create_field_status');?></label>
     <select name="status">

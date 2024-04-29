@@ -362,13 +362,46 @@ class Hr extends CI_Controller {
             $this->load->view('hr/createleave');
             $this->load->view('templates/footer');
         } else {
-            $this->leaves_model->setLeaves($id);   //Return not used
+            // Handle attachment upload
+            $attachment_path = $this->handleAttachmentUpload();
+    
+            // Call the model function to create the leave request
+            $this->leaves_model->setLeaves($id, $attachment_path);   //Return not used
             $this->session->set_flashdata('msg', lang('hr_leaves_create_flash_msg_success'));
             //No mail is sent, because the HR Officer would set the leave status to accepted
             redirect('hr/employees');
         }
     }
 
+    /**
+     * handle attachment upload during leave creation
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     */
+    private function handleAttachmentUpload() {
+        $attachment_path = ''; // Initialize attachment path
+    
+        if (!empty($_FILES['attachment']['name'])) {
+            $config['upload_path'] = 'assets/uploads/'; // Specify the upload directory
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf'; // Specify the allowed file types
+            $config['max_size'] = 2048; // Specify the maximum file size in kilobytes
+    
+            $this->load->library('upload', $config);
+    
+            if (!$this->upload->do_upload('attachment')) {
+                // Handle the upload error
+                $error = $this->upload->display_errors();
+                // You can log the error or display it to the user
+            } else {
+                // File uploaded successfully
+                $attachment_data = $this->upload->data();
+                $attachment_path = 'assets/uploads/' . $attachment_data['file_name']; // Get the relative path of the uploaded file
+                // You can store this path in the database or perform further processing
+            }
+        }
+    
+        return $attachment_path;
+    }
+      
     /**
      * Display presence details for a given employee
      * @param string $source page calling the report (employees, collaborators)

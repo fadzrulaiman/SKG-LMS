@@ -482,53 +482,57 @@ public function setLeaves($employeeId, $attachmentPath) {
 
     return $newId;
 }
-    /**
-     * Create the same leave request for a list of employees
-     * @param int $type Identifier of the leave type
-     * @param float $duration duration of the leave
-     * @param string $startdate Start date (MySQL format YYYY-MM-DD)
-     * @param string $enddate End date (MySQL format YYYY-MM-DD)
-     * @param string $startdatetype Start date type of the leave (Morning/Afternoon)
-     * @param string $enddatetype End date type of the leave (Morning/Afternoon)
-     * @param string $cause Identifier of the leave
-     * @param int $status status of the leave
-     * @param array $employees List of DB Ids of the affected employees
-     * @return int Result
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
-     */
-    public function createRequestForUserList($type, $duration, $startdate, $enddate, $startdatetype, $enddatetype, $cause, $status, $employees) {
-        $affectedRows = 0;
-        if ($this->config->item('enable_history') === TRUE) {
-            foreach ($employees as $id) {
-                $this->createLeaveByApi($this->input->post('startdate'),
-                        $this->input->post('enddate'),
-                        $this->input->post('status'),
-                        $id,
-                        $this->input->post('cause'),
-                        $this->input->post('startdatetype'),
-                        $this->input->post('enddatetype'),
-                        abs($this->input->post('duration')),
-                        $this->input->post('type'));
-                $affectedRows++;
-            }
-        } else {
-            $data = array();
-            foreach ($employees as $id) {
-                $data[] = array(
-                    'startdate' => $this->input->post('startdate'),
-                    'startdatetype' => $this->input->post('startdatetype'),
-                    'enddate' => $this->input->post('enddate'),
-                    'enddatetype' => $this->input->post('enddatetype'),
-                    'duration' => abs($this->input->post('duration')),
-                    'type' => $this->input->post('type'),
-                    'cause' => $this->input->post('cause'),
-                    'status' => $this->input->post('status'),
-                    'employee' => $id);
-            }
-            $affectedRows = $this->db->insert_batch('leaves', $data);
+/**
+ * Create the same leave request for a list of employees
+ * @param int $type Identifier of the leave type
+ * @param float $duration duration of the leave
+ * @param string $startdate Start date (MySQL format YYYY-MM-DD)
+ * @param string $enddate End date (MySQL format YYYY-MM-DD)
+ * @param string $startdatetype Start date type of the leave (Morning/Afternoon)
+ * @param string $enddatetype End date type of the leave (Morning/Afternoon)
+ * @param string $cause Identifier of the leave
+ * @param int $status status of the leave
+ * @param array $employees List of DB Ids of the affected employees
+ * @param string $attachment_path Path to the attachment file
+ * @return int Result
+ * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+ */
+public function createRequestForUserList($type, $duration, $startdate, $enddate, $startdatetype, $enddatetype, $cause, $status, $employees, $attachment_path) {
+    $affectedRows = 0;
+    if ($this->config->item('enable_history') === TRUE) {
+        foreach ($employees as $id) {
+            $this->createLeaveByApi($this->input->post('startdate'),
+                    $this->input->post('enddate'),
+                    $this->input->post('status'),
+                    $id,
+                    $this->input->post('cause'),
+                    $this->input->post('startdatetype'),
+                    $this->input->post('enddatetype'),
+                    abs($this->input->post('duration')),
+                    $this->input->post('type'),
+                    $attachment_path); // Pass attachment path to createLeaveByApi method
+            $affectedRows++;
         }
-        return $affectedRows;
+    } else {
+        $data = array();
+        foreach ($employees as $id) {
+            $data[] = array(
+                'startdate' => $this->input->post('startdate'),
+                'startdatetype' => $this->input->post('startdatetype'),
+                'enddate' => $this->input->post('enddate'),
+                'enddatetype' => $this->input->post('enddatetype'),
+                'duration' => abs($this->input->post('duration')),
+                'type' => $this->input->post('type'),
+                'cause' => $this->input->post('cause'),
+                'status' => $this->input->post('status'),
+                'employee' => $id,
+                'attachment' => $attachment_path // Include attachment path in data array
+            );
+        }
+        $affectedRows = $this->db->insert_batch('leaves', $data);
     }
+    return $affectedRows;
+}
 
     /**
      * Create a leave request (suitable for API use)

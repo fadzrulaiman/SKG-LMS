@@ -109,24 +109,24 @@ function getLeaveInfos(preventDefault) {
             }
         }
         showListDayOff(leaveInfo);
-        // Disable the Requested button if there are any alerts visible
+        // Disable or enable the Requested button based on the visibility of alerts
         if ($("#lblCreditAlert").is(":visible") || $("#lblOverlappingAlert").is(":visible") || $("#lblOverlappingDayOffAlert").is(":visible")) {
             $("button[name='status'][value='2']").prop("disabled", true);
         } else {
             $("button[name='status'][value='2']").prop("disabled", false);
         }
-        $('#frmModalAjaxWait').modal('hide');
-        // Disable the Requested button if there are any alerts visible for HR 
+        // Disable or enable the status select and request button based on the visibility of alerts for HR 
         if ($("#lblCreditAlert").is(":visible") || $("#lblOverlappingAlert").is(":visible") || $("#lblOverlappingDayOffAlert").is(":visible")) {
             $("select[name='status']").prop("disabled", true);
             $("button[name='request']").prop("disabled", true);
         } else {
             $("select[name='status']").prop("disabled", false);
-            $("button[name='request']").prop("disabled", true);
+            $("button[name='request']").prop("disabled", false);
         }
         $('#frmModalAjaxWait').modal('hide');
     });
 }
+
 
 //When editing/viewing a leave request, refresh the information about overlapping and days off in the period
 function refreshLeaveInfo() {
