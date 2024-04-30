@@ -579,51 +579,68 @@ public function createRequestForUserList($type, $duration, $startdate, $enddate,
         return $newId;
     }
 
-    /**
-     * Update a leave request in the database with the values posted by an HTTP POST
-     * @param int $leaveId of the leave request
-     * @param int $userId Identifier of the user (optional)
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
-     */
-    public function updateLeaves($leaveId, $userId = 0) {
-        if ($userId == 0) {
-            $userId = $this->session->userdata('id');
-        }
-        $json = $this->prepareCommentOnStatusChanged($leaveId, $this->input->post('status'));
-        if($this->input->post('comment') != NULL){
-          $jsonDecode = json_decode($json);
-          $commentObject = new stdClass;
-          $commentObject->type = "comment";
-          $commentObject->author = $userId;
-          $commentObject->value = $this->input->post('comment');
-          $commentObject->date = date("Y-n-j");
-          if (isset($jsonDecode)){
-            array_push($jsonDecode->comments, $commentObject);
-          }else {
-            $jsonDecode->comments = array($commentObject);
-          }
-          $json = json_encode($jsonDecode);
-        }
-        $data = array(
-            'startdate' => $this->input->post('startdate'),
-            'startdatetype' => $this->input->post('startdatetype'),
-            'enddate' => $this->input->post('enddate'),
-            'enddatetype' => $this->input->post('enddatetype'),
-            'duration' => abs($this->input->post('duration')),
-            'type' => $this->input->post('type'),
-            'cause' => $this->input->post('cause'),
-            'status' => $this->input->post('status'),
-            'comments' => $json
-        );
-        $this->db->where('id', $leaveId);
-        $this->db->update('leaves', $data);
-
-        //Trace the modification if the feature is enabled
-        if ($this->config->item('enable_history') === TRUE) {
-            $this->load->model('history_model');
-            $this->history_model->setHistory(2, 'leaves', $leaveId, $userId);
-        }
+/**
+ * Update a leave request in the database with the values posted by an HTTP POST
+ * @param int $leaveId Identifier of the leave request
+ * @param string $attachment_path Path to the attachment file
+ * @param int $userId Identifier of the user (optional)
+ * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+ */
+public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
+    if ($userId == 0) {
+        $userId = $this->session->userdata('id');
     }
+    
+    // Prepare comment on status change
+    $json = $this->prepareCommentOnStatusChanged($leaveId, $this->input->post('status'));
+    
+    // Handle comment addition
+    if ($this->input->post('comment') != NULL) {
+        $jsonDecode = json_decode($json);
+        $commentObject = new stdClass;
+        $commentObject->type = "comment";
+        $commentObject->author = $userId;
+        $commentObject->value = $this->input->post('comment');
+        $commentObject->date = date("Y-n-j");
+        
+        // Update comments array
+        if (isset($jsonDecode)) {
+            array_push($jsonDecode->comments, $commentObject);
+        } else {
+            $jsonDecode->comments = array($commentObject);
+        }
+        
+        $json = json_encode($jsonDecode);
+    }
+    
+    // Prepare data for update
+    $data = array(
+        'startdate' => $this->input->post('startdate'),
+        'startdatetype' => $this->input->post('startdatetype'),
+        'enddate' => $this->input->post('enddate'),
+        'enddatetype' => $this->input->post('enddatetype'),
+        'duration' => abs($this->input->post('duration')),
+        'type' => $this->input->post('type'),
+        'cause' => $this->input->post('cause'),
+        'status' => $this->input->post('status'),
+        'comments' => $json
+    );
+
+    // Add attachment path to data if provided
+    if (!empty($attachment_path)) {
+        $data['attachment'] = $attachment_path;
+    }
+
+    // Perform database update
+    $this->db->where('id', $leaveId);
+    $this->db->update('leaves', $data);
+
+    // Trace the modification if the feature is enabled
+    if ($this->config->item('enable_history') === TRUE) {
+        $this->load->model('history_model');
+        $this->history_model->setHistory(2, 'leaves', $leaveId, $userId);
+    }
+}
 
     /**
      * Delete a leave from the database

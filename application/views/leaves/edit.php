@@ -9,7 +9,7 @@
 
 <h2><?php echo lang('leaves_edit_title');?><?php echo $leave['id']; ?> <?php echo $help;?>&nbsp;<span class="muted">(<?php echo $name ?>)</span></h2>
 <?php
-$attributes = array('id' => 'frmLeaveForm');
+$attributes = array('id' => 'frmLeaveForm', 'enctype' => 'multipart/form-data');
 if (isset($_GET['source'])) {
   echo form_open('leaves/edit/' . $id . '?source=' . $_GET['source'], $attributes);
 } else {
@@ -72,6 +72,9 @@ if (isset($_GET['source'])) {
         <button type="button" class="close">&times;</button>
         <?php echo lang('leaves_flash_msg_overlap_dayoff');?>
     </div>
+
+    <label for="attachment">Attachment</label>
+    <input type="file" name="attachment" id="attachment" accept="image/*, .pdf">
 
     <label for="cause"><?php echo lang('leaves_edit_field_cause');?></label>
     <textarea name="cause"><?php echo $leave['cause']; ?></textarea>
@@ -171,10 +174,18 @@ if (isset($_GET['source'])) {
    <textarea name="comment" class="form-control" rows="5" style="min-width: 100%"></textarea>
    &nbsp;
  <?php }?>
+
 </div>
+<?php if (!empty($attachment_path)): ?>
+    <div class="span6">
+        <div class="attachment">
+            <h3>Attachment:</h3>
+            <embed src="<?php echo base_url($attachment_path); ?>" width="100%" height="600" type='application/pdf' />
+        </div>
+    </div>
+    <?php endif; ?>
 </div>
 </form>
-
 <div class="modal hide" id="frmModalAjaxWait" data-backdrop="static" data-keyboard="false">
         <div class="modal-header">
             <h1><?php echo lang('global_msg_wait');?></h1>
