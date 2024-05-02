@@ -12,12 +12,19 @@
 <div id="push"></div>
 </div><!-- /wrap -->
 <!-- FOOTER -->
-<div class="row" id="footer">
-<div class="copy-center" style="text-align: center;">
-    <span class="copy_left">&copy; Sawit Kinabalu Leave Management System, <?php echo date('Y');?></span>
-    <span class="copy_right">By IT Unit <a href="https://www.sawitkinabalu.com.my/" target="new" style="text-decoration: none; color: #3a8cb1">Sawit Kinabalu</a></span>
-</div>
-</div>
+<footer id="footer" class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="copy-center text-center">
+                    <span class="copy_left">&copy; Sawit Kinabalu Leave Management System, <?php echo date('Y');?></span>
+                    <span class="copy_right">By IT Unit <a href="https://www.sawitkinabalu.com.my/" target="_blank" style="text-decoration: none; color: #3a8cb1">Sawit Kinabalu</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <!--Minimal profiling info //-->
 <?php
 if ($this->config->item("enable_apm_rum")) {
@@ -52,6 +59,7 @@ if ($this->config->item("enable_apm_rum")) {
     echo "\t<input id='ci_elapsed_time' type='hidden' value='" . $total_time . "' />" . PHP_EOL;
 }
 ?>
+
 <?php if ($this->config->item("enable_apm_display")) { ?>
 <script type="text/javascript">
 // Add a load event listener that display web timing

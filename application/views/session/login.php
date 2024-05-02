@@ -55,10 +55,8 @@ body {
 
                 <?php echo validation_errors(); ?>
 
-                <?php
-$attributes = array('id' => 'loginFrom');
-echo form_open('session/login', $attributes);
-$languages = $this->polyglot->nativelanguages($this->config->item('languages'));?>
+                <?php $attributes = array('id' => 'loginFrom');echo form_open('session/login', $attributes);
+                $languages = $this->polyglot->nativelanguages($this->config->item('languages'));?>
                 <input type="hidden" name="last_page" value="session/login" />
                 <?php if (count($languages) == 1) { ?>
                 <input type="hidden" name="language" value="<?php echo $language_code; ?>" />
@@ -84,7 +82,7 @@ $languages = $this->polyglot->nativelanguages($this->config->item('languages'));
                 <br />
                 <button id="send" class="btn btn-primary"><i
                         class="mdi mdi-login"></i>&nbsp;<?php echo lang('session_login_button_login');?></button>
-                        <!--
+                <!--
                 <?php if ($this->config->item('oauth2_enabled') == TRUE) { ?>
                 <?php if ($this->config->item('oauth2_provider') == 'google') { ?>
                 <button id="cmdGoogleSignIn" class="btn btn-primary"><i
@@ -235,12 +233,12 @@ $(function() {
                                     case "OK":
                                         bootbox.alert(
                                             "<?php echo lang('session_login_msg_password_sent');?>"
-                                            );
+                                        );
                                         break;
                                     case "UNKNOWN":
                                         bootbox.alert(
                                             "<?php echo lang('session_login_flash_bad_credentials');?>"
-                                            );
+                                        );
                                         break;
                                 }
                             });
