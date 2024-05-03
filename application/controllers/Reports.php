@@ -218,8 +218,8 @@ class Reports extends CI_Controller {
         $this->auth->checkIfOperationIsAllowed('native_report_leaves');
         $this->lang->load('leaves', $this->language);
 
-        $month = $this->input->get("month") === FALSE ? 0 : $this->input->get("month");
-        $year = $this->input->get("year") === FALSE ? 0 : $this->input->get("year");
+        $month = $this->input->get("month") === FALSE ? 0 : (int) $this->input->get("month");
+        $year = $this->input->get("year") === FALSE ? 0 : (int) $this->input->get("year");
         $entity = $this->input->get("entity") === FALSE ? 0 : $this->input->get("entity");
         $children = filter_var($this->input->get("children"), FILTER_VALIDATE_BOOLEAN);
         $requests = filter_var($this->input->get("requests"), FILTER_VALIDATE_BOOLEAN);
@@ -228,13 +228,13 @@ class Reports extends CI_Controller {
         if ($month == 0) {
             $start = sprintf('%d-01-01', $year);
             $end = sprintf('%d-12-31', $year);
-            $total_days = date("z", mktime(0,0,0,12,31,$year)) + 1;
+            $total_days = date("z", mktime(0, 0, 0, 12, 31, $year)) + 1;
         } else {
             $start = sprintf('%d-%02d-01', $year, $month);
-            $lastDay = date("t", strtotime($start));    //last day of selected month
-            $end = sprintf('%d-%02d-%02d', $year, $month, $lastDay);
+            $end = date('Y-m-t', strtotime($start));  // More direct and avoids an extra variable
             $total_days = cal_days_in_month(CAL_GREGORIAN, $month, $year);
         }
+        
 
         $this->load->model('organization_model');
         $this->load->model('leaves_model');
@@ -252,39 +252,40 @@ class Reports extends CI_Controller {
             $result[$user->id]['First Name'] = $user->firstname;
             $result[$user->id]['Last Name'] = $user->lastname;
                 // Add a check for null or empty datehired
-    if (!empty($user->datehired)) {
-        $date = new DateTime($user->datehired);
-        $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));
-    } else {
-        $result[$user->id]['Date Hired'] = '';
-    }
+            if (!empty($user->datehired)) {
+                $date = new DateTime($user->datehired);
+                $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));
+            } else {
+                $result[$user->id]['Date Hired'] = '';
+            }
            // $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));
             $result[$user->id]['Department'] = $user->department;
             $result[$user->id]['Position'] = $user->position;
             $result[$user->id]['Contract'] = $user->contract;
             $non_working_days = $this->dayoffs_model->lengthDaysOffBetweenDates($user->contract_id, $start, $end);
             $opened_days = $total_days - $non_working_days;
-
+            foreach ($types as $type) {
+                $result[$user->id][$type['name']] = 0;  // Initialize with 0 instead of an empty string
+            }
             //If the user has selected All months
+            $leave_duration = 0;
             if ($month == 0) {
-                $leave_duration = 0;
-                for ($ii = 1; $ii <13; $ii++) {
+                for ($ii = 1; $ii < 13; $ii++) {
                     $linear = $this->leaves_model->linear($user->id, $ii, $year, FALSE, FALSE, TRUE, FALSE);
                     $leave_duration += $this->leaves_model->monthlyLeavesDuration($linear);
-                    $leaves_detail = $this->leaves_model->monthlyLeavesByType($linear);
-                    //Init type columns
+                    $leaves_detail = $this->leaves_model->monthlyLeavesByType($linear);    
                     foreach ($types as $type) {
                         if (array_key_exists($type['name'], $leaves_detail)) {
-                            if (!array_key_exists($type['name'], $result[$user->id])) {
-                                $result[$user->id][$type['name']] = 0;
+                            // Check if value in `leaves_detail` is numeric before adding
+                            if (is_numeric($leaves_detail[$type['name']])) {
+                                $result[$user->id][$type['name']] += $leaves_detail[$type['name']];
+                            } else {
+                                error_log("Expected a numeric value for leaves detail, got: " . $leaves_detail[$type['name']]);
+                                $result[$user->id][$type['name']] = '';
                             }
-                            $result[$user->id][$type['name']] +=
-                                    $leaves_detail[$type['name']];
-                        } else {
-                            $result[$user->id][$type['name']] = '';
                         }
                     }
-                }
+              }
                 if ($requests) $leave_requests[$user->id] = $this->leaves_model->getAcceptedLeavesBetweenDates($user->id, $start, $end);
                 $work_duration = $opened_days - $leave_duration;
             } else {

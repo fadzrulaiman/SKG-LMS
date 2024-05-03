@@ -19,8 +19,8 @@ $sheet = $spreadsheet->getActiveSheet();
 
 $sheet->setTitle(mb_strimwidth(lang('reports_export_leaves_title'), 0, 28, "..."));  //Maximum 31 characters allowed in sheet title.
 
-$month = $this->input->get("month") === FALSE ? 0 : $this->input->get("month");
-$year = $this->input->get("year") === FALSE ? 0 : $this->input->get("year");
+$month = $this->input->get("month") === FALSE ? 0 : (int)$this->input->get("month");
+$year = $this->input->get("year") === FALSE ? 0 : (int)$this->input->get("year");
 $entity = $this->input->get("entity") === FALSE ? 0 : $this->input->get("entity");
 $children = filter_var($this->input->get("children"), FILTER_VALIDATE_BOOLEAN);
 $requests = filter_var($this->input->get("requests"), FILTER_VALIDATE_BOOLEAN);
@@ -47,9 +47,9 @@ foreach ($users as $user) {
     $result[$user->id]['identifier'] = $user->identifier;
     $result[$user->id]['firstname'] = $user->firstname;
     $result[$user->id]['lastname'] = $user->lastname;
-    $date = new DateTime($user->datehired);
-    $result[$user->id]['datehired'] = $date->format(lang('global_date_format'));
-    $result[$user->id]['department'] = $user->department;
+    $dateHired = $user->datehired ?? '1970-01-01'; // Default to Jan 1, 1970, if datehired is null
+    $date = new DateTime($dateHired);
+    $result[$user->id]['datehired'] = $date->format(lang('global_date_format'));    $result[$user->id]['department'] = $user->department;
     $result[$user->id]['position'] = $user->position;
     $result[$user->id]['contract'] = $user->contract;
     $non_working_days = $this->dayoffs_model->lengthDaysOffBetweenDates($user->contract_id, $start, $end);
@@ -62,18 +62,21 @@ foreach ($users as $user) {
             $linear = $this->leaves_model->linear($user->id, $ii, $year, FALSE, FALSE, TRUE, FALSE);
             $leave_duration += $this->leaves_model->monthlyLeavesDuration($linear);
             $leaves_detail = $this->leaves_model->monthlyLeavesByType($linear);
-            //Init type columns
-            foreach ($types as $type) {
-                if (array_key_exists($type['name'], $leaves_detail)) {
-                    if (!array_key_exists($type['name'], $result[$user->id])) {
-                        $result[$user->id][$type['name']] = 0;
-                    }
-                    $result[$user->id][$type['name']] +=
-                            $leaves_detail[$type['name']];
+        // Initialize or increment leave types
+        foreach ($types as $type) {
+            if (!isset($result[$user->id][$type['name']])) {
+                $result[$user->id][$type['name']] = 0; // Ensure initialization as integer
+            }
+            if (array_key_exists($type['name'], $leaves_detail)) {
+                $leaveAmount = $leaves_detail[$type['name']];
+                if (is_numeric($leaveAmount)) {
+                    $result[$user->id][$type['name']] += (int)$leaveAmount; // Cast to int to be safe
                 } else {
-                    $result[$user->id][$type['name']] = '';
+                    // Log or handle non-numeric values
+                    error_log("Non-numeric leave amount encountered for " . $type['name']);
                 }
             }
+        }
         }
         if ($requests) $leave_requests[$user->id] = $this->leaves_model->getAcceptedLeavesBetweenDates($user->id, $start, $end);
         $work_duration = $opened_days - $leave_duration;

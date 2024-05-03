@@ -22,7 +22,7 @@
                         echo "<option val='" . $ii ."'>" . $ii ."</option>";
                     }
                 }?>
-                <!--<option val='0'><?php echo lang('All');?></option>//-->
+                <option val='0'><?php echo lang('All');?></option>
             </select>
         </label>
         <label for="cboYear"><?php echo lang('reports_leaves_year_field');?>
