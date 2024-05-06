@@ -259,7 +259,11 @@ $route['reports/balance/export'] = 'reports/exportBalanceReport';
 $route['reports/leaves'] = 'reports/leaves';
 $route['reports/leaves/execute'] = 'reports/executeLeavesReport';
 $route['reports/leaves/export'] = 'reports/exportLeavesReport';
+$route['reports/leavesbydate'] = 'reports/leavesbydate';
+$route['reports/leavesbydate/execute'] = 'reports/executeLeavesByDateReport';
+$route['reports/leavesbydate/export'] = 'reports/exportLeavesByDateReport';
 $route['reports'] = 'reports';
+
 
 //_______________________________________________
 //HTTP API

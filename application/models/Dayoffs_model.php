@@ -522,13 +522,15 @@ class Dayoffs_model extends CI_Model {
      */
     public function lengthDaysOffBetweenDatesForEmployee($id, $start, $end) {
         $this->db->select('dayoffs.*');
-        $this->db->join('dayoffs', 'users.contract = dayoffs.contract');
+        $this->db->from('dayoffs');
+        $this->db->join('users', 'users.contract = dayoffs.contract');
         $this->db->where('users.id', $id);
-        $this->db->where('date >= DATE(' . $this->db->escape($start) . ')');
-        $this->db->where('date <= DATE(' . $this->db->escape($end) . ')');
-        $dayoffs = $this->db->get('users')->result();
+        $this->db->where('dayoffs.date >=', $start);
+        $this->db->where('dayoffs.date <=', $end);
+        $dayoffs = $this->db->get()->result();
         return $dayoffs;
     }
+    
 
     /**
      * Check if days off have been defined for year - 1, year and year + 1

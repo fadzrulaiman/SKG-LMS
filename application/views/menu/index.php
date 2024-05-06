@@ -78,6 +78,7 @@ $this->lang->load('menu', $language);?>
                     <li class="nav-header"><?php echo lang('menu_hr_reports_divider');?></li>
                     <li><a href="<?php echo base_url();?>reports/balance"><?php echo lang('menu_hr_report_leave_balance');?></a></li>
                     <li><a href="<?php echo base_url();?>reports/leaves"><?php echo lang('menu_hr_report_leaves');?></a></li>
+                    <li><a href="<?php echo base_url();?>reports/leavesbydate"><?php echo lang('menu_hr_report_leavesbydate');?></a></li>
                     <li><a href="<?php echo base_url();?>reports"><?php echo lang('menu_hr_reports_divider');?></a></li>
                   </ul>
                 </li>

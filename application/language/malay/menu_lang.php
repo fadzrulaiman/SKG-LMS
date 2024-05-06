@@ -34,8 +34,10 @@ $lang['menu_hr_list_positions'] = 'Senarai jawatan';
 $lang['menu_hr_leaves_type_divider'] = 'Cuti';
 $lang['menu_hr_list_leaves_type'] = 'Senarai jenis';
 $lang['menu_hr_reports_divider'] = 'Laporan';
-$lang['menu_hr_report_leave_balance'] = 'Baki cuti';
-$lang['menu_hr_report_leaves'] = 'Permintaan cuti';
+$lang['menu_hr_report_leave_balance'] = 'Laporan Baki cuti';
+$lang['menu_hr_report_leaves'] = 'Laporan Bulanan Permintaan cuti';
+$lang['menu_hr_report_leavesbydate'] = 'Laporan Permintaan cuti';
+
 
 $lang['menu_validation_title'] = 'Kelulusan';
 $lang['menu_validation_delegations'] = 'Penyerahan';

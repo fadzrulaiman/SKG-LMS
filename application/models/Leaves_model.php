@@ -1473,6 +1473,165 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
         }
         return $by_types;
     }
+    
+    /**
+     * Count the total duration of leaves for the month, grouped by leave type.
+     * Only accepted leaves are taken into account.
+     * @param array $linearbydate linear calendar for one employee
+     * @return array key/value array (k:leave type label, v:sum for the month)
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     */
+    public function dateRangeLeaveByType($linearbydate) {
+        $by_types = array();
+        foreach ($linearbydate->days as $day) {
+            if (strstr($day->display, ';')) {
+                $display = explode(";", $day->display);
+                $type = explode(";", $day->type);
+                for ($i = 0; $i < count($display); $i++) {
+                    if ($display[$i] == '2' || $display[$i] == '3') {
+                        array_key_exists($type[$i], $by_types) ? $by_types[$type[$i]] += 0.5 : $by_types[$type[$i]] = 0.5;
+                    }
+                    if ($display[$i] == '1') {
+                        array_key_exists($type[$i], $by_types) ? $by_types[$type[$i]] += 1 : $by_types[$type[$i]] = 1;
+                    }
+                }
+            } else {
+                if ($day->display == 2 || $day->display == 3) array_key_exists($day->type, $by_types) ? $by_types[$day->type] += 0.5 : $by_types[$day->type] = 0.5;
+                if ($day->display == 1) array_key_exists($day->type, $by_types) ? $by_types[$day->type] += 1 : $by_types[$day->type] = 1;
+            }
+        }
+        return $by_types;
+    }
+    
+    /**
+     * Count the total duration of leaves by the date range, grouped by leave type.
+     * Only accepted leaves are taken into account.
+     * @param array $linearbydate linear calendar for one employee
+     * @return array key/value array (k:leave type label, v:sum for the month)
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     */
+    public function dateRangeLeaveDuration($linearbydate) {
+        $total = 0;
+        foreach ($linearbydate->days as $day) {
+            if (strstr($day->display, ';')) {
+                $display = explode(";", $day->display);
+                foreach ($display as $disp) {
+                    if ($disp == '2' || $disp == '3') $total += 0.5;
+                    if ($disp == '1') $total += 1;
+                }
+            } else {
+                if ($day->display == 2 || $day->display == 3) $total += 0.5;
+                if ($day->display == 1) $total += 1;
+            }
+        }
+        return $total;
+    }
+    
+    /**
+     * Leave requests of users of a department(s)
+     * @param int $employee Employee identifier
+     * @param int $start_date Start Date
+     * @param int $end_date End Date
+     * @param boolean $planned Include leave requests with status planned
+     * @param boolean $requested Include leave requests with status requested
+     * @param boolean $accepted Include leave requests with status accepted
+     * @param boolean $rejected Include leave requests with status rejected
+     * @param boolean $cancellation Include leave requests with status cancellation
+     * @param boolean $canceled Include leave requests with status canceled
+     * @param boolean $calendar Is this function called to display a calendar
+     * @return array Array of objects containing leave details
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     */
+    public function linearbydate($employee_id, $start_date, $end_date,
+    $planned = FALSE, $requested = FALSE, $accepted = FALSE,
+    $rejected = FALSE, $cancellation = FALSE, $canceled = FALSE,
+    $calendar = FALSE) {
+
+    $this->load->model('dayoffs_model');
+    $this->load->model('users_model');
+    $employee = $this->users_model->getUsers($employee_id);
+
+    $user = new stdClass;
+    $user->name = $employee['firstname'] . ' ' . $employee['lastname'];
+    $user->manager = (int) $employee['manager'];
+    $user->id = (int) $employee['id'];
+    $user->days = array();
+
+    // Initialize days array
+    $period = new DatePeriod(
+        new DateTime($start_date),
+        new DateInterval('P1D'),
+        (new DateTime($end_date))->modify('+1 day')
+    );
+
+    foreach ($period as $day) {
+        $dateKey = $day->format('Y-m-d');
+        $dayInfo = new stdClass;
+        $dayInfo->id = 0;
+        $dayInfo->type = '';
+        $dayInfo->acronym = '';
+        $dayInfo->status = '';
+        $dayInfo->display = 0;
+        $user->days[$dateKey] = $dayInfo;
+    }
+
+    // Query for day offs
+    $dayoffs = $this->dayoffs_model->lengthDaysOffBetweenDatesForEmployee($employee_id, $start_date, $end_date);
+    foreach ($dayoffs as $dayoff) {
+        $date = new DateTime($dayoff->date);
+        $dateKey = $date->format('Y-m-d');
+        if (isset($user->days[$dateKey])) {
+            $user->days[$dateKey]->display = (string) $dayoff->type + 3;
+            $user->days[$dateKey]->status = (string) $dayoff->type + 10;
+            $user->days[$dateKey]->type = $dayoff->title;
+        }
+    }
+
+    // Build the query for all leaves
+    $this->db->select('leaves.*, types.acronym, types.name as type, users.manager as manager');
+    $this->db->from('leaves');
+    $this->db->join('types', 'leaves.type = types.id');
+    $this->db->join('users', 'leaves.employee = users.id');
+    $this->db->where('leaves.startdate <=', $end_date);
+    $this->db->where('leaves.enddate >=', $start_date);
+
+    // Filtering by leave status
+    if (!$planned) $this->db->where('leaves.status !=', LMS_PLANNED);
+    if (!$requested) $this->db->where('leaves.status !=', LMS_REQUESTED);
+    if (!$accepted) $this->db->where('leaves.status !=', LMS_ACCEPTED);
+    if (!$rejected) $this->db->where('leaves.status !=', LMS_REJECTED);
+    if (!$cancellation) $this->db->where('leaves.status !=', LMS_CANCELLATION);
+    if (!$canceled) $this->db->where('leaves.status !=', LMS_CANCELED);
+
+    $this->db->where('leaves.employee', $employee_id);
+    $this->db->order_by('startdate', 'asc');
+    $this->db->order_by('startdatetype', 'desc');
+    $events = $this->db->get()->result();
+
+    // Processing each leave event
+    foreach ($events as $entry) {
+        $eventStartDate = new DateTime($entry->startdate);
+        $eventEndDate = new DateTime($entry->enddate);
+        $eventPeriod = new DatePeriod(
+            $eventStartDate,
+            new DateInterval('P1D'),
+            $eventEndDate->modify('+1 day')
+        );
+
+        foreach ($eventPeriod as $date) {
+            $dateKey = $date->format('Y-m-d');
+            if (isset($user->days[$dateKey])) {
+                $user->days[$dateKey]->id = $entry->id;
+                $user->days[$dateKey]->type = $entry->type;
+                $user->days[$dateKey]->acronym = $entry->acronym;
+                $user->days[$dateKey]->status = $entry->status;
+                $user->days[$dateKey]->display = 1; // Simplified assumption
+            }
+        }
+    }
+
+    return $user;
+    }
 
     /**
      * Leave requests of users of a department(s)

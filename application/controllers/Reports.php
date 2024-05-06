@@ -397,5 +397,169 @@ class Reports extends CI_Controller {
         $data['include_children'] = filter_var($_GET['children'], FILTER_VALIDATE_BOOLEAN);
         $this->load->view('reports/leaves/export', $data);
     }
+    /**
+     * Report leaves request by date range and an entity
+     * This report is inspired by the monthly presence report, but applicable to a set of employee.
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     * @since 0.4.3
+     */
+    public function leavesbydate() {
+        $this->auth->checkIfOperationIsAllowed('native_report_leaves');
+        $data = getUserContext($this);
+        $data['title'] = lang('reports_leaves_title');
+        $data['help'] = $this->help->create_help_link('global_link_doc_page_leaves_report');
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/index', $data);
+        $this->load->view('reports/leavesbydate/index', $data);
+        $this->load->view('templates/footer');
+    }
+    /**
+     * Landing page of the shipped-in date range leaves report
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     * @since 0.4.3
+     */
+    public function executeLeavesByDateReport() {
+        $this->auth->checkIfOperationIsAllowed('native_report_leaves');
+        $this->lang->load('leaves', $this->language);
+    
+        // Get start and end dates from the input, defaulting to a reasonable range if not provided
+        $start_date = $this->input->get("start_date") ? $this->input->get("start_date") : date('Y-m-d');
+        $end_date = $this->input->get("end_date") ? $this->input->get("end_date") : date('Y-m-d', strtotime("+1 month", strtotime($start_date)));
+    
+        $entity = $this->input->get("entity") === FALSE ? 0 : $this->input->get("entity");
+        $children = filter_var($this->input->get("children"), FILTER_VALIDATE_BOOLEAN);
+        $requests = filter_var($this->input->get("requests"), FILTER_VALIDATE_BOOLEAN);
+    
+        $this->load->model('organization_model');
+        $this->load->model('leaves_model');
+        $this->load->model('types_model');
+        $this->load->model('dayoffs_model');
+        $types = $this->types_model->getTypes();
+    
+        // Calculate total days between dates
+        $date1 = new DateTime($start_date);
+        $date2 = new DateTime($end_date);
+        $total_days = $date2->diff($date1)->format("%a") + 1;
+    
+        $users = $this->organization_model->allEmployees($entity, $children);
+        $result = array();
+        $leave_requests = array();
+    
+        foreach ($users as $user) {
+            $result[$user->id]['Identifier'] = $user->identifier;
+            $result[$user->id]['First Name'] = $user->firstname;
+            $result[$user->id]['Last Name'] = $user->lastname;
+            $result[$user->id]['Date Hired'] = empty($user->datehired) ? '' : (new DateTime($user->datehired))->format($this->lang->line('global_date_format'));
+            $result[$user->id]['Department'] = $user->department;
+            $result[$user->id]['Position'] = $user->position;
+            $result[$user->id]['Contract'] = $user->contract;
+    
+            $non_working_days = $this->dayoffs_model->lengthDaysOffBetweenDates($user->contract_id, $start_date, $end_date);
+            $opened_days = $total_days - $non_working_days;
+    
+            $linear = $this->leaves_model->linearbydate($user->id, $start_date, $end_date, FALSE, FALSE, TRUE, FALSE);
+            $leave_duration = $this->leaves_model->dateRangeLeaveDuration($linear);
+            $work_duration = $opened_days - $leave_duration;
+            $leaves_detail = $this->leaves_model->dateRangeLeaveByType($linear);
+    
+            if ($requests) $leave_requests[$user->id] = $this->leaves_model->getAcceptedLeavesBetweenDates($user->id, $start_date, $end_date);
+    
+            // Initialize type columns
+            foreach ($types as $type) {
+                $result[$user->id][$type['name']] = array_key_exists($type['name'], $leaves_detail) ? $leaves_detail[$type['name']] : 0;
+            }
+    
+            $result[$user->id]['Leave Duration'] = $leave_duration;
+            $result[$user->id]['Total Days'] = $total_days;
+            $result[$user->id]['Weekend & Public Holiday Days'] = $non_working_days;
+            $result[$user->id]['Work Days'] = $work_duration;
+        }
+    
+        // Generate HTML table output
+        $table = $this->generateHTMLTable($result, $leave_requests, $requests);
+    
+        $this->output->set_output($table);
+    }
+    /**
+     * Function to generate html table after execute
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     * @since 0.4.3
+     */
+    private function generateHTMLTable($result, $leave_requests, $requests) {
+        // Start table with responsive and accessible design
+        $table = '<div class="table-responsive"><table class="table table-bordered table-hover">';
+        $thead = '<thead><tr>';
+        $tbody = '<tbody>';
+        
+        // Flag to ensure the header is added only once
+        $headersAdded = false;
+    
+        foreach ($result as $user_id => $row) {
+            if (!$headersAdded) {
+                foreach ($row as $key => $value) {
+                    $thead .= '<th scope="col">' . lang($key) . '</th>';
+                }
+                $thead .= '</tr></thead>';
+                $headersAdded = true;  // Set flag to true after adding headers
+            }
+            $tbody .= '<tr>';
+            foreach ($row as $key => $value) {
+                $tbody .= '<td>' . htmlspecialchars((string) $value) . '</td>';  // Cast value to string
+            }
+            $tbody .= '</tr>';
+            
+            // Embed leave requests if available
+            if ($requests && isset($leave_requests[$user_id]) && count($leave_requests[$user_id])) {
+                $tbody .= $this->embedLeaveRequests($leave_requests[$user_id]);
+            }
+        }
+        $tbody .= '</tbody></table></div>';
+        
+        // Combine parts to form the final table
+        $table .= $thead . $tbody;
+        return $table;
+    }
 
+    /**
+     * Private function to embed leave request into the table
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     * @since 0.4.3
+     */
+    private function embedLeaveRequests($leave_requests) {
+        // Generate nested HTML table for leave requests within a collapsible panel
+        $tbody = '<tr><td colspan="9"><div class="table-responsive"><table class="table table-bordered table-hover">';
+        $tbody .= '<thead><tr><th>ID</th><th>Start Date</th><th>End Date</th><th>Type</th><th>Duration</th></tr></thead><tbody>';
+        
+        foreach ($leave_requests as $request) {
+            $tbody .= '<tr>';
+            $tbody .= '<td><a href="' . base_url() . 'leaves/view/' . $request['id'] . '" target="_blank" aria-label="View details for leave ID ' . htmlspecialchars($request['id']) . '">' . htmlspecialchars($request['id']) . '</a></td>';
+            $tbody .= '<td>' . htmlspecialchars(date("d M Y", strtotime($request['startdate']))) . '</td>';
+            $tbody .= '<td>' . htmlspecialchars(date("d M Y", strtotime($request['enddate']))) . '</td>';
+            $tbody .= '<td>' . htmlspecialchars($request['type']) . '</td>';
+            $tbody .= '<td>' . htmlspecialchars($request['duration']) . ' days</td>';
+            $tbody .= '</tr>';
+        }
+        
+        $tbody .= '</tbody></table></div></td></tr>';
+        return $tbody;
+    }        
+    /**
+     * Export the date range leaves report into Excel
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     * @since 0.4.3
+     */
+    public function exportLeavesByDateReport() {
+        $this->auth->checkIfOperationIsAllowed('native_report_leaves');
+        $this->lang->load('leaves', $this->language);
+        $this->load->model('organization_model');
+        $this->load->model('leaves_model');
+        $this->load->model('types_model');
+        $this->load->model('dayoffs_model');
+        $data['refDate'] = date("Y-m-d");
+        if (isset($_GET['refDate']) && $_GET['refDate'] != NULL) {
+            $data['refDate'] = date("Y-m-d", $_GET['refDate']);
+        }
+        $data['include_children'] = filter_var($_GET['children'], FILTER_VALIDATE_BOOLEAN);
+        $this->load->view('reports/leavesbydate/export', $data);
+    }
 }

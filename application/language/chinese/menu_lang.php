@@ -36,7 +36,9 @@ $lang['menu_hr_leaves_type_divider'] = '休假';
 $lang['menu_hr_list_leaves_type'] = '總類列表';
 $lang['menu_hr_reports_divider'] = '報告';
 $lang['menu_hr_report_leave_balance'] = '加價平均值';
-$lang['menu_hr_report_leaves'] = '休假申請';
+$lang['menu_hr_report_leaves'] = '月度休假报告';
+$lang['menu_hr_report_leavesbydate'] = '休假申請';
+
 
 $lang['menu_validation_title'] = '批准';
 $lang['menu_validation_delegations'] = '委託團';
