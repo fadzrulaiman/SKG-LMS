@@ -17,7 +17,76 @@
 <?php
 $attributes = array('id' => 'frmLeaveForm', 'enctype' => 'multipart/form-data');
 echo form_open('leaves/create', $attributes) ?>
+        <h3>Leave Balance</h3>
+        <?php if (isset($leaveBalances) && !empty($leaveBalances)): ?>
+        <div class="dashboard-cards-wrapper">
+            <div class="dashboard-cards d-flex justify-content-start flex-nowrap">
+                <?php foreach ($leaveBalances as $balance): ?>
+                <div class="dashboard-card mb-3">
+                    <div class="card-body text-center">
+                        <h6 class="dashboard-card-title"><?php echo $balance['type_name']; ?></h6>
+                        <p class="dashboard-card-metric"><?php echo $balance['entitled']; ?> days</p>
+                        <small class="dashboard-card-subtext">
+                            <?php echo $balance['taken']; ?> taken,
+                            <?php echo $balance['balance']; ?> remaining
+                        </small>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php else: ?>
+        <p>No Leave Balance</p>
+        <?php endif; ?>
+        <style>
+        .dashboard-cards-wrapper {
+            overflow-x: auto;
+            /* Allows horizontal scrolling if cards overflow the container */
+            width: 100%;
+            /* Takes full width of the parent element */
+            padding: 10px 0;
+            /* Adjusts padding around the cards */
+        }
+        .dashboard-cards {
+            display: flex;
+            gap: 15px;
+            /* Space between cards */
+            width: max-content;
+            /* Allows the width to adjust according to the number of cards */
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #f7f8fa;
+            border-radius: 10px;
+        }
 
+        .dashboard-card {
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border: none;
+            width: 250px;
+            /* Adjust the width as needed */
+            padding: 15px;
+        }
+
+        .dashboard-card-title {
+            font-size: 16px;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+
+        .dashboard-card-metric {
+            font-size: 32px;
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card-subtext {
+            font-size: 12px;
+            color: #6c757d;
+        }
+        </style>
     <label for="type">
         <?php echo lang('leaves_create_field_type');?>
         &nbsp;<span class="muted" id="lblCredit"><?php if (!is_null($credit)) { ?>(<?php echo $credit; ?>)<?php } ?></span>

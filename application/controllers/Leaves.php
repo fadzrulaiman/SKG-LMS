@@ -208,6 +208,7 @@ public function view($source, $id) {
         $data['title'] = lang('leaves_create_title');
         $data['help'] = $this->help->create_help_link('global_link_doc_page_request_leave');
     
+        // Form validation rules
         $this->form_validation->set_rules('startdate', lang('leaves_create_field_start'), 'required|strip_tags');
         $this->form_validation->set_rules('startdatetype', 'Start Date type', 'required|strip_tags');
         $this->form_validation->set_rules('enddate', lang('leaves_create_field_end'), 'required|strip_tags');
@@ -217,15 +218,24 @@ public function view($source, $id) {
         $this->form_validation->set_rules('cause', lang('leaves_create_field_cause'), 'strip_tags');
         $this->form_validation->set_rules('status', lang('leaves_create_field_status'), 'required|strip_tags');
     
+        // Check validation status
         if ($this->form_validation->run() === FALSE) {
+            // Fetch leave types and balances for the employee
+            $this->load->model('leaves_model');
+            $employeeId = $this->session->userdata('id');
+            $data['leaveBalances'] = $this->leaves_model->getLeaveBalanceForAllTypes($employeeId);
+    
+            // Populate other leave form data
             $this->load->model('contracts_model');
-            $leaveTypesDetails = $this->contracts_model->getLeaveTypesDetailsOTypesForUser($this->session->userdata('id'));
+            $leaveTypesDetails = $this->contracts_model->getLeaveTypesDetailsOTypesForUser($employeeId);
             $data['defaultType'] = $leaveTypesDetails->defaultType;
             $data['credit'] = $leaveTypesDetails->credit;
             $data['types'] = $leaveTypesDetails->types;
+    
+            // Load views
             $this->load->view('templates/header', $data);
             $this->load->view('menu/index', $data);
-            $this->load->view('leaves/create');
+            $this->load->view('leaves/create', $data); // Pass data to the view
             $this->load->view('templates/footer');
         } else {
             // Handle attachment upload
@@ -237,7 +247,7 @@ public function view($source, $id) {
             // Set flash message
             $this->session->set_flashdata('msg', lang('leaves_create_flash_msg_success'));
     
-            //If the status is requested, send an email to the manager
+            // If the status is requested, send an email to the manager
             if ($this->input->post('status') == LMS_REQUESTED) {
                 $this->sendMailOnLeaveRequestCreation($leave_id);
             }
@@ -250,7 +260,7 @@ public function view($source, $id) {
             }
         }
     }
-        
+            
 /**
  * Edit a leave request
  * @param int $id Identifier of the leave request
