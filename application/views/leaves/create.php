@@ -25,10 +25,10 @@ echo form_open('leaves/create', $attributes) ?>
                 <div class="dashboard-card mb-3">
                     <div class="card-body text-center">
                         <h6 class="dashboard-card-title"><?php echo $balance['type_name']; ?></h6>
-                        <p class="dashboard-card-metric"><?php echo $balance['entitled']; ?> days</p>
+                        <p class="dashboard-card-metric"><?php echo $balance['balance']; ?> Days</p>
                         <small class="dashboard-card-subtext">
-                            <?php echo $balance['taken']; ?> taken,
-                            <?php echo $balance['balance']; ?> remaining
+                            <?php echo $balance['entitled']; ?> Entitled,
+                            <?php echo $balance['taken']; ?> Taken
                         </small>
                     </div>
                 </div>

@@ -398,36 +398,43 @@ class Leaves_model extends CI_Model {
             }
         }
     }
-    /**
-     * Retrieve leave balances for each type for a specific employee.
-     * @param int $employeeId Employee identifier
-     * @return array List of leave balances per type
-     */
-    public function getLeaveBalanceForAllTypes($employeeId) {
-        // Ensure employee ID is provided
-        if (!isset($employeeId) || empty($employeeId)) {
-            return []; // Return an empty array if employee ID is not specified
-        }
-
-        // Construct the query
-        $this->db->select('
-            t.id AS type_id,
-            t.name AS type_name,
-            COALESCE(SUM(e.days), 0) AS entitled,
-            COALESCE(SUM(IF(l.status = \'accepted\', l.duration, 0)), 0) AS taken,
-            (COALESCE(SUM(e.days), 0) - COALESCE(SUM(IF(l.status = \'accepted\', l.duration, 0)), 0)) AS balance
-        ');
-        $this->db->from('types t');
-        $this->db->join('entitleddays e', 't.id = e.type AND e.employee = ' . (int)$employeeId, 'left');
-        $this->db->join('leaves l', 'e.employee = l.employee AND e.type = l.type AND l.status = \'accepted\'', 'left');
-        $this->db->where('e.employee', (int)$employeeId);
-        $this->db->group_by('t.id, t.name');
-        $this->db->order_by('t.id');
-
-        // Execute the query and get results
-        $query = $this->db->get();
-        return $query->result_array();
+/**
+ * Retrieve leave balances for each type for a specific employee.
+ * @param int $employeeId Employee identifier
+ * @return array List of leave balances per type
+ */
+public function getLeaveBalanceForAllTypes($employeeId) {
+    // Ensure employee ID is provided
+    if (!isset($employeeId) || empty($employeeId)) {
+        return []; // Return an empty array if employee ID is not specified
     }
+
+    // Construct the query
+    $this->db->select('
+        t.id AS type_id,
+        t.name AS type_name,
+        COALESCE(SUM(CASE
+            WHEN CURDATE() BETWEEN e.startdate AND e.enddate THEN e.days
+            ELSE 0
+        END), 0) AS entitled,
+        COALESCE(SUM(IF(l.status IN (2, 3), l.duration, 0)), 0) AS taken,
+        (COALESCE(SUM(CASE
+            WHEN CURDATE() BETWEEN e.startdate AND e.enddate THEN e.days
+            ELSE 0
+        END), 0) - COALESCE(SUM(IF(l.status IN (2, 3), l.duration, 0)), 0)) AS balance
+    ');
+    $this->db->from('types t');
+    $this->db->join('entitleddays e', 't.id = e.type AND e.employee = ' . (int)$employeeId, 'left');
+    $this->db->join('leaves l', 'e.employee = l.employee AND e.type = l.type AND l.status IN (2, 3)', 'left');
+    $this->db->where('e.employee', (int)$employeeId);
+    $this->db->group_by('t.id, t.name');
+    $this->db->order_by('t.id');
+
+    // Execute the query and get results
+    $query = $this->db->get();
+    return $query->result_array();
+}
+
 
 
     /**
