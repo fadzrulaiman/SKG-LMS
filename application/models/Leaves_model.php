@@ -398,43 +398,45 @@ class Leaves_model extends CI_Model {
             }
         }
     }
+
 /**
- * Retrieve leave balances for each type for a specific employee.
+ * Retrieve leave balances for each type for a specific employee, excluding type_id 0.
  * @param int $employeeId Employee identifier
  * @return array List of leave balances per type
  */
 public function getLeaveBalanceForAllTypes($employeeId) {
     // Ensure employee ID is provided
     if (!isset($employeeId) || empty($employeeId)) {
-        return []; // Return an empty array if employee ID is not specified
+        return []; // Return an empty array if the employee ID is not specified
     }
-    // Construct the query
-    $this->db->select('
-    t.id AS type_id,
-    t.name AS type_name,
-    ROUND(COALESCE(SUM(CASE
-        WHEN CURDATE() BETWEEN e.startdate AND e.enddate THEN e.days
-        ELSE 0
-    END), 0), 0) AS entitled,
-    ROUND(COALESCE(SUM(IF(l.status IN (2, 3), l.duration, 0)), 0), 0) AS taken,
-    (ROUND(COALESCE(SUM(CASE
-        WHEN CURDATE() BETWEEN e.startdate AND e.enddate THEN e.days
-        ELSE 0
-    END), 0), 0) - ROUND(COALESCE(SUM(IF(l.status IN (2, 3), l.duration, 0)), 0), 0)) AS balance
-    ');
-    $this->db->from('types t');
-    $this->db->join('entitleddays e', 't.id = e.type AND e.employee = ' . (int)$employeeId, 'left');
-    $this->db->join('leaves l', 'e.employee = l.employee AND e.type = l.type AND l.status IN (2, 3)', 'left');
-    $this->db->where('e.employee', (int)$employeeId);
-    $this->db->group_by('t.id, t.name');
-    $this->db->order_by('t.id');
 
-    // Execute the query and get results
+    // Create a subquery to calculate entitled days, using `FLOOR()` to round down to an integer
+    $entitledDaysSubquery = $this->db->select('e.type, FLOOR(SUM(e.days)) AS entitled')
+        ->from('entitleddays e')
+        ->where('e.employee', (int)$employeeId)
+        ->where('CURDATE() BETWEEN e.startdate AND e.enddate')
+        ->group_by('e.type')
+        ->get_compiled_select();
+
+    // Main query to calculate the leave balance per type
+    $this->db->select('
+        t.id AS type_id,
+        t.name AS type_name,
+        COALESCE(ed.entitled, 0) AS entitled,
+        FLOOR(COALESCE(SUM(IF(l.status IN (2, 3), l.duration, 0)), 0)) AS taken,
+        (COALESCE(ed.entitled, 0) - FLOOR(COALESCE(SUM(IF(l.status IN (2, 3), l.duration, 0)), 0))) AS balance
+    ')
+        ->from('types t')
+        ->join("($entitledDaysSubquery) ed", 't.id = ed.type', 'left')
+        ->join('leaves l', 'l.employee = ' . (int)$employeeId . ' AND l.type = t.id AND l.status IN (2, 3)', 'left')
+        ->where('t.id !=', 0)
+        ->group_by('t.id, t.name, ed.entitled')
+        ->order_by('t.id');
+
+    // Execute the query and return results
     $query = $this->db->get();
     return $query->result_array();
 }
-
-
 
     /**
      * Detect if the leave request overlaps with another request of the employee

@@ -282,7 +282,7 @@
             <img src="<?php echo base_url();?>assets/images/loading.gif"  align="middle">
         </div>
  </div>
-
+<!-- Old Styling
 <link href="<?php echo base_url();?>assets/datatable/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 <link href="<?php echo base_url();?>assets/datatable/Buttons-1.1.2/css/buttons.dataTables.min.css" rel="stylesheet"/>
 <link href="<?php echo base_url();?>assets/datatable/ColReorder-1.3.1/css/colReorder.dataTables.min.css" rel="stylesheet">
@@ -298,6 +298,30 @@
 <?php //Prevent HTTP-404 when localization isn't needed
 if ($language_code != 'en') { ?>
 <script src="<?php echo base_url();?>assets/js/i18n/jquery.ui.datepicker-<?php echo $language_code;?>.js"></script>
+<?php } ?>
+-->
+<!-- DataTables Core and Plugins -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/colreorder/1.6.2/css/colReorder.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/select/1.7.0/css/select.dataTables.min.css">
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/colreorder/1.6.2/js/dataTables.colReorder.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js"></script>
+
+<!-- jQuery UI (flick theme) -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/flick/jquery-ui.min.css">
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+<!-- Bootbox -->
+<script src="https://cdn.jsdelivr.net/npm/bootbox@5.5.2/bootbox.min.js"></script>
+
+<!-- Conditional jQuery UI DatePicker Localization -->
+<?php if ($language_code != 'en') { ?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-i18n/1.12.1/i18n/jquery.ui.datepicker-<?php echo strtolower($language_code); ?>.js"></script>
 <?php } ?>
 
 <script type="text/javascript">
