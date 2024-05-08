@@ -17,7 +17,6 @@
 
 <?php $attributes = array('id' => 'frmLeaveForm', 'enctype' => 'multipart/form-data');
 echo form_open($form_action, $attributes) ?>
-
     <label for="type" required>
         <?php echo lang('hr_leaves_create_field_type');?>
         &nbsp;<span class="muted" id="lblCredit"><?php echo '(' . $credit . ')'; ?></span>
@@ -31,14 +30,18 @@ echo form_open($form_action, $attributes) ?>
     <label for="viz_startdate" required><?php echo lang('hr_leaves_create_field_start');?></label>
     <input type="text" name="viz_startdate" id="viz_startdate" value="<?php echo set_value('startdate'); ?>" />
     <input type="hidden" name="startdate" id="startdate" />
+    <input type="hidden" value="Morning" name="startdatetype" id="startdatetype" />
+<!--
     <select name="startdatetype" id="startdatetype">
         <option value="Morning" selected><?php echo lang('Morning');?></option>
         <option value="Afternoon"><?php echo lang('Afternoon');?></option>
     </select><br />
-
+    -->
     <label for="viz_enddate" required><?php echo lang('hr_leaves_create_field_end');?></label>
     <input type="text" name="viz_enddate" id="viz_enddate" value="<?php echo set_value('enddate'); ?>" />
     <input type="hidden" name="enddate" id="enddate" />
+    <input type="hidden" value="Afternoon" name="enddatetype" id="enddatetype" />
+    <!--
     <select name="enddatetype" id="enddatetype">
         <option value="Morning"><?php echo lang('Morning');?></option>
         <option value="Afternoon" selected><?php echo lang('Afternoon');?></option>

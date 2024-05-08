@@ -14,8 +14,8 @@
         <?php echo validation_errors(); ?>
 
         <?php
-$attributes = array('id' => 'frmLeaveForm', 'enctype' => 'multipart/form-data');
-echo form_open('leaves/create', $attributes) ?>
+        $attributes = array('id' => 'frmLeaveForm', 'enctype' => 'multipart/form-data');
+        echo form_open('leaves/create', $attributes) ?>
         <h3>Leave Balance</h3>
         <?php if (isset($leaveBalances) && !empty($leaveBalances)): ?>
         <div class="dashboard-cards-wrapper">
@@ -43,10 +43,10 @@ echo form_open('leaves/create', $attributes) ?>
                 id="lblCredit"><?php if (!is_null($credit)) { ?>(<?php echo $credit; ?>)<?php } ?></span>
         </label>
         <select class="input-xxlarge" name="type" id="type">
-            <option value="0" <?php if ($defaultType == 0) echo "selected"; ?>>Annual Leave</option>
-            <option value="1" <?php if ($defaultType == 1) echo "selected"; ?>>Sick Leave</option>
+            <option value="1" <?php if ($defaultType == 1) echo "selected"; ?>>Annual Leave</option>
+            <option value="2" <?php if ($defaultType == 2) echo "selected"; ?>>Sick Leave</option>
             <!-- Check the condition and disable if necessary -->
-            <option value="2" <?php if ($defaultType == 2) echo "selected"; ?> <?php
+            <option value="3" <?php if ($defaultType == 3) echo "selected"; ?> <?php
             // Loop through balances to find 'Annual Leave' and check its balance
             foreach ($leaveBalances as $balance) {
                 if ($balance['type_name'] == 'Annual Leave' && $balance['balance'] != 0) {
@@ -60,20 +60,12 @@ echo form_open('leaves/create', $attributes) ?>
         <input type="text" name="viz_startdate" id="viz_startdate" value="<?php echo set_value('startdate'); ?>"
             autocomplete="off" />
         <input type="hidden" name="startdate" id="startdate" />
-        <select name="startdatetype" id="startdatetype">
-            <option value="Morning" selected><?php echo lang('Morning');?></option>
-            <option value="Afternoon"><?php echo lang('Afternoon');?></option>
-        </select><br />
-
+        <input type="hidden" value="Morning" name="startdatetype" id="startdatetype" />
         <label for="viz_enddate"><?php echo lang('leaves_create_field_end');?></label>
         <input type="text" name="viz_enddate" id="viz_enddate" value="<?php echo set_value('enddate'); ?>"
             autocomplete="off" />
         <input type="hidden" name="enddate" id="enddate" />
-        <select name="enddatetype" id="enddatetype">
-            <option value="Morning"><?php echo lang('Morning');?></option>
-            <option value="Afternoon" selected><?php echo lang('Afternoon');?></option>
-        </select><br />
-
+        <input type="hidden" value="Afternoon" name="enddatetype" id="enddatetype" />
         <label for="duration"><?php echo lang('leaves_create_field_duration');?> <span
                 id="tooltipDayOff"></span></label>
         <?php if ($this->config->item('disable_edit_leave_duration') == TRUE) { ?>
@@ -81,19 +73,17 @@ echo form_open('leaves/create', $attributes) ?>
         <?php } else { ?>
         <input type="text" name="duration" id="duration" value="<?php echo set_value('duration'); ?>" />
         <?php } ?>
-        <div class="alert hide alert-error" id="lblCreditAlert" onclick="$('#lblCreditAlert').hide();">
+        <div class="alert hide alert-error" id="lblCreditAlert">
             <button type="button" class="close">&times;</button>
             <?php echo lang('leaves_create_field_duration_message');?>
         </div>
 
-        <div class="alert hide alert-error" id="lblOverlappingAlert" onclick="$('#lblOverlappingAlert').hide();">
-            <button type="button" class="close">&times;</button>
+        <div class="alert hide alert-error" id="lblOverlappingAlert">
             <?php echo lang('leaves_create_field_overlapping_message');?>
         </div>
 
         <div class="alert hide alert-error" id="lblOverlappingDayOffAlert"
             onclick="$('#lblOverlappingDayOffAlert').hide();">
-            <button type="button" class="close">&times;</button>
             <?php echo lang('leaves_flash_msg_overlap_dayoff');?>
         </div>
 

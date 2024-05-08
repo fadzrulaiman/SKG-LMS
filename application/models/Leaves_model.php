@@ -408,20 +408,19 @@ public function getLeaveBalanceForAllTypes($employeeId) {
     if (!isset($employeeId) || empty($employeeId)) {
         return []; // Return an empty array if employee ID is not specified
     }
-
     // Construct the query
     $this->db->select('
-        t.id AS type_id,
-        t.name AS type_name,
-        COALESCE(SUM(CASE
-            WHEN CURDATE() BETWEEN e.startdate AND e.enddate THEN e.days
-            ELSE 0
-        END), 0) AS entitled,
-        COALESCE(SUM(IF(l.status IN (2, 3), l.duration, 0)), 0) AS taken,
-        (COALESCE(SUM(CASE
-            WHEN CURDATE() BETWEEN e.startdate AND e.enddate THEN e.days
-            ELSE 0
-        END), 0) - COALESCE(SUM(IF(l.status IN (2, 3), l.duration, 0)), 0)) AS balance
+    t.id AS type_id,
+    t.name AS type_name,
+    ROUND(COALESCE(SUM(CASE
+        WHEN CURDATE() BETWEEN e.startdate AND e.enddate THEN e.days
+        ELSE 0
+    END), 0), 0) AS entitled,
+    ROUND(COALESCE(SUM(IF(l.status IN (2, 3), l.duration, 0)), 0), 0) AS taken,
+    (ROUND(COALESCE(SUM(CASE
+        WHEN CURDATE() BETWEEN e.startdate AND e.enddate THEN e.days
+        ELSE 0
+    END), 0), 0) - ROUND(COALESCE(SUM(IF(l.status IN (2, 3), l.duration, 0)), 0), 0)) AS balance
     ');
     $this->db->from('types t');
     $this->db->join('entitleddays e', 't.id = e.type AND e.employee = ' . (int)$employeeId, 'left');

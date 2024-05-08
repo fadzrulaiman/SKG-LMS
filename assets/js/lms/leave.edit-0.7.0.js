@@ -126,6 +126,30 @@ function getLeaveInfos(preventDefault) {
         $('#frmModalAjaxWait').modal('hide');
     });
 }
+// Event handler that toggles the "required" attribute on the attachment field
+function toggleAttachmentRequired() {
+    var leaveType = $('#type').val();  // Get the value of the selected leave type
+    var attachmentField = $('#attachment');  // Reference the attachment input
+
+    // Assuming '1' corresponds to Sick Leave
+    if (leaveType === '2') {
+        // Make the attachment field required
+        attachmentField.prop('required', true);
+
+    } else {
+        // Remove the required attribute
+        attachmentField.prop('required', false);
+
+    }
+}
+
+// Attach the event listener to the #type dropdown to detect changes
+$('#type').change(toggleAttachmentRequired);
+
+// Call this function on page load to apply the rule based on the initial value
+$(document).ready(function() {
+    toggleAttachmentRequired();
+});
 
 
 //When editing/viewing a leave request, refresh the information about overlapping and days off in the period

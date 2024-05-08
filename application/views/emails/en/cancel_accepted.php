@@ -28,7 +28,7 @@
                 <td>From &nbsp;</td><td>{StartDate}&nbsp;({StartDateType})</td>
             </tr>
             <tr>
-                <td>To &nbsp;</td><td>{EndDate}&nbsp;({EndDateType})</td>
+                <td>To &nbsp;</td><td>{EndDate}</td>
             </tr>
             <tr>
                 <td>Type &nbsp;</td><td>{Type}</td>
