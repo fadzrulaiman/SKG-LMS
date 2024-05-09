@@ -1,0 +1,111 @@
+/* custom.css */
+
+/* Global Styles */
+/* Navbar */
+.main-content {
+    padding-top: 60px;
+}
+.navbar-inverse {
+    background-color: #343a40;
+    border: none;
+    border-radius: 0;
+}
+
+.navbar-inverse .navbar-inner {
+    padding: 10px 20px;
+}
+
+.navbar-inverse .brand {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.navbar-inverse .brand img {
+    margin-right: 8px;
+}
+
+.navbar-inverse .nav > li > a {
+    color: #ffffff;
+    padding: 10px 15px;
+}
+
+.navbar-inverse .nav > li > a:hover,
+.navbar-inverse .nav > li > a:focus {
+    background-color: #495057;
+    color: #ffffff;
+}
+
+.navbar-inverse .dropdown-menu {
+    background-color: #343a40;
+    border: none;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-inverse .dropdown-menu > li > a {
+    color: #ffffff;
+    padding: 8px 16px;
+}
+
+.navbar-inverse .dropdown-menu > li > a:hover,
+.navbar-inverse .dropdown-menu > li > a:focus {
+    background-color: #495057;
+}
+
+.navbar-form.pull-left .btn-warning {
+    background-color: #f0ad4e;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    font-weight: bold;
+}
+
+/* Modal */
+.modal {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-header,
+.modal-footer {
+    background-color: #343a40;
+    color: #ffffff;
+    border: none;
+}
+
+.modal-header .close {
+    color: #ffffff;
+}
+
+.modal-body {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-body img {
+    max-width: 100%;
+}
+
+.btn {
+    background-color: #f0ad4e;
+    color: #ffffff;
+    border: none;
+    padding: 5px 15px;
+    margin: 5px;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: #d48828;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #343a40;
+}
+
+.badge-info {
+    background-color: #17a2b8;
+    color: #ffffff;
+}

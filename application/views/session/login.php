@@ -20,41 +20,14 @@ function start() {
 }
 </script>
 <?php }?>
-
-<style>
-body {
-    background-image: url('<?php echo base_url();?>assets/images/login-bg.jpg');
-    background-size: cover;
-}
-
-.vertical-center {
-    min-height: 10%;
-    /* Fallback for browsers not supporting vh unit */
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-}
-
-.form-box {
-    padding: 20px;
-    border: 1px #e4e4e4 solid;
-    border-radius: 4px;
-    box-shadow: 0 0 6px #ccc;
-    background-color: #fff;
-}
-</style>
-
 <div class="row vertical-center">
     <div class="span3">&nbsp;</div>
     <div class="span6 form-box">
         <div class="row-fluid">
             <div class="span6">
-                <h2><?php echo lang('session_login_title');?><?php echo $help;?></h2>
-
+                <h2><?php echo lang('session_login_title');?></h2>
                 <?php echo $flash_partial_view;?>
-
                 <?php echo validation_errors(); ?>
-
                 <?php $attributes = array('id' => 'loginFrom');echo form_open('session/login', $attributes);
                 $languages = $this->polyglot->nativelanguages($this->config->item('languages'));?>
                 <input type="hidden" name="last_page" value="session/login" />
@@ -100,15 +73,9 @@ body {
             <div class="span6" style="height:100%;">
                 <div class="row-fluid">
                     <div class="span12">
-                        <img src="<?php echo base_url();?>assets/images/logo_simple.png">
-                    </div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">&nbsp;</div>
-                </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        <span style="font-size: 250%; font-weight: bold; line-height: 100%;">
+                        <img src="<?php echo base_url();?>assets/images/logo_simple.png"
+                            style="width: 100%; height: auto; margin: 10px; display: block;">
+                        <span style="font-size:250%; font-weight: bold; line-height: 100%; color: black;">
                             <center><?php echo lang('Leave Management System');?></center>
                         </span>
                     </div>
@@ -127,6 +94,125 @@ body {
         <img src="<?php echo base_url();?>assets/images/loading.gif" align="middle">
     </div>
 </div>
+<style>
+body {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('<?php echo base_url();?>assets/images/ppns_bg.png');
+    background-size: cover;
+    background-position: center;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.vertical-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 450px;
+    /* Increased form box width */
+    margin: auto;
+}
+
+.form-box {
+    width: 150%;
+    padding: 20px;
+    /* Adjusted for more space */
+    border: 10px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    background-color: rgba(255, 255, 255, 0.95);
+    /* Increased opacity for better readability */
+    transition: box-shadow 0.3s ease-in-out;
+    text-align: left;
+}
+
+.form-box:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.6);
+}
+
+.form-box h2 {
+    margin-bottom: 20px;
+    font-size: 50px;
+    /* Larger font size */
+    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+label {
+    font-size: 18px;
+    /* Slightly larger for clarity */
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 2px;
+    display: block;
+}
+
+.input-medium {
+    width: 90%;
+    padding: 10px 14px;
+    margin-bottom: 2px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    /* Larger font size for input fields */
+    transition: border-color 0.2s;
+}
+
+.input-medium:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+.btn {
+    display: inline-block;
+    width: 90%;
+    padding: 12px 0;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.centered-text {
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+}
+
+textarea {
+    visibility: hidden;
+}
+</style>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
 <script type="text/javascript">
 //Encrypt the password using RSA and send the ciphered value into the form

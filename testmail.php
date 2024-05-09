@@ -17,7 +17,7 @@ $env = is_null(getenv('CI_ENV'))?'':getenv('CI_ENV');
 //Configuration values are taken from application/config/(env)/email.php
 //-----------------------------------------------------------------
 //Please enter a valid target email address. A test email will be sent here
-define('EMAIL_ADDRESS', '');
+define('EMAIL_ADDRESS', 'fadzrulaiman@sawitkinabalu.com.my');
 
 //-----------------------------------------------------------------
 ?>

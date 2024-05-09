@@ -99,7 +99,6 @@ class Connection extends CI_Controller {
             $data['flash_partial_view'] = $this->load->view('templates/flash', $data, TRUE);
             $this->load->view('templates/header', $data);
             $this->load->view('session/login', $data);
-            $this->load->view('templates/footer');
         } else {
             $this->load->model('users_model');
             //Set language
