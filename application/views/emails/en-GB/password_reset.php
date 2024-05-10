@@ -1,27 +1,39 @@
 <?php
 /**
- * Email template.You can change the content of this template
- * @copyright  Copyright (c) Fadzrul Aiman
-
- * @since         0.1.0
+ * Email template. You can change the content of this template
+ * @since 0.1.0
  */
 ?>
 <html lang="en">
-    <head>
-        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <meta charset="UTF-8">
-        <style>
-            table {width:50%;margin:5px;border-collapse:collapse;}
-            table, th, td {border: 1px solid black;}
-            th, td {padding: 20px;}
-            h5 {color:red;}
-        </style>
-    </head>
-    <body>
-        <h3>{Title}</h3>
-        <p>Dear {Firstname} {Lastname},</p>
-        <p>Your SKG-LMS password has been reset. If you did not perform this operation, please contact your manager.</p>
-        <hr>
-        <h5>*** This is an automatically generated message, please do not reply to this message ***</h5>
-    </body>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta charset="UTF-8">
+</head>
+<body style="font-family: Arial, sans-serif; color: #333; background-color: #f4f4f4; margin: 0; padding: 20px;">
+    <!-- Main Container -->
+    <table width="600" align="center" cellpadding="0" cellspacing="0" style="background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-collapse: collapse;">
+        <!-- Header -->
+        <tr>
+            <td style="padding: 20px; background-color: #007bff; color: #ffffff; text-align: center; font-size: 24px; font-weight: bold;">
+                {Title}
+            </td>
+        </tr>
+
+        <!-- Content -->
+        <tr>
+            <td style="padding: 20px; font-size: 14px;">
+                <p>Dear {Firstname} {Lastname},</p>
+                <p>Your SKG-LMS password has been reset. If you did not perform this operation, please contact your manager immediately to secure your account.</p>
+            </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 20px; background-color: #f4f4f4; color: #777; text-align: center; font-size: 12px;">
+                <hr style="border-top: 1px solid #e0e0e0;">
+                <h5 style="color: #ff4444;">*** This is an automatically generated message, please do not reply to this message ***</h5>
+            </td>
+        </tr>
+    </table>
+</body>
 </html>

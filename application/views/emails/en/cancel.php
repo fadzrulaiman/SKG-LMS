@@ -27,7 +27,7 @@
                 <table width="100%" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
                     <tr>
                         <td width="40%" style="border: 1px solid #e0e0e0; padding: 10px; font-weight: bold;">From</td>
-                        <td width="60%" style="border: 1px solid #e0e0e0; padding: 10px;">{StartDate} ({StartDateType})</td>
+                        <td width="60%" style="border: 1px solid #e0e0e0; padding: 10px;">{StartDate} </td>
                     </tr>
                     <tr>
                         <td style="border: 1px solid #e0e0e0; padding: 10px; font-weight: bold;">To</td>
