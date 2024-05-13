@@ -843,37 +843,42 @@ public function edit($id) {
         header("Content-Type: application/json");
         $id = $this->input->post('id', TRUE);
         $type = $this->input->post('type', TRUE);
-        $date = $this->input->post('startdate', TRUE);
-        $d = DateTime::createFromFormat('Y-m-d', $date);
-        $startdate = ($d && $d->format('Y-m-d') === $date)?$date:'1970-01-01';
-        $startdate = preg_replace("([^0-9-])", "", $startdate);
-        $date = $this->input->post('enddate', TRUE);
-        $d = DateTime::createFromFormat('Y-m-d', $date);
-        $enddate = ($d && $d->format('Y-m-d') === $date)?$date:'1970-01-01';
-        $enddate = preg_replace("([^0-9-])", "", $enddate);
-        $startdatetype = $this->input->post('startdatetype', TRUE);     //Mandatory field checked by frontend
-        $enddatetype = $this->input->post('enddatetype', TRUE);       //Mandatory field checked by frontend
+
+        // Helper function to process and validate date inputs
+        function processDate($inputDate) {
+            if (!empty($inputDate)) {
+                $dateObject = DateTime::createFromFormat('Y-m-d', $inputDate);
+                if ($dateObject && $dateObject->format('Y-m-d') === $inputDate) {
+                    return preg_replace("([^0-9-])", "", $inputDate);
+                }
+            }
+            return '1970-01-01'; // Default date if input is invalid or null
+        }
+
+        // Process start and end dates
+        $startdate = processDate($this->input->post('startdate', TRUE));
+        $enddate = processDate($this->input->post('enddate', TRUE));
+
+        $startdatetype = $this->input->post('startdatetype', TRUE); // Mandatory field checked by frontend
+        $enddatetype = $this->input->post('enddatetype', TRUE);     // Mandatory field checked by frontend
         $leave_id = intval($this->input->post('leave_id', TRUE));
-        $leaveValidator = new stdClass;
+
+        $leaveValidator = new stdClass();
         $deductDayOff = FALSE;
+
         if (isset($id) && isset($type)) {
             $typeObject = $this->types_model->getTypeByName($type);
             $deductDayOff = $typeObject['deduct_days_off'];
-            if (isset($startdate) && $startdate !== "") {
-                $leaveValidator->credit = $this->leaves_model->getLeavesTypeBalanceForEmployee($id, $type, $startdate);
-            } else {
-                $leaveValidator->credit = $this->leaves_model->getLeavesTypeBalanceForEmployee($id, $type);
-            }
-        }
-        if (isset($id) && isset($startdate) && isset($enddate)) {
-            if (isset($leave_id)) {
-                $leaveValidator->overlap = $this->leaves_model->detectOverlappingLeaves($id, $startdate, $enddate, $startdatetype, $enddatetype, $leave_id);
-            } else {
-                $leaveValidator->overlap = $this->leaves_model->detectOverlappingLeaves($id, $startdate, $enddate, $startdatetype, $enddatetype);
-            }
+            $leaveValidator->credit = $this->leaves_model->getLeavesTypeBalanceForEmployee($id, $type, $startdate);
         }
 
-        //Returns end date of the yearly leave period or NULL if the user is not linked to a contract
+        if (isset($id) && $startdate !== '1970-01-01' && $enddate !== '1970-01-01') {
+            $leaveValidator->overlap = $this->leaves_model->detectOverlappingLeaves(
+                $id, $startdate, $enddate, $startdatetype, $enddatetype, $leave_id ?? null
+            );
+        }
+
+        // Contract boundaries handling
         $this->load->model('contracts_model');
         $startentdate = NULL;
         $endentdate = NULL;
@@ -882,22 +887,20 @@ public function edit($id) {
         $leaveValidator->PeriodEndDate = $endentdate;
         $leaveValidator->hasContract = $hasContract;
 
-        //Add non working days between the two dates (including their type: morning, afternoon and all day)
-        if (isset($id) && ($startdate!='') && ($enddate!='')  && $hasContract===TRUE) {
+        if (isset($id) && $startdate !== '1970-01-01' && $enddate !== '1970-01-01' && $hasContract === TRUE) {
             $this->load->model('dayoffs_model');
             $leaveValidator->listDaysOff = $this->dayoffs_model->listOfDaysOffBetweenDates($id, $startdate, $enddate);
-            //Sum non-working days and overlapping with day off detection
-            $result = $this->leaves_model->actualLengthAndDaysOff($id, $startdate, $enddate, $startdatetype, $enddatetype, $leaveValidator->listDaysOff, $deductDayOff);
+            $result = $this->leaves_model->actualLengthAndDaysOff(
+                $id, $startdate, $enddate, $startdatetype, $enddatetype, $leaveValidator->listDaysOff, $deductDayOff
+            );
             $leaveValidator->overlapDayOff = $result['overlapping'];
             $leaveValidator->lengthDaysOff = $result['daysoff'];
             $leaveValidator->length = $result['length'];
-        }
-        //If the user has no contract, simply compute a date difference between start and end dates
-        if (isset($id) && isset($startdate) && isset($enddate)  && $hasContract===FALSE) {
+        } elseif ($hasContract === FALSE) {
             $leaveValidator->length = $this->leaves_model->length($id, $startdate, $enddate, $startdatetype, $enddatetype);
         }
 
-        //Repeat start and end dates of the leave request
+        // Repeat start and end dates of the leave request
         $leaveValidator->RequestStartDate = $startdate;
         $leaveValidator->RequestEndDate = $enddate;
 

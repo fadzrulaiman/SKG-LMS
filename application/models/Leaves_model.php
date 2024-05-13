@@ -410,10 +410,11 @@ public function getLeaveBalanceForAllTypes($employeeId) {
         return []; // Return an empty array if the employee ID is not specified
     }
 
-    // Create a subquery to calculate entitled days, using `FLOOR()` to round down to an integer
+    // Create a subquery to calculate entitled days, accounting for both employee and contract matching
     $entitledDaysSubquery = $this->db->select('e.type, FLOOR(SUM(e.days)) AS entitled')
         ->from('entitleddays e')
-        ->where('e.employee', (int)$employeeId)
+        ->join('users u', 'u.id = e.employee OR (e.employee IS NULL AND u.contract = e.contract)', 'left')
+        ->where('u.id', (int)$employeeId)  // Ensuring we are looking at the right user
         ->where('CURDATE() BETWEEN e.startdate AND e.enddate')
         ->group_by('e.type')
         ->get_compiled_select();
@@ -437,6 +438,8 @@ public function getLeaveBalanceForAllTypes($employeeId) {
     $query = $this->db->get();
     return $query->result_array();
 }
+
+
 
     /**
      * Detect if the leave request overlaps with another request of the employee
