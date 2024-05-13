@@ -74,7 +74,7 @@ function start() {
                 <div class="row-fluid">
                     <div class="span12">
                         <img src="<?php echo base_url();?>assets/images/logo_simple.png"
-                            style="width: 100%; height: auto; margin: 10px; display: block;">
+                            style="width: auto; height: auto; margin: 10px auto; display: block;">
                         <span style="font-size:250%; font-weight: bold; line-height: 100%; color: black;">
                             <center><?php echo lang('Leave Management System');?></center>
                         </span>
@@ -100,35 +100,26 @@ body {
     background-size: cover;
     background-position: center;
     font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    color: rgba(0, 0, 0, 0.6);
     margin: 0;
     padding: 0;
-    color: rgba(0, 0, 0, 0.6);
 }
 
 .vertical-center {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 450px;
-    /* Increased form box width */
-    margin: auto;
+    min-height: 100vh;
 }
 
 .form-box {
-    width: 150%;
+    width: auto;
+    max-width: 800px; 
+    height: auto;
     padding: 20px;
-    /* Adjusted for more space */
-    border: 10px;
     border-radius: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
     background-color: rgba(255, 255, 255, 0.95);
-    /* Increased opacity for better readability */
     transition: box-shadow 0.3s ease-in-out;
     text-align: left;
 }
@@ -138,17 +129,15 @@ body {
 }
 
 .form-box h2 {
-    margin-bottom: 20px;
-    font-size: 50px;
-    /* Larger font size */
+    font-size: 2.5em;
     color: #333;
     text-align: center;
     text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
 label {
-    font-size: 18px;
-    /* Slightly larger for clarity */
+    font-size: 1.1em;
     font-weight: bold;
     color: #555;
     margin-bottom: 2px;
@@ -156,27 +145,19 @@ label {
 }
 
 .input-medium {
-    width: 90%;
-    padding: 10px 14px;
-    margin-bottom: 2px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
     border: 2px solid #ccc;
     border-radius: 8px;
-    font-size: 16px;
-    /* Larger font size for input fields */
+    font-size: 1em;
     transition: border-color 0.2s;
 }
 
-.input-medium:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
-}
-
 .btn {
-    display: inline-block;
-    width: 90%;
+    width: 100%;
     padding: 12px 0;
-    font-size: 16px;
+    font-size: 1em;
     font-weight: bold;
     text-align: center;
     border: none;
@@ -204,7 +185,7 @@ label {
 }
 
 .centered-text {
-    font-size: 18px;
+    font-size: 1.1em;
     color: #000;
     text-align: center;
 }
@@ -213,6 +194,7 @@ textarea {
     visibility: hidden;
 }
 </style>
+
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
 <script type="text/javascript">
 //Encrypt the password using RSA and send the ciphered value into the form
