@@ -205,10 +205,10 @@ CREATE TABLE `contracts` (
 --
 
 INSERT INTO `contracts` (`id`, `name`, `startentdate`, `endentdate`, `weekly_duration`, `daily_duration`, `default_leave_type`) VALUES
-(1, 'Executive before 13 March 2006', '01/01', '12/31', NULL, NULL, 0),
-(2, 'Non-Executive before 13 March 2006', '01/01', '12/31', NULL, NULL, 0),
-(3, 'Executive after 13 March 2006', '01/01', '12/31', NULL, NULL, 0),
-(4, 'Non-Executive after 13 March 2006', '01/01', '12/31', NULL, NULL, 0);
+(0, 'Executive before 13 March 2006', '01/01', '12/31', NULL, NULL, 0),
+(1, 'Non-Executive before 13 March 2006', '01/01', '12/31', NULL, NULL, 0),
+(2, 'Executive after 13 March 2006', '01/01', '12/31', NULL, NULL, 0),
+(3, 'Non-Executive after 13 March 2006', '01/01', '12/31', NULL, NULL, 0);
 
 
 -- --------------------------------------------------------
@@ -576,6 +576,7 @@ CREATE TABLE `types` (
 --
 
 INSERT INTO `types` (`id`, `name`, `acronym`, `deduct_days_off`) VALUES
+(0, '', '', 0),
 (1, 'Annual Leave', 'AL', 0),
 (2, 'Sick Leave', 'SL', 0),
 (3, 'Leave Bank', '', 0);
