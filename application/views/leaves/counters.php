@@ -24,12 +24,12 @@
                 <th colspan="2" style="text-align: center;"><?php echo lang('leaves_summary_thead_available');?></th>
                 <th rowspan="2"><i class="mdi mdi-plus-circle" aria-hidden="true"></i>&nbsp;<?php echo lang('leaves_summary_thead_entitled');?></th>
                 <th rowspan="2"><i class="mdi mdi-minus-circle" aria-hidden="true"></i>&nbsp;<?php echo lang('leaves_summary_thead_taken');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="<?php echo lang('Accepted');?> + <?php echo lang('Cancellation');?>"></i></th>
-                <th rowspan="2"><i class="mdi mdi-information" aria-hidden="true"></i>&nbsp;<span class="label"><?php echo lang('Planned');?></span></th>
+                <!--<th rowspan="2"><i class="mdi mdi-information" aria-hidden="true"></i>&nbsp;<span class="label"><?php echo lang('Planned');?></span></th>-->
                 <th rowspan="2"><i class="mdi mdi-information" aria-hidden="true"></i>&nbsp;<span class="label label-warning"><?php echo lang('Requested');?></span></th>
                 </tr>
                 <tr>
                 <th><?php echo lang('leaves_summary_thead_actual');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="<?php echo lang('leaves_summary_thead_entitled');?> - (<?php echo lang('Accepted');?> + <?php echo lang('Cancellation');?>)"></i></th>
-                <th><?php echo lang('leaves_summary_thead_simulated');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="<?php echo lang('leaves_summary_thead_entitled');?> - (<?php echo lang('Accepted');?> + <?php echo lang('Cancellation');?> + <?php echo lang('Planned');?> + <?php echo lang('Requested');?>)"></i></th>
+                <th><?php echo lang('leaves_summary_thead_simulated');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="<?php echo lang('leaves_summary_thead_entitled');?> - (<?php echo lang('Accepted');?> + <?php echo lang('Cancellation');?> + <?php echo lang('Requested');?>)"></i></th>
                 </tr>
             </thead>
             <tbody>
@@ -51,11 +51,6 @@
                 </td>
                 <td><?php echo ((float) $value[1]); ?></td>
                 <td><a href="<?php echo base_url();?>leaves?statuses=3|5&type=<?php echo $value[3]; ?>" target="_blank"><?php echo ((float) $value[0]); ?></a></td>
-                <?php if (empty($value[4])) { ?>
-                <td>&nbsp;</td>
-                <?php } else { ?>
-                <td><a href="<?php echo base_url();?>leaves?statuses=1&type=<?php echo $value[3]; ?>" target="_blank"><?php echo ((float) $value[4]); ?></a></td>
-                <?php } ?>
                 <?php if (empty($value[5])) { ?>
                 <td>&nbsp;</td>
                 <?php } else { ?>

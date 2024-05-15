@@ -17,7 +17,7 @@
 <h3><?php echo $department;?></h3>
 
 <div class="row-fluid">
-    <div class="span3"><span class="label"><?php echo lang('Planned');?></span></div>
+    <!--<div class="span3"><span class="label"><?php echo lang('Planned');?></span></div>-->
     <div class="span3"><span class="label label-success"><?php echo lang('Accepted');?></span></div>
     <div class="span3"><span class="label label-warning"><?php echo lang('Requested');?></span></div>
     <div class="span3">&nbsp;</div>

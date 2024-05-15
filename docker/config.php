@@ -282,7 +282,7 @@ $config['encryption_key'] = 'YJ9FljXV4axG7QTzEzbRaUBFwi0FzIls';
 | except for 'cookie_prefix' and 'cookie_httponly', which are ignored here.
 |
 */
-$config['sess_cookie_name']	= 'jorani_session';
+$config['sess_cookie_name']	= 'lms_session';
 $config['sess_driver'] = 'database';
 $config['sess_save_path'] = NULL;
 $config['sess_regenerate_destroy'] = FALSE;

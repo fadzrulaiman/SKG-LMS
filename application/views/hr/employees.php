@@ -245,7 +245,7 @@
 
         <label for="leaveStatus"><?php echo lang('leaves_create_field_status');?></label>
         <select name="leaveStatus" id ="leaveStatus">
-            <option value="1"><?php echo lang('Planned');?></option>
+            <!--<option value="1"><?php echo lang('Planned');?></option>-->
             <option value="2"><?php echo lang('Requested');?></option>
             <option value="3"><?php echo lang('Accepted');?></option>
             <option value="4"><?php echo lang('Rejected');?></option>

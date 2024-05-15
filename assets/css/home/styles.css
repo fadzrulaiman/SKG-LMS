@@ -1,6 +1,5 @@
-
 .dashboard-container {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 60px auto;
     padding: 50px;
     background-color: rgba(255, 255, 255, 0.9);
@@ -14,19 +13,19 @@ header {
 }
 
 .main-heading {
-    font-size: 3rem;
+    font-size: 2.5rem; /* Reduced from 3rem */
     font-weight: 700;
     color: #333;
     margin-bottom: 15px;
 }
 
 .welcome-message {
-    font-size: 1.4rem;
+    font-size: 1.2rem; /* Reduced from 1.4rem */
     color: #666;
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Reduced from 2rem */
     font-weight: 600;
     color: #007bff;
     border-bottom: 2px solid #007bff;
@@ -42,7 +41,7 @@ ul {
 
 ul li {
     margin-bottom: 12px;
-    font-size: 1.2rem;
+    font-size: 1rem; /* Reduced from 1.2rem */
     color: #444;
 }
 

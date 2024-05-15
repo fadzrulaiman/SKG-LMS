@@ -383,7 +383,7 @@ public function edit($id) {
         if (!empty($_FILES['attachment']['name'])) {
             $config['upload_path'] = 'assets/uploads/'; // Specify the upload directory
             $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf'; // Specify the allowed file types
-            $config['max_size'] = 2048; // Specify the maximum file size in kilobytes
+            $config['max_size'] = 5048; // Specify the maximum file size in kilobytes
     
             $this->load->library('upload', $config);
     

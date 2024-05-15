@@ -7,7 +7,7 @@
  */
 ?>
 
-<h2><?php echo lang('hr_leaves_create_title');?> &nbsp;<?php echo $help;?>
+<h2><?php echo lang('hr_leaves_create_title');?>
 </h2>
 
 <div class="row-fluid">
@@ -45,7 +45,7 @@ echo form_open($form_action, $attributes) ?>
     <select name="enddatetype" id="enddatetype">
         <option value="Morning"><?php echo lang('Morning');?></option>
         <option value="Afternoon" selected><?php echo lang('Afternoon');?></option>
-    </select><br />
+    </select><br />-->
 
     <label for="duration" required><?php echo lang('hr_leaves_create_field_duration');?> <span id="tooltipDayOff"></span></label>
     <input type="text" name="duration" id="duration" value="<?php echo set_value('duration'); ?>" />
@@ -76,7 +76,7 @@ echo form_open($form_action, $attributes) ?>
 
     <label for="status" required><?php echo lang('hr_leaves_create_field_status');?></label>
     <select name="status">
-        <option value="1" <?php if ($this->config->item('leave_status_requested') == FALSE) echo 'selected'; ?>><?php echo lang('Planned');?></option>
+        <!--<option value="1" <?php if ($this->config->item('leave_status_requested') == FALSE) echo 'selected'; ?>><?php echo lang('Planned');?></option>-->
         <option value="2" <?php if ($this->config->item('leave_status_requested') == TRUE) echo 'selected'; ?>><?php echo lang('Requested');?></option>
         <option value="3"><?php echo lang('Accepted');?></option>
         <option value="4"><?php echo lang('Rejected');?></option>

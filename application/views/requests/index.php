@@ -32,7 +32,7 @@ if ($showAll == FALSE) {
 ?>
     <div class="span1">&nbsp;</div>
     <div class="span8">
-    <span class="label"><input type="checkbox" <?php echo $checked;?> id="chkPlanned" class="filterStatus" <?php echo $disable;?>> &nbsp;<?php echo lang('Planned');?></span> &nbsp;
+    <!--<span class="label"><input type="checkbox" <?php echo $checked;?> id="chkPlanned" class="filterStatus" <?php echo $disable;?>> &nbsp;<?php echo lang('Planned');?></span> &nbsp;-->
     <span class="label label-success"><input type="checkbox" <?php echo $checked;?> id="chkAccepted" class="filterStatus" <?php echo $disable;?>> &nbsp;<?php echo lang('Accepted');?></span> &nbsp;
     <span class="label label-warning"><input type="checkbox" checked id="chkRequested" class="filterStatus"> &nbsp;<?php echo lang('Requested');?></span> &nbsp;
     <span class="label label-important" style="background-color: #ff0000;"><input type="checkbox" <?php echo $checked;?> id="chkRejected" class="filterStatus" <?php echo $disable;?>> &nbsp;<?php echo lang('Rejected');?></span> &nbsp;
@@ -200,7 +200,7 @@ function getURLParameter(name) {
 //Apply a filter on the status column
 function filterStatusColumn() {
     var filter = "^(";
-    if ($('#chkPlanned').prop('checked')) filter += "<?php echo lang('Planned');?>|";
+    <!--if ($('#chkPlanned').prop('checked')) filter += "<?php echo lang('Planned');?>|";-->
     if ($('#chkAccepted').prop('checked')) filter += "<?php echo lang('Accepted');?>|";
     if ($('#chkRequested').prop('checked')) filter += "<?php echo lang('Requested');?>|";
     if ($('#chkRejected').prop('checked')) filter += "<?php echo lang('Rejected');?>|";

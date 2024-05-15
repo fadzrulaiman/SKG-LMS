@@ -95,7 +95,7 @@ if (isset($_GET['source'])) {
     <?php if ($is_hr) {?>
     <label for="status"><?php echo lang('leaves_edit_field_status');?></label>
     <select name="status" class="<?php echo $style; ?>">
-        <option value="1" <?php if ($leave['status'] == LMS_PLANNED) echo 'selected'; ?>><?php echo lang('Planned');?></option>
+        <!--<option value="1" <?php if ($leave['status'] == LMS_PLANNED) echo 'selected'; ?>><?php echo lang('Planned');?></option>-->
         <option value="2" <?php if (($leave['status'] == LMS_REQUESTED) || $this->config->item('leave_status_requested')) echo 'selected'; ?>><?php echo lang('Requested');?></option>
         <option value="3" <?php if ($leave['status'] == LMS_ACCEPTED) echo 'selected'; ?>><?php echo lang('Accepted');?></option>
         <option value="4" <?php if ($leave['status'] == LMS_REJECTED) echo 'selected'; ?>><?php echo lang('Rejected');?></option>
@@ -105,7 +105,7 @@ if (isset($_GET['source'])) {
     <?php } else { ?>
     <label for="status"><?php echo lang('leaves_edit_field_status');?></label>
     <select name="status" class="<?php echo $style; ?>">
-        <option value="1" <?php if ($leave['status'] == LMS_PLANNED) echo 'selected'; ?>><?php echo lang('Planned');?></option>
+        <!--<option value="1" <?php if ($leave['status'] == LMS_PLANNED) echo 'selected'; ?>><?php echo lang('Planned');?></option>-->
         <option value="2" <?php if (($leave['status'] == LMS_REQUESTED) || $this->config->item('leave_status_requested')) echo 'selected'; ?>><?php echo lang('Requested');?></option>
     </select>
     <br/>

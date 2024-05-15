@@ -96,8 +96,11 @@
         <br /><br />
         <!--<button name="status" value="1" type="submit" class="btn btn-primary"><i class="mdi mdi-calendar-question" aria-hidden="true"></i>&nbsp; <?php echo lang('Planned');?></button>
     &nbsp;&nbsp;-->
-        <button name="status" value="2" type="submit" class="btn btn-primary "><i class="mdi mdi-check"></i>&nbsp;
-            <?php echo lang('Requested');?></button>
+    <button id="submitButton" name="status" value="2" type="submit" class="btn btn-primary">
+    <i class="mdi mdi-check"></i>&nbsp; <?php echo lang('Requested'); ?>
+</button>
+
+
         <br /><br />
         <a href="<?php echo base_url(); ?>leaves" class="btn btn-danger"><i class="mdi mdi-close"></i>&nbsp;
             <?php echo lang('leaves_create_button_cancel');?></a>
@@ -129,7 +132,9 @@ if ($language_code != 'en') { ?>
 
 <!-- Conditional jQuery UI Datepicker Localization -->
 <?php if ($language_code != 'en') { ?>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-i18n/1.12.1/i18n/jquery.ui.datepicker-<?php echo strtolower($language_code); ?>.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-i18n/1.12.1/i18n/jquery.ui.datepicker-<?php echo strtolower($language_code); ?>.js">
+</script>
 <?php } ?>
 
 <!-- Bootbox -->
