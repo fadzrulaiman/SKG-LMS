@@ -2,7 +2,6 @@
 /**
  * This view allows an employees (or HR admin/Manager) to create a new leave request
  * @copyright  Copyright (c) Fadzrul Aiman
-
  * @since         0.1.0
  */
 ?>
@@ -14,7 +13,7 @@
         <?php echo validation_errors(); ?>
 
         <?php
-        $attributes = array('id' => 'frmLeaveForm', 'enctype' => 'multipart/form-data');
+        $attributes = array('id' => 'frmLeaveForm', 'enctype' => 'multipart/form-data', 'onsubmit' => 'disableSubmitButton()');
         echo form_open('leaves/create', $attributes) ?>
         <h3>Leave Balance</h3>
         <?php if (isset($leaveBalances) && !empty($leaveBalances)): ?>
@@ -74,7 +73,6 @@
         <input type="text" name="duration" id="duration" value="<?php echo set_value('duration'); ?>" />
         <?php } ?>
         <div class="alert hide alert-error" id="lblCreditAlert">
-            <button type="button" class="close">&times;</button>
             <?php echo lang('leaves_create_field_duration_message');?>
         </div>
 
@@ -92,13 +90,11 @@
 
         <label for="cause"><?php echo lang('leaves_create_field_cause');?></label>
         <textarea name="cause"><?php echo set_value('cause'); ?></textarea>
-
-        <br /><br />
-        <!--<button name="status" value="1" type="submit" class="btn btn-primary"><i class="mdi mdi-calendar-question" aria-hidden="true"></i>&nbsp; <?php echo lang('Planned');?></button>
-    &nbsp;&nbsp;-->
-    <button id="submitButton" name="status" value="2" type="submit" class="btn btn-primary">
-    <i class="mdi mdi-check"></i>&nbsp; <?php echo lang('Requested'); ?>
-</button>
+        <input type="hidden" value="2" name="status" id="status" />
+        <br>
+        <button id="submitButton" name="submit" type="submit" class="btn btn-primary">
+        <i class="mdi mdi-check"></i>&nbsp; <?php echo lang('Requested'); ?>
+        </button>
 
 
         <br /><br />
@@ -224,6 +220,11 @@ $(function() {
 <?php }?>
 </script>
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/lms/leave.edit-0.7.0.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+function disableSubmitButton() {
+    document.getElementById('submitButton').disabled = true;
+}
 </script>
 <style>
 .dashboard-cards-wrapper {

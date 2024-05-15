@@ -111,9 +111,9 @@ function getLeaveInfos(preventDefault) {
         showListDayOff(leaveInfo);
         // Disable or enable the Requested button based on the visibility of alerts
         if ($("#lblCreditAlert").is(":visible") || $("#lblOverlappingAlert").is(":visible") || $("#lblOverlappingDayOffAlert").is(":visible")) {
-            $("button[name='status'][value='2']").prop("disabled", true);
+            $("button[name='submit']").prop("disabled", true);
         } else {
-            $("button[name='status'][value='2']").prop("disabled", false);
+            $("button[name='submit']").prop("disabled", false);
         }
         // Disable or enable the status select and request button based on the visibility of alerts for HR 
         if ($("#lblCreditAlert").is(":visible") || $("#lblOverlappingAlert").is(":visible") || $("#lblOverlappingDayOffAlert").is(":visible")) {
