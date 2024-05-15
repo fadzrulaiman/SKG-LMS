@@ -100,18 +100,7 @@ echo form_open($form_action, $attributes) ?>
             <img src="<?php echo base_url();?>assets/images/loading.gif"  align="middle">
         </div>
  </div>
-<!-- Old Styling
-<link rel="stylesheet" href="<?php echo base_url();?>assets/css/flick/jquery-ui.custom.min.css">
-<script src="<?php echo base_url();?>assets/js/jquery-ui.custom.min.js"></script>
-<?php //Prevent HTTP-404 when localization isn't needed
-if ($language_code != 'en') { ?>
-<script src="<?php echo base_url();?>assets/js/i18n/jquery.ui.datepicker-<?php echo $language_code;?>.js"></script>
-<?php } ?>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/lms/leave.edit-0.7.0.js" type="text/javascript"></script>
-<script src="<?php echo base_url();?>assets/js/bootbox.min.js"></script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/selectize.min.js"></script>
-<script>
--->
+
 <!-- jQuery UI (flick theme) -->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/flick/jquery-ui.min.css">
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>

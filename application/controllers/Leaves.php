@@ -201,10 +201,15 @@ public function view($source, $id) {
     }
 
     public function create() {
+        // Check if the user has the permission to create leave requests
         $this->auth->checkIfOperationIsAllowed('create_leaves');
+        
+        // Get user context and load necessary helpers and libraries
         $data = getUserContext($this);
         $this->load->helper('form');
         $this->load->library('form_validation');
+        
+        // Set page title and help link
         $data['title'] = lang('leaves_create_title');
         $data['help'] = $this->help->create_help_link('global_link_doc_page_request_leave');
     
@@ -218,20 +223,22 @@ public function view($source, $id) {
         $this->form_validation->set_rules('cause', lang('leaves_create_field_cause'), 'strip_tags');
         $this->form_validation->set_rules('status', lang('leaves_create_field_status'), 'required|strip_tags');
     
-        // Check validation status
+        // Check if the form validation passes
         if ($this->form_validation->run() === FALSE) {
-            // Fetch leave types and balances for the employee
+            // Load models
             $this->load->model('leaves_model');
+            $this->load->model('contracts_model');
+            
+            // Fetch leave balances and types for the employee
             $employeeId = $this->session->userdata('id');
             $data['leaveBalances'] = $this->leaves_model->getLeaveBalanceForAllTypes($employeeId);
-    
-            // Populate other leave form data
-            $this->load->model('contracts_model');
             $leaveTypesDetails = $this->contracts_model->getLeaveTypesDetailsOTypesForUser($employeeId);
+            
+            // Populate leave form data
             $data['defaultType'] = $leaveTypesDetails->defaultType;
             $data['credit'] = $leaveTypesDetails->credit;
             $data['types'] = $leaveTypesDetails->types;
-    
+            
             // Load views
             $this->load->view('templates/header', $data);
             $this->load->view('menu/index', $data);
@@ -240,19 +247,19 @@ public function view($source, $id) {
         } else {
             // Handle attachment upload
             $attachment_path = $this->handleAttachmentUpload();
-    
-            // Call the model function to create the leave request
+            
+            // Create the leave request in the database
             $leave_id = $this->leaves_model->setLeaves($this->session->userdata('id'), $attachment_path);
-    
-            // Set flash message
+            
+            // Set a flash message indicating success
             $this->session->set_flashdata('msg', lang('leaves_create_flash_msg_success'));
-    
-            // If the status is requested, send an email to the manager
+            
+            // If the leave request status is 'requested', send an email to the manager
             if ($this->input->post('status') == LMS_REQUESTED) {
                 $this->sendMailOnLeaveRequestCreation($leave_id);
             }
-    
-            // Redirect to the appropriate page
+            
+            // Redirect to the source page or the leaves page
             if (isset($_GET['source'])) {
                 redirect($_GET['source']);
             } else {
@@ -260,7 +267,7 @@ public function view($source, $id) {
             }
         }
     }
-            
+                
 /**
  * Edit a leave request
  * @param int $id Identifier of the leave request

@@ -75,7 +75,9 @@
         <div class="alert hide alert-error" id="lblCreditAlert">
             <?php echo lang('leaves_create_field_duration_message');?>
         </div>
-
+        <div class="alert hide alert-error" id="lblNoBalanceAlert">
+            You Have No Leave Balance Anymore
+        </div>
         <div class="alert hide alert-error" id="lblOverlappingAlert">
             <?php echo lang('leaves_create_field_overlapping_message');?>
         </div>
@@ -86,16 +88,15 @@
         </div>
 
         <label for="attachment">Attachment</label>
-        <input type="file" name="attachment" id="attachment" accept="image/*, .pdf">
+        <input type="file" name="attachment" id="attachment" accept=".png, .jpeg, .jpg, .pdf">
 
         <label for="cause"><?php echo lang('leaves_create_field_cause');?></label>
         <textarea name="cause"><?php echo set_value('cause'); ?></textarea>
         <input type="hidden" value="2" name="status" id="status" />
         <br>
         <button id="submitButton" name="submit" type="submit" class="btn btn-primary">
-        <i class="mdi mdi-check"></i>&nbsp; <?php echo lang('Requested'); ?>
+            <i class="mdi mdi-check"></i>&nbsp; <?php echo lang('Requested'); ?>
         </button>
-
 
         <br /><br />
         <a href="<?php echo base_url(); ?>leaves" class="btn btn-danger"><i class="mdi mdi-close"></i>&nbsp;
@@ -168,12 +169,50 @@ function validate_form() {
     if ($('#viz_enddate').val() == "") fieldname = "<?php echo lang('leaves_create_field_end');?>";
     if ($('#duration').val() == "" || $('#duration').val() == 0) fieldname =
         "<?php echo lang('leaves_create_field_duration');?>";
+
+    var balanceExceeded = checkLeaveBalance();
+    if (balanceExceeded.exceeded) {
+        $('#lblCreditAlert').removeClass('hide').addClass('show');
+        return false;
+    } else {
+        $('#lblCreditAlert').removeClass('show').addClass('hide');
+    }
+
+    if (balanceExceeded.noBalance) {
+        $('#lblNoBalanceAlert').removeClass('hide').addClass('show');
+        return false;
+    } else {
+        $('#lblNoBalanceAlert').removeClass('show').addClass('hide');
+    }
+
     if (fieldname == "") {
         return true;
     } else {
         bootbox.alert(<?php echo lang('leaves_validate_mandatory_js_msg');?>);
         return false;
     }
+}
+
+// Check leave balance against the requested duration
+function checkLeaveBalance() {
+    var selectedType = $('#type option:selected').text();
+    var requestedDuration = parseFloat($('#duration').val());
+    var balanceExceeded = { exceeded: false, noBalance: false };
+
+    <?php if (isset($leaveBalances)): ?>
+        var leaveBalances = <?php echo json_encode($leaveBalances); ?>;
+        leaveBalances.forEach(function(balance) {
+            if (balance.type_name === selectedType) {
+                if (balance.balance == 0) {
+                    balanceExceeded.noBalance = true;
+                } else if (requestedDuration > balance.balance) {
+                    balanceExceeded.exceeded = true;
+                }
+            }
+        });
+    <?php endif; ?>
+
+    return balanceExceeded;
 }
 
 //Disallow the use of negative symbols (through a whitelist of symbols)
