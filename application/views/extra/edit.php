@@ -7,7 +7,7 @@
  */
 ?>
 
-<h2><?php echo lang('extra_edit_title');?><?php echo $extra['id']; ?>&nbsp;<span class="muted">(<?php echo $name ?>)</span>&nbsp;<?php echo $help;?></h2>
+<h2><?php echo lang('extra_edit_title');?><?php echo $extra['id']; ?>&nbsp;<span class="muted">(<?php echo $name ?>)</span>&nbsp;</h2>
 
 <?php echo validation_errors(); ?>
 

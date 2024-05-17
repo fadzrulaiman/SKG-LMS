@@ -10,7 +10,7 @@
 
 <div class="row-fluid">
     <div class="span12">
-        <h2><?php echo lang('hr_summary_title');?>&nbsp;<?php echo $employee_id; ?>&nbsp;<span class="muted"> (<?php echo $employee_name; ?>)</span>&nbsp;<?php echo $help;?></h2>
+        <h2><?php echo lang('hr_summary_title');?>&nbsp;<?php echo $employee_id; ?>&nbsp;<span class="muted"> (<?php echo $employee_name; ?>)</span>&nbsp;</h2>
 
         <p><?php echo lang('hr_summary_date_field');?>&nbsp;
             <input type="text" id="refdate" />

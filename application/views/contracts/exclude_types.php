@@ -7,7 +7,7 @@
  */
 ?>
 
-<h2><?php echo lang('contract_exclude_title');?>&nbsp;<span class="muted">(<?php echo $contract['name'];?>)</span>&nbsp;<?php echo $help;?></h2>
+<h2><?php echo lang('contract_exclude_title');?>&nbsp;<span class="muted">(<?php echo $contract['name'];?>)</span>&nbsp;</h2>
 
 <p><?php echo lang('contract_exclude_description');?></p>
 

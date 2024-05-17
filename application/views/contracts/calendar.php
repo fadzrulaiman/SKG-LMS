@@ -10,7 +10,7 @@ $dDaysOnPage = 37;
 $dDay = 1;
 ?>
 
-<h2><?php echo lang('contract_calendar_title');?> <span class="muted"><?php echo $contract_name; ?></span>&nbsp;<?php echo $help;?></h2>
+<h2><?php echo lang('contract_calendar_title');?> <span class="muted"><?php echo $contract_name; ?></span>&nbsp;</h2>
 
 <?php echo $flash_partial_view;?>
 

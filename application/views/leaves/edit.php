@@ -7,7 +7,7 @@
  */
 ?>
 
-<h2><?php echo lang('leaves_edit_title');?><?php echo $leave['id']; ?> <?php echo $help;?>&nbsp;<span class="muted">(<?php echo $name ?>)</span></h2>
+<h2><?php echo lang('leaves_edit_title');?><?php echo $leave['id']; ?> &nbsp;<span class="muted">(<?php echo $name ?>)</span></h2>
 <?php
 $attributes = array('id' => 'frmLeaveForm', 'enctype' => 'multipart/form-data');
 if (isset($_GET['source'])) {

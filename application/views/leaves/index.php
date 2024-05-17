@@ -7,7 +7,7 @@
  */
 ?>
 
-<h2><?php echo lang('leaves_index_title');?> &nbsp;<?php echo $help;?></h2>
+<h2><?php echo lang('leaves_index_title');?> &nbsp;</h2>
 
 <?php echo $flash_partial_view;?>
 

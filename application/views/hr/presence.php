@@ -11,7 +11,7 @@
 <div class="row-fluid">
     <div class="span12">
 
-<h2><?php echo lang('hr_presence_title');?><span class="muted">&nbsp;(<?php echo $employee_name;?>&nbsp; |&nbsp;<?php echo lang($month_name);?>&nbsp;<?php echo $year;?>)</span> &nbsp;<?php echo $help;?></h2>
+<h2><?php echo lang('hr_presence_title');?><span class="muted">&nbsp;(<?php echo $employee_name;?>&nbsp; |&nbsp;<?php echo lang($month_name);?>&nbsp;<?php echo $year;?>)</span> &nbsp;</h2>
 
 <p><?php echo lang('hr_presence_description');?></p>
 
@@ -247,7 +247,7 @@
 
 <div class="row-fluid">
     <div class="span12">
-        <h3><?php echo lang('hr_summary_title');?>&nbsp;<?php echo $employee_id; ?>&nbsp;<span class="muted"> (<?php echo $employee_name; ?>)</span>&nbsp;<?php echo $help;?></h3>
+        <h3><?php echo lang('hr_summary_title');?>&nbsp;<?php echo $employee_id; ?>&nbsp;<span class="muted"> (<?php echo $employee_name; ?>)</span>&nbsp;</h3>
 
         <?php if (is_null($summary)) { ?>
         <div class="alert">

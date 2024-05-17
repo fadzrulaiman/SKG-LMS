@@ -7,7 +7,7 @@
  */
 ?>
 
-<h2><?php echo lang('leavetypes_type_title');?><?php echo $help;?></h2>
+<h2><?php echo lang('leavetypes_type_title');?></h2>
 
 <p><?php echo lang('leavetypes_type_description');?></p>
 

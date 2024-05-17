@@ -295,9 +295,9 @@ class Hr extends CI_Controller {
         } else {
             $data['isDefault'] = 1;
         }
-
+    
         $data['refDate'] = $refDate;
-        $data['summary'] = $this->leaves_model->getLeaveBalanceForEmployee($id, FALSE, $refDate);
+        $data['summary'] = $this->leaves_model->HRgetLeaveBalanceForEmployee($id, FALSE, $refDate);
         if (!is_null($data['summary'])) {
             $this->load->model('entitleddays_model');
             $this->load->model('users_model');
@@ -305,9 +305,12 @@ class Hr extends CI_Controller {
             $data['employee_name'] = $user['firstname'] . ' ' . $user['lastname'];
             $this->load->model('contracts_model');
             $contract = $this->contracts_model->getContracts($user['contract']);
-            $data['contract_name'] = $contract['name'];
-            $data['contract_start'] = $contract['startentdate'];
-            $data['contract_end'] = $contract['endentdate'];
+            
+            // Check if array keys exist
+            $data['contract_name'] = isset($contract['name']) ? $contract['name'] : 'N/A';
+            $data['contract_start'] = isset($contract['startentdate']) ? $contract['startentdate'] : 'N/A';
+            $data['contract_end'] = isset($contract['endentdate']) ? $contract['endentdate'] : 'N/A';
+    
             $data['employee_id'] = $id;
             $data['contract_id'] = $user['contract'];
             $data['entitleddayscontract'] = $this->entitleddays_model->getEntitledDaysForContract($user['contract']);
@@ -323,7 +326,7 @@ class Hr extends CI_Controller {
             redirect('hr/employees');
         }
     }
-
+    
     /**
      * Create a leave request in behalf of an employee
      * @param int $id Identifier of the employee

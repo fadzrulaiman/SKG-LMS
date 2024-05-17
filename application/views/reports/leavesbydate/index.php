@@ -9,7 +9,7 @@
  */
 ?>
 
-<h2><?php echo lang('reports_leaves_title');?> &nbsp;<?php echo $help;?></h2>
+<h2><?php echo lang('reports_leaves_title');?> &nbsp;</h2>
 
 <div class="row-fluid">
     <div class="span4">

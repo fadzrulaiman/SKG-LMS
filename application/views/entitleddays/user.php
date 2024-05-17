@@ -10,7 +10,7 @@
 <div class="row-fluid">
     <div class="span12">
 
-<h2><?php echo lang('entitleddays_user_index_title');?> <span class="muted"><?php echo $employee_name; ?></span>&nbsp;<?php echo $help;?></h2>
+<h2><?php echo lang('entitleddays_user_index_title');?> <span class="muted"><?php echo $employee_name; ?></span>&nbsp;</h2>
 
 <table id="entitleddaysuser">
 <thead>

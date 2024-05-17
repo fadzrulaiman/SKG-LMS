@@ -10,7 +10,7 @@
 <div class="row-fluid">
     <div class="span12">
 
-<h2><?php echo lang('hr_employees_title');?>&nbsp;<?php echo $help;?></h2>
+<h2><?php echo lang('hr_employees_title');?>&nbsp;</h2>
 
 <?php echo $flash_partial_view;?>
 

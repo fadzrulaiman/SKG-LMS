@@ -9,7 +9,7 @@
 
 <div class="row-fluid">
     <div class="span12">
-        <h2><?php echo lang('users_edit_title');?><?php echo $users_item['id']; ?><?php echo $help;?></h2>
+        <h2><?php echo lang('users_edit_title');?><?php echo $users_item['id']; ?></h2>
 
         <?php echo validation_errors(); ?>
     </div>

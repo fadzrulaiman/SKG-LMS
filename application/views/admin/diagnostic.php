@@ -9,7 +9,7 @@
 
 <div class="row-fluid">
     <div class="span12">
-        <h2><?php echo $title;?><?php echo $help;?></h2>
+        <h2><?php echo $title;?></h2>
 
         <div class="alert fade in">
           <button type="button" class="close" data-dismiss="alert">&times;</button>

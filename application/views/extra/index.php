@@ -10,7 +10,7 @@
 <div class="row-fluid">
     <div class="span12">
 
-<h2><?php echo lang('extra_index_title');?><?php echo $help;?></h2>
+<h2><?php echo lang('extra_index_title');?></h2>
 
 <?php echo $flash_partial_view;?>
 

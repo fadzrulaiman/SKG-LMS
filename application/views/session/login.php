@@ -28,75 +28,65 @@ function start() {
                 <h2><?php echo lang('session_login_title');?></h2>
                 <?php echo $flash_partial_view;?>
                 <?php echo validation_errors(); ?>
-                <?php $attributes = array('id' => 'loginFrom');echo form_open('session/login', $attributes);
-                $languages = $this->polyglot->nativelanguages($this->config->item('languages'));?>
+                <?php $attributes = array('id' => 'loginFrom'); echo form_open('session/login', $attributes);
+                $languages = $this->polyglot->nativelanguages($this->config->item('languages')); ?>
                 <input type="hidden" name="last_page" value="session/login" />
                 <?php if (count($languages) == 1) { ?>
                 <input type="hidden" name="language" value="<?php echo $language_code; ?>" />
                 <?php } else { ?>
-                <label for="language"><?php echo lang('session_login_field_language');?></label>
+                <label for="language"><?php echo lang('session_login_field_language'); ?></label>
                 <select class="input-medium" name="language" id="language">
                     <?php foreach ($languages as $lang_code => $lang_name) { ?>
-                    <option value="<?php echo $lang_code; ?>"
-                        <?php if ($language_code == $lang_code) echo 'selected'; ?>><?php echo $lang_name; ?></option>
-                    <?php }?>
+                    <option value="<?php echo $lang_code; ?>" <?php if ($language_code == $lang_code) echo 'selected'; ?>>
+                        <?php echo $lang_name; ?></option>
+                    <?php } ?>
                 </select>
                 <br />
                 <?php } ?>
-                <label for="login"><?php echo lang('session_login_field_login');?></label>
+                <label for="login"><?php echo lang('session_login_field_login'); ?></label>
                 <input type="text" class="input-medium" name="login" id="login"
-                    value="<?php echo (ENVIRONMENT=='demo')?'bbalet':set_value('login'); ?>" required />
+                    value="<?php echo (ENVIRONMENT == 'demo') ? 'bbalet' : set_value('login'); ?>" required />
                 <input type="hidden" name="CipheredValue" id="CipheredValue" />
                 </form>
                 <input type="hidden" name="salt" id="salt" value="<?php echo $salt; ?>" />
-                <label for="password"><?php echo lang('session_login_field_password');?></label>
+                <label for="password"><?php echo lang('session_login_field_password'); ?></label>
                 <input class="input-medium" type="password" name="password" id="password"
-                    value="<?php echo (ENVIRONMENT=='demo')?'bbalet':''; ?>" /><br />
+                    value="<?php echo (ENVIRONMENT == 'demo') ? 'bbalet' : ''; ?>" /><br />
                 <br />
                 <button id="send" class="btn btn-primary"><i
-                        class="mdi mdi-login"></i>&nbsp;<?php echo lang('session_login_button_login');?></button>
+                        class="mdi mdi-login"></i>&nbsp;<?php echo lang('session_login_button_login'); ?></button>
                 <!--
                 <?php if ($this->config->item('oauth2_enabled') == TRUE) { ?>
                 <?php if ($this->config->item('oauth2_provider') == 'google') { ?>
                 <button id="cmdGoogleSignIn" class="btn btn-primary"><i
-                        class="mdi mdi-google"></i>&nbsp;<?php echo lang('session_login_button_login');?></button>
+                        class="mdi mdi-google"></i>&nbsp;<?php echo lang('session_login_button_login'); ?></button>
                 <?php } ?>
                 -->
                 <?php } ?>
                 <br /><br />
-                <?php if (($this->config->item('ldap_enabled') == FALSE) && (ENVIRONMENT!='demo')) { ?>
+                <?php if (($this->config->item('ldap_enabled') == FALSE) && (ENVIRONMENT != 'demo')) { ?>
                 <button id="cmdForgetPassword" class="btn btn-danger"><i
-                        class="mdi mdi-email"></i>&nbsp;<?php echo lang('session_login_button_forget_password');?></button>
+                        class="mdi mdi-email"></i>&nbsp;<?php echo lang('session_login_button_forget_password'); ?>
+                </button>
                 <?php } ?>
                 <textarea id="pubkey" style="visibility:hidden;"><?php echo $public_key; ?></textarea>
             </div>
-            <div class="span6" style="height:100%;">
-                <div class="row-fluid">
-                    <div class="span12">
-                        <img src="<?php echo base_url();?>assets/images/logo_simple.png"
-                            style="width: auto; height: auto; margin: 10px auto; display: block;">
-                        <span style="font-size:250%; font-weight: bold; line-height: 100%; color: black;">
-                            <center><?php echo lang('Leave Management System');?></center>
-                        </span>
-                    </div>
+            <div class="span6 flex-center">
+                <div class="flex-content">
+                    <img src="<?php echo base_url(); ?>assets/images/logo_simple.png"
+                        style="width: auto; height: auto; margin: 10px auto; display: block;">
+                    <span style="font-size: 250%; font-weight: bold; line-height: 100%; color: black;">
+                        <center><?php echo lang('Leave Management System'); ?></center>
+                    </span>
                 </div>
             </div>
         </div>
     </div>
     <div class="span3">&nbsp;</div>
 </div>
-
-<div class="modal hide" id="frmModalAjaxWait" data-backdrop="static" data-keyboard="false">
-    <div class="modal-header">
-        <h1><?php echo lang('global_msg_wait');?></h1>
-    </div>
-    <div class="modal-body">
-        <img src="<?php echo base_url();?>assets/images/loading.gif" align="middle">
-    </div>
-</div>
 <style>
 body {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('<?php echo base_url();?>assets/images/ppns_bg.png');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('<?php echo base_url(); ?>assets/images/ppns_bg.png');
     background-size: cover;
     background-position: center;
     font-family: 'Arial', sans-serif;
@@ -114,7 +104,7 @@ body {
 
 .form-box {
     width: auto;
-    max-width: 800px; 
+    max-width: 800px;
     height: auto;
     padding: 20px;
     border-radius: 20px;
@@ -192,6 +182,21 @@ label {
 
 textarea {
     visibility: hidden;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+
+.flex-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 </style>
 
