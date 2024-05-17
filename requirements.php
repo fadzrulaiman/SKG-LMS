@@ -279,9 +279,9 @@ if ($configFileExists) {
                       <?php } else { ?><tr><td><i class="mdi mdi-alert"></i>&nbsp;Database procedures</td><td>Error. Please check if your hosting company allows custom procedures (e.g. <a href="https://techtavern.wordpress.com/2013/06/17/mysql-triggers-and-amazon-rds/" target="_blank">Amazon RDS</a>).</td></tr>
                       <?php } ?>
 
-                      <?php if (is_null($rowOrg)) { ?><tr><td><i class="mdi mdi-alert"></i>&nbsp;Organization structure</td><td>No root entity was found.</td></tr>
+                      <?php if (is_null($rowOrg)) { ?><tr><td><i class="mdi mdi-alert"></i>&nbsp;Organization structure</td><td>No root department was found.</td></tr>
                       <?php } else { ?>
-                            <?php if ($rowOrg['id'] != 0) { ?><tr><td><i class="mdi mdi-alert"></i>&nbsp;Organization structure</td><td>The root entity must be equal to zero. To fix a problem of backup/restore, please execute this query: <br />
+                            <?php if ($rowOrg['id'] != 0) { ?><tr><td><i class="mdi mdi-alert"></i>&nbsp;Organization structure</td><td>The root department must be equal to zero. To fix a problem of backup/restore, please execute this query: <br />
                                     <code>UPDATE `organization` SET `organization`.`id` = 0 WHERE `parent_id` = -1</code></td></tr>
                             <?php } else { ?><tr><td><i class="mdi mdi-check"></i>&nbsp;Organization structure</td><td>OK</td></tr>
                       <?php }

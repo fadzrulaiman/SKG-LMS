@@ -126,7 +126,7 @@ $lang['users_employees_thead_id'] = '證號';
 $lang['users_employees_thead_firstname'] = '名';
 $lang['users_employees_thead_lastname'] = '姓';
 $lang['users_employees_thead_email'] = 'E-mail';
-$lang['users_employees_thead_entity'] = 'Entity';
+$lang['users_employees_thead_entity'] = 'Department';
 
 $lang['users_reset_field_password'] = '密碼';
 $lang['users_reset_button_reset'] = '重設';

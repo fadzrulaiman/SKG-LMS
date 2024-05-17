@@ -18,12 +18,12 @@ $lang['reports_native_title'] = 'Senarai Laporan';
 
 $lang['reports_balance_title'] = 'Baki cuti';
 $lang['reports_balance_date_field'] = 'Tarikh laporan';
-$lang['reports_balance_field_entity'] = 'Pilih entiti';
+$lang['reports_balance_field_entity'] = 'Pilih jabatan';
 $lang['reports_balance_button_entity'] = 'Pilih';
 $lang['reports_balance_field_subdepts'] = 'Sertakan sub-jabatan';
 $lang['reports_balance_button_launch'] = 'Lancarkan';
 $lang['reports_balance_button_export'] = 'Eksport';
-$lang['reports_balance_popup_entity_title'] = 'Pilih entiti';
+$lang['reports_balance_popup_entity_title'] = 'Pilih jabatan';
 $lang['reports_balance_popup_entity_button_ok'] = 'OK';
 $lang['reports_balance_popup_entity_button_cancel'] = 'Batal';
 
@@ -32,13 +32,13 @@ $lang['reports_export_balance_title'] = 'Baki cuti';
 $lang['reports_leaves_title'] = 'Permintaan cuti';
 $lang['reports_leaves_month_field'] = 'Bulan';
 $lang['reports_leaves_year_field'] = 'Tahun';
-$lang['reports_leaves_field_entity'] = 'Pilih entiti';
+$lang['reports_leaves_field_entity'] = 'Pilih jabatan';
 $lang['reports_leaves_button_entity'] = 'Pilih';
 $lang['reports_leaves_field_subdepts'] = 'Sertakan sub-jabatan';
 $lang['reports_leaves_field_leave_requests'] = 'Permintaan cuti';
 $lang['reports_leaves_button_launch'] = 'Lancarkan';
 $lang['reports_leaves_button_export'] = 'Eksport';
-$lang['reports_leaves_popup_entity_title'] = 'Pilih entiti';
+$lang['reports_leaves_popup_entity_title'] = 'Pilih jabatan';
 $lang['reports_leaves_popup_entity_button_ok'] = 'OK';
 $lang['reports_leaves_popup_entity_button_cancel'] = 'Batal';
 

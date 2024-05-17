@@ -56,4 +56,4 @@ $lang['organization_lists_employees_prompt_rename'] = 'New name of the list';
 $lang['organization_lists_employees_thead_id'] = 'ID';
 $lang['organization_lists_employees_thead_firstname'] = 'Firstname';
 $lang['organization_lists_employees_thead_lastname'] = 'Lastname';
-$lang['organization_lists_employees_thead_entity'] = 'Entity';
+$lang['organization_lists_employees_thead_entity'] = 'Department';

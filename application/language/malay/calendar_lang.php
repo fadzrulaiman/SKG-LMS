@@ -28,36 +28,36 @@ $lang['calendar_department_description'] = 'Kalendar pekerja yang bekerja di jab
 $lang['calendar_department_msg_error'] = 'Nampaknya anda tidak termasuk dalam mana-mana jabatan. Sila hubungi Pegawai HR / Pengurus anda.';
 
 $lang['calendar_organization_title'] = 'Kalendar organisasi';
-$lang['calendar_organization_description'] = 'Kalendar global dengan penapis pada entiti';
-$lang['calendar_organization_field_select_entity'] = 'Pilih entiti';
+$lang['calendar_organization_description'] = 'Kalendar global dengan penapis pada jabatan';
+$lang['calendar_organization_field_select_entity'] = 'Pilih jabatan';
 $lang['calendar_organization_button_select_entity'] = 'Pilih';
 $lang['calendar_organization_check_include_subdept'] = 'Sertakan sub-jabatan';
-$lang['calendar_organization_popup_entity_title'] = 'Pilih entiti';
+$lang['calendar_organization_popup_entity_title'] = 'Pilih jabatan';
 $lang['calendar_organization_popup_entity_button_ok'] = 'OK';
 $lang['calendar_organization_popup_entity_button_cancel'] = 'Batal';
 
 $lang['calendar_tabular_title'] = 'Kalendar Tabular';
-$lang['calendar_tabular_field_select_entity'] = 'Pilih entiti';
+$lang['calendar_tabular_field_select_entity'] = 'Pilih jabatan';
 $lang['calendar_tabular_field_month'] = 'Bulan';
 $lang['calendar_tabular_field_year'] = 'Tahun';
 $lang['calendar_tabular_button_previous'] = 'Sebelumnya';
 $lang['calendar_tabular_button_next'] = 'Seterusnya';
-$lang['calendar_tabular_button_select_entity'] = 'Pilih entiti';
+$lang['calendar_tabular_button_select_entity'] = 'Pilih jabatan';
 $lang['calendar_tabular_button_select_list'] = 'Pilih senarai';
 $lang['calendar_tabular_button_select_entity'] = 'Pilih';
 $lang['calendar_tabular_button_export'] = 'Eksport';
 $lang['calendar_tabular_check_include_subdept'] = 'Sertakan sub-jabatan';
 $lang['calendar_tabular_check_display_types'] = 'Paparkan jenis cuti';
-$lang['calendar_tabular_popup_entity_title'] = 'Pilih entiti';
+$lang['calendar_tabular_popup_entity_title'] = 'Pilih jabatan';
 $lang['calendar_tabular_popup_entity_button_ok'] = 'OK';
 $lang['calendar_tabular_popup_entity_button_cancel'] = 'Batal';
 $lang['calendar_tabular_thead_employee'] = 'Pekerja';
 
 $lang['calendar_tabular_export_title'] = 'Kalendar Tabular';
-$lang['calendar_tabular_export_param_entity'] = 'Entiti';
+$lang['calendar_tabular_export_param_entity'] = 'jabatan';
 $lang['calendar_tabular_export_param_month'] = 'Bulan';
 $lang['calendar_tabular_export_param_year'] = 'Tahun';
-$lang['calendar_tabular_export_param_children'] = 'Sub-entiti';
+$lang['calendar_tabular_export_param_children'] = 'Sub-jabatan';
 $lang['calendar_tabular_export_thead_employee'] = 'Pekerja';
 
 $lang['calendar_monday_short'] = 'Is';

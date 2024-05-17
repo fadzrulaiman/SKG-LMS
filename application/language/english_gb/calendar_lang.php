@@ -28,36 +28,36 @@ $lang['calendar_department_description'] = 'Calendar of employees working in my 
 $lang['calendar_department_msg_error'] = 'It appears that you don\'t belong to any department. Please contact your HR Officer / Manager.';
 
 $lang['calendar_organization_title'] = 'Calendar of the organization';
-$lang['calendar_organization_description'] = 'Global calendar with a filter on entity';
-$lang['calendar_organization_field_select_entity'] = 'Select the entity';
+$lang['calendar_organization_description'] = 'Global calendar with a filter on department';
+$lang['calendar_organization_field_select_entity'] = 'Select the department';
 $lang['calendar_organization_button_select_entity'] = 'Select';
 $lang['calendar_organization_check_include_subdept'] = 'Include sub-departments';
-$lang['calendar_organization_popup_entity_title'] = 'Select an entity';
+$lang['calendar_organization_popup_entity_title'] = 'Select an department';
 $lang['calendar_organization_popup_entity_button_ok'] = 'OK';
 $lang['calendar_organization_popup_entity_button_cancel'] = 'Cancel';
 
 $lang['calendar_tabular_title'] = 'Tabular Calendar';
-$lang['calendar_tabular_field_select_entity'] = 'Select the entity';
+$lang['calendar_tabular_field_select_entity'] = 'Select the department';
 $lang['calendar_tabular_field_month'] = 'Month';
 $lang['calendar_tabular_field_year'] = 'Year';
 $lang['calendar_tabular_button_previous'] = 'Previous';
 $lang['calendar_tabular_button_next'] = 'Next';
-$lang['calendar_tabular_button_select_entity'] = 'Select an entity';
+$lang['calendar_tabular_button_select_entity'] = 'Select an department';
 $lang['calendar_tabular_button_select_list'] = 'Select a list';
 $lang['calendar_tabular_button_select_entity'] = 'Select';
 $lang['calendar_tabular_button_export'] = 'Export';
 $lang['calendar_tabular_check_include_subdept'] = 'Include sub-departments';
 $lang['calendar_tabular_check_display_types'] = 'Display leave types';
-$lang['calendar_tabular_popup_entity_title'] = 'Select an entity';
+$lang['calendar_tabular_popup_entity_title'] = 'Select an department';
 $lang['calendar_tabular_popup_entity_button_ok'] = 'OK';
 $lang['calendar_tabular_popup_entity_button_cancel'] = 'Cancel';
 $lang['calendar_tabular_thead_employee'] = 'Employee';
 
 $lang['calendar_tabular_export_title'] = 'Calendar Tabular';
-$lang['calendar_tabular_export_param_entity'] = 'Entity';
+$lang['calendar_tabular_export_param_entity'] = 'department';
 $lang['calendar_tabular_export_param_month'] = 'Month';
 $lang['calendar_tabular_export_param_year'] = 'Year';
-$lang['calendar_tabular_export_param_children'] = 'Sub-entities';
+$lang['calendar_tabular_export_param_children'] = 'Sub-departments';
 $lang['calendar_tabular_export_thead_employee'] = 'Employee';
 
 $lang['calendar_monday_short'] = 'Mo';
