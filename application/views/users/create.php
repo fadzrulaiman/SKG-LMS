@@ -204,6 +204,15 @@ echo form_open('users/create', $attributes); ?>
     </div>
 
     <div class="span4">
+        <div class="control-group">
+            <label class="control-label" for="identifier"><?php echo lang('users_create_field_location');?></label>
+            <div class="controls">
+                <input type="text" name="identifier" />
+            </div>
+        </div>
+    </div>
+
+    <div class="span4">
         &nbsp;
     </div>
 </div>

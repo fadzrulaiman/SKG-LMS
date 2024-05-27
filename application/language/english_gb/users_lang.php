@@ -13,8 +13,8 @@ $lang['users_index_thead_tip_edit'] = 'edit user details';
 $lang['users_index_thead_tip_delete'] = 'delete user';
 $lang['users_index_thead_tip_reset'] = 'reset password';
 $lang['users_index_thead_id'] = 'ID';
-$lang['users_index_thead_firstname'] = 'Firstname';
-$lang['users_index_thead_lastname'] = 'Lastname';
+$lang['users_index_thead_firstname'] = 'First Name';
+$lang['users_index_thead_lastname'] = 'Last Name';
 $lang['users_index_thead_login'] = 'Login';
 $lang['users_index_thead_email'] = 'E-mail';
 $lang['users_index_thead_role'] = 'Role';
@@ -37,8 +37,8 @@ $lang['employees_index_title'] = 'List of employees';
 
 $lang['users_myprofile_title'] = 'My personal information';
 $lang['users_myprofile_html_title'] = 'My personal information';
-$lang['users_myprofile_field_firstname'] = 'Firstname';
-$lang['users_myprofile_field_lastname'] = 'Lastname';
+$lang['users_myprofile_field_firstname'] = 'First Name';
+$lang['users_myprofile_field_lastname'] = 'Last Name';
 $lang['users_myprofile_field_manager'] = 'Manager';
 $lang['users_myprofile_field_contract'] = 'Contract';
 $lang['users_myprofile_field_position'] = 'Position';
@@ -49,8 +49,8 @@ $lang['users_myprofile_field_language'] = 'Language';
 
 $lang['users_edit_title'] = 'Edit user #';
 $lang['users_edit_html_title'] = 'Edit user';
-$lang['users_edit_field_firstname'] = 'Firstname';
-$lang['users_edit_field_lastname'] = 'Lastname';
+$lang['users_edit_field_firstname'] = 'First Name';
+$lang['users_edit_field_lastname'] = 'Last Name';
 $lang['users_edit_field_login'] = 'Login';
 $lang['users_edit_field_email'] = 'E-mail';
 $lang['users_edit_field_role'] = 'Role';
@@ -85,8 +85,8 @@ $lang['users_delete_flash_msg_success'] = 'The user has been succesfully deleted
 $lang['users_reset_flash_msg_success'] = 'The password has been succesfully changed';
 
 $lang['users_create_title'] = 'Create a new user';
-$lang['users_create_field_firstname'] = 'Firstname';
-$lang['users_create_field_lastname'] = 'Lastname';
+$lang['users_create_field_firstname'] = 'First Name';
+$lang['users_create_field_lastname'] = 'Last Name';
 $lang['users_create_field_login'] = 'Login';
 $lang['users_create_field_email'] = 'E-mail';
 $lang['users_create_field_password'] = 'Password';
@@ -123,8 +123,8 @@ $lang['users_create_login_check'] = 'Username already exists.';
 $lang['users_create_flash_msg_error'] = 'This username is not available.';
 
 $lang['users_employees_thead_id'] = 'ID';
-$lang['users_employees_thead_firstname'] = 'Firstname';
-$lang['users_employees_thead_lastname'] = 'Lastname';
+$lang['users_employees_thead_firstname'] = 'First Name';
+$lang['users_employees_thead_lastname'] = 'Last Name';
 $lang['users_employees_thead_email'] = 'E-mail';
 $lang['users_employees_thead_entity'] = 'Department';
 
@@ -133,7 +133,7 @@ $lang['users_reset_button_reset'] = 'Reset';
 
 $lang['users_export_title'] = 'List of users';
 $lang['users_export_thead_id'] = 'ID';
-$lang['users_export_thead_firstname'] = 'Firstname';
-$lang['users_export_thead_lastname'] = 'Lastname';
+$lang['users_export_thead_firstname'] = 'First Name';
+$lang['users_export_thead_lastname'] = 'Last Name';
 $lang['users_export_thead_email'] = 'E-mail';
 $lang['users_export_thead_manager'] = 'Manager';

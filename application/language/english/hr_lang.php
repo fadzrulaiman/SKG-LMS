@@ -57,8 +57,8 @@ $lang['hr_employees_multiple_edit_selection_msg'] = 'You must select at least on
 
 $lang['hr_export_employees_title'] = 'List of employees';
 $lang['hr_export_employees_thead_id'] = 'ID';
-$lang['hr_export_employees_thead_firstname'] = 'Firstname';
-$lang['hr_export_employees_thead_lastname'] = 'Lastname';
+$lang['hr_export_employees_thead_firstname'] = 'First Name';
+$lang['hr_export_employees_thead_lastname'] = 'Last Name';
 $lang['hr_export_employees_thead_email'] = 'E-mail';
 $lang['hr_export_employees_thead_entity'] = 'department';
 $lang['hr_export_employees_thead_contract'] = 'Contract';

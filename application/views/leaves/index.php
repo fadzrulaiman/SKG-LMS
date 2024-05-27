@@ -100,7 +100,7 @@
                 }
                 //Cancellation rules
                 if ($leave['status'] == LMS_ACCEPTED) {
-                    $showCancel = TRUE;
+                    $showCancel = FALSE;
                 }
                 //Delete rules
                 if ($leave['status'] == LMS_PLANNED) {

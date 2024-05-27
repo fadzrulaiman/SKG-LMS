@@ -12,7 +12,7 @@ $lang['overtime_index_thead_tip_view'] = 'view';
 $lang['overtime_index_thead_tip_accept'] = 'accept';
 $lang['overtime_index_thead_tip_reject'] = 'reject';
 $lang['overtime_index_thead_id'] = 'ID';
-$lang['overtime_index_thead_fullname'] = 'Fullname';
+$lang['overtime_index_thead_fullname'] = 'Full Name';
 $lang['overtime_index_thead_date'] = 'Date';
 $lang['overtime_index_thead_duration'] = 'Duration';
 $lang['overtime_index_thead_status'] = 'Status';
@@ -28,7 +28,7 @@ $lang['overtime_accept_flash_msg_success'] = 'The overtime request has been succ
 
 $lang['overtime_export_title'] = 'List of overtime requests';
 $lang['overtime_export_thead_id'] = 'ID';
-$lang['overtime_export_thead_fullname'] = 'Fullname';
+$lang['overtime_export_thead_fullname'] = 'Full Name';
 $lang['overtime_export_thead_date'] = 'Date';
 $lang['overtime_export_thead_duration'] = 'Duration';
 $lang['overtime_export_thead_cause'] = 'Reason';

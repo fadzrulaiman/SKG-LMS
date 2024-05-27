@@ -8,57 +8,57 @@
  * @author      Ceibga Bao <info@sansin.com.tw>
  */
 
-$lang['calendar_year_title'] = '年曆';
-$lang['calendar_year_button_export'] = '匯出';
+$lang['calendar_year_title'] = '年历';
+$lang['calendar_year_button_export'] = '导出';
 
-$lang['calendar_individual_title'] = '我的行事曆';
-$lang['calendar_individual_description'] = '我的休假';
-$lang['calendar_individual_popup_event_link_ical'] = '載iCal資料夾';
-$lang['calendar_individual_popup_event_link_ical_description'] = '匯入我的行事曆到Outlook';
-$lang['calendar_individual_popup_event_title'] = '詳細行程';
-$lang['calendar_individual_popup_event_button_close'] = '關閉';
+$lang['calendar_individual_title'] = '我的日历';
+$lang['calendar_individual_description'] = '我的假期';
+$lang['calendar_individual_popup_event_link_ical'] = '下载iCal文件';
+$lang['calendar_individual_popup_event_link_ical_description'] = '导入我的日历到Outlook';
+$lang['calendar_individual_popup_event_title'] = '详细日程';
+$lang['calendar_individual_popup_event_button_close'] = '关闭';
 $lang['calendar_individual_day_offs'] = '休假';
 
-$lang['calendar_workmates_title'] = '我同事的行事曆';
-$lang['calendar_workmates_description'] = '休假員工同屬主管';
-$lang['calendar_collaborators_title'] = '部屬的行事曆';
-$lang['calendar_collaborators_description'] = '我直隸下屬的休假（非主管為空白）';
+$lang['calendar_workmates_title'] = '我的同事日历';
+$lang['calendar_workmates_description'] = '假期员工同属主管';
+$lang['calendar_collaborators_title'] = '下属的日历';
+$lang['calendar_collaborators_description'] = '我直属下属的假期（非主管为空白）';
 
-$lang['calendar_department_title'] = '部門行事曆';
-$lang['calendar_department_description'] = '部門員工工作行事曆';
-$lang['calendar_department_msg_error'] = '如你不屬於任何部門.請聯絡HR工作部門/主管';
+$lang['calendar_department_title'] = '部门日历';
+$lang['calendar_department_description'] = '部门员工工作日历';
+$lang['calendar_department_msg_error'] = '如果您不属于任何部门，请联系人力资源部门/主管';
 
-$lang['calendar_organization_title'] = '組織的行事曆';
-$lang['calendar_organization_description'] = '部門的日曆';
-$lang['calendar_organization_field_select_entity'] = '選擇部門';
-$lang['calendar_organization_button_select_entity'] = '選擇';
-$lang['calendar_organization_check_include_subdept'] = '包含分部門';
-$lang['calendar_organization_popup_entity_title'] = '選擇部門';
-$lang['calendar_organization_popup_entity_button_ok'] = '好';
+$lang['calendar_organization_title'] = '组织日历';
+$lang['calendar_organization_description'] = '部门的日历';
+$lang['calendar_organization_field_select_entity'] = '选择部门';
+$lang['calendar_organization_button_select_entity'] = '选择';
+$lang['calendar_organization_check_include_subdept'] = '包括子部门';
+$lang['calendar_organization_popup_entity_title'] = '选择部门';
+$lang['calendar_organization_popup_entity_button_ok'] = '确定';
 $lang['calendar_organization_popup_entity_button_cancel'] = '取消';
 
-$lang['calendar_tabular_title'] = '行事曆格式';
-$lang['calendar_tabular_field_select_entity'] = '選擇部門';
+$lang['calendar_tabular_title'] = '表格日历';
+$lang['calendar_tabular_field_select_entity'] = '选择部门';
 $lang['calendar_tabular_field_month'] = '月';
 $lang['calendar_tabular_field_year'] = '年';
-$lang['calendar_tabular_button_previous'] = 'Previous';
-$lang['calendar_tabular_button_next'] = 'Next';
-$lang['calendar_tabular_button_select_entity'] = 'Select a department';
-$lang['calendar_tabular_button_select_list'] = 'Select a list';
-$lang['calendar_tabular_button_select_entity'] = '選擇';
-$lang['calendar_tabular_button_export'] = '匯出';
-$lang['calendar_tabular_check_include_subdept'] = '包含分部門';
-$lang['calendar_tabular_check_display_types'] = 'Display leave types';
-$lang['calendar_tabular_popup_entity_title'] = '選擇部門';
-$lang['calendar_tabular_popup_entity_button_ok'] = '好';
+$lang['calendar_tabular_button_previous'] = '上一页';
+$lang['calendar_tabular_button_next'] = '下一页';
+$lang['calendar_tabular_button_select_entity'] = '选择一个部门';
+$lang['calendar_tabular_button_select_list'] = '选择一个列表';
+$lang['calendar_tabular_button_select_entity'] = '选择';
+$lang['calendar_tabular_button_export'] = '导出';
+$lang['calendar_tabular_check_include_subdept'] = '包括子部门';
+$lang['calendar_tabular_check_display_types'] = '显示假期类型';
+$lang['calendar_tabular_popup_entity_title'] = '选择部门';
+$lang['calendar_tabular_popup_entity_button_ok'] = '确定';
 $lang['calendar_tabular_popup_entity_button_cancel'] = '取消';
-$lang['calendar_tabular_thead_employee'] = '員工';
-$lang['calendar_tabular_export_title'] = '行事曆格式';
-$lang['calendar_tabular_export_param_entity'] = '事業體';
+$lang['calendar_tabular_thead_employee'] = '员工';
+$lang['calendar_tabular_export_title'] = '表格日历';
+$lang['calendar_tabular_export_param_entity'] = '单位';
 $lang['calendar_tabular_export_param_month'] = '月';
 $lang['calendar_tabular_export_param_year'] = '年';
-$lang['calendar_tabular_export_param_children'] = '分部門';
-$lang['calendar_tabular_export_thead_employee'] = '員工';
+$lang['calendar_tabular_export_param_children'] = '子部门';
+$lang['calendar_tabular_export_thead_employee'] = '员工';
 
 $lang['calendar_monday_short'] = '一';
 $lang['calendar_tuesday_short'] = '二';
