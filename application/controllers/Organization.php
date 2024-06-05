@@ -38,7 +38,6 @@ class Organization extends CI_Controller {
         $this->lang->load('datatable', $this->language);
         $this->lang->load('treeview', $this->language);
         $data['title'] = lang('organization_index_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_hr_organization');
         $this->load->view('templates/header', $data);
         $this->load->view('menu/index', $data);
         $this->load->view('organization/index', $data);

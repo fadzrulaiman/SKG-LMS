@@ -40,7 +40,6 @@ class Extra extends CI_Controller {
         $this->lang->load('datatable', $this->language);
         $data['extras'] = $this->overtime_model->getExtrasOfEmployee($this->user_id);
         $data['title'] = lang('extra_index_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_extra_list');
         $data['flash_partial_view'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/index', $data);
@@ -113,7 +112,6 @@ class Extra extends CI_Controller {
 
         if ($this->form_validation->run() === FALSE) {
             $data['title'] = lang('extra_create_title');
-            $data['help'] = $this->help->create_help_link('global_link_doc_page_create_overtime');
             $this->load->view('templates/header', $data);
             $this->load->view('menu/index', $data);
             $this->load->view('extra/create');
@@ -175,7 +173,6 @@ class Extra extends CI_Controller {
 
         if ($this->form_validation->run() === FALSE) {
             $data['title'] = lang('extra_edit_hmtl_title');
-            $data['help'] = $this->help->create_help_link('global_link_doc_page_create_overtime');
             $data['id'] = $id;
             $this->load->model('users_model');
             $data['name'] = $this->users_model->getName($data['extra']['employee']);

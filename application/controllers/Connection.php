@@ -83,7 +83,6 @@ class Connection extends CI_Controller {
         }
         
         $data['title'] = lang('session_login_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_login');
         $this->load->helper('form');
         $this->load->library('form_validation');
         //Note that we don't receive the password as a clear string
@@ -441,7 +440,6 @@ class Connection extends CI_Controller {
             
             if ($loggedin === FALSE) {
                 $data['title'] = lang('session_login_title');
-                $data['help'] = $this->help->create_help_link('global_link_doc_page_login');
                 $data['language'] = $this->session->userdata('language');
                 $data['language_code'] = $this->session->userdata('language_code');
                 $data['message'] = lang('session_login_flash_account_disabled');

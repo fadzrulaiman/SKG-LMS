@@ -75,7 +75,6 @@ class Calendar extends CI_Controller {
         $data['months'] = $months;
         $data['year'] = $year;
         $data['title'] = lang('calendar_year_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_calendar_yearly');
         $this->load->view('templates/header', $data);
         $this->load->view('menu/index', $data);
         $this->load->view('calendar/year', $data);
@@ -93,7 +92,6 @@ class Calendar extends CI_Controller {
         $this->auth->checkIfOperationIsAllowed('individual_calendar');
         $data = getUserContext($this);
         $data['title'] = lang('calendar_individual_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_calendar_individual');
         $data['googleApi'] = FALSE;
         $data['clientId'] = 'key';
         $data['apiKey'] = 'key';
@@ -115,7 +113,6 @@ class Calendar extends CI_Controller {
         $this->auth->checkIfOperationIsAllowed('workmates_calendar');
         $data = getUserContext($this);
         $data['title'] = lang('calendar_workmates_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_calendar_workmates');
         $this->load->view('templates/header', $data);
         $this->load->view('menu/index', $data);
         $this->load->view('calendar/workmates', $data);
@@ -133,7 +130,6 @@ class Calendar extends CI_Controller {
         $this->auth->checkIfOperationIsAllowed('collaborators_calendar');
         $data = getUserContext($this);
         $data['title'] = lang('calendar_collaborators_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_calendar_collaborators');
         $this->load->view('templates/header', $data);
         $this->load->view('menu/index', $data);
         $this->load->view('calendar/collaborators', $data);
@@ -152,7 +148,6 @@ class Calendar extends CI_Controller {
         $this->auth->checkIfOperationIsAllowed('department_calendar');
         $data = getUserContext($this);
         $data['title'] = lang('calendar_department_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_calendar_department');
         $this->load->model('organization_model');
         $department = $this->organization_model->getDepartment($this->user_id);
         if (empty($department)) {
@@ -205,7 +200,6 @@ class Calendar extends CI_Controller {
             $dateObj = DateTime::createFromFormat('!m', $month);
             $data['monthName'] = lang($dateObj->format('F'));
             $data['title'] = lang('calendar_organization_title');
-            $data['help'] = $this->help->create_help_link('global_link_doc_page_calendar_organization');
             $data['departmentName'] = $this->organization_model->getName(0);
             $this->load->view('templates/header', $data);
             $this->load->view('menu/index', $data);
@@ -305,7 +299,6 @@ class Calendar extends CI_Controller {
             $data['displayTypes'] = $displayTypes;
             $data['department'] = $this->organization_model->getName($id);
             $data['title'] = lang('calendar_tabular_title');
-            $data['help'] = $this->help->create_help_link('global_link_doc_page_calendar_tabular');
             $data['tabularPartialView'] = $this->load->view('calendar/tabular_partial', $data, TRUE);
             $this->load->view('templates/header', $data);
             $this->load->view('menu/index', $data);

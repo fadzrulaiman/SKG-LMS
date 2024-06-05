@@ -26,6 +26,7 @@ $lang['hr_employees_thead_manager'] = 'Pengurus';
 $lang['hr_employees_thead_identifier'] = 'Pengenal';
 $lang['hr_employees_thead_datehired'] = 'Tarikh disewa';
 $lang['hr_employees_thead_position'] = 'Jawatan';
+$lang['hr_employees_thead_location'] = 'Lokasi';
 $lang['hr_employees_button_create_user'] = 'Cipta';
 $lang['hr_employees_button_export'] = 'Eksport senarai ini';
 $lang['hr_employees_popup_entitlment_title'] = 'Hari yang dibenarkan';
@@ -63,6 +64,8 @@ $lang['hr_export_employees_thead_email'] = 'E-mel';
 $lang['hr_export_employees_thead_entity'] = 'Jabatan';
 $lang['hr_export_employees_thead_contract'] = 'Kontrak';
 $lang['hr_export_employees_thead_manager'] = 'Pengurus';
+$lang['hr_export_employees_thead_position'] = 'Jawatan';
+$lang['hr_export_employees_thead_location'] = 'Lokasi';
 
 $lang['hr_leaves_title'] = 'Senarai permintaan cuti';
 $lang['hr_leaves_html_title'] = 'Senarai cuti untuk pekerja #';

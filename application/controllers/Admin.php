@@ -33,7 +33,6 @@ class Admin extends CI_Controller {
         $this->auth->checkIfOperationIsAllowed('list_settings');
         $data = getUserContext($this);
         $data['title'] = 'application/config/config.php';
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_settings');
         $this->load->view('templates/header', $data);
         $this->load->view('menu/index', $data);
         $this->load->view('admin/settings', $data);

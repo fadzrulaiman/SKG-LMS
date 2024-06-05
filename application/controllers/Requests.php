@@ -44,7 +44,6 @@ class Requests extends CI_Controller {
         $this->load->helper('form');
         $data['filter'] = $filter;
         $data['title'] = lang('requests_index_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_leave_validation');
         ($filter == 'all')? $showAll = TRUE : $showAll = FALSE;
         if ($this->config->item('enable_history') == TRUE){
           $data['requests'] = $this->leaves_model->getLeavesRequestedToManagerWithHistory($this->session->userdata('id'), $showAll);
@@ -202,7 +201,6 @@ class Requests extends CI_Controller {
         $data = getUserContext($this);
         $this->lang->load('datatable', $this->language);
         $data['title'] = lang('requests_collaborators_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_collaborators_list');
         $this->load->model('users_model');
         $data['collaborators'] = $this->users_model->getCollaboratorsOfManager($this->user_id);
         $data['flash_partial_view'] = $this->load->view('templates/flash', $data, TRUE);
@@ -224,7 +222,6 @@ class Requests extends CI_Controller {
             $data = getUserContext($this);
             $this->lang->load('datatable', $this->language);
             $data['title'] = lang('requests_delegations_title');
-            $data['help'] = $this->help->create_help_link('global_link_doc_page_delegations');
             $this->load->model('users_model');
             $data['name'] = $this->users_model->getName($id);
             $data['id'] = $id;
@@ -452,7 +449,6 @@ class Requests extends CI_Controller {
         $data = getUserContext($this);
         $this->lang->load('datatable', $this->language);
         $data['title'] = lang('requests_balance_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_leave_balance_report');
     
         if ($dateTmp === NULL) {
             $refDate = date("Y-m-d");

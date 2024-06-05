@@ -46,7 +46,6 @@ class Leaves extends CI_Controller {
         }
         $data['types'] = $this->types_model->getTypes();
         $data['title'] = lang('leaves_index_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_leave_requests_list');
         $data['flash_partial_view'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/index', $data);
@@ -89,7 +88,6 @@ class Leaves extends CI_Controller {
 
         if (!is_null($data['summary'])) {
             $data['title'] = lang('leaves_summary_title');
-            $data['help'] = $this->help->create_help_link('global_link_doc_page_my_summary');
             $this->load->view('templates/header', $data);
             $this->load->view('menu/index', $data);
             $this->load->view('leaves/counters', $data);
@@ -211,7 +209,6 @@ public function view($source, $id) {
         
         // Set page title and help link
         $data['title'] = lang('leaves_create_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_request_leave');
     
         // Form validation rules
         $this->form_validation->set_rules('startdate', lang('leaves_create_field_start'), 'required|strip_tags');
@@ -310,7 +307,6 @@ public function edit($id) {
 
     if ($this->form_validation->run() === FALSE) {
         $data['title'] = lang('leaves_edit_html_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_request_leave');
         $data['id'] = $id;
         $this->load->model('contracts_model');
         $leaveTypesDetails = $this->contracts_model->getLeaveTypesDetailsOTypesForUser($data['leave']['employee'], $data['leave']['type']);

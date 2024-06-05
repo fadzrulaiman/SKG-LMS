@@ -43,7 +43,6 @@ class Overtime extends CI_Controller {
         $this->lang->load('datatable', $this->language);
         $data['filter'] = $filter;
         $data['title'] = lang('overtime_index_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_overtime_list');
         $data['requests'] = $this->overtime_model->requests($this->user_id, $showAll);
         $data['flash_partial_view'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
