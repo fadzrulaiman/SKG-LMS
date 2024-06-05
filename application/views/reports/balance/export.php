@@ -22,16 +22,19 @@ $summary = array();
 $types = $this->types_model->getTypes();
 $users = $this->organization_model->allEmployees($_GET['entity'], $include_children);
 foreach ($users as $user) {
-    $result[$user->id]['identifier'] = $user->identifier;
-    $result[$user->id]['firstname'] = $user->firstname;
-    $result[$user->id]['lastname'] = $user->lastname;
-    $result[$user->id]['datehired'] = $user->datehired;
-    $result[$user->id]['department'] = $user->department;
-    $result[$user->id]['position'] = $user->position;
-    $result[$user->id]['contract'] = $user->contract;
+    $result[$user->id]['Identifier'] = $user->identifier;
+    $result[$user->id]['First Name'] = $user->firstname;
+    $result[$user->id]['Last Name'] = $user->lastname;
+    $result[$user->id]['Date Hired'] = $user->datehired;
+    $result[$user->id]['Department'] = $user->department;
+    $result[$user->id]['Position'] = $user->position;
+    $result[$user->id]['Location'] = $user->location;
+    $result[$user->id]['Contract'] = $user->contract;
     //Init type columns
     foreach ($types as $type) {
+        if ($type['id'] != 0) {
         $result[$user->id][$type['name']] = '';
+        }
     }
 
     $summary = $this->leaves_model->getLeaveBalanceForEmployee($user->id, TRUE, $refDate);
@@ -46,7 +49,7 @@ foreach ($users as $user) {
 
 $max = 0;
 $line = 2;
-$i18n = array("identifier", "firstname", "lastname", "datehired", "department", "position", "contract");
+$i18n = array("identifier", "firstname", "lastname", "datehired", "department", "position", "location", "contract");
 foreach ($result as $row) {
     $index = 1;
     foreach ($row as $key => $value) {

@@ -184,6 +184,22 @@ echo form_open('users/create', $attributes); ?>
 </div>
 
 <div class="row">
+    <div class="span12">
+        <input type="hidden" name="location" id="location" />
+        <div class="control-group">
+            <label class="control-label" for="location"><?php echo lang('users_create_field_location');?></label>
+            <div class="controls">
+                <div class="input-append">
+                    <input type="text" id="txtLocation" name="txtLocation" readonly />
+                    <a id="cmdSelectLocation"
+                        class="btn btn-primary"><?php echo lang('users_create_button_select');?></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
     <div class="span4">
         <input type="hidden" name="datehired" id="datehired" />
         <div class="control-group">
@@ -202,16 +218,6 @@ echo form_open('users/create', $attributes); ?>
             </div>
         </div>
     </div>
-
-    <div class="span4">
-        <div class="control-group">
-            <label class="control-label" for="identifier"><?php echo lang('users_create_field_location');?></label>
-            <div class="controls">
-                <input type="text" name="identifier" />
-            </div>
-        </div>
-    </div>
-
     <div class="span4">
         &nbsp;
     </div>
@@ -330,6 +336,22 @@ echo form_open('users/create', $attributes); ?>
     </div>
 </div>
 
+<div id="frmSelectLocation" class="modal hide fade">
+    <div class="modal-header">
+        <a href="#" onclick="$('#frmSelectLocation').modal('hide');" class="close">&times;</a>
+        <h3><?php echo lang('users_create_popup_location_title');?></h3>
+    </div>
+    <div class="modal-body" id="frmSelectLocationBody">
+        <img src="<?php echo base_url();?>assets/images/loading.gif">
+    </div>
+    <div class="modal-footer">
+        <a href="#" onclick="select_location();"
+            class="btn"><?php echo lang('users_create_popup_location_button_ok');?></a>
+        <a href="#" onclick="$('#frmSelectLocation').modal('hide');"
+            class="btn"><?php echo lang('users_create_popup_location_button_cancel');?></a>
+    </div>
+</div>
+
 <link rel="stylesheet"
     href="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/css/bootstrap-datepicker.min.css">
 <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/js/bootstrap-datepicker.min.js"></script>
@@ -385,6 +407,24 @@ function select_position() {
         $('#txtPosition').val(text);
     }
     $("#frmSelectPosition").modal('hide');
+}
+
+//Popup select location: on click OK, find the location id for the selected line
+function select_location() {
+    var locations = $('#locations').DataTable();
+    if (locations.rows({
+            selected: true
+        }).any()) {
+        var location = locations.rows({
+            selected: true
+        }).data()[0][0];
+        var text = locations.rows({
+            selected: true
+        }).data()[0][1];
+        $('#location').val(location);
+        $('#txtLocation').val(text);
+    }
+    $("#frmSelectLocation").modal('hide');
 }
 
 //Check for mandatory fields
@@ -600,6 +640,12 @@ $(function() {
     $("#cmdSelectPosition").click(function() {
         $("#frmSelectPosition").modal('show');
         $("#frmSelectPositionBody").load('<?php echo base_url(); ?>positions/select');
+    });
+
+    //Popup select location
+    $("#cmdSelectLocation").click(function() {
+        $("#frmSelectLocation").modal('show');
+        $("#frmSelectLocationBody").load('<?php echo base_url(); ?>locations/select');
     });
 
     //Popup select entity

@@ -28,6 +28,7 @@ $lang['hr_employees_thead_manager'] = '经理';
 $lang['hr_employees_thead_identifier'] = '标识符';
 $lang['hr_employees_thead_datehired'] = '入职日期';
 $lang['hr_employees_thead_position'] = '职位';
+$lang['hr_employees_thead_location'] = '地点';
 $lang['hr_employees_button_create_user'] = '创建用户';
 $lang['hr_employees_button_export'] = '导出';
 $lang['hr_employees_popup_entitlment_title'] = '享有天数';
@@ -63,6 +64,9 @@ $lang['hr_export_employees_thead_email'] = '电子邮件';
 $lang['hr_export_employees_thead_entity'] = '部门';
 $lang['hr_export_employees_thead_contract'] = '合同';
 $lang['hr_export_employees_thead_manager'] = '经理';
+$lang['hr_export_employees_thead_position'] = '地点';
+$lang['hr_export_employees_thead_location'] = '经理';
+
 
 $lang['hr_leaves_title'] = '休假申请列表';
 $lang['hr_leaves_html_title'] = '员工休假申请列表';

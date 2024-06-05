@@ -14,6 +14,7 @@ $lang['requests_index_thead_tip_reject'] = 'reject';
 $lang['requests_index_thead_tip_history'] = 'show history';
 $lang['requests_index_thead_id'] = 'Leave ID';
 $lang['requests_index_thead_fullname'] = 'Full Name';
+$lang['requests_index_thead_staffno'] = 'Staff Number';
 $lang['requests_index_thead_startdate'] = 'Start Date';
 $lang['requests_index_thead_enddate'] = 'End Date';
 $lang['requests_index_thead_duration'] = 'Duration';

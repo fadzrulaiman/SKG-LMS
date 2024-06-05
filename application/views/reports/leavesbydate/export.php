@@ -41,7 +41,7 @@ foreach ($users as $user) {
     $result[$user->id]['Last Name'] = $user->lastname;
     $result[$user->id]['Date Hired'] = empty($user->datehired) ? '' : (new DateTime($user->datehired))->format($this->lang->line('global_date_format'));
     $result[$user->id]['Department'] = $user->department;
-    $result[$user->id]['Positio'] = $user->position;
+    $result[$user->id]['Position'] = $user->position;
     $result[$user->id]['Contract'] = $user->contract;
     $non_working_days = $this->dayoffs_model->lengthDaysOffBetweenDates($user->contract_id, $start_date, $end_date);
     $opened_days = $total_days - $non_working_days;

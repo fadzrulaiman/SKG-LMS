@@ -46,6 +46,7 @@ if ($showAll == FALSE) {
         <tr>
             <th><?php echo lang('requests_index_thead_id');?></th>
             <th><?php echo lang('requests_index_thead_fullname');?></th>
+            <th><?php echo lang('requests_index_thead_staffno');?></th>
             <th><?php echo lang('requests_index_thead_startdate');?></th>
             <th><?php echo lang('requests_index_thead_enddate');?></th>
             <th><?php echo lang('requests_index_thead_duration');?></th>
@@ -107,6 +108,7 @@ if ($showAll == FALSE) {
             </div>
         </td>
         <td><?php echo $request['firstname'] . ' ' . $request['lastname']; ?></td>
+        <td><?php echo $request['employee']; ?></td>
         <td data-order="<?php echo $tmpStartDate; ?>"><?php echo $startdate /*. ' (' . lang($request['startdatetype']). ')';*/ ?></td>
         <td data-order="<?php echo$tmpEndDate; ?>"><?php echo $enddate /*. ' (' . lang($request['enddatetype']) . ')';*/ ?></td>
         <td><?php echo $request['duration']; ?></td>

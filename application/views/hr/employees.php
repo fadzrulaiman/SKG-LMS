@@ -103,6 +103,7 @@
                             <th><?php echo lang('hr_employees_thead_lastname');?></th>
                             <th><?php echo lang('hr_employees_thead_email');?></th>
                             <th><?php echo lang('hr_employees_thead_entity');?></th>
+                            <th><?php echo lang('hr_employees_thead_location');?></th>
                             <th><?php echo lang('hr_employees_thead_contract');?></th>
                             <th><?php echo lang('hr_employees_thead_manager');?></th>
                             <th><?php echo lang('hr_employees_thead_identifier');?></th>
@@ -620,6 +621,7 @@ $(function () {
                 { data: "lastname" },
                 { data: "email" },
                 { data: "entity" },
+                { data: "location" },
                 { data: "contract" },
                 { data: "manager_name" },
                 { data: "identifier" },

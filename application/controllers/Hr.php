@@ -38,7 +38,6 @@ class Hr extends CI_Controller {
         $this->lang->load('entitleddays', $this->language);
         $this->lang->load('leaves', $this->language);
         $data['title'] = lang('hr_employees_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_list_employees');
         $this->load->model('contracts_model');
         $data['contracts'] = $this->contracts_model->getContracts();
         $this->load->model('types_model');
@@ -97,6 +96,7 @@ class Hr extends CI_Controller {
                 $row->datehired->display = $displayDate;
                 $row->datehired->timestamp = $tmpDate;
                 $row->position = $employee->position;
+                $row->location = $employee->location;
                 $row->manager_name = $employee->manager_name;
                 $msg->data[] = $row;
             }
@@ -316,7 +316,6 @@ class Hr extends CI_Controller {
             $data['entitleddayscontract'] = $this->entitleddays_model->getEntitledDaysForContract($user['contract']);
             $data['entitleddaysemployee'] = $this->entitleddays_model->getEntitledDaysForEmployee($id);
             $data['title'] = lang('hr_summary_title');
-            $data['help'] = $this->help->create_help_link('global_link_doc_page_leave_balance_employee');
             $this->load->view('templates/header', $data);
             $this->load->view('menu/index', $data);
             $this->load->view('hr/counters', $data);
@@ -338,7 +337,6 @@ class Hr extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $data['title'] = lang('hr_leaves_create_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_request_leave');
         $data['form_action'] = 'hr/leaves/create/' . $id;
         $data['source'] = 'hr/employees';
         $data['employee'] = $id;
@@ -422,7 +420,6 @@ class Hr extends CI_Controller {
         $this->lang->load('datatable', $this->language);
         $this->lang->load('calendar', $this->language);
         $data['title'] = lang('hr_presence_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_presence_report');
 
         $data['user_id'] = $id;
         $this->load->model('leaves_model');

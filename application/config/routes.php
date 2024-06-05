@@ -104,6 +104,16 @@ $route['positions/export'] = 'positions/export';
 $route['positions'] = 'positions';
 
 //_______________________________________________
+//HR edit locations
+$route['locations/delete/(:num)'] = 'locations/delete/$1';
+$route['locations/edit/(:num)'] = 'locations/edit/$1';
+$route['locations/index'] = 'locations/index';
+$route['locations/select'] = 'locations/select';
+$route['locations/create'] = 'locations/create';
+$route['locations/export'] = 'locations/export';
+$route['locations'] = 'locations';
+
+//_______________________________________________
 //HR edit contracts
 $route['contracts/export'] = 'contracts/export';
 $route['contracts/create'] = 'contracts/create';
@@ -283,6 +293,8 @@ $route['api/leavetypes/'] = 'api/leavetypes';
 $route['api/leavetypes'] = 'api/leavetypes';
 $route['api/positions/'] = 'api/positions';
 $route['api/positions'] = 'api/positions';
+$route['api/locations/'] = 'api/locations';
+$route['api/locations'] = 'api/locations';
 $route['api/userdepartment/(:num)'] = 'api/userdepartment/$1';
 $route['api/userextras/(:num)'] = 'api/userextras/$1';
 $route['api/userleaves/(:num)'] = 'api/userleaves/$1';

@@ -31,6 +31,7 @@ $lang['menu_hr_list_employees'] = 'Senarai pekerja';
 $lang['menu_hr_contracts_divider'] = 'Kontrak';
 $lang['menu_hr_list_contracts'] = 'Senarai kontrak';
 $lang['menu_hr_list_positions'] = 'Senarai jawatan';
+$lang['menu_hr_list_locations'] = 'Senarai lokasi';
 $lang['menu_hr_leaves_type_divider'] = 'Cuti';
 $lang['menu_hr_list_leaves_type'] = 'Senarai jenis';
 $lang['menu_hr_reports_divider'] = 'Laporan';

@@ -125,6 +125,11 @@ class Auth {
             case 'create_positions' :
             case 'export_positions' :
             case 'list_positions' :
+            case 'delete_locations' :
+            case 'edit_locations' :
+            case 'create_locations' :
+            case 'export_locations' :
+            case 'list_locations' :
             case 'edit_organization' :
             case 'calendar_contract' :
             case 'adddayoff_contract' :

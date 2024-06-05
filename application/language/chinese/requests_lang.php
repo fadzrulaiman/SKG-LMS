@@ -16,6 +16,7 @@ $lang['requests_index_thead_tip_reject'] = '拒绝';
 $lang['requests_index_thead_tip_history'] = '显示历史';
 $lang['requests_index_thead_id'] = '编号';
 $lang['requests_index_thead_fullname'] = '全名';
+$lang['requests_index_thead_staffno'] = '员工人数';
 $lang['requests_index_thead_startdate'] = '开始日期';
 $lang['requests_index_thead_enddate'] = '结束日期';
 $lang['requests_index_thead_duration'] = '时段';

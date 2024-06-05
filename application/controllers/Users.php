@@ -36,7 +36,6 @@ class Users extends CI_Controller {
         $this->lang->load('datatable', $this->language);
         $data['users'] = $this->users_model->getUsersAndRoles();
         $data['title'] = lang('users_index_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_list_users');
         $data['flash_partial_view'] = $this->load->view('templates/flash', $data, TRUE);
         $this->load->view('templates/header', $data);
         $this->load->view('menu/index', $data);
@@ -119,6 +118,7 @@ class Users extends CI_Controller {
         }
         $data['title'] = lang('users_myprofile_html_title');
         $this->load->model('positions_model');
+        $this->load->model('locations_model');
         $this->load->model('contracts_model');
         $this->load->model('organization_model');
         $this->load->model('oauthclients_model');
@@ -126,6 +126,7 @@ class Users extends CI_Controller {
         $data['contract_id'] = intval($data['user']['contract']);
         $data['contract_label'] = $this->contracts_model->getName($data['user']['contract']);
         $data['position_label'] = $this->positions_model->getName($data['user']['position']);
+        $data['location_label'] = $this->locations_model->getName($data['user']['location']);
         $data['organization_label'] = $this->organization_model->getName($data['user']['organization']);
         $data['apps'] = $this->oauthclients_model->listOAuthApps($this->user_id);
         $this->load->view('templates/header', $data);
@@ -146,7 +147,6 @@ class Users extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('polyglot');
         $data['title'] = lang('users_edit_html_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_create_user');
 
         $this->form_validation->set_rules('firstname', lang('users_edit_field_firstname'), 'required|strip_tags');
         $this->form_validation->set_rules('lastname', lang('users_edit_field_lastname'), 'required|strip_tags');
@@ -157,6 +157,7 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('contract', lang('users_edit_field_contract'), 'strip_tags');
         $this->form_validation->set_rules('entity', lang('users_edit_field_entity'), 'strip_tags');
         $this->form_validation->set_rules('position', lang('users_edit_field_position'), 'strip_tags');
+        $this->form_validation->set_rules('location', lang('users_edit_field_location'), 'strip_tags');
         $this->form_validation->set_rules('datehired', lang('users_edit_field_hired'), 'strip_tags');
         $this->form_validation->set_rules('identifier', lang('users_edit_field_identifier'), 'strip_tags');
         $this->form_validation->set_rules('language', lang('users_edit_field_language'), 'strip_tags');
@@ -171,11 +172,13 @@ class Users extends CI_Controller {
         if ($this->form_validation->run() === FALSE) {
             $this->load->model('roles_model');
             $this->load->model('positions_model');
+            $this->load->model('locations_model');
             $this->load->model('organization_model');
             $this->load->model('contracts_model');
             $data['contracts'] = $this->contracts_model->getContracts();
             $data['manager_label'] = $this->users_model->getName($data['users_item']['manager']);
             $data['position_label'] = $this->positions_model->getName($data['users_item']['position']);
+            $data['location_label'] = $this->locations_model->getName($data['users_item']['location']);
             $data['organization_label'] = $this->organization_model->getName($data['users_item']['organization']);
             $data['roles'] = $this->roles_model->getRoles();
             $this->load->view('templates/header', $data);
@@ -275,7 +278,6 @@ class Users extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->library('polyglot');
         $data['title'] = lang('users_create_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_create_user');
 
         $this->load->model('roles_model');
         $data['roles'] = $this->roles_model->getRoles();
@@ -292,6 +294,7 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('manager', lang('users_create_field_manager'), 'required|strip_tags');
         $this->form_validation->set_rules('contract', lang('users_create_field_contract'), 'strip_tags');
         $this->form_validation->set_rules('position', lang('users_create_field_position'), 'strip_tags');
+        $this->form_validation->set_rules('location', lang('users_create_field_location'), 'strip_tags');
         $this->form_validation->set_rules('entity', lang('users_create_field_entity'), 'strip_tags');
         $this->form_validation->set_rules('datehired', lang('users_create_field_hired'), 'strip_tags');
         $this->form_validation->set_rules('identifier', lang('users_create_field_identifier'), 'strip_tags');

@@ -227,11 +227,12 @@ class Organization_model extends CI_Model {
      */
     public function allEmployees($id, $children = FALSE) {
         $this->db->select('users.id, users.identifier, users.firstname, users.lastname, users.datehired');
-        $this->db->select('organization.name as department, positions.name as position, contracts.name as contract');
+        $this->db->select('organization.name as department, positions.name as position, locations.name as location, contracts.name as contract');
         $this->db->select('contracts.id as contract_id');
         $this->db->from('organization');
         $this->db->join('users', 'users.organization = organization.id');
         $this->db->join('positions', 'positions.id  = users.position', 'left');
+        $this->db->join('locations', 'locations.id  = users.location', 'left');
         $this->db->join('contracts', 'contracts.id  = users.contract', 'left');
         if ($children === TRUE) {
             $this->load->model('organization_model');

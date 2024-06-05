@@ -30,6 +30,7 @@ $lang['menu_hr_list_employees'] = 'List of employees';
 $lang['menu_hr_contracts_divider'] = 'Contracts';
 $lang['menu_hr_list_contracts'] = 'List of contracts';
 $lang['menu_hr_list_positions'] = 'List of positions';
+$lang['menu_hr_list_locations'] = 'List of locations';
 $lang['menu_hr_leaves_type_divider'] = 'Leaves';
 $lang['menu_hr_list_leaves_type'] = 'List of types';
 $lang['menu_hr_reports_divider'] = 'Reports';

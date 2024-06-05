@@ -158,6 +158,22 @@ if (isset($_GET['source'])) {
 </div>
 
 <div class="row">
+    <div class="span12">
+        <input type="hidden" name="location" id="location" value="<?php echo $users_item['location']; ?>" />
+        <div class="control-group">
+            <label class="control-label" for="txtLocation"><?php echo lang('users_create_field_location');?></label>
+            <div class="controls">
+                <div class="input-append">
+                    <input type="text" id="txtLocation" name="txtLocation" value="<?php echo $location_label; ?>"
+                        required readonly />
+                    <a id="cmdSelectLocation" class="btn btn-primary"><?php echo lang('users_edit_button_select');?></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
     <div class="span4">
         <input type="hidden" name="datehired" id="datehired" value="<?php
             if (!is_null($users_item['datehired'])) {
@@ -304,6 +320,22 @@ if (isset($_GET['source'])) {
     </div>
 </div>
 
+<div id="frmSelectLocation" class="modal hide fade">
+    <div class="modal-header">
+        <a href="#" onclick="$('#frmSelectLocation').modal('hide');" class="close">&times;</a>
+        <h3><?php echo lang('users_edit_popup_location_title');?></h3>
+    </div>
+    <div class="modal-body" id="frmSelectLocationBody">
+        <img src="<?php echo base_url();?>assets/images/loading.gif">
+    </div>
+    <div class="modal-footer">
+        <a href="#" onclick="select_location();"
+            class="btn"><?php echo lang('users_edit_popup_location_button_ok');?></a>
+        <a href="#" onclick="$('#frmSelectLocation').modal('hide');"
+            class="btn"><?php echo lang('users_edit_popup_location_button_cancel');?></a>
+    </div>
+</div>
+
 <link rel="stylesheet"
     href="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/css/bootstrap-datepicker.min.css">
 <script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/js/bootstrap-datepicker.min.js"></script>
@@ -361,6 +393,24 @@ function select_position() {
     $("#frmSelectPosition").modal('hide');
 }
 
+//Popup select postion: on click OK, find the Location id for the selected line
+function select_location() {
+    var locations = $('#locations').DataTable();
+    if (locations.rows({
+            selected: true
+        }).any()) {
+        var location = locations.rows({
+            selected: true
+        }).data()[0][0];
+        var text = locations.rows({
+            selected: true
+        }).data()[0][1];
+        $('#location').val(location);
+        $('#txtLocation').val(text);
+    }
+    $("#frmSelectLocation").modal('hide');
+}
+
 //Init datepicker for using an alternative field and format
 $(document).ready(function() {
     $("#viz_datehired").datepicker({
@@ -376,7 +426,7 @@ $(document).ready(function() {
     $('#timezone').select2();
     $('#contract').select2();
 
-    //Popup select position
+    //Popup select manager
     $("#cmdSelectManager").click(function() {
         $("#frmSelectManager").modal('show');
         $("#frmSelectManagerBody").load('<?php echo base_url(); ?>users/employees');
@@ -386,6 +436,12 @@ $(document).ready(function() {
     $("#cmdSelectPosition").click(function() {
         $("#frmSelectPosition").modal('show');
         $("#frmSelectPositionBody").load('<?php echo base_url(); ?>positions/select');
+    });
+
+    //Popup select location
+    $("#cmdSelectLocation").click(function() {
+        $("#frmSelectLocation").modal('show');
+        $("#frmSelectLocationBody").load('<?php echo base_url(); ?>locations/select');
     });
 
     //Popup select entity

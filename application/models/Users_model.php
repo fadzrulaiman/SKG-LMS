@@ -99,10 +99,11 @@ class Users_model extends CI_Model {
      */
     public function getCollaboratorsOfManager($id = 0) {
         $this->db->select('users.*');
-        $this->db->select('organization.name as department_name, positions.name as position_name, contracts.name as contract_name');
+        $this->db->select('organization.name as department_name, positions.name as position_name, locations.name as location_name, contracts.name as contract_name');
         $this->db->from('users');
         $this->db->join('organization', 'users.organization = organization.id');
         $this->db->join('positions', 'positions.id  = users.position', 'left');
+        $this->db->join('locations', 'locations.id  = users.location', 'left');
         $this->db->join('contracts', 'contracts.id  = users.contract', 'left');
         $this->db->order_by("lastname", "asc");
         $this->db->order_by("firstname", "asc");
@@ -214,6 +215,9 @@ class Users_model extends CI_Model {
         if ($this->input->post('position') != NULL && $this->input->post('position') != '') {
             $data['position'] = $this->input->post('position');
         }
+        if ($this->input->post('location') != NULL && $this->input->post('location') != '') {
+            $data['location'] = $this->input->post('location');
+        }
         if ($this->input->post('datehired') != NULL && $this->input->post('datehired') != '') {
             $data['datehired'] = $this->input->post('datehired');
         }
@@ -248,6 +252,7 @@ class Users_model extends CI_Model {
      * @param int $organization Id of the organization or NULL
      * @param int $contract Id of the contract or NULL
      * @param int $position Id of the position or NULL
+     * @param int $location Id of the location or NULL
      * @param date $datehired Date of hiring or NULL
      * @param string $identifier Internal identifier or NULL
      * @param string $language language code or NULL
@@ -266,6 +271,7 @@ class Users_model extends CI_Model {
             $organization = NULL,
             $contract = NULL,
             $position = NULL,
+            $location = NULL,
             $datehired = NULL,
             $identifier = NULL,
             $language = NULL,
@@ -291,6 +297,7 @@ class Users_model extends CI_Model {
         if (isset($organization)) $this->db->set('organization', $organization);
         if (isset($contract)) $this->db->set('contract', $contract);
         if (isset($position)) $this->db->set('position', $position);
+        if (isset($location)) $this->db->set('location', $location);
         if (isset($datehired)) $this->db->set('datehired', $datehired);
         if (isset($identifier)) $this->db->set('identifier', $identifier);
         if (isset($language)) $this->db->set('language', $language);
@@ -361,6 +368,9 @@ class Users_model extends CI_Model {
         }
         if ($this->input->post('position') != NULL && $this->input->post('position') != '') {
             $data['position'] = $this->input->post('position');
+        }
+        if ($this->input->post('location') != NULL && $this->input->post('location') != '') {
+            $data['location'] = $this->input->post('location');
         }
         if ($this->input->post('datehired') != NULL && $this->input->post('datehired') != '') {
             $data['datehired'] = $this->input->post('datehired');
@@ -632,6 +642,7 @@ class Users_model extends CI_Model {
             $user->email = $row->email;
             $user->contract = $row->contract;
             $user->position = $row->position;
+            $user->location = $row->location;
             $user->organization = $row->organization;
             log_message('debug', '--checkCredentialsForREST : user #' . $user->id);
             return $user;
@@ -678,12 +689,14 @@ class Users_model extends CI_Model {
                 . ' users.identifier as identifier,'
                 . ' users.datehired as datehired,'
                 . ' positions.name as position,'
+                . ' locations.name as location,'
                 . ' organization.name as entity,'
                 . ' contracts.name as contract,'
                 . ' CONCAT_WS(\' \',managers.firstname,  managers.lastname) as manager_name', FALSE);
         $this->db->from('users');
         $this->db->join('contracts', 'contracts.id = users.contract', 'left outer');
         $this->db->join('positions', 'positions.id = users.position', 'left outer');
+        $this->db->join('locations', 'locations.id = users.location', 'left outer');
         $this->db->join('users as managers', 'managers.id = users.manager', 'left outer');
         $this->db->join('organization', 'organization.id = users.organization', 'left outer');
 

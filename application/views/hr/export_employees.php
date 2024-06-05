@@ -25,8 +25,10 @@ $sheet->setCellValue('D1', lang('hr_export_employees_thead_email'));
 $sheet->setCellValue('E1', lang('hr_export_employees_thead_entity'));
 $sheet->setCellValue('F1', lang('hr_export_employees_thead_contract'));
 $sheet->setCellValue('G1', lang('hr_export_employees_thead_manager'));
-$sheet->getStyle('A1:G1')->getFont()->setBold(true);
-$sheet->getStyle('A1:G1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$sheet->setCellValue('H1', lang('hr_export_employees_thead_position'));
+$sheet->setCellValue('I1', lang('hr_export_employees_thead_location'));
+$sheet->getStyle('A1:I1')->getFont()->setBold(true);
+$sheet->getStyle('A1:I1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 $employees = $this->users_model->employeesOfEntity($id, $children, $filterActive, $criterion1, $date1, $criterion2, $date2);
 
 $line = 2;
@@ -38,11 +40,13 @@ foreach ($employees as $employee) {
     $sheet->setCellValue('E' . $line, $employee->entity);
     $sheet->setCellValue('F' . $line, $employee->contract);
     $sheet->setCellValue('G' . $line, $employee->manager_name);
+    $sheet->setCellValue('H' . $line, $employee->position);
+    $sheet->setCellValue('I' . $line, $employee->location);
     $line++;
 }
 
 //Autofit
-foreach(range('A', 'G') as $colD) {
+foreach(range('A', 'I') as $colD) {
     $sheet->getColumnDimension($colD)->setAutoSize(TRUE);
 }
 

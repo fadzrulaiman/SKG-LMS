@@ -26,6 +26,7 @@ $lang['hr_employees_thead_manager'] = 'Manager';
 $lang['hr_employees_thead_identifier'] = 'Identifier';
 $lang['hr_employees_thead_datehired'] = 'Date hired';
 $lang['hr_employees_thead_position'] = 'Position';
+$lang['hr_employees_thead_location'] = 'Location';
 $lang['hr_employees_button_create_user'] = 'Create';
 $lang['hr_employees_button_export'] = 'Export this list';
 $lang['hr_employees_popup_entitlment_title'] = 'Entitled days';
@@ -63,6 +64,8 @@ $lang['hr_export_employees_thead_email'] = 'E-mail';
 $lang['hr_export_employees_thead_entity'] = 'department';
 $lang['hr_export_employees_thead_contract'] = 'Contract';
 $lang['hr_export_employees_thead_manager'] = 'Manager';
+$lang['hr_export_employees_thead_position'] = 'Position';
+$lang['hr_export_employees_thead_location'] = 'Location';
 
 $lang['hr_leaves_title'] = 'List of requested leaves';
 $lang['hr_leaves_html_title'] = 'List of leaves for employee #';

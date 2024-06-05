@@ -74,7 +74,6 @@ class Reports extends CI_Controller {
         }
         $data['refDate'] = $refDate;
         $data['title'] = lang('reports_balance_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_leave_balance_report');
         $this->load->view('templates/header', $data);
         $this->load->view('menu/index', $data);
         $this->load->view('reports/balance/index', $data);
@@ -113,10 +112,13 @@ class Reports extends CI_Controller {
     }            $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));
             $result[$user->id]['Department'] = $user->department;
             $result[$user->id]['Position'] = $user->position;
+            $result[$user->id]['Location'] = $user->location;
             $result[$user->id]['Contract'] = $user->contract;
             //Init type columns
             foreach ($types as $type) {
-                $result[$user->id][$type['name']] = '';
+                if ($type['id'] != 0) {
+                    $result[$user->id][$type['name']] = '';
+                }
             }
 
             $summary = $this->leaves_model->getLeaveBalanceForEmployee($user->id, TRUE, $refDate);
@@ -133,7 +135,7 @@ class Reports extends CI_Controller {
         $thead = '';
         $tbody = '';
         $line = 2;
-        $i18n = array("identifier", "firstname", "lastname", "datehired", "department", "position", "contract");
+        $i18n = array("identifier", "firstname", "lastname", "datehired", "department", "position", "location", "contract");
         foreach ($result as $row) {
             $index = 1;
             $tbody .= '<tr>';
@@ -201,7 +203,6 @@ class Reports extends CI_Controller {
         $this->auth->checkIfOperationIsAllowed('native_report_leaves');
         $data = getUserContext($this);
         $data['title'] = lang('reports_leaves_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_leaves_report');
         $this->load->view('templates/header', $data);
         $this->load->view('menu/index', $data);
         $this->load->view('reports/leaves/index', $data);
@@ -210,8 +211,7 @@ class Reports extends CI_Controller {
 
     /**
      * Report leaves request for a month and an entity
-     * This report is inspired by the monthly presence report, but applicable to a set of employee.
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     * This report is inspired by the monthly presence report, but applicable to a set of employees.
      * @since 0.4.3
      */
     public function executeLeavesReport() {
@@ -224,7 +224,7 @@ class Reports extends CI_Controller {
         $children = filter_var($this->input->get("children"), FILTER_VALIDATE_BOOLEAN);
         $requests = filter_var($this->input->get("requests"), FILTER_VALIDATE_BOOLEAN);
 
-        //Compute facts about dates and the selected month
+        // Compute facts about dates and the selected month
         if ($month == 0) {
             $start = sprintf('%d-01-01', $year);
             $end = sprintf('%d-12-31', $year);
@@ -234,7 +234,6 @@ class Reports extends CI_Controller {
             $end = date('Y-m-t', strtotime($start));  // More direct and avoids an extra variable
             $total_days = cal_days_in_month(CAL_GREGORIAN, $month, $year);
         }
-        
 
         $this->load->model('organization_model');
         $this->load->model('leaves_model');
@@ -242,7 +241,12 @@ class Reports extends CI_Controller {
         $this->load->model('dayoffs_model');
         $types = $this->types_model->getTypes();
 
-        //Iterate on all employees of the entity
+        // Filter out types with id 0
+        $filtered_types = array_filter($types, function($type) {
+            return $type['id'] != 0;
+        });
+
+        // Iterate on all employees of the entity
         $users = $this->organization_model->allEmployees($entity, $children);
         $result = array();
         $leave_requests = array();
@@ -251,30 +255,35 @@ class Reports extends CI_Controller {
             $result[$user->id]['Identifier'] = $user->identifier;
             $result[$user->id]['First Name'] = $user->firstname;
             $result[$user->id]['Last Name'] = $user->lastname;
-                // Add a check for null or empty datehired
+            
+            // Add a check for null or empty datehired
             if (!empty($user->datehired)) {
                 $date = new DateTime($user->datehired);
-                $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));
+                $result[$user->id]['Date Hired'] = $date->format($this->lang->line('global_date_format'));
             } else {
                 $result[$user->id]['Date Hired'] = '';
             }
-           // $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));
+
             $result[$user->id]['Department'] = $user->department;
             $result[$user->id]['Position'] = $user->position;
+            $result[$user->id]['Location'] = $user->location;
             $result[$user->id]['Contract'] = $user->contract;
             $non_working_days = $this->dayoffs_model->lengthDaysOffBetweenDates($user->contract_id, $start, $end);
             $opened_days = $total_days - $non_working_days;
-            foreach ($types as $type) {
+
+            foreach ($filtered_types as $type) {
                 $result[$user->id][$type['name']] = 0;  // Initialize with 0 instead of an empty string
             }
-            //If the user has selected All months
+
+            // If the user has selected all months
             $leave_duration = 0;
             if ($month == 0) {
                 for ($ii = 1; $ii < 13; $ii++) {
                     $linear = $this->leaves_model->linear($user->id, $ii, $year, FALSE, FALSE, TRUE, FALSE);
                     $leave_duration += $this->leaves_model->monthlyLeavesDuration($linear);
-                    $leaves_detail = $this->leaves_model->monthlyLeavesByType($linear);    
-                    foreach ($types as $type) {
+                    $leaves_detail = $this->leaves_model->monthlyLeavesByType($linear);
+                    
+                    foreach ($filtered_types as $type) {
                         if (array_key_exists($type['name'], $leaves_detail)) {
                             // Check if value in `leaves_detail` is numeric before adding
                             if (is_numeric($leaves_detail[$type['name']])) {
@@ -285,7 +294,7 @@ class Reports extends CI_Controller {
                             }
                         }
                     }
-              }
+                }
                 if ($requests) $leave_requests[$user->id] = $this->leaves_model->getAcceptedLeavesBetweenDates($user->id, $start, $end);
                 $work_duration = $opened_days - $leave_duration;
             } else {
@@ -294,8 +303,9 @@ class Reports extends CI_Controller {
                 $work_duration = $opened_days - $leave_duration;
                 $leaves_detail = $this->leaves_model->monthlyLeavesByType($linear);
                 if ($requests) $leave_requests[$user->id] = $this->leaves_model->getAcceptedLeavesBetweenDates($user->id, $start, $end);
-                //Init type columns
-                foreach ($types as $type) {
+                
+                // Init type columns
+                foreach ($filtered_types as $type) {
                     if (array_key_exists($type['name'], $leaves_detail)) {
                         $result[$user->id][$type['name']] = $leaves_detail[$type['name']];
                     } else {
@@ -303,6 +313,7 @@ class Reports extends CI_Controller {
                     }
                 }
             }
+
             $result[$user->id]['Leave Duration'] = $leave_duration;
             $result[$user->id]['Total Days'] = $total_days;
             $result[$user->id]['Weekend & Public Holiday Days'] = $non_working_days;
@@ -313,7 +324,8 @@ class Reports extends CI_Controller {
         $thead = '';
         $tbody = '';
         $line = 2;
-        $i18n = array("identifier", "firstname", "lastname", "datehired", "department", "position", "contract");
+        $i18n = array("identifier", "firstname", "lastname", "datehired", "department", "position", "location", "contract");
+        
         foreach ($result as $user_id => $row) {
             $index = 1;
             $tbody .= '<tr>';
@@ -329,7 +341,8 @@ class Reports extends CI_Controller {
                 $index++;
             }
             $tbody .= '</tr>';
-            //Display a nested table listing the leave requests
+            
+            // Display a nested table listing the leave requests
             if ($requests) {
                 if (count($leave_requests[$user_id])) {
                     $tbody .= '<tr><td colspan="' . count($row) . '">';
@@ -342,12 +355,13 @@ class Reports extends CI_Controller {
                     $tbody .= '<th>' . lang('leaves_index_thead_duration'). '</th>';
                     $tbody .= '</tr></thead>';
                     $tbody .= '<tbody>';
-                    //Iterate on leave requests
+                    
+                    // Iterate on leave requests
                     foreach ($leave_requests[$user_id] as $request) {
                         $date = new DateTime($request['startdate']);
-                        $startdate = $date->format(lang('global_date_format'));
+                        $startdate = $date->format($this->lang->line('global_date_format'));
                         $date = new DateTime($request['enddate']);
-                        $enddate = $date->format(lang('global_date_format'));
+                        $enddate = $date->format($this->lang->line('global_date_format'));
                         $tbody .= '<tr>';
                         $tbody .= '<td><a href="' . base_url() . 'leaves/view/'. $request['id']. '" target="_blank">'. $request['id']. '</a></td>';
                         $tbody .= '<td>'. $startdate . ' (' . lang($request['startdatetype']). ')</td>';
@@ -407,44 +421,46 @@ class Reports extends CI_Controller {
         $this->auth->checkIfOperationIsAllowed('native_report_leaves');
         $data = getUserContext($this);
         $data['title'] = lang('reports_leaves_title');
-        $data['help'] = $this->help->create_help_link('global_link_doc_page_leaves_report');
         $this->load->view('templates/header', $data);
         $this->load->view('menu/index', $data);
         $this->load->view('reports/leavesbydate/index', $data);
         $this->load->view('templates/footer');
     }
+
     /**
      * Landing page of the shipped-in date range leaves report
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      * @since 0.4.3
      */
     public function executeLeavesByDateReport() {
         $this->auth->checkIfOperationIsAllowed('native_report_leaves');
         $this->lang->load('leaves', $this->language);
-    
+
+        // Debug: Log loaded language lines
+        log_message('debug', 'Loaded language lines: ' . json_encode($this->lang->language));
+        
         // Get start and end dates from the input, defaulting to a reasonable range if not provided
         $start_date = $this->input->get("start_date") ? $this->input->get("start_date") : date('Y-m-d');
         $end_date = $this->input->get("end_date") ? $this->input->get("end_date") : date('Y-m-d', strtotime("+1 month", strtotime($start_date)));
-    
+
         $entity = $this->input->get("entity") === FALSE ? 0 : $this->input->get("entity");
         $children = filter_var($this->input->get("children"), FILTER_VALIDATE_BOOLEAN);
         $requests = filter_var($this->input->get("requests"), FILTER_VALIDATE_BOOLEAN);
-    
+
         $this->load->model('organization_model');
         $this->load->model('leaves_model');
         $this->load->model('types_model');
         $this->load->model('dayoffs_model');
         $types = $this->types_model->getTypes();
-    
+
         // Calculate total days between dates
         $date1 = new DateTime($start_date);
         $date2 = new DateTime($end_date);
         $total_days = $date2->diff($date1)->format("%a") + 1;
-    
+
         $users = $this->organization_model->allEmployees($entity, $children);
         $result = array();
         $leave_requests = array();
-    
+
         foreach ($users as $user) {
             $result[$user->id]['Identifier'] = $user->identifier;
             $result[$user->id]['First Name'] = $user->firstname;
@@ -452,34 +468,45 @@ class Reports extends CI_Controller {
             $result[$user->id]['Date Hired'] = empty($user->datehired) ? '' : (new DateTime($user->datehired))->format($this->lang->line('global_date_format'));
             $result[$user->id]['Department'] = $user->department;
             $result[$user->id]['Position'] = $user->position;
+            $result[$user->id]['Location'] = $user->location;
             $result[$user->id]['Contract'] = $user->contract;
-    
             $non_working_days = $this->dayoffs_model->lengthDaysOffBetweenDates($user->contract_id, $start_date, $end_date);
             $opened_days = $total_days - $non_working_days;
-    
+
             $linear = $this->leaves_model->linearbydate($user->id, $start_date, $end_date, FALSE, FALSE, TRUE, FALSE);
             $leave_duration = $this->leaves_model->dateRangeLeaveDuration($linear);
             $work_duration = $opened_days - $leave_duration;
             $leaves_detail = $this->leaves_model->dateRangeLeaveByType($linear);
-    
+
             if ($requests) $leave_requests[$user->id] = $this->leaves_model->getAcceptedLeavesBetweenDates($user->id, $start_date, $end_date);
-    
+
             // Initialize type columns
             foreach ($types as $type) {
-                $result[$user->id][$type['name']] = array_key_exists($type['name'], $leaves_detail) ? $leaves_detail[$type['name']] : 0;
+                if ($type['id'] != 0) {
+                    $result[$user->id][$type['name']] = array_key_exists($type['name'], $leaves_detail) ? $leaves_detail[$type['name']] : 0;
+                }        
             }
-    
+
             $result[$user->id]['Leave Duration'] = $leave_duration;
             $result[$user->id]['Total Days'] = $total_days;
             $result[$user->id]['Weekend & Public Holiday Days'] = $non_working_days;
             $result[$user->id]['Work Days'] = $work_duration;
         }
-    
+
+        // Check for any missing language lines before generating the table
+        foreach ($this->lang->language as $key => $value) {
+            if (empty($key) || empty($value)) {
+                log_message('error', 'Missing language line for key: ' . $key);
+            }
+        }
+
         // Generate HTML table output
         $table = $this->generateHTMLTable($result, $leave_requests, $requests);
-    
+
         $this->output->set_output($table);
     }
+    
+
     /**
      * Function to generate html table after execute
      * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>

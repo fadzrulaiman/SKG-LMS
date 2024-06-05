@@ -15,6 +15,7 @@ $lang['requests_index_thead_tip_reject'] = 'tolak';
 $lang['requests_index_thead_tip_history'] = 'papar sejarah';
 $lang['requests_index_thead_id'] = 'ID Cuti';
 $lang['requests_index_thead_fullname'] = 'Nama Penuh';
+$lang['requests_index_thead_staffno'] = 'Nombor Staff';
 $lang['requests_index_thead_startdate'] = 'Tarikh Mula';
 $lang['requests_index_thead_enddate'] = 'Tarikh Tamat';
 $lang['requests_index_thead_duration'] = 'Tempoh';
