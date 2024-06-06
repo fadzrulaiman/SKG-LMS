@@ -45,7 +45,7 @@ $leave_requests = array();
 $users = $this->organization_model->allEmployees($entity, $children);
 $result = array();
 foreach ($users as $user) {
-    $result[$user->id]['Identifier'] = $user->identifier;
+    $result[$user->id]['Employee ID'] = $user->id;
     $result[$user->id]['First Name'] = $user->firstname;
     $result[$user->id]['Last Name'] = $user->lastname;
     $dateHired = $user->datehired ?? '1970-01-01'; // Default to Jan 1, 1970, if datehired is null
@@ -110,7 +110,7 @@ foreach ($users as $user) {
 
 $max = 0;
 $line = 2;
-$i18n = array("identifier", "firstname", "lastname", "datehired", "department", "position", "location", "contract");
+$i18n = array("id", "firstname", "lastname", "datehired", "department", "position", "location", "contract");
 
 foreach ($result as $user_id => $row) {
     $index = 1;

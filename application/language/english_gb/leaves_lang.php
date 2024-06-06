@@ -129,6 +129,7 @@ $lang['leaves_comment_send_comment'] = 'Send comment';
 $lang['leaves_comment_author_saying'] = ' says';
 $lang['leaves_comment_status_changed'] = 'The status of the leave have been changed to ';
 $lang['Identifier'] = 'Identifier';
+$lang['Employee ID'] = 'Employee ID';
 $lang['First Name'] = 'First Name';
 $lang['Last Name'] = 'Last Name';
 $lang['Date Hired'] = 'Date Hired';

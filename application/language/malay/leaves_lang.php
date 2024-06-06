@@ -130,6 +130,7 @@ $lang['leaves_comment_send_comment'] = 'Hantar komen';
 $lang['leaves_comment_author_saying'] = ' berkata';
 $lang['leaves_comment_status_changed'] = 'Status cuti telah diubah kepada';
 $lang['Identifier'] = 'Id Pekerja';
+$lang['Employee ID'] = 'Employee ID';
 $lang['First Name'] = 'Nama Pertama';
 $lang['Last Name'] = 'Nama Akhir';
 $lang['Date Hired'] = 'Tarikh Bekerja';

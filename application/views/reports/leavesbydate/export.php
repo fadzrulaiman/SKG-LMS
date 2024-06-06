@@ -36,7 +36,7 @@ $leave_requests = array();
 $users = $this->organization_model->allEmployees($entity, $children);
 $result = array();
 foreach ($users as $user) {
-    $result[$user->id]['Identifier'] = $user->identifier;
+    $result[$user->id]['Employee ID'] = $user->id;
     $result[$user->id]['First Name'] = $user->firstname;
     $result[$user->id]['Last Name'] = $user->lastname;
     $result[$user->id]['Date Hired'] = empty($user->datehired) ? '' : (new DateTime($user->datehired))->format($this->lang->line('global_date_format'));
@@ -63,7 +63,7 @@ foreach ($users as $user) {
 
 $max = 0;
 $line = 2;
-$i18n = array("identifier", "firstname", "lastname", "datehired", "department", "position", "contract");
+$i18n = array("id", "firstname", "lastname", "datehired", "department", "position", "contract");
 foreach ($result as $user_id => $row) {
     $index = 1;
     foreach ($row as $key => $value) {
