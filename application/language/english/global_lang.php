@@ -32,6 +32,8 @@ $lang['Accepted'] = 'Accepted';
 $lang['Rejected'] = 'Rejected';
 $lang['Cancellation'] = 'Cancellation';
 $lang['Canceled'] = 'Canceled';
+$lang['Cancel'] = 'Cancel';
+
 
 
 $lang['global_link_doc_page_calendar_organization'] = 'https://jorani.org/page-calendar-organization.html';

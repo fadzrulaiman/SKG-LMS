@@ -32,6 +32,8 @@ $lang['Accepted'] = 'Diterima';
 $lang['Rejected'] = 'Ditolak';
 $lang['Cancellation'] = 'Pembatalan';
 $lang['Canceled'] = 'Dibatalkan';
+$lang['Cancel'] = 'Batalkan';
+
 
 $lang['global_link_doc_page_calendar_individual'] = '';
 $lang['global_link_doc_page_calendar_yearly'] = '';
