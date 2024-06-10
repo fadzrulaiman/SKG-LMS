@@ -41,7 +41,7 @@
             &nbsp;<span class="muted"
                 id="lblCredit"><?php if (!is_null($credit)) { ?>(<?php echo $credit; ?>)<?php } ?></span>
         </label>
-        <select class="input-xxlarge" name="type" id="type">
+        <select class="input-xxlarge" name="type" id="type" onchange="toggleAttachmentField()">
             <option value="1" <?php if ($defaultType == 1) echo "selected"; ?>>Annual Leave</option>
             <option value="2" <?php if ($defaultType == 2) echo "selected"; ?>>Sick Leave</option>
             <!-- Check the condition and disable if necessary -->
@@ -87,8 +87,10 @@
             <?php echo lang('leaves_flash_msg_overlap_dayoff');?>
         </div>
 
-        <label for="attachment">Attachment</label>
-        <input type="file" name="attachment" id="attachment" accept=".png, .jpeg, .jpg, .pdf">
+        <div id="attachmentField" style="display:none;">
+            <label for="attachment">Attachment</label>
+            <input type="file" name="attachment" id="attachment" accept=".png, .jpeg, .jpg, .pdf">
+        </div>
 
         <label for="cause"><?php echo lang('leaves_create_field_cause');?></label>
         <textarea name="cause"><?php echo set_value('cause'); ?></textarea>
@@ -231,6 +233,9 @@ $(function() {
             e.preventDefault();
     }, false);
     <?php }?>
+
+    // Call toggleAttachmentField on page load
+    toggleAttachmentField();
 });
 
 <?php if ($this->config->item('csrf_protection') == TRUE) {?>
@@ -242,9 +247,19 @@ $(function() {
     });
 });
 <?php }?>
+
+function toggleAttachmentField() {
+    var leaveType = document.getElementById('type').value;
+    var attachmentField = document.getElementById('attachmentField');
+    if (leaveType == '2') { // Sick Leave
+        attachmentField.style.display = 'block';
+    } else {
+        attachmentField.style.display = 'none';
+    }
+}
+
 </script>
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/lms/leave.edit-0.7.0.js" type="text/javascript">
-</script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/lms/leave.edit-0.7.0.js"></script>
 <script type="text/javascript">
 function disableSubmitButton() {
     document.getElementById('submitButton').disabled = true;
