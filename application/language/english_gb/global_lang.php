@@ -28,7 +28,7 @@ $lang['footer_copyright_notice'] = '&copy; 2014 Jorani Authors';
 
 $lang['Requested'] = 'Requested';
 $lang['Planned'] = 'Planned';
-$lang['Accepted'] = 'Accepted';
+$lang['Accepted'] = 'Approved';
 $lang['Rejected'] = 'Rejected';
 $lang['Cancellation'] = 'Cancellation';
 $lang['Canceled'] = 'Canceled';

@@ -153,7 +153,7 @@ $lang['hr_summary_button_list'] = 'List of employees';
 $lang['hr_summary_date_field'] = 'Date of report';
 
 $lang['hr_presence_title'] = 'Presence report';
-$lang['hr_presence_description'] = 'By default this report shows the values for the last month. Please note that the list of leaves shows only the accepted leave requests.';
+$lang['hr_presence_description'] = 'By default this report shows the values for the last month. Please note that the list of leaves shows only the approved leave requests.';
 $lang['hr_presence_thead_tip_edit'] = 'edit';
 $lang['hr_presence_thead_id'] = 'ID';
 $lang['hr_presence_thead_start'] = 'Start Date';

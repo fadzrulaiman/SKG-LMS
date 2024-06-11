@@ -11,7 +11,7 @@ $lang['admin_diagnostic_description'] = 'Detection of configuration and data pro
 $lang['admin_diagnostic_no_error'] = 'No error';
 
 $lang['admin_diagnostic_requests_tab'] = 'Leave Requests';
-$lang['admin_diagnostic_requests_description'] = 'Accepted but duplicated Leave Requests';
+$lang['admin_diagnostic_requests_description'] = 'Approved but duplicated Leave Requests';
 $lang['admin_diagnostic_requests_thead_id'] = 'ID';
 $lang['admin_diagnostic_requests_thead_employee'] = 'Employee';
 $lang['admin_diagnostic_requests_thead_start_date'] = 'Start Date';
