@@ -44,6 +44,8 @@ $lang['menu_validation_delegations'] = '委托团';
 $lang['menu_validation_collaborators'] = '我的部属';
 $lang['menu_validation_leaves'] = '休假';
 $lang['menu_validation_overtime'] = '加班';
+$lang['menu_validation_leavebank'] = 'Leave Bank Approval';
+
 
 $lang['menu_requests_title'] = '申请';
 $lang['menu_requests_leaves'] = '休假';

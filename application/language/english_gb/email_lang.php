@@ -21,7 +21,10 @@ $lang['email_leave_cancel_reject_subject'] = 'Your Cancellation Request has been
 
 $lang['email_leave_request_accept_subject'] = 'Your leave request has been approved';
 $lang['email_leave_request_reject_subject'] = 'Your leave request has been rejected';
+$lang['email_leave_request_pending_subject'] = 'Your leave request is pending for HR approval';
 $lang['email_leave_request_validation_title'] = 'Leave Request';
+$lang['email_leave_request_pending_title'] = 'Leave Request is Pending For Approval';
+
 
 $lang['email_leave_request_reminder'] = '[reminder]';
 

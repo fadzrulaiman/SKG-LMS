@@ -6,20 +6,21 @@
  * @since         0.1.0
  */
 ?>
-<h2><?php echo lang('requests_index_title');?></h2>
+<h2><?php echo lang('leavebankrequests_index_title');?></h2>
 
 <?php echo $flash_partial_view;?>
 
-<p><?php echo lang('requests_index_description');?></p>
+<p><?php echo lang('leavebankrequests_index_description');?></p>
 
 <div class="row">
     <div class="span3">
-        <?php echo lang('requests_index_thead_type');?>
+        <?php echo lang('requests_index_thead_type'); ?>
         <select name="cboLeaveType" id="cboLeaveType">
-            <option value="" selected></option>
             <?php foreach ($types as $type): ?>
-            <option value="<?php echo $type['id']; ?>"><?php echo $type['name']; ?></option>
-            <?php endforeach ?>
+            <option value="<?php echo $type['id']; ?>" <?php echo ($type['id'] == 3) ? 'selected' : 'disabled'; ?>>
+                <?php echo $type['name']; ?>
+            </option>
+            <?php endforeach; ?>
         </select>&nbsp;&nbsp;
     </div>
     <?php
@@ -32,12 +33,9 @@ if ($showAll == FALSE) {
 ?>
     <div class="span1">&nbsp;</div>
     <div class="span8">
-        <!--<span class="label"><input type="checkbox" <?php echo $checked;?> id="chkPlanned" class="filterStatus" <?php echo $disable;?>> &nbsp;<?php echo lang('Planned');?></span> &nbsp;-->
         <span class="label label-success"><input type="checkbox" <?php echo $checked;?> id="chkAccepted"
                 class="filterStatus" <?php echo $disable;?>> &nbsp;<?php echo lang('Accepted');?></span> &nbsp;
         <span class="label label-warning"><input type="checkbox" checked id="chkRequested" class="filterStatus">
-            &nbsp;<?php echo lang('Requested');?></span> &nbsp;
-        <span class="label label-warning"><input type="checkbox" checked id="chkleavebank" class="filterStatus">
             &nbsp;<?php echo lang('Pending From HR');?></span> &nbsp;
         <span class="label label-important" style="background-color: #ff0000;"><input type="checkbox"
                 <?php echo $checked;?> id="chkRejected" class="filterStatus" <?php echo $disable;?>>
@@ -98,30 +96,13 @@ if ($showAll == FALSE) {
                     title="<?php echo lang('requests_index_thead_tip_view');?>"><?php echo $request['leave_id']; ?></a>
                 &nbsp;
                 <div class="pull-right">
-                    <?php if ($request['status'] == LMS_CANCELLATION) { ?>
-                    <a href="#" class="lnkCancellationAccept" data-id="<?php echo $request['leave_id']; ?>"
+                    <a href="#" class="lnkAccept" data-id="<?php echo $request['leave_id']; ?>"
                         title="<?php echo lang('requests_index_thead_tip_accept');?>"><i
                             class="mdi mdi-check nolink"></i></a>
                     &nbsp;
-                    <a href="#" class="lnkCancellationReject" data-id="<?php echo $request['leave_id']; ?>"
-                        title="<?php echo lang('requests_index_thead_tip_reject');?>"><i
-                            class="mdi mdi-close nolink"></i></a>
-                    <?php } else if ($request['status'] == LMS_REQUESTED) { ?>
-                    <?php if ($request['type'] == 3) { ?>
-                    <a href="#" class="lnkBankAccept" data-id="<?php echo $request['leave_id']; ?>"
-                        title="<?php echo lang('requests_index_thead_tip_accept'); ?>"><i
-                            class="mdi mdi-check nolink"></i></a>
-                    &nbsp;
-                    <?php } else { ?>
-                    <a href="#" class="lnkAccept" data-id="<?php echo $request['leave_id']; ?>"
-                        title="<?php echo lang('requests_index_thead_tip_accept'); ?>"><i
-                            class="mdi mdi-check nolink"></i></a>
-                    &nbsp;
-                    <?php } ?>
                     <a href="#" class="lnkReject" data-id="<?php echo $request['leave_id']; ?>"
                         title="<?php echo lang('requests_index_thead_tip_reject');?>"><i
                             class="mdi mdi-close nolink"></i></a>
-                    <?php } ?>
                     <?php if ($this->config->item('enable_history') === TRUE) { ?>
                     &nbsp;
                     <a href="<?php echo base_url();?>leaves/leaves/<?php echo $request['leave_id']; ?>"
@@ -145,7 +126,6 @@ if ($showAll == FALSE) {
             <?php
         switch ($request['status']) {
             case 1: echo "<td><span class='label'>" . lang($request['status_name']) . "</span></td>"; break;
-            case 2: echo "<td><span class='label label-warning'>" . lang($request['status_name']) . "</span></td>"; break;
             case 3: echo "<td><span class='label label-success'>" . lang($request['status_name']) . "</span></td>"; break;
             case 7: echo "<td><span class='label label-warning'>" . lang($request['status_name']) . "</span></td>"; break;
             default: echo "<td><span class='label label-important' style='background-color: #ff0000;'>" . lang($request['status_name']) . "</span></td>"; break;
@@ -160,27 +140,6 @@ if ($showAll == FALSE) {
         <?php endforeach ?>
     </tbody>
 </table>
-
-<div class="row-fluid">
-    <div class="span12">&nbsp;</div>
-</div>
-
-<div class="row-fluid">
-    <div class="span12">
-        <a href="<?php echo base_url();?>requests/export/<?php echo $filter; ?>" class="btn btn-primary"><i
-                class="mdi mdi-download"></i>&nbsp; <?php echo lang('requests_index_button_export');?></a>
-        &nbsp;&nbsp;
-        <a href="<?php echo base_url();?>requests/all" class="btn btn-primary"><i
-                class="mdi mdi-filter-remove"></i>&nbsp; <?php echo lang('requests_index_button_show_all');?></a>
-        &nbsp;&nbsp;
-        <a href="<?php echo base_url();?>requests/requested" class="btn btn-primary"><i
-                class="mdi mdi-filter"></i>&nbsp; <?php echo lang('requests_index_button_show_pending');?></a>
-        &nbsp;&nbsp;
-        <?php if ($this->config->item('ics_enabled') == TRUE) {?>
-        <a id="lnkICS" href="#"><i class="mdi mdi-earth nolink"></i> ICS</a>
-        <?php }?>
-    </div>
-</div>
 
 <div class="row-fluid">
     <div class="span12">&nbsp;</div>
@@ -244,9 +203,9 @@ function getURLParameter(name) {
 function filterStatusColumn() {
     var filter = "^(";
     if ($('#chkAccepted').prop('checked')) filter += "<?php echo lang('Accepted');?>|";
-    if ($('#chkRequested').prop('checked')) filter += "<?php echo lang('Requested');?>|";
+    if ($('#chkRequested').prop('checked')) filter += "<?php echo lang('Pending From HR');?>|";
     if ($('#chkRejected').prop('checked')) filter += "<?php echo lang('Rejected');?>|";
-    if ($('#chkleavebank').prop('checked')) filter += "<?php echo lang('Pending From HR');?>|";
+    if ($('#chkCancellation').prop('checked')) filter += "<?php echo lang('Cancellation');?>|";
     if ($('#chkCanceled').prop('checked')) filter += "<?php echo lang('Canceled');?>|";
     filter = filter.slice(0, -1) + ")$";
     if (filter.indexOf('(') == -1) filter = 'nothing is selected';
@@ -254,10 +213,10 @@ function filterStatusColumn() {
 }
 
 $(document).ready(function() {
-    // Transform the HTML table into a fancy DataTable
+    // Transform the HTML table into a fancy datatable
     leaveTable = $('#leaves').DataTable({
         order: [
-            [3, "desc"]
+            [2, "desc"]
         ],
         language: {
             decimal: "<?php echo lang('datatable_sInfoThousands'); ?>",
@@ -285,14 +244,11 @@ $(document).ready(function() {
     });
 
     // Prevent double click on accept and reject buttons
-    $('#leaves').on('click', '.lnkAccept, .lnkBankAccept', function(event) {
+    $('#leaves').on('click', '.lnkAccept', function(event) {
         event.preventDefault();
         if (!clicked) {
             clicked = true;
-            var url = $(this).hasClass('lnkBankAccept') ?
-                "<?php echo base_url(); ?>requests/leavebankaccept/" :
-                "<?php echo base_url(); ?>requests/accept/";
-            window.location.href = url + $(this).data("id");
+            window.location.href = "<?php echo base_url(); ?>requests/accept/" + $(this).data("id");
         }
     });
 
@@ -300,7 +256,7 @@ $(document).ready(function() {
         event.preventDefault();
         if (!clicked) {
             clicked = true;
-            var validateUrl = "<?php echo base_url();?>requests/reject/" + $(this).data("id");
+            var validateUrl = "<?php echo base_url(); ?>requests/reject/" + $(this).data("id");
             bootbox.prompt('<?php echo (($this->config->item('mandatory_comment_on_reject') === TRUE)?'<i class="mdi mdi-alert"></i>&nbsp;':'') .
                     lang('requests_comment_reject_request_title');?>',
                 '<?php echo lang('requests_comment_reject_request_button_cancel');?>',
@@ -383,9 +339,9 @@ $(document).ready(function() {
     $('#cboLeaveType').on('change', function() {
         var leaveType = $("#cboLeaveType option:selected").text();
         if (leaveType != '') {
-            leaveTable.columns(6).search("^" + leaveType + "$", true, false).draw();
+            leaveTable.columns(5).search("^" + leaveType + "$", true, false).draw();
         } else {
-            leaveTable.columns(6).search("", true, false).draw();
+            leaveTable.columns(5).search("", true, false).draw();
         }
     });
 
@@ -393,7 +349,7 @@ $(document).ready(function() {
     if (getURLParameter('type') != null) {
         var leaveType = $("#cboLeaveType option[value='" + getURLParameter('type') + "']").text();
         $("#cboLeaveType option[value='" + getURLParameter('type') + "']").prop("selected", true);
-        leaveTable.columns(6).search("^" + leaveType + "$", true, false).draw();
+        leaveTable.columns(5).search("^" + leaveType + "$", true, false).draw();
     }
 
     // Filter on statuses is a list of inclusion
@@ -416,7 +372,7 @@ $(document).ready(function() {
                     $("#chkRejected").prop("checked", true);
                     break;
                 case '5':
-                    $("#chkleavebank").prop("checked", true);
+                    $("#chkCancellation").prop("checked", true);
                     break;
                 case '6':
                     $("#chkCanceled").prop("checked", true);

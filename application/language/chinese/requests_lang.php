@@ -9,7 +9,9 @@
  */
 
 $lang['requests_index_title'] = '休假申请发送给我';
+$lang['leavebankrequests_index_title'] = 'Leave Bank Requests Pending For Approval';
 $lang['requests_index_description'] = '休假申请列表已发送给你。如果你不是管理者，此表将为空白';
+$lang['leavebankrequests_index_description'] = 'This screen lists the leave bank requests that has been approved by their managers and now is pending for HR approval.';
 $lang['requests_index_thead_tip_view'] = '预览';
 $lang['requests_index_thead_tip_accept'] = '接受';
 $lang['requests_index_thead_tip_reject'] = '拒绝';

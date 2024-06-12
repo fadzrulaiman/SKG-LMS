@@ -7,7 +7,9 @@
  */
 
 $lang['requests_index_title'] = 'Leave Requests submitted to me';
+$lang['leavebankrequests_index_title'] = 'Leave Bank Requests Pending For Approval';
 $lang['requests_index_description'] = 'This screen lists the leave requests submitted to you. If you are not a manager, this list will always be empty.';
+$lang['leavebankrequests_index_description'] = 'This screen lists the leave bank requests that has been approved by their managers and now is pending for HR approval.';
 $lang['requests_index_thead_tip_view'] = 'view';
 $lang['requests_index_thead_tip_accept'] = 'accept';
 $lang['requests_index_thead_tip_reject'] = 'reject';

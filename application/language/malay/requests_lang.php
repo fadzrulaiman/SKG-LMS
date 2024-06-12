@@ -8,7 +8,9 @@
  */
 
 $lang['requests_index_title'] = 'Permintaan Cuti Dihantar kepada Saya';
+$lang['leavebankrequests_index_title'] = 'Leave Bank Requests Pending For Approval';
 $lang['requests_index_description'] = 'Skrin ini menyenaraikan permintaan cuti yang dihantar kepada anda. Jika anda bukan pengurus, senarai ini akan sentiasa kosong.';
+$lang['leavebankrequests_index_description'] = 'This screen lists the leave bank requests that has been approved by their managers and now is pending for HR approval.';
 $lang['requests_index_thead_tip_view'] = 'lihat';
 $lang['requests_index_thead_tip_accept'] = 'terima';
 $lang['requests_index_thead_tip_reject'] = 'tolak';

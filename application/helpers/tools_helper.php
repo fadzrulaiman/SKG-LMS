@@ -65,6 +65,10 @@ function getUserContext(CI_Controller $controller)
         }
         $data['requests_count'] = $data['requested_leaves_count'] + $data['requested_extra_count'];
     }
+    if ($controller->is_hr === TRUE) {
+        $controller->load->model('leaves_model');
+        $data['requested_leavebank_count'] = $controller->leaves_model->countLeavesRequestedToHR($controller->user_id);
+    }
     return $data;
 }
 

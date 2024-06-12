@@ -60,9 +60,35 @@ class Requests extends CI_Controller {
     }
 
     /**
+     * Display the list of leave bank requests
+     * @param string $filter Filter the list of submitted leave bank requests (all or requested)
+     */
+    public function leavebank($filter = 'requested') {
+        $this->auth->checkIfOperationIsAllowed('list_requests');
+        $data = getUserContext($this);
+        $this->load->model('types_model');
+        $this->lang->load('datatable', $this->language);
+        $this->load->helper('form');
+        $data['filter'] = $filter;
+        $data['title'] = 'Leave Bank Requests'; // Customize this title as needed
+        $showAll = ($filter == 'all') ? TRUE : FALSE;
+        if ($this->config->item('enable_history') == TRUE) {
+            $data['requests'] = $this->leaves_model->getLeavesBankRequestedWithHistory($showAll);
+        } else {
+            $data['requests'] = $this->leaves_model->getLeavesBankRequested($showAll);
+        }
+        $data['types'] = $this->types_model->getTypes();
+        $data['showAll'] = $showAll;
+        $data['flash_partial_view'] = $this->load->view('templates/flash', $data, TRUE);
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/index', $data);
+        $this->load->view('requests/leavebank', $data); // Ensure this view exists
+        $this->load->view('templates/footer');
+    }
+
+    /**
      * Accept a leave request
      * @param int $id leave request identifier
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function accept($id) {
         $this->auth->checkIfOperationIsAllowed('accept_requests');
@@ -74,14 +100,17 @@ class Requests extends CI_Controller {
         }
         $employee = $this->users_model->getUsers($leave['employee']);
         $is_delegate = $this->delegations_model->isDelegateOfManager($this->user_id, $employee['manager']);
-        if (($this->user_id == $employee['manager']) || ($this->is_hr)  || ($is_delegate)) {
+        if (($this->user_id == $employee['manager']) || ($this->is_hr) || ($is_delegate)) {
             $this->leaves_model->switchStatus($id, LMS_ACCEPTED);
             $this->sendMail($id, LMS_REQUESTED_ACCEPTED);
             $this->session->set_flashdata('msg', lang('requests_accept_flash_msg_success'));
-            if (isset($_GET['source'])) {
-                redirect($_GET['source']);
+            
+            // Redirect back to the original page if possible
+            $referrer = $this->input->server('HTTP_REFERER', TRUE);
+            if ($referrer) {
+                redirect($referrer);
             } else {
-                redirect('requests');
+                redirect('leaves');
             }
         } else {
             log_message('error', 'User #' . $this->user_id . ' illegally tried to accept leave #' . $id);
@@ -89,6 +118,40 @@ class Requests extends CI_Controller {
             redirect('leaves');
         }
     }
+
+
+/**
+ * Accept a leave request
+ * @param int $id leave request identifier
+ */
+public function leavebankaccept($id) {
+    $this->auth->checkIfOperationIsAllowed('accept_requests');
+    $this->load->model('users_model');
+    $this->load->model('delegations_model');
+    $this->load->model('leaves_model'); // Ensure leaves_model is loaded
+
+    $leave = $this->leaves_model->getLeaves($id);
+    if (empty($leave)) {
+        redirect('notfound');
+    }
+    $employee = $this->users_model->getUsers($leave['employee']);
+    $is_delegate = $this->delegations_model->isDelegateOfManager($this->user_id, $employee['manager']);
+    if (($this->user_id == $employee['manager']) || ($this->is_hr) || ($is_delegate)) {
+        $this->leaves_model->switchStatus($id, LMS_REQUESTEDBANK);
+        $this->sendMail($id, LMS_LEAVEBANK_MANAGER_ACCEPTED);
+        $this->sendMailOnLeaveBankRequestCreation($id);
+        $this->session->set_flashdata('msg', lang('requests_accept_flash_msg_success'));
+        if (isset($_GET['source'])) {
+            redirect($_GET['source']);
+        } else {
+            redirect('requests');
+        }
+    } else {
+        log_message('error', 'User #' . $this->user_id . ' illegally tried to accept leave #' . $id);
+        $this->session->set_flashdata('msg', lang('requests_accept_flash_msg_error'));
+        redirect('leaves');
+    }
+}
 
     /**
      * Reject a leave request
@@ -191,6 +254,121 @@ class Requests extends CI_Controller {
             redirect('leaves');
         }
     }
+
+    /**
+     * Send a generic email from the collaborator to the HR when a leave request is created or cancelled
+     * @param $leave Leave request
+     * @param $user Connected employee
+     * @param $HR HR Admin
+     * @param $lang_mail Email language library
+     * @param $title Email Title
+     * @param $detailledSubject Email detailled Subject
+     * @param $emailModel template email to use
+     * @param $status Status of the leave request
+     */
+    private function sendGenericMail($leave, $user, $HR, $lang_mail, $title, $detailledSubject, $emailModel, $status) {
+
+        $date = new DateTime($leave['startdate']);
+        $startdate = $date->format($lang_mail->line('global_date_format'));
+        $date = new DateTime($leave['enddate']);
+        $enddate = $date->format($lang_mail->line('global_date_format'));
+
+        $comments = $leave['comments'];
+        $comment = '';
+        if (!empty($comments)) {
+            $comments = json_decode($comments);
+            foreach ($comments->comments as $comments_item) {
+                if ($comments_item->type == "comment") {
+                    $comment = $comments_item->value;
+                }
+            }
+        }
+        log_message('info', "comment : " . $comment);
+        $this->load->library('parser');
+        $data = array(
+            'Title' => $title,
+            'Firstname' => $user['firstname'],
+            'Lastname' => $user['lastname'],
+            'StartDate' => $startdate,
+            'EndDate' => $enddate,
+            'StartDateType' => $lang_mail->line($leave['startdatetype']),
+            'EndDateType' => $lang_mail->line($leave['enddatetype']),
+            'Type' => $this->types_model->getName($leave['type']),
+            'Duration' => $leave['duration'],
+            'Balance' => $this->leaves_model->getLeavesTypeBalanceForEmployee($leave['employee'], $leave['type_name'], $leave['startdate']),
+            'Reason' => $leave['cause'],
+            'BaseUrl' => $this->config->base_url(),
+            'LeaveId' => $leave['id'],
+            'UserId' => $this->user_id,
+            'Comments' => $comment,
+            'Status' => $status['name'] // Add status to the data array
+        );
+        $message = $this->parser->parse('emails/' . $HR['language'] . '/' . $emailModel, $data, TRUE);
+
+        $to = $HR['email'];
+        $subject = $detailledSubject . ' ' . $user['firstname'] . ' ' . $user['lastname'];
+        // Copy to the delegates, if any
+        $cc = NULL;
+        $delegates = $this->delegations_model->listMailsOfDelegates($HR['id']);
+        if ($delegates != '') {
+            $cc = $delegates;
+        }
+
+        sendMailByWrapper($this, $subject, $message, $to, $cc);
+    }
+
+
+
+    /**
+     * Send a leave request creation email to the HR
+     * @param int $id Leave request identifier
+     * @param int $reminder In case where the employee wants to send a reminder
+     */
+    private function sendMailOnLeaveBankRequestCreation($id, $reminder = FALSE) {
+        $this->load->model('users_model');
+        $this->load->model('types_model');
+        $this->load->model('delegations_model');
+        $this->load->model('status_model');
+        // We load everything from DB as the LR can be edited from HR/Employees
+        $leave = $this->leaves_model->getLeaves($id);
+        $user = $this->users_model->getUsers($leave['employee']);
+        $status = $this->status_model->getStatus($leave['status']); // Assuming you have a status field in the leave record
+
+        // Fetch users with role == 3
+        $HR_users = $this->users_model->getUsersByRole(3);
+        
+        if (empty($HR_users)) {
+            $this->session->set_flashdata('msg', lang('leaves_create_flash_msg_error'));
+        } else {
+            // Send an e-mail to each user with role == 3
+            $this->load->library('email');
+            $this->load->library('polyglot');
+
+            foreach ($HR_users as $HR) {
+                $usr_lang = $this->polyglot->code2language($HR['language']);
+        
+                // We need to instance a different object as the languages of connected user may differ from the UI lang
+                $lang_mail = new CI_Lang();
+                $lang_mail->load('email', $usr_lang);
+                $lang_mail->load('global', $usr_lang);
+        
+                if ($reminder) {
+                    $this->sendGenericMail($leave, $user, $HR, $lang_mail,
+                        $lang_mail->line('email_leave_request_reminder') . ' ' .
+                        $lang_mail->line('email_leave_bank_request_creation_title'),
+                        $lang_mail->line('email_leave_request_reminder') . ' ' .
+                        $lang_mail->line('email_leave_bank_request_creation_subject'),
+                        'bankrequest', $status);
+                } else {
+                    $this->sendGenericMail($leave, $user, $HR, $lang_mail,
+                        $lang_mail->line('email_leave_bank_request_creation_title'),
+                        $lang_mail->line('email_leave_bank_request_creation_subject'),
+                        'bankrequest', $status);
+                }
+            }
+        }
+    }
+
 
     /**
      * Display the list of all requests submitted to the line manager (Status is submitted)
@@ -349,16 +527,18 @@ class Requests extends CI_Controller {
     {
         $this->load->model('users_model');
         $this->load->model('organization_model');
+        $this->load->model('status_model');
         $leave = $this->leaves_model->getLeaves($id);
         $employee = $this->users_model->getUsers($leave['employee']);
         $supervisor = $this->organization_model->getSupervisor($employee['organization']);
+        $status = $this->status_model->getStatus($leave['status']); // Assuming you have a status field in the leave record
 
-        //Send an e-mail to the employee
+        // Send an e-mail to the employee
         $this->load->library('email');
         $this->load->library('polyglot');
         $usr_lang = $this->polyglot->code2language($employee['language']);
 
-        //We need to instance an different object as the languages of connected user may differ from the UI lang
+        // We need to instance a different object as the languages of connected user may differ from the UI lang
         $lang_mail = new CI_Lang();
         $lang_mail->load('email', $usr_lang);
         $lang_mail->load('global', $usr_lang);
@@ -377,6 +557,10 @@ class Requests extends CI_Controller {
                 $title = $lang_mail->line('email_leave_request_validation_title');
                 $subject = $lang_mail->line('email_leave_request_reject_subject');
                 break;
+            case LMS_LEAVEBANK_MANAGER_ACCEPTED:
+                $title = $lang_mail->line('email_leave_request_pending_title');
+                $subject = $lang_mail->line('email_leave_bank_request_subject');
+                break;
             case LMS_CANCELLATION_REQUESTED:
                 $title = $lang_mail->line('email_leave_request_cancellation_title');
                 $subject = $lang_mail->line('email_leave_cancel_reject_subject');
@@ -386,15 +570,16 @@ class Requests extends CI_Controller {
                 $subject = $lang_mail->line('email_leave_cancel_accept_subject');
                 break;
         }
-        $comments=$leave['comments'];
+
+        $comments = $leave['comments'];
         $comment = '';
-        if(!empty($comments)){
-          $comments=json_decode($comments);
-          foreach ($comments->comments as $comments_item) {
-            if($comments_item->type =="comment"){
-              $comment = $comments_item->value;
+        if (!empty($comments)) {
+            $comments = json_decode($comments);
+            foreach ($comments->comments as $comments_item) {
+                if ($comments_item->type == "comment") {
+                    $comment = $comments_item->value;
+                }
             }
-          }
         }
 
         $data = array(
@@ -407,8 +592,10 @@ class Requests extends CI_Controller {
             'EndDateType' => $lang_mail->line($leave['enddatetype']),
             'Cause' => $leave['cause'],
             'Type' => $leave['type_name'],
-            'Comments' => $comment
+            'Comments' => $comment,
+            'Status' => $status['name'] // Add status to the data array
         );
+
         $this->load->library('parser');
         switch ($transition) {
             case LMS_REQUESTED_ACCEPTED:
@@ -417,16 +604,20 @@ class Requests extends CI_Controller {
             case LMS_REQUESTED_REJECTED:
                 $message = $this->parser->parse('emails/' . $employee['language'] . '/request_rejected', $data, TRUE);
                 break;
+            case LMS_LEAVEBANK_MANAGER_ACCEPTED:
+                $message = $this->parser->parse('emails/' . $employee['language'] . '/manager_approved', $data, TRUE);
+                break;
             case LMS_CANCELLATION_REQUESTED:
                 $message = $this->parser->parse('emails/' . $employee['language'] . '/cancel_rejected', $data, TRUE);
-                $supervisor = NULL; //No need to warn the supervisor as nothing changes
+                $supervisor = NULL; // No need to warn the supervisor as nothing changes
                 break;
             case LMS_CANCELLATION_CANCELED:
                 $message = $this->parser->parse('emails/' . $employee['language'] . '/cancel_accepted', $data, TRUE);
                 break;
         }
-        sendMailByWrapper($this, $subject, $message, $employee['email'], is_null($supervisor)?NULL:$supervisor->email);
+        sendMailByWrapper($this, $subject, $message, $employee['email'], is_null($supervisor) ? NULL : $supervisor->email);
     }
+
 
     /**
      * Export the list of all leave requests (sent to the connected user) into an Excel file
