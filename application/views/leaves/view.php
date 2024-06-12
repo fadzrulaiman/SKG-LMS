@@ -55,9 +55,9 @@
                         class="mdi mdi-check"></i>&nbsp;<?php echo lang('Requested');?></a>
                 <br /><br />
                 <?php } ?>
-                <?php if ($leave['status'] == LMS_ACCEPTED) { ?>
-                <a href="<?php echo base_url();?>leaves/cancellation/<?php echo $leave['id'] ?>"
-                    class="btn btn-primary"><i class="mdi mdi-undo"></i>&nbsp;<?php echo lang('Cancellation');?></a>
+                <?php if ($leave['status'] == LMS_REQUESTED) { ?>
+                <a href="<?php echo base_url();?>leaves/cancel/<?php echo $leave['id'] ?>"
+                    class="btn btn-primary"><i class="mdi mdi-undo"></i>&nbsp;<?php echo lang('Cancel');?></a>
                 <br /><br />
                 <?php } ?>
                 <?php if ($leave['status'] == LMS_REQUESTED) { ?>

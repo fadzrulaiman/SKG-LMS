@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2024 at 05:45 AM
+-- Generation Time: Jun 11, 2024 at 03:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -197,7 +197,8 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 ('sgo7dv12o1qbb7ih97poh3s0d7l8nsdg', '::1', 1716953996, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363935333934373b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a32303a2275426b50444448367665534b70784a5173575064223b6c6f67696e7c733a323a226872223b69647c693a323833353b66697273746e616d657c733a323a224852223b6c6173746e616d657c733a31333a2241646d696e6973747261746f72223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a323833353b72616e646f6d5f686173687c733a32343a22485344765a685f6e6f704a4476656b7a6f536b46514f7567223b6c6f676765645f696e7c623a313b6c6173745f706167657c733a33313a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f7573657273223b6c6173745f706167655f706172616d737c733a303a22223b),
 ('dtoo6ati7utjap3fht2731vlsvg14mak', '::1', 1716947020, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363934373032303b6c6173745f706167657c733a33313a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f7573657273223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a383a22514f306c6e755152223b6c6f67696e7c733a323a226872223b69647c693a32333b66697273746e616d657c733a323a226872223b6c6173746e616d657c733a393a22706572736f6e6e656c223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a32373b72616e646f6d5f686173687c733a32343a22685446546f536e656d57447633736863783033784b627252223b6c6f676765645f696e7c623a313b),
 ('j78j3mmqjlrao5ok4m526csivqdj2usi', '::1', 1716947416, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363934373431363b6c6173745f706167657c733a33383a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f68722f656d706c6f79656573223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a383a22514f306c6e755152223b6c6f67696e7c733a323a226872223b69647c693a32333b66697273746e616d657c733a323a226872223b6c6173746e616d657c733a393a22706572736f6e6e656c223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a32373b72616e646f6d5f686173687c733a32343a22685446546f536e656d57447633736863783033784b627252223b6c6f676765645f696e7c623a313b),
-('5s5iouiecfphvjj9rbj58s2rjoeo58uo', '::1', 1716947689, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363934373431363b6c6173745f706167657c733a33383a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f6f7267616e697a6174696f6e223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a383a22514f306c6e755152223b6c6f67696e7c733a323a226872223b69647c693a32333b66697273746e616d657c733a323a226872223b6c6173746e616d657c733a393a22706572736f6e6e656c223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a32373b72616e646f6d5f686173687c733a32343a22685446546f536e656d57447633736863783033784b627252223b6c6f676765645f696e7c623a313b);
+('5s5iouiecfphvjj9rbj58s2rjoeo58uo', '::1', 1716947689, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363934373431363b6c6173745f706167657c733a33383a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f6f7267616e697a6174696f6e223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a383a22514f306c6e755152223b6c6f67696e7c733a323a226872223b69647c693a32333b66697273746e616d657c733a323a226872223b6c6173746e616d657c733a393a22706572736f6e6e656c223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a32373b72616e646f6d5f686173687c733a32343a22685446546f536e656d57447633736863783033784b627252223b6c6f676765645f696e7c623a313b),
+('ij8q0rpipr91vrdaui6r9ufm57igd2s5', '::1', 1718068988, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731383036383534383b6c6173745f706167657c733a33383a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f6f7267616e697a6174696f6e223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a383a224250634131364843223b6c6f67696e7c733a323a226872223b69647c693a32333b66697273746e616d657c733a323a224852223b6c6173746e616d657c733a31333a2241646d696e6973747261746f72223b69735f6d616e616765727c623a303b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a323b72616e646f6d5f686173687c733a32343a22485344765a685f6e6f704a4476656b7a6f536b46514f7567223b6c6f676765645f696e7c623a313b);
 
 -- --------------------------------------------------------
 
@@ -475,26 +476,26 @@ CREATE TABLE `organization` (
 --
 
 INSERT INTO `organization` (`id`, `name`, `parent_id`, `supervisor`) VALUES
-(1, 'Sawit Kinabalu Group', -1, NULL),
-(2, 'Headquaters Region', 1, NULL),
-(3, 'Lahad Datu Region', 1, NULL),
-(4, 'Tawau Region', 1, NULL),
-(5, 'Sandakan Region', 1, NULL),
-(6, 'West Coast Region', 1, NULL),
-(7, 'Regional Office West Coast', 18, NULL),
-(8, 'Langkon Estate', 18, NULL),
-(9, 'Pinawantai Estate', 18, NULL),
-(10, 'Pitas Estate', 18, NULL),
-(11, 'Taritipan Estate', 18, NULL),
-(12, 'Lumadan Estate', 18, NULL),
-(13, 'Mawao Estate', 18, NULL),
-(14, 'Bongawan Estate', 18, NULL),
-(15, 'Kimanis Estate', 18, NULL),
-(16, 'Langkon Mill', 18, NULL),
-(17, 'Lumadan Mill', 18, NULL),
-(18, 'ARAS - West Coast', 18, NULL),
-(19, 'Kabang Estate', 18, NULL),
-(20, 'Pilajau Estate', 18, NULL),
+(0, 'Sawit Kinabalu Group', -1, NULL),
+(2, 'Headquaters Region', 0, NULL),
+(3, 'Lahad Datu Region', 0, NULL),
+(4, 'Tawau Region', 0, NULL),
+(5, 'Sandakan Region', 0, NULL),
+(6, 'West Coast Region', 0, NULL),
+(7, 'Regional Office West Coast', 6, NULL),
+(8, 'Langkon Estate', 6, NULL),
+(9, 'Pinawantai Estate', 6, NULL),
+(10, 'Pitas Estate', 6, NULL),
+(11, 'Taritipan Estate', 6, NULL),
+(12, 'Lumadan Estate', 6, NULL),
+(13, 'Mawao Estate', 6, NULL),
+(14, 'Bongawan Estate', 6, NULL),
+(15, 'Kimanis Estate', 6, NULL),
+(16, 'Langkon Mill', 6, NULL),
+(17, 'Lumadan Mill', 6, NULL),
+(18, 'ARAS - West Coast', 6, NULL),
+(19, 'Kabang Estate', 6, NULL),
+(20, 'Pilajau Estate', 6, NULL),
 (21, 'Regional Office Tawau', 4, NULL),
 (22, 'Sungai Balung Estate', 4, NULL),
 (23, 'Sungai Kawa Estate', 4, NULL),
@@ -695,10 +696,11 @@ CREATE TABLE `status` (
 INSERT INTO `status` (`id`, `name`) VALUES
 (1, 'Planned'),
 (2, 'Requested'),
-(3, 'Accepted'),
+(3, 'Approved'),
 (4, 'Rejected'),
 (5, 'Cancellation'),
-(6, 'Canceled');
+(6, 'Canceled'),
+(7, 'Pending From HR');
 
 -- --------------------------------------------------------
 
@@ -755,30 +757,34 @@ CREATE TABLE `users` (
   `picture` blob DEFAULT NULL COMMENT 'Profile picture of user for tabular calendar'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='List of employees / users having access to skg-lms';
 
+--
+-- Dumping data for table `users`
+--
+
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `manager`, `country`, `organization`, `contract`, `position`, `location`, `datehired`, `identifier`, `language`, `ldap_path`, `active`, `timezone`, `calendar`, `random_hash`, `user_properties`, `picture`) VALUES
 (1, 'Super ', 'Admin', 'SA', 'superadmin@email.com', '$2a$08$7lz6h2QY9PqLJvUy6RhwfusbPecUMaQhaQQZA.uOsaMtDAxmXkBvG', 8, 1, NULL, 0, 0, 1, NULL, '2000-01-01', 'Super Admin', 'en', NULL, 1, NULL, NULL, '5g5VUm5ZKf5TkK08yMtuKxe5', NULL, NULL),
-(2, 'Tan Min', 'Choon', 'Tan', 'tan@email.com', '$2a$08$aTD1rNlnseRXem/h0G.yY./b4jdGKQhab/XARTiDKsm.swKXJxTZi', 2, 2, NULL, 1, 3, 3, 1, '2024-01-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'n3vgzEPLRrZAL5npJkygzTYk', NULL, NULL),
-(3, 'Romina Ewol', 'Mujie', 'Romina', 'romina@email.com', '$2a$08$juHi60YUCon.ow2KlluBeuNv1Qop.xDsxvjquz3H4gC8XZsMW3.qe', 2, 2, NULL, 1, 1, 2, 1, '2024-02-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'ORiMJMB-4-ex6GoQDxR6zT78', NULL, NULL),
-(4, 'Teo Tiong ', 'Tze', 'Megan', 'megan@email.com', '$2a$08$UcJPtjOftib3DLMN/zlkf.73c/VdYZ.0ZqirUetcrDOE.dqv3uUAe', 2, 2, NULL, 1, 1, 2, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'F5RX9fIXM64R2DB_1yiNsvyj', NULL, NULL),
-(5, 'Poong Tchu ', 'Chuan', 'Sam', 'sam@email.com', '$2a$08$4oFRUKt1xDEygn8uXwbduuVSw0cpC7lpw82KvSf/rYGcsTh96r7bC', 2, 2, NULL, 1, 1, 2, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'JD9JmrSp6m-XspQdJX58Harh', NULL, NULL),
-(6, 'Jasneh', 'Abdullah', 'Jasneh', 'jasneh@email.com', '$2a$08$8Lr.KgWOT7WmIn8srb7hKO0cx5jl9PgckHD2wtep/8krQmduL6Zbi', 2, 2, NULL, 1, 1, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'Wg5BOARB2BGZHLH_WIoA87IM', NULL, NULL),
-(7, 'Siti Khadizah', 'Waly', 'siti', 'siti@email.com', '$2a$08$Hv3Zy.E/61gedg5dOmTDZO0N.nVyir23EwO/mADGPJdQhmxat0LOu', 2, 2, NULL, 1, 3, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'zKKJkjoGtsOa2Hl0fmhaDiQR', NULL, NULL),
-(8, 'Rindey', 'Jlee', 'rindey', 'rindey@email.com', '$2a$08$T6MtlFX0J3ST403IwKe63.HHyxfcGwD/9vnsdYE4kIgMxVWemFeWy', 2, 2, NULL, 1, 4, 1, 1, NULL, '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'z6nhkUUW8nnxncAoIVH3vojS', NULL, NULL),
-(9, 'Teo', 'Ricky', 'ricky', 'ricky@email.com', '$2a$08$QLssNuK9TydUSiu8xYL9iea00t8lpvIflIYlHVFU87/CUr2lInNH6', 2, 2, NULL, 1, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '25LGfH1XqFHxYgs2x6a6d2Bh', NULL, NULL),
-(10, 'Georgey', 'Resot', 'georgey', 'georgey@emai.com', '$2a$08$zq5wVBNGbG1d0Kt0a7LrBOfAxEmXgDDKAYUTlhLCPKh9ptonxY7JK', 2, 2, NULL, 1, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '0CHUrdzRDC_U9dwQok-o5LMe', NULL, NULL),
-(11, 'Melinda Lee', 'Yen Fen', 'melinda', 'melinda@email.com', '$2a$08$jxuFpzNP/0nGbJyzXsm0eO0Fchc17ZsvJis/Sm20RULB623gq3puS', 2, 2, NULL, 1, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'HVIu6_mwSeteakLGjAHVsEo1', NULL, NULL),
-(12, 'Ruzaini ', 'Mohd Dalin', 'ruzaini', 'ruzaini', '$2a$08$62RHamLJVTTdJ9E7T.0OLucyJ.gJ/AIvdjKmtcxEaRGzfNjMEpO2C', 2, 2, NULL, 1, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '9OFOq4aTEU7U-9lgTzq2cPxX', NULL, NULL),
-(13, 'Zareena Hanis', 'Red', 'zareena', 'zareena@email.com', '$2a$08$cppY6RQLDK5OQYZZHs2vZ.S/OAv7hvLWBmIJQUfMX6PHdo5FDZlw6', 2, 2, NULL, 1, 3, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'ir-6RbviPFYAAma_kEwieAG5', NULL, NULL),
-(14, 'Ezhan Efizi', 'Nafs', 'ezhan', 'ezhan@email.com', '$2a$08$n8l/lmR.AnLLrXbdyr5Js.Eia1sgvhA7oVOlsg1Ot9a6BvrX9XiwK', 2, 2, NULL, 1, 3, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'SiD4PO2oQ2vX8aor2GXtGJOC', NULL, NULL),
-(15, 'Nurliah', 'Mohd Jaafar', 'nurliah', 'nurliah@email.com', '$2a$08$0XgiWvqTnK3D.38.0I3NyOodtzz9CCnExDsyeXnUPGfzmoHmZPBs6', 2, 2, NULL, 1, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'm00U2hb9sgdL8Qi9cNu6pVf5', NULL, NULL),
-(16, 'Saidal ', 'M Jalil', 'saidal', 'saidal@email.com', '$2a$08$swBOHUm89ZDyJ0ABzCfZa.xsQDv4kBkUBLTYVm8qVmFKBhhS75MY2', 2, 2, NULL, 1, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '6Ugq6MFg-8tzvskIVNKQFI15', NULL, NULL),
-(17, 'Poh Mei', 'Yean', 'poh', 'poh@email.com', '$2a$08$Z1w2Iy58AJp.n7F4UccVi.1.wTDiWBYLuq.V50RIv5RnCu17.sSn2', 2, 2, NULL, 1, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'y4Yqd2P2Jw1KevsOqPlU8nzT', NULL, NULL),
-(18, 'Racheal Albert', 'Yeap', 'racheal', 'racheal@email.com', '$2a$08$ybMI3inbkeD5Xexm7AdOOOLe.Mla239oa9zX8me4Hk/EMDiqg6ncm', 2, 2, NULL, 1, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'UI4Mi-TWg_5dr3cdqBpzuYAG', NULL, NULL),
-(19, 'Azhad', 'Muhammad', 'azhad', 'azhad@email.com', '$2a$08$TGmmM8/YVxdxzqED0ARvYOY6JYJYcc1GIsEbBneVwYpzk63sjgEo2', 2, 2, NULL, 1, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'RxCoIlh6kg6ZWiuO_vqxuMns', NULL, NULL),
-(20, 'Sean Casey', 'Linggian', 'sean', 'sean@email.com', '$2a$08$rHhGzHfVkuhbYkCfpybSzO6NY7He6g0Ak9z77UA/VW9Mj62H.SGLq', 2, 2, NULL, 1, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'iUQxGhpIbl_cCHO4J1UFXX0i', NULL, NULL),
-(21, 'Natasha', 'Mohd Zulk', 'natasha', 'natasha@email.com', '$2a$08$Q5aTeJfG2PoiCsxRnw4CSOgZZ0lIbytCFDeIjZ9mRYIlPb27NO4N.', 2, 2, NULL, 1, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '9Q-uPEAmIc7C6Jgr7NlYrqFd', NULL, NULL),
-(22, 'Fadzrul Aiman', 'Madzlan', 'fadzrul', 'fadzrul@email.com', '$2a$08$1NxyYcjGA.sNSou91nLcb.WoTogt9NGxhzs.vrotQPs9Rc.Mw3pme', 2, 2, NULL, 1, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'a1-c8egkNefNQ-6md_q52UZo', NULL, NULL),
-(23, 'HR', 'Administrator', 'hr', 'hr@email.com', '$2a$08$FuNqpgbyknoztrkBYcWWO.XLpsYSmbNQow3zS7m1FOZgoCWo9LJv6', 3, 2, NULL, 1, 3, 2, 1, '2024-05-01', 'HR', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'HSDvZh_nopJDvekzoSkFQOug', NULL, NULL);
+(2, 'Tan Min', 'Choon', 'Tan', 'tan@email.com', '$2a$08$aTD1rNlnseRXem/h0G.yY./b4jdGKQhab/XARTiDKsm.swKXJxTZi', 2, 2, NULL, 61, 3, 3, 1, '2024-01-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'n3vgzEPLRrZAL5npJkygzTYk', NULL, NULL),
+(3, 'Romina Ewol', 'Mujie', 'Romina', 'romina@email.com', '$2a$08$juHi60YUCon.ow2KlluBeuNv1Qop.xDsxvjquz3H4gC8XZsMW3.qe', 2, 2, NULL, 61, 1, 2, 1, '2024-02-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'ORiMJMB-4-ex6GoQDxR6zT78', NULL, NULL),
+(4, 'Teo Tiong ', 'Tze', 'Megan', 'megan@email.com', '$2a$08$UcJPtjOftib3DLMN/zlkf.73c/VdYZ.0ZqirUetcrDOE.dqv3uUAe', 2, 2, NULL, 61, 1, 2, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'F5RX9fIXM64R2DB_1yiNsvyj', NULL, NULL),
+(5, 'Poong Tchu ', 'Chuan', 'Sam', 'sam@email.com', '$2a$08$4oFRUKt1xDEygn8uXwbduuVSw0cpC7lpw82KvSf/rYGcsTh96r7bC', 2, 2, NULL, 61, 1, 2, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'JD9JmrSp6m-XspQdJX58Harh', NULL, NULL),
+(6, 'Jasneh', 'Abdullah', 'Jasneh', 'jasneh@email.com', '$2a$08$8Lr.KgWOT7WmIn8srb7hKO0cx5jl9PgckHD2wtep/8krQmduL6Zbi', 2, 2, NULL, 61, 1, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'Wg5BOARB2BGZHLH_WIoA87IM', NULL, NULL),
+(7, 'Siti Khadizah', 'Waly', 'siti', 'siti@email.com', '$2a$08$Hv3Zy.E/61gedg5dOmTDZO0N.nVyir23EwO/mADGPJdQhmxat0LOu', 2, 2, NULL, 61, 3, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'zKKJkjoGtsOa2Hl0fmhaDiQR', NULL, NULL),
+(8, 'Rindey', 'Jlee', 'rindey', 'rindey@email.com', '$2a$08$T6MtlFX0J3ST403IwKe63.HHyxfcGwD/9vnsdYE4kIgMxVWemFeWy', 2, 2, NULL, 61, 4, 1, 1, NULL, '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'z6nhkUUW8nnxncAoIVH3vojS', NULL, NULL),
+(9, 'Teo', 'Ricky', 'ricky', 'ricky@email.com', '$2a$08$QLssNuK9TydUSiu8xYL9iea00t8lpvIflIYlHVFU87/CUr2lInNH6', 2, 2, NULL, 61, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '25LGfH1XqFHxYgs2x6a6d2Bh', NULL, NULL),
+(10, 'Georgey', 'Resot', 'georgey', 'georgey@emai.com', '$2a$08$zq5wVBNGbG1d0Kt0a7LrBOfAxEmXgDDKAYUTlhLCPKh9ptonxY7JK', 2, 2, NULL, 61, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '0CHUrdzRDC_U9dwQok-o5LMe', NULL, NULL),
+(11, 'Melinda Lee', 'Yen Fen', 'melinda', 'melinda@email.com', '$2a$08$jxuFpzNP/0nGbJyzXsm0eO0Fchc17ZsvJis/Sm20RULB623gq3puS', 2, 2, NULL, 61, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'HVIu6_mwSeteakLGjAHVsEo1', NULL, NULL),
+(12, 'Ruzaini ', 'Mohd Dalin', 'ruzaini', 'ruzaini', '$2a$08$62RHamLJVTTdJ9E7T.0OLucyJ.gJ/AIvdjKmtcxEaRGzfNjMEpO2C', 2, 2, NULL, 61, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '9OFOq4aTEU7U-9lgTzq2cPxX', NULL, NULL),
+(13, 'Zareena Hanis', 'Red', 'zareena', 'zareena@email.com', '$2a$08$cppY6RQLDK5OQYZZHs2vZ.S/OAv7hvLWBmIJQUfMX6PHdo5FDZlw6', 2, 2, NULL, 61, 3, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'ir-6RbviPFYAAma_kEwieAG5', NULL, NULL),
+(14, 'Ezhan Efizi', 'Nafs', 'ezhan', 'ezhan@email.com', '$2a$08$n8l/lmR.AnLLrXbdyr5Js.Eia1sgvhA7oVOlsg1Ot9a6BvrX9XiwK', 2, 2, NULL, 61, 3, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'SiD4PO2oQ2vX8aor2GXtGJOC', NULL, NULL),
+(15, 'Nurliah', 'Mohd Jaafar', 'nurliah', 'nurliah@email.com', '$2a$08$0XgiWvqTnK3D.38.0I3NyOodtzz9CCnExDsyeXnUPGfzmoHmZPBs6', 2, 2, NULL, 61, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'm00U2hb9sgdL8Qi9cNu6pVf5', NULL, NULL),
+(16, 'Saidal ', 'M Jalil', 'saidal', 'saidal@email.com', '$2a$08$swBOHUm89ZDyJ0ABzCfZa.xsQDv4kBkUBLTYVm8qVmFKBhhS75MY2', 2, 2, NULL, 61, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '6Ugq6MFg-8tzvskIVNKQFI15', NULL, NULL),
+(17, 'Poh Mei', 'Yean', 'poh', 'poh@email.com', '$2a$08$Z1w2Iy58AJp.n7F4UccVi.1.wTDiWBYLuq.V50RIv5RnCu17.sSn2', 2, 2, NULL, 61, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'y4Yqd2P2Jw1KevsOqPlU8nzT', NULL, NULL),
+(18, 'Racheal Albert', 'Yeap', 'racheal', 'racheal@email.com', '$2a$08$ybMI3inbkeD5Xexm7AdOOOLe.Mla239oa9zX8me4Hk/EMDiqg6ncm', 2, 2, NULL, 61, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'UI4Mi-TWg_5dr3cdqBpzuYAG', NULL, NULL),
+(19, 'Azhad', 'Muhammad', 'azhad', 'azhad@email.com', '$2a$08$TGmmM8/YVxdxzqED0ARvYOY6JYJYcc1GIsEbBneVwYpzk63sjgEo2', 2, 2, NULL, 61, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'RxCoIlh6kg6ZWiuO_vqxuMns', NULL, NULL),
+(20, 'Sean Casey', 'Linggian', 'sean', 'sean@email.com', '$2a$08$rHhGzHfVkuhbYkCfpybSzO6NY7He6g0Ak9z77UA/VW9Mj62H.SGLq', 2, 2, NULL, 61, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'iUQxGhpIbl_cCHO4J1UFXX0i', NULL, NULL),
+(21, 'Natasha', 'Mohd Zulk', 'natasha', 'natasha@email.com', '$2a$08$Q5aTeJfG2PoiCsxRnw4CSOgZZ0lIbytCFDeIjZ9mRYIlPb27NO4N.', 2, 2, NULL, 61, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '9Q-uPEAmIc7C6Jgr7NlYrqFd', NULL, NULL),
+(22, 'Fadzrul Aiman', 'Madzlan', 'fadzrul', 'fadzrul@email.com', '$2a$08$1NxyYcjGA.sNSou91nLcb.WoTogt9NGxhzs.vrotQPs9Rc.Mw3pme', 2, 2, NULL, 61, 4, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'a1-c8egkNefNQ-6md_q52UZo', NULL, NULL),
+(23, 'HR', 'Administrator', 'hr', 'hr@email.com', '$2a$08$FuNqpgbyknoztrkBYcWWO.XLpsYSmbNQow3zS7m1FOZgoCWo9LJv6', 3, 2, NULL, 60, 3, 2, 1, '2024-05-01', 'HR', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'HSDvZh_nopJDvekzoSkFQOug', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -980,37 +986,37 @@ ALTER TABLE `contracts`
 -- AUTO_INCREMENT for table `dayoffs`
 --
 ALTER TABLE `dayoffs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `delegations`
 --
 ALTER TABLE `delegations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id of delegation', AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id of delegation';
 
 --
 -- AUTO_INCREMENT for table `entitleddays`
 --
 ALTER TABLE `entitleddays`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of an entitlement', AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of an entitlement';
 
 --
 -- AUTO_INCREMENT for table `excluded_types`
 --
 ALTER TABLE `excluded_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id of exclusion', AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id of exclusion';
 
 --
 -- AUTO_INCREMENT for table `leaves`
 --
 ALTER TABLE `leaves`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the leave request', AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the leave request';
 
 --
 -- AUTO_INCREMENT for table `leaves_history`
 --
 ALTER TABLE `leaves_history`
-  MODIFY `change_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `change_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `locations`

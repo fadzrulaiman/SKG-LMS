@@ -55,11 +55,12 @@
                     </tr>
                 </table>
 
-                <!-- Action Links -->
+                <!-- Action Links 
                 <div style="margin-top: 20px; text-align: center;">
                     <a href="{BaseUrl}requests/accept/{LeaveId}" style="padding: 10px 20px; margin-right: 10px; background-color: #28a745; color: #ffffff; text-decoration: none; border-radius: 5px;">Accept</a>
                     <a href="{BaseUrl}requests?rejected={LeaveId}" style="padding: 10px 20px; background-color: #dc3545; color: #ffffff; text-decoration: none; border-radius: 5px;">Reject</a>
                 </div>
+                -->
             </td>
         </tr>
         <tr>

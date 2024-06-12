@@ -41,16 +41,16 @@ class Contracts_model extends CI_Model {
      * Get the name of a given contract
      * @param int $id Unique identifier of a contract
      * @return string name of the contract
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getName($id) {
         $record = $this->getContracts($id);
-        if (!empty($record)) {
+        if (!empty($record) && array_key_exists('name', $record)) {
             return $record['name'];
         } else {
             return '';
         }
     }
+
 
     /**
      * Insert a new contract into the database. Inserted data are coming from an HTML form

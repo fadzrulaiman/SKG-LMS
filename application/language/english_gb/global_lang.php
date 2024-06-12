@@ -29,10 +29,11 @@ $lang['footer_copyright_notice'] = '&copy; 2014 Jorani Authors';
 $lang['Requested'] = 'Requested';
 $lang['Pending From HR'] = 'Pending HR Approval';
 $lang['Planned'] = 'Planned';
-$lang['Accepted'] = 'Accepted';
+$lang['Accepted'] = 'Approved';
 $lang['Rejected'] = 'Rejected';
 $lang['Cancellation'] = 'Cancellation';
 $lang['Canceled'] = 'Canceled';
+$lang['Cancel'] = 'Cancel';
 
 $lang['global_link_doc_page_calendar_individual'] = '';
 $lang['global_link_doc_page_calendar_yearly'] = '';

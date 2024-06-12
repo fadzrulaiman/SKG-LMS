@@ -23,7 +23,7 @@
         <tr>
             <td style="padding: 20px; font-size: 14px;">
                 <p>Dear {Firstname} {Lastname},</p>
-                <p>Unfortunately, your cancellation request was not accepted. The leave request has returned to its original status of "Accepted." Please contact your manager to discuss the matter. See the details below:</p>
+                <p>Unfortunately, your cancellation request was not approved. The leave request has returned to its original status of "Approved." Please contact your manager to discuss the matter. See the details below:</p>
                 <!-- Leave Details Table -->
                 <table width="100%" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
                     <tr>

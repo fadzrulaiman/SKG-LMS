@@ -74,7 +74,7 @@ $lang['leaves_cancellation_flash_msg_error'] = 'You can\'t cancel this leave req
 $lang['leaves_cancellation_flash_msg_success'] = 'The cancellation request has been successfully sent';
 $lang['requests_cancellation_accept_flash_msg_success'] = 'The leave request has been successfully cancelled';
 $lang['requests_cancellation_accept_flash_msg_error'] = 'An error occured while trying to accept the cancellation';
-$lang['requests_cancellation_reject_flash_msg_success'] = 'The leave request has now its original status of Accepted';
+$lang['requests_cancellation_reject_flash_msg_success'] = 'The leave request has now its original status of approved';
 $lang['requests_cancellation_reject_flash_msg_error'] = 'An error occured while trying to reject the cancellation';
 
 $lang['leaves_edit_html_title'] = 'Edit a leave request';
