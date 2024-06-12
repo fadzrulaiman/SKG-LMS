@@ -45,6 +45,8 @@ $lang['menu_validation_delegations'] = 'Penyerahan';
 $lang['menu_validation_collaborators'] = 'Bawahan saya';
 $lang['menu_validation_leaves'] = 'Cuti';
 $lang['menu_validation_overtime'] = 'Lebih masa';
+$lang['menu_validation_leavebank'] = 'Leave Bank Approval';
+
 
 $lang['menu_requests_title'] = 'Permintaan';
 $lang['menu_requests_leaves'] = 'Cuti';

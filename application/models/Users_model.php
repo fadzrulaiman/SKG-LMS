@@ -494,6 +494,17 @@ class Users_model extends CI_Model {
     }
 
     /**
+     * Get users by role
+     * @param int $role Role identifier
+     * @return array List of users
+     */
+    public function getUsersByRole($role) {
+        $this->db->where('role', $role);
+        $query = $this->db->get('users');
+        return $query->result_array();
+    }
+
+    /**
      * Check the provided credentials and load user's profile if they are correct
      * @param string $login user login
      * @param string $password password
@@ -770,24 +781,6 @@ class Users_model extends CI_Model {
     public function isActive($login) {
         $this->db->from('users');
         $this->db->where('login', $login);
-        $query = $this->db->get();
-        if ($query->num_rows() > 0) {
-            $row = $query->row();
-            return $row->active;
-        } else {
-            return FALSE;
-        }
-    }
-
-    /**
-     * Check if a user is active (TRUE) or inactive (FALSE)
-     * @param string $email e-mail of a user
-     * @return bool active (TRUE) or inactive (FALSE)
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
-     */
-    public function isActiveByEmail($login) {
-        $this->db->from('users');
-        $this->db->where('email', $email);
         $query = $this->db->get();
         if ($query->num_rows() > 0) {
             $row = $query->row();

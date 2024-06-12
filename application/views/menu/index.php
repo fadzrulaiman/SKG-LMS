@@ -85,37 +85,47 @@ $this->lang->load('menu', $language);?>
                 </li>
               <?php } ?>
 
-             <?php if ($is_manager == TRUE) { ?>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <?php echo lang('menu_validation_title');?>&nbsp;
-                      <?php if ($requests_count > 0) { ?>
-                      <span class="badge badge-warning"><?php echo $requests_count;?></span>
-                      <?php } ?>
-                      &nbsp;<b class="caret"></b>
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a href="<?php echo base_url();?>requests/delegations"><?php echo lang('menu_validation_delegations');?></a></li>
-                    <li><a href="<?php echo base_url();?>requests/collaborators"><?php echo lang('menu_validation_collaborators');?></a></li>
-                    <li><a href="<?php echo base_url();?>requests/balance"><?php echo lang('menu_hr_report_leave_balance');?></a></li>
-                    <li class="divider"></li>
-                    <li class="nav-header"><?php echo lang('menu_validation_title');?></li>
-                    <li><a href="<?php echo base_url();?>requests">
-                      <?php if ($requested_leaves_count > 0) { ?>
-                      <span class="badge badge-info"><?php echo $requested_leaves_count;?></span>
-                      <?php } ?>
-                        <?php echo lang('menu_validation_leaves');?></a></li>
-                    <?php if ($this->config->item('disable_overtime') === FALSE) { ?>
-                    <li><a href="<?php echo base_url();?>overtime">
-                      <?php if ($requested_extra_count > 0) { ?>
-                      <span class="badge badge-info"><?php echo $requested_extra_count;?></span>
-                      <?php } ?>
-                        <?php echo lang('menu_validation_overtime');?></a></li>
-                    <?php } ?>
-                  </ul>
-                </li>
-              <?php } ?>
+              <?php
+                $requests_count = isset($requests_count) ? $requests_count : 0;
+                $requested_leaves_count = isset($requested_leaves_count) ? $requested_leaves_count : 0;
+                $requested_extra_count = isset($requested_extra_count) ? $requested_extra_count : 0;
+                $requested_leavebank_count = isset($requested_leavebank_count) ? $requested_leavebank_count : 0;
 
+                // Calculate the combined count
+                $combined_count = $requests_count + $requested_leavebank_count;
+
+                if (($is_manager == TRUE) || ($is_hr == TRUE)) { ?>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <?php echo lang('menu_validation_title');?>&nbsp;
+                            <?php if ($combined_count > 0) { ?>
+                                <span class="badge badge-warning">
+                                    <?php echo $combined_count; ?>
+                                </span>
+                            <?php } ?>
+                            &nbsp;<b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?php echo base_url();?>requests/delegations"><?php echo lang('menu_validation_delegations');?></a></li>
+                            <li><a href="<?php echo base_url();?>requests/collaborators"><?php echo lang('menu_validation_collaborators');?></a></li>
+                            <li><a href="<?php echo base_url();?>requests/balance"><?php echo lang('menu_hr_report_leave_balance');?></a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header"><?php echo lang('menu_validation_title');?></li>
+                            <li><a href="<?php echo base_url();?>requests">
+                                <?php if ($requested_leaves_count > 0) { ?>
+                                    <span class="badge badge-info"><?php echo $requested_leaves_count;?></span>
+                                <?php } ?>
+                                <?php echo lang('menu_validation_leaves');?></a></li>
+                                <?php if ($is_hr == TRUE) { ?>
+                                    <li><a href="<?php echo base_url();?>requests/leavebank">
+                                        <?php if ($requested_leavebank_count > 0) { ?>
+                                            <span class="badge badge-info"><?php echo $requested_leavebank_count;?></span>
+                                        <?php } ?>
+                                        <?php echo lang('menu_validation_leavebank');?></a></li>
+                                <?php } ?>
+                        </ul>
+                    </li>
+                <?php } ?>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo lang('menu_requests_title');?> <b class="caret"></b></a>
                   <ul class="dropdown-menu">

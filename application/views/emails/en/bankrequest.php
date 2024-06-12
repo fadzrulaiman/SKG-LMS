@@ -22,7 +22,7 @@
         <!-- Content -->
         <tr>
             <td style="padding: 20px; font-size: 14px;">
-                <p>{Firstname} {Lastname} has requested time off. See the <a href="{BaseUrl}leaves/requests/{LeaveId}">details</a> below:</p>
+                <p>{Firstname} {Lastname} has applied leave bank request. See the <a href="{BaseUrl}leaves/requests/leavebank">details</a> below:</p>
                 <!-- Leave Details Table -->
                 <table width="100%" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
                     <tr>
@@ -44,6 +44,10 @@
                     <tr>
                         <td style="border: 1px solid #e0e0e0; padding: 10px; font-weight: bold;">Balance</td>
                         <td style="border: 1px solid #e0e0e0; padding: 10px;">{Balance}</td>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #e0e0e0; padding: 10px; font-weight: bold;">Status</td>
+                        <td style="border: 1px solid #e0e0e0; padding: 10px;">{Status}</td>
                     </tr>
                     <tr>
                         <td style="border: 1px solid #e0e0e0; padding: 10px; font-weight: bold;">Reason of leave</td>

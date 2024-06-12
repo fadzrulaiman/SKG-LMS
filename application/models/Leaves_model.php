@@ -1445,6 +1445,70 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
     }
 
     /**
+     * List all leave bank requests with a specific status.
+     * @param bool $all TRUE all requests, FALSE otherwise
+     * @return array Recordset (can be empty if no requests)
+     */
+    public function getLeavesBankRequested($all = FALSE) {
+        $this->db->select('leaves.id as leave_id, users.*, leaves.*, types.name as type_label');
+        $this->db->select('status.name as status_name, types.name as type_name');
+        $this->db->join('status', 'leaves.status = status.id');
+        $this->db->join('types', 'leaves.type = types.id');
+        $this->db->join('users', 'users.id = leaves.employee');
+        $this->db->where('leaves.status', 7); // Status is 7 for leave bank requests
+        $this->db->order_by('leaves.startdate', 'desc');
+        $query = $this->db->get('leaves');
+        return $query->result_array();
+    }
+
+    /**
+     * Get the list of leave bank request history with a specific status.
+     * @param bool $all TRUE all requests, FALSE otherwise
+     * @return array list of records
+     */
+    public function getLeavesBankRequestedWithHistory($all = FALSE) {
+        $query = "SELECT leaves.id as leave_id, users.*, leaves.*, types.name as type_label, 
+                status.name as status_name, types.name as type_name, lastchange.date as change_date, 
+                requested.date as request_date
+                FROM `leaves`
+                INNER JOIN status ON leaves.status = status.id
+                INNER JOIN types ON leaves.type = types.id
+                INNER JOIN users ON users.id = leaves.employee
+                LEFT OUTER JOIN (
+                    SELECT id, MAX(change_date) as date
+                    FROM leaves_history
+                    GROUP BY id
+                ) lastchange ON leaves.id = lastchange.id
+                LEFT OUTER JOIN (
+                    SELECT id, MIN(change_date) as date
+                    FROM leaves_history
+                    WHERE leaves_history.status = 2
+                    GROUP BY id
+                ) requested ON leaves.id = requested.id
+                WHERE leaves.status = 7"; // Status is 7 for leave bank requests
+
+        if ($all == FALSE) {
+            $query .= " AND (leaves.status = " . LMS_REQUESTED .
+                    " OR leaves.status = " . LMS_REQUESTEDBANK . ")";
+        }
+        $query .= " ORDER BY leaves.startdate DESC";
+        $this->db->query('SET SQL_BIG_SELECTS=1');
+        return $this->db->query($query)->result_array();
+    }
+
+    /**
+     * Count leave requests submitted to the connected user (or if delegate of a manager)
+     * @param int $hr connected user
+     * @return int number of requests
+     */
+    public function countLeavesRequestedToHR($hr) {
+        $this->db->from('leaves');
+        $this->db->where('leaves.status', 7); // Status is 7
+        return $this->db->count_all_results();
+    }
+
+
+    /**
      * Purge the table by deleting the records prior $toDate
      * @param date $toDate
      * @return int number of affected rows

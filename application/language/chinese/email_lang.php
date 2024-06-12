@@ -24,7 +24,10 @@ $lang['email_leave_cancel_reject_subject'] = '您的取消请求已被拒绝';
 
 $lang['email_leave_request_accept_subject'] = '您的假期请求已被接受';
 $lang['email_leave_request_reject_subject'] = '您的假期请求已被拒绝';
+$lang['email_leave_request_pending_subject'] = '您的请假请求正在等待人力资源部门的批准';
 $lang['email_leave_request_validation_title'] = '假期请求';
+$lang['email_leave_request_pending_title'] = '请假请求待批准';
+
 
 $lang['email_leave_request_reminder'] = '[提醒]';
 

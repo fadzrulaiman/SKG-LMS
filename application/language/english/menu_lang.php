@@ -44,6 +44,8 @@ $lang['menu_validation_delegations'] = 'Delegations';
 $lang['menu_validation_collaborators'] = 'My subordinates';
 $lang['menu_validation_leaves'] = 'Leaves';
 $lang['menu_validation_overtime'] = 'Overtime';
+$lang['menu_validation_leavebank'] = 'Leave Bank Approval';
+
 
 $lang['menu_requests_title'] = 'Requests';
 $lang['menu_requests_leaves'] = 'Leaves';
