@@ -67,11 +67,7 @@
         <input type="hidden" value="Afternoon" name="enddatetype" id="enddatetype" />
         <label for="duration"><?php echo lang('leaves_create_field_duration');?> <span
                 id="tooltipDayOff"></span></label>
-        <?php if ($this->config->item('disable_edit_leave_duration') == TRUE) { ?>
-        <input type="text" name="duration" id="duration" value="<?php echo set_value('duration'); ?>" readonly />
-        <?php } else { ?>
-        <input type="text" name="duration" id="duration" value="<?php echo set_value('duration'); ?>" />
-        <?php } ?>
+        <input type="text" name="duration" id="duration" value="<?php echo intval(set_value('duration')); ?>" <?php echo $this->config->item('disable_edit_leave_duration') ? 'readonly' : ''; ?> />
         <div class="alert hide alert-error" id="lblCreditAlert">
             <?php echo lang('leaves_create_field_duration_message');?>
         </div>

@@ -1,3 +1,0 @@
-ERROR - 2024-06-12 04:18:06 --> {controllers/session/login} Invalid login id or password for user=tan
-ERROR - 2024-06-12 04:18:16 --> Severity: Warning --> Undefined property: Requests::$status_model C:\xampp\htdocs\SKG-LMS\application\controllers\Requests.php 416
-ERROR - 2024-06-12 04:18:16 --> Severity: error --> Exception: Call to a member function getStatus() on null C:\xampp\htdocs\SKG-LMS\application\controllers\Requests.php 416

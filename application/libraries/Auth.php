@@ -151,6 +151,7 @@ class Auth {
                 break;
 
             //HR
+            case 'leavebank_requests':
             case 'leavetypes_delete' :
             case 'leavetypes_list' :
             case 'leavetypes_export' :

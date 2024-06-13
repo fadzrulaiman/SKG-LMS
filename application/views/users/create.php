@@ -151,7 +151,21 @@ echo form_open('users/create', $attributes); ?>
 </div>
 
 <hr />
-
+<div class="row">
+    <div class="span12">
+        <input type="hidden" name="location" id="location" />
+        <div class="control-group">
+            <label class="control-label" for="location"><?php echo lang('users_create_field_location');?></label>
+            <div class="controls">
+                <div class="input-append">
+                    <input type="text" id="txtLocation" name="txtLocation" readonly />
+                    <a id="cmdSelectLocation"
+                        class="btn btn-primary"><?php echo lang('users_create_button_select');?></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="span12">
         <input type="hidden" name="entity" id="entity" />
@@ -176,22 +190,6 @@ echo form_open('users/create', $attributes); ?>
                 <div class="input-append">
                     <input type="text" id="txtPosition" name="txtPosition" readonly />
                     <a id="cmdSelectPosition"
-                        class="btn btn-primary"><?php echo lang('users_create_button_select');?></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="span12">
-        <input type="hidden" name="location" id="location" />
-        <div class="control-group">
-            <label class="control-label" for="location"><?php echo lang('users_create_field_location');?></label>
-            <div class="controls">
-                <div class="input-append">
-                    <input type="text" id="txtLocation" name="txtLocation" readonly />
-                    <a id="cmdSelectLocation"
                         class="btn btn-primary"><?php echo lang('users_create_button_select');?></a>
                 </div>
             </div>

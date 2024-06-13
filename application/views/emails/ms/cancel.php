@@ -39,11 +39,11 @@
                     </tr>
                     <tr>
                         <td style="border: 1px solid #e0e0e0; padding: 10px; font-weight: bold;">Tempoh</td>
-                        <td style="border: 1px solid #e0e0e0; padding: 10px;">{Duration}</td>
+                        <td style="border: 1px solid #e0e0e0; padding: 10px;">{Duration} Days</td>
                     </tr>
                     <tr>
                         <td style="border: 1px solid #e0e0e0; padding: 10px; font-weight: bold;">Baki</td>
-                        <td style="border: 1px solid #e0e0e0; padding: 10px;">{Balance}</td>
+                        <td style="border: 1px solid #e0e0e0; padding: 10px;">{Balance} Days</td>
                     </tr>
                     <tr>
                         <td style="border: 1px solid #e0e0e0; padding: 10px; font-weight: bold;">Sebab</td>
