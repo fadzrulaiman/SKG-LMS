@@ -134,11 +134,56 @@
         </form>
     </div>
     <?php if (!empty($attachment_path)): ?>
-    <div class="span6">
-        <div class="attachment">
-            <h3>Attachment:</h3>
-            <embed src="<?php echo base_url($attachment_path); ?>" width="100%" height="600" type='application/pdf' />
-        </div>
+        <div class="span6">
+    <div class="attachment">
+        <h3>Attachment:</h3>
+        <?php if (strpos($attachment_path, '.pdf') !== false): ?>
+            <iframe id="pdf-frame" src="<?php echo base_url($attachment_path); ?>" width="100%" height="600"></iframe>
+        <?php else: ?>
+            <img src="<?php echo base_url($attachment_path); ?>" class="attachment-image" />
+        <?php endif; ?>
     </div>
+</div>
+
+</div>
+
     <?php endif; ?>
 </div>
+<style>
+.attachment {
+    position: relative;
+    width: 100%;
+    height: 600px; /* Adjust height as needed */
+}
+
+.attachment img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    display: block;
+}
+
+#pdf-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+</style>
+<script>
+    window.addEventListener('load', function() {
+    var iframe = document.getElementById('pdf-frame');
+    var attachmentDiv = document.querySelector('.attachment');
+    var availableHeight = window.innerHeight - attachmentDiv.offsetTop;
+
+    iframe.style.height = availableHeight + 'px';
+});
+
+window.addEventListener('resize', function() {
+    var iframe = document.getElementById('pdf-frame');
+    var attachmentDiv = document.querySelector('.attachment');
+    var availableHeight = window.innerHeight - attachmentDiv.offsetTop;
+
+    iframe.style.height = availableHeight + 'px';
+});
+
+</script>

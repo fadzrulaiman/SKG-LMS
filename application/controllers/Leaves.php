@@ -265,121 +265,121 @@ public function view($source, $id) {
         }
     }
                 
-/**
- * Edit a leave request
- * @param int $id Identifier of the leave request
- * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
- */
-public function edit($id) {
-    $this->auth->checkIfOperationIsAllowed('edit_leaves');
-    $this->load->model('users_model');
-    $this->load->model('status_model');
-    $data = getUserContext($this);
-    $data['leave'] = $this->leaves_model->getLeaveWithComments($id);
-    //Check if exists
-    if (empty($data['leave'])) {
-        redirect('notfound');
-    }
-    //If the user is not its own manager and if the leave is
-    //already requested, the employee can't modify it
-    if (!$this->is_hr) {
-        if (($this->session->userdata('manager') != $this->user_id) &&
-            $data['leave']['status'] != LMS_PLANNED) {
-            if ($this->config->item('edit_rejected_requests') == FALSE ||
-                $data['leave']['status'] != LMS_REJECTED) {//Configuration switch that allows editing the rejected leave requests
-                log_message('error', 'User #' . $this->user_id . ' illegally tried to edit leave #' . $id);
-                $this->session->set_flashdata('msg', lang('leaves_edit_flash_msg_error'));
+    /**
+     * Edit a leave request
+     * @param int $id Identifier of the leave request
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     */
+    public function edit($id) {
+        $this->auth->checkIfOperationIsAllowed('edit_leaves');
+        $this->load->model('users_model');
+        $this->load->model('status_model');
+        $data = getUserContext($this);
+        $data['leave'] = $this->leaves_model->getLeaveWithComments($id);
+        //Check if exists
+        if (empty($data['leave'])) {
+            redirect('notfound');
+        }
+        //If the user is not its own manager and if the leave is
+        //already requested, the employee can't modify it
+        if (!$this->is_hr) {
+            if (($this->session->userdata('manager') != $this->user_id) &&
+                $data['leave']['status'] != LMS_PLANNED) {
+                if ($this->config->item('edit_rejected_requests') == FALSE ||
+                    $data['leave']['status'] != LMS_REJECTED) {//Configuration switch that allows editing the rejected leave requests
+                    log_message('error', 'User #' . $this->user_id . ' illegally tried to edit leave #' . $id);
+                    $this->session->set_flashdata('msg', lang('leaves_edit_flash_msg_error'));
+                    redirect('leaves');
+                }
+            }
+        } //Admin
+
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('startdate', lang('leaves_edit_field_start'), 'required|strip_tags');
+        $this->form_validation->set_rules('startdatetype', 'Start Date type', 'required|strip_tags');
+        $this->form_validation->set_rules('enddate', lang('leaves_edit_field_end'), 'required|strip_tags');
+        $this->form_validation->set_rules('enddatetype', 'End Date type', 'required|strip_tags');
+        $this->form_validation->set_rules('duration', lang('leaves_edit_field_duration'), 'required|strip_tags');
+        $this->form_validation->set_rules('type', lang('leaves_edit_field_type'), 'required|strip_tags');
+        $this->form_validation->set_rules('cause', lang('leaves_edit_field_cause'), 'strip_tags');
+        $this->form_validation->set_rules('status', lang('leaves_edit_field_status'), 'required|strip_tags');
+
+        if ($this->form_validation->run() === FALSE) {
+            $data['title'] = lang('leaves_edit_html_title');
+            $data['id'] = $id;
+            $this->load->model('contracts_model');
+            $leaveTypesDetails = $this->contracts_model->getLeaveTypesDetailsOTypesForUser($data['leave']['employee'], $data['leave']['type']);
+            $data['defaultType'] = $leaveTypesDetails->defaultType;
+            $data['credit'] = $leaveTypesDetails->credit;
+            $data['types'] = $leaveTypesDetails->types;
+            $this->load->model('users_model');
+            $data['name'] = $this->users_model->getName($data['leave']['employee']);
+            if (isset($data["leave"]["comments"])){
+            $last_comment = new stdClass();;
+            foreach ($data["leave"]["comments"]->comments as $comments_item) {
+                if($comments_item->type == "comment"){
+                $comments_item->author = $this->users_model->getName($comments_item->author);
+                $comments_item->in = "in";
+                $last_comment->in="";
+                $last_comment=$comments_item;
+                } else if($comments_item->type == "change"){
+                $comments_item->status = $this->status_model->getName($comments_item->status_number);
+                }
+            }
+            }
+                // Pass attachment information to the view
+        $data['attachment_path'] = $data['leave']['attachment'];
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('menu/index', $data);
+            $this->load->view('leaves/edit', $data);
+            $this->load->view('templates/footer');
+        } else {
+            //Prevent thugs to auto validate their leave requests
+            if (!$this->is_hr && !$this->is_admin) {
+                if ($this->input->post('status') == LMS_ACCEPTED) {
+                    log_message('error', 'User #' . $this->session->userdata('id') . 
+                        ' tried to submit a LR with an wrong status = ' . $this->input->post('status'));
+                    $_POST['status'] = LMS_REQUESTED;
+                }
+                if ($this->input->post('status') == LMS_CANCELED) {
+                    log_message('error', 'User #' . $this->session->userdata('id') . 
+                        ' tried to submit a LR with an wrong status = ' . $this->input->post('status'));
+                    $_POST['status'] = LMS_CANCELLATION;
+                }
+            }
+
+            // Handle attachment upload
+            $attachment_path = $this->handleAttachmentUpload();
+
+            //Users must use an existing leave type, otherwise
+            //force leave type to default leave type
+            $this->load->model('contracts_model');
+            $leaveTypesDetails = $this->contracts_model->getLeaveTypesDetailsOTypesForUser($this->session->userdata('id'));
+            if (!array_key_exists($this->input->post('type'), $leaveTypesDetails->types)) {
+                log_message('error', 'User #' . $this->session->userdata('id') . ' tried to submit an wrong LR type = ' . 
+                $this->input->post('type'));
+                $_POST['type'] = $leaveTypesDetails->defaultType;
+                log_message('debug', 'LR type forced to ' . $leaveTypesDetails->defaultType); 
+            }
+
+            $this->leaves_model->updateLeaves($id, $attachment_path); // Pass attachment path to the model
+            $this->session->set_flashdata('msg', lang('leaves_edit_flash_msg_success'));
+            //If the status is requested or cancellation, send an email to the manager
+            if ($this->input->post('status') == LMS_REQUESTED) {
+                $this->sendMailOnLeaveRequestCreation($id);
+            }
+            if ($this->input->post('status') == LMS_CANCELLATION) {
+                $this->sendMailOnLeaveRequestCreation($id);
+            }
+            if (isset($_GET['source'])) {
+                redirect($_GET['source']);
+            } else {
                 redirect('leaves');
             }
         }
-    } //Admin
-
-    $this->load->helper('form');
-    $this->load->library('form_validation');
-    $this->form_validation->set_rules('startdate', lang('leaves_edit_field_start'), 'required|strip_tags');
-    $this->form_validation->set_rules('startdatetype', 'Start Date type', 'required|strip_tags');
-    $this->form_validation->set_rules('enddate', lang('leaves_edit_field_end'), 'required|strip_tags');
-    $this->form_validation->set_rules('enddatetype', 'End Date type', 'required|strip_tags');
-    $this->form_validation->set_rules('duration', lang('leaves_edit_field_duration'), 'required|strip_tags');
-    $this->form_validation->set_rules('type', lang('leaves_edit_field_type'), 'required|strip_tags');
-    $this->form_validation->set_rules('cause', lang('leaves_edit_field_cause'), 'strip_tags');
-    $this->form_validation->set_rules('status', lang('leaves_edit_field_status'), 'required|strip_tags');
-
-    if ($this->form_validation->run() === FALSE) {
-        $data['title'] = lang('leaves_edit_html_title');
-        $data['id'] = $id;
-        $this->load->model('contracts_model');
-        $leaveTypesDetails = $this->contracts_model->getLeaveTypesDetailsOTypesForUser($data['leave']['employee'], $data['leave']['type']);
-        $data['defaultType'] = $leaveTypesDetails->defaultType;
-        $data['credit'] = $leaveTypesDetails->credit;
-        $data['types'] = $leaveTypesDetails->types;
-        $this->load->model('users_model');
-        $data['name'] = $this->users_model->getName($data['leave']['employee']);
-        if (isset($data["leave"]["comments"])){
-          $last_comment = new stdClass();;
-          foreach ($data["leave"]["comments"]->comments as $comments_item) {
-            if($comments_item->type == "comment"){
-              $comments_item->author = $this->users_model->getName($comments_item->author);
-              $comments_item->in = "in";
-              $last_comment->in="";
-              $last_comment=$comments_item;
-            } else if($comments_item->type == "change"){
-              $comments_item->status = $this->status_model->getName($comments_item->status_number);
-            }
-          }
-        }
-            // Pass attachment information to the view
-    $data['attachment_path'] = $data['leave']['attachment'];
-
-        $this->load->view('templates/header', $data);
-        $this->load->view('menu/index', $data);
-        $this->load->view('leaves/edit', $data);
-        $this->load->view('templates/footer');
-    } else {
-        //Prevent thugs to auto validate their leave requests
-        if (!$this->is_hr && !$this->is_admin) {
-            if ($this->input->post('status') == LMS_ACCEPTED) {
-                log_message('error', 'User #' . $this->session->userdata('id') . 
-                    ' tried to submit a LR with an wrong status = ' . $this->input->post('status'));
-                $_POST['status'] = LMS_REQUESTED;
-            }
-            if ($this->input->post('status') == LMS_CANCELED) {
-                log_message('error', 'User #' . $this->session->userdata('id') . 
-                    ' tried to submit a LR with an wrong status = ' . $this->input->post('status'));
-                $_POST['status'] = LMS_CANCELLATION;
-            }
-        }
-
-        // Handle attachment upload
-        $attachment_path = $this->handleAttachmentUpload();
-
-        //Users must use an existing leave type, otherwise
-        //force leave type to default leave type
-        $this->load->model('contracts_model');
-        $leaveTypesDetails = $this->contracts_model->getLeaveTypesDetailsOTypesForUser($this->session->userdata('id'));
-        if (!array_key_exists($this->input->post('type'), $leaveTypesDetails->types)) {
-            log_message('error', 'User #' . $this->session->userdata('id') . ' tried to submit an wrong LR type = ' . 
-            $this->input->post('type'));
-            $_POST['type'] = $leaveTypesDetails->defaultType;
-            log_message('debug', 'LR type forced to ' . $leaveTypesDetails->defaultType); 
-        }
-
-        $this->leaves_model->updateLeaves($id, $attachment_path); // Pass attachment path to the model
-        $this->session->set_flashdata('msg', lang('leaves_edit_flash_msg_success'));
-        //If the status is requested or cancellation, send an email to the manager
-        if ($this->input->post('status') == LMS_REQUESTED) {
-            $this->sendMailOnLeaveRequestCreation($id);
-        }
-        if ($this->input->post('status') == LMS_CANCELLATION) {
-            $this->sendMailOnLeaveRequestCreation($id);
-        }
-        if (isset($_GET['source'])) {
-            redirect($_GET['source']);
-        } else {
-            redirect('leaves');
-        }
-    }
-}    
+    }    
     private function handleAttachmentUpload() {
         $attachment_path = ''; // Initialize attachment path
     
@@ -398,13 +398,81 @@ public function edit($id) {
                 // File uploaded successfully
                 $attachment_data = $this->upload->data();
                 $attachment_path = 'assets/uploads/' . $attachment_data['file_name']; // Get the relative path of the uploaded file
-                // You can store this path in the database or perform further processing
+    
+                // Check if the uploaded file is an image
+                if (in_array($attachment_data['file_type'], ['image/jpeg', 'image/png', 'image/gif'])) {
+                    $this->addWatermark($attachment_path);
+                }
             }
         }
     
         return $attachment_path;
     }
-
+    
+    private function addWatermark($filePath) {
+        // Load the image
+        $imageType = exif_imagetype($filePath);
+        switch ($imageType) {
+            case IMAGETYPE_JPEG:
+                $image = imagecreatefromjpeg($filePath);
+                break;
+            case IMAGETYPE_PNG:
+                $image = imagecreatefrompng($filePath);
+                break;
+            case IMAGETYPE_GIF:
+                $image = imagecreatefromgif($filePath);
+                break;
+            default:
+                return; // Unsupported image type
+        }
+    
+        // Load the watermark image
+        $watermark = imagecreatefrompng('assets/images/watermark.png'); // Adjust the path to your watermark image
+    
+        // Get the dimensions of both images
+        $imageWidth = imagesx($image);
+        $imageHeight = imagesy($image);
+        $watermarkWidth = imagesx($watermark);
+        $watermarkHeight = imagesy($watermark);
+    
+        // Apply 50% transparency to the watermark
+        $tempWatermark = imagecreatetruecolor($watermarkWidth, $watermarkHeight);
+        imagealphablending($tempWatermark, false);
+        imagesavealpha($tempWatermark, true);
+        $transparent = imagecolorallocatealpha($tempWatermark, 0, 0, 0, 127);
+        imagefilledrectangle($tempWatermark, 0, 0, $watermarkWidth, $watermarkHeight, $transparent);
+    
+        // Merge watermark with 50% transparency
+        imagecopy($tempWatermark, $watermark, 0, 0, 0, 0, $watermarkWidth, $watermarkHeight);
+        imagefilter($tempWatermark, IMG_FILTER_COLORIZE, 0, 0, 0, 63); // 50% transparency
+    
+        // Tile the watermark across the entire image
+        for ($y = 0; $y < $imageHeight; $y += $watermarkHeight) {
+            for ($x = 0; $x < $imageWidth; $x += $watermarkWidth) {
+                imagecopy($image, $tempWatermark, $x, $y, 0, 0, $watermarkWidth, $watermarkHeight);
+            }
+        }
+    
+        // Save the image
+        switch ($imageType) {
+            case IMAGETYPE_JPEG:
+                imagejpeg($image, $filePath);
+                break;
+            case IMAGETYPE_PNG:
+                imagepng($image, $filePath);
+                break;
+            case IMAGETYPE_GIF:
+                imagegif($image, $filePath);
+                break;
+        }
+    
+        // Free up memory
+        imagedestroy($image);
+        imagedestroy($watermark);
+        imagedestroy($tempWatermark);
+    }
+    
+    
     /**
      * change a the status of a planned request to  requested
      * @param int $id id of the leave
