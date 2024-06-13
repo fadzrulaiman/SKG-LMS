@@ -193,11 +193,12 @@ public function leavebankaccept($id) {
               $this->leaves_model->switchStatus($id, LMS_REJECTED);
             }
             $this->sendMail($id, LMS_REQUESTED_REJECTED);
-            $this->session->set_flashdata('msg',  lang('requests_reject_flash_msg_success'));
-            if (isset($_GET['source'])) {
-                redirect($_GET['source']);
+            // Redirect back to the original page if possible
+            $referrer = $this->input->server('HTTP_REFERER', TRUE);
+            if ($referrer) {
+                redirect($referrer);
             } else {
-                redirect('requests');
+                redirect('leaves');
             }
         } else {
             log_message('error', 'User #' . $this->user_id . ' illegally tried to reject leave #' . $id);
