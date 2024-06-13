@@ -127,6 +127,22 @@ if (isset($_GET['source'])) {
 
 <div class="row">
     <div class="span12">
+        <input type="hidden" name="location" id="location" value="<?php echo $users_item['location']; ?>" />
+        <div class="control-group">
+            <label class="control-label" for="txtLocation"><?php echo lang('users_create_field_location');?></label>
+            <div class="controls">
+                <div class="input-append">
+                    <input type="text" id="txtLocation" name="txtLocation" value="<?php echo $location_label; ?>"
+                        required readonly />
+                    <a id="cmdSelectLocation" class="btn btn-primary"><?php echo lang('users_edit_button_select');?></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span12">
         <input type="hidden" name="entity" id="entity" value="<?php echo $users_item['organization']; ?>" />
         <div class="control-group">
             <label class="control-label" for="txtEntity"><?php echo lang('users_edit_field_entity');?></label>
@@ -151,22 +167,6 @@ if (isset($_GET['source'])) {
                     <input type="text" id="txtPosition" name="txtPosition" value="<?php echo $position_label; ?>"
                         required readonly />
                     <a id="cmdSelectPosition" class="btn btn-primary"><?php echo lang('users_edit_button_select');?></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="span12">
-        <input type="hidden" name="location" id="location" value="<?php echo $users_item['location']; ?>" />
-        <div class="control-group">
-            <label class="control-label" for="txtLocation"><?php echo lang('users_create_field_location');?></label>
-            <div class="controls">
-                <div class="input-append">
-                    <input type="text" id="txtLocation" name="txtLocation" value="<?php echo $location_label; ?>"
-                        required readonly />
-                    <a id="cmdSelectLocation" class="btn btn-primary"><?php echo lang('users_edit_button_select');?></a>
                 </div>
             </div>
         </div>

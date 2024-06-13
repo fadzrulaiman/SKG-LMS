@@ -1,9 +1,3 @@
-/**
- * This Javascript code is used on the create/edit leave request
- * @copyright  Copyright (c) Fadzrul Aiman
- * @since      0.3.0
- */
-
 // Try to calculate the length of the leave
 function getLeaveLength(refreshInfos = true) {
     const start = moment($('#startdate').val());
@@ -67,7 +61,7 @@ function getLeaveInfos(preventDefault = false) {
     })
     .done(function(leaveInfo) {
         if (leaveInfo.length !== undefined) {
-            const duration = parseFloat(leaveInfo.length).toFixed(3);
+            const duration = Math.round(parseFloat(leaveInfo.length));
             if (!preventDefault && start.isValid() && end.isValid()) {
                 $('#duration').val(duration);
             }
@@ -80,7 +74,7 @@ function getLeaveInfos(preventDefault = false) {
 function updateCreditAndAlerts(leaveInfo) {
     if (leaveInfo.credit !== undefined) {
         const credit = parseFloat(leaveInfo.credit);
-        const duration = parseFloat($("#duration").val());
+        const duration = parseInt($("#duration").val(), 10);
         $("#lblCreditAlert").toggle(duration > credit);
         if (leaveInfo.credit != null) {
             $("#lblCredit").text('(' + leaveInfo.credit + ')');

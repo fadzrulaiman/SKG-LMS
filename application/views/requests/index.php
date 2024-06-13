@@ -140,7 +140,7 @@ if ($showAll == FALSE) {
                 <?php echo $startdate /*. ' (' . lang($request['startdatetype']). ')';*/ ?></td>
             <td data-order="<?php echo$tmpEndDate; ?>">
                 <?php echo $enddate /*. ' (' . lang($request['enddatetype']) . ')';*/ ?></td>
-            <td><?php echo $request['duration']; ?></td>
+            <td><?php echo $request['duration']; ?> Days</td>
             <td><?php echo $request['type_name']; ?></td>
             <?php
         switch ($request['status']) {
@@ -415,7 +415,7 @@ $(document).ready(function() {
                 case '4':
                     $("#chkRejected").prop("checked", true);
                     break;
-                case '5':
+                case '7':
                     $("#chkleavebank").prop("checked", true);
                     break;
                 case '6':

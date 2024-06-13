@@ -33,8 +33,7 @@ class Requests extends CI_Controller {
     /**
      * Display the list of all requests submitted to you
      * Status is submitted or accepted/rejected depending on the filter parameter.
-     * @param string $name Filter the list of submitted leave requests (all or requested)
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     * @param string $filter Filter the list of submitted leave requests (all or requested)
      */
     public function index($filter = 'requested') {
         $this->auth->checkIfOperationIsAllowed('list_requests');
@@ -42,14 +41,23 @@ class Requests extends CI_Controller {
         $this->load->model('types_model');
         $this->lang->load('datatable', $this->language);
         $this->load->helper('form');
+        
+        // Validate filter parameter
+        $valid_filters = ['all', 'requested'];
+        if (!in_array($filter, $valid_filters)) {
+            show_error('Invalid filter value', 400);
+        }
+        
         $data['filter'] = $filter;
         $data['title'] = lang('requests_index_title');
-        ($filter == 'all')? $showAll = TRUE : $showAll = FALSE;
-        if ($this->config->item('enable_history') == TRUE){
-          $data['requests'] = $this->leaves_model->getLeavesRequestedToManagerWithHistory($this->session->userdata('id'), $showAll);
-        }else{
-          $data['requests'] = $this->leaves_model->getLeavesRequestedToManager($this->session->userdata('id'), $showAll);
+        $showAll = ($filter === 'all');
+        
+        if ($this->config->item('enable_history') == TRUE) {
+            $data['requests'] = $this->leaves_model->getLeavesRequestedToManagerWithHistory($this->session->userdata('id'), $showAll);
+        } else {
+            $data['requests'] = $this->leaves_model->getLeavesRequestedToManager($this->session->userdata('id'), $showAll);
         }
+        
         $data['types'] = $this->types_model->getTypes();
         $data['showAll'] = $showAll;
         $data['flash_partial_view'] = $this->load->view('templates/flash', $data, TRUE);
@@ -59,24 +67,34 @@ class Requests extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+
     /**
      * Display the list of leave bank requests
      * @param string $filter Filter the list of submitted leave bank requests (all or requested)
      */
     public function leavebank($filter = 'requested') {
-        $this->auth->checkIfOperationIsAllowed('list_requests');
+        $this->auth->checkIfOperationIsAllowed('leavebank_requests');
         $data = getUserContext($this);
         $this->load->model('types_model');
         $this->lang->load('datatable', $this->language);
         $this->load->helper('form');
+        
+        // Validate filter parameter
+        $valid_filters = ['all', 'requested'];
+        if (!in_array($filter, $valid_filters)) {
+            show_error('Invalid filter value', 400);
+        }
+        
         $data['filter'] = $filter;
         $data['title'] = 'Leave Bank Requests'; // Customize this title as needed
-        $showAll = ($filter == 'all') ? TRUE : FALSE;
+        $showAll = ($filter === 'all');
+        
         if ($this->config->item('enable_history') == TRUE) {
             $data['requests'] = $this->leaves_model->getLeavesBankRequestedWithHistory($showAll);
         } else {
             $data['requests'] = $this->leaves_model->getLeavesBankRequested($showAll);
         }
+        
         $data['types'] = $this->types_model->getTypes();
         $data['showAll'] = $showAll;
         $data['flash_partial_view'] = $this->load->view('templates/flash', $data, TRUE);

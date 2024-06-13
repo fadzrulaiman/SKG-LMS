@@ -86,7 +86,7 @@
         }?>
         <td data-order="<?php echo $tmpStartDate; ?>"><?php echo $startdate?></td>
         <td data-order="<?php echo $tmpEndDate; ?>"><?php echo $enddate?></td>
-        <td><?php echo $leave['duration']; ?></td>
+        <td><?php echo $leave['duration']; ?> Days</td>
         <td><?php echo $leave['type_name']; ?></td>
     </tr>
 <?php endforeach ?>
@@ -134,7 +134,7 @@
         <td><?php echo lang($leave['status_name']); ?></td>
         <td data-order="<?php echo $tmpStartDate; ?>"><?php echo $startdate?></td>
         <td data-order="<?php echo $tmpEndDate; ?>"><?php echo $enddate?></td>
-        <td><?php echo $leave['duration']; ?></td>
+        <td><?php echo $leave['duration']; ?> Days</td>
         <td><?php echo $leave['type_name']; ?></td>
     </tr>
 <?php endforeach ?>

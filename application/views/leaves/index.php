@@ -28,8 +28,8 @@
     <!--<span class="label"><input type="checkbox" checked id="chkPlanned" class="filterStatus"> &nbsp;<?php echo lang('Planned');?></span> &nbsp;-->
     <span class="label label-success"><input type="checkbox" checked id="chkAccepted" class="filterStatus"> &nbsp;<?php echo lang('Accepted');?></span> &nbsp;
     <span class="label label-warning"><input type="checkbox" checked id="chkRequested" class="filterStatus"> &nbsp;<?php echo lang('Requested');?></span> &nbsp;
+    <span class="label label-warning"><input type="checkbox" checked id="chkleavebank" class="filterStatus"> &nbsp;<?php echo lang('Pending From HR');?></span> &nbsp;
     <span class="label label-important" style="background-color: #ff0000;"><input type="checkbox" checked id="chkRejected" class="filterStatus"> &nbsp;<?php echo lang('Rejected');?></span> &nbsp;
-    <span class="label label-important" style="background-color: #ff0000;"><input type="checkbox" checked id="chkCancellation" class="filterStatus"> &nbsp;<?php echo lang('Cancellation');?></span> &nbsp;
     <span class="label label-important" style="background-color: #ff0000;"><input type="checkbox" checked id="chkCanceled" class="filterStatus"> &nbsp;<?php echo lang('Canceled');?></span>
     </div>
 </div>
@@ -98,7 +98,7 @@
                         ($this->config->item('edit_rejected_requests') === TRUE)) {
                     $showEdit = TRUE;
                 }
-                //Cancellation rules
+                //Pending From HR rules
                 if ($leave['status'] == LMS_ACCEPTED) {
                     $showCancel = FALSE;
                 }
@@ -150,13 +150,14 @@
         <td data-order="<?php echo $tmpStartDate; ?>"><?php echo $startdate?></td>
         <td data-order="<?php echo $tmpEndDate; ?>"><?php echo $enddate?></td>
         <td><?php echo $leave['cause']; ?></td>
-        <td><?php echo $leave['duration']; ?></td>
+        <td><?php echo $leave['duration']; ?> Days</td>
         <td><?php echo $leave['type_name']; ?></td>
         <?php
         switch ($leave['status']) {
             case 1: echo "<td><span class='label'>" . lang($leave['status_name']) . "</span></td>"; break;
             case 2: echo "<td><span class='label label-warning'>" . lang($leave['status_name']) . "</span></td>"; break;
             case 3: echo "<td><span class='label label-success'>" . lang($leave['status_name']) . "</span></td>"; break;
+            case 7: echo "<td><span class='label label-warning'>" . lang($leave['status_name']) . "</span></td>"; break;
             default: echo "<td><span class='label label-important' style='background-color: #ff0000;'>" . lang($leave['status_name']) . "</span></td>"; break;
         }?>
         <?php
@@ -250,7 +251,7 @@ function filterStatusColumn() {
     if ($('#chkAccepted').prop('checked')) filter += "<?php echo lang('Accepted');?>|";
     if ($('#chkRequested').prop('checked')) filter += "<?php echo lang('Requested');?>|";
     if ($('#chkRejected').prop('checked')) filter += "<?php echo lang('Rejected');?>|";
-    if ($('#chkCancellation').prop('checked')) filter += "<?php echo lang('Cancellation');?>|";
+    if ($('#chkleavebank').prop('checked')) filter += "<?php echo lang('Pending From HR');?>|";
     if ($('#chkCanceled').prop('checked')) filter += "<?php echo lang('Canceled');?>|";
     filter = filter.slice(0,-1) + ")$";
     if (filter.indexOf('(') == -1) filter = 'nothing is selected';
@@ -363,7 +364,7 @@ $(document).ready(function() {
                 case '2': $("#chkRequested").prop("checked", true); break;
                 case '3': $("#chkAccepted").prop("checked", true); break;
                 case '4': $("#chkRejected").prop("checked", true); break;
-                case '5': $("#chkCancellation").prop("checked", true); break;
+                case '5': $("#chkleavebank").prop("checked", true); break;
                 case '6': $("#chkCanceled").prop("checked", true); break;
             }
         });
