@@ -16,7 +16,7 @@ $currentDay = (int)date('d');
     <div class="span4">
         <!--<span class="label"><?php echo lang('Planned');?></span>&nbsp;-->
         <span class="label label-success"><?php echo lang('Accepted');?></span>&nbsp;
-        <span class="label label-warning"><?php echo lang('Requested');?></span>&nbsp;
+        <span class="label label-warning"><?php echo lang('Requested');?> & <?php echo lang('Pending From HR');?></span>
         <span class="label label-important" style="background-color: #ff0000;"><?php echo lang('Rejected');?></span>
     </div>
     <div class="span4">
@@ -101,6 +101,9 @@ $currentDay = (int)date('d');
                             echo '<td title="' . $type . '" class="allplanned' . ($class ? ' ' . $class : '') . '">&nbsp;</td>';
                             break;  // Planned
                         case 2:
+                            echo '<td title="' . $type . '" class="allrequested' . ($class ? ' ' . $class : '') . '">&nbsp;</td>';
+                            break;  // Requested
+                        case 7:
                             echo '<td title="' . $type . '" class="allrequested' . ($class ? ' ' . $class : '') . '">&nbsp;</td>';
                             break;  // Requested
                         case 3:

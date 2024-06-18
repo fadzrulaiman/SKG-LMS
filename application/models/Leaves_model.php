@@ -341,27 +341,29 @@ class Leaves_model extends CI_Model {
                 $summary[$entitlement['type_name']][1] = (float) $entitlement['entitled'];
             }
 
-            //List all requested leaves in a fourth column
-            //leave requests having a requested status are not deducted from credit
+            // List all requested leaves in a fourth column
+            // Leave requests having a requested status are not deducted from credit
             foreach ($entitlements as $entitlement) {
-                //Get the total of taken leaves grouped by type
+                // Get the total of taken leaves grouped by type
                 $this->db->select('SUM(leaves.duration) as requested, types.name as type');
                 $this->db->from('leaves');
                 $this->db->join('types', 'types.id = leaves.type');
                 $this->db->where('leaves.employee', $id);
-                $this->db->where('leaves.status', LMS_REQUESTED);
-                $this->db->where('leaves.startdate >= ', $entitlement['min_date']);
+                $this->db->where_in('leaves.status', [LMS_REQUESTED, LMS_REQUESTEDBANK]); 
+                $this->db->where('leaves.startdate >=', $entitlement['min_date']);
                 $this->db->where('leaves.enddate <=', $entitlement['max_date']);
                 $this->db->where('leaves.type', $entitlement['type_id']);
-                $this->db->group_by("leaves.type");
+                $this->db->group_by('leaves.type');
                 $requested_days = $this->db->get()->result_array();
-                //Count the number of planned days
+                
+                // Count the number of planned days
                 foreach ($requested_days as $requested) {
                     $summary[$requested['type']][3] = $entitlement['type_id'];
-                    $summary[$requested['type']][5] = (float) $requested['requested']; //requested
-                    $summary[$requested['type']][2] = 'x'; //requested
+                    $summary[$requested['type']][5] = (float) $requested['requested']; // requested
+                    $summary[$requested['type']][2] = 'x'; // requested
                 }
-                //Report the number of available days
+                
+                // Report the number of available days
                 $summary[$entitlement['type_name']][1] = (float) $entitlement['entitled'];
             }
 
@@ -945,6 +947,7 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
             {
                 case 1: $color = '#999'; break;     // Planned
                 case 2: $color = '#f89406'; break;  // Requested
+                case 7: $color = '#f89406'; break;  // Requested
                 case 3: $color = '#468847'; break;  // Accepted
                 case 4: $color = '#ff0000'; break;  // Rejected
             }
@@ -1013,6 +1016,7 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
             {
                 case 1: $color = '#999'; break;     // Planned
                 case 2: $color = '#f89406'; break;  // Requested
+                case 7: $color = '#f89406'; break;  // Requested
                 case 3: $color = '#468847'; break;  // Accepted
                 case 4: $color = '#ff0000'; break;  // Rejected
             }
@@ -1080,6 +1084,7 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
             {
                 case 1: $color = '#999'; break;     // Planned
                 case 2: $color = '#f89406'; break;  // Requested
+                case 7: $color = '#f89406'; break;  // Requested
                 case 3: $color = '#468847'; break;  // Accepted
                 case 4: $color = '#ff0000'; break;  // Rejected
             }
@@ -1172,6 +1177,7 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
             {
                 case 1: $color = '#999'; break;     // Planned
                 case 2: $color = '#f89406'; break;  // Requested
+                case 7: $color = '#f89406'; break;  // Requested
                 case 3: $color = '#468847'; break;  // Accepted
                 case 4: $color = '#ff0000'; break;  // Rejected
                 default: $color = '#ff0000'; break;  // Cancellation and Canceled
@@ -1276,6 +1282,7 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
           {
               case 1: $color = '#999'; break;     // Planned
               case 2: $color = '#f89406'; break;  // Requested
+              case 7: $color = '#f89406'; break;  // Requested
               case 3: $color = '#468847'; break;  // Accepted
               case 4: $color = '#ff0000'; break;  // Rejected
               default: $color = '#ff0000'; break;  // Cancellation and Canceled

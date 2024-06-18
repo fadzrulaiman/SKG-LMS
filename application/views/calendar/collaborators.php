@@ -18,7 +18,7 @@
     <div class="span8">
         <!--<span class="label"><?php echo lang('Planned');?></span>-->
         <span class="label label-success"><?php echo lang('Accepted');?></span>
-        <span class="label label-warning"><?php echo lang('Requested');?></span>
+        <div class="span2"><span class="label label-warning"><?php echo lang('Requested');?> & <?php echo lang('Pending From HR');?></span></div>
         <span class="label label-important" style="background-color: #ff0000;"><?php echo lang('Rejected');?></span>
         <span class="label label-important" style="background-color: #ff0000;"><?php echo lang('Cancellation');?></span>
         <span class="label label-important" style="background-color: #ff0000;"><?php echo lang('Canceled');?></span>

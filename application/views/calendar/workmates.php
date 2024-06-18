@@ -17,12 +17,11 @@
 <div class="row-fluid">
     <!--<div class="span3"><span class="label"><?php echo lang('Planned');?></span></div>-->
     <div class="span3"><span class="label label-success"><?php echo lang('Accepted');?></span></div>
-    <div class="span3"><span class="label label-warning"><?php echo lang('Requested');?></span></div>
+    <div class="span3"><span class="label label-warning"><?php echo lang('Requested');?> & <?php echo lang('Pending From HR');?></span></div>
     <div class="span3">&nbsp;</div>
 </div>
 
 <div id='calendar'></div>
-
     </div>
 </div>
 
