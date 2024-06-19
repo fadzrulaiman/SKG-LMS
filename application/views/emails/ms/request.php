@@ -22,7 +22,7 @@
         <!-- Content -->
         <tr>
             <td style="padding: 20px; font-size: 14px;">
-                <p>{NamaPertama} {NamaAkhir} telah meminta cuti. Lihat <a href="{BaseUrl}leaves/requests/{LeaveId}">butiran</a> di bawah:</p>
+                <p>{NamaPertama} {NamaAkhir} telah meminta cuti. Lihat <a href="{BaseUrl}/requests">butiran</a> di bawah:</p>
                 <!-- Leave Details Table -->
                 <table width="100%" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
                     <tr>

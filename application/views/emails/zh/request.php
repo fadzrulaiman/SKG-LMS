@@ -22,7 +22,7 @@
         <!-- Content -->
         <tr>
             <td style="padding: 20px; font-size: 14px;">
-                <p>{Firstname} {Lastname} has requested time off. See the <a href="{BaseUrl}leaves/requests/{LeaveId}">details</a> below:</p>
+                <p>{Firstname} {Lastname} has requested time off. See the <a href="{BaseUrl}/requests">details</a> below:</p>
                 <!-- Leave Details Table -->
                 <table width="100%" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
                     <tr>

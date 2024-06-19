@@ -8,100 +8,139 @@
  */
 ?>
 
-<div class="row-fluid">
-    <div class="span12">
+<style>
+    #chartContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        margin-top: 20px;
+    }
 
-        <h2><?php echo lang('leaves_summary_title');?></h2>
+    #pieChartContainer,
+    #barChartContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
 
-        <p><?php echo lang('leaves_summary_date_field');?>&nbsp;
-            <input type="text" id="refdate" />
-        </p>
+    #pieChartContainer {
+        flex: 1;
+        max-width: 30%;
+    }
 
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                <th rowspan="2"><?php echo lang('leaves_summary_thead_type');?></th>
-                <th colspan="2" style="text-align: center;"><?php echo lang('leaves_summary_thead_available');?></th>
-                <th rowspan="2"><i class="mdi mdi-plus-circle" aria-hidden="true"></i>&nbsp;<?php echo lang('leaves_summary_thead_entitled');?></th>
-                <th rowspan="2"><i class="mdi mdi-minus-circle" aria-hidden="true"></i>&nbsp;<?php echo lang('leaves_summary_thead_taken');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="<?php echo lang('Accepted');?> + <?php echo lang('Cancellation');?>"></i></th>
-                <!--<th rowspan="2"><i class="mdi mdi-information" aria-hidden="true"></i>&nbsp;<span class="label"><?php echo lang('Planned');?></span></th>-->
-                <th rowspan="2"><i class="mdi mdi-information" aria-hidden="true"></i>&nbsp;<span class="label label-warning"><?php echo lang('Requested');?></span></th>
-                </tr>
-                <tr>
-                <th><?php echo lang('leaves_summary_thead_actual');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="<?php echo lang('leaves_summary_thead_entitled');?> - (<?php echo lang('Accepted');?> + <?php echo lang('Cancellation');?>)"></i></th>
-                <th><?php echo lang('leaves_summary_thead_simulated');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="<?php echo lang('leaves_summary_thead_entitled');?> - (<?php echo lang('Accepted');?> + <?php echo lang('Cancellation');?> + <?php echo lang('Requested');?>)"></i></th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php if (count($summary) > 0) {
-            foreach ($summary as $key => $value) {
-                if (($value[2] == '') || ($value[2] == 'x')) {
-                    $estimated = round(((float) $value[1] - (float) $value[0]), 3, PHP_ROUND_HALF_DOWN);
-                    $simulated = $estimated;
-                    if (!empty($value[4])) $simulated -= (float) $value[4];
-                    if (!empty($value[5])) $simulated -= (float) $value[5];
-                    ?>
-                <tr>
-                <td><?php echo $key; ?></td>
-                <td>
-                    <?php echo $estimated; ?>
-                </td>
-                <td>
-                    <?php echo $simulated; ?>
-                </td>
-                <td><?php echo ((float) $value[1]); ?></td>
-                <td><a href="<?php echo base_url();?>leaves?statuses=3|5&type=<?php echo $value[3]; ?>" target="_blank"><?php echo ((float) $value[0]); ?></a></td>
-                <?php if (empty($value[5])) { ?>
-                <td>&nbsp;</td>
-                <?php } else { ?>
-                <td><a href="<?php echo base_url();?>leaves?statuses=2&type=<?php echo $value[3]; ?>" target="_blank"><?php echo ((float) $value[5]); ?></a></td>
+    #barChartContainer {
+        flex: 2;
+        max-width: 70%;
+    }
+
+    canvas {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4"><?php echo lang('leaves_summary_title');?></h2>
+            
+            <div id="chartContainer">
+                <div id="pieChartContainer">
+                    <h3>Leave Balance</h3>
+                    <canvas id="leaveBalancePieChart"></canvas>
+                </div>
+                <div id="barChartContainer">
+                    <h3>Leave Taken by Type</h3>
+                    <canvas id="leaveTakenBarChart"></canvas>
+                </div>
+            </div>
+
+            <table class="table table-bordered table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th rowspan="2"><?php echo lang('leaves_summary_thead_type');?>
+                            <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Type of Leave"></i>
+                        </th>
+                        <th colspan="2" class="text-center"><?php echo lang('leaves_summary_thead_available');?>
+                            <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Available leave balances"></i>
+                        </th>
+                        <th rowspan="2"><i class="mdi mdi-plus-circle" aria-hidden="true"></i>&nbsp;<?php echo lang('leaves_summary_thead_entitled');?>
+                            <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Total entitled leave"></i>
+                        </th>
+                        <th rowspan="2"><i class="mdi mdi-minus-circle" aria-hidden="true"></i>&nbsp;<?php echo lang('leaves_summary_thead_taken');?>
+                            <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Approved Leave"></i>
+                        </th>
+                        <th rowspan="2"><i class="mdi mdi-information" aria-hidden="true"></i>&nbsp;<span class="label label-warning"><?php echo lang('Requested');?></span>
+                            <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Requested & Pending For HR Approval"></i>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th><?php echo lang('leaves_summary_thead_actual');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="Entitled - (Approved)"></i></th>
+                        <th><?php echo lang('leaves_summary_thead_simulated');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="Entitled - (Approved + Requested)"></i></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php 
+                $leave_types = [];
+                $simulated_data = [];
+                $taken_data = [];
+                $colors = ['#39956b', '#ffa600', '#2f4b7c'];
+                if (count($summary) > 0) {
+                    foreach ($summary as $key => $value) {
+                        if (($value[2] == '') || ($value[2] == 'x')) {
+                            $estimated = round(((float) $value[1] - (float) $value[0]), 3, PHP_ROUND_HALF_DOWN);
+                            $simulated = $estimated;
+                            if (!empty($value[4])) $simulated -= (float) $value[4];
+                            if (!empty($value[5])) $simulated -= (float) $value[5];
+                            $leave_types[] = $key;
+                            $simulated_data[] = $simulated;
+                            $taken_data[] = (float) $value[0];
+                            ?>
+                        <tr>
+                            <td><?php echo $key; ?></td>
+                            <td><?php echo $estimated; ?></td>
+                            <td><?php echo $simulated; ?></td>
+                            <td><?php echo ((float) $value[1]); ?></td>
+                            <td><a href="<?php echo base_url();?>leaves?statuses=3|5&type=<?php echo $value[3]; ?>" target="_blank"><?php echo ((float) $value[0]); ?></a></td>
+                            <td>
+                                <?php if (empty($value[5])) { ?>
+                                    &nbsp;
+                                <?php } else { ?>
+                                    <a href="<?php echo base_url();?>leaves?statuses=2&type=<?php echo $value[3]; ?>" target="_blank"><?php echo ((float) $value[5]); ?></a>
+                                <?php } ?>
+                            </td>
+                        </tr>
+                    <?php }
+                    }
+                } else {?>
+                    <tr>
+                        <td colspan="6"><?php echo lang('leaves_summary_tbody_empty');; ?></td>
+                    </tr>
                 <?php } ?>
-                </tr>
-            <?php }
-                }
-            } else {?>
-                <tr>
-                <td colspan="4"><?php echo lang('leaves_summary_tbody_empty');; ?></td>
-                </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-
+                </tbody>
+            </table>
         </div>
+    </div>
 </div>
 
-<div class="row-fluid"><div class="span12">&nbsp;</div></div>
-<!-- Old Styling
-<link rel="stylesheet" href="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/css/bootstrap-datepicker.min.css">
-<script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/js/bootstrap-datepicker.min.js"></script>
-<?php //Prevent HTTP-404 when localization isn't needed
-if ($language_code != 'en') { ?>
-<script src="<?php echo base_url();?>assets/bootstrap-datepicker-1.8.0/locales/bootstrap-datepicker.<?php echo $language_code;?>.min.js"></script>
-<?php } ?>
--->
-<!-- Bootstrap Datepicker -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<!-- Conditional Localization -->
 <?php if ($language_code != 'en') { ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.<?php echo strtolower($language_code); ?>.min.js"></script>
 <?php } ?>
 
 <script type="text/javascript">
-/**
- * Converts a local date to an ISO compliant string
- * Because toISOString converts to UTC causing one day
- * of shift in some zones
- * @param Date $d JavaScript native date object
- */
 function toISODateLocal(d) {
   var z = n => (n<10? '0':'')+n;
   return d.getFullYear() + '-' + z(d.getMonth()+1) + '-' + z(d.getDate()); 
 }
 
 $(function () {
-    //Init datepicker widget (it is complicated because we cannot based it on UTC)
     var isDefault = <?php echo $isDefault;?>;
     var reportDate = '<?php $date = new DateTime($refDate); echo $date->format(lang('global_date_format'));?>';
     var dateFormat = { year: 'numeric', month: 'numeric', day: 'numeric' };
@@ -122,7 +161,61 @@ $(function () {
         window.location = url;
     });
         
-    //Display tooltips
-    $("[ data-toggle=tooltip]").tooltip({ placement: 'top'});
+    $("[data-toggle=tooltip]").tooltip({ placement: 'top'});
+
+    // Leave Balance Pie Chart
+    var ctx1 = document.getElementById('leaveBalancePieChart').getContext('2d');
+    var leaveBalancePieChart = new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: <?php echo json_encode($leave_types); ?>,
+            datasets: [{
+                data: <?php echo json_encode($simulated_data); ?>,
+                backgroundColor: ['#39956b', '#ffa600', '#2f4b7c']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top'
+                }
+            }
+        }
+    });
+
+    // Calculate the sum of taken and requested for each leave type
+    var takenAndRequestedData = [];
+    <?php foreach ($summary as $key => $value) { ?>
+        var taken = parseFloat(<?php echo $value[0]; ?>);
+        var requested = parseFloat(<?php echo !empty($value[5]) ? $value[5] : 0; ?>);
+        takenAndRequestedData.push(taken + requested);
+    <?php } ?>
+
+    // Leave Taken by Type Chart
+    var ctx2 = document.getElementById('leaveTakenBarChart').getContext('2d');
+    var leaveTakenBarChart = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: <?php echo json_encode($leave_types); ?>,
+            datasets: [{
+                data: takenAndRequestedData,
+                backgroundColor: ['#39956b', '#ffa600', '#2f4b7c']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 });
 </script>
