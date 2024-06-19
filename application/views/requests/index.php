@@ -2,8 +2,7 @@
 /**
  * This view displays the list of leave requests submitted to a manager.
  * @copyright  Copyright (c) Fadzrul Aiman
-
- * @since         0.1.0
+ * @since 0.1.0
  */
 ?>
 <h2><?php echo lang('requests_index_title');?></h2>
@@ -15,7 +14,7 @@
 <div class="row">
     <div class="span3">
         <?php echo lang('requests_index_thead_type');?>
-        <select name="cboLeaveType" id="cboLeaveType">
+        <select name="cboLeaveType" id="cboLeaveType" class="form-control">
             <option value="" selected></option>
             <?php foreach ($types as $type): ?>
             <option value="<?php echo $type['id']; ?>"><?php echo $type['name']; ?></option>
@@ -93,7 +92,7 @@ if ($showAll == FALSE) {
     }
     ?>
         <tr>
-            <td data-order="<?php echo $request['leave_id']; ?>">
+            <td data-order="<?php echo $request['leave_id']; ?>" class="text-center">
                 <a href="<?php echo base_url();?>leaves/requests/<?php echo $request['leave_id']; ?>"
                     title="<?php echo lang('requests_index_thead_tip_view');?>"><?php echo $request['leave_id']; ?></a>
                 &nbsp;
@@ -134,26 +133,26 @@ if ($showAll == FALSE) {
                     <?php } ?>
                 </div>
             </td>
-            <td><?php echo $request['firstname'] . ' ' . $request['lastname']; ?></td>
-            <td><?php echo $request['employee']; ?></td>
-            <td data-order="<?php echo $tmpStartDate; ?>">
+            <td class="text-center"><?php echo $request['firstname'] . ' ' . $request['lastname']; ?></td>
+            <td class="text-center"><?php echo $request['employee']; ?></td>
+            <td data-order="<?php echo $tmpStartDate; ?>" class="text-center">
                 <?php echo $startdate /*. ' (' . lang($request['startdatetype']). ')';*/ ?></td>
-            <td data-order="<?php echo$tmpEndDate; ?>">
+            <td data-order="<?php echo$tmpEndDate; ?>" class="text-center">
                 <?php echo $enddate /*. ' (' . lang($request['enddatetype']) . ')';*/ ?></td>
-            <td><?php echo $request['duration']; ?> Days</td>
-            <td><?php echo $request['type_name']; ?></td>
+            <td class="text-center"><?php echo $request['duration']; ?> Days</td>
+            <td class="text-center"><?php echo $request['type_name']; ?></td>
             <?php
         switch ($request['status']) {
-            case 1: echo "<td><span class='label'>" . lang($request['status_name']) . "</span></td>"; break;
-            case 2: echo "<td><span class='label label-warning'>" . lang($request['status_name']) . "</span></td>"; break;
-            case 3: echo "<td><span class='label label-success'>" . lang($request['status_name']) . "</span></td>"; break;
-            case 7: echo "<td><span class='label label-warning'>" . lang($request['status_name']) . "</span></td>"; break;
-            default: echo "<td><span class='label label-important' style='background-color: #ff0000;'>" . lang($request['status_name']) . "</span></td>"; break;
+            case 1: echo "<td class='text-center'><span class='label'>" . lang($request['status_name']) . "</span></td>"; break;
+            case 2: echo "<td class='text-center'><span class='label label-warning'>" . lang($request['status_name']) . "</span></td>"; break;
+            case 3: echo "<td class='text-center'><span class='label label-success'>" . lang($request['status_name']) . "</span></td>"; break;
+            case 7: echo "<td class='text-center'><span class='label label-warning'>" . lang($request['status_name']) . "</span></td>"; break;
+            default: echo "<td class='text-center'><span class='label label-important' style='background-color: #ff0000;'>" . lang($request['status_name']) . "</span></td>"; break;
         }?>
             <?php
         if ($this->config->item('enable_history') == TRUE){
-          echo "<td data-order='".$tmpRequestDate."'>" . $requestdate . "</td>";
-          echo "<td data-order='".$tmpLastChangeDate."'>" . $lastchangedate . "</td>";
+          echo "<td data-order='".$tmpRequestDate."' class='text-center'>" . $requestdate . "</td>";
+          echo "<td data-order='".$tmpLastChangeDate."' class='text-center'>" . $lastchangedate . "</td>";
         }
         ?>
         </tr>
@@ -166,7 +165,7 @@ if ($showAll == FALSE) {
 </div>
 
 <div class="row-fluid">
-    <div class="span12">
+    <div class="span12 text-center">
         <a href="<?php echo base_url();?>requests/export/<?php echo $filter; ?>" class="btn btn-primary"><i
                 class="mdi mdi-download"></i>&nbsp; <?php echo lang('requests_index_button_export');?></a>
         &nbsp;&nbsp;
@@ -431,3 +430,38 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<style>
+.table thead th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table tbody td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.form-control {
+    width: auto;
+    display: inline-block;
+}
+
+.modal-header h3 {
+    margin: 0;
+    line-height: 1.42857143;
+}
+
+.modal-body .input-append {
+    display: flex;
+    align-items: center;
+}
+
+.modal-body .input-append input {
+    margin-right: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+</style>
