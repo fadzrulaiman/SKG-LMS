@@ -299,7 +299,7 @@ CREATE TABLE `leaves` (
   `attachment` varchar(255) DEFAULT NULL COMMENT 'Attachment of the leave request',
   `startdatetype` varchar(12) DEFAULT NULL COMMENT 'Morning/Afternoon',
   `enddatetype` varchar(12) DEFAULT NULL COMMENT 'Morning/Afternoon',
-  `duration` decimal(10,3) DEFAULT NULL COMMENT 'Length of the leave request',
+  `duration` int(11) DEFAULT NULL COMMENT 'Length of the leave request',
   `type` int(11) DEFAULT NULL COMMENT 'Identifier of the type of the leave request (Paid, Sick, etc.). See type table.',
   `comments` text DEFAULT NULL COMMENT 'Comments on leave request (JSon)',
   `document` blob DEFAULT NULL COMMENT 'Optional supporting document'
@@ -321,7 +321,7 @@ CREATE TABLE `leaves_history` (
   `attachment` varchar(255) DEFAULT NULL COMMENT 'Attachment of the leave request',
   `startdatetype` varchar(12) DEFAULT NULL,
   `enddatetype` varchar(12) DEFAULT NULL,
-  `duration` decimal(10,2) DEFAULT NULL,
+  `duration` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `comments` text DEFAULT NULL COMMENT 'Comments on leave request',
   `document` blob DEFAULT NULL COMMENT 'Optional supporting document',
