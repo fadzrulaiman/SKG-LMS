@@ -94,7 +94,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('<?php echo base_url();?>assets/images/login-bg.jpg');
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)), url('<?php echo base_url();?>assets/images/login-bg2.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
