@@ -17,6 +17,31 @@
             <p class="welcome-message">Welcome to SKG LMS, <?php echo $fullname;?>! Easily manage your leave requests,
                 track your balances, and stay updated on your team's leave trends, all in one place.</p>
         </header>
+        <section class="quick-access">
+            <h2>Leave Balance</h2>
+            <?php if (!empty($leave_balance)): ?>
+            <section class="dashboard-cards">
+                <?php foreach ($leave_balance as $balance): ?>
+                <div class="card">
+                    <div class="card-content">
+                        <h6 class="dashboard-card-title"><?php echo $balance['type_name']; ?></h6>
+                        <p class="dashboard-card-metric"><?php echo $balance['balance']; ?> Days</p>
+                        <small class="dashboard-card-subtext">
+                            <?php echo $balance['entitled']; ?> Entitled,
+                            <?php echo $balance['taken']; ?> Taken
+                        </small>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </section>
+            <?php else: ?>
+            <p>No Leave Balance</p>
+            <?php endif; ?>
+            <div class="navigation-links">
+                <h3><a href="<?php echo base_url();?>leaves/create">Create a Leave Request</a></h3>
+                <h3><a href="<?php echo base_url();?>requests">List of Leave Requests</a></h3>
+            </div>
+        </section>
         <?php
         $requests_count = isset($requests_count) ? $requests_count : 0;
         $requested_leaves_count = isset($requested_leaves_count) ? $requested_leaves_count : 0;
@@ -53,32 +78,6 @@
             <?php } ?>
         </section>
         <?php } ?>
-        <section class="quick-access">
-            <h2>Leave Balance</h2>
-            <?php if (!empty($leave_balance)): ?>
-            <section class="dashboard-cards">
-                <?php foreach ($leave_balance as $balance): ?>
-                <div class="card">
-                    <div class="card-content">
-                        <h6 class="dashboard-card-title"><?php echo $balance['type_name']; ?></h6>
-                        <p class="dashboard-card-metric"><?php echo $balance['balance']; ?> Days</p>
-                        <small class="dashboard-card-subtext">
-                            <?php echo $balance['entitled']; ?> Entitled,
-                            <?php echo $balance['taken']; ?> Taken
-                        </small>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-            </section>
-            <?php else: ?>
-            <p>No Leave Balance</p>
-            <?php endif; ?>
-            <div class="navigation-links">
-                <h3><a href="<?php echo base_url();?>leaves/create">Create a Leave Request</a></h3>
-                <h3><a href="<?php echo base_url();?>requests">List of Leave Requests</a></h3>
-            </div>
-        </section>
-        <!-- Quick Access Section -->
         <section class="quick-access">
             <h2>Calendar Quick Access</h2>
             <ul>
@@ -153,7 +152,8 @@ manager-section a:hover {
     justify-content: space-between;
     gap: 20px;
     flex-wrap: nowrap;
-    margin-bottom: 5px; /* Added to reduce the gap */
+    margin-bottom: 5px;
+    /* Added to reduce the gap */
 }
 
 .card {
@@ -247,7 +247,8 @@ manager-section a:hover {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin: 5px 0; /* Changed from 20px to 10px to reduce the gap */
+    margin: 5px 0;
+    /* Changed from 20px to 10px to reduce the gap */
 }
 
 .navigation-links a.btn {
