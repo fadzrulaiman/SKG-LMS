@@ -696,7 +696,7 @@ CREATE TABLE `status` (
 INSERT INTO `status` (`id`, `name`) VALUES
 (1, 'Planned'),
 (2, 'Requested'),
-(3, 'Approved'),
+(3, 'Accepted'),
 (4, 'Rejected'),
 (5, 'Cancellation'),
 (6, 'Canceled'),

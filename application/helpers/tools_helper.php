@@ -47,16 +47,20 @@ function setUserContext(CI_Controller $controller) {
  */
 function getUserContext(CI_Controller $controller)
 {
+    $controller->load->model('leaves_model');
     $data['fullname'] = $controller->fullname;
     $data['is_manager'] = $controller->is_manager;
     $data['is_admin'] = $controller->is_admin;
     $data['is_hr'] = $controller->is_hr;
     $data['user_id'] =  $controller->user_id;
+    $data['leave_balance'] = $controller->leaves_model->getLeaveBalanceForAllTypes($controller->user_id);
     $data['language'] = $controller->session->userdata('language');
     $data['language_code'] =  $controller->session->userdata('language_code');
     if ($controller->is_manager === TRUE) {
         $controller->load->model('leaves_model');
+        $controller->load->model('users_model');
         $data['requested_leaves_count'] = $controller->leaves_model->countLeavesRequestedToManager($controller->user_id);
+        $data['employees_count'] = $controller->users_model->countActiveEmployeesWithManager($controller->user_id);
         if ($controller->config->item('disable_overtime') == FALSE) {
             $controller->load->model('overtime_model');
             $data['requested_extra_count'] = $controller->overtime_model->countExtraRequestedToManager($controller->user_id);

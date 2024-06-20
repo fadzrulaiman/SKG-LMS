@@ -826,6 +826,19 @@ class Users_model extends CI_Model {
     }
 
     /**
+     * count the total employee for the manager
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     */
+    public function countActiveEmployeesWithManager($manager) {
+        $this->db->select('COUNT(*) as employee_count', FALSE);
+        $this->db->from('users');
+        $this->db->where('active', 1);
+        $this->db->where('manager', $manager);
+        $result = $this->db->get();
+        return $result->row()->employee_count;
+    }
+    
+    /**
      * Generate some random bytes by using openssl, dev/urandom or random
      * @param int $count length of the random string
      * @return string a string of pseudo-random bytes (must be encoded)
