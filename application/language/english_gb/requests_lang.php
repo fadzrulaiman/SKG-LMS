@@ -11,7 +11,7 @@ $lang['leavebankrequests_index_title'] = 'Leave Bank Requests Pending For Approv
 $lang['requests_index_description'] = 'This screen lists the leave requests submitted to you. If you are not a manager, this list will always be empty.';
 $lang['leavebankrequests_index_description'] = 'This screen lists the leave bank requests that has been approved by their managers and now is pending for HR approval.';
 $lang['requests_index_thead_tip_view'] = 'view';
-$lang['requests_index_thead_tip_accept'] = 'accept';
+$lang['requests_index_thead_tip_accept'] = 'approve';
 $lang['requests_index_thead_tip_reject'] = 'reject';
 $lang['requests_index_thead_tip_history'] = 'show history';
 $lang['requests_index_thead_id'] = 'Leave ID';
@@ -51,7 +51,7 @@ $lang['requests_index_button_export'] = 'Export this list';
 $lang['requests_index_button_show_all'] = 'All requests';
 $lang['requests_index_button_show_pending'] = 'Pending requests ';
 
-$lang['requests_accept_flash_msg_error'] = 'You are not the line manager of this employee. You cannot accept this leave request.';
+$lang['requests_accept_flash_msg_error'] = 'You are not the line manager of this employee. You cannot approve this leave request.';
 $lang['requests_accept_flash_msg_success'] = 'The leave request has been successfully approved.';
 
 $lang['requests_reject_flash_msg_error'] = 'You are not the line manager of this employee. You cannot reject this leave request.';
@@ -70,7 +70,7 @@ $lang['requests_export_thead_cause'] = 'Reason';
 $lang['requests_export_thead_status'] = 'Status';
 
 $lang['requests_delegations_title'] = 'List of delegations';
-$lang['requests_delegations_description'] = 'This is the list of employees who can accept or reject a request in your behalf.';
+$lang['requests_delegations_description'] = 'This is the list of employees who can approve or reject a request in your behalf.';
 $lang['requests_delegations_thead_employee'] = 'Employee';
 $lang['requests_delegations_thead_tip_delete'] = 'Revoke';
 $lang['requests_delegations_button_add'] = 'Add';
