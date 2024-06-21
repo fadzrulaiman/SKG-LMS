@@ -37,6 +37,7 @@ $lang['employees_index_title'] = 'List of employees';
 
 $lang['users_myprofile_title'] = 'My personal information';
 $lang['users_myprofile_html_title'] = 'My personal information';
+$lang['users_myprofile_field_empid'] = 'Employee ID';
 $lang['users_myprofile_field_firstname'] = 'First Name';
 $lang['users_myprofile_field_lastname'] = 'Last Name';
 $lang['users_myprofile_field_manager'] = 'Manager';

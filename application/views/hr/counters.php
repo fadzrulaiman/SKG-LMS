@@ -44,7 +44,7 @@
 <div class="row-fluid">
     <div class="span12">
         <?php if ($source == 'employees') {?>
-        <h3><a href="<?php echo base_url();?>entitleddays/contract/<?php echo $contract_id; ?>"><?php echo lang('entitleddays_counters_title_contract');?><?php echo $contract_id; ?></a>&nbsp;<span class="muted"> (<?php echo $contract_name; ?>)</span></h3>
+        <a class="btn" href="<?php echo base_url();?>entitleddays/contract/<?php echo $contract_id; ?>"><?php echo lang('entitleddays_counters_title_contract');?><?php echo $contract_id; ?></a>&nbsp;<span class="muted"> (<?php echo $contract_name; ?>)</span></h3>
         <?php } else { ?>
         <h3><?php echo lang('entitleddays_counters_title_contract') . ' ' . $contract_id; ?>&nbsp;<span class="muted"> (<?php echo $contract_name; ?>)</span></h3>
         <?php } ?>
@@ -79,7 +79,7 @@
 <div class="row-fluid">
     <div class="span12">
         <?php if ($source == 'employees') {?>
-        <h3><a href="<?php echo base_url();?>entitleddays/user/<?php echo $employee_id; ?>"><?php echo lang('entitleddays_counters_title_employee');?></a></h3>
+        <a class="btn" href="<?php echo base_url();?>entitleddays/user/<?php echo $employee_id; ?>"><?php echo lang('entitleddays_counters_title_employee');?></a></h3>
         <?php } else { ?>
         <h3><?php echo lang('entitleddays_counters_title_employee');?></h3>
         <?php } ?>

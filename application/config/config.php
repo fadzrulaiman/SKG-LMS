@@ -563,7 +563,7 @@ $config['saml_enabled'] = FALSE;
 
 //____________________________________________________________________________
 //Enable public ICS feeds (global calendar, contract, personal information)
-$config['ics_enabled'] = TRUE;
+$config['ics_enabled'] = FALSE;
 $config['default_timezone'] = 'Asia/Kuala_Lumpur';
 $config['legacy_feeds'] = FALSE;    //Maintain the unsecure URLs for ICS feeds
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2024 at 10:44 AM
+-- Generation Time: Jun 11, 2024 at 03:43 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -185,6 +185,24 @@ CREATE TABLE `ci_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='CodeIgniter sessions (you can empty this table without consequence)';
 
 --
+-- Dumping data for table `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
+('dtoo6ati7utjap3fht2731vlsvg14mak', '::1', 1716947020, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363934373032303b6c6173745f706167657c733a33313a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f7573657273223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a383a22514f306c6e755152223b6c6f67696e7c733a323a226872223b69647c693a32333b66697273746e616d657c733a323a226872223b6c6173746e616d657c733a393a22706572736f6e6e656c223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a32373b72616e646f6d5f686173687c733a32343a22685446546f536e656d57447633736863783033784b627252223b6c6f676765645f696e7c623a313b),
+('j78j3mmqjlrao5ok4m526csivqdj2usi', '::1', 1716947416, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363934373431363b6c6173745f706167657c733a33383a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f68722f656d706c6f79656573223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a383a22514f306c6e755152223b6c6f67696e7c733a323a226872223b69647c693a32333b66697273746e616d657c733a323a226872223b6c6173746e616d657c733a393a22706572736f6e6e656c223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a32373b72616e646f6d5f686173687c733a32343a22685446546f536e656d57447633736863783033784b627252223b6c6f676765645f696e7c623a313b),
+('5s5iouiecfphvjj9rbj58s2rjoeo58uo', '::1', 1716948120, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363934383132303b6c6173745f706167657c733a33383a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f6f7267616e697a6174696f6e223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a383a22514f306c6e755152223b6c6f67696e7c733a323a226872223b69647c693a32333b66697273746e616d657c733a323a226872223b6c6173746e616d657c733a393a22706572736f6e6e656c223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a32373b72616e646f6d5f686173687c733a32343a22685446546f536e656d57447633736863783033784b627252223b6c6f676765645f696e7c623a313b),
+('5g5e9obtavhs7bd1ueppi0dnfpue04c2', '::1', 1716953532, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363935333533323b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a31363a22564f4564566b657674626e49576d436a223b6c6f67696e7c733a323a225341223b69647c693a313b66697273746e616d657c733a363a22537570657220223b6c6173746e616d657c733a353a2241646d696e223b69735f6d616e616765727c623a303b69735f61646d696e7c623a303b69735f68727c623a313b6d616e616765727c693a313b72616e646f6d5f686173687c733a32343a2235673556556d355a4b6635546b4b3038794d74754b786535223b6c6f676765645f696e7c623a313b6c6173745f706167657c733a33383a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f6f7267616e697a6174696f6e223b6c6173745f706167655f706172616d737c733a303a22223b),
+('nk8s1skr1mc7adm9bhq092i1kmdokv7g', '::1', 1716953947, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363935333934373b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a32303a2275426b50444448367665534b70784a5173575064223b6c6f67696e7c733a323a226872223b69647c693a323833353b66697273746e616d657c733a323a224852223b6c6173746e616d657c733a31333a2241646d696e6973747261746f72223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a323833353b72616e646f6d5f686173687c733a32343a22485344765a685f6e6f704a4476656b7a6f536b46514f7567223b6c6f676765645f696e7c623a313b6c6173745f706167657c733a33383a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f68722f656d706c6f79656573223b6c6173745f706167655f706172616d737c733a303a22223b),
+('sgo7dv12o1qbb7ih97poh3s0d7l8nsdg', '::1', 1716953996, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363935333934373b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a32303a2275426b50444448367665534b70784a5173575064223b6c6f67696e7c733a323a226872223b69647c693a323833353b66697273746e616d657c733a323a224852223b6c6173746e616d657c733a31333a2241646d696e6973747261746f72223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a323833353b72616e646f6d5f686173687c733a32343a22485344765a685f6e6f704a4476656b7a6f536b46514f7567223b6c6f676765645f696e7c623a313b6c6173745f706167657c733a33313a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f7573657273223b6c6173745f706167655f706172616d737c733a303a22223b),
+('dtoo6ati7utjap3fht2731vlsvg14mak', '::1', 1716947020, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363934373032303b6c6173745f706167657c733a33313a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f7573657273223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a383a22514f306c6e755152223b6c6f67696e7c733a323a226872223b69647c693a32333b66697273746e616d657c733a323a226872223b6c6173746e616d657c733a393a22706572736f6e6e656c223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a32373b72616e646f6d5f686173687c733a32343a22685446546f536e656d57447633736863783033784b627252223b6c6f676765645f696e7c623a313b),
+('j78j3mmqjlrao5ok4m526csivqdj2usi', '::1', 1716947416, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363934373431363b6c6173745f706167657c733a33383a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f68722f656d706c6f79656573223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a383a22514f306c6e755152223b6c6f67696e7c733a323a226872223b69647c693a32333b66697273746e616d657c733a323a226872223b6c6173746e616d657c733a393a22706572736f6e6e656c223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a32373b72616e646f6d5f686173687c733a32343a22685446546f536e656d57447633736863783033784b627252223b6c6f676765645f696e7c623a313b),
+('5s5iouiecfphvjj9rbj58s2rjoeo58uo', '::1', 1716947689, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731363934373431363b6c6173745f706167657c733a33383a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f6f7267616e697a6174696f6e223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a383a22514f306c6e755152223b6c6f67696e7c733a323a226872223b69647c693a32333b66697273746e616d657c733a323a226872223b6c6173746e616d657c733a393a22706572736f6e6e656c223b69735f6d616e616765727c623a313b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a32373b72616e646f6d5f686173687c733a32343a22685446546f536e656d57447633736863783033784b627252223b6c6f676765645f696e7c623a313b),
+('ij8q0rpipr91vrdaui6r9ufm57igd2s5', '::1', 1718068988, 0x5f5f63695f6c6173745f726567656e65726174657c693a313731383036383534383b6c6173745f706167657c733a33383a2268747470733a2f2f6c6f63616c686f73742f534b472d4c4d532f6f7267616e697a6174696f6e223b6c6173745f706167655f706172616d737c733a303a22223b6c616e67756167655f636f64657c733a323a22656e223b6c616e67756167657c733a373a22656e676c697368223b73616c747c733a383a224250634131364843223b6c6f67696e7c733a323a226872223b69647c693a32333b66697273746e616d657c733a323a224852223b6c6173746e616d657c733a31333a2241646d696e6973747261746f72223b69735f6d616e616765727c623a303b69735f61646d696e7c623a313b69735f68727c623a313b6d616e616765727c693a323b72616e646f6d5f686173687c733a32343a22485344765a685f6e6f704a4476656b7a6f536b46514f7567223b6c6f676765645f696e7c623a313b);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `contracts`
 --
 
@@ -281,7 +299,7 @@ CREATE TABLE `leaves` (
   `attachment` varchar(255) DEFAULT NULL COMMENT 'Attachment of the leave request',
   `startdatetype` varchar(12) DEFAULT NULL COMMENT 'Morning/Afternoon',
   `enddatetype` varchar(12) DEFAULT NULL COMMENT 'Morning/Afternoon',
-  `duration` decimal(10,3) DEFAULT NULL COMMENT 'Length of the leave request',
+  `duration` int(11) DEFAULT NULL COMMENT 'Length of the leave request',
   `type` int(11) DEFAULT NULL COMMENT 'Identifier of the type of the leave request (Paid, Sick, etc.). See type table.',
   `comments` text DEFAULT NULL COMMENT 'Comments on leave request (JSon)',
   `document` blob DEFAULT NULL COMMENT 'Optional supporting document'
@@ -303,7 +321,7 @@ CREATE TABLE `leaves_history` (
   `attachment` varchar(255) DEFAULT NULL COMMENT 'Attachment of the leave request',
   `startdatetype` varchar(12) DEFAULT NULL,
   `enddatetype` varchar(12) DEFAULT NULL,
-  `duration` decimal(10,2) DEFAULT NULL,
+  `duration` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `comments` text DEFAULT NULL COMMENT 'Comments on leave request',
   `document` blob DEFAULT NULL COMMENT 'Optional supporting document',
@@ -312,6 +330,28 @@ CREATE TABLE `leaves_history` (
   `changed_by` int(11) NOT NULL,
   `change_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='List of changes in leave requests table';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `locations`
+--
+
+CREATE TABLE `locations` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `locations`
+--
+
+INSERT INTO `locations` (`id`, `name`) VALUES
+(1, 'Head Office'),
+(2, 'Lahad Datu Region'),
+(3, 'Sandakan Region'),
+(4, 'Tawau Region'),
+(5, 'West Coast Region');
 
 -- --------------------------------------------------------
 
@@ -436,9 +476,105 @@ CREATE TABLE `organization` (
 --
 
 INSERT INTO `organization` (`id`, `name`, `parent_id`, `supervisor`) VALUES
-(0, 'SKG', -1, NULL),
-(1, 'IT', 0, NULL),
-(2, 'HR', 0, NULL);
+(0, 'Sawit Kinabalu Group', -1, NULL),
+(2, 'Headquaters Region', 0, NULL),
+(3, 'Lahad Datu Region', 0, NULL),
+(4, 'Tawau Region', 0, NULL),
+(5, 'Sandakan Region', 0, NULL),
+(6, 'West Coast Region', 0, NULL),
+(7, 'Regional Office West Coast', 6, NULL),
+(8, 'Langkon Estate', 6, NULL),
+(9, 'Pinawantai Estate', 6, NULL),
+(10, 'Pitas Estate', 6, NULL),
+(11, 'Taritipan Estate', 6, NULL),
+(12, 'Lumadan Estate', 6, NULL),
+(13, 'Mawao Estate', 6, NULL),
+(14, 'Bongawan Estate', 6, NULL),
+(15, 'Kimanis Estate', 6, NULL),
+(16, 'Langkon Mill', 6, NULL),
+(17, 'Lumadan Mill', 6, NULL),
+(18, 'ARAS - West Coast', 6, NULL),
+(19, 'Kabang Estate', 6, NULL),
+(20, 'Pilajau Estate', 6, NULL),
+(21, 'Regional Office Tawau', 4, NULL),
+(22, 'Sungai Balung Estate', 4, NULL),
+(23, 'Sungai Kawa Estate', 4, NULL),
+(24, 'Merotai Estate', 4, NULL),
+(25, 'Madai Estate', 4, NULL),
+(26, 'Pegagau Estate', 4, NULL),
+(27, 'Ulu Kalabakan Estate', 4, NULL),
+(28, 'Apas Balung Mill', 4, NULL),
+(29, 'Serudung Mill', 4, NULL),
+(30, 'ARAS - Tawau', 4, NULL),
+(31, 'Kunak Mill', 4, NULL),
+(32, 'Balung Animal Feeds Mill', 4, NULL),
+(33, 'Central Lab', 4, NULL),
+(34, 'Bongalio Estate', 4, NULL),
+(35, 'Sawit Biotech', 4, NULL),
+(36, 'Seeds Processing Unit', 4, NULL),
+(37, 'Tawau Seed Garden', 4, NULL),
+(38, 'Saplantco Sdn Bhd', 4, NULL),
+(39, 'Gomantong Nursery', 4, NULL),
+(40, 'Langkon Nursery', 4, NULL),
+(41, 'Lumadan Nursery', 4, NULL),
+(42, 'Mensuli Nursery', 4, NULL),
+(43, 'Sebrang Nursery', 4, NULL),
+(44, 'Sungai Balung Nursery', 4, NULL),
+(45, 'Kunak Refinery', 4, NULL),
+(46, 'Kalabakan Estate', 4, NULL),
+(47, 'Sawit Kinabalu Farm Products', 4, NULL),
+(48, 'Sawit Kinabalu Farm West', 4, NULL),
+(49, 'Business Leadership Academy', 2, NULL),
+(50, 'Security Unit', 2, NULL),
+(51, 'Integrity &amp; Governance Unit', 2, NULL),
+(52, 'Marketing Unit', 2, NULL),
+(53, 'Contract &amp; Procurement Unit', 2, NULL),
+(54, 'Corporate Communication Unit', 2, NULL),
+(55, 'Corporate Planning Unit', 2, NULL),
+(56, 'Engineering &amp; Property Development Unit', 2, NULL),
+(57, 'Finance Unit', 2, NULL),
+(58, 'GMD Office', 2, NULL),
+(59, 'Head Office Administration Unit', 2, NULL),
+(60, 'Human Resource Unit', 2, NULL),
+(61, 'Information Technology Unit', 2, NULL),
+(62, 'Internal Audit Unit', 2, NULL),
+(63, 'Land Administration Unit', 2, NULL),
+(64, 'Legal Unit', 2, NULL),
+(65, 'Head of Plantation Unit', 2, NULL),
+(66, 'Plantation Advisory &amp; Agri Business Unit', 2, NULL),
+(67, 'Sustainability Unit', 2, NULL),
+(68, 'Regional Office Sandakan', 5, NULL),
+(69, 'Gomantong Estate', 5, NULL),
+(70, 'Green Estate', 5, NULL),
+(71, 'Sungai Pin Estate', 5, NULL),
+(72, 'Sungai Menanggol Estate', 5, NULL),
+(73, 'Sepagaya Estate', 5, NULL),
+(74, 'Tongod Nucleus Estate', 5, NULL),
+(75, 'Luboh Estate', 5, NULL),
+(76, 'Sungai-Sungai Estate', 5, NULL),
+(77, 'Sepagaya Mill', 5, NULL),
+(78, 'ARAS- Sandakan', 5, NULL),
+(79, 'Coconut Seed Garden', 5, NULL),
+(80, 'Tongod Estate', 5, NULL),
+(81, 'Sawit POIC', 5, NULL),
+(82, 'Sawit Kinabalu Jetty', 5, NULL),
+(83, 'Sawit Bulkers', 5, NULL),
+(84, 'Regional Office Lahad Datu', 3, NULL),
+(85, 'Matamba Estate', 3, NULL),
+(86, 'Seberang Estate', 3, NULL),
+(87, 'Mensuli Estate', 3, NULL),
+(88, 'Sandau Estate', 3, NULL),
+(89, 'Boonrich Estate', 3, NULL),
+(90, 'ARAS- Lahad Datu', 3, NULL),
+(91, 'Oscar Kinabalu Estate', 3, NULL),
+(92, 'Sandau Mill', 3, NULL),
+(93, 'Sebrang Mill', 3, NULL),
+(94, 'Mechanical Unit', 3, NULL),
+(95, 'Sawit Ecoshield Sdn Bhd', 3, NULL),
+(96, 'Bagahak 1 Estate', 3, NULL),
+(97, 'Bagahak 2 Estate', 3, NULL),
+(98, 'Bagahak 3 Estate', 3, NULL),
+(99, 'Sawit Kinabalu Farm East', 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -509,9 +645,18 @@ CREATE TABLE `positions` (
 --
 
 INSERT INTO `positions` (`id`, `name`, `description`) VALUES
-(1, 'Employee', 'Department Employee'),
-(2, 'Manager', 'Department Manager'),
-(3, 'Senior Manager', '');
+(1, 'E1', 'Senior Executive'),
+(2, 'E2', 'Executive'),
+(3, 'M1', 'Group Managing Director'),
+(4, 'M2', 'Deputy MD'),
+(5, 'M3', 'Head Of Division'),
+(6, 'M4', 'General Manager'),
+(7, 'M5', 'Senior Manager'),
+(8, 'M6', 'Manager'),
+(9, 'NE1', 'Supervisor'),
+(10, 'NE2', 'Senior Assistant'),
+(11, 'NE3', 'Assistant'),
+(12, 'NE4', 'General Staff');
 
 -- --------------------------------------------------------
 
@@ -554,7 +699,8 @@ INSERT INTO `status` (`id`, `name`) VALUES
 (3, 'Accepted'),
 (4, 'Rejected'),
 (5, 'Cancellation'),
-(6, 'Canceled');
+(6, 'Canceled'),
+(7, 'Pending From HR');
 
 -- --------------------------------------------------------
 
@@ -577,7 +723,7 @@ INSERT INTO `types` (`id`, `name`, `acronym`, `deduct_days_off`) VALUES
 (0, '', '', 0),
 (1, 'Annual Leave', 'AL', 0),
 (2, 'Sick Leave', 'SL', 0),
-(3, 'Leave Bank', '', 0);
+(3, 'Leave Bank', 'LB', 0);
 
 -- --------------------------------------------------------
 
@@ -589,7 +735,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL COMMENT 'Unique identifier of the user',
   `firstname` varchar(255) DEFAULT NULL COMMENT 'First name',
   `lastname` varchar(255) DEFAULT NULL COMMENT 'Last name',
-  `login` varchar(255) DEFAULT NULL COMMENT 'Identfier used to login (can be an email address)',
+  `login` varchar(255) DEFAULT NULL COMMENT 'Identifier used to login (can be an email address)',
   `email` varchar(255) DEFAULT NULL COMMENT 'Email address',
   `password` varchar(512) DEFAULT NULL COMMENT 'Password encrypted with BCRYPT or a similar method',
   `role` int(11) DEFAULT NULL COMMENT 'Role of the employee (binary mask). See table roles.',
@@ -598,6 +744,7 @@ CREATE TABLE `users` (
   `organization` int(11) DEFAULT 0 COMMENT 'Entity where the employee has a position',
   `contract` int(11) DEFAULT NULL COMMENT 'Contract of the employee',
   `position` int(11) DEFAULT NULL COMMENT 'Position of the employee',
+  `location` int(11) DEFAULT NULL COMMENT 'Location of the employee',
   `datehired` date DEFAULT NULL COMMENT 'Date hired / Started',
   `identifier` varchar(64) NOT NULL COMMENT 'Internal/company identifier',
   `language` varchar(5) NOT NULL DEFAULT 'en' COMMENT 'Language ISO code',
@@ -614,30 +761,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `manager`, `country`, `organization`, `contract`, `position`, `datehired`, `identifier`, `language`, `ldap_path`, `active`, `timezone`, `calendar`, `random_hash`, `user_properties`, `picture`) VALUES
-(1, 'Super ', 'Admin', 'SA', 'superadmin@email.com', '$2a$08$7lz6h2QY9PqLJvUy6RhwfusbPecUMaQhaQQZA.uOsaMtDAxmXkBvG', 8, 1, NULL, 0, 0, 1, '2000-01-01', 'Super Admin', 'en', NULL, 1, NULL, NULL, '5g5VUm5ZKf5TkK08yMtuKxe5', NULL, NULL),
-(2, 'Tan Min', 'Choon', 'Tan', 'tan@email.com', '$2a$08$aTD1rNlnseRXem/h0G.yY./b4jdGKQhab/XARTiDKsm.swKXJxTZi', 2, 2, NULL, 1, 3, 3, '2024-01-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'n3vgzEPLRrZAL5npJkygzTYk', NULL, NULL),
-(3, 'Romina Ewol', 'Mujie', 'Romina', 'romina@email.com', '$2a$08$juHi60YUCon.ow2KlluBeuNv1Qop.xDsxvjquz3H4gC8XZsMW3.qe', 2, 2, NULL, 1, 1, 2, '2024-02-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'ORiMJMB-4-ex6GoQDxR6zT78', NULL, NULL),
-(4, 'Teo Tiong ', 'Tze', 'Megan', 'megan@email.com', '$2a$08$UcJPtjOftib3DLMN/zlkf.73c/VdYZ.0ZqirUetcrDOE.dqv3uUAe', 2, 2, NULL, 1, 1, 2, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'F5RX9fIXM64R2DB_1yiNsvyj', NULL, NULL),
-(5, 'Poong Tchu ', 'Chuan', 'Sam', 'sam@email.com', '$2a$08$4oFRUKt1xDEygn8uXwbduuVSw0cpC7lpw82KvSf/rYGcsTh96r7bC', 2, 2, NULL, 1, 1, 2, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'JD9JmrSp6m-XspQdJX58Harh', NULL, NULL),
-(6, 'Jasneh', 'Abdullah', 'Jasneh', 'jasneh@email.com', '$2a$08$8Lr.KgWOT7WmIn8srb7hKO0cx5jl9PgckHD2wtep/8krQmduL6Zbi', 2, 2, NULL, 1, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'Wg5BOARB2BGZHLH_WIoA87IM', NULL, NULL),
-(7, 'Siti Khadizah', 'Waly', 'siti', 'siti@email.com', '$2a$08$Hv3Zy.E/61gedg5dOmTDZO0N.nVyir23EwO/mADGPJdQhmxat0LOu', 2, 2, NULL, 1, 3, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'zKKJkjoGtsOa2Hl0fmhaDiQR', NULL, NULL),
-(8, 'Rindey', 'Jlee', 'rindey', 'rindey@email.com', '$2a$08$T6MtlFX0J3ST403IwKe63.HHyxfcGwD/9vnsdYE4kIgMxVWemFeWy', 2, 2, NULL, 1, 4, 1, NULL, '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'z6nhkUUW8nnxncAoIVH3vojS', NULL, NULL),
-(9, 'Teo', 'Ricky', 'ricky', 'ricky@email.com', '$2a$08$QLssNuK9TydUSiu8xYL9iea00t8lpvIflIYlHVFU87/CUr2lInNH6', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '25LGfH1XqFHxYgs2x6a6d2Bh', NULL, NULL),
-(10, 'Georgey', 'Resot', 'georgey', 'georgey@emai.com', '$2a$08$zq5wVBNGbG1d0Kt0a7LrBOfAxEmXgDDKAYUTlhLCPKh9ptonxY7JK', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '0CHUrdzRDC_U9dwQok-o5LMe', NULL, NULL),
-(11, 'Melinda Lee', 'Yen Fen', 'melinda', 'melinda@email.com', '$2a$08$jxuFpzNP/0nGbJyzXsm0eO0Fchc17ZsvJis/Sm20RULB623gq3puS', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'HVIu6_mwSeteakLGjAHVsEo1', NULL, NULL),
-(12, 'Ruzaini ', 'Mohd Dalin', 'ruzaini', 'ruzaini', '$2a$08$62RHamLJVTTdJ9E7T.0OLucyJ.gJ/AIvdjKmtcxEaRGzfNjMEpO2C', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '9OFOq4aTEU7U-9lgTzq2cPxX', NULL, NULL),
-(13, 'Zareena Hanis', 'Red', 'zareena', 'zareena@email.com', '$2a$08$cppY6RQLDK5OQYZZHs2vZ.S/OAv7hvLWBmIJQUfMX6PHdo5FDZlw6', 2, 2, NULL, 1, 3, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'ir-6RbviPFYAAma_kEwieAG5', NULL, NULL),
-(14, 'Ezhan Efizi', 'Nafs', 'ezhan', 'ezhan@email.com', '$2a$08$n8l/lmR.AnLLrXbdyr5Js.Eia1sgvhA7oVOlsg1Ot9a6BvrX9XiwK', 2, 2, NULL, 1, 3, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'SiD4PO2oQ2vX8aor2GXtGJOC', NULL, NULL),
-(15, 'Nurliah', 'Mohd Jaafar', 'nurliah', 'nurliah@email.com', '$2a$08$0XgiWvqTnK3D.38.0I3NyOodtzz9CCnExDsyeXnUPGfzmoHmZPBs6', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'm00U2hb9sgdL8Qi9cNu6pVf5', NULL, NULL),
-(16, 'Saidal ', 'M Jalil', 'saidal', 'saidal@email.com', '$2a$08$swBOHUm89ZDyJ0ABzCfZa.xsQDv4kBkUBLTYVm8qVmFKBhhS75MY2', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '6Ugq6MFg-8tzvskIVNKQFI15', NULL, NULL),
-(17, 'Poh Mei', 'Yean', 'poh', 'poh@email.com', '$2a$08$Z1w2Iy58AJp.n7F4UccVi.1.wTDiWBYLuq.V50RIv5RnCu17.sSn2', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'y4Yqd2P2Jw1KevsOqPlU8nzT', NULL, NULL),
-(18, 'Racheal Albert', 'Yeap', 'racheal', 'racheal@email.com', '$2a$08$ybMI3inbkeD5Xexm7AdOOOLe.Mla239oa9zX8me4Hk/EMDiqg6ncm', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'UI4Mi-TWg_5dr3cdqBpzuYAG', NULL, NULL),
-(19, 'Azhad', 'Muhammad', 'azhad', 'azhad@email.com', '$2a$08$TGmmM8/YVxdxzqED0ARvYOY6JYJYcc1GIsEbBneVwYpzk63sjgEo2', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'RxCoIlh6kg6ZWiuO_vqxuMns', NULL, NULL),
-(20, 'Sean Casey', 'Linggian', 'sean', 'sean@email.com', '$2a$08$rHhGzHfVkuhbYkCfpybSzO6NY7He6g0Ak9z77UA/VW9Mj62H.SGLq', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'iUQxGhpIbl_cCHO4J1UFXX0i', NULL, NULL),
-(21, 'Natasha', 'Mohd Zulk', 'natasha', 'natasha@email.com', '$2a$08$Q5aTeJfG2PoiCsxRnw4CSOgZZ0lIbytCFDeIjZ9mRYIlPb27NO4N.', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '9Q-uPEAmIc7C6Jgr7NlYrqFd', NULL, NULL),
-(22, 'Fadzrul Aiman', 'Madzlan', 'fadzrul', 'fadzrul@email.com', '$2a$08$1NxyYcjGA.sNSou91nLcb.WoTogt9NGxhzs.vrotQPs9Rc.Mw3pme', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'a1-c8egkNefNQ-6md_q52UZo', NULL, NULL),
-(23, 'hr', 'personnel', 'hr', 'hr@email.com', '$2a$08$U5zQXiTf4stBZX/Vy.D9leqYLjdf4T9t8wRV18nL8v5gATvk1uBOC', 3, 27, NULL, 2, 4, 2, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'hTFToSnemWDv3shcx03xKbrR', NULL, NULL);
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `manager`, `country`, `organization`, `contract`, `position`, `location`, `datehired`, `identifier`, `language`, `ldap_path`, `active`, `timezone`, `calendar`, `random_hash`, `user_properties`, `picture`) VALUES
+(1, 'Super ', 'Admin', 'SA', 'superadmin@email.com', '$2a$08$7lz6h2QY9PqLJvUy6RhwfusbPecUMaQhaQQZA.uOsaMtDAxmXkBvG', 1, 1, NULL, 0, 0, 1, NULL, '2000-01-01', 'Super Admin', 'en', NULL, 1, NULL, NULL, '5g5VUm5ZKf5TkK08yMtuKxe5', NULL, NULL),
+(2, 'HR', 'Administrator', 'hr', 'hr@email.com', '$2a$08$FuNqpgbyknoztrkBYcWWO.XLpsYSmbNQow3zS7m1FOZgoCWo9LJv6', 3, 2, NULL, 60, 3, 2, 1, '2000-05-01', 'HR', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'HSDvZh_nopJDvekzoSkFQOug', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -707,6 +833,12 @@ ALTER TABLE `leaves_history`
   ADD PRIMARY KEY (`change_id`),
   ADD KEY `changed_by` (`changed_by`),
   ADD KEY `change_date` (`change_date`);
+
+--
+-- Indexes for table `locations`
+--
+ALTER TABLE `locations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `oauth_access_tokens`
@@ -816,7 +948,8 @@ ALTER TABLE `users`
   ADD KEY `manager` (`manager`),
   ADD KEY `organization` (`organization`),
   ADD KEY `contract` (`contract`),
-  ADD KEY `position` (`position`);
+  ADD KEY `position` (`position`),
+  ADD KEY `location` (`location`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -826,13 +959,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `contracts`
 --
 ALTER TABLE `contracts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of a contract', AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of a contract', AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `dayoffs`
 --
 ALTER TABLE `dayoffs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `delegations`
@@ -844,31 +977,37 @@ ALTER TABLE `delegations`
 -- AUTO_INCREMENT for table `entitleddays`
 --
 ALTER TABLE `entitleddays`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of an entitlement', AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of an entitlement';
 
 --
 -- AUTO_INCREMENT for table `excluded_types`
 --
 ALTER TABLE `excluded_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id of exclusion', AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Id of exclusion';
 
 --
 -- AUTO_INCREMENT for table `leaves`
 --
 ALTER TABLE `leaves`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the leave request', AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the leave request';
 
 --
 -- AUTO_INCREMENT for table `leaves_history`
 --
 ALTER TABLE `leaves_history`
-  MODIFY `change_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `change_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `locations`
+--
+ALTER TABLE `locations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `organization`
 --
 ALTER TABLE `organization`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the department', AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the department', AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `org_lists`
@@ -886,19 +1025,19 @@ ALTER TABLE `overtime`
 -- AUTO_INCREMENT for table `positions`
 --
 ALTER TABLE `positions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the position', AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the position', AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `types`
 --
 ALTER TABLE `types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the type', AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the type', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the user', AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the user', AUTO_INCREMENT=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

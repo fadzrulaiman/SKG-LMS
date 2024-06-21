@@ -38,6 +38,7 @@ $lang['employees_index_title'] = '员工列表';
 
 $lang['users_myprofile_title'] = '我的个人资料';
 $lang['users_myprofile_html_title'] = '我的个人资料';
+$lang['users_myprofile_field_empid'] = 'Employee ID';
 $lang['users_myprofile_field_firstname'] = '名';
 $lang['users_myprofile_field_lastname'] = '姓';
 $lang['users_myprofile_field_manager'] = '管理者';

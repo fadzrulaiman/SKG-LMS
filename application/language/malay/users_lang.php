@@ -38,6 +38,7 @@ $lang['employees_index_title'] = 'Senarai pekerja';
 
 $lang['users_myprofile_title'] = 'Maklumat peribadi saya';
 $lang['users_myprofile_html_title'] = 'Maklumat peribadi saya';
+$lang['users_myprofile_field_empid'] = 'Employee ID';
 $lang['users_myprofile_field_firstname'] = 'Nama Pertama';
 $lang['users_myprofile_field_lastname'] = 'Nama Akhir';
 $lang['users_myprofile_field_manager'] = 'Pengurus';

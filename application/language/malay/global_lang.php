@@ -26,7 +26,7 @@ $lang['global_false'] = 'SALAH';
 $lang['footer_link_go_top'] = 'Pergi ke atas';
 $lang['footer_copyright_notice'] = '&copy; 2014 Penulis Jorani';
 
-$lang['Requested'] = 'Diminta';
+$lang['Requested'] = 'Di mohon';
 $lang['Pending From HR'] = 'Pending HR Approval';
 $lang['Planned'] = 'Dirancang';
 $lang['Accepted'] = 'Diterima';

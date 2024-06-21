@@ -450,34 +450,20 @@ class Users_model extends CI_Model {
      * @param array $row database record of a user
      */
     private function loadProfile($row) {
-        if (((int) $row->role & 1)) {
-            $is_admin = TRUE;
-        } else {
-            $is_admin = FALSE;
-        }
-
-        /*
-          00000001 1  Admin
-          00000100 8  HR Officier / Local HR Manager
-          00001000 16 HR Manager
-          = 00001101 25 Can access to HR functions
-         */
-        if (((int) $row->role & 25)) {
-            $is_hr = TRUE;
-        } else {
-            $is_hr = FALSE;
-        }
-
-        //Determine if the connected user is a manager or if he has any delegation
-        $isManager = FALSE;
-        if (count($this->getCollaboratorsOfManager($row->id)) > 0) {
-            $isManager = TRUE;
-        } else {
+        // Check if user is admin
+        $is_admin = ((int) $row->role === 1) ? TRUE : FALSE;
+    
+        // Check if user has HR access
+        $is_hr = ((int) $row->role === 3) ? TRUE : FALSE;
+    
+        // Determine if the user is a manager or has delegation
+        $isManager = (count($this->getCollaboratorsOfManager($row->id)) > 0);
+        if (!$isManager) {
             $this->load->model('delegations_model');
-            if ($this->delegations_model->hasDelegation($row->id))
-                $isManager = TRUE;
+            $isManager = $this->delegations_model->hasDelegation($row->id);
         }
-
+    
+        // Set session data
         $newdata = array(
             'login' => $row->login,
             'id' => $row->id,
@@ -492,7 +478,7 @@ class Users_model extends CI_Model {
         );
         $this->session->set_userdata($newdata);
     }
-
+    
     /**
      * Get users by role
      * @param int $role Role identifier
