@@ -43,10 +43,10 @@ class Users_model extends CI_Model {
      * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getUsersAndRoles() {
-        $this->db->select('users.id, active, firstname, lastname, login, email');
+        $this->db->select('users.id, active, CONCAT(users.firstname, " ", users.lastname) as fullname, login, email');
         $this->db->select("GROUP_CONCAT(roles.name SEPARATOR ',') as roles_list", FALSE);
         $this->db->join('roles', 'roles.id = (users.role & roles.id)');
-        $this->db->group_by('users.id, active, firstname, lastname, login, email');
+        $this->db->group_by('users.id, active, fullname, login, email');
         $query = $this->db->get('users');
         return $query->result_array();
     }
@@ -682,6 +682,7 @@ class Users_model extends CI_Model {
         $this->db->select('users.id as id,'
                 . ' users.firstname as firstname,'
                 . ' users.lastname as lastname,'
+                . ' CONCAT(users.firstname, " ", users.lastname) as fullname,'
                 . ' users.email as email,'
                 . ' users.identifier as identifier,'
                 . ' users.datehired as datehired,'
@@ -689,7 +690,7 @@ class Users_model extends CI_Model {
                 . ' locations.name as location,'
                 . ' organization.name as entity,'
                 . ' contracts.name as contract,'
-                . ' CONCAT_WS(\' \',managers.firstname,  managers.lastname) as manager_name', FALSE);
+                . ' CONCAT_WS(\' \',managers.firstname, managers.lastname) as manager_name', FALSE);
         $this->db->from('users');
         $this->db->join('contracts', 'contracts.id = users.contract', 'left outer');
         $this->db->join('positions', 'positions.id = users.position', 'left outer');
@@ -712,7 +713,7 @@ class Users_model extends CI_Model {
             $this->db->where('users.organization', $id);
         }
 
-        //Triple value for active filter ("all" = no where criteria)
+        // Triple value for active filter ("all" = no where criteria)
         if ($filterActive == "active") {
             $this->db->where('users.active', TRUE);
         }

@@ -46,8 +46,7 @@ $users = $this->organization_model->allEmployees($entity, $children);
 $result = array();
 foreach ($users as $user) {
     $result[$user->id]['Employee ID'] = $user->id;
-    $result[$user->id]['First Name'] = $user->firstname;
-    $result[$user->id]['Last Name'] = $user->lastname;
+    $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
     $dateHired = $user->datehired ?? '1970-01-01'; // Default to Jan 1, 1970, if datehired is null
     $date = new DateTime($dateHired);
     $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));    

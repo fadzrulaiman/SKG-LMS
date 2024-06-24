@@ -40,7 +40,7 @@
             <div class="navigation-links">
                 <a class="btn" href="<?php echo base_url();?>leaves/create">Create Leave Request</a>
                 <a class="btn" href="<?php echo base_url();?>leaves/counters">Leave Balance</a>
-                <a class="btn" href="<?php echo base_url();?>requests">List of Leave Requests</a>
+                <a class="btn" href="<?php echo base_url();?>leaves">List of Leave Requests</a>
             </div>
         </section>
         <?php

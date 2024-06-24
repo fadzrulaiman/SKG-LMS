@@ -39,7 +39,7 @@
             <div class="navigation-links">
                 <a class="btn" href="<?php echo base_url();?>leaves/create">创建请假请求</a>
                 <a class="btn" href="<?php echo base_url();?>leaves/counters">Leave Balance</a>
-                <a class="btn" href="<?php echo base_url();?>requests">请假请求列表</a>
+                <a class="btn" href="<?php echo base_url();?>leaves">请假请求列表</a>
             </div>
         </section>
         <?php

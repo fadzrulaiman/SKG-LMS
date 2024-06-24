@@ -39,7 +39,7 @@
             <div class="navigation-links">
                 <a class="btn" href="<?php echo base_url();?>leaves/create">Buat Permohonan Cuti</a>
                 <a class="btn" href="<?php echo base_url();?>leaves/counters">Baki Cuti</a>
-                <a class="btn" href="<?php echo base_url();?>requests">Senarai Permohonan Cuti</a>
+                <a class="btn" href="<?php echo base_url();?>leaves">Senarai Permohonan Cuti</a>
             </div>
         </section>
         <?php

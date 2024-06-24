@@ -101,8 +101,8 @@ class Reports extends CI_Controller {
         $users = $this->organization_model->allEmployees($_GET['entity'], $include_children);
         foreach ($users as $user) {
             $result[$user->id]['Employee ID'] = $user->id;
-            $result[$user->id]['First Name'] = $user->firstname;
-            $result[$user->id]['Last Name'] = $user->lastname;
+            $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
+
     // Add a check for null or empty datehired
     if (!empty($user->datehired)) {
         $date = new DateTime($user->datehired);
@@ -253,8 +253,8 @@ class Reports extends CI_Controller {
 
         foreach ($users as $user) {
             $result[$user->id]['Employee ID'] = $user->id;
-            $result[$user->id]['First Name'] = $user->firstname;
-            $result[$user->id]['Last Name'] = $user->lastname;
+            $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
+
             
             // Add a check for null or empty datehired
             if (!empty($user->datehired)) {
@@ -463,8 +463,7 @@ class Reports extends CI_Controller {
 
         foreach ($users as $user) {
             $result[$user->id]['Employee ID'] = $user->id;
-            $result[$user->id]['First Name'] = $user->firstname;
-            $result[$user->id]['Last Name'] = $user->lastname;
+            $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
             $result[$user->id]['Date Hired'] = empty($user->datehired) ? '' : (new DateTime($user->datehired))->format($this->lang->line('global_date_format'));
             $result[$user->id]['Department'] = $user->department;
             $result[$user->id]['Position'] = $user->position;

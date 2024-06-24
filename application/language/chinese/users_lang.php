@@ -16,6 +16,7 @@ $lang['users_index_thead_tip_delete'] = '删除用户';
 $lang['users_index_thead_tip_reset'] = '重设密码';
 $lang['users_index_thead_id'] = '编号';
 $lang['users_index_thead_firstname'] = '名';
+$lang['users_index_thead_fullname'] = 'Full Name';
 $lang['users_index_thead_lastname'] = '姓';
 $lang['users_index_thead_login'] = '登录';
 $lang['users_index_thead_email'] = 'E-mail';
@@ -143,6 +144,7 @@ $lang['users_reset_button_reset'] = '重设';
 
 $lang['users_export_title'] = '用户列表';
 $lang['users_export_thead_id'] = '编号';
+$lang['users_export_thead_fullname'] = 'Full Name';
 $lang['users_export_thead_firstname'] = '名';
 $lang['users_export_thead_lastname'] = '姓';
 $lang['users_export_thead_email'] = 'E-mail';

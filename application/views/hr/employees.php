@@ -99,8 +99,7 @@
                     <thead>
                         <tr>
                             <th><?php echo lang('hr_employees_thead_id');?></th>
-                            <th><?php echo lang('hr_employees_thead_firstname');?></th>
-                            <th><?php echo lang('hr_employees_thead_lastname');?></th>
+                            <th><?php echo lang('hr_employees_thead_fullname');?></th>
                             <th><?php echo lang('hr_employees_thead_email');?></th>
                             <th><?php echo lang('hr_employees_thead_entity');?></th>
                             <th><?php echo lang('hr_employees_thead_location');?></th>
@@ -594,8 +593,7 @@ $(function () {
             "ajax": '<?php echo base_url();?>hr/employees/entity/' + entity + '/' + includeChildren + '/' + filterActive + '/' + filterDate,
             columns: [
                 { data: "id" },
-                { data: "firstname" },
-                { data: "lastname" },
+                { data: "fullname" },
                 { data: "email" },
                 { data: "entity" },
                 { data: "location" },

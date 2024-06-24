@@ -18,6 +18,7 @@ $lang['hr_employees_thead_link_presence'] = 'Presence report';
 $lang['hr_employees_thead_link_delegation'] = 'Delegations';
 $lang['hr_employees_thead_id'] = 'ID';
 $lang['hr_employees_thead_firstname'] = 'First Name';
+$lang['hr_employees_thead_fullname'] = 'Full Name';
 $lang['hr_employees_thead_lastname'] = 'Last Name';
 $lang['hr_employees_thead_email'] = 'E-mail';
 $lang['hr_employees_thead_entity'] = 'Department';

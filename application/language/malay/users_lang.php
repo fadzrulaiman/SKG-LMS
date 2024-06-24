@@ -15,6 +15,7 @@ $lang['users_index_thead_tip_delete'] = 'Padam pengguna';
 $lang['users_index_thead_tip_reset'] = 'Tetap semula kata laluan';
 $lang['users_index_thead_id'] = 'ID';
 $lang['users_index_thead_firstname'] = 'Nama Pertama';
+$lang['users_index_thead_fullname'] = 'Full Name';
 $lang['users_index_thead_lastname'] = 'Nama Akhir';
 $lang['users_index_thead_login'] = 'Login';
 $lang['users_index_thead_email'] = 'E-mel';
@@ -144,6 +145,7 @@ $lang['users_reset_button_reset'] = 'Tetap Semula';
 
 $lang['users_export_title'] = 'Senarai pengguna';
 $lang['users_export_thead_id'] = 'ID';
+$lang['users_export_thead_fullname'] = 'Full Name';
 $lang['users_export_thead_firstname'] = 'Nama Pertama';
 $lang['users_export_thead_lastname'] = 'Nama Akhir';
 $lang['users_export_thead_email'] = 'E-mel';

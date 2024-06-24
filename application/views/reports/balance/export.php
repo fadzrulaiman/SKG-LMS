@@ -23,8 +23,7 @@ $types = $this->types_model->getTypes();
 $users = $this->organization_model->allEmployees($_GET['entity'], $include_children);
 foreach ($users as $user) {
     $result[$user->id]['Employee ID'] = $user->id;
-    $result[$user->id]['First Name'] = $user->firstname;
-    $result[$user->id]['Last Name'] = $user->lastname;
+    $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
     $result[$user->id]['Date Hired'] = $user->datehired;
     $result[$user->id]['Department'] = $user->department;
     $result[$user->id]['Position'] = $user->position;

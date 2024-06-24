@@ -14,6 +14,7 @@ $lang['users_index_thead_tip_delete'] = 'delete user';
 $lang['users_index_thead_tip_reset'] = 'reset password';
 $lang['users_index_thead_id'] = 'ID';
 $lang['users_index_thead_firstname'] = 'First Name';
+$lang['users_index_thead_fullname'] = 'Full Name';
 $lang['users_index_thead_lastname'] = 'Last Name';
 $lang['users_index_thead_login'] = 'Login';
 $lang['users_index_thead_email'] = 'E-mail';
@@ -143,6 +144,7 @@ $lang['users_reset_button_reset'] = 'Reset';
 
 $lang['users_export_title'] = 'List of users';
 $lang['users_export_thead_id'] = 'ID';
+$lang['users_export_thead_fullname'] = 'Full Name';
 $lang['users_export_thead_firstname'] = 'First Name';
 $lang['users_export_thead_lastname'] = 'Last Name';
 $lang['users_export_thead_email'] = 'E-mail';

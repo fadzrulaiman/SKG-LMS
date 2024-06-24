@@ -19,8 +19,7 @@
     <thead>
         <tr>
             <th><?php echo lang('users_index_thead_id');?></th>
-            <th><?php echo lang('users_index_thead_firstname');?></th>
-            <th><?php echo lang('users_index_thead_lastname');?></th>
+            <th><?php echo lang('users_index_thead_fullname');?></th>
             <th><?php echo lang('users_index_thead_login');?></th>
             <th><?php echo lang('users_index_thead_email');?></th>
             <th><?php echo lang('users_index_thead_role');?></th>
@@ -49,8 +48,7 @@
                 <a href="<?php echo base_url();?>users/reset/<?php echo $users_item['id'] ?>" title="<?php echo lang('users_index_thead_tip_reset');?>" data-target="#frmResetPwd" data-toggle="modal"><i class="mdi mdi-lock nolink"></i></a>
             </div>
         </td>
-        <td><?php echo $users_item['firstname']; ?></td>
-        <td><?php echo $users_item['lastname']; ?></td>
+        <td><?php echo $users_item['fullname']; ?></td>
         <td><?php echo $users_item['login']; ?></td>
         <td><a href="mailto:<?php echo $users_item['email']; ?>"><?php echo $users_item['email']; ?></a></td>
         <td><?php echo $users_item['roles_list']; ?></td>

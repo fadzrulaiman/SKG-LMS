@@ -208,6 +208,7 @@ echo form_open('users/create', $attributes); ?>
         </div>
     </div>
 
+
     <div class="span4">
         <div class="control-group">
             <label class="control-label" for="identifier"><?php echo lang('users_create_field_identifier');?></label>
@@ -430,7 +431,6 @@ function validate_form() {
     result = false;
     var fieldname = "";
     if ($('#firstname').val() == "") fieldname = "firstname";
-    if ($('#lastname').val() == "") fieldname = "lastname";
     if ($('#login').val() == "") fieldname = "login";
     if ($('#email').val() == "") fieldname = "email";
     if ($('#txtManager').val() == "") fieldname = "manager";
@@ -457,7 +457,7 @@ function submit_form() {
  * Generate a password of the specified length
  * @param int len Length of password to be generated
  * @returns string generated password
-       * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+ * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
  */
 function password_generator(len) {
     var length = (len) ? (len) : (10);
@@ -487,7 +487,7 @@ function password_generator(len) {
  * @param string pattern of the combination
  * @param int max Maximum length of the generated login (default 32)
  * @returns string Combination of firstname and lastname
-       * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+ * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
  */
 function generateLogin(firstname, lastname, pattern, max) {
     max = typeof max !== 'undefined' ? max : 32;
@@ -549,12 +549,13 @@ $(function() {
     $("#lblLoginAlert").alert();
 
     $("#viz_datehired").datepicker({
-        format: '<?php echo lang('global_date_js_format');?>',
+        format: 'dd/mm/yyyy',
         language: "<?php echo $language_code;?>",
         startDate: "01/01/1970",
         autoclose: true
     }).on('changeDate', function(e) {
-        $('#datehired').val(e.format('yyyy-mm-dd'));
+        var date = e.format('yyyy-mm-dd'); // Format the date for the hidden input field
+        $('#datehired').val(date);
     });
 
     //Transform SELECT tags in richer controls
