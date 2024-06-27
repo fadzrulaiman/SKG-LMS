@@ -140,9 +140,8 @@ $lang['users_employees_thead_lastname'] = 'Nama Akhir';
 $lang['users_employees_thead_email'] = 'E-mel';
 $lang['users_employees_thead_entity'] = 'jabatan';
 
-$lang['users_reset_field_password'] = 'Kata Laluan Baharu';
+$lang['users_reset_field_password'] = 'Kata Laluan';
 $lang['users_reset_button_reset'] = 'Tetap Semula';
-$lang['users_reset_button_cancel'] = 'Batal';
 
 $lang['users_export_title'] = 'Senarai pengguna';
 $lang['users_export_thead_id'] = 'ID';

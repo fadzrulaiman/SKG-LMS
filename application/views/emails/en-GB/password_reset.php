@@ -23,7 +23,7 @@
         <tr>
             <td style="padding: 20px; font-size: 14px;">
                 <p>Dear {Firstname} {Lastname},</p>
-                <p>Your SKG-LMS password has been reset. If you did not perform this operation, please contact IT department immediately to secure your account.</p>
+                <p>Your SKG-LMS password has been reset. If you did not perform this operation, please contact your manager immediately to secure your account.</p>
             </td>
         </tr>
 

@@ -53,7 +53,7 @@ $lang['menu_requests_overtime'] = '加班';
 $lang['menu_requests_list_extras'] = 'OT工作列表';
 $lang['menu_requests_request_extra'] = '提交加班申请';
 
-$lang['menu_leaves_counters'] = 'Leave Balance Summary';
+$lang['menu_leaves_counters'] = '柜台';
 $lang['menu_leaves_list_requests'] = '休假申请列表';
 $lang['menu_leaves_create_request'] = '申请一个休假';
 
