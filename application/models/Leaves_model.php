@@ -1878,6 +1878,7 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
         //We must show all users of the departement
         $this->load->model('dayoffs_model');
         $this->load->model('users_model');
+        $this->load->model('organization_model');    
         $employee = $this->users_model->getUsers($employee_id);
         $user = new stdClass;
         $user->name = $employee['firstname'] . ' ' . $employee['lastname'];
