@@ -141,8 +141,12 @@ $lang['users_employees_thead_email'] = 'E-mel';
 $lang['users_employees_thead_entity'] = 'jabatan';
 
 $lang['users_reset_field_password'] = 'Kata Laluan Baharu';
-$lang['users_reset_button_reset'] = 'Tetap Semula';
-$lang['users_reset_button_cancel'] = 'Batal';
+$lang['users_reset_button_reset'] = 'Confirm New Password';
+$lang['users_reset_button_cancel'] = 'Cancel';
+$lang['password_weak'] = 'Weak';
+$lang['password_fair'] = 'Fair';
+$lang['password_strong'] = 'Strong';
+$lang['password_very_strong'] = 'Very Strong';
 
 $lang['users_export_title'] = 'Senarai pengguna';
 $lang['users_export_thead_id'] = 'ID';

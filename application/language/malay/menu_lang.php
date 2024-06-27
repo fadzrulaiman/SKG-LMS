@@ -54,7 +54,7 @@ $lang['menu_requests_overtime'] = 'Lebih masa';
 $lang['menu_requests_list_extras'] = 'Senarai Kerja Lebih Masa';
 $lang['menu_requests_request_extra'] = 'Hantar Permintaan Lebih Masa';
 
-$lang['menu_leaves_counters'] = 'Leave Balance Summary';
+$lang['menu_leaves_counters'] = 'Pengiraan';
 $lang['menu_leaves_list_requests'] = 'Senarai permintaan cuti';
 $lang['menu_leaves_create_request'] = 'Minta cuti';
 

@@ -1881,7 +1881,6 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
         $employee = $this->users_model->getUsers($employee_id);
         $user = new stdClass;
         $user->name = $employee['firstname'] . ' ' . $employee['lastname'];
-        $user->organization_name = $this->organization_model->getname($employee['organization']); // Fetch and assign organization name
         $user->manager = (int) $employee['manager'];  //To enable hiding confidential info in view
         $user->id = (int) $employee['id'];
         $user->days = array();

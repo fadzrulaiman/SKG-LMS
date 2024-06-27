@@ -11,241 +11,257 @@
 ?>
 
 <?php
-if (count($tabular) > 0) {
-    // Sort the $tabular array by organization_name
-    usort($tabular, function($a, $b) {
-        return strcmp($a->organization_name, $b->organization_name);
-    });
-
-    // Group employees by department
-    $departments = [];
-    foreach ($tabular as $employee) {
-        $departments[$employee->organization_name][] = $employee;
-    }
-
-    foreach ($departments as $department => $employees) {
-?>
-    <h3><?php echo $department; ?></h3>
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <?php
-                    $start = $year . '-' . $month . '-' . '1';    //first date of selected month
-                    $lastDay = date("t", strtotime($start));    //last day of selected month
-                    $isCurrentMonth = date('Y-n') === $year . '-' . (int)$month;
-                    $currentDay = (int)date('d');
-                    for ($ii = 1; $ii <= $lastDay; $ii++) {
-                        $class = '';
-                        if ($isCurrentMonth && $ii === $currentDay) {
-                            $class .= ' currentday-bg';
-                        }
-                        $dayNum = date("N", strtotime($year . '-' . $month . '-' . $ii));
-                        switch ($dayNum) {
-                            case 1: echo '<td'.($class ? ' class="'.$class.'"' : '').'><b>' . lang('calendar_monday_short') . '</b></td>'; break;
-                            case 2: echo '<td'.($class ? ' class="'.$class.'"' : '').'><b>' . lang('calendar_tuesday_short') . '</b></td>'; break;
-                            case 3: echo '<td'.($class ? ' class="'.$class.'"' : '').'><b>' . lang('calendar_wednesday_short') . '</b></td>'; break;
-                            case 4: echo '<td'.($class ? ' class="'.$class.'"' : '').'><b>' . lang('calendar_thursday_short') . '</b></td>'; break;
-                            case 5: echo '<td'.($class ? ' class="'.$class.'"' : '').'><b>' . lang('calendar_friday_short') . '</b></td>'; break;
-                            case 6: echo '<td'.($class ? ' class="'.$class.'"' : '').'><b>' . lang('calendar_saturday_short') . '</b></td>'; break;
-                            case 7: echo '<td'.($class ? ' class="'.$class.'"' : '').'><b>' . lang('calendar_sunday_short') . '</b></td>'; break;
-                        }  
-                    }
-                ?>
-            </tr>
-            <tr>
-                <td><b><?php echo lang('calendar_tabular_thead_employee'); ?></b></td>
-                <td><b>Department</b></td>
-                <?php
-                    for ($ii = 1; $ii <= $lastDay; $ii++) {
-                        $class = '';
-                        if ($isCurrentMonth && $ii === $currentDay) {
-                            $class .= ' currentday-bg';
-                        }
-                        echo '<td'.($class ? ' class="'.$class.'"' : '').'><b>' . $ii . '</b></td>';
-                    }
-                ?>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-        foreach ($employees as $employee) {
-            $dayIterator = 0;
-        ?>
+if (count($tabular) > 0) {?>
+<table class="table table-bordered">
+    <thead>
         <tr>
-            <td><?php echo $employee->name; ?></td>
-            <td><?php echo $employee->organization_name; ?></td>
-            <?php foreach ($employee->days as $day) {
-                $dayIterator++;
-                $overlapping = FALSE;
-                $style = '';
-                $dataIds= '';
-                if (strstr($day->display, ';')) {
-                    $periods = explode(";", $day->display);
-                    $statuses = explode(";", $day->status);
-                    switch (intval($statuses[0])) {
-                        case 1: $class = "planned"; break;  // Planned
-                        case 2: $class = "requested"; break;  // Requested
-                        case 3: $class = "accepted"; break;  // Accepted
-                        case 4: $class = "rejected"; break;  // Rejected
-                        case 5: $class = "rejected"; break;  // Cancellation
-                        case 6: $class = "rejected"; break;  // Canceled
-                        case 12: $class = "dayoff"; break;
-                        case 13: $class = "dayoff"; break;
+            <td>&nbsp;</td>
+            <?php
+                $start = $year . '-' . $month . '-' . '1';    //first date of selected month
+                $lastDay = date("t", strtotime($start));    //last day of selected month
+                $isCurrentMonth = date('Y-n') === $year . '-' . (int)$month;
+                $currentDay = (int)date('d');
+                for ($ii = 1; $ii <=$lastDay; $ii++) {
+                    $class = '';
+                    if($isCurrentMonth && $ii === $currentDay){
+                        $class .= ' currentday-bg';
                     }
-                    switch (intval($statuses[1])) {
-                        case 1: $class .= "planned"; break;  // Planned
-                        case 2: $class .= "requested"; break;  // Requested
-                        case 3: $class .= "accepted"; break;  // Accepted
-                        case 4: $class .= "rejected"; break;  // Rejected
-                        case 5: $class .= "rejected"; break;  // Cancellation
-                        case 6: $class .= "rejected"; break;  // Canceled
-                        case 12: $class .= "dayoff"; break;
-                        case 13: $class .= "dayoff"; break;
+                    $dayNum = date("N", strtotime($year . '-' . $month . '-' . $ii));
+                    switch ($dayNum)
+                    {
+                        case 1: echo '<td'.($class?' class="'.$class.'"':'').'><b>' . lang('calendar_monday_short') . '</b></td>'; break;
+                        case 2: echo '<td'.($class?' class="'.$class.'"':'').'><b>' . lang('calendar_tuesday_short') . '</b></td>'; break;
+                        case 3: echo '<td'.($class?' class="'.$class.'"':'').'><b>' . lang('calendar_wednesday_short') . '</b></td>'; break;
+                        case 4: echo '<td'.($class?' class="'.$class.'"':'').'><b>' . lang('calendar_thursday_short') . '</b></td>'; break;
+                        case 5: echo '<td'.($class?' class="'.$class.'"':'').'><b>' . lang('calendar_friday_short') . '</b></td>'; break;
+                        case 6: echo '<td'.($class?' class="'.$class.'"':'').'><b>' . lang('calendar_saturday_short') . '</b></td>'; break;
+                        case 7: echo '<td'.($class?' class="'.$class.'"':'').'><b>' . lang('calendar_sunday_short') . '</b></td>'; break;
                     }
-                    //If we have two requests the same day (morning/afternoon)
-                    if (($statuses[0] == $statuses[1]) && ($periods[0] != $periods[1])) {
-                        switch (intval($statuses[0])) {
-                            case 1: $class = "allplanned"; break;  // Planned
-                            case 2: $class = "allrequested"; break;  // Requested
-                            case 3: $class = "allaccepted"; break;  // Accepted
-                            case 4: $class = "allrejected"; break;  // Rejected
-                            case 5: $class = "allrejected"; break;  // Cancellation
-                            case 6: $class = "allrejected"; break;  // Canceled
-                        }
+                }?>
+        </tr>
+        <tr>
+            <td><b><?php echo lang('calendar_tabular_thead_employee');?></b></td>
+            <?php
+                $start = $year . '-' . $month . '-' . '1';    //first date of selected month
+                $lastDay = date("t", strtotime($start));    //last day of selected month
+                for ($ii = 1; $ii <=$lastDay; $ii++) {
+                    $class = '';
+                    if($isCurrentMonth && $ii === $currentDay){
+                        $class .= ' currentday-bg';
                     }
-                } else {
-                    switch ($day->display) {
-                        case '9': $class = "error"; break;
-                        case '0': $class = "working"; break;
-                        case '4': $class = "dayoff"; break;
-                        case '5': $class = "amdayoff"; break;
-                        case '6': $class = "pmdayoff"; break;
-                        case '1':
-                            switch ($day->status) {
-                                case 1: $class = "allplanned"; break;  // Planned
-                                case 2: $class = "allrequested"; break;  // Requested
-                                case 3: $class = "allaccepted"; break;  // Accepted
-                                case 4: $class = "allrejected"; break;  // Rejected
-                                case 5: $class = "allrejected"; break;  // Cancellation
-                                case 6: $class = "allrejected"; break;  // Canceled
-                            }
-                            break;
-                        case '2':
-                            switch ($day->status) {
-                                case 1: $class = "amplanned"; break;  // Planned
-                                case 2: $class = "amrequested"; break;  // Requested
-                                case 3: $class = "amaccepted"; break;  // Accepted
-                                case 4: $class = "amrejected"; break;  // Rejected
-                                case 5: $class = "amrejected"; break;  // Cancellation
-                                case 6: $class = "amrejected"; break;  // Canceled
-                            }
-                            break;
-                        case '3':
-                            switch ($day->status) {
-                                case 1: $class = "pmplanned"; break;  // Planned
-                                case 2: $class = "pmrequested"; break;  // Requested
-                                case 3: $class = "pmaccepted"; break;  // Accepted
-                                case 4: $class = "pmrejected"; break;  // Rejected
-                                case 5: $class = "pmrejected"; break;  // Cancellation
-                                case 6: $class = "pmrejected"; break;  // Canceled
-                            }
-                            break;
+                    echo '<td'.($class?' class="'.$class.'"':'').'><b>' . $ii . '</b></td>';
+                }?>
+        </tr>
+    </thead>
+  <tbody>
+  <?php
+  $repeater = 0;
+  
+  foreach ($tabular as $employee) {
+      $dayIterator = 0;
+      //echo var_dump($employee);
+      ?>
+    <tr>
+      <td><?php echo $employee->name; ?></td>
+      <?php foreach ($employee->days as $day) {
+          $dayIterator++;
+          $overlapping = FALSE;
+          $style = '';
+          $dataIds= '';
+          if (strstr($day->display, ';')) {
+              $periods = explode(";", $day->display);
+              $statuses = explode(";", $day->status);
+                switch (intval($statuses[0]))
+                {
+                    case 1: $class = "planned"; break;  // Planned
+                    case 2: $class = "requested"; break;  // Requested
+                    case 3: $class = "accepted"; break;  // Accepted
+                    case 4: $class = "rejected"; break;  // Rejected
+                    case 5: $class = "rejected"; break;  // Cancellation
+                    case 6: $class = "rejected"; break;  // Canceled
+                    case 12: $class = "dayoff"; break;
+                    case 13: $class = "dayoff"; break;
+                }
+                switch (intval($statuses[1]))
+                {
+                    case 1: $class .= "planned"; break;  // Planned
+                    case 2: $class .= "requested"; break;  // Requested
+                    case 3: $class .= "accepted"; break;  // Accepted
+                    case 4: $class .= "rejected"; break;  // Rejected
+                    case 5: $class .= "rejected"; break;  // Cancellation
+                    case 6: $class .= "rejected"; break;  // Canceled
+                    case 12: $class .= "dayoff"; break;
+                    case 13: $class .= "dayoff"; break;
+                }
+                //If we have two requests the same day (morning/afternoon)
+                if (($statuses[0] == $statuses[1]) && ($periods[0] != $periods[1])){
+                    switch (intval($statuses[0]))
+                    {
+                        case 1: $class = "allplanned"; break;  // Planned
+                        case 2: $class = "allrequested"; break;  // Requested
+                        case 3: $class = "allaccepted"; break;  // Accepted
+                        case 4: $class = "allrejected"; break;  // Rejected
+                        case 5: $class = "allrejected"; break;  // Cancellation
+                        case 6: $class = "allrejected"; break;  // Canceled
                     }
                 }
-
-                //Detect overlapping cases
-                if (substr_count($day->display, ";") > 1) $overlapping = TRUE;
-                switch ($class) {
+          } else {
+            switch ($day->display) {
+                case '9': $class = "error"; break;
+                case '0': $class = "working"; break;
+                case '4': $class = "dayoff"; break;
+                case '5': $class = "amdayoff"; break;
+                case '6': $class = "pmdayoff"; break;
+                case '1':
+                      switch ($day->status)
+                      {
+                          case 1: $class = "allplanned"; break;  // Planned
+                          case 2: $class = "allrequested"; break;  // Requested
+                          case 3: $class = "allaccepted"; break;  // Accepted
+                          case 4: $class = "allrejected"; break;  // Rejected
+                          case 5: $class = "allrejected"; break;  // Cancellation
+                          case 6: $class = "allrejected"; break;  // Canceled
+                      }
+                      break;
+                case '2':
+                    switch ($day->status)
+                      {
+                          case 1: $class = "amplanned"; break;  // Planned
+                          case 2: $class = "amrequested"; break;  // Requested
+                          case 3: $class = "amaccepted"; break;  // Accepted
+                          case 4: $class = "amrejected"; break;  // Rejected
+                          case 5: $class = "amrejected"; break;  // Cancellation
+                          case 6: $class = "amrejected"; break;  // Canceled
+                      }
+                    break;
+                case '3':
+                    switch ($day->status)
+                      {
+                          case 1: $class = "pmplanned"; break;  // Planned
+                          case 2: $class = "pmrequested"; break;  // Requested
+                          case 3: $class = "pmaccepted"; break;  // Accepted
+                          case 4: $class = "pmrejected"; break;  // Rejected
+                          case 5: $class = "pmrejected"; break;  // Cancellation
+                          case 6: $class = "pmrejected"; break;  // Canceled
+                      }
+                    break;
+            }
+          }
+          
+          //Detect overlapping cases
+          if (substr_count($day->display, ";") > 1) $overlapping = TRUE;
+          switch ($class) {
                     case "plannedplanned":
                     case "requestedrequested":
                     case "acceptedaccepted":
                     case "rejectedrejected":
                         $overlapping = TRUE;
-                        break;
-                }
-
-                // Current day class
-                if ($isCurrentMonth && $dayIterator === $currentDay) {
-                    $class .= ' currentday-border';
-                }
-                if ($class == "error") {
-                    echo '<td><img src="' . base_url() . 'assets/images/date_error.png"></td>';
-                } else {
-                    $acronym = "";
+              break;
+          }
+          
+          // Current day class
+          if($isCurrentMonth && $dayIterator === $currentDay){
+              $class .= ' currentday-border';
+          }
+            if ($class == "error"){
+                echo '<td><img src="'.  base_url() .'assets/images/date_error.png"></td>';
+            } else {
+                $acronym = "";
+                $dayType = "";
+                if ($mode == 'public') {    //In public access, nobody is connected
                     $dayType = "";
-                    if ($mode == 'public') {    //In public access, nobody is connected
-                        $dayType = "";
-                    } else {
-                        //Hide leave type to users who are not part of HR/Admin
-                        if (($is_hr == TRUE) || 
+                } else {
+                    //Hide leave type to users who are not part of HR/Admin
+                    if (($is_hr == TRUE) || 
                             ($is_admin == TRUE) || 
                             ($employee->manager == $user_id) || 
                             ($employee->id == $user_id)) {
-                            $dayType = $day->type;
-                            $acronym = $day->acronym;
-                            $dataIds= $day->id;
-                            if ((!$overlapping) && ($day->id !== 0)) {
-                                $class .= ' clickable';
-                            }
-                        }
-                    }
-                    //Option to disable acronym (passed by URL)
-                    if (!$displayTypes) {
-                        $acronym = "";
-                    }
-
-                    if ($overlapping) {
-                        echo '<td title="' . $dayType . '" class="' . $class . '"><img src="' . base_url() . 'assets/images/date_error.png"></td>';
-                    } else {
-                        //Acronyms of types
-                        if ($acronym != "") {
-                            $acronyms = explode(";", $acronym);
-                            if (count($acronyms) == 1) {
-                                //One leave request
-                                if ((substr($class, 0, 2) == "am")) {
-                                    //Diagonal top left
-                                    $style = 'padding:1px; font-size: 0.7em;';
-                                }
-                                if((substr($class, 0, 2) == "pm")) {
-                                    //Diagonal bottom right
-                                    $style = 'vertical-align: bottom; text-align: right; padding:1px; font-size: 0.7em;';
-                                }
-                                echo "<td title='$dayType' class='$class' style='$style' data-id='$dataIds'>$acronym</td>";
-                            } else {
-                                echo "<td class='$class' style='font-size: 0.7em;' data-id='$dataIds'>";
-                                echo '  <span title="' . $dayType . '" class="pull-left">' . $acronyms[0] . '</span>';
-                                echo '  <span title="' . $dayType . '" class="pull-right" >' . $acronyms[1] . '</span>';
-                                echo '</td>';
-                            }
-                        } else {
-                            //We don't display the acronyms of type or it is not available
-                            echo "<td title='$dayType' style='$style' class='$class' data-id='$dataIds'>&nbsp;</td>";
+                        $dayType = $day->type;
+                        $acronym = $day->acronym;
+                        $dataIds= $day->id;
+                        if ((!$overlapping) && ($day->id !== 0)) {
+                            $class .= ' clickable';
                         }
                     }
                 }
+                //Option to disable acronym (passed by URL)
+                if (!$displayTypes) {
+                    $acronym = "";
+                }
+                
+                if ($overlapping) {
+                    echo '<td title="' . $dayType . '" class="' . $class . '"><img src="' . base_url() . 'assets/images/date_error.png"></td>';
+                } else {
+                    //Acronyms of types
+                    if ($acronym != "") {
+                        $acronyms = explode(";", $acronym);
+                        if (count($acronyms) == 1) {
+                            //One leave request
+                            if ((substr($class, 0, 2) == "am")) {
+                                //Diagonal top left
+                                $style = 'padding:1px; font-size: 0.7em;';
+                            }
+                            if((substr($class, 0, 2) == "pm")) {
+                                //Diagonal bottom right
+                                $style = 'vertical-align: bottom; text-align: right; padding:1px; font-size: 0.7em;';
+                            }
+                            echo "<td title='$dayType' class='$class' style='$style' data-id='$dataIds'>$acronym</td>";
+                        } else {
+                            echo "<td class='$class' style='font-size: 0.7em;' data-id='$dataIds'>";
+                            echo '  <span title="' . $dayType . '" class="pull-left">' . $acronyms[0] . '</span>';
+                            echo '  <span title="' . $dayType . '" class="pull-right" >' . $acronyms[1] . '</span>';
+                            echo '</td>';
+                        }
+                    } else {
+                        //We don't display the acronyms of type or it is not available
+                        echo "<td title='$dayType' style='$style' class='$class' data-id='$dataIds'>&nbsp;</td>";
+                    }
+                }
+            }
             ?>
-            <?php } ?>
+    <?php } ?>
+          </tr>
+    <?php      
+    if (++$repeater>=10) {
+        $repeater = 0;?>
+        <tr>
+            <td>&nbsp;</td>
+            <?php
+                $start = $year . '-' . $month . '-' . '1';    //first date of selected month
+                $lastDay = date("t", strtotime($start));    //last day of selected month
+                for ($ii = 1; $ii <=$lastDay; $ii++) {
+                    $dayNum = date("N", strtotime($year . '-' . $month . '-' . $ii));
+                    switch ($dayNum)
+                    {
+                        case 1: echo '<td><b>' . lang('calendar_monday_short') . '</b></td>'; break;
+                        case 2: echo '<td><b>' . lang('calendar_tuesday_short') . '</b></td>'; break;
+                        case 3: echo '<td><b>' . lang('calendar_wednesday_short') . '</b></td>'; break;
+                        case 4: echo '<td><b>' . lang('calendar_thursday_short') . '</b></td>'; break;
+                        case 5: echo '<td><b>' . lang('calendar_friday_short') . '</b></td>'; break;
+                        case 6: echo '<td><b>' . lang('calendar_saturday_short') . '</b></td>'; break;
+                        case 7: echo '<td><b>' . lang('calendar_sunday_short') . '</b></td>'; break;
+                    }
+                }?>
         </tr>
-        <?php }
-        ?>
-        </tbody>
-    </table>
-<?php
-    }
-} else {
-?>
+    <tr>
+        <td><b><?php echo lang('calendar_tabular_thead_employee');?></b></td>
+        <?php for ($ii = 1; $ii <=$lastDay; $ii++) echo '<td><b>' . $ii . '</b></td>';?>
+    </tr>
+    <?php }
+    }?>
+  </tbody>
+</table>
+<?php } else { ?>
 <div class="container">
-    <div class="row"><div class="span12"></div></div>
-    <div class="row"><div class="span12"></div></div>
-    <div class="row">
-        <div class="span12 text-center">
-            <span style="font-size: 200px; line-height: 1em; color: #bd362f;">
-                <i class="mdi mdi-calendar-remove"></i>
-            </span>
-        </div>
-    </div>
+  <div class="row"><div class="span12"></div></div>
+  <div class="row"><div class="span12"></div></div>
+  <div class="row">
+      <div class="span12 text-center">
+        <span style="font-size: 200px; line-height: 1em; color: #bd362f;">
+            <i class="mdi mdi-calendar-remove"></i>
+        </span>
+      </div>
+  </div>
 </div>
 <?php } ?>
 
