@@ -139,8 +139,16 @@ $lang['users_employees_thead_lastname'] = '姓';
 $lang['users_employees_thead_email'] = 'E-mail';
 $lang['users_employees_thead_entity'] = '部门';
 
-$lang['users_reset_field_password'] = '密码';
-$lang['users_reset_button_reset'] = '重设';
+$lang['users_reset_field_password'] = 'Insert New Password';
+$lang['users_reset_button_reset'] = 'Confirm New Password';
+$lang['users_reset_button_cancel'] = 'Cancel';
+$lang['password_weak'] = 'Weak';
+$lang['password_fair'] = 'Fair';
+$lang['password_strong'] = 'Strong';
+$lang['password_very_strong'] = 'Very Strong';
+
+
+
 
 $lang['users_export_title'] = '用户列表';
 $lang['users_export_thead_id'] = '编号';
