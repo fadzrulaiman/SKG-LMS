@@ -9,33 +9,79 @@
 CI_Controller::get_instance()->load->helper('language');
 $this->lang->load('menu', $language);?>
 
-<?php if ($this->config->item('ldap_enabled') === FALSE) { ?>
-<div id="frmChangeMyPwd" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="changePasswordLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<?php if ($this->config->item('ldap_enabled') === FALSE): ?>
+<div id="frmChangeMyPwd" class="modal hide fade" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                <h3 class="modal-title" id="changePasswordLabel"><?php echo lang('menu_password_popup_title'); ?></h3>
+                <h3 id="modalLabel"><?php echo lang('menu_password_popup_title'); ?></h3>
             </div>
             <div class="modal-body" id="frmChangeMyPwdBody">
-                <img src="<?php echo base_url(); ?>assets/images/loading.gif" alt="Loading...">
+                <div class="loading-container">
+                    <img src="<?php echo base_url(); ?>assets/images/loading.gif" alt="Loading">
+                </div>
             </div>
         </div>
     </div>
+
+    <style>
+    .modal-header {
+        background-color: #f7f7f7;
+        padding: 15px;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .modal-header .close {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #000;
+        opacity: 0.5;
+    }
+
+    .modal-header .close:hover {
+        color: #000;
+        opacity: 1;
+    }
+
+    .modal-header h3 {
+        margin: 0;
+        font-size: 1.5rem;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .loading-container {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .loading-container img {
+        width: 50px;
+        height: 50px;
+    }
+    </style>
+
 </div>
 
 <script type="text/javascript">
-    $(function() {
-        // Popup change password
-        $("#cmdChangePassword").click(function() {
-            $("#frmChangeMyPwd").modal('show');
-            $("#frmChangeMyPwdBody").load('<?php echo base_url(); ?>users/reset/<?php echo $user_id; ?>');
-        });
+$(function() {
+    // Initialize modal
+    $("#frmChangeMyPwd").modal({
+        show: false, // Do not show it initially
+        backdrop: 'static', // Disable clicking on the backdrop to close
+        keyboard: false // Disable closing with the keyboard
     });
+
+    // Popup change password
+    $("#cmdChangePassword").click(function() {
+        $("#frmChangeMyPwd").modal('show');
+        $("#frmChangeMyPwdBody").load('<?php echo base_url(); ?>users/reset/<?php echo $user_id; ?>');
+    });
+});
 </script>
-<?php } ?>
+<?php endif; ?>
 
 <div id="wrap">
     <div class="navbar navbar-inverse navbar-fixed-top">
