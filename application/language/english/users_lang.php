@@ -139,8 +139,9 @@ $lang['users_employees_thead_lastname'] = 'Last Name';
 $lang['users_employees_thead_email'] = 'E-mail';
 $lang['users_employees_thead_entity'] = 'Department';
 
-$lang['users_reset_field_password'] = 'Password';
-$lang['users_reset_button_reset'] = 'Reset';
+$lang['users_reset_field_password'] = 'Insert New Password';
+$lang['users_reset_button_reset'] = 'Confirm New Password';
+$lang['users_reset_button_cancel'] = 'Cancel';
 
 $lang['users_export_title'] = 'List of users';
 $lang['users_export_thead_id'] = 'ID';
