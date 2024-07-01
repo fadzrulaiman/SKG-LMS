@@ -238,7 +238,7 @@ class Extra extends CI_Controller {
                 'Firstname' => $user['firstname'],
                 'Lastname' => $user['lastname'],
                 'Date' => $startdate,
-                'Duration-Day(s)' => $this->input->post('duration'),
+                'Duration' => $this->input->post('duration'),
                 'Cause' => $this->input->post('cause'),
                 'UrlAccept' => $acceptUrl,
                 'UrlReject' => $rejectUrl

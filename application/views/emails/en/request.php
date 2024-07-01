@@ -38,7 +38,7 @@
                         <td style="border: 1px solid #e0e0e0; padding: 10px;">{Type}</td>
                     </tr>
                     <tr>
-                        <td style="border: 1px solid #e0e0e0; padding: 10px; font-weight: bold;">Duration-Day(s)</td>
+                        <td style="border: 1px solid #e0e0e0; padding: 10px; font-weight: bold;">Duration</td>
                         <td style="border: 1px solid #e0e0e0; padding: 10px;">{Duration}</td>
                     </tr>
                     <tr>

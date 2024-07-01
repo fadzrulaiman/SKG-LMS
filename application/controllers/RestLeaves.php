@@ -331,7 +331,7 @@ class RestLeaves extends MY_RestController {
             'StartDateType' => $lang_mail->line($leave['startdatetype']),
             'EndDateType' => $lang_mail->line($leave['enddatetype']),
             'Type' => $this->types_model->getName($leave['type']),
-            'Duration-Day(s)' => $leave['duration'],
+            'Duration' => $leave['duration'],
             'Balance' => $this->leaves_model->getLeavesTypeBalanceForEmployee($leave['employee'] , $leave['type_name'], $leave['startdate']),
             'Reason' => $leave['cause'],
             'BaseUrl' => $this->config->base_url(),

@@ -147,7 +147,7 @@ class Overtime extends CI_Controller {
             'Firstname' => $employee['firstname'],
             'Lastname' => $employee['lastname'],
             'Date' => $startdate,
-            'Duration-Day(s)' => $extra['duration'],
+            'Duration' => $extra['duration'],
             'Cause' => $extra['cause']
         );
 
