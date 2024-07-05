@@ -6,7 +6,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 
 // Get all departments
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-  $query = "SELECT * FROM public_holidays";
+  $query = "SELECT * FROM dayoffs";
   $result = mysqli_query($conn, $query);
   $departments = array();
 
