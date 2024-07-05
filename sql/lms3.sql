@@ -598,7 +598,8 @@ CREATE TABLE `users` (
   `organization` int(11) DEFAULT 0 COMMENT 'Entity where the employee has a position',
   `contract` int(11) DEFAULT NULL COMMENT 'Contract of the employee',
   `position` int(11) DEFAULT NULL COMMENT 'Position of the employee',
-  `datehired` date DEFAULT NULL COMMENT 'Date hired / Started',
+  `location` int(11) DEFAULT NULL COMMENT 'Location of the employee',
+  `employmentdate` date DEFAULT NULL COMMENT 'Employment Date / Started',
   `identifier` varchar(64) NOT NULL COMMENT 'Internal/company identifier',
   `language` varchar(5) NOT NULL DEFAULT 'en' COMMENT 'Language ISO code',
   `ldap_path` varchar(1024) DEFAULT NULL COMMENT 'LDAP Path for complex authentication schemes',
@@ -614,30 +615,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `manager`, `country`, `organization`, `contract`, `position`, `datehired`, `identifier`, `language`, `ldap_path`, `active`, `timezone`, `calendar`, `random_hash`, `user_properties`, `picture`) VALUES
-(1, 'Super ', 'Admin', 'SA', 'superadmin@email.com', '$2a$08$7lz6h2QY9PqLJvUy6RhwfusbPecUMaQhaQQZA.uOsaMtDAxmXkBvG', 8, 1, NULL, 0, 0, 1, '2000-01-01', 'Super Admin', 'en', NULL, 1, NULL, NULL, '5g5VUm5ZKf5TkK08yMtuKxe5', NULL, NULL),
-(2, 'Tan Min', 'Choon', 'Tan', 'tan@email.com', '$2a$08$aTD1rNlnseRXem/h0G.yY./b4jdGKQhab/XARTiDKsm.swKXJxTZi', 2, 2, NULL, 1, 3, 3, '2024-01-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'n3vgzEPLRrZAL5npJkygzTYk', NULL, NULL),
-(3, 'Romina Ewol', 'Mujie', 'Romina', 'romina@email.com', '$2a$08$juHi60YUCon.ow2KlluBeuNv1Qop.xDsxvjquz3H4gC8XZsMW3.qe', 2, 2, NULL, 1, 1, 2, '2024-02-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'ORiMJMB-4-ex6GoQDxR6zT78', NULL, NULL),
-(4, 'Teo Tiong ', 'Tze', 'Megan', 'megan@email.com', '$2a$08$UcJPtjOftib3DLMN/zlkf.73c/VdYZ.0ZqirUetcrDOE.dqv3uUAe', 2, 2, NULL, 1, 1, 2, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'F5RX9fIXM64R2DB_1yiNsvyj', NULL, NULL),
-(5, 'Poong Tchu ', 'Chuan', 'Sam', 'sam@email.com', '$2a$08$4oFRUKt1xDEygn8uXwbduuVSw0cpC7lpw82KvSf/rYGcsTh96r7bC', 2, 2, NULL, 1, 1, 2, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'JD9JmrSp6m-XspQdJX58Harh', NULL, NULL),
-(6, 'Jasneh', 'Abdullah', 'Jasneh', 'jasneh@email.com', '$2a$08$8Lr.KgWOT7WmIn8srb7hKO0cx5jl9PgckHD2wtep/8krQmduL6Zbi', 2, 2, NULL, 1, 1, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'Wg5BOARB2BGZHLH_WIoA87IM', NULL, NULL),
-(7, 'Siti Khadizah', 'Waly', 'siti', 'siti@email.com', '$2a$08$Hv3Zy.E/61gedg5dOmTDZO0N.nVyir23EwO/mADGPJdQhmxat0LOu', 2, 2, NULL, 1, 3, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'zKKJkjoGtsOa2Hl0fmhaDiQR', NULL, NULL),
-(8, 'Rindey', 'Jlee', 'rindey', 'rindey@email.com', '$2a$08$T6MtlFX0J3ST403IwKe63.HHyxfcGwD/9vnsdYE4kIgMxVWemFeWy', 2, 2, NULL, 1, 4, 1, NULL, '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'z6nhkUUW8nnxncAoIVH3vojS', NULL, NULL),
-(9, 'Teo', 'Ricky', 'ricky', 'ricky@email.com', '$2a$08$QLssNuK9TydUSiu8xYL9iea00t8lpvIflIYlHVFU87/CUr2lInNH6', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '25LGfH1XqFHxYgs2x6a6d2Bh', NULL, NULL),
-(10, 'Georgey', 'Resot', 'georgey', 'georgey@emai.com', '$2a$08$zq5wVBNGbG1d0Kt0a7LrBOfAxEmXgDDKAYUTlhLCPKh9ptonxY7JK', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '0CHUrdzRDC_U9dwQok-o5LMe', NULL, NULL),
-(11, 'Melinda Lee', 'Yen Fen', 'melinda', 'melinda@email.com', '$2a$08$jxuFpzNP/0nGbJyzXsm0eO0Fchc17ZsvJis/Sm20RULB623gq3puS', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'HVIu6_mwSeteakLGjAHVsEo1', NULL, NULL),
-(12, 'Ruzaini ', 'Mohd Dalin', 'ruzaini', 'ruzaini', '$2a$08$62RHamLJVTTdJ9E7T.0OLucyJ.gJ/AIvdjKmtcxEaRGzfNjMEpO2C', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '9OFOq4aTEU7U-9lgTzq2cPxX', NULL, NULL),
-(13, 'Zareena Hanis', 'Red', 'zareena', 'zareena@email.com', '$2a$08$cppY6RQLDK5OQYZZHs2vZ.S/OAv7hvLWBmIJQUfMX6PHdo5FDZlw6', 2, 2, NULL, 1, 3, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'ir-6RbviPFYAAma_kEwieAG5', NULL, NULL),
-(14, 'Ezhan Efizi', 'Nafs', 'ezhan', 'ezhan@email.com', '$2a$08$n8l/lmR.AnLLrXbdyr5Js.Eia1sgvhA7oVOlsg1Ot9a6BvrX9XiwK', 2, 2, NULL, 1, 3, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'SiD4PO2oQ2vX8aor2GXtGJOC', NULL, NULL),
-(15, 'Nurliah', 'Mohd Jaafar', 'nurliah', 'nurliah@email.com', '$2a$08$0XgiWvqTnK3D.38.0I3NyOodtzz9CCnExDsyeXnUPGfzmoHmZPBs6', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'm00U2hb9sgdL8Qi9cNu6pVf5', NULL, NULL),
-(16, 'Saidal ', 'M Jalil', 'saidal', 'saidal@email.com', '$2a$08$swBOHUm89ZDyJ0ABzCfZa.xsQDv4kBkUBLTYVm8qVmFKBhhS75MY2', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '6Ugq6MFg-8tzvskIVNKQFI15', NULL, NULL),
-(17, 'Poh Mei', 'Yean', 'poh', 'poh@email.com', '$2a$08$Z1w2Iy58AJp.n7F4UccVi.1.wTDiWBYLuq.V50RIv5RnCu17.sSn2', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'y4Yqd2P2Jw1KevsOqPlU8nzT', NULL, NULL),
-(18, 'Racheal Albert', 'Yeap', 'racheal', 'racheal@email.com', '$2a$08$ybMI3inbkeD5Xexm7AdOOOLe.Mla239oa9zX8me4Hk/EMDiqg6ncm', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'UI4Mi-TWg_5dr3cdqBpzuYAG', NULL, NULL),
-(19, 'Azhad', 'Muhammad', 'azhad', 'azhad@email.com', '$2a$08$TGmmM8/YVxdxzqED0ARvYOY6JYJYcc1GIsEbBneVwYpzk63sjgEo2', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'RxCoIlh6kg6ZWiuO_vqxuMns', NULL, NULL),
-(20, 'Sean Casey', 'Linggian', 'sean', 'sean@email.com', '$2a$08$rHhGzHfVkuhbYkCfpybSzO6NY7He6g0Ak9z77UA/VW9Mj62H.SGLq', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'iUQxGhpIbl_cCHO4J1UFXX0i', NULL, NULL),
-(21, 'Natasha', 'Mohd Zulk', 'natasha', 'natasha@email.com', '$2a$08$Q5aTeJfG2PoiCsxRnw4CSOgZZ0lIbytCFDeIjZ9mRYIlPb27NO4N.', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, '9Q-uPEAmIc7C6Jgr7NlYrqFd', NULL, NULL),
-(22, 'Fadzrul Aiman', 'Madzlan', 'fadzrul', 'fadzrul@email.com', '$2a$08$1NxyYcjGA.sNSou91nLcb.WoTogt9NGxhzs.vrotQPs9Rc.Mw3pme', 2, 2, NULL, 1, 4, 1, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'a1-c8egkNefNQ-6md_q52UZo', NULL, NULL),
-(23, 'hr', 'personnel', 'hr', 'hr@email.com', '$2a$08$U5zQXiTf4stBZX/Vy.D9leqYLjdf4T9t8wRV18nL8v5gATvk1uBOC', 3, 27, NULL, 2, 4, 2, '2024-04-01', '', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'hTFToSnemWDv3shcx03xKbrR', NULL, NULL);
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `manager`, `country`, `organization`, `contract`, `position`, `location`, `employmentdate`, `identifier`, `language`, `ldap_path`, `active`, `timezone`, `calendar`, `random_hash`, `user_properties`, `picture`) VALUES
+(1, 'Super ', 'Admin', 'SA', 'superadmin@email.com', '$2a$08$7lz6h2QY9PqLJvUy6RhwfusbPecUMaQhaQQZA.uOsaMtDAxmXkBvG', 1, 1, NULL, 0, 0, 1, NULL, '2000-01-01', 'Super Admin', 'en', NULL, 1, NULL, NULL, '5g5VUm5ZKf5TkK08yMtuKxe5', NULL, NULL),
+(2, 'HR', 'Administrator', 'hr', 'hr@email.com', '$2a$08$FuNqpgbyknoztrkBYcWWO.XLpsYSmbNQow3zS7m1FOZgoCWo9LJv6', 3, 2, NULL, 60, 3, 2, 1, '2000-05-01', 'HR', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'HSDvZh_nopJDvekzoSkFQOug', NULL, NULL);
 
 --
 -- Indexes for dumped tables

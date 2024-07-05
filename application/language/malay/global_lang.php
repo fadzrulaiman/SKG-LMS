@@ -82,15 +82,16 @@ $lang['Morning'] = 'Pagi';
 $lang['Afternoon'] = 'Petang';
 $lang['today'] = 'hari ini';
 
-$lang['identifier'] = 'pengenalan';
-$lang['firstname'] = 'nama pertama';
-$lang['lastname'] = 'nama keluarga';
-$lang['datehired'] = 'tarikh diupah';
-$lang['department'] = 'jabatan';
-$lang['position'] = 'jawatan';
-$lang['contract'] = 'kontrak';
-$lang['day off'] = 'cuti';
-$lang['leave'] = 'cuti';
+$lang['identifier'] = 'Pengenalan';
+$lang['fullname'] = 'Nama Penuh';
+$lang['firstname'] = 'Nama Pertama';
+$lang['lastname'] = 'Nama Terakhir';
+$lang['employmentdate'] = 'Tarikh Bekerja';
+$lang['department'] = 'Jabatan';
+$lang['position'] = 'Jawatan';
+$lang['contract'] = 'Kontrak';
+$lang['day off'] = 'Hari Cuti';
+$lang['leave'] = 'Cuti';
 
 $lang['All'] = 'Semua';
 $lang['OK'] = 'OK';

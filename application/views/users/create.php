@@ -199,11 +199,11 @@ echo form_open('users/create', $attributes); ?>
 
 <div class="row">
     <div class="span4">
-        <input type="hidden" name="datehired" id="datehired" />
+        <input type="hidden" name="employmentdate" id="employmentdate" />
         <div class="control-group">
-            <label class="control-label" for="viz_datehired"><?php echo lang('users_create_field_hired');?></label>
+            <label class="control-label" for="viz_employmentdate"><?php echo lang('users_create_field_hired');?></label>
             <div class="controls">
-                <input type="text" id="viz_datehired" name="viz_datehired" />
+                <input type="text" id="viz_employmentdate" name="viz_employmentdate" />
             </div>
         </div>
     </div>
@@ -548,13 +548,14 @@ $(function() {
     <?php }?>
     $("#lblLoginAlert").alert();
 
-    $("#viz_datehired").datepicker({
+    $("#viz_employmentdate").datepicker({
         format: '<?php echo lang('global_date_js_format');?>',
         language: "<?php echo $language_code;?>",
         startDate: "01/01/1970",
         autoclose: true
     }).on('changeDate', function(e) {
-        $('#datehired').val(e.format('yyyy-mm-dd'));
+        var date = e.format('yyyy-mm-dd'); // Format the date for the hidden input field
+        $('#datehired').val(date);
     });
 
     //Transform SELECT tags in richer controls

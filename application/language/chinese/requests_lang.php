@@ -34,6 +34,7 @@ $lang['requests_collaborators_thead_link_balance'] = '休假平衡点';
 $lang['requests_collaborators_thead_link_presence'] = '签署报告';
 $lang['requests_collaborators_thead_link_year'] = '年历';
 $lang['requests_collaborators_thead_link_create_leave'] = '建立此部属休假申请表';
+$lang['requests_collaborators_thead_fullname'] = 'Full Name';
 $lang['requests_collaborators_thead_firstname'] = '名';
 $lang['requests_collaborators_thead_lastname'] = '姓';
 $lang['requests_collaborators_thead_email'] = 'E-mail';

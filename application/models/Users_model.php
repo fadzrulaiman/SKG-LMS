@@ -218,8 +218,8 @@ class Users_model extends CI_Model {
         if ($this->input->post('location') != NULL && $this->input->post('location') != '') {
             $data['location'] = $this->input->post('location');
         }
-        if ($this->input->post('datehired') != NULL && $this->input->post('datehired') != '') {
-            $data['datehired'] = $this->input->post('datehired');
+        if ($this->input->post('employmentdate') != NULL && $this->input->post('employmentdate') != '') {
+            $data['employmentdate'] = $this->input->post('employmentdate');
         }
 
         if ($this->config->item('ldap_basedn_db')!==FALSE) {
@@ -253,7 +253,7 @@ class Users_model extends CI_Model {
      * @param int $contract Id of the contract or NULL
      * @param int $position Id of the position or NULL
      * @param int $location Id of the location or NULL
-     * @param date $datehired Date of hiring or NULL
+     * @param date $employmentdate Date of hiring or NULL
      * @param string $identifier Internal identifier or NULL
      * @param string $language language code or NULL
      * @param string $timezone timezone or NULL
@@ -272,7 +272,7 @@ class Users_model extends CI_Model {
             $contract = NULL,
             $position = NULL,
             $location = NULL,
-            $datehired = NULL,
+            $employmentdate = NULL,
             $identifier = NULL,
             $language = NULL,
             $timezone = NULL,
@@ -298,7 +298,7 @@ class Users_model extends CI_Model {
         if (isset($contract)) $this->db->set('contract', $contract);
         if (isset($position)) $this->db->set('position', $position);
         if (isset($location)) $this->db->set('location', $location);
-        if (isset($datehired)) $this->db->set('datehired', $datehired);
+        if (isset($employmentdate)) $this->db->set('employmentdate', $employmentdate);
         if (isset($identifier)) $this->db->set('identifier', $identifier);
         if (isset($language)) $this->db->set('language', $language);
         if (isset($timezone)) $this->db->set('timezone', $timezone);
@@ -372,8 +372,8 @@ class Users_model extends CI_Model {
         if ($this->input->post('location') != NULL && $this->input->post('location') != '') {
             $data['location'] = $this->input->post('location');
         }
-        if ($this->input->post('datehired') != NULL && $this->input->post('datehired') != '') {
-            $data['datehired'] = $this->input->post('datehired');
+        if ($this->input->post('employmentdate') != NULL && $this->input->post('employmentdate') != '') {
+            $data['employmentdate'] = $this->input->post('employmentdate');
         }
         if ($this->config->item('ldap_basedn_db') !== FALSE) {
             $data['ldap_path'] = $this->input->post('ldap_path');
@@ -685,9 +685,9 @@ class Users_model extends CI_Model {
      * @param bool $children TRUE : include sub entities, FALSE otherwise
      * @param string $filterActive "all"; "active" (only), or "inactive" (only)
      * @param string $criterion1 "lesser" or "greater" (optional)
-     * @param string $date1 Date Hired (optional)
+     * @param string $date1 Employment Date (optional)
      * @param string $criterion2 "lesser" or "greater" (optional)
-     * @param string $date2 Date Hired (optional)
+     * @param string $date2 Employment Date (optional)
      * @return array record of users
      * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
@@ -698,7 +698,7 @@ class Users_model extends CI_Model {
                 . ' users.lastname as lastname,'
                 . ' users.email as email,'
                 . ' users.identifier as identifier,'
-                . ' users.datehired as datehired,'
+                . ' users.employmentdate as employmentdate,'
                 . ' positions.name as position,'
                 . ' locations.name as location,'
                 . ' organization.name as entity,'
@@ -736,11 +736,11 @@ class Users_model extends CI_Model {
 
         if (!is_null($criterion1) && !is_null($date1) && $date1!="empty" && $date1!="undefined") {
             $criterion1 = ($criterion1 == "greater"?">":"<");
-            $this->db->where("users.datehired " . $criterion1 . " STR_TO_DATE('" . $date1 . "', '%Y-%m-%d')");
+            $this->db->where("users.employmentdate " . $criterion1 . " STR_TO_DATE('" . $date1 . "', '%Y-%m-%d')");
         }
         if (!is_null($criterion2) && !is_null($date2) && $date2!="empty" && $date2!="undefined") {
             $criterion2 = ($criterion2 == "greater"?">":"<");
-            $this->db->where("users.datehired " . $criterion2 . " STR_TO_DATE('" . $date2 . "', '%Y-%m-%d')");
+            $this->db->where("users.employmentdate " . $criterion2 . " STR_TO_DATE('" . $date2 . "', '%Y-%m-%d')");
         }
 
         return $this->db->get()->result();

@@ -33,6 +33,7 @@ $lang['requests_collaborators_thead_link_balance'] = 'Baki Cuti';
 $lang['requests_collaborators_thead_link_presence'] = 'Laporan Kehadiran';
 $lang['requests_collaborators_thead_link_year'] = 'Kalendar Tahunan';
 $lang['requests_collaborators_thead_link_create_leave'] = 'Buat permintaan cuti bagi pihak bawahan ini';
+$lang['requests_collaborators_thead_fullname'] = 'Nama Penuh';
 $lang['requests_collaborators_thead_firstname'] = 'Nama Pertama';
 $lang['requests_collaborators_thead_lastname'] = 'Nama Akhir';
 $lang['requests_collaborators_thead_email'] = 'E-mel';

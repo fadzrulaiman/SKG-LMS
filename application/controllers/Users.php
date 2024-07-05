@@ -158,7 +158,7 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('entity', lang('users_edit_field_entity'), 'strip_tags');
         $this->form_validation->set_rules('position', lang('users_edit_field_position'), 'strip_tags');
         $this->form_validation->set_rules('location', lang('users_edit_field_location'), 'strip_tags');
-        $this->form_validation->set_rules('datehired', lang('users_edit_field_hired'), 'strip_tags');
+        $this->form_validation->set_rules('employmentdate', lang('users_edit_field_hired'), 'strip_tags');
         $this->form_validation->set_rules('identifier', lang('users_edit_field_identifier'), 'strip_tags');
         $this->form_validation->set_rules('language', lang('users_edit_field_language'), 'strip_tags');
         $this->form_validation->set_rules('timezone', lang('users_edit_field_timezone'), 'strip_tags');
@@ -296,7 +296,7 @@ class Users extends CI_Controller {
         $this->form_validation->set_rules('position', lang('users_create_field_position'), 'strip_tags');
         $this->form_validation->set_rules('location', lang('users_create_field_location'), 'strip_tags');
         $this->form_validation->set_rules('entity', lang('users_create_field_entity'), 'strip_tags');
-        $this->form_validation->set_rules('datehired', lang('users_create_field_hired'), 'strip_tags');
+        $this->form_validation->set_rules('employmentdate', lang('users_create_field_hired'), 'strip_tags');
         $this->form_validation->set_rules('identifier', lang('users_create_field_identifier'), 'strip_tags');
         $this->form_validation->set_rules('language', lang('users_create_field_language'), 'strip_tags');
         $this->form_validation->set_rules('timezone', lang('users_create_field_timezone'), 'strip_tags');

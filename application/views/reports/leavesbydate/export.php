@@ -37,9 +37,8 @@ $users = $this->organization_model->allEmployees($entity, $children);
 $result = array();
 foreach ($users as $user) {
     $result[$user->id]['Employee ID'] = $user->id;
-    $result[$user->id]['First Name'] = $user->firstname;
-    $result[$user->id]['Last Name'] = $user->lastname;
-    $result[$user->id]['Date Hired'] = empty($user->datehired) ? '' : (new DateTime($user->datehired))->format($this->lang->line('global_date_format'));
+    $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
+    $result[$user->id]['Employment Date'] = empty($user->employmentdate) ? '' : (new DateTime($user->employmentdate))->format($this->lang->line('global_date_format'));
     $result[$user->id]['Department'] = $user->department;
     $result[$user->id]['Position'] = $user->position;
     $result[$user->id]['Contract'] = $user->contract;
@@ -63,7 +62,7 @@ foreach ($users as $user) {
 
 $max = 0;
 $line = 2;
-$i18n = array("id", "firstname", "lastname", "datehired", "department", "position", "contract");
+$i18n = array("id", "firstname", "lastname", "employmentdate", "department", "position", "contract");
 foreach ($result as $user_id => $row) {
     $index = 1;
     foreach ($row as $key => $value) {
@@ -94,8 +93,8 @@ foreach ($result as $user_id => $row) {
 
         // Iterate over each leave requests
         foreach ($leave_requests[$user_id] as $request) {
-            $sheet->setCellValue('A' . $line, $request['startdate'] . ' (' . lang($request['startdatetype']). ')');
-            $sheet->setCellValue('B' . $line, $request['enddate'] . ' (' . lang($request['enddatetype']). ')');
+            $sheet->setCellValue('A' . $line, $request['startdate']);
+            $sheet->setCellValue('B' . $line, $request['enddate']);
             $sheet->setCellValue('C' . $line, $request['type']);
             $sheet->setCellValue('D' . $line, $request['duration']);
             $line++;

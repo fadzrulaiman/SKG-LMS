@@ -23,9 +23,8 @@ $types = $this->types_model->getTypes();
 $users = $this->organization_model->allEmployees($_GET['entity'], $include_children);
 foreach ($users as $user) {
     $result[$user->id]['Employee ID'] = $user->id;
-    $result[$user->id]['First Name'] = $user->firstname;
-    $result[$user->id]['Last Name'] = $user->lastname;
-    $result[$user->id]['Date Hired'] = $user->datehired;
+    $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
+    $result[$user->id]['Employment Date'] = $user->employmentdate;
     $result[$user->id]['Department'] = $user->department;
     $result[$user->id]['Position'] = $user->position;
     $result[$user->id]['Location'] = $user->location;
@@ -49,7 +48,7 @@ foreach ($users as $user) {
 
 $max = 0;
 $line = 2;
-$i18n = array("id", "firstname", "lastname", "datehired", "department", "position", "location", "contract");
+$i18n = array("id", "firstname", "lastname", "employmentdate", "department", "position", "location", "contract");
 foreach ($result as $row) {
     $index = 1;
     foreach ($row as $key => $value) {

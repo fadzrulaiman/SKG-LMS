@@ -38,14 +38,14 @@
                   <button id="cmdInactive" type="button" class="btn"><?php echo lang('hr_employees_button_inactive');?></button>
                 </div>
                 &nbsp;
-                <?php echo lang('hr_employees_thead_datehired');?>
+                <?php echo lang('hr_employees_thead_employmentdate');?>
                 <div class="input-prepend input-append">
                     <div class="btn-group">
                         <div class="btn-group" data-toggle="buttons-radio">
                             <button id="cmdGreater1" type="button" class="btn active"><i class="mdi mdi-chevron-right"></i></button>
                             <button id="cmdLesser1" type="button" class="btn"><i class="mdi mdi-chevron-left"></i></button>
                         </div>
-                        <input type="text" id="viz_datehired1" class="input-small" readonly />
+                        <input type="text" id="viz_employmentdate1" class="input-small" readonly />
                         <button id="cmdResetDate1" type="button" class="btn"><i class="mdi mdi-close"></i></button>
                     </div>
                 </div>
@@ -56,12 +56,12 @@
                             <button id="cmdGreater2" type="button" class="btn"><i class="mdi mdi-chevron-right"></i></button>
                             <button id="cmdLesser2" type="button" class="btn active"><i class="mdi mdi-chevron-left"></i></button>
                         </div>
-                        <input type="text" id="viz_datehired2" class="input-small" readonly />
+                        <input type="text" id="viz_employmentdate2" class="input-small" readonly />
                         <button id="cmdResetDate2" type="button" class="btn"><i class="mdi mdi-close"></i></button>
                     </div>
                 </div>
-                <input type="hidden" name="datehired1" id="datehired1" />
-                <input type="hidden" name="datehired2" id="datehired2" />
+                <input type="hidden" name="employmentdate1" id="employmentdate1" />
+                <input type="hidden" name="employmentdate2" id="employmentdate2" />
             </div>
         </div>
         <div class="row-fluid">
@@ -107,7 +107,7 @@
                             <th><?php echo lang('hr_employees_thead_contract');?></th>
                             <th><?php echo lang('hr_employees_thead_manager');?></th>
                             <th><?php echo lang('hr_employees_thead_identifier');?></th>
-                            <th><?php echo lang('hr_employees_thead_datehired');?></th>
+                            <th><?php echo lang('hr_employees_thead_employmentdate');?></th>
                             <th><?php echo lang('hr_employees_thead_position');?></th>
                         </tr>
                     </thead>
@@ -348,8 +348,8 @@ function select_entity() {
 }
 
 function refreshDataTable() {
-    date1 = $("#datehired1").val()!=""?$("#datehired1").val():"empty";
-    date2 = $("#datehired2").val()!=""?$("#datehired2").val():"empty";
+    date1 = $("#employmentdate1").val()!=""?$("#employmentdate1").val():"empty";
+    date2 = $("#employmentdate2").val()!=""?$("#employmentdate2").val():"empty";
     filterDate = state1 + "/" + date1 + "/" + state2 + "/" + date2;
     $('#frmModalAjaxWait').modal('show');
     oTable.ajax.url('<?php echo base_url();?>hr/employees/entity/' + entity + '/' + includeChildren + '/' + filterActive + '/' + filterDate)
@@ -602,7 +602,7 @@ $(function () {
                 { data: "contract" },
                 { data: "manager_name" },
                 { data: "identifier" },
-                { data: 'datehired',
+                { data: 'employmentdate',
                     render: {
                         display: "display",
                         sort: "timestamp"
@@ -837,29 +837,29 @@ $(function () {
         window.location = '<?php echo base_url();?>hr/employees/export/' + entity + '/' + includeChildren + '/' + filterActive + '/' + filterDate;
     });
 
-    //Filter on date hired
-    $("#viz_datehired1").datepicker({
+    //Filter on Employment Date
+    $("#viz_employmentdate1").datepicker({
         changeMonth: true,
         changeYear: true,
         dateFormat: '<?php echo lang('global_date_js_format');?>',
         altFormat: "yy-mm-dd",
-        altField: "#datehired1",
+        altField: "#employmentdate1",
         onSelect: function() {
             refreshDataTable();
         }
     }, $.datepicker.regional['<?php echo $language_code;?>']);
-    $("#viz_datehired2").datepicker({
+    $("#viz_employmentdate2").datepicker({
         changeMonth: true,
         changeYear: true,
         dateFormat: '<?php echo lang('global_date_js_format');?>',
         altFormat: "yy-mm-dd",
-        altField: "#datehired2",
+        altField: "#employmentdate2",
         onSelect: function() {
             refreshDataTable();
         }
     }, $.datepicker.regional['<?php echo $language_code;?>']);
 
-    //Handle filters on date hired field
+    //Handle filters on Employment Date field
     $("#cmdLesser1").click(function() {
         state1="lesser";
         refreshDataTable();
@@ -877,13 +877,13 @@ $(function () {
         refreshDataTable();
     });
     $("#cmdResetDate1").click(function() {
-        $("#viz_datehired1").val("");
-        $("#datehired1").val("");
+        $("#viz_employmentdate1").val("");
+        $("#employmentdate1").val("");
         refreshDataTable();
     });
     $("#cmdResetDate2").click(function() {
-        $("#viz_datehired2").val("");
-        $("#datehired2").val("");
+        $("#viz_employmentdate2").val("");
+        $("#employmentdate2").val("");
         refreshDataTable();
     });
 });

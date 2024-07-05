@@ -732,7 +732,7 @@ msgstr "名"
 msgid "lastname"
 msgstr "姓"
 
-msgid "date hired"
+msgid "Employment Date"
 msgstr "到職日"
 
 msgid "department"
@@ -801,7 +801,7 @@ msgstr "管理者"
 msgid "Identifier"
 msgstr ""
 
-msgid "Date hired"
+msgid "Employment Date"
 msgstr "到職日"
 
 msgid "Position"
@@ -1421,7 +1421,7 @@ msgstr "資料名稱"
 msgid "My personal information"
 msgstr "我個人資料"
 
-msgid "Date hired/started"
+msgid "Employment Date/started"
 msgstr "到職日"
 
 msgid "Internal/Company Identifier"

@@ -1103,7 +1103,7 @@ class Api extends CI_Controller {
      *              @OA\Property(property="organization", type="integer", description="Entity where the employee has a position"),
      *              @OA\Property(property="contract", type="integer", description="Contract of the employee"),
      *              @OA\Property(property="position", type="integer", description="Position of the employee"),
-     *              @OA\Property(property="datehired", type="string", description="Date hired / Started"),
+     *              @OA\Property(property="employmentdate", type="string", description="Employment Date / Started"),
      *              @OA\Property(property="identifier", type="string", description="Internal/company identifier"),
      *              @OA\Property(property="language", type="string", description="Language ISO code"),
      *              @OA\Property(property="ldap_path", type="string", description="LDAP Path for complex authentication schemes"),
@@ -1177,8 +1177,8 @@ class Api extends CI_Controller {
                 if (!empty($this->input->input_stream('position'))) {
                     $data['position'] = $this->input->input_stream('position');
                 }
-                if (!empty($this->input->input_stream('datehired'))) {
-                    $data['datehired'] = $this->input->input_stream('datehired');
+                if (!empty($this->input->input_stream('employmentdate'))) {
+                    $data['employmentdate'] = $this->input->input_stream('employmentdate');
                 }
                 if (!empty($this->input->input_stream('identifier'))) {
                     $data['identifier'] = $this->input->input_stream('identifier');
@@ -1241,8 +1241,8 @@ class Api extends CI_Controller {
                 if (!empty($this->input->post('position'))) {
                     $data['position'] = $this->input->post('position');
                 }
-                if (!empty($this->input->post('datehired'))) {
-                    $data['datehired'] = $this->input->post('datehired');
+                if (!empty($this->input->post('employmentdate'))) {
+                    $data['employmentdate'] = $this->input->post('employmentdate');
                 }
                 if (!empty($this->input->post('identifier'))) {
                     $data['identifier'] = $this->input->post('identifier');
@@ -1310,7 +1310,7 @@ class Api extends CI_Controller {
      *              @OA\Property(property="organization", type="integer", description="Entity where the employee has a position"),
      *              @OA\Property(property="contract", type="integer", description="Contract of the employee"),
      *              @OA\Property(property="position", type="integer", description="Position of the employee"),
-     *              @OA\Property(property="datehired", type="string", description="Date hired / Started"),
+     *              @OA\Property(property="employmentdate", type="string", description="Employment Date / Started"),
      *              @OA\Property(property="identifier", type="string", description="Internal/company identifier"),
      *              @OA\Property(property="language", type="string", description="Language ISO code"),
      *              @OA\Property(property="ldap_path", type="string", description="LDAP Path for complex authentication schemes"),
@@ -1355,7 +1355,7 @@ class Api extends CI_Controller {
             $organization = $this->input->post('organization');
             $contract = $this->input->post('contract');
             $position = $this->input->post('position');
-            $datehired = $this->input->post('datehired');
+            $employmentdate = $this->input->post('employmentdate');
             $identifier = $this->input->post('identifier');
             $language = $this->input->post('language');
             $timezone = $this->input->post('timezone');
@@ -1389,7 +1389,7 @@ class Api extends CI_Controller {
             } else {
                 if ($this->users_model->isLoginAvailable($login)) {
                     $result = $this->users_model->insertUserByApi($firstname, $lastname, $login, $email, $password, $role,
-                        $manager, $organization, $contract, $position, $datehired, $identifier, $language, $timezone,
+                        $manager, $organization, $contract, $position, $employmentdate, $identifier, $language, $timezone,
                         $ldap_path, TRUE, $country, $calendar);
                     
                     if($sendEmail == TRUE) {
@@ -1774,7 +1774,7 @@ class Department {}
  *   @OA\Property(property="organization", type="integer", description="Entity where the employee has a position"),
  *   @OA\Property(property="contract", type="integer", description="Contract of the employee"),
  *   @OA\Property(property="position", type="integer", description="Position of the employee"),
- *   @OA\Property(property="datehired", type="string", description="Date hired / Started"),
+ *   @OA\Property(property="employmentdate", type="string", description="Employment Date / Started"),
  *   @OA\Property(property="identifier", type="string", description="Internal/company identifier"),
  *   @OA\Property(property="language", type="string", description="Language ISO code"),
  *   @OA\Property(property="ldap_path", type="string", description="LDAP Path for complex authentication schemes"),

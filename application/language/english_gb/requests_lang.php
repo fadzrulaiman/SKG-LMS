@@ -32,6 +32,7 @@ $lang['requests_collaborators_thead_link_balance'] = 'Leave Balance';
 $lang['requests_collaborators_thead_link_presence'] = 'Presence report';
 $lang['requests_collaborators_thead_link_year'] = 'Yearly calendar';
 $lang['requests_collaborators_thead_link_create_leave'] = 'Create a leave request in behalf of this subordinate';
+$lang['requests_collaborators_thead_fullname'] = 'Full Name';
 $lang['requests_collaborators_thead_firstname'] = 'First Name';
 $lang['requests_collaborators_thead_lastname'] = 'Last Name';
 $lang['requests_collaborators_thead_email'] = 'E-mail';

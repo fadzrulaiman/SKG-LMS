@@ -7,6 +7,50 @@
  */
 ?>
 
+<style>
+.filter-label {
+    margin-right: 10px;
+}
+
+.filter-label input {
+    margin-right: 5px;
+}
+
+.table-container {
+    margin-top: 20px;
+}
+
+#leaves_wrapper {
+    margin-top: 20px;
+}
+
+.action-icons i {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.modal-header h3 {
+    margin: 0;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_paginate {
+    margin: 10px 0;
+}
+
+#leaves thead th,
+#leaves tbody td {
+    text-align: center;
+    vertical-align: middle;
+}
+</style>
+
 <h2><?php echo lang('leaves_index_title');?> &nbsp;</h2>
 
 <?php echo $flash_partial_view;?>
@@ -17,11 +61,14 @@
             <?php echo lang('leaves_index_thead_type');?>
             <select name="cboLeaveType" id="cboLeaveType">
                 <option value="" selected></option>
-            <?php foreach ($types as $type): ?>
+                <?php foreach ($types as $type): ?>
+                <?php if ($type['id'] != 0): ?>
                 <option value="<?php echo $type['id']; ?>"><?php echo $type['name']; ?></option>
-            <?php endforeach ?>
+                <?php endif; ?>
+                <?php endforeach; ?>
             </select>
         </label>
+
     </div>
     <div class="span1">&nbsp;</div>
     <div class="span8">

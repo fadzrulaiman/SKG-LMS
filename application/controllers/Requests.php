@@ -652,14 +652,14 @@ public function leavebankaccept($id) {
      * Leave balance report limited to the subordinates of the connected manager
      * Status is submitted or accepted/rejected depending on the filter parameter.
      * @param int $dateTmp (Timestamp) date of report
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     * @autor Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function balance($dateTmp = NULL) {
         $this->auth->checkIfOperationIsAllowed('list_requests');
         $data = getUserContext($this);
         $this->lang->load('datatable', $this->language);
         $data['title'] = lang('requests_balance_title');
-    
+
         if ($dateTmp === NULL) {
             $refDate = date("Y-m-d");
             $data['isDefault'] = 1;
@@ -668,24 +668,27 @@ public function leavebankaccept($id) {
             $data['isDefault'] = 0;
         }
         $data['refDate'] = $refDate;
-    
+
         $this->load->model('types_model');
-        $data['types'] = $this->types_model->getTypes();
-    
+        $all_types = $this->types_model->getTypes();
+
+        // Filter out the type with id 0
+        $data['types'] = array_filter($all_types, function($type) {
+            return $type['id'] != 0;
+        });
+
         $result = array();
         $this->load->model('users_model');
         $users = $this->users_model->getCollaboratorsOfManager($this->user_id);
         foreach ($users as $user) {
-            $result[$user['id']]['identifier'] = $user['identifier'];
-            $result[$user['id']]['firstname'] = $user['firstname'];
-            $result[$user['id']]['lastname'] = $user['lastname'];
-            $date = new DateTime(is_null($user['datehired']) ? "" : $user['datehired']);
-            $result[$user['id']]['datehired'] = $date->format(lang('global_date_format'));
+            $result[$user['id']]['firstname'] = $user['firstname'] . ' ' . $user['lastname'];
+            $date = new DateTime(empty($user['employmentdate']) ? "0000-00-00" : $user['employmentdate']);
+            $result[$user['id']]['employmentdate'] = $date->format(lang('global_date_format'));
             $result[$user['id']]['position'] = $user['position_name'];
             foreach ($data['types'] as $type) {
                 $result[$user['id']][$type['name']] = '';
             }
-    
+
             $summary = $this->leaves_model->getLeaveBalanceForEmployee($user['id'], TRUE, $refDate);
             if (!is_null($summary) && count($summary) > 0) {
                 foreach ($summary as $key => $value) {
@@ -694,7 +697,7 @@ public function leavebankaccept($id) {
             }
         }
         $data['result'] = $result;
-    
+
         $this->load->view('templates/header', $data);
         $this->load->view('menu/index', $data);
         $this->load->view('requests/balance', $data);

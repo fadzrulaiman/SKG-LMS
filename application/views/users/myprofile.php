@@ -48,8 +48,8 @@
         <div class="row-fluid">
             <div class="span6"><strong><?php echo lang('users_myprofile_field_hired');?></strong></div>
             <div class="span6"><?php
-        if (!is_null($user['datehired'])) {
-            $date = new DateTime($user['datehired']);
+        if (!is_null($user['employmentdate'])) {
+            $date = new DateTime($user['employmentdate']);
             echo $date->format(lang('global_date_format'));            
         }
         ?></div>
