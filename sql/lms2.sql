@@ -743,7 +743,7 @@ CREATE TABLE `users` (
   `contract` int(11) DEFAULT NULL COMMENT 'Contract of the employee',
   `position` int(11) DEFAULT NULL COMMENT 'Position of the employee',
   `location` int(11) DEFAULT NULL COMMENT 'Location of the employee',
-  `datehired` date DEFAULT NULL COMMENT 'Date hired / Started',
+  `employmentdate` date DEFAULT NULL COMMENT 'Employment Date / Started',
   `identifier` varchar(64) NOT NULL COMMENT 'Internal/company identifier',
   `language` varchar(5) NOT NULL DEFAULT 'en' COMMENT 'Language ISO code',
   `ldap_path` varchar(1024) DEFAULT NULL COMMENT 'LDAP Path for complex authentication schemes',
@@ -759,7 +759,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `manager`, `country`, `organization`, `contract`, `position`, `location`, `datehired`, `identifier`, `language`, `ldap_path`, `active`, `timezone`, `calendar`, `random_hash`, `user_properties`, `picture`) VALUES
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `manager`, `country`, `organization`, `contract`, `position`, `location`, `employmentdate`, `identifier`, `language`, `ldap_path`, `active`, `timezone`, `calendar`, `random_hash`, `user_properties`, `picture`) VALUES
 (1, 'Super ', 'Admin', 'SA', 'superadmin@email.com', '$2a$08$7lz6h2QY9PqLJvUy6RhwfusbPecUMaQhaQQZA.uOsaMtDAxmXkBvG', 8, 1, NULL, 0, 0, 1, NULL, '2000-01-01', 'Super Admin', 'en', NULL, 1, NULL, NULL, '5g5VUm5ZKf5TkK08yMtuKxe5', NULL, NULL),
 (2, 'HR', 'Administrator', 'hr', 'hr@email.com', '$2a$08$FuNqpgbyknoztrkBYcWWO.XLpsYSmbNQow3zS7m1FOZgoCWo9LJv6', 3, 2, NULL, 1, 3, 2, 1, '2024-05-01', 'HR', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'HSDvZh_nopJDvekzoSkFQOug', NULL, NULL);
 

@@ -175,16 +175,16 @@ if (isset($_GET['source'])) {
 
 <div class="row">
     <div class="span4">
-        <input type="hidden" name="datehired" id="datehired" value="<?php
-            if (!is_null($users_item['datehired'])) {
-                $date = new DateTime($users_item['datehired']);
+        <input type="hidden" name="employmentdate" id="employmentdate" value="<?php
+            if (!is_null($users_item['employmentdate'])) {
+                $date = new DateTime($users_item['employmentdate']);
                 echo $date->format('Y-m-d');
             }?>" />
         <div class="control-group">
-            <label class="control-label" for="viz_datehired"><?php echo lang('users_edit_field_hired');?></label>
+            <label class="control-label" for="viz_employmentdate"><?php echo lang('users_edit_field_hired');?></label>
             <div class="controls">
-                <input type="text" id="viz_datehired" name="viz_datehired" value="<?php
-                if (!is_null($users_item['datehired'])) {
+                <input type="text" id="viz_employmentdate" name="viz_employmentdate" value="<?php
+                if (!is_null($users_item['employmentdate'])) {
                     echo $date->format(lang('global_date_format'));
                 }?>" />
             </div>
@@ -413,13 +413,13 @@ function select_location() {
 
 //Init datepicker for using an alternative field and format
 $(document).ready(function() {
-    $("#viz_datehired").datepicker({
+    $("#viz_employmentdate").datepicker({
         format: '<?php echo lang('global_date_js_format');?>',
         language: "<?php echo $language_code;?>",
         startDate: "01/01/1970",
         autoclose: true
     }).on('changeDate', function(e) {
-        $('#datehired').val(e.format('yyyy-mm-dd'));
+        $('#employmentdate').val(e.format('yyyy-mm-dd'));
     });
 
     //Transform SELECT tags in richer controls

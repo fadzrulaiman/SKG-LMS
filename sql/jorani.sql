@@ -388,7 +388,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `organization` int(11) DEFAULT 0 COMMENT 'Entity where the employee has a position',
   `contract` int(11) DEFAULT NULL COMMENT 'Contract of the employee',
   `position` int(11) DEFAULT NULL COMMENT 'Position of the employee',
-  `datehired` date DEFAULT NULL COMMENT 'Date hired / Started',
+  `employmentdate` date DEFAULT NULL COMMENT 'Employment Date / Started',
   `identifier` varchar(64) NOT NULL COMMENT 'Internal/company identifier',
   `language` varchar(5) NOT NULL DEFAULT 'en' COMMENT 'Language ISO code',
   `ldap_path` varchar(1024) DEFAULT NULL COMMENT 'LDAP Path for complex authentication schemes',
@@ -408,7 +408,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 -- Content of table `users`
 --
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `manager`, `country`, `organization`, `contract`, `position`, `datehired`, `identifier`, `language`, `random_hash`) VALUES
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `manager`, `country`, `organization`, `contract`, `position`, `employmentdate`, `identifier`, `language`, `random_hash`) VALUES
 (1, 'Super ', 'Admin', 'SA', 'superadmin@email.com', '$2a$08$SfQsJIBmvXUyehT.CUPSteBJgwHn0tY0y440SpgI15A5xUcwRBtdq', 8, 1, NULL, 0, 1, 1, '2000-01-01', 'Super Admin', 'en', '5g5VUm5ZKf5TkK08yMtuKxe5');
 
 --

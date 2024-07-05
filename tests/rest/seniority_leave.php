@@ -36,7 +36,7 @@ $days = (float) 1;  //Most of organizations use a complicated rule (eg. extra af
 //Type of leave (pick a number in the IDs defined in Jorani, eg http://localhost/jorani/leavetypes)
 $type = 1;      //You must use a dedicated leave type for seniority bonus for this script to work
 
-//Condition tested against date hired field ' - 365 day'
+//Condition tested against Employment Date field ' - 365 day'
 $condition = ' - 1 year';
 
 //Description of the credit line
@@ -55,14 +55,14 @@ $period = JoraniAPI::CURRENT_YEAR;
 
 //Connect to the REST API
 $api = new JoraniAPI($url, $user, $password);
-//Iterate on the employees list (datehired > $condition). Most of the time, last year.
+//Iterate on the employees list (employmentdate > $condition). Most of the time, last year.
 $floorDate = new DateTime(date('Y-m-d',strtotime(date("Y-m-d", time()) . $condition)));
 //Get the list of employees
 $employees = $api->getEmployees();
 
 foreach ($employees as $employee){
-    $datehired = new DateTime($employee->datehired);
-    if ($datehired < $floorDate) {
+    $employmentdate = new DateTime($employee->employmentdate);
+    if ($employmentdate < $floorDate) {
         echo "senior employee  #" . $employee->id . PHP_EOL;
         //Check if we already credited seniority entitled days for the current period
         $entitled_days = $api->getEntitledDaysListForEmployee($employee->id);

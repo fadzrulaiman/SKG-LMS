@@ -803,7 +803,7 @@ msgstr ""
 msgid "lastname"
 msgstr ""
 
-msgid "date hired"
+msgid "Employment Date"
 msgstr ""
 
 msgid "department"
@@ -875,7 +875,7 @@ msgstr ""
 msgid "Identifier"
 msgstr ""
 
-msgid "Date hired"
+msgid "Employment Date"
 msgstr ""
 
 msgid "Position"
@@ -1574,7 +1574,7 @@ msgstr ""
 msgid "My personal information"
 msgstr ""
 
-msgid "Date hired/started"
+msgid "Employment Date/started"
 msgstr ""
 
 msgid "Internal/Company Identifier"

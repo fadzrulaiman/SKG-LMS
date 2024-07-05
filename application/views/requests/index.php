@@ -36,8 +36,6 @@ if ($showAll == FALSE) {
                 class="filterStatus" <?php echo $disable;?>> &nbsp;<?php echo lang('Accepted');?></span> &nbsp;
         <span class="label label-warning"><input type="checkbox" checked id="chkRequested" class="filterStatus">
             &nbsp;<?php echo lang('Requested');?></span> &nbsp;
-        <span class="label label-warning"><input type="checkbox" checked id="chkleavebank" class="filterStatus">
-            &nbsp;<?php echo lang('Pending From HR');?></span> &nbsp;
         <span class="label label-important" style="background-color: #ff0000;"><input type="checkbox"
                 <?php echo $checked;?> id="chkRejected" class="filterStatus" <?php echo $disable;?>>
             &nbsp;<?php echo lang('Rejected');?></span> &nbsp;
@@ -139,7 +137,9 @@ if ($showAll == FALSE) {
                 <?php echo $startdate /*. ' (' . lang($request['startdatetype']). ')';*/ ?></td>
             <td data-order="<?php echo$tmpEndDate; ?>" class="text-center">
                 <?php echo $enddate /*. ' (' . lang($request['enddatetype']) . ')';*/ ?></td>
-            <td class="text-center"><?php echo $request['duration']; ?> Days</td>
+
+            <td class="text-center"><?php echo $request['duration']; ?></td>
+
             <td class="text-center"><?php echo $request['type_name']; ?></td>
             <?php
         switch ($request['status']) {

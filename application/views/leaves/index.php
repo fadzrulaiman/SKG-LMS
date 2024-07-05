@@ -43,7 +43,9 @@
     margin: 10px 0;
 }
 
-#leaves thead th, #leaves tbody td {
+
+#leaves thead th,
+#leaves tbody td {
     text-align: center;
     vertical-align: middle;
 }
@@ -60,10 +62,15 @@
             <select name="cboLeaveType" id="cboLeaveType">
                 <option value="" selected></option>
                 <?php foreach ($types as $type): ?>
+
+                <?php if ($type['id'] != 0): ?>
                 <option value="<?php echo $type['id']; ?>"><?php echo $type['name']; ?></option>
-                <?php endforeach ?>
+                <?php endif; ?>
+                <?php endforeach; ?>
+
             </select>
         </label>
+
     </div>
     <div class="span1">&nbsp;</div>
     <div class="span8">

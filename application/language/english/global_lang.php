@@ -73,17 +73,18 @@ $lang['global_link_doc_page_leave_balance_report'] = 'https://jorani.org/page-le
 
 $lang['Morning'] = 'Morning';
 $lang['Afternoon'] = 'Afternoon';
-$lang['today'] = 'today';
+$lang['today'] = 'Today';
 
-$lang['identifier'] = 'identifier';
-$lang['firstname'] = 'firstname';
-$lang['lastname'] = 'lastname';
-$lang['datehired'] = 'date hired';
-$lang['department'] = 'department';
-$lang['position'] = 'position';
-$lang['contract'] = 'contract';
-$lang['day off'] = 'day off';
-$lang['leave'] = 'leave';
+$lang['identifier'] = 'Identifier';
+$lang['fullname'] = 'Full Name';
+$lang['firstname'] = 'First Name';
+$lang['lastname'] = 'Last Name';
+$lang['employmentdate'] = 'Employment Date';
+$lang['department'] = 'Department';
+$lang['position'] = 'Position';
+$lang['contract'] = 'Contract';
+$lang['day off'] = 'Day Off';
+$lang['leave'] = 'Leave';
 
 $lang['All'] = 'All';
 $lang['OK'] = 'OK';

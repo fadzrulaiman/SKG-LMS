@@ -103,13 +103,14 @@ class Reports extends CI_Controller {
             $result[$user->id]['Employee ID'] = $user->id;
             $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
 
-    // Add a check for null or empty datehired
-    if (!empty($user->datehired)) {
-        $date = new DateTime($user->datehired);
-        $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));
+
+    // Add a check for null or empty employmentdate
+    if (!empty($user->employmentdate)) {
+        $date = new DateTime($user->employmentdate);
+        $result[$user->id]['Employment Date'] = $date->format(lang('global_date_format'));
     } else {
-        $result[$user->id]['Date Hired'] = ''; // Or any default value you prefer
-    }            $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));
+        $result[$user->id]['Employment Date'] = ''; // Or any default value you prefer
+    }            $result[$user->id]['Employment Date'] = $date->format(lang('global_date_format'));
             $result[$user->id]['Department'] = $user->department;
             $result[$user->id]['Position'] = $user->position;
             $result[$user->id]['Location'] = $user->location;
@@ -135,7 +136,7 @@ class Reports extends CI_Controller {
         $thead = '';
         $tbody = '';
         $line = 2;
-        $i18n = array("id", "firstname", "lastname", "datehired", "department", "position", "location", "contract");
+        $i18n = array("id", "firstname", "lastname", "employmentdate", "department", "position", "location", "contract");
         foreach ($result as $row) {
             $index = 1;
             $tbody .= '<tr>';
@@ -256,12 +257,12 @@ class Reports extends CI_Controller {
             $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
 
             
-            // Add a check for null or empty datehired
-            if (!empty($user->datehired)) {
-                $date = new DateTime($user->datehired);
-                $result[$user->id]['Date Hired'] = $date->format($this->lang->line('global_date_format'));
+            // Add a check for null or empty employmentdate
+            if (!empty($user->employmentdate)) {
+                $date = new DateTime($user->employmentdate);
+                $result[$user->id]['Employment Date'] = $date->format($this->lang->line('global_date_format'));
             } else {
-                $result[$user->id]['Date Hired'] = '';
+                $result[$user->id]['Employment Date'] = '';
             }
 
             $result[$user->id]['Department'] = $user->department;
@@ -324,7 +325,7 @@ class Reports extends CI_Controller {
         $thead = '';
         $tbody = '';
         $line = 2;
-        $i18n = array("id", "firstname", "lastname", "datehired", "department", "position", "location", "contract");
+        $i18n = array("id", "firstname", "lastname", "employmentdate", "department", "position", "location", "contract");
         
         foreach ($result as $user_id => $row) {
             $index = 1;
@@ -364,8 +365,8 @@ class Reports extends CI_Controller {
                         $enddate = $date->format($this->lang->line('global_date_format'));
                         $tbody .= '<tr>';
                         $tbody .= '<td><a href="' . base_url() . 'leaves/view/'. $request['id']. '" target="_blank">'. $request['id']. '</a></td>';
-                        $tbody .= '<td>'. $startdate . ' (' . lang($request['startdatetype']). ')</td>';
-                        $tbody .= '<td>'. $enddate . ' (' . lang($request['enddatetype']). ')</td>';
+                        $tbody .= '<td>'. $startdate . '</td>';
+                        $tbody .= '<td>'. $enddate . '</td>';
                         $tbody .= '<td>'. $request['type'] . '</td>';
                         $tbody .= '<td>'. $request['duration'] . '</td>';
                         $tbody .= '</tr>';

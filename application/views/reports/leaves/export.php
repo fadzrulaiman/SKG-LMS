@@ -47,9 +47,11 @@ $result = array();
 foreach ($users as $user) {
     $result[$user->id]['Employee ID'] = $user->id;
     $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
-    $dateHired = $user->datehired ?? '1970-01-01'; // Default to Jan 1, 1970, if datehired is null
-    $date = new DateTime($dateHired);
-    $result[$user->id]['Date Hired'] = $date->format(lang('global_date_format'));    
+
+    $employmentdate = $user->employmentdate ?? '1970-01-01'; // Default to Jan 1, 1970, if employmentdate is null
+    $date = new DateTime($employmentdate);
+    $result[$user->id]['Employment Date'] = $date->format(lang('global_date_format'));    
+
     $result[$user->id]['Department'] = $user->department;
     $result[$user->id]['Position'] = $user->position;
     $result[$user->id]['Location'] = $user->location;
@@ -109,7 +111,7 @@ foreach ($users as $user) {
 
 $max = 0;
 $line = 2;
-$i18n = array("id", "firstname", "lastname", "datehired", "department", "position", "location", "contract");
+$i18n = array("id", "firstname", "lastname", "employmentdate", "department", "position", "location", "contract");
 
 foreach ($result as $user_id => $row) {
     $index = 1;
@@ -144,8 +146,8 @@ foreach ($result as $user_id => $row) {
                 $startdate = $date->format(lang('global_date_format'));
                 $date = new DateTime($request['enddate']);
                 $enddate = $date->format(lang('global_date_format'));
-                $sheet->setCellValue('A' . $line, $startdate . ' (' . lang($request['startdatetype']). ')');
-                $sheet->setCellValue('B' . $line, $enddate . ' (' . lang($request['enddatetype']). ')');
+                $sheet->setCellValue('A' . $line, $startdate );
+                $sheet->setCellValue('B' . $line, $enddate );
                 $sheet->setCellValue('C' . $line, $request['type']);
                 $sheet->setCellValue('D' . $line, $request['duration']);
                 $line++;

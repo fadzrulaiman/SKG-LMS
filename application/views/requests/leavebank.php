@@ -120,7 +120,9 @@ if ($showAll == FALSE) {
                 <?php echo $startdate /*. ' (' . lang($request['startdatetype']). ')';*/ ?></td>
             <td data-order="<?php echo$tmpEndDate; ?>" class="text-center">
                 <?php echo $enddate /*. ' (' . lang($request['enddatetype']) . ')';*/ ?></td>
-            <td class="text-center"><?php echo $request['duration']; ?> Days</td>
+
+            <td class="text-center"><?php echo $request['duration']; ?></td>
+
             <td class="text-center"><?php echo $request['type_name']; ?></td>
             <?php
         switch ($request['status']) {

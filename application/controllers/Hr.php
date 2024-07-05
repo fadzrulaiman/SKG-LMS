@@ -56,9 +56,9 @@ class Hr extends CI_Controller {
      * @param bool $children TRUE : include sub entities, FALSE otherwise
      * @param string $filterActive "all"; "active" (only), or "inactive" (only)
      * @param string $criterion1 "lesser" or "greater" (optional)
-     * @param string $date1 Date Hired (optional)
+     * @param string $date1 Employment Date (optional)
      * @param string $criterion2 "lesser" or "greater" (optional)
-     * @param string $date2 Date Hired (optional)
+     * @param string $date2 Employment Date (optional)
      * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function employeesOfEntity($id = 0, $children = TRUE, $filterActive = "all",
@@ -79,7 +79,11 @@ class Hr extends CI_Controller {
             $msg->data = array();
 
             foreach ($employees as $employee) {
-                $date = new DateTime(is_null($employee->datehired) ? "" : $employee->datehired);
+
+                $date = new DateTime(is_null($employee->employmentdate) ? "" : $employee->employmentdate);
+
+
+
                 $tmpDate = $date->getTimestamp();
                 $displayDate = $date->format(lang('global_date_format'));
 
@@ -93,9 +97,9 @@ class Hr extends CI_Controller {
                 $row->entity = $employee->entity;
                 $row->identifier = $employee->identifier;
                 $row->contract = $employee->contract;
-                $row->datehired = new \stdClass();
-                $row->datehired->display = $displayDate;
-                $row->datehired->timestamp = $tmpDate;
+                $row->employmentdate = new \stdClass();
+                $row->employmentdate->display = $displayDate;
+                $row->employmentdate->timestamp = $tmpDate;
                 $row->position = $employee->position;
                 $row->location = $employee->location;
                 $row->manager_name = $employee->manager_name;
@@ -514,9 +518,9 @@ class Hr extends CI_Controller {
      * @param bool $children TRUE : include sub entities, FALSE otherwise
      * @param string $filterActive "all"; "active" (only), or "inactive" (only)
      * @param string $criterion1 "lesser" or "greater" (optional)
-     * @param string $date1 Date Hired (optional)
+     * @param string $date1 Employment Date (optional)
      * @param string $criterion2 "lesser" or "greater" (optional)
-     * @param string $date2 Date Hired (optional)
+     * @param string $date2 Employment Date (optional)
      * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function exportEmployees($id = 0, $children = TRUE, $filterActive = "all",

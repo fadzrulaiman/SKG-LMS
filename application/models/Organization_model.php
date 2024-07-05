@@ -210,7 +210,7 @@ class Organization_model extends CI_Model {
      * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function employees($id) {
-        $this->db->select('id, firstname, lastname, email, datehired');
+        $this->db->select('id, firstname, lastname, email, employmentdate');
         $this->db->from('users');
         $this->db->where('organization', $id);
         $this->db->order_by('lastname', 'asc');
@@ -226,7 +226,7 @@ class Organization_model extends CI_Model {
      * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function allEmployees($id, $children = FALSE) {
-        $this->db->select('users.id, users.identifier, users.firstname, users.lastname, users.datehired');
+        $this->db->select('users.id, users.identifier, users.firstname, users.lastname, users.employmentdate');
         $this->db->select('organization.name as department, positions.name as position, locations.name as location, contracts.name as contract');
         $this->db->select('contracts.id as contract_id');
         $this->db->from('organization');
