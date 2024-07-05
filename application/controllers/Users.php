@@ -149,7 +149,7 @@ class Users extends CI_Controller {
         $data['title'] = lang('users_edit_html_title');
 
         $this->form_validation->set_rules('firstname', lang('users_edit_field_firstname'), 'required|strip_tags');
-        $this->form_validation->set_rules('lastname', lang('users_edit_field_lastname'), 'required|strip_tags');
+        $this->form_validation->set_rules('lastname', lang('users_edit_field_lastname'), 'strip_tags');
         $this->form_validation->set_rules('login', lang('users_edit_field_login'), 'required|strip_tags');
         $this->form_validation->set_rules('email', lang('users_edit_field_email'), 'required|strip_tags');
         $this->form_validation->set_rules('role[]', lang('users_edit_field_role'), 'required');
@@ -286,7 +286,7 @@ class Users extends CI_Controller {
         $data['public_key'] = file_get_contents('./assets/keys/public.pem', TRUE);
 
         $this->form_validation->set_rules('firstname', lang('users_create_field_firstname'), 'required|strip_tags');
-        $this->form_validation->set_rules('lastname', lang('users_create_field_lastname'), 'required|strip_tags');
+        $this->form_validation->set_rules('lastname', lang('users_create_field_lastname'), 'strip_tags');
         $this->form_validation->set_rules('login', lang('users_create_field_login'), 'required|callback_checkLogin|strip_tags');
         $this->form_validation->set_rules('email', lang('users_create_field_email'), 'required|strip_tags');
         if (!$this->config->item('ldap_enabled')) $this->form_validation->set_rules('CipheredValue', lang('users_create_field_password'), 'required');

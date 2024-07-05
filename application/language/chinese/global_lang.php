@@ -15,9 +15,9 @@ $lang['global_msg_wait'] = '请稍候';
 $lang['global_msg_old_browser'] = '在IE 8将不受支持，请更新至IE 9或使用Firefox、Chrome等';
 $lang['global_msg_not_found'] = '未找到结果，你搜索的条件可能已被删除';
 
-$lang['global_date_format'] = 'Y-m-d';
-$lang['global_date_js_format'] = 'yy-mm-dd';
-$lang['global_date_momentjs_format'] = 'YYYY-MM-DD';
+$lang['global_date_format'] = 'Y/m/d';
+$lang['global_date_js_format'] = 'yy/mm/dd';
+$lang['global_date_momentjs_format'] = 'YYYY/MM/DD';
 
 $lang['global_msg_new_version_available'] = '有新版本可用';
 $lang['global_msg_your_version_is_dev'] = '你正在使用开发版本';

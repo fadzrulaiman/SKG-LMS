@@ -12,6 +12,10 @@
     <div class="span6">
         <h2><?php echo lang('users_myprofile_title');?></h2>
         <div class="row-fluid">
+            <div class="span6"><strong><?php echo lang('users_myprofile_field_empid');?></strong></div>
+            <div class="span6"><?php echo $user['id'];?></div>
+        </div>
+        <div class="row-fluid">
             <div class="span6"><strong><?php echo lang('users_myprofile_field_firstname');?></strong></div>
             <div class="span6"><?php echo $user['firstname'];?></div>
         </div>

@@ -79,7 +79,11 @@ class Hr extends CI_Controller {
             $msg->data = array();
 
             foreach ($employees as $employee) {
+
                 $date = new DateTime(is_null($employee->employmentdate) ? "" : $employee->employmentdate);
+
+
+
                 $tmpDate = $date->getTimestamp();
                 $displayDate = $date->format(lang('global_date_format'));
 
@@ -88,6 +92,7 @@ class Hr extends CI_Controller {
                 $row->id = $employee->id;
                 $row->firstname = $employee->firstname;
                 $row->lastname = $employee->lastname;
+                $row->fullname = $employee->fullname; // Use fullname from the query
                 $row->email = $employee->email;
                 $row->entity = $employee->entity;
                 $row->identifier = $employee->identifier;

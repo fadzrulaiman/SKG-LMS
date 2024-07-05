@@ -55,12 +55,12 @@
                         class="mdi mdi-check"></i>&nbsp;<?php echo lang('Requested');?></a>
                 <br /><br />
                 <?php } ?>
-                <?php if ($leave['status'] == LMS_REQUESTED) { ?>
-                <a href="<?php echo base_url();?>leaves/cancel/<?php echo $leave['id'] ?>"
-                    class="btn btn-primary"><i class="mdi mdi-undo"></i>&nbsp;<?php echo lang('Cancel');?></a>
+                <?php if ($leave['status'] == LMS_REQUESTED && !$is_manager) { ?>
+                <a href="<?php echo base_url();?>leaves/cancel/<?php echo $leave['id'] ?>" class="btn btn-primary"><i
+                        class="mdi mdi-undo"></i>&nbsp;<?php echo lang('Cancel');?></a>
                 <br /><br />
                 <?php } ?>
-                <?php if ($leave['status'] == LMS_REQUESTED) { ?>
+                <?php if ($leave['status'] == LMS_REQUESTED && !$is_manager) { ?>
                 <a href="<?php echo base_url();?>leaves/reminder/<?php echo $leave['id']; ?>"
                     title="<?php echo lang('leaves_button_send_reminder');?>" class="btn btn-primary"><i
                         class="mdi mdi-email"></i>&nbsp;<?php echo lang('leaves_button_send_reminder');?></a>
@@ -134,26 +134,27 @@
         </form>
     </div>
     <?php if (!empty($attachment_path)): ?>
-        <div class="span6">
-    <div class="attachment">
-        <h3>Attachment:</h3>
-        <?php if (strpos($attachment_path, '.pdf') !== false): ?>
+    <div class="span6">
+        <div class="attachment">
+            <h3>Attachment:</h3>
+            <?php if (strpos($attachment_path, '.pdf') !== false): ?>
             <iframe id="pdf-frame" src="<?php echo base_url($attachment_path); ?>" width="100%" height="600"></iframe>
-        <?php else: ?>
+            <?php else: ?>
             <img src="<?php echo base_url($attachment_path); ?>" class="attachment-image" />
-        <?php endif; ?>
+            <?php endif; ?>
+        </div>
     </div>
-</div>
 
 </div>
 
-    <?php endif; ?>
+<?php endif; ?>
 </div>
 <style>
 .attachment {
     position: relative;
     width: 100%;
-    height: 600px; /* Adjust height as needed */
+    height: 600px;
+    /* Adjust height as needed */
 }
 
 .attachment img {
@@ -170,7 +171,7 @@
 }
 </style>
 <script>
-    window.addEventListener('load', function() {
+window.addEventListener('load', function() {
     var iframe = document.getElementById('pdf-frame');
     var attachmentDiv = document.querySelector('.attachment');
     var availableHeight = window.innerHeight - attachmentDiv.offsetTop;
@@ -185,5 +186,4 @@ window.addEventListener('resize', function() {
 
     iframe.style.height = availableHeight + 'px';
 });
-
 </script>

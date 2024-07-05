@@ -91,12 +91,25 @@ class Auth {
             case 'update_user' :
             case 'import_user' :
             case 'export_user' :
-                if ($this->CI->session->userdata('is_hr') == true)
+                if ($this->CI->session->userdata('is_hr') == true || $this->CI->session->userdata('is_admin') == true)
                     return true;
                 else
                     return false;
                 break;
-
+            case 'list_users' :
+                case 'create_user' :
+                case 'delete_user' :
+                case 'view_user' :
+                case 'edit_user' :
+                case 'update_user' :
+                case 'import_user' :
+                case 'export_user' :
+                    if ($this->CI->session->userdata('is_hr') == true || $this->CI->session->userdata('is_admin') == true)
+                        return true;
+                    else
+                        return false;
+                    break;
+        
             //Password management
             case 'change_password' :
                 if ($this->CI->session->userdata('is_hr') == true)
@@ -134,8 +147,8 @@ class Auth {
             case 'calendar_contract' :
             case 'adddayoff_contract' :
             case 'deletedayoff_contract' :
-                if ($this->CI->session->userdata('is_hr') == true)
-                    return true;
+                if ($this->CI->session->userdata('is_hr') == true || $this->CI->session->userdata('is_admin') == true)
+                return true;
                 else
                     return false;
                 break;
@@ -161,8 +174,8 @@ class Auth {
             case 'entitleddays_user_delete' :
             case 'entitleddays_contract' :
             case 'entitleddays_contract_delete' :
-                if ($this->CI->session->userdata('is_hr') == true)
-                    return true;
+                if ($this->CI->session->userdata('is_hr') == true || $this->CI->session->userdata('is_admin') == true)
+                return true;
                 else
                     return false;
                 break;

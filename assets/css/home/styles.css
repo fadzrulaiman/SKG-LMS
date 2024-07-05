@@ -1,34 +1,47 @@
+:root {
+    --primary-color: #3097D1;
+    --secondary-color: #444;
+    --bg-color: rgba(255, 255, 255, 0.9);
+    --card-bg-color: #fff;
+    --card-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --section-bg-color: rgba(245, 245, 245, 0.95);
+    --text-primary: #333;
+    --text-secondary: #666;
+    --text-muted: #6c757d;
+    --shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
 .dashboard-container {
     max-width: 900px;
     margin: 60px auto;
     padding: 50px;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-color);
+    box-shadow: var(--shadow);
     border-radius: 12px;
 }
 
 header {
-    margin-bottom: 40px;
     text-align: center;
+    margin-bottom: 30px;
 }
 
 .main-heading {
-    font-size: 2.5rem; /* Reduced from 3rem */
+    font-size: 2.5rem;
     font-weight: 700;
-    color: #333;
-    margin-bottom: 15px;
+    color: var(--text-primary);
+    margin: 0 0 15px;
 }
 
 .welcome-message {
-    font-size: 1.2rem; /* Reduced from 1.4rem */
-    color: #666;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
 }
 
 h2 {
-    font-size: 1.8rem; /* Reduced from 2rem */
+    font-size: 1.8rem;
     font-weight: 600;
-    color: #007bff;
-    border-bottom: 2px solid #007bff;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
     padding-bottom: 8px;
     margin-bottom: 25px;
 }
@@ -41,12 +54,12 @@ ul {
 
 ul li {
     margin-bottom: 12px;
-    font-size: 1rem; /* Reduced from 1.2rem */
-    color: #444;
+    font-size: 1rem;
+    color: var(--secondary-color);
 }
 
 ul li a {
-    color: #007bff;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 500;
 }
@@ -58,7 +71,162 @@ ul li a:hover {
 .quick-access, .employee-section, .manager-section {
     margin-bottom: 40px;
     padding: 20px;
-    background-color: rgba(245, 245, 245, 0.95);
+    background-color: var(--section-bg-color);
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow);
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+.quick-access ul, .employee-section ul, .manager-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quick-access li, .employee-section li, .manager-section li {
+    margin-bottom: 10px;
+}
+
+.quick-access a, .employee-section a, .manager-section a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.quick-access a:hover, .employee-section a:hover, .manager-section a:hover {
+    text-decoration: underline;
+}
+
+.dashboard-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: nowrap;
+    margin-bottom: 5px;
+}
+
+.card {
+    background-color: var(--card-bg-color);
+    box-shadow: var(--card-shadow);
+    border-radius: 8px;
+    flex: 1 1 0;
+    margin-bottom: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: var(--text-primary);
+}
+
+.card .value {
+    font-size: 3em;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.card a {
+    margin-top: 10px;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+.dashboard-cards-wrapper {
+    overflow-x: auto;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.dashboard-card {
+    background-color: var(--card-bg-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    flex: 1 1 0;
+    margin-bottom: 5px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.dashboard-card-title {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.dashboard-card-metric {
+    font-size: 32px;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 5px;
+}
+
+.dashboard-card-subtext {
+    font-size: 12px;
+    color: var(--primary-color);
+}
+
+.navigation-links {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Adjust the gap value to increase/decrease space between buttons */
+    margin: 20px 0; /* Add some vertical margin if needed */
+}
+
+.navigation-links a.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    border: 1px solid grey; /* Add border to match the button color */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+.navigation-links a.btn:hover {
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color); /* Ensure the border remains on hover */
+}
+
+/* Ensure button text is centered and legible */
+.navigation-links a.btn {
+    text-align: center;
+    line-height: normal;
+    font-weight: 500; /* Adjust font weight if needed */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-cards {
+        flex-wrap: wrap;
+    }
+
+    .card {
+        flex: 1 1 100%;
+    }
+
+    .navigation-links {
+        flex-direction: column;
+    }
 }

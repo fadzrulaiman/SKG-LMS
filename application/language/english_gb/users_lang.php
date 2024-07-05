@@ -14,6 +14,7 @@ $lang['users_index_thead_tip_delete'] = 'delete user';
 $lang['users_index_thead_tip_reset'] = 'reset password';
 $lang['users_index_thead_id'] = 'ID';
 $lang['users_index_thead_firstname'] = 'First Name';
+$lang['users_index_thead_fullname'] = 'Full Name';
 $lang['users_index_thead_lastname'] = 'Last Name';
 $lang['users_index_thead_login'] = 'Login';
 $lang['users_index_thead_email'] = 'E-mail';
@@ -37,6 +38,7 @@ $lang['employees_index_title'] = 'List of employees';
 
 $lang['users_myprofile_title'] = 'My personal information';
 $lang['users_myprofile_html_title'] = 'My personal information';
+$lang['users_myprofile_field_empid'] = 'Employee ID';
 $lang['users_myprofile_field_firstname'] = 'First Name';
 $lang['users_myprofile_field_lastname'] = 'Last Name';
 $lang['users_myprofile_field_manager'] = 'Manager';
@@ -137,11 +139,17 @@ $lang['users_employees_thead_lastname'] = 'Last Name';
 $lang['users_employees_thead_email'] = 'E-mail';
 $lang['users_employees_thead_entity'] = 'Department';
 
-$lang['users_reset_field_password'] = 'Password';
-$lang['users_reset_button_reset'] = 'Reset';
+$lang['users_reset_field_password'] = 'Insert New Password';
+$lang['users_reset_button_reset'] = 'Confirm New Password';
+$lang['users_reset_button_cancel'] = 'Cancel';
+$lang['password_weak'] = 'Weak';
+$lang['password_fair'] = 'Fair';
+$lang['password_strong'] = 'Strong';
+$lang['password_very_strong'] = 'Very Strong';
 
 $lang['users_export_title'] = 'List of users';
 $lang['users_export_thead_id'] = 'ID';
+$lang['users_export_thead_fullname'] = 'Full Name';
 $lang['users_export_thead_firstname'] = 'First Name';
 $lang['users_export_thead_lastname'] = 'Last Name';
 $lang['users_export_thead_email'] = 'E-mail';

@@ -279,13 +279,12 @@ function disableSubmitButton() {
     /* Allows the width to adjust according to the number of cards */
     margin-bottom: 20px;
     padding: 10px 20px;
-    background-color: #f7f8fa;
     border-radius: 10px;
 }
 
 .dashboard-card {
     background-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     border: none;
     width: 250px;

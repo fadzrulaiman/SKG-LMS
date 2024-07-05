@@ -15,6 +15,7 @@ $lang['users_index_thead_tip_delete'] = 'Padam pengguna';
 $lang['users_index_thead_tip_reset'] = 'Tetap semula kata laluan';
 $lang['users_index_thead_id'] = 'ID';
 $lang['users_index_thead_firstname'] = 'Nama Pertama';
+$lang['users_index_thead_fullname'] = 'Full Name';
 $lang['users_index_thead_lastname'] = 'Nama Akhir';
 $lang['users_index_thead_login'] = 'Login';
 $lang['users_index_thead_email'] = 'E-mel';
@@ -38,6 +39,7 @@ $lang['employees_index_title'] = 'Senarai pekerja';
 
 $lang['users_myprofile_title'] = 'Maklumat peribadi saya';
 $lang['users_myprofile_html_title'] = 'Maklumat peribadi saya';
+$lang['users_myprofile_field_empid'] = 'Employee ID';
 $lang['users_myprofile_field_firstname'] = 'Nama Pertama';
 $lang['users_myprofile_field_lastname'] = 'Nama Akhir';
 $lang['users_myprofile_field_manager'] = 'Pengurus';
@@ -138,11 +140,17 @@ $lang['users_employees_thead_lastname'] = 'Nama Akhir';
 $lang['users_employees_thead_email'] = 'E-mel';
 $lang['users_employees_thead_entity'] = 'jabatan';
 
-$lang['users_reset_field_password'] = 'Kata Laluan';
-$lang['users_reset_button_reset'] = 'Tetap Semula';
+$lang['users_reset_field_password'] = 'Insert New Password';
+$lang['users_reset_button_reset'] = 'Confirm New Password';
+$lang['users_reset_button_cancel'] = 'Cancel';
+$lang['password_weak'] = 'Weak';
+$lang['password_fair'] = 'Fair';
+$lang['password_strong'] = 'Strong';
+$lang['password_very_strong'] = 'Very Strong';
 
 $lang['users_export_title'] = 'Senarai pengguna';
 $lang['users_export_thead_id'] = 'ID';
+$lang['users_export_thead_fullname'] = 'Full Name';
 $lang['users_export_thead_firstname'] = 'Nama Pertama';
 $lang['users_export_thead_lastname'] = 'Nama Akhir';
 $lang['users_export_thead_email'] = 'E-mel';

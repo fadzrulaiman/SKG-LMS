@@ -24,7 +24,9 @@ $users = $this->organization_model->allEmployees($_GET['entity'], $include_child
 foreach ($users as $user) {
     $result[$user->id]['Employee ID'] = $user->id;
     $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
+
     $result[$user->id]['Employment Date'] = $user->employmentdate;
+
     $result[$user->id]['Department'] = $user->department;
     $result[$user->id]['Position'] = $user->position;
     $result[$user->id]['Location'] = $user->location;

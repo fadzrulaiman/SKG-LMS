@@ -136,6 +136,7 @@ $lang['leaves_comment_author_saying'] = '说';
 $lang['leaves_comment_status_changed'] = '假期状态已更改为';
 $lang['Identifier'] = '标识符';
 $lang['Employee ID'] = 'Employee ID';
+$lang['Full Name'] = 'Full Name';
 $lang['First Name'] = '名';
 $lang['Last Name'] = '姓';
 $lang['Employment Date'] = '入职日期';

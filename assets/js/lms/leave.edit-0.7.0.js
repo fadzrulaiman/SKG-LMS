@@ -1,4 +1,3 @@
-// Try to calculate the length of the leave
 function getLeaveLength(refreshInfos = true) {
     const start = moment($('#startdate').val());
     const end = moment($('#enddate').val());
@@ -39,8 +38,6 @@ function displayMultiDayLeave(startType, endType) {
     $("#spnDayType").html("<img src='" + imgSrc + "' />");
 }
 
-// Get the leave credit, duration, and detect overlapping cases (Ajax request)
-// Default behavior is to set the duration field. Pass false if you want to disable this behavior
 function getLeaveInfos(preventDefault = false) {
     $('#frmModalAjaxWait').modal('show');
     const start = moment($('#startdate').val());
@@ -118,6 +115,20 @@ function toggleAttachmentRequired() {
     const leaveType = $('#type').val();
     const attachmentField = $('#attachment');
     attachmentField.prop('required', leaveType === '2');
+
+    if (leaveType === '2') { // Sick Leave
+        // Restrict start date picker to 7 days in the future
+        const currentDate = moment();
+        $("#viz_startdate").datepicker("option", {
+            maxDate: currentDate.clone().add(7, 'days').toDate(),
+            minDate: null // No limit for past dates
+        });
+    } else {
+        $("#viz_startdate").datepicker("option", {
+            maxDate: null,
+            minDate: null
+        });
+    }
 }
 
 $('#type').change(toggleAttachmentRequired);

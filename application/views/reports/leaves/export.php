@@ -47,9 +47,11 @@ $result = array();
 foreach ($users as $user) {
     $result[$user->id]['Employee ID'] = $user->id;
     $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
+
     $employmentdate = $user->employmentdate ?? '1970-01-01'; // Default to Jan 1, 1970, if employmentdate is null
     $date = new DateTime($employmentdate);
     $result[$user->id]['Employment Date'] = $date->format(lang('global_date_format'));    
+
     $result[$user->id]['Department'] = $user->department;
     $result[$user->id]['Position'] = $user->position;
     $result[$user->id]['Location'] = $user->location;

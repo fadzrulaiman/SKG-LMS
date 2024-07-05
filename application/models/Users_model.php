@@ -43,10 +43,10 @@ class Users_model extends CI_Model {
      * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getUsersAndRoles() {
-        $this->db->select('users.id, active, firstname, lastname, login, email');
+        $this->db->select('users.id, active, CONCAT(users.firstname, " ", users.lastname) as fullname, login, email');
         $this->db->select("GROUP_CONCAT(roles.name SEPARATOR ',') as roles_list", FALSE);
         $this->db->join('roles', 'roles.id = (users.role & roles.id)');
-        $this->db->group_by('users.id, active, firstname, lastname, login, email');
+        $this->db->group_by('users.id, active, fullname, login, email');
         $query = $this->db->get('users');
         return $query->result_array();
     }
@@ -450,34 +450,20 @@ class Users_model extends CI_Model {
      * @param array $row database record of a user
      */
     private function loadProfile($row) {
-        if (((int) $row->role & 1)) {
-            $is_admin = TRUE;
-        } else {
-            $is_admin = FALSE;
-        }
-
-        /*
-          00000001 1  Admin
-          00000100 8  HR Officier / Local HR Manager
-          00001000 16 HR Manager
-          = 00001101 25 Can access to HR functions
-         */
-        if (((int) $row->role & 25)) {
-            $is_hr = TRUE;
-        } else {
-            $is_hr = FALSE;
-        }
-
-        //Determine if the connected user is a manager or if he has any delegation
-        $isManager = FALSE;
-        if (count($this->getCollaboratorsOfManager($row->id)) > 0) {
-            $isManager = TRUE;
-        } else {
+        // Check if user is admin
+        $is_admin = ((int) $row->role === 1) ? TRUE : FALSE;
+    
+        // Check if user has HR access
+        $is_hr = ((int) $row->role === 3) ? TRUE : FALSE;
+    
+        // Determine if the user is a manager or has delegation
+        $isManager = (count($this->getCollaboratorsOfManager($row->id)) > 0);
+        if (!$isManager) {
             $this->load->model('delegations_model');
-            if ($this->delegations_model->hasDelegation($row->id))
-                $isManager = TRUE;
+            $isManager = $this->delegations_model->hasDelegation($row->id);
         }
-
+    
+        // Set session data
         $newdata = array(
             'login' => $row->login,
             'id' => $row->id,
@@ -492,7 +478,7 @@ class Users_model extends CI_Model {
         );
         $this->session->set_userdata($newdata);
     }
-
+    
     /**
      * Get users by role
      * @param int $role Role identifier
@@ -696,6 +682,7 @@ class Users_model extends CI_Model {
         $this->db->select('users.id as id,'
                 . ' users.firstname as firstname,'
                 . ' users.lastname as lastname,'
+                . ' CONCAT(users.firstname, " ", users.lastname) as fullname,'
                 . ' users.email as email,'
                 . ' users.identifier as identifier,'
                 . ' users.employmentdate as employmentdate,'
@@ -703,7 +690,7 @@ class Users_model extends CI_Model {
                 . ' locations.name as location,'
                 . ' organization.name as entity,'
                 . ' contracts.name as contract,'
-                . ' CONCAT_WS(\' \',managers.firstname,  managers.lastname) as manager_name', FALSE);
+                . ' CONCAT_WS(\' \',managers.firstname, managers.lastname) as manager_name', FALSE);
         $this->db->from('users');
         $this->db->join('contracts', 'contracts.id = users.contract', 'left outer');
         $this->db->join('positions', 'positions.id = users.position', 'left outer');
@@ -726,7 +713,7 @@ class Users_model extends CI_Model {
             $this->db->where('users.organization', $id);
         }
 
-        //Triple value for active filter ("all" = no where criteria)
+        // Triple value for active filter ("all" = no where criteria)
         if ($filterActive == "active") {
             $this->db->where('users.active', TRUE);
         }
@@ -825,6 +812,19 @@ class Users_model extends CI_Model {
         }
     }
 
+    /**
+     * count the total employee for the manager
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     */
+    public function countActiveEmployeesWithManager($manager) {
+        $this->db->select('COUNT(*) as employee_count', FALSE);
+        $this->db->from('users');
+        $this->db->where('active', 1);
+        $this->db->where('manager', $manager);
+        $result = $this->db->get();
+        return $result->row()->employee_count;
+    }
+    
     /**
      * Generate some random bytes by using openssl, dev/urandom or random
      * @param int $count length of the random string

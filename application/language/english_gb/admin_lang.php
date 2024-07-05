@@ -51,7 +51,7 @@ $lang['admin_diagnostic_overtime_description'] = 'Overtime requests with a negat
 $lang['admin_diagnostic_overtime_thead_id'] = 'ID';
 $lang['admin_diagnostic_overtime_thead_employee'] = 'Employee';
 $lang['admin_diagnostic_overtime_thead_date'] = 'Date';
-$lang['admin_diagnostic_overtime_thead_duration'] = 'Duration';
+$lang['admin_diagnostic_overtime_thead_duration'] = 'Duration-Day(s)';
 $lang['admin_diagnostic_overtime_thead_status'] = 'Status';
 
 $lang['admin_diagnostic_contract_tab'] = 'Contracts';

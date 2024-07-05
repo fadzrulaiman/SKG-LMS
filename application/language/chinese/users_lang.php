@@ -16,6 +16,7 @@ $lang['users_index_thead_tip_delete'] = '删除用户';
 $lang['users_index_thead_tip_reset'] = '重设密码';
 $lang['users_index_thead_id'] = '编号';
 $lang['users_index_thead_firstname'] = '名';
+$lang['users_index_thead_fullname'] = 'Full Name';
 $lang['users_index_thead_lastname'] = '姓';
 $lang['users_index_thead_login'] = '登录';
 $lang['users_index_thead_email'] = 'E-mail';
@@ -38,6 +39,7 @@ $lang['employees_index_title'] = '员工列表';
 
 $lang['users_myprofile_title'] = '我的个人资料';
 $lang['users_myprofile_html_title'] = '我的个人资料';
+$lang['users_myprofile_field_empid'] = 'Employee ID';
 $lang['users_myprofile_field_firstname'] = '名';
 $lang['users_myprofile_field_lastname'] = '姓';
 $lang['users_myprofile_field_manager'] = '管理者';
@@ -137,11 +139,17 @@ $lang['users_employees_thead_lastname'] = '姓';
 $lang['users_employees_thead_email'] = 'E-mail';
 $lang['users_employees_thead_entity'] = '部门';
 
-$lang['users_reset_field_password'] = '密码';
-$lang['users_reset_button_reset'] = '重设';
+$lang['users_reset_field_password'] = 'Insert New Password';
+$lang['users_reset_button_reset'] = 'Confirm New Password';
+$lang['users_reset_button_cancel'] = 'Cancel';
+$lang['password_weak'] = 'Weak';
+$lang['password_fair'] = 'Fair';
+$lang['password_strong'] = 'Strong';
+$lang['password_very_strong'] = 'Very Strong';
 
 $lang['users_export_title'] = '用户列表';
 $lang['users_export_thead_id'] = '编号';
+$lang['users_export_thead_fullname'] = 'Full Name';
 $lang['users_export_thead_firstname'] = '名';
 $lang['users_export_thead_lastname'] = '姓';
 $lang['users_export_thead_email'] = 'E-mail';

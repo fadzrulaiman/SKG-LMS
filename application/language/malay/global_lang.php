@@ -12,9 +12,9 @@ $lang['global_msg_error_forbidden'] = 'Operasi (%s) tidak dibenarkan';
 $lang['global_msg_wait'] = 'Sila tunggu';
 $lang['global_msg_old_browser'] = 'Internet Explorer 8 dan penyemak imbas yang lebih lama tidak disokong. Sila naik taraf ke IE9 atau gunakan Firefox, Chrome, dan lain-lain.';
 $lang['global_msg_not_found'] = 'Objek tidak dijumpai. Mungkin anda cuba mengakses objek yang telah dipadam.';
-$lang['global_date_format'] = 'd/m/Y';
-$lang['global_date_js_format'] = 'dd/mm/yy';
-$lang['global_date_momentjs_format'] = 'DD/MM/YYYY';
+$lang['global_date_format'] = 'Y/m/d';
+$lang['global_date_js_format'] = 'yy/mm/dd';
+$lang['global_date_momentjs_format'] = 'YYYY/MM/DD';
 
 $lang['global_msg_new_version_available'] = 'Versi baru tersedia.';
 $lang['global_msg_your_version_is_dev'] = 'Anda menggunakan versi pembangunan.';
@@ -26,7 +26,7 @@ $lang['global_false'] = 'SALAH';
 $lang['footer_link_go_top'] = 'Pergi ke atas';
 $lang['footer_copyright_notice'] = '&copy; 2014 Penulis Jorani';
 
-$lang['Requested'] = 'Diminta';
+$lang['Requested'] = 'Di mohon';
 $lang['Pending From HR'] = 'Pending HR Approval';
 $lang['Planned'] = 'Dirancang';
 $lang['Accepted'] = 'Diterima';

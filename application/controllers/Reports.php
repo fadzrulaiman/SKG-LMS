@@ -103,6 +103,7 @@ class Reports extends CI_Controller {
             $result[$user->id]['Employee ID'] = $user->id;
             $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
 
+
     // Add a check for null or empty employmentdate
     if (!empty($user->employmentdate)) {
         $date = new DateTime($user->employmentdate);
@@ -253,8 +254,8 @@ class Reports extends CI_Controller {
 
         foreach ($users as $user) {
             $result[$user->id]['Employee ID'] = $user->id;
-            $result[$user->id]['First Name'] = $user->firstname;
-            $result[$user->id]['Last Name'] = $user->lastname;
+            $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
+
             
             // Add a check for null or empty employmentdate
             if (!empty($user->employmentdate)) {

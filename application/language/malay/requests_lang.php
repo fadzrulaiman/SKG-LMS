@@ -23,7 +23,7 @@ $lang['requests_index_thead_enddate'] = 'Tarikh Tamat';
 $lang['requests_index_thead_duration'] = 'Tempoh';
 $lang['requests_index_thead_type'] = 'Jenis';
 $lang['requests_index_thead_status'] = 'Status';
-$lang['requests_index_thead_requested_date'] = 'Diminta pada';
+$lang['requests_index_thead_requested_date'] = 'Di mohon pada';
 $lang['requests_index_thead_last_change'] = 'Perubahan Terakhir';
 
 $lang['requests_collaborators_title'] = 'Senarai Bawahan Saya';

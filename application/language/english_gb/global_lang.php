@@ -12,9 +12,9 @@ $lang['global_msg_error_forbidden'] = 'Operation (%s) is not granted';
 $lang['global_msg_wait'] = 'Please wait';
 $lang['global_msg_old_browser'] = 'Internet Explorer 8 and older browser are not supported. Please upgrade to IE9 or use Firefox, Chrome, etc.';
 $lang['global_msg_not_found'] = 'Object not found. Maybe that you are trying to access to an object that was deleted.';
-$lang['global_date_format'] = 'd/m/Y';
-$lang['global_date_js_format'] = 'dd/mm/yy';
-$lang['global_date_momentjs_format'] = 'DD/MM/YYYY';
+$lang['global_date_format'] = 'Y/m/d';
+$lang['global_date_js_format'] = 'yy/mm/dd';
+$lang['global_date_momentjs_format'] = 'YYYY/MM/DD';
 
 $lang['global_msg_new_version_available'] = 'A new version is available.';
 $lang['global_msg_your_version_is_dev'] = 'You are using a development version.';

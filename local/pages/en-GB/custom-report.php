@@ -27,14 +27,14 @@
                         }
                     }?>
                 </select></label><br />
-                <label for="txtEntity">Entity
+                <label for="txtEntity">Department
                 <div class="input-append">
                 <input type="text" id="txtEntity" name="txtEntity" value="<?php echo $entity_name; ?>" readonly />
                 <button type="button" id="cmdSelectEntity" class="btn btn-primary">Select</button>
                 </div></label>
                 <input type="hidden" id="txtEntityID" name="txtEntityID" />
                 <label for="chkIncludeChildren">
-                <input type="checkbox" id="chkIncludeChildren" name="chkIncludeChildren" checked />&nbsp;Include children</label><br />
+                <input type="checkbox" id="chkIncludeChildren" name="chkIncludeChildren" checked />&nbsp;Include sub-departments</label><br />
                 <button type="submit" id="cmdSubmit" class="btn btn-primary">Execute</button>
                 <a href="#" id="tipReload" data-toggle="tooltip" title="Don't forget to reload the report" data-placement="right" data-container="#cmdSubmit"></a>
         </form>

@@ -480,7 +480,7 @@ $config['leave_status_requested'] = TRUE;
 $config['default_leave_type'] = FALSE;      //Set this value with the default leave type identifier (integer).
 
 //Create a leave request / Allow overwrite of the duration
-$config['disable_edit_leave_duration'] = FALSE;   //Switch to read-only (the duration of leave is computed)
+$config['disable_edit_leave_duration'] = TRUE;   //Switch to read-only (the duration of leave is computed)
 
 //____________________________________________________________________________
 //Set this value to TRUE if you want to create extras at status requested instead of planned
@@ -563,7 +563,7 @@ $config['saml_enabled'] = FALSE;
 
 //____________________________________________________________________________
 //Enable public ICS feeds (global calendar, contract, personal information)
-$config['ics_enabled'] = TRUE;
+$config['ics_enabled'] = FALSE;
 $config['default_timezone'] = 'Asia/Kuala_Lumpur';
 $config['legacy_feeds'] = FALSE;    //Maintain the unsecure URLs for ICS feeds
 
