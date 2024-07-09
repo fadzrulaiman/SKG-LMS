@@ -381,12 +381,11 @@ public function view($source, $id) {
         }
     }    
 
-    
     private function handleAttachmentUpload() {
         $attachment_path = ''; // Initialize attachment path
     
         if (!empty($_FILES['attachment']['name'])) {
-            $config['upload_path'] = './assets/uploads/'; // Specify the upload directory
+            $config['upload_path'] = 'assets/uploads/'; // Specify the upload directory
             $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf'; // Specify the allowed file types
             $config['max_size'] = 5048; // Specify the maximum file size in kilobytes
     
@@ -395,12 +394,14 @@ public function view($source, $id) {
             if (!$this->upload->do_upload('attachment')) {
                 // Handle the upload error
                 $error = $this->upload->display_errors();
-                log_message('error', 'File upload error: ' . $error);
-                $this->session->set_flashdata('msg', 'File upload error: ' . $error);
+                error_log('Upload error: ' . $error); // Log the error
+                // You can log the error or display it to the user
             } else {
                 // File uploaded successfully
                 $attachment_data = $this->upload->data();
                 $attachment_path = 'assets/uploads/' . $attachment_data['file_name']; // Get the relative path of the uploaded file
+                error_log('File uploaded: ' . $attachment_path); // Log the uploaded file path
+    
                 // Check if the uploaded file is an image
                 if (in_array($attachment_data['file_type'], ['image/jpeg', 'image/png', 'image/gif'])) {
                     $this->addWatermark($attachment_path);
@@ -411,8 +412,9 @@ public function view($source, $id) {
         return $attachment_path;
     }
     
-    
     private function addWatermark($filePath) {
+        error_log('Adding watermark to: ' . $filePath); // Log the file path
+    
         // Load the image
         $imageType = exif_imagetype($filePath);
         switch ($imageType) {
@@ -426,11 +428,16 @@ public function view($source, $id) {
                 $image = imagecreatefromgif($filePath);
                 break;
             default:
+                error_log('Unsupported image type: ' . $imageType); // Log unsupported image type
                 return; // Unsupported image type
         }
     
         // Load the watermark image
         $watermark = imagecreatefrompng('assets/images/watermark.png'); // Adjust the path to your watermark image
+        if (!$watermark) {
+            error_log('Failed to load watermark image'); // Log watermark loading failure
+            return;
+        }
     
         // Get the dimensions of both images
         $imageWidth = imagesx($image);
@@ -473,8 +480,10 @@ public function view($source, $id) {
         imagedestroy($image);
         imagedestroy($watermark);
         imagedestroy($tempWatermark);
-    }
     
+        error_log('Watermark added successfully to: ' . $filePath); // Log success
+    }
+        
     
     /**
      * change a the status of a planned request to  requested
