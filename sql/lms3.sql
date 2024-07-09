@@ -267,7 +267,7 @@ CREATE TABLE `entitleddays` (
   `startdate` date DEFAULT NULL COMMENT 'Left boundary of the credit validity',
   `enddate` date DEFAULT NULL COMMENT 'Right boundary of the credit validity. Duration cannot exceed one year',
   `type` int(11) NOT NULL COMMENT 'Leave type',
-  `days` decimal(10,2) NOT NULL COMMENT 'Number of days (can be negative so as to deduct/adjust entitlement)',
+  `days` int(11) NOT NULL COMMENT 'Number of days (can be negative so as to deduct/adjust entitlement)',
   `description` text DEFAULT NULL COMMENT 'Description of a credit / debit (entitlement / adjustment)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Add or substract entitlement on employees or contracts (can be the result of an OT)';
 

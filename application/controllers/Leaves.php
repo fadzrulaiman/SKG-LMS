@@ -380,11 +380,13 @@ public function view($source, $id) {
             }
         }
     }    
+
+    
     private function handleAttachmentUpload() {
         $attachment_path = ''; // Initialize attachment path
     
         if (!empty($_FILES['attachment']['name'])) {
-            $config['upload_path'] = 'assets/uploads/'; // Specify the upload directory
+            $config['upload_path'] = './assets/uploads/'; // Specify the upload directory
             $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf'; // Specify the allowed file types
             $config['max_size'] = 5048; // Specify the maximum file size in kilobytes
     
@@ -393,12 +395,12 @@ public function view($source, $id) {
             if (!$this->upload->do_upload('attachment')) {
                 // Handle the upload error
                 $error = $this->upload->display_errors();
-                // You can log the error or display it to the user
+                log_message('error', 'File upload error: ' . $error);
+                $this->session->set_flashdata('msg', 'File upload error: ' . $error);
             } else {
                 // File uploaded successfully
                 $attachment_data = $this->upload->data();
                 $attachment_path = 'assets/uploads/' . $attachment_data['file_name']; // Get the relative path of the uploaded file
-    
                 // Check if the uploaded file is an image
                 if (in_array($attachment_data['file_type'], ['image/jpeg', 'image/png', 'image/gif'])) {
                     $this->addWatermark($attachment_path);
@@ -408,6 +410,7 @@ public function view($source, $id) {
     
         return $attachment_path;
     }
+    
     
     private function addWatermark($filePath) {
         // Load the image

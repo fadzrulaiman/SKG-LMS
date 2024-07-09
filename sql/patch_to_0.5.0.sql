@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `leaves_history` (
   `cause` text,
   `startdatetype` varchar(12) DEFAULT NULL,
   `enddatetype` varchar(12) DEFAULT NULL,
-  `duration` decimal(10,2) DEFAULT NULL,
+  `duration` int(11) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
   `change_id` int(11) NOT NULL AUTO_INCREMENT,
   `change_type` int(11) NOT NULL,

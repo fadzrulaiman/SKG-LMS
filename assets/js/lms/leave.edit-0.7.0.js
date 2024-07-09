@@ -117,7 +117,6 @@ function toggleAttachmentRequired() {
     attachmentField.prop('required', leaveType === '2');
 
     if (leaveType === '2') { // Sick Leave
-        // Restrict start date picker to 7 days in the future
         const currentDate = moment();
         $("#viz_startdate").datepicker("option", {
             maxDate: currentDate.clone().add(7, 'days').toDate(),
