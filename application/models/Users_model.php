@@ -38,18 +38,20 @@ class Users_model extends CI_Model {
     }
 
     /**
-     * Get the list of users and their roles
-     * @return array record of users
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     * Get the list of users, their roles, and organization names
+     * @return array record of users with roles and organization names
      */
     public function getUsersAndRoles() {
         $this->db->select('users.id, active, CONCAT(users.firstname, " ", users.lastname) as fullname, login, email');
         $this->db->select("GROUP_CONCAT(roles.name SEPARATOR ',') as roles_list", FALSE);
+        $this->db->select('organization.name as organization_name');
         $this->db->join('roles', 'roles.id = (users.role & roles.id)');
-        $this->db->group_by('users.id, active, fullname, login, email');
+        $this->db->join('organization', 'organization.id = users.organization', 'left');
+        $this->db->group_by('users.id, active, fullname, login, email, organization.name');
         $query = $this->db->get('users');
         return $query->result_array();
     }
+
 
     /**
      * Get the list of employees

@@ -64,6 +64,111 @@ def determine_location(locations_code):
     }
     return locations.get(locations_code, None)
 
+# Full mapping dictionary
+department_mapping = {
+    'ROLD': 84,
+    'MAT': 85,  # Matamba Estate
+    'SBR': 86,  # Seberang Estate
+    'MEN': 87,  # Mensuli Estate
+    'SDU': 88,  # Sandau Estate
+    'BR': 89,   # Boonrich Estate
+    'ARAS-LD': 90,  # ARAS- Lahad Datu
+    'OKSB': 91,  # Oscar Kinabalu Estate
+    'SDM': 92,  # Sandau Mill
+    'SEBM': 93,  # Sebrang Mill
+    'MECH': 94,  # Mechanical Unit
+    'SESSB': 95,  # Sawit Ecoshield Sdn Bhd
+    'BGK1': 96,  # Bagahak 1 Estate
+    'BGK2': 97,  # Bagahak 2 Estate
+    'BGK3': 98,  # Bagahak 3 Estate
+    'SKFE': 99,  # Sawit Kinabalu Farm East
+
+    'ROS': 68,
+    'GMT': 69,  # Gomantong Estate
+    'GRN': 70,  # Green Estate
+    'SPN': 71,  # Sg Pin Estate
+    'SMG': 72,  # Sg Menanggol Estate
+    'SPG': 73,  # Sepagaya Estate
+    'TGDN': 74,  # Tongod Nucleus Estate
+    'LBH': 75,  # Luboh Estate
+    'SG': 76,  # Sungai-Sungai Estate
+    'SPM': 77,  # Sepagaya Mill
+    'ARAS-SDK': 78,  # ARAS- Sandakan
+    'CSG': 79,  # Coconut Seed Garden
+    'TGD': 80,  # Tongod Estate
+    'POIC': 81,  # Sawit POIC
+    'SKJ': 82,  # Sawit Kinabalu Jetty
+    'SWTB': 83,  # Sawit Bulkers
+
+    'ROWC': 7,
+    'LKN': 8,  # Langkon Estate
+    'PIN': 9,  # Pinawantai Estate
+    'PIT': 10,  # Pitas Estate
+    'TAR': 11,  # Taritipan Estate
+    'LUM': 12,  # Lumadan Estate
+    'MAW': 13,  # Mawao Estate
+    'BGN': 14,  # Bongawan Estate
+    'KIM': 15,  # Kimanis Estate
+    'LKM': 16,  # Langkon Mill
+    'LMM': 17,  # Lumadan Mill
+    'ARAS-WC': 18,  # ARAS- West Coast
+    'KAB': 19,  # Kabang Estate
+    'PIL': 20,  # Pilajau Estate
+
+    'ROT': 21,
+    'SBE': 22,  # Sg Balung Estate
+    'SKE': 23,  # Sg Kawa Estate
+    'MBE': 24,  # Merotai Estate
+    'MAD': 25,  # Madai Estate
+    'PEG': 26,  # Pegagau Estate
+    'UKE': 27,  # Ulu Kalabakan Estate
+    'ABM': 28,  # Apas Balung Mill
+    'SRDM': 29,  # Serudung Mill
+    'ARAS-TWU': 30,  # ARAS- Tawau
+    'KNM': 31,  # Kunak Mill
+    'BAFM': 32,  # Balung Animal Feeds Mill
+    'CL': 33,  # Central Lab
+    'BDS': 34,  # Bongalio Estate
+    'BIOTECH': 35,  # Sawit Biotech
+    'SPU': 36,  # Seeds Processing Unit
+    'TSG': 37,  # Tawau Seed Garden
+    'SSB': 38,  # Saplantco Sdn Bhd
+    'GMTOPN': 39,  # Gomantong Nursery
+    'LKNOPN': 40,  # Langkon Nursery
+    'LUMOPN': 41,  # Lumadan Nursery
+    'MENOPN': 42,  # Mensuli Nursery
+    'SBROPN': 43,  # Sebrang Nursery
+    'SBEOPN': 44,  # Sg Balung Nursery
+    'KR': 45,  # Kunak Refinery
+    'KAL': 46,  # Kalabakan Estate
+    'SKF': 47,  # Sawit Kinabalu Farm Products
+    'SKFW': 48,  # Sawit Kinabalu Farm West
+
+    'SKBLA': 49,  # Business Leadership Academy
+    'SECURITY': 50,  # Security Unit
+    'IGD': 51,  # Integrity & Governance Unit
+    'MKTG': 52,  # Marketing Unit
+    'C&P': 53,  # Contract & Procurement Unit
+    'CC': 54,  # Corporate Communication Unit
+    'CPNB': 55,  # Corporate Planning Unit
+    'EPD': 56,  # Engineering & Property Development Unit
+    'FIN': 57,  # Finance Unit
+    'GMD': 58,  # GMD Office
+    'HOGA': 59,  # Head Office Administration Unit
+    'HRD': 60,  # Human Resource Unit
+    'IT': 61,  # Information Technology Unit
+    'IA': 62,  # Internal Audit Unit
+    'LA': 63,  # Land Administration Unit
+    'LEGAL': 64,  # Legal Unit
+    'HOP': 65,  # Head of Plantation Unit
+    'PASF': 66,  # Plantation Advisory & Agri Business Unit
+    'SU': 67  # Sustainability Unit
+}
+
+# Function to determine the department ID by name
+def determine_department(department_code):
+    return department_mapping.get(department_code, None)
+
 # Function to format values for SQL
 def format_sql_value(value):
     if pd.isna(value) or value is None:
@@ -76,7 +181,7 @@ def format_sql_value(value):
         return str(value)
 
 # Load data from Excel file
-excel_file_path = r"C:\Users\User\Downloads\Book2.xlsx"
+excel_file_path = r"C:\Users\User\Downloads\Book3.xlsx"
 df_old = pd.read_excel(excel_file_path)
 
 # Keep track of existing logins
@@ -93,7 +198,7 @@ data = {
     'role': 2,
     'manager': 2,
     'country': None,
-    'organization': 61,
+    'organization': df_old['OU'].apply(determine_department),
     'contract': df_old.apply(lambda row: determine_contract(row['Employment Date'], row['Level Code']), axis=1),
     'position': df_old['Level Code'].apply(determine_position),
     'location': df_old['Staff Location'].apply(determine_location),   

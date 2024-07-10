@@ -18,6 +18,7 @@ $lang['users_index_thead_firstname'] = 'Nama Pertama';
 $lang['users_index_thead_fullname'] = 'Full Name';
 $lang['users_index_thead_lastname'] = 'Nama Akhir';
 $lang['users_index_thead_login'] = 'Login';
+$lang['users_index_thead_department'] = 'Department';
 $lang['users_index_thead_email'] = 'E-mel';
 $lang['users_index_thead_role'] = 'Peranan';
 $lang['users_index_thead_manager'] = 'Pengurus';

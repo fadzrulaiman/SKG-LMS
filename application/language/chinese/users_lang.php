@@ -19,6 +19,7 @@ $lang['users_index_thead_firstname'] = '名';
 $lang['users_index_thead_fullname'] = 'Full Name';
 $lang['users_index_thead_lastname'] = '姓';
 $lang['users_index_thead_login'] = '登录';
+$lang['users_index_thead_department'] = 'Department';
 $lang['users_index_thead_email'] = 'E-mail';
 $lang['users_index_thead_role'] = '角色';
 $lang['users_index_thead_manager'] = '管理者';
