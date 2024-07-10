@@ -265,6 +265,12 @@ $route['entitleddays/contractdelete/(:num)'] = 'entitleddays/contractdelete/$1';
 $route['entitleddays/ajax/update'] = 'entitleddays/ajax_update';
 
 //_______________________________________________
+//Set Leaves
+$route['setleave/setsickleave'] = 'setleave/setsickleave';
+$route['setleave/executesickleave'] = 'setleave/executesickleave'; // Corrected to call the right function
+$route['setleave/exportsickleave'] = 'setleave/exportsickleave'; // Corrected to match the controller name
+
+//_______________________________________________
 //Reports
 $route['reports/balance'] = 'reports/balance';
 $route['reports/balance/execute'] = 'reports/executeBalanceReport';

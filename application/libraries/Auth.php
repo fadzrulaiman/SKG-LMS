@@ -147,6 +147,8 @@ class Auth {
             case 'calendar_contract' :
             case 'adddayoff_contract' :
             case 'deletedayoff_contract' :
+            case 'setsickleaves' :
+            case 'exportsickleave' :
                 if ($this->CI->session->userdata('is_hr') == true || $this->CI->session->userdata('is_admin') == true)
                 return true;
                 else

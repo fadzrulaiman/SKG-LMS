@@ -238,4 +238,117 @@ class Entitleddays_model extends CI_Model {
         $this->db->order_by("users.id", "asc");
         return $this->db->get()->result_array();
     }
+
+    /**
+     * Get all entitled days.
+     */
+    public function sickleave_entitleddays() {
+        $this->db->select('u.id as employee, u.firstname, u.lastname, ed.startdate, ed.enddate, ed.days');
+        $this->db->from('entitleddays ed');
+        $this->db->join('users u', 'u.id = ed.employee');
+        $this->db->where('YEAR(ed.startdate)', date('Y'));
+        $this->db->where('ed.type', 2);  // Assuming type 2 is for sick leave
+        $query = $this->db->get();
+
+        $result = $query->result_array();
+        foreach ($result as &$row) {
+            $row['employee_name'] = $row['firstname'] . ' ' . $row['lastname'];
+        }
+        return $result;
+    }
+
+    /**
+     * Set sick leave for a specific year.
+     * @param int $year The year to set sick leave for.
+     */
+    public function set_sickleave($year) {
+        $query = "
+            INSERT INTO entitleddays (contract, employee, overtime, startdate, enddate, type, days)
+            SELECT 
+                NULL AS contract,
+                u.id AS employee,
+                NULL AS overtime,
+                CONCAT($year, '-01-01') AS startdate,
+                CONCAT($year, '-12-31') AS enddate,
+                2 AS type,
+                14 AS days
+            FROM 
+                users u
+            LEFT JOIN 
+                entitleddays ed ON u.id = ed.employee 
+                AND ed.type = 2
+                AND ed.startdate = CONCAT($year, '-01-01')
+                AND ed.enddate = CONCAT($year, '-12-31')
+            WHERE 
+                TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) < 2
+                AND u.active = 1
+                AND ed.id IS NULL
+
+            UNION ALL
+
+            SELECT 
+                NULL AS contract,
+                u.id AS employee,
+                NULL AS overtime,
+                CONCAT($year, '-01-01') AS startdate,
+                CONCAT($year, '-12-31') AS enddate,
+                2 AS type,
+                18 AS days
+            FROM 
+                users u
+            LEFT JOIN 
+                entitleddays ed ON u.id = ed.employee 
+                AND ed.type = 2
+                AND ed.startdate = CONCAT($year, '-01-01')
+                AND ed.enddate = CONCAT($year, '-12-31')
+            WHERE 
+                TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) >= 2
+                AND TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) < 5
+                AND u.active = 1
+                AND ed.id IS NULL
+
+            UNION ALL
+
+            SELECT 
+                NULL AS contract,
+                u.id AS employee,
+                NULL AS overtime,
+                CONCAT($year, '-01-01') AS startdate,
+                CONCAT($year, '-12-31') AS enddate,
+                2 AS type,
+                22 AS days
+            FROM 
+                users u
+            LEFT JOIN 
+                entitleddays ed ON u.id = ed.employee 
+                AND ed.type = 2
+                AND ed.startdate = CONCAT($year, '-01-01')
+                AND ed.enddate = CONCAT($year, '-12-31')
+            WHERE 
+                TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) >= 5
+                AND u.active = 1
+                AND ed.id IS NULL;
+        ";
+
+        $this->db->query($query);
+    }
+
+    /**
+     * Get entitled days for a specific year.
+     * @param int $year The year to filter entitled days by.
+     */
+    public function sickleave_entitleddays_year($year) {
+        $this->db->select('u.id as employee, u.firstname, u.lastname, ed.startdate, ed.enddate, ed.days');
+        $this->db->from('entitleddays ed');
+        $this->db->join('users u', 'u.id = ed.employee');
+        $this->db->where('YEAR(ed.startdate)', $year);
+        $this->db->where('ed.type', 2);  // Assuming type 2 is for sick leave
+        $query = $this->db->get();
+
+        $result = $query->result_array();
+        foreach ($result as &$row) {
+            $row['employee_name'] = $row['firstname'] . ' ' . $row['lastname'];
+        }
+        return $result;
+    }
 }

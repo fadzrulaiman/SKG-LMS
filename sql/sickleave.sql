@@ -15,7 +15,7 @@ LEFT JOIN
     AND ed.startdate = CONCAT(YEAR(CURDATE()), '-01-01')
     AND ed.enddate = CONCAT(YEAR(CURDATE()), '-12-31')
 WHERE 
-    TIMESTAMPDIFF(YEAR, u.datehired, CURDATE()) < 2
+    TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) < 2
     AND u.active = 1
     AND ed.id IS NULL
 
@@ -37,8 +37,8 @@ LEFT JOIN
     AND ed.startdate = CONCAT(YEAR(CURDATE()), '-01-01')
     AND ed.enddate = CONCAT(YEAR(CURDATE()), '-12-31')
 WHERE 
-    TIMESTAMPDIFF(YEAR, u.datehired, CURDATE()) >= 2
-    AND TIMESTAMPDIFF(YEAR, u.datehired, CURDATE()) < 5
+    TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) >= 2
+    AND TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) < 5
     AND u.active = 1
     AND ed.id IS NULL
 
@@ -60,6 +60,6 @@ LEFT JOIN
     AND ed.startdate = CONCAT(YEAR(CURDATE()), '-01-01')
     AND ed.enddate = CONCAT(YEAR(CURDATE()), '-12-31')
 WHERE 
-    TIMESTAMPDIFF(YEAR, u.datehired, CURDATE()) >= 5
+    TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) >= 5
     AND u.active = 1
     AND ed.id IS NULL;

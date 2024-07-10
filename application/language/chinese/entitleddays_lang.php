@@ -60,3 +60,16 @@ $lang['entitleddays_user_index_field_step'] = '步骤';
 $lang['entitleddays_counters_title_contract'] = '类别的应享有天数';
 $lang['entitleddays_counters_description_contract'] = '年休假天数';
 $lang['entitleddays_counters_title_employee'] = '员工应享有天数';
+
+$lang['set_sickleave_title'] = 'Set Sick Leave';
+$lang['set_sickleave_header'] = 'Entitle Sick Leave';
+$lang['set_sickleave_year'] = 'Select The Year To Allocate Sick Leave';
+$lang['set_sickleave_button'] = 'Set Sick Leave';
+$lang['set_sickleave_filter'] = 'Filter by year';
+$lang['set_sickleave_filterbutton'] = 'Filter Table';
+$lang['set_sickleave_employeeid'] = 'Employee ID';
+$lang['set_sickleave_name'] = 'Name';
+$lang['set_sickleave_startdate'] = 'Start Date';
+$lang['set_sickleave_enddate'] = 'End Date';
+$lang['set_sickleave_daysentitled'] = 'Days Entitled';
+$lang['set_sickleave_exportexcel'] = 'Export To Excel';
