@@ -151,8 +151,18 @@ class Organization_model extends CI_Model {
             'organization' => NULL
         );
         $this->db->where('id', $id);
-        return $this->db->update('users', $data);
+        $result = $this->db->update('users', $data);
+        
+        if (!$result) {
+            log_message('error', 'Failed to detach employee: ' . $this->db->last_query());
+        } else {
+            log_message('info', 'Detach employee query: ' . $this->db->last_query());
+        }
+        
+        return $result;
     }
+    
+    
 
     /**
      * Rename an entity of the organization

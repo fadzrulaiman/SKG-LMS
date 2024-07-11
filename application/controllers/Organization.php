@@ -152,18 +152,19 @@ class Organization extends CI_Controller {
         $this->load->model('organization_model');
         $employees = $this->organization_model->employees($id)->result();
         
-        //Prepare an object that will be encoded in JSON
+        // Prepare an object that will be encoded in JSON
         $msg = new \stdClass();
         $msg->draw = 1;
         $msg->recordsTotal = count($employees);
         $msg->recordsFiltered = count($employees);
         $msg->data = array();
-
+    
         foreach ($employees as $employee) {
             $row = new \stdClass();
             $row->id = $employee->id;
             $row->firstname = $employee->firstname;
             $row->lastname = $employee->lastname;
+            $row->fullname = $employee->firstname . ' ' . $employee->lastname; 
             $row->email = $employee->email;
             $msg->data[] = $row;
         }
@@ -171,6 +172,7 @@ class Organization extends CI_Controller {
             ->set_content_type('application/json')
             ->set_output(json_encode($msg));
     }
+    
     
     /**
      * Ajax endpoint: Add an employee to an entity of the organization
@@ -200,12 +202,32 @@ class Organization extends CI_Controller {
         setUserContext($this);
         if ($this->auth->isAllowed('edit_organization') == FALSE) {
             $this->output->set_header("HTTP/1.1 403 Forbidden");
+            log_message('error', 'Permission denied for delemployee');
+            echo json_encode(array('error' => 'Permission denied'));
         } else {
             $id = $this->input->get('user', TRUE);
+            log_message('info', 'Attempting to detach employee ID: ' . $id);
+    
+            if (empty($id)) {
+                log_message('error', 'Employee ID is NULL or empty');
+                echo json_encode(array('error' => 'Invalid employee ID'));
+                return;
+            }
+    
             $this->load->model('organization_model');
-            echo json_encode($this->organization_model->detachEmployee($id));
+            $result = $this->organization_model->detachEmployee($id);
+            if ($result) {
+                log_message('info', 'Successfully detached employee ID: ' . $id);
+                echo json_encode(array('success' => 'Employee detached'));
+            } else {
+                log_message('error', 'Failed to detach employee ID: ' . $id);
+                echo json_encode(array('error' => 'Failed to detach employee'));
+            }
         }
     }
+    
+    
+    
 
     /**
      * Ajax endpoint: Cascade delete children and set employees' org to NULL
