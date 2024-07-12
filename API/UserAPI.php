@@ -6,7 +6,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 
 // Get all employees
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-  $query = "SELECT * FROM tblemployees";
+  $query = "SELECT * FROM users";
   $result = mysqli_query($conn, $query);
   $employees = array();
 

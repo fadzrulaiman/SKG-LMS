@@ -6,7 +6,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 
 // Get all leave types
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-  $query = "SELECT * FROM tblleavetype";
+  $query = "SELECT * FROM types";
   $result = mysqli_query($conn, $query);
   $leaveTypes = array();
 
