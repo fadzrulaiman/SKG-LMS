@@ -4,7 +4,7 @@ include('db.php');
 
 $decodedData = json_decode(file_get_contents('php://input'), true);
 
-function getLeaveBalances($conn, $UserID) {
+/*function getLeaveBalances($conn, $UserID) {
     $SQL = "SELECT * FROM tbl_leavebalance WHERE empid = '$UserID'";
     $result = mysqli_query($conn, $SQL);
 
@@ -32,7 +32,7 @@ function getLeaveBalances($conn, $UserID) {
     error_log("Leave Balances: " . print_r($leaveBalances, true));
 
     return $leaveBalances;
-}
+}*/
 
 try {
     if (isset($decodedData['token'])) {
@@ -53,8 +53,10 @@ try {
             $UserRole = $row['role'];
             $UserName = $row['firstname'] . ' ' . $row['lastname'];
             $email = $row['email'];
+            $contract = $row['contract'];
+            $role = $row['role'];
 
-            $leaveBalances = getLeaveBalances($conn, $UserID);
+            //$leaveBalances = getLeaveBalances($conn, $UserID);
 
             $query2 = "SELECT t2.id, t2.name, t2.supervisor
                        FROM users t1
@@ -70,15 +72,31 @@ try {
                 $Supervisor = $row['supervisor'];
             }
 
+            $query3 = "SELECT t2.delegate_id
+                       FROM users t1 JOIN delegations t2 
+                       ON t1.id = t2.delegate_id WHERE t1.id = '$UserID'";
+
+            $result3 = mysqli_query($conn, $query3);
+
+            if ($result3 && mysqli_num_rows($result3) > 0) {
+                $row = mysqli_fetch_assoc($result3);
+                $delegate = $row['delegate_id'];
+            } else{
+                $delegate = null;
+            }
+
             $_SESSION['user_id'] = $UserID;
             $_SESSION['user_role'] = $UserRole;
             $_SESSION['user_name'] = $UserName;
             $_SESSION['user_email'] = $email;
             $_SESSION['user_department'] = $DepartmentID;
-            $_SESSION['user_balance'] = $leaveBalances['Balance'];
-            $_SESSION['user_bank'] = $leaveBalances['Bank'];
+            //$_SESSION['user_balance'] = $leaveBalances['Balance'];
+            //$_SESSION['user_bank'] = $leaveBalances['Bank'];
             $_SESSION['department_short_name'] = $DepartmentShortName;
             $_SESSION['user_supervisor'] = $Supervisor;
+            $_SESSION['contract'] = $contract;
+            $_SESSION['role'] = $role;
+            $_SESSION['delegate_id'] = $delegate;
         } else {
             $Message = "Invalid token";
         }
@@ -104,6 +122,8 @@ try {
                 $LastName = $row['lastname'];
                 $DepartmentID = (string) $row['organization']; // Cast to string
                 $email = $row['email'];
+                $contract = $row['contract'];
+                $role = $row['role'];
 
                 // Generate verification token
                 $VerificationToken = bin2hex(random_bytes(16));
@@ -130,12 +150,11 @@ try {
                     $insertStmt->execute();
                 }
 
-                $leaveBalances = getLeaveBalances($conn, $UserID);
+                //$leaveBalances = getLeaveBalances($conn, $UserID);
 
                 $query2 = "SELECT t2.id, t2.name, t2.supervisor
-                           FROM users t1
-                           JOIN organization t2 ON t1.organization = t2.id
-                           WHERE t1.id = '$UserID'";
+                           FROM users t1 JOIN organization t2 
+                           ON t1.organization = t2.id WHERE t1.id = '$UserID'";
 
                 $result2 = mysqli_query($conn, $query2);
 
@@ -146,6 +165,19 @@ try {
                     $Supervisor = $row['supervisor'];
                 }
 
+                $query3 = "SELECT t2.delegate_id
+                           FROM users t1 JOIN delegations t2 
+                           ON t1.id = t2.delegate_id WHERE t1.id = '$UserID'";
+
+                $result3 = mysqli_query($conn, $query3);
+
+                if ($result3 && mysqli_num_rows($result3) > 0) {
+                    $row = mysqli_fetch_assoc($result3);
+                    $delegate = $row['delegate_id'];
+                }else{
+                    $delegate = 0;
+                }
+
                 $UserName = $FirstName . ' ' . $LastName;
 
                 $_SESSION['user_id'] = $UserID;
@@ -153,10 +185,13 @@ try {
                 $_SESSION['user_name'] = $UserName;
                 $_SESSION['user_email'] = $email;
                 $_SESSION['user_department'] = $DepartmentID;
-                $_SESSION['user_balance'] = $leaveBalances['Balance'];
-                $_SESSION['user_bank'] = $leaveBalances['Bank'];
+                //$_SESSION['user_balance'] = $leaveBalances['Balance'];
+                //$_SESSION['user_bank'] = $leaveBalances['Bank'];
                 $_SESSION['department_short_name'] = $DepartmentShortName;
                 $_SESSION['user_supervisor'] = $Supervisor;
+                $_SESSION['contract'] = $contract;
+                $_SESSION['role'] = $role;
+                $_SESSION['delegate_id'] = $delegate;
             } else {
                 $Message = "Wrong Email or Password";
             }
@@ -174,11 +209,14 @@ try {
         "UserName" => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
         "Email" => isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null,
         "DepartmentID" => isset($_SESSION['user_department']) ? (string) $_SESSION['user_department'] : null,
-        "Balance" => isset($_SESSION['user_balance']) ? $_SESSION['user_balance'] : null,
-        "Bank" => isset($_SESSION['user_bank']) ? $_SESSION['user_bank'] : null,
+        //"Balance" => isset($_SESSION['user_balance']) ? $_SESSION['user_balance'] : null,
+        //"Bank" => isset($_SESSION['user_bank']) ? $_SESSION['user_bank'] : null,
         "DepartmentShortName" => isset($_SESSION['department_short_name']) ? $_SESSION['department_short_name'] : null,
         "VerificationToken" => isset($VerificationToken) ? $VerificationToken : null,
         "Supervisor" => isset($_SESSION['user_supervisor']) ? (string) $_SESSION['user_supervisor'] : null,
+        "contract" => isset($_SESSION['contract']) ? $_SESSION['contract'] : null,
+        "role" => isset($_SESSION['role']) ? $_SESSION['role'] : null,
+        "delegate" => isset($_SESSION['delegate_id']) ? $_SESSION['delegate_id'] : null,
     );
 
     echo json_encode($response);

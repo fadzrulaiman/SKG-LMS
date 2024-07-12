@@ -127,7 +127,7 @@ function getUserDetailsById($userId, $conn) {
     }
     return null;
 }
-
+/*
 function sendEmail($recipient, $subject, $body) {
     $mail = new PHPMailer(true);
     try {
@@ -140,6 +140,34 @@ function sendEmail($recipient, $subject, $body) {
         $mail->Port       = 587;
 
         $mail->setFrom('sawitlms@gmail.com', 'Leave Management System');
+        $mail->addAddress($recipient);
+
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body    = $body;
+
+        if ($mail->send()) {
+            return true;
+        } else {
+            return $mail->ErrorInfo;
+        }
+    } catch (Exception $e) {
+        return $mail->ErrorInfo;
+    }
+}
+*/
+function sendEmail($recipient, $subject, $body) {
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host       = 'sandbox.smtp.mailtrap.io';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'dfa7082498f4da';
+        $mail->Password   = '2f235b6942faf3';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port       = 587;
+
+        $mail->setFrom('sawitlms@mail.com', 'Leave Management System');
         $mail->addAddress($recipient);
 
         $mail->isHTML(true);
@@ -429,7 +457,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                       JOIN users u ON l.employee = u.id
                       JOIN status s ON l.status = s.id
                       JOIN types t ON l.type = t.id
-                      WHERE u.manager = $userId AND l.status = 2"; // Assuming status 2 is 'Pending'
+                      JOIN delegations d 
+                      WHERE (u.manager = $userId OR d.delegate_id = $userId) AND l.status = 2"; // Assuming status 2 is 'Pending'
             $result = mysqli_query($conn, $query);
             $leave = array();
 
@@ -447,7 +476,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $leaveId = intval($_GET['leave_id']);
 
         // Get detailed information for a specific leave
-        $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.lastname, u.email
+        $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.lastname, u.email, u.id
                   FROM leaves l
                   JOIN status s ON l.status = s.id
                   JOIN types t ON l.type = t.id
@@ -463,8 +492,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         } else {
             echo json_encode(array("error" => "Leave not found."));
         }
-    } else {
-        echo json_encode(array("error" => "User ID or type not provided."));
+    } elseif (isset($_GET['role']) && isset($_GET['type'])) {
+        
+        $role = intval($_GET['role']);
+        $type = $_GET['type'];
+
+        if ($type === 'hr') {
+            // Get all leave for users managed by the current user
+            $query = "SELECT l.*, u.firstname, s.name AS status_name, t.name AS type_name, u.fcm_token
+                      FROM leaves l
+                      JOIN users u ON l.employee = u.id
+                      JOIN status s ON l.status = s.id
+                      JOIN types t ON l.type = t.id
+                      WHERE l.status = 7"; // Assuming status 2 is 'Pending'
+            $result = mysqli_query($conn, $query);
+            $leave = array();
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $row['duration'] = round($row['duration']);  // Round to whole number
+
+                $leave[] = $row;
+            }
+
+            echo json_encode($leave);
+        } else {
+            echo json_encode(array("error" => "Invalid type provided."));
+        }
     }
 }
 
@@ -669,8 +722,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['act
     $encodedData = file_get_contents('php://input');
     if (!empty($encodedData)) {
         $decodedData = json_decode($encodedData, true);
-        if (isset($decodedData['leave_id'])) {
+        if (isset($decodedData['leave_id']) && isset($decodedData['leave_balance'])) {
             $leaveId = intval($decodedData['leave_id']);
+            $leaveBalance = $decodedData['leave_balance'];
             $leaveType = getLeaveTypeByLeaveId($leaveId, $conn);
             if (!$leaveType) {
                 sendJsonResponse('error', 'Invalid leave ID.');
@@ -698,6 +752,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['act
 
                     if ($managerEmail && $leaveDetails) {
                         // Prepare email data
+                        $specificLeaveBalance = getLeaveBalanceByType($leaveBalance, getLeaveTypeNameById($leaveType, $conn));
+
+                        // Extract numeric value from the balance string
+                        $numericBalance = intval($specificLeaveBalance);
+
+                        // Calculate the new balance
+                        $newBalance = $numericBalance + intval($leaveDetails['duration']);
+
                         $emailData = [
                             'Title' => 'Leave Cancelled',
                             'Firstname' => $userDetails['firstname'],
@@ -708,7 +770,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['act
                             'EndDate' => $leaveDetails['enddate'],
                             'Type' => getLeaveTypeNameById($leaveDetails['type'], $conn),
                             'Duration' => $leaveDetails['duration'],
-                            'Balance' => '',   // You can calculate and fill this if needed
+                            'Balance' => $newBalance,
                             'Reason' => $leaveDetails['cause'],
                             'Comments' => 'The leave request has been cancelled by the user.',
                             'Status' => 'Cancelled'
@@ -751,12 +813,112 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['act
                 sendJsonResponse('error', 'Failed to prepare statement.');
             }
         } else {
-            sendJsonResponse('error', 'Leave ID is missing.');
+            sendJsonResponse('error', 'Leave ID or leave balance is missing.');
         }
     } else {
         sendJsonResponse('error', 'Empty request body.');
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['action'] === 'approveBank' || $_GET['action'] === 'reject')) {
+    $encodedData = file_get_contents('php://input');
+    if (!empty($encodedData)) {
+        $decodedData = json_decode($encodedData, true);
+        if (isset($decodedData['leave_id'])) {
+            $leaveId = intval($decodedData['leave_id']);
+            $leaveType = getLeaveTypeByLeaveId($leaveId, $conn);
+            if (!$leaveType) {
+                echo "Error: Invalid leave ID.";
+                exit();
+            }
+            $statusValue = ($_GET['action'] === 'approveBank') ? '3' : '4';
+            $query = "UPDATE leaves SET status = ? WHERE id = ?";
+            $stmt = $conn->prepare($query);
+
+            if ($stmt) {
+                $stmt->bind_param("si", $statusValue, $leaveId);
+                $stmt->execute();
+                if ($stmt->affected_rows > 0) {
+                    $userEmail = getUserEmailByLeaveId($leaveId, $conn);
+                    $userId = getUserIdByLeaveId($leaveId, $conn);
+                    $userDetails = getUserDetailsById($userId, $conn);
+
+                    // Get leave details
+                    $leaveDetailsQuery = "SELECT startdate, enddate, type, cause, status FROM leaves WHERE id = ?";
+                    $leaveDetailsStmt = $conn->prepare($leaveDetailsQuery);
+                    $leaveDetailsStmt->bind_param("i", $leaveId);
+                    $leaveDetailsStmt->execute();
+                    $leaveDetailsResult = $leaveDetailsStmt->get_result();
+                    $leaveDetails = $leaveDetailsResult->fetch_assoc();
+
+                    if ($userEmail && $leaveDetails) {
+                        // Determine the template path based on the leave type and action
+                        if ($_GET['action'] === 'approveBank') {
+                            $templatePath = $templatePaths['approve'];
+                        } else {
+                            $templatePath = $templatePaths['reject'];
+                        }
+
+                        // Prepare email data
+                        $emailData = [
+                            'Title' => ($_GET['action'] === 'approveBank') ? 'Leave Approved' : 'Leave Rejected',
+                            'Firstname' => $userDetails['firstname'],
+                            'Lastname' => $userDetails['lastname'],
+                            'BaseUrl' => 'https://60.51.59.113/SKG-LMS/home',
+                            'LeaveId' => $leaveId,
+                            'StartDate' => $leaveDetails['startdate'],
+                            'EndDate' => $leaveDetails['enddate'],
+                            'Type' => getLeaveTypeNameById($leaveDetails['type'], $conn),
+                            'Duration' => '',  // You can calculate and fill this if needed
+                            'Balance' => '',   // You can calculate and fill this if needed
+                            'Cause' => $leaveDetails['cause'],
+                            'Comments' => ($_GET['action'] === 'approveBank') ? 'Your leave request has been approved.' : 'Your leave request has been rejected.',
+                            'Status' => 'Waiting HR Approval'
+                        ];
+
+                        $emailBody = buildEmailBody($templatePath, $emailData);
+                        if ($emailBody) {
+                            $emailSent = sendEmail($userEmail, $emailData['Title'], $emailBody);
+
+                            // Send push notification to the user
+                            $userFcmToken = getUserFcmToken($userId, $conn);
+                            if ($userFcmToken) {
+                                $pushSent = sendPushNotification($userFcmToken, $emailData['Title'], $emailData['Comments'], ['leave_id' => $leaveId]);
+                                if (!$pushSent) {
+                                    error_log("Failed to send push notification to user with token: $userFcmToken");
+                                } else {
+                                    error_log("Push notification sent to user with token: $userFcmToken");
+                                }
+                            } else {
+                                error_log("No FCM token found for user");
+                            }
+
+                            if ($emailSent === true) {
+                                echo "Success";
+                            } else {
+                                echo "Leave status updated but email failed: " . $emailSent;
+                            }
+                        } else {
+                            echo "Leave status updated but failed to read email template.";
+                        }
+                    } else {
+                        echo "Success but no user email found or leave details missing.";
+                    }
+                } else {
+                    echo "Error: Failed to update leave status.";
+                }
+                $stmt->close();
+            } else {
+                echo "Error: Failed to prepare statement.";
+            }
+        } else {
+            echo "Error: Leave ID is missing.";
+        }
+    } else {
+        echo "Error: Empty request body.";
+    }
+}
+
 
 
 
