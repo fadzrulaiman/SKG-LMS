@@ -2,7 +2,6 @@
 /**
  * This view allows to create a new employee
  * @copyright  Copyright (c) Fadzrul Aiman
-
  * @since         0.1.0
  */
 ?>
@@ -10,7 +9,6 @@
 <div class="row-fluid">
     <div class="span12">
         <h2><?php echo lang('users_create_title');?></h2>
-
         <?php echo validation_errors(); ?>
     </div>
 </div>
@@ -30,7 +28,6 @@ echo form_open('users/create', $attributes); ?>
             </div>
         </div>
     </div>
-
     <div class="span4">
         <div class="control-group">
             <label class="control-label" for="lastname"><?php echo lang('users_create_field_lastname');?></label>
@@ -39,7 +36,6 @@ echo form_open('users/create', $attributes); ?>
             </div>
         </div>
     </div>
-
     <div class="span4">
         <div class="control-group">
             <label class="control-label" for="login"><?php echo lang('users_create_field_login');?></label>
@@ -66,7 +62,6 @@ echo form_open('users/create', $attributes); ?>
             </div>
         </div>
     </div>
-
     <div class="span8">
         <input type="hidden" name="manager" id="manager" />
         <div class="control-group">
@@ -86,7 +81,6 @@ echo form_open('users/create', $attributes); ?>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -104,11 +98,9 @@ echo form_open('users/create', $attributes); ?>
             </div>
         </div>
     </div>
-
     <div class="span4">
         &nbsp;
     </div>
-
     <div class="span4">
         &nbsp;
     </div>
@@ -131,7 +123,6 @@ echo form_open('users/create', $attributes); ?>
         &nbsp;
         <?php } ?>
     </div>
-
     <div class="span6">
         <div class="control-group">
             <label class="control-label" for="contract"><?php echo lang('users_create_field_contract');?></label>
@@ -207,8 +198,6 @@ echo form_open('users/create', $attributes); ?>
             </div>
         </div>
     </div>
-
-
     <div class="span4">
         <div class="control-group">
             <label class="control-label" for="identifier"><?php echo lang('users_create_field_identifier');?></label>
@@ -239,7 +228,6 @@ echo form_open('users/create', $attributes); ?>
             </div>
         </div>
     </div>
-
     <div class="span4">
         <div class="control-group">
             <label class="control-label" for="timezone"><?php echo lang('users_create_field_timezone');?></label>
@@ -259,7 +247,6 @@ echo form_open('users/create', $attributes); ?>
             </div>
         </div>
     </div>
-
     <div class="span4">
         <?php if ($this->config->item('ldap_basedn_db')) {?>
         <div class="control-group">
@@ -550,14 +537,13 @@ $(function() {
 
 
     $("#viz_employmentdate").datepicker({
-        format: '<?php echo lang('global_date_js_format');?>',
-
+        format: 'yyyy-mm-dd',
         language: "<?php echo $language_code;?>",
         startDate: "01/01/1970",
         autoclose: true
     }).on('changeDate', function(e) {
         var date = e.format('yyyy-mm-dd'); // Format the date for the hidden input field
-        $('#datehired').val(date);
+        $('#employmentdate').val(date);
     });
 
     //Transform SELECT tags in richer controls

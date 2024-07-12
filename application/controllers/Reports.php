@@ -465,7 +465,7 @@ class Reports extends CI_Controller {
         foreach ($users as $user) {
             $result[$user->id]['Employee ID'] = $user->id;
             $result[$user->id]['Full Name'] = $user->firstname . ' ' . $user->lastname;
-            $result[$user->id]['Date Hired'] = empty($user->datehired) ? '' : (new DateTime($user->datehired))->format($this->lang->line('global_date_format'));
+            $result[$user->id]['Employment Date'] = empty($user->employmentdate) ? '' : (new DateTime($user->employmentdate))->format($this->lang->line('global_date_format'));
             $result[$user->id]['Department'] = $user->department;
             $result[$user->id]['Position'] = $user->position;
             $result[$user->id]['Location'] = $user->location;
