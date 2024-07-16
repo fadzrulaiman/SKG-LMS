@@ -233,6 +233,7 @@ $route['requests/delegations'] = 'requests/delegations';
 $route['requests/ajax/delegations/delete'] = 'requests/deleteDelegations';
 $route['requests/ajax/delegations/add'] = 'requests/addDelegations';
 $route['requests/leavebank'] = 'requests/leavebank'; // New route for leavebank
+$route['requests/approveAll'] = 'requests/approveAll'; // New route for Approve All Requests
 $route['requests/(:any)'] = 'requests/index/$1';
 $route['requests'] = 'requests/index/requested';
 

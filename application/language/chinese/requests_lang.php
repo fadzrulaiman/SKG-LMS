@@ -50,6 +50,7 @@ $lang['requests_summary_flash_msg_error'] = '此员工无类别';
 $lang['requests_summary_flash_msg_forbidden'] = '你不是此员工的管理者';
 $lang['requests_summary_button_list'] = '部属清单';
 
+$lang['requests_index_approve_all'] = 'Approve All Requested Leaves';
 $lang['requests_index_button_export'] = '导出此单';
 $lang['requests_index_button_show_all'] = '显示所有申请';
 $lang['requests_index_button_show_pending'] = '显示待处理申请';

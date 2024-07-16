@@ -151,26 +151,79 @@ public function leavebankaccept($id) {
     $leave = $this->leaves_model->getLeaves($id);
     if (empty($leave)) {
         redirect('notfound');
-    }
-    $employee = $this->users_model->getUsers($leave['employee']);
-    $is_delegate = $this->delegations_model->isDelegateOfManager($this->user_id, $employee['manager']);
-    if (($this->user_id == $employee['manager']) || ($this->is_hr) || ($is_delegate)) {
-        $this->leaves_model->switchStatus($id, LMS_REQUESTEDBANK);
-        $this->sendMail($id, LMS_LEAVEBANK_MANAGER_ACCEPTED);
-        $this->sendMailOnLeaveBankRequestCreation($id);
-        $this->session->set_flashdata('msg', lang('requests_accept_flash_msg_success'));
-        if (isset($_GET['source'])) {
-            redirect($_GET['source']);
-        } else {
-            redirect('requests');
         }
-    } else {
-        log_message('error', 'User #' . $this->user_id . ' illegally tried to accept leave #' . $id);
-        $this->session->set_flashdata('msg', lang('requests_accept_flash_msg_error'));
-        redirect('leaves');
-    }
-}
+        $employee = $this->users_model->getUsers($leave['employee']);
+        $is_delegate = $this->delegations_model->isDelegateOfManager($this->user_id, $employee['manager']);
+        if (($this->user_id == $employee['manager']) || ($this->is_hr) || ($is_delegate)) {
+            $this->leaves_model->switchStatus($id, LMS_REQUESTEDBANK);
+            $this->sendMail($id, LMS_LEAVEBANK_MANAGER_ACCEPTED);
+            $this->sendMailOnLeaveBankRequestCreation($id);
+            $this->session->set_flashdata('msg', lang('requests_accept_flash_msg_success'));
+            if (isset($_GET['source'])) {
+                redirect($_GET['source']);
 
+
+
+            } else {
+                redirect('requests');
+            }
+        }
+    }
+
+    public function approveAll() {
+        $this->auth->checkIfOperationIsAllowed('accept_requests');
+        $this->load->model('users_model');
+        $this->load->model('delegations_model');
+        $this->load->model('leaves_model');
+
+        $manager_id = $this->session->userdata('id'); // Assuming the manager's ID is stored in session
+        $requests = $this->leaves_model->getAllPendingLeaves($manager_id);
+
+        foreach ($requests as $leave) {
+            $employee_id = $this->getArrayValue($leave, 'employee');
+            $leave_id = $this->getArrayValue($leave, 'id');
+            $leave_type = $this->getArrayValue($leave, 'type');
+            $leave_status = $this->getArrayValue($leave, 'status');
+
+            if ($employee_id && $leave_id && $leave_type) {
+                $employee = $this->users_model->getUsers($employee_id);
+                $employee_manager = $this->getArrayValue($employee, 'manager');
+                $employee_id = $this->getArrayValue($employee, 'id');
+
+                if ($employee_manager && $employee_id) {
+                    $is_delegate = $this->delegations_model->isDelegateOfManager($this->user_id, $employee_manager);
+                    if (($this->user_id == $employee_manager) || ($this->is_hr) || ($is_delegate)) {
+                        if ($leave_type == LEAVE_BANK_TYPE_ID) {
+                            $this->leaves_model->switchStatus($leave_id, LMS_REQUESTEDBANK);
+                            $this->sendMail($leave_id, LMS_LEAVEBANK_MANAGER_ACCEPTED);
+                            $this->sendMailOnLeaveBankRequestCreation($leave_id);
+                        } else {
+                            $this->leaves_model->switchStatus($leave_id, LMS_ACCEPTED);
+                            $this->sendMail($leave_id, LMS_REQUESTED_ACCEPTED);
+                        }
+                    } else {
+                        log_message('error', 'User #' . $this->user_id . ' illegally tried to accept leave #' . $leave_id);
+                        $this->session->set_flashdata('msg', lang('requests_accept_flash_msg_error'));
+                    }
+                } else {
+                    log_message('error', 'Manager or Employee ID missing for leave #' . $leave_id);
+                    log_message('debug', 'Employee Data: ' . json_encode($employee));
+                }
+            } else {
+                log_message('error', 'Employee data missing for leave #' . $leave_id);
+                log_message('debug', 'Leave Data: ' . json_encode($leave));
+            }
+        }
+
+        $this->session->set_flashdata('msg', lang('requests_accept_all_flash_msg_success'));
+        redirect('requests');
+    }
+
+    // Helper method to handle the case where the array key might not be set
+    private function getArrayValue($array, $key, $default = null) {
+        return isset($array[$key]) ? $array[$key] : $default;
+    }
+    
     /**
      * Reject a leave request
      * @param int $id leave request identifier

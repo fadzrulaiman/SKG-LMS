@@ -48,6 +48,7 @@ $lang['requests_summary_flash_msg_error'] = 'This employee has no contract.';
 $lang['requests_summary_flash_msg_forbidden'] = 'Your are not the manager of this employee.';
 $lang['requests_summary_button_list'] = 'List of subordinates';
 
+$lang['requests_index_approve_all'] = 'Approve All Requested Leaves';
 $lang['requests_index_button_export'] = 'Export this list';
 $lang['requests_index_button_show_all'] = 'All requests';
 $lang['requests_index_button_show_pending'] = 'Pending requests ';

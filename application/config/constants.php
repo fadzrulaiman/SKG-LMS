@@ -52,6 +52,10 @@ define('LMS_CANCELLATION', 5);
 define('LMS_CANCELED', 6);
 define('LMS_REQUESTEDBANK', 7);
 
+define('ANNUAL_LEAVE_TYPE_ID', 1);
+define('SICK_LEAVE_TYPE_ID', 2);
+define('LEAVE_BANK_TYPE_ID', 3);
+
 //Transitions
 define('LMS_PLANNED_REQUESTED', 102);
 define('LMS_REQUESTED_REJECTED', 204);

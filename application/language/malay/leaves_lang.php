@@ -74,6 +74,7 @@ $lang['leaves_flash_msg_overlap_dayoff'] = 'Permintaan cuti anda sepadan dengan 
 $lang['leaves_cancellation_flash_msg_error'] = 'Anda tidak boleh membatalkan permintaan cuti ini';
 $lang['leaves_cancellation_flash_msg_success'] = 'Permintaan pembatalan telah berjaya dihantar';
 $lang['requests_cancellation_accept_flash_msg_success'] = 'Permintaan cuti telah berjaya dibatalkan';
+$lang['requests_accept_all_flash_msg_success'] = 'Approved All Leave Request Success';
 $lang['requests_cancellation_accept_flash_msg_error'] = 'Ralat berlaku semasa cuba menerima pembatalan';
 $lang['requests_cancellation_reject_flash_msg_success'] = 'Permintaan cuti kini mempunyai status asal Diterima';
 $lang['requests_cancellation_reject_flash_msg_error'] = 'Ralat berlaku semasa cuba menolak pembatalan';

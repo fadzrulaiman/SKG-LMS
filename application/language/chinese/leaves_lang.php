@@ -75,6 +75,7 @@ $lang['leaves_flash_msg_overlap_dayoff'] = '你的休假申请符合非工作日
 $lang['leaves_cancellation_flash_msg_error'] = '你无法取消这个休假申请';
 $lang['leaves_cancellation_flash_msg_success'] = '取消请求已成功发送';
 $lang['requests_cancellation_accept_flash_msg_success'] = '休假请求已成功取消';
+$lang['requests_accept_all_flash_msg_success'] = 'Approved All Leave Request Success';
 $lang['requests_cancellation_accept_flash_msg_error'] = '尝试接受取消时出现错误';
 $lang['requests_cancellation_reject_flash_msg_success'] = '休假请求现在恢复到原始状态';
 $lang['requests_cancellation_reject_flash_msg_error'] = '尝试拒绝取消时出现错误';

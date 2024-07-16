@@ -1,10 +1,3 @@
-<?php
-/**
- * This view displays the list of leave requests submitted to a manager.
- * @copyright  Copyright (c) Fadzrul Aiman
- * @since 0.1.0
- */
-?>
 <h2><?php echo lang('requests_index_title');?></h2>
 
 <?php echo $flash_partial_view;?>
@@ -21,27 +14,12 @@
             <?php endforeach ?>
         </select>&nbsp;&nbsp;
     </div>
-    <?php
-$disable = "";
-$checked = "checked";
-if ($showAll == FALSE) {
-    $disable = "disabled";
-    $checked = "";
-}
-?>
-    <div class="span1">&nbsp;</div>
-    <div class="span8">
-        <!--<span class="label"><input type="checkbox" <?php echo $checked;?> id="chkPlanned" class="filterStatus" <?php echo $disable;?>> &nbsp;<?php echo lang('Planned');?></span> &nbsp;-->
-        <span class="label label-success"><input type="checkbox" <?php echo $checked;?> id="chkAccepted"
-                class="filterStatus" <?php echo $disable;?>> &nbsp;<?php echo lang('Accepted');?></span> &nbsp;
-        <span class="label label-warning"><input type="checkbox" checked id="chkRequested" class="filterStatus">
-            &nbsp;<?php echo lang('Requested');?></span> &nbsp;
-        <span class="label label-important" style="background-color: #ff0000;"><input type="checkbox"
-                <?php echo $checked;?> id="chkRejected" class="filterStatus" <?php echo $disable;?>>
-            &nbsp;<?php echo lang('Rejected');?></span> &nbsp;
-        <span class="label label-important" style="background-color: #ff0000;"><input type="checkbox"
-                <?php echo $checked;?> id="chkCanceled" class="filterStatus" <?php echo $disable;?>>
-            &nbsp;<?php echo lang('Canceled');?></span>
+    <!-- Add this section for the Approve All button -->
+    <div class="span9 text-right">
+        <form action="<?php echo base_url('requests/approveAll'); ?>" method="post">
+            <?php echo form_hidden($this->security->get_csrf_token_name(), $this->security->get_csrf_hash()); ?>
+            <button type="submit" class="btn btn-success"><?php echo lang('requests_index_approve_all'); ?></button>
+        </form>
     </div>
 </div>
 
@@ -64,31 +42,31 @@ if ($showAll == FALSE) {
     </thead>
     <tbody>
         <?php foreach ($requests as $request):
-    $date = new DateTime($request['startdate']);
-    $tmpStartDate = $date->getTimestamp();
-    $startdate = $date->format(lang('global_date_format'));
-    $date = new DateTime($request['enddate']);
-    $tmpEndDate = $date->getTimestamp();
-    $enddate = $date->format(lang('global_date_format'));
-    if ($this->config->item('enable_history') == TRUE){
-      if($request['request_date'] == NULL){
-        $tmpRequestDate = "";
-        $requestdate = "";
-      }else{
-        $datetimeRequested = new DateTime($request['request_date']);
-        $tmpRequestDate = $datetimeRequested->getTimestamp();
-        $requestdate = $datetimeRequested->format(lang('global_date_format'));
-      }
-      if($request['change_date'] == NULL){
-        $tmpLastChangeDate = "";
-        $lastchangedate = "";
-      }else{
-        $datetimelastChanged = new DateTime($request['change_date']);
-        $tmpLastChangeDate = $datetimelastChanged->getTimestamp();
-        $lastchangedate = $datetimelastChanged->format(lang('global_date_format'));
-      }
-    }
-    ?>
+            $date = new DateTime($request['startdate']);
+            $tmpStartDate = $date->getTimestamp();
+            $startdate = $date->format(lang('global_date_format'));
+            $date = new DateTime($request['enddate']);
+            $tmpEndDate = $date->getTimestamp();
+            $enddate = $date->format(lang('global_date_format'));
+            if ($this->config->item('enable_history') == TRUE){
+              if($request['request_date'] == NULL){
+                $tmpRequestDate = "";
+                $requestdate = "";
+              }else{
+                $datetimeRequested = new DateTime($request['request_date']);
+                $tmpRequestDate = $datetimeRequested->getTimestamp();
+                $requestdate = $datetimeRequested->format(lang('global_date_format'));
+              }
+              if($request['change_date'] == NULL){
+                $tmpLastChangeDate = "";
+                $lastchangedate = "";
+              }else{
+                $datetimelastChanged = new DateTime($request['change_date']);
+                $tmpLastChangeDate = $datetimelastChanged->getTimestamp();
+                $lastchangedate = $datetimelastChanged->format(lang('global_date_format'));
+              }
+            }
+            ?>
         <tr>
             <td data-order="<?php echo $request['leave_id']; ?>" class="text-center">
                 <a href="<?php echo base_url();?>leaves/requests/<?php echo $request['leave_id']; ?>"

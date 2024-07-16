@@ -49,6 +49,7 @@ $lang['requests_summary_flash_msg_error'] = 'Pekerja ini tidak mempunyai kontrak
 $lang['requests_summary_flash_msg_forbidden'] = 'Anda bukan pengurus bagi pekerja ini.';
 $lang['requests_summary_button_list'] = 'Senarai bawahan';
 
+$lang['requests_index_approve_all'] = 'Approve All Requested Leaves';
 $lang['requests_index_button_export'] = 'Eksport senarai ini';
 $lang['requests_index_button_show_all'] = 'Semua permintaan';
 $lang['requests_index_button_show_pending'] = 'Permintaan tertunda ';

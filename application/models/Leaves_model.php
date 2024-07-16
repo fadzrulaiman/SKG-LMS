@@ -1359,32 +1359,56 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
      * @param int $manager connected user
      * @param bool $all TRUE all requests, FALSE otherwise
      * @return array Recordset (can be empty if no requests or not a manager)
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getLeavesRequestedToManager($manager, $all = FALSE) {
+        // Load the delegations model to get managers delegating to the connected user
         $this->load->model('delegations_model');
         $ids = $this->delegations_model->listManagersGivingDelegation($manager);
+
+        // Select relevant fields from the leaves, users, status, and types tables
         $this->db->select('leaves.id as leave_id, users.*, leaves.*, types.name as type_label');
         $this->db->select('status.name as status_name, types.name as type_name');
         $this->db->join('status', 'leaves.status = status.id');
         $this->db->join('types', 'leaves.type = types.id');
         $this->db->join('users', 'users.id = leaves.employee');
 
+        // If the connected user has delegations, include those managers in the filter
         if (count($ids) > 0) {
             array_push($ids, $manager);
             $this->db->where_in('users.manager', $ids);
         } else {
             $this->db->where('users.manager', $manager);
         }
+
+        // Filter to only include requested or cancellation status if $all is FALSE
         if ($all == FALSE) {
+            $this->db->group_start();
             $this->db->where('leaves.status', LMS_REQUESTED);
             $this->db->or_where('leaves.status', LMS_CANCELLATION);
+            $this->db->group_end();
         }
+
+        // Order the results by the start date in descending order
         $this->db->order_by('leaves.startdate', 'desc');
+
+        // Execute the query and return the result set
         $query = $this->db->get('leaves');
         return $query->result_array();
     }
-
+    
+    public function getAllPendingLeaves($manager_id) {
+        $this->db->select('leaves.*, users.manager');
+        $this->db->from('leaves');
+        $this->db->join('users', 'users.id = leaves.employee');
+        $this->db->where('users.manager', $manager_id);
+        $this->db->group_start();
+        $this->db->where('leaves.status', LMS_REQUESTED);
+        $this->db->group_end();
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
+    
     /**
      * Get the list of history of an employee
      * @param int $manager Id of the employee
