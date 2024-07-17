@@ -72,3 +72,16 @@ $lang['set_sickleave_enddate'] = 'End Date';
 $lang['set_sickleave_daysentitled'] = 'Days Entitled';
 $lang['set_sickleave_exportexcel'] = 'Export To Excel';
 
+$lang['set_leavebank_title'] = 'Set Leave Bank';
+$lang['set_leavebank_header'] = 'Entitle Leave Bank';
+$lang['set_leavebank_year'] = 'Select The Year To Allocate Leave Bank';
+$lang['set_leavebank_button'] = 'Set Leave Bank';
+$lang['set_leavebank_filter'] = 'Filter by year';
+$lang['set_leavebank_filterbutton'] = 'Filter Table';
+$lang['set_leavebank_employeeid'] = 'Employee ID';
+$lang['set_leavebank_name'] = 'Name';
+$lang['set_leavebank_startdate'] = 'Start Date';
+$lang['set_leavebank_enddate'] = 'End Date';
+$lang['set_leavebank_annualleave_balance'] = 'Annual Leave Balance Last Year';
+$lang['set_leavebank_daysentitled'] = 'Leave Bank Days Entitled';
+$lang['set_leavebank_exportexcel'] = 'Export To Excel';
