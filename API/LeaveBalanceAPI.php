@@ -123,6 +123,7 @@ if ($result->num_rows > 0) {
 
 // Include the sick leave balance in the leave balance
 $leave_balance['2'] = $sick_leave_balance - $sick_leave_used;
+$max_leave_days['2'] = $sick_leave_entitled;
 
 // Step 8: Calculate the leave balance for other leave types
 foreach ($entitled_days as $type => $entitled_days_count) {
