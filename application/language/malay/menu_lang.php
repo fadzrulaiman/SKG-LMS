@@ -38,6 +38,7 @@ $lang['menu_hr_reports_divider'] = 'Laporan';
 $lang['menu_hr_setleave_divider'] = 'Set Leaves';
 $lang['menu_hr_report_leave_balance'] = 'Laporan Baki cuti';
 $lang['menu_hr_setleave_sick_leave'] = 'Cuti Sakit';
+$lang['menu_hr_setleave_leave_bank'] = 'Leave Bank';
 $lang['menu_hr_report_leaves'] = 'Laporan Bulanan Permintaan cuti';
 $lang['menu_hr_report_leavesbydate'] = 'Laporan Permintaan cuti';
 

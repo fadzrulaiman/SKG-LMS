@@ -37,6 +37,7 @@ $lang['menu_hr_list_leaves_type'] = '总类列表';
 $lang['menu_hr_reports_divider'] = '报告';
 $lang['menu_hr_setleave_divider'] = 'Set Leaves';
 $lang['menu_hr_setleave_sick_leave'] = 'Sick Leaves';
+$lang['menu_hr_setleave_leave_bank'] = 'Leave Bank';
 $lang['menu_hr_report_leave_balance'] = '加价平均值';
 $lang['menu_hr_report_leaves'] = '月度休假报告';
 $lang['menu_hr_report_leavesbydate'] = '休假申请';

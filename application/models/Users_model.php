@@ -59,7 +59,7 @@ class Users_model extends CI_Model {
      * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function getAllEmployees() {
-        $this->db->select('id, firstname, lastname, email');
+        $this->db->select('id, firstname, lastname, email, contract');
         $query = $this->db->get('users');
         return $query->result_array();
     }
@@ -905,4 +905,72 @@ class Users_model extends CI_Model {
         $result = $this->db->update('users', $data);
         return $result;
     }
+
+    public function getAnnualLeaveBalance($employee_id, $year) {
+        // Calculate the start and end dates for the previous year
+        $start_date = $year . '-01-01';
+        $end_date = $year . '-12-31';
+    
+        // Get the sum of entitled days for the previous year
+        $this->db->select('SUM(entitleddays.days) as entitled');
+        $this->db->from('entitleddays');
+        $this->db->where('employee', $employee_id);
+        $this->db->where('type', 1); // Assuming type 1 is for Annual Leave
+        $this->db->where('startdate >=', $start_date);
+        $this->db->where('enddate <=', $end_date);
+        $entitled_days = $this->db->get()->row()->entitled;
+    
+        // Get the sum of taken days for the previous year
+        $this->db->select('SUM(leaves.duration) as taken');
+        $this->db->from('leaves');
+        $this->db->where('employee', $employee_id);
+        $this->db->where('type', 1); // Assuming type 1 is for Annual Leave
+        $this->db->where('status', LMS_ACCEPTED); // Assuming LMS_ACCEPTED is the status for accepted leaves
+        $this->db->where('startdate >=', $start_date);
+        $this->db->where('enddate <=', $end_date);
+        $taken_days = $this->db->get()->row()->taken;
+    
+        // Calculate the balance
+        $balance = $entitled_days - $taken_days;
+        return $balance;
+    }
+    
+    public function getLeaveBankBalance($employee_id) {
+        $this->db->select('days');
+        $this->db->from('entitleddays');
+        $this->db->where('employee', $employee_id);
+        $this->db->where('type', 3); // Assuming type 3 is for Leave Bank
+        $this->db->where('startdate <=', '2000-01-01');
+        $this->db->where('enddate >=', '9999-12-31');
+        $leave_bank = $this->db->get()->row();
+        return $leave_bank ? $leave_bank->days : 0;
+    }
+    
+    public function updateLeaveBankBalance($employee_id, $new_balance) {
+        // Check if leave bank record exists, if not create one
+        $this->db->select('id');
+        $this->db->from('entitleddays');
+        $this->db->where('employee', $employee_id);
+        $this->db->where('type', 3); // Assuming type 3 is for Leave Bank
+        $this->db->where('startdate <=', '2000-01-01');
+        $this->db->where('enddate >=', '9999-12-31');
+        $leave_bank = $this->db->get()->row();
+    
+        if ($leave_bank) {
+            // Update existing record
+            $this->db->where('id', $leave_bank->id);
+            $this->db->update('entitleddays', ['days' => $new_balance]);
+        } else {
+            // Create new record
+            $data = [
+                'employee' => $employee_id,
+                'startdate' => '2000-01-01',
+                'enddate' => '9999-12-31',
+                'type' => 3,
+                'days' => $new_balance
+            ];
+            $this->db->insert('entitleddays', $data);
+        }
+    }
+    
 }
