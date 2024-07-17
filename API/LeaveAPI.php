@@ -127,7 +127,7 @@ function getUserDetailsById($userId, $conn) {
     }
     return null;
 }
-/*
+
 function sendEmail($recipient, $subject, $body) {
     $mail = new PHPMailer(true);
     try {
@@ -155,7 +155,7 @@ function sendEmail($recipient, $subject, $body) {
         return $mail->ErrorInfo;
     }
 }
-*/
+/*
 function sendEmail($recipient, $subject, $body) {
     $mail = new PHPMailer(true);
     try {
@@ -183,7 +183,7 @@ function sendEmail($recipient, $subject, $body) {
         return $mail->ErrorInfo;
     }
 }
-
+*/
 function buildEmailBody($templateFilePath, $data) {
     if (file_exists($templateFilePath)) {
         $template = file_get_contents($templateFilePath);

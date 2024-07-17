@@ -95,9 +95,38 @@ if ($result->num_rows > 0) {
 // Calculate the leave bank balance
 $leave_balance['3'] = $leave_bank_initial - $leave_bank_used;
 
-// Step 6: Calculate the leave balance for other leave types
+// Step 6: Get the sick leave balance from the contracts table where type = 2 and id = user_id
+$sql = "SELECT days FROM entitleddays WHERE type = '2' AND employee = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$sick_leave_balance = 0;
+if ($result->num_rows > 0) {
+    $contract = $result->fetch_assoc();
+    $sick_leave_balance = (int)$contract['days'];
+}
+
+// Step 7: Get the used sick leave days from the leaves table with status 2 or 3
+$sql = "SELECT SUM(duration) as total_duration FROM leaves WHERE employee = ? AND type = '2' AND (status = 2 OR status = 3)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+
+$sick_leave_used = 0;
+if ($result->num_rows > 0) {
+    $leave = $result->fetch_assoc();
+    $sick_leave_used = (int)$leave['total_duration'];
+}
+
+// Include the sick leave balance in the leave balance
+$leave_balance['2'] = $sick_leave_balance - $sick_leave_used;
+
+// Step 8: Calculate the leave balance for other leave types
 foreach ($entitled_days as $type => $entitled_days_count) {
-    if ($type != '3') { // Skip leave bank as it's already calculated
+    if ($type != '3' && $type != '2') { // Skip leave bank and sick leave as they're already calculated
         $used_days_count = $used_days[$type] ?? 0;
         $leave_balance[$type] = $entitled_days_count - $used_days_count;
     }
@@ -123,6 +152,12 @@ foreach ($leave_balance as $type_id => $balance) {
 foreach ($max_leave_days as $type_id => $days) {
     $max_leave_days_named[$leave_types[$type_id]] = $days;
 }
+
+// Log the response for debugging
+error_log(json_encode([
+    "leave_balance" => $leave_balance_named,
+    "max_leave_days" => $max_leave_days_named
+]));
 
 // Return the leave balance and max leave days as JSON
 echo json_encode([
