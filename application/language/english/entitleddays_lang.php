@@ -83,5 +83,9 @@ $lang['set_leavebank_name'] = 'Name';
 $lang['set_leavebank_startdate'] = 'Start Date';
 $lang['set_leavebank_enddate'] = 'End Date';
 $lang['set_leavebank_annualleave_balance'] = 'Annual Leave Balance Last Year';
-$lang['set_leavebank_daysentitled'] = 'Leave Bank Days Entitled';
+$lang['set_leavebank_leavebank_balance'] = 'Leave Bank Balance Last Year';
+$lang['set_leavebank_daysentitled'] = 'Leave Bank Days Entitled This Year';
 $lang['set_leavebank_exportexcel'] = 'Export To Excel';
+$lang['start_date_leavebank_daysentitled'] = 'Leave bank start validity';
+$lang['end_date_leavebank_daysentitled'] = 'Leave bank end validity';
+
