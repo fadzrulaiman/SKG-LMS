@@ -71,6 +71,8 @@ $lang['set_sickleave_startdate'] = 'Start Date';
 $lang['set_sickleave_enddate'] = 'End Date';
 $lang['set_sickleave_daysentitled'] = 'Days Entitled';
 $lang['set_sickleave_exportexcel'] = 'Export To Excel';
+$lang['set_sickleave_no_entitlements'] = 'Employees With No Entitlements';
+$lang['set_sickleave_with_entitlements'] = 'Employees With Entitlements';
 
 $lang['set_leavebank_title'] = 'Set Leave Bank';
 $lang['set_leavebank_header'] = 'Entitle Leave Bank';

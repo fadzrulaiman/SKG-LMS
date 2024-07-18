@@ -351,4 +351,26 @@ class Entitleddays_model extends CI_Model {
         }
         return $result;
     }
+
+    public function nullsickleave_entitleddays_year($year) {
+        $this->db->select('u.id as employee, u.firstname, u.lastname, ed.startdate, ed.enddate, ed.days, CONCAT(u.firstname, " ", u.lastname) as employee_name');
+        $this->db->from('users u');
+        $this->db->join('entitleddays ed', 'u.id = ed.employee AND YEAR(ed.startdate) = ' . $this->db->escape($year) . ' AND ed.type = 2', 'left');
+        $this->db->where('ed.days IS NULL');
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }
+    
+    public function nullsickleave_entitleddays() {
+        $current_year = date('Y');
+        $this->db->select('u.id as employee, u.firstname, u.lastname, ed.startdate, ed.enddate, ed.days, CONCAT(u.firstname, " ", u.lastname) as employee_name');
+        $this->db->from('users u');
+        $this->db->join('entitleddays ed', 'u.id = ed.employee AND YEAR(ed.startdate) = ' . $this->db->escape($current_year) . ' AND ed.type = 2', 'left');
+        $this->db->where('ed.days IS NULL');
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }
+    
 }
