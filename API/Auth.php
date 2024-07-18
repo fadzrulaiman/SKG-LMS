@@ -29,19 +29,14 @@ try {
             $contract = $row['contract'];
             $role = $row['role'];
 
-            $query2 = "SELECT t2.id, t2.name, t2.supervisor
-                       FROM users t1
-                       JOIN organization t2 ON t1.organization = t2.id
-                       WHERE t1.id = '$UserID'";
+            $query2 = "SELECT EXISTS (SELECT 1 FROM users WHERE manager = '$UserID') AS user_exists;";
 
-            $result2 = mysqli_query($conn, $query2);
+                $result2 = mysqli_query($conn, $query2);
 
-            if ($result2 && mysqli_num_rows($result2) > 0) {
-                $row = mysqli_fetch_assoc($result2);
-                $DepartmentID = (string) $row['id']; // Cast to string
-                $DepartmentShortName = $row['name'];
-                $Supervisor = $row['supervisor'];
-            }
+                if ($result2 && mysqli_num_rows($result2) > 0) {
+                    $row = mysqli_fetch_assoc($result2);
+                    $userExists = $row['user_exists'];
+                }
 
             $query3 = "SELECT t2.delegate_id
                        FROM users t1 JOIN delegations t2 
@@ -60,9 +55,7 @@ try {
             $_SESSION['user_role'] = $UserRole;
             $_SESSION['user_name'] = $UserName;
             $_SESSION['user_email'] = $email;
-            $_SESSION['user_department'] = $DepartmentID;
-            $_SESSION['department_short_name'] = $DepartmentShortName;
-            $_SESSION['user_supervisor'] = $Supervisor;
+            $_SESSION['user_exists'] = $userExists;
             $_SESSION['contract'] = $contract;
             $_SESSION['role'] = $role;
             $_SESSION['delegate_id'] = $delegate;
@@ -89,7 +82,6 @@ try {
                 $UserRole = $row['role'];
                 $FirstName = $row['firstname'];
                 $LastName = $row['lastname'];
-                $DepartmentID = (string) $row['organization']; // Cast to string
                 $email = $row['email'];
                 $contract = $row['contract'];
                 $role = $row['role'];
@@ -115,17 +107,13 @@ try {
                     $insertStmt->execute();
                 }
 
-                $query2 = "SELECT t2.id, t2.name, t2.supervisor
-                           FROM users t1 JOIN organization t2 
-                           ON t1.organization = t2.id WHERE t1.id = '$UserID'";
+                $query2 = "SELECT EXISTS (SELECT 1 FROM users WHERE manager = '$UserID') AS user_exists;";
 
                 $result2 = mysqli_query($conn, $query2);
 
                 if ($result2 && mysqli_num_rows($result2) > 0) {
                     $row = mysqli_fetch_assoc($result2);
-                    $DepartmentID = (string) $row['id']; // Cast to string
-                    $DepartmentShortName = $row['name'];
-                    $Supervisor = $row['supervisor'];
+                    $userExists = $row['user_exists'];
                 }
 
                 $query3 = "SELECT t2.delegate_id
@@ -147,9 +135,7 @@ try {
                 $_SESSION['user_role'] = $UserRole;
                 $_SESSION['user_name'] = $UserName;
                 $_SESSION['user_email'] = $email;
-                $_SESSION['user_department'] = $DepartmentID;
-                $_SESSION['department_short_name'] = $DepartmentShortName;
-                $_SESSION['user_supervisor'] = $Supervisor;
+                $_SESSION['user_exists'] = $userExists;
                 $_SESSION['contract'] = $contract;
                 $_SESSION['role'] = $role;
                 $_SESSION['delegate_id'] = $delegate;
@@ -169,10 +155,8 @@ try {
         "UserRole" => isset($_SESSION['user_role']) ? $_SESSION['user_role'] : null,
         "UserName" => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
         "Email" => isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null,
-        "DepartmentID" => isset($_SESSION['user_department']) ? (string) $_SESSION['user_department'] : null,
-        "DepartmentShortName" => isset($_SESSION['department_short_name']) ? $_SESSION['department_short_name'] : null,
+        "userExists" => isset($_SESSION['user_exists']) ? (string) $_SESSION['user_exists'] : null,
         "VerificationToken" => isset($VerificationToken) ? $VerificationToken : null,
-        "Supervisor" => isset($_SESSION['user_supervisor']) ? (string) $_SESSION['user_supervisor'] : null,
         "contract" => isset($_SESSION['contract']) ? $_SESSION['contract'] : null,
         "role" => isset($_SESSION['role']) ? $_SESSION['role'] : null,
         "delegate" => isset($_SESSION['delegate_id']) ? $_SESSION['delegate_id'] : null,

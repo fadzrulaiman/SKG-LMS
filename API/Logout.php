@@ -26,7 +26,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
 
     if ($stmt->execute()) {
         // Clear the FCM token from the users table
-        $stmt = $conn->prepare("UPDATE users SET fcm_token = NULL WHERE id = ?");
+        $stmt = $conn->prepare("UPDATE users SET fcm_token = '' WHERE id = ?");
         $stmt->bind_param("i", $userId);
 
         if ($stmt->execute()) {
