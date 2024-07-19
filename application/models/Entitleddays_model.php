@@ -244,75 +244,27 @@ class Entitleddays_model extends CI_Model {
      * @param int $year The year to set sick leave for.
      */
     public function set_sickleave($year) {
-        $query = "
-            INSERT INTO entitleddays (contract, employee, overtime, startdate, enddate, type, days)
-            SELECT 
-                NULL AS contract,
-                u.id AS employee,
-                NULL AS overtime,
-                CONCAT($year, '-01-01') AS startdate,
-                CONCAT($year, '-12-31') AS enddate,
-                2 AS type,
-                14 AS days
-            FROM 
-                users u
-            LEFT JOIN 
-                entitleddays ed ON u.id = ed.employee 
-                AND ed.type = 2
-                AND ed.startdate = CONCAT($year, '-01-01')
-                AND ed.enddate = CONCAT($year, '-12-31')
-            WHERE 
-                TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) < 2
-                AND u.active = 1
-                AND ed.id IS NULL
+        $startdate = $year . '-01-01';
+        $enddate = $year . '-12-31';
 
-            UNION ALL
+        // Subquery for calculating sick leave days based on employment duration
+        $this->db->select('NULL AS contract, u.id AS employee, NULL AS overtime, \'' . $startdate . '\' AS startdate, \'' . $enddate . '\' AS enddate, 2 AS type', false);
+        $this->db->select('
+            CASE 
+                WHEN TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) < 2 THEN 14
+                WHEN TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) < 5 THEN 18
+                ELSE 22
+            END AS days', false);
+        $this->db->from('users u');
+        $this->db->join('entitleddays ed', 'u.id = ed.employee AND ed.type = 2 AND ed.startdate = \'' . $startdate . '\' AND ed.enddate = \'' . $enddate . '\'', 'left');
+        $this->db->where('u.active', 1);
+        $this->db->where('ed.id IS NULL');
 
-            SELECT 
-                NULL AS contract,
-                u.id AS employee,
-                NULL AS overtime,
-                CONCAT($year, '-01-01') AS startdate,
-                CONCAT($year, '-12-31') AS enddate,
-                2 AS type,
-                18 AS days
-            FROM 
-                users u
-            LEFT JOIN 
-                entitleddays ed ON u.id = ed.employee 
-                AND ed.type = 2
-                AND ed.startdate = CONCAT($year, '-01-01')
-                AND ed.enddate = CONCAT($year, '-12-31')
-            WHERE 
-                TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) >= 2
-                AND TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) < 5
-                AND u.active = 1
-                AND ed.id IS NULL
+        $subquery = $this->db->get_compiled_select();
 
-            UNION ALL
-
-            SELECT 
-                NULL AS contract,
-                u.id AS employee,
-                NULL AS overtime,
-                CONCAT($year, '-01-01') AS startdate,
-                CONCAT($year, '-12-31') AS enddate,
-                2 AS type,
-                22 AS days
-            FROM 
-                users u
-            LEFT JOIN 
-                entitleddays ed ON u.id = ed.employee 
-                AND ed.type = 2
-                AND ed.startdate = CONCAT($year, '-01-01')
-                AND ed.enddate = CONCAT($year, '-12-31')
-            WHERE 
-                TIMESTAMPDIFF(YEAR, u.employmentdate, CURDATE()) >= 5
-                AND u.active = 1
-                AND ed.id IS NULL;
-        ";
-
-        $this->db->query($query);
+        // Main query to insert into entitleddays
+        $this->db->query('
+            INSERT INTO entitleddays (contract, employee, overtime, startdate, enddate, type, days) ' . $subquery);
     }
 
     /**
@@ -437,38 +389,31 @@ class Entitleddays_model extends CI_Model {
         $startdate = $year . '-01-01';
         $enddate = $year . '-12-31';
 
-        $case_statement = "CASE c.id
-                                WHEN 1 THEN 32
-                                WHEN 2 THEN 22
-                                WHEN 3 THEN 24
-                                WHEN 4 THEN 18
+        // Define the case statement for the number of days
+        $case_statement = "(CASE 
+                                WHEN contracts.id = 1 THEN 32
+                                WHEN contracts.id = 2 THEN 22
+                                WHEN contracts.id = 3 THEN 24
+                                WHEN contracts.id = 4 THEN 18
                                 ELSE 0
-                           END";
+                            END) AS days";
 
-        $sql = "
-            INSERT INTO entitleddays (contract, employee, overtime, startdate, enddate, type, days)
-            SELECT 
-                c.id AS contract,
-                NULL AS employee,
-                NULL AS overtime,
-                ? AS startdate,
-                ? AS enddate,
-                1 AS type,
-                $case_statement AS days
-            FROM 
-                contracts c
-            WHERE 
-                c.id != 0
-                AND NOT EXISTS (
-                    SELECT 1
-                    FROM entitleddays ed
-                    WHERE ed.contract = c.id
-                    AND ed.type = 1
-                    AND ed.startdate = ?
-                    AND ed.enddate = ?
-                )
-        ";
+        // Subquery to check if entitleddays already exists
+        $subquery = $this->db->select('1')
+                             ->from('entitleddays ed')
+                             ->where('ed.contract = contracts.id')
+                             ->where('ed.type', 1)
+                             ->where('ed.startdate', $startdate)
+                             ->where('ed.enddate', $enddate)
+                             ->get_compiled_select();
 
-        $this->db->query($sql, array($startdate, $enddate, $startdate, $enddate));
+        // Main query to insert annual leave entitlements
+        $this->db->select('contracts.id AS contract, NULL AS employee, NULL AS overtime, \'' . $startdate . '\' AS startdate, \'' . $enddate . '\' AS enddate, 1 AS type, ' . $case_statement, false)
+                 ->from('contracts')
+                 ->where('contracts.id !=', 0)
+                 ->where('NOT EXISTS (' . $subquery . ')', null, false);
+
+        $insert_query = $this->db->get_compiled_select();
+        $this->db->query('INSERT INTO entitleddays (contract, employee, overtime, startdate, enddate, type, days) ' . $insert_query);
     }
 }
