@@ -110,7 +110,7 @@ $this->lang->load('menu', $language);?>
                                     href="<?php echo base_url();?>setleave/setsickleave"><?php echo lang('menu_hr_setleave_sick_leave');?></a>
                             </li>
                             <li><a
-                                    href="<?php echo base_url();?>setleave/setleavebank"><?php echo lang('menu_hr_setleave_leave_bank');?></a>
+                                    href="<?php echo base_url();?>setleave/setannualleave"><?php echo lang('menu_hr_setleave_leave_bank');?></a>
                             </li>
                             <li class="divider"></li>
                             <li class="nav-header"><?php echo lang('menu_hr_reports_divider');?></li>

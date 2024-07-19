@@ -38,7 +38,7 @@ class Setleave extends CI_Controller {
         $year = $this->input->get('year');
         
         // Fetch data to display in the view
-        $data['entitleddays'] = $this->fetch_entitleddays($year);
+        $data['entitleddays'] = $this->fetch_sickentitleddays($year);
         $data['selected_year'] = $year;
 
         $data['title'] = lang('set_sickleave_title');
@@ -53,7 +53,7 @@ class Setleave extends CI_Controller {
      * @param int $year optional year to filter entitled days by
      * @return array list of entitled days with employee names
      */
-    private function fetch_entitleddays($year = null) {
+    private function fetch_sickentitleddays($year = null) {
         if ($year) {
             return $this->entitleddays_model->sickleave_entitleddays_year($year);
         } else {
@@ -87,7 +87,7 @@ class Setleave extends CI_Controller {
         $this->entitleddays_model->set_sickleave($year);
     
         // Fetch updated data to return to the client
-        $entitledDays = $this->fetch_entitleddays();
+        $entitledDays = $this->fetch_sickentitleddays();
         echo json_encode(['status' => 'success', 'data' => $entitledDays]);
     }
 
@@ -101,7 +101,7 @@ class Setleave extends CI_Controller {
         
         try {
             // Fetch updated data to return to the client
-            $entitledDays = $this->fetch_nullentitleddays($year);
+            $entitledDays = $this->fetch_nullsickentitleddays($year);
             echo json_encode(['status' => 'success', 'data' => $entitledDays]);
         } catch (Exception $e) {
             echo json_encode(['status' => 'error', 'error' => $e->getMessage()]);
@@ -113,7 +113,7 @@ class Setleave extends CI_Controller {
      * @param int $year optional year to filter entitled days by
      * @return array list of entitled days with employee names
      */
-    private function fetch_nullentitleddays($year = null) {
+    private function fetch_nullsickentitleddays($year = null) {
         if ($year) {
             return $this->entitleddays_model->nullsickleave_entitleddays_year($year);
         } else {
@@ -177,6 +177,107 @@ class Setleave extends CI_Controller {
         $writer = new Xlsx($spreadsheet);
         $writer->save('php://output');
         exit;
+    }
+
+    /**
+     * Display an ajax-based form that lists entitled days for setting annual leave
+     * and allows updating the list by adding or removing one item
+     * @autor Fadzrul Aiman
+     */
+    public function setannualleave() {
+        $this->auth->checkIfOperationIsAllowed('entitleddays_contract');
+        $data = getUserContext($this);
+        $this->lang->load('datatable', $this->language);
+        
+        // Get the year from query parameters
+        $year = $this->input->get('year');
+        
+        // Fetch data to display in the view
+        $data['entitleddays'] = $this->fetch_annualentitleddays($year);
+        $data['selected_year'] = $year;
+
+        $data['title'] = lang('set_sickleave_title');
+        $this->load->view('templates/header', $data);
+        $this->load->view('menu/index', $data);
+        $this->load->view('setleave/setannualleave', $data);
+        $this->load->view('templates/footer');
+    }
+
+    /**
+     * Fetch entitled days for a specific year or all if year is not provided.
+     * @param int $year optional year to filter entitled days by
+     * @return array list of entitled days with employee names
+     */
+    private function fetch_annualentitleddays($year = null) {
+        if ($year) {
+            return $this->entitleddays_model->annualleave_entitleddays_year($year);
+        } else {
+            $entitledDays = $this->entitleddays_model->annualleave_entitleddays();
+            foreach ($entitledDays as &$day) {
+                $day['name'] = $this->users_model->getName($day['contract_name']);
+            }
+            return $entitledDays;
+        }
+    }
+
+    /**
+     * Get entitled days for a specific year in JSON format.
+     * @param int $year the year to filter entitled days by
+     */
+    public function annualleave_entitleddays_year($year) {
+        $this->auth->checkIfOperationIsAllowed('entitleddays_contract');
+    
+        $entitledDays = $this->entitleddays_model->annualleave_entitleddays_year($year);
+        echo json_encode(['data' => $entitledDays]);
+    }
+
+    /**
+     * Set sick leave for a specific year and return updated data in JSON format.
+     * @param int $year the year to set sick leave for
+     */
+    public function executeannualleaveyear($year) {
+        $this->auth->checkIfOperationIsAllowed('entitleddays_contract');
+        
+        // Call the model method to set sick leave for the specified year
+        $this->entitleddays_model->set_annualleave($year);
+    
+        // Fetch updated data to return to the client
+        $entitledDays = $this->fetch_annualentitleddays();
+        echo json_encode(['status' => 'success', 'data' => $entitledDays]);
+    }
+
+    
+    /**
+     * Set nullsick leave for a specific year and return updated data in JSON format.
+     * @param int $year the year to set sick leave for
+     */
+    public function executenullannualleaveyear($year) {
+        $this->auth->checkIfOperationIsAllowed('entitleddays_contract');
+        
+        try {
+            // Fetch updated data to return to the client
+            $entitledDays = $this->fetch_nullannualentitleddays($year);
+            echo json_encode(['status' => 'success', 'data' => $entitledDays]);
+        } catch (Exception $e) {
+            echo json_encode(['status' => 'error', 'error' => $e->getMessage()]);
+        }
+    }    
+
+    /**
+     * Fetch entitled days for a specific year or all if year is not provided.
+     * @param int $year optional year to filter entitled days by
+     * @return array list of entitled days with employee names
+     */
+    private function fetch_nullannualentitleddays($year = null) {
+        if ($year) {
+            return $this->entitleddays_model->nullannualleave_entitleddays_year($year);
+        } else {
+            $entitledDays = $this->entitleddays_model->nullannualleave_entitleddays();
+            foreach ($entitledDays as &$day) {
+                $day['name'] = $this->users_model->getName($day['contract_name']);
+            }
+            return $entitledDays;
+        }
     }
 }
 ?>

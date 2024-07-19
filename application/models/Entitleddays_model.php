@@ -240,24 +240,6 @@ class Entitleddays_model extends CI_Model {
     }
 
     /**
-     * Get all entitled days.
-     */
-    public function sickleave_entitleddays() {
-        $this->db->select('u.id as employee, u.firstname, u.lastname, ed.startdate, ed.enddate, ed.days');
-        $this->db->from('entitleddays ed');
-        $this->db->join('users u', 'u.id = ed.employee');
-        $this->db->where('YEAR(ed.startdate)', date('Y'));
-        $this->db->where('ed.type', 2);  // Assuming type 2 is for sick leave
-        $query = $this->db->get();
-
-        $result = $query->result_array();
-        foreach ($result as &$row) {
-            $row['employee_name'] = $row['firstname'] . ' ' . $row['lastname'];
-        }
-        return $result;
-    }
-
-    /**
      * Set sick leave for a specific year.
      * @param int $year The year to set sick leave for.
      */
@@ -334,6 +316,24 @@ class Entitleddays_model extends CI_Model {
     }
 
     /**
+     * Get all entitled days.
+     */
+    public function sickleave_entitleddays() {
+        $this->db->select('u.id as employee, u.firstname, u.lastname, ed.startdate, ed.enddate, ed.days');
+        $this->db->from('entitleddays ed');
+        $this->db->join('users u', 'u.id = ed.employee');
+        $this->db->where('YEAR(ed.startdate)', date('Y'));
+        $this->db->where('ed.type', 2);  // Assuming type 2 is for sick leave
+        $query = $this->db->get();
+
+        $result = $query->result_array();
+        foreach ($result as &$row) {
+            $row['employee_name'] = $row['firstname'] . ' ' . $row['lastname'];
+        }
+        return $result;
+    }
+
+    /**
      * Get entitled days for a specific year.
      * @param int $year The year to filter entitled days by.
      */
@@ -372,5 +372,103 @@ class Entitleddays_model extends CI_Model {
         
         return $query->result_array();
     }
+
+    /**
+     * Get annual entitled days for a specific year.
+     * @param int $year The year to filter entitled days by.
+     */
+    public function annualleave_entitleddays_year($year) {
+        $this->db->select('c.id as contract_id, c.name as contract_name, ed.startdate, ed.enddate, ed.days');
+        $this->db->from('entitleddays ed');
+        $this->db->join('users u', 'u.id = ed.employee', 'left');
+        $this->db->join('contracts c', 'u.contract = c.id OR ed.contract = c.id', 'left');
+        $this->db->where('YEAR(ed.startdate)', $year);
+        $this->db->where('ed.type', 1); 
+        $this->db->where('ed.contract IS NOT NULL', null, false); // Ensuring contract is not NULL
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    /**
+     * Get all annual entitled days.
+     */
+    public function annualleave_entitleddays() {
+        $this->db->select('c.id as contract_id, c.name as contract_name, ed.startdate, ed.enddate, ed.days');
+        $this->db->from('entitleddays ed');
+        $this->db->join('users u', 'u.id = ed.employee', 'left');
+        $this->db->join('contracts c', 'u.contract = c.id OR ed.contract = c.id', 'left');
+        $this->db->where('YEAR(ed.startdate)', date('Y'));
+        $this->db->where('ed.type', 1); 
+        $this->db->where('ed.contract IS NOT NULL', null, false); // Ensuring contract is not NULL
+        $query = $this->db->get();
+
+        return $query->result_array();    
+    }
+
+    public function nullannualleave_entitleddays() {
+        $current_year = date('Y');
+        $this->db->select('u.id as contract_id, u.name as contract_name, ed.startdate, ed.enddate, ed.days');
+        $this->db->from('contracts u');
+        $this->db->join('entitleddays ed', 'u.id = ed.contract AND YEAR(ed.startdate) = ' . $this->db->escape($current_year) . ' AND ed.type = 1', 'left');
+        $this->db->where('ed.days IS NULL');
+        $this->db->where('u.id !=', 0);
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }
     
+    public function nullannualleave_entitleddays_year($year) {
+        $this->db->select('u.id as contract_id, u.name as contract_name, ed.startdate, ed.enddate, ed.days');
+        $this->db->from('contracts u');
+        $this->db->join('entitleddays ed', 'u.id = ed.contract AND YEAR(ed.startdate) = ' . $this->db->escape($year) . ' AND ed.type = 1', 'left');
+        $this->db->where('ed.days IS NULL');
+        $this->db->where('u.id !=', 0);
+        $query = $this->db->get();
+        
+        return $query->result_array();
+    }
+
+    /**
+     * Set annual leave entitlements for a specific year.
+     * @param int $year The year to set annual leave entitlements for.
+     */
+    public function set_annualleave($year) {
+        $startdate = $year . '-01-01';
+        $enddate = $year . '-12-31';
+
+        $case_statement = "CASE c.id
+                                WHEN 1 THEN 32
+                                WHEN 2 THEN 22
+                                WHEN 3 THEN 24
+                                WHEN 4 THEN 18
+                                ELSE 0
+                           END";
+
+        $sql = "
+            INSERT INTO entitleddays (contract, employee, overtime, startdate, enddate, type, days)
+            SELECT 
+                c.id AS contract,
+                NULL AS employee,
+                NULL AS overtime,
+                ? AS startdate,
+                ? AS enddate,
+                1 AS type,
+                $case_statement AS days
+            FROM 
+                contracts c
+            WHERE 
+                c.id != 0
+                AND NOT EXISTS (
+                    SELECT 1
+                    FROM entitleddays ed
+                    WHERE ed.contract = c.id
+                    AND ed.type = 1
+                    AND ed.startdate = ?
+                    AND ed.enddate = ?
+                )
+        ";
+
+        $this->db->query($sql, array($startdate, $enddate, $startdate, $enddate));
+    }
 }

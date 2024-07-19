@@ -74,6 +74,22 @@ $lang['set_sickleave_enddate'] = 'End Date';
 $lang['set_sickleave_daysentitled'] = 'Days Entitled';
 $lang['set_sickleave_exportexcel'] = 'Export To Excel';
 $lang['set_sickleave_no_entitlements'] = 'Employees With No Entitlements';
+$lang['set_sickleave_with_entitlements'] = 'Employees With  Entitlements';
+
+$lang['set_annualleave_title'] = 'Set Annual Leave';
+$lang['set_annualleave_header'] = 'Entitle Annual Leave';
+$lang['set_annualleave_year'] = 'Select The Year To Allocate Annual Leave';
+$lang['set_annualleave_button'] = 'Set Annual Leave';
+$lang['set_annualleave_filter'] = 'Filter by year';
+$lang['set_annualleave_filterbutton'] = 'Filter Table';
+$lang['set_annualleave_employeeid'] = 'Employee ID';
+$lang['set_annualleave_name'] = 'Name';
+$lang['set_annualleave_startdate'] = 'Start Date';
+$lang['set_annualleave_enddate'] = 'End Date';
+$lang['set_annualleave_daysentitled'] = 'Days Entitled';
+$lang['set_annualleave_exportexcel'] = 'Export To Excel';
+$lang['set_annualleave_no_entitlements'] = 'Employees With No Entitlements';
+$lang['set_annualleave_with_entitlements'] = 'Employees With  Entitlements';
 
 
 $lang['set_leavebank_title'] = 'Set Leave Bank';

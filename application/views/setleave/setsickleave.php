@@ -74,8 +74,7 @@
                     <?php endfor; ?>
                 </select>
                 <button type="submit" class="btn btn-primary"><?php echo lang('set_sickleave_with_entitlements'); ?></button>
-                <button id="find_null" href="#" type="submit" class="btn btn-primary"><?php echo lang('set_sickleave_no_entitlements'); ?></button>
-
+                <button id="find_null" href="#" type="button" class="btn btn-primary"><?php echo lang('set_sickleave_no_entitlements'); ?></button>
             </form>
         </div>
     </div>
@@ -91,7 +90,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($entitleddays as $row): ?>
+                <?php if(isset($entitleddays) && !empty($entitleddays)) { foreach ($entitleddays as $row): ?>
                 <tr>
                     <td><?php echo $row['employee']; ?></td>
                     <td><?php echo $row['employee_name']; ?></td>
@@ -99,7 +98,7 @@
                     <td><?php echo $row['enddate']; ?></td>
                     <td><?php echo $row['days']; ?></td>
                 </tr>
-                <?php endforeach; ?>
+                <?php endforeach; } ?>
             </tbody>
         </table>
         <div id="reportResult"></div>
@@ -126,12 +125,12 @@ $(document).ready(function() {
             table.clear().rows.add(data.data).draw();
             $('#reportResult').html(''); // Clear any previous messages
         } else {
-            $('#reportResult').html('An error occurred: ' + data.error);
+            $('#reportResult').html('Select year to filter');
         }
     }
 
     function handleAjaxError(xhr, status, error) {
-        $('#reportResult').html('An error occurred: ' + error);
+        $('#reportResult').html('Select year to filter');
         console.error('Error:', error); // Log error details
     }
 

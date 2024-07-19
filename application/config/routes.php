@@ -271,9 +271,9 @@ $route['setleave/setsickleave'] = 'setleave/setsickleave';
 $route['setleave/executesickleave'] = 'setleave/executesickleave'; // Corrected to call the right function
 $route['setleave/executenullsickleave'] = 'setleave/executenullsickleave'; // Corrected to call the right function
 $route['setleave/exportsickleave'] = 'setleave/exportsickleave'; // Corrected to match the controller name
-$route['setleave/setleavebank'] = 'setleave/setleavebank';
-$route['setleave/executeleavebank'] = 'setleave/executeleavebank'; // Corrected to call the right function
-$route['setleave/exportleavebank'] = 'setleave/exportleavebank'; // Corrected to match the controller name
+$route['setleave/setannualleave'] = 'setleave/setannualleave';
+$route['setleave/executeannualleave'] = 'setleave/executeannualleave'; // Corrected to call the right function
+$route['setleave/exportannualleave'] = 'setleave/exportannualleave'; // Corrected to match the controller name
 
 //_______________________________________________
 //Reports
