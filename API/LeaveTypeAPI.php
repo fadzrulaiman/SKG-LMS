@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['type'])) {
       
         echo json_encode($leaveTypes);
       } elseif ($type === 'status') {
-        $query = "SELECT * FROM status";
+        $query = "SELECT name FROM status WHERE id IN ('2', '3', '4', '6', '7')";
         $result = mysqli_query($conn, $query);
         $leaveStatus = array();
       

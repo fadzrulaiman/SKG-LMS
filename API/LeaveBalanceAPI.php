@@ -36,17 +36,17 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $user_contract);
 $stmt->execute();
 $result = $stmt->get_result();
-
+/*
 if ($result->num_rows == 0) {
     echo json_encode(["error" => "No entitled days found for the user's contract"]);
     exit;
 }
-
+*/
 $entitled_days = [];
 $max_leave_days = [];
 while ($row = $result->fetch_assoc()) {
-    $entitled_days[$row['type']] = (int)$row['days'];
-    $max_leave_days[$row['type']] = (int)$row['days']; // Store max days for each leave type in whole number format
+    $entitled_days[$row['type']] = $row['days'];
+    $max_leave_days[$row['type']] = $row['days']; // Store max days for each leave type
 }
 
 // Ensure that the maximum leave days for leave bank and annual leave are the same
@@ -63,7 +63,7 @@ $result = $stmt->get_result();
 
 $used_days = [];
 while ($row = $result->fetch_assoc()) {
-    $used_days[$row['type']] = (int)$row['total_duration'];
+    $used_days[$row['type']] = $row['total_duration'];
 }
 
 // Step 4: Get the initial leave bank days based on the user ID from entitleddays table
@@ -76,7 +76,7 @@ $result = $stmt->get_result();
 $leave_bank_initial = 0;
 if ($result->num_rows > 0) {
     $leave_bank = $result->fetch_assoc();
-    $leave_bank_initial = (int)$leave_bank['days'];
+    $leave_bank_initial = $leave_bank['days'];
 }
 
 // Step 5: Get the used leave bank days from the leaves table with status 2 or 3
@@ -89,7 +89,7 @@ $result = $stmt->get_result();
 $leave_bank_used = 0;
 if ($result->num_rows > 0) {
     $leave_bank = $result->fetch_assoc();
-    $leave_bank_used = (int)$leave_bank['total_duration'];
+    $leave_bank_used = $leave_bank['total_duration'];
 }
 
 // Calculate the leave bank balance
@@ -105,7 +105,7 @@ $result = $stmt->get_result();
 $sick_leave_balance = 0;
 if ($result->num_rows > 0) {
     $contract = $result->fetch_assoc();
-    $sick_leave_balance = (int)$contract['days'];
+    $sick_leave_balance = $contract['days'];
 }
 
 // Step 7: Get the used sick leave days from the leaves table with status 2 or 3
@@ -118,7 +118,7 @@ $result = $stmt->get_result();
 $sick_leave_used = 0;
 if ($result->num_rows > 0) {
     $leave = $result->fetch_assoc();
-    $sick_leave_used = (int)$leave['total_duration'];
+    $sick_leave_used = $leave['total_duration'];
 }
 
 // Include the sick leave balance in the leave balance

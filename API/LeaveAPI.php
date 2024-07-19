@@ -139,7 +139,7 @@ function sendEmail($recipient, $subject, $body) {
         $mail->SMTPSecure = 'tls';
         $mail->Port       = 587;
 
-        $mail->setFrom('sawitlms@gmail.com', 'Leave Management System');
+        $mail->setFrom('sawitlms@gmail.com', 'SKG-LMS');
         $mail->addAddress($recipient);
 
         $mail->isHTML(true);
@@ -214,7 +214,7 @@ function getLeaveBalanceByType($leaveBalance, $leaveType) {
 function sendPushNotification($fcmToken, $title, $body, $data) {
     $factory = (new Factory)
     ->withServiceAccount(__DIR__.'/push-notification-5ce03-firebase-adminsdk-6mh0o-3eeaa64ee4.json')
-    ->withDatabaseUri('https://172.20.10.5.firebaseio.com');
+    ->withDatabaseUri('https://10.13.1.70.firebaseio.com');
 
     $messaging = $factory->createMessaging();
 
@@ -254,7 +254,7 @@ function addWatermark($filePath) {
             return; // Unsupported image type
     }
 
-    $watermark = imagecreatefrompng('../assets/images/watermark.png'); // Path to your watermark image
+    $watermark = imagecreatefrompng('../assets/uploads/watermark.png'); // Path to your watermark image
     $imageWidth = imagesx($image);
     $imageHeight = imagesy($image);
     $watermarkWidth = imagesx($watermark);
@@ -363,7 +363,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
                 'EndDate' => $endDate,
                 'Type' => getLeaveTypeNameById($leaveType, $conn),
                 'Duration' => $leaveDuration,
-                'Balance' => $newBalance,
+                'Balance' => $numericBalance,
                 'Reason' => $leaveDesc,
                 'Comments' => '',
                 'Status' => 'Requested'
@@ -458,7 +458,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                       JOIN status s ON l.status = s.id
                       JOIN types t ON l.type = t.id
                       JOIN delegations d 
-                      WHERE (u.manager = $userId OR d.delegate_id = $userId) AND l.status = 2"; // Assuming status 2 is 'Pending'
+                      WHERE ((u.manager = $userId) OR (u.manager = d.manager_id AND d.delegate_id = $userId)) AND l.status = 2"; // Assuming status 2 is 'Pending'
             $result = mysqli_query($conn, $query);
             $leave = array();
 
@@ -474,9 +474,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         }
     } elseif (isset($_GET['leave_id'])) {
         $leaveId = intval($_GET['leave_id']);
-
+    
         // Get detailed information for a specific leave
-        $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.lastname, u.email, u.id
+        $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.lastname, u.email, u.id, l.attachment
                   FROM leaves l
                   JOIN status s ON l.status = s.id
                   JOIN types t ON l.type = t.id
@@ -492,7 +492,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         } else {
             echo json_encode(array("error" => "Leave not found."));
         }
-    } elseif (isset($_GET['role']) && isset($_GET['type'])) {
+    }
+     elseif (isset($_GET['role']) && isset($_GET['type'])) {
         
         $role = intval($_GET['role']);
         $type = $_GET['type'];
@@ -770,7 +771,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['act
                             'EndDate' => $leaveDetails['enddate'],
                             'Type' => getLeaveTypeNameById($leaveDetails['type'], $conn),
                             'Duration' => $leaveDetails['duration'],
-                            'Balance' => $newBalance,
+                            'Balance' => $numericBalance,
                             'Reason' => $leaveDetails['cause'],
                             'Comments' => 'The leave request has been cancelled by the user.',
                             'Status' => 'Cancelled'

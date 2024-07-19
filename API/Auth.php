@@ -8,6 +8,8 @@ $decodedData = json_decode(file_get_contents('php://input'), true);
 error_log("Received Data: " . print_r($decodedData, true));
 
 try {
+    $userExists = 0; // Initialize userExists to ensure it's always defined
+
     if (isset($decodedData['token'])) {
         $token = mysqli_real_escape_string($conn, $decodedData['token']);
 
@@ -30,25 +32,25 @@ try {
             $role = $row['role'];
 
             $query2 = "SELECT EXISTS (SELECT 1 FROM users WHERE manager = '$UserID') AS user_exists;";
-
-                $result2 = mysqli_query($conn, $query2);
-
-                if ($result2 && mysqli_num_rows($result2) > 0) {
-                    $row = mysqli_fetch_assoc($result2);
-                    $userExists = $row['user_exists'];
+            $result2 = mysqli_query($conn, $query2);
+            if ($result2) {
+                $row2 = mysqli_fetch_assoc($result2);
+                if ($row2) {
+                    $userExists = $row2['user_exists'];
                 }
+            }
 
             $query3 = "SELECT t2.delegate_id
                        FROM users t1 JOIN delegations t2 
                        ON t1.id = t2.delegate_id WHERE t1.id = '$UserID'";
 
             $result3 = mysqli_query($conn, $query3);
-
-            if ($result3 && mysqli_num_rows($result3) > 0) {
-                $row = mysqli_fetch_assoc($result3);
-                $delegate = $row['delegate_id'];
-            } else {
-                $delegate = null;
+            $delegate = null;
+            if ($result3) {
+                $row3 = mysqli_fetch_assoc($result3);
+                if ($row3) {
+                    $delegate = $row3['delegate_id'];
+                }
             }
 
             $_SESSION['user_id'] = $UserID;
@@ -108,12 +110,12 @@ try {
                 }
 
                 $query2 = "SELECT EXISTS (SELECT 1 FROM users WHERE manager = '$UserID') AS user_exists;";
-
                 $result2 = mysqli_query($conn, $query2);
-
-                if ($result2 && mysqli_num_rows($result2) > 0) {
-                    $row = mysqli_fetch_assoc($result2);
-                    $userExists = $row['user_exists'];
+                if ($result2) {
+                    $row2 = mysqli_fetch_assoc($result2);
+                    if ($row2) {
+                        $userExists = $row2['user_exists'];
+                    }
                 }
 
                 $query3 = "SELECT t2.delegate_id
@@ -121,12 +123,12 @@ try {
                            ON t1.id = t2.delegate_id WHERE t1.id = '$UserID'";
 
                 $result3 = mysqli_query($conn, $query3);
-
-                if ($result3 && mysqli_num_rows($result3) > 0) {
-                    $row = mysqli_fetch_assoc($result3);
-                    $delegate = $row['delegate_id'];
-                } else {
-                    $delegate = 0;
+                $delegate = null;
+                if ($result3) {
+                    $row3 = mysqli_fetch_assoc($result3);
+                    if ($row3) {
+                        $delegate = $row3['delegate_id'];
+                    }
                 }
 
                 $UserName = $FirstName . ' ' . $LastName;
@@ -149,13 +151,16 @@ try {
         $Message = "Invalid request: Email or password missing.";
     }
 
+    // Log the session data for debugging
+    error_log("Session Data: " . print_r($_SESSION, true));
+
     $response = array(
         "Message" => $Message,
         "UserID" => isset($_SESSION['user_id']) ? (string) $_SESSION['user_id'] : null,
         "UserRole" => isset($_SESSION['user_role']) ? $_SESSION['user_role'] : null,
         "UserName" => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
         "Email" => isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null,
-        "userExists" => isset($_SESSION['user_exists']) ? (string) $_SESSION['user_exists'] : null,
+        "userExists" => (string) $userExists, // Ensure userExists is always defined
         "VerificationToken" => isset($VerificationToken) ? $VerificationToken : null,
         "contract" => isset($_SESSION['contract']) ? $_SESSION['contract'] : null,
         "role" => isset($_SESSION['role']) ? $_SESSION['role'] : null,
@@ -170,4 +175,3 @@ try {
     echo json_encode($response);
 }
 ?>
-
