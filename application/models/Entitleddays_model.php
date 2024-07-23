@@ -381,10 +381,7 @@ class Entitleddays_model extends CI_Model {
         return $query->result_array();
     }
 
-    /**
-     * Set annual leave entitlements for a specific year.
-     * @param int $year The year to set annual leave entitlements for.
-     */
+    // Set annual leave entitlements for a specific year.
     public function set_annualleave($year) {
         $startdate = $year . '-01-01';
         $enddate = $year . '-12-31';
@@ -416,4 +413,172 @@ class Entitleddays_model extends CI_Model {
         $insert_query = $this->db->get_compiled_select();
         $this->db->query('INSERT INTO entitleddays (contract, employee, overtime, startdate, enddate, type, days) ' . $insert_query);
     }
+
+    // Retrieve the balance of leave types 1 and 3 for each employee from the previous year
+    public function get_leave_balances() {
+        $query = $this->db->query("
+        SELECT 
+        u.id AS employee_id,
+        u.contract AS contract_id,
+        COALESCE(SUM(CASE WHEN e.type = 1 THEN e.days ELSE 0 END), 0) - 
+            (SELECT COALESCE(SUM(l.duration), 0) 
+             FROM leaves l 
+             WHERE l.employee = u.id 
+               AND l.type = 1 
+               AND l.status IN (2, 3, 7) 
+               AND YEAR(l.startdate) = YEAR(CURDATE()) - 1) AS leave_type_1_balance,
+        COALESCE(SUM(CASE WHEN e.type = 3 THEN e.days ELSE 0 END), 0) - 
+            (SELECT COALESCE(SUM(l.duration), 0) 
+             FROM leaves l 
+             WHERE l.employee = u.id 
+               AND l.type = 3 
+               AND l.status IN (2, 3, 7) 
+               AND YEAR(l.startdate) = YEAR(CURDATE()) - 1) AS leave_type_3_balance
+    FROM 
+        users u
+    LEFT JOIN 
+        entitleddays e ON u.id = e.employee OR (u.contract = e.contract AND e.employee IS NULL)
+    WHERE 
+        YEAR(e.startdate) = YEAR(CURDATE()) - 1
+    GROUP BY 
+        u.id, u.contract;
+");
+        return $query->result_array();
+    }
+
+    // Check if entitled days already exist for the employee and type in the current year
+    public function entitled_days_exist($employee_id, $type) {
+        $query = $this->db->get_where('entitleddays', array(
+            'employee' => $employee_id,
+            'type' => $type,
+            'startdate' => date('Y-01-01'),
+            'enddate' => date('Y-12-31')
+        ));
+        return $query->num_rows() > 0;
+    }
+
+    // Insert entitled days for leave type 3
+    public function insert_entitled_days($employee_id, $contract_id, $entitled_days) {
+        // Check if entitled days already exist
+        if ($this->entitled_days_exist($employee_id, 3)) {
+            return false; // Entitled days already exist, do not insert
+        }
+        
+        $data = array(
+            'employee' => $employee_id,
+            'type' => 3,
+            'days' => $entitled_days,
+            'startdate' => date('Y-01-01'),
+            'enddate' => date('Y-12-31'),
+            'description' => 'Carry forward balance from previous year'
+        );
+        return $this->db->insert('entitleddays', $data);
+    }
+
+    // Calculate and insert entitled days for each employee
+    public function calculate_and_insert_entitled_days() {
+        $max_leave_days = [
+            1 => 32,
+            2 => 22,
+            3 => 24,
+            4 => 18,
+        ];
+
+        $leave_data = $this->get_leave_balances();
+
+        foreach ($leave_data as $data) {
+            $employee_id = $data['employee_id'];
+            $contract_id = $data['contract_id'];
+            $leave_balance = $data['leave_type_1_balance'] + $data['leave_type_3_balance'];
+            
+            // Determine the maximum leave days based on the contract
+            $max_days = isset($max_leave_days[$contract_id]) ? $max_leave_days[$contract_id] : 0;
+            
+            // Ensure the leave balance does not exceed the maximum days
+            $entitled_days = min($leave_balance, $max_days);
+            
+            // Insert the entitled days for leave type 3
+            $this->insert_entitled_days($employee_id, $contract_id, $entitled_days);
+        }
+    }
+
+    // Retrieve the leave entitlements and balances
+    public function get_bankentitlement() {
+        $this->db->select("
+            users.id AS employee_id,
+            CONCAT(users.firstname, ' ', users.lastname) AS fullname,
+            contracts.name AS contract_name,
+            -- Annual leave balance for last year
+            (COALESCE(eal.days, 0) + COALESCE(cal.days, 0) - COALESCE(alu.duration, 0)) AS annual_leave_balance_last_year,
+            -- Leave bank balance for last year
+            (COALESCE(elb.days, 0) + COALESCE(clb.days, 0) - COALESCE(lbu.duration, 0)) AS leave_bank_balance_last_year,
+            -- Leave bank entitlement for current year
+            (COALESCE(elbc.days, 0) + COALESCE(clbc.days, 0)) AS leave_bank_entitlement_this_year,
+            -- Burned leave
+            ((COALESCE(eal.days, 0) + COALESCE(cal.days, 0) - COALESCE(alu.duration, 0)) + 
+             (COALESCE(elb.days, 0) + COALESCE(clb.days, 0) - COALESCE(lbu.duration, 0)) - 
+             (COALESCE(elbc.days, 0) + COALESCE(clbc.days, 0))) AS leave_burned
+        ", false);
+        $this->db->from('users');
+        $this->db->join('contracts', 'users.contract = contracts.id', 'left');
+        // Entitlement for annual leave last year
+        $this->db->join('(SELECT employee, SUM(days) AS days FROM entitleddays WHERE type = 1 AND YEAR(enddate) = YEAR(CURDATE()) - 1 GROUP BY employee) eal', 'eal.employee = users.id', 'left');
+        $this->db->join('(SELECT contract, SUM(days) AS days FROM entitleddays WHERE type = 1 AND YEAR(enddate) = YEAR(CURDATE()) - 1 GROUP BY contract) cal', 'cal.contract = users.contract', 'left');
+        // Entitlement for leave bank last year
+        $this->db->join('(SELECT employee, SUM(days) AS days FROM entitleddays WHERE type = 3 AND YEAR(enddate) = YEAR(CURDATE()) - 1 GROUP BY employee) elb', 'elb.employee = users.id', 'left');
+        $this->db->join('(SELECT contract, SUM(days) AS days FROM entitleddays WHERE type = 3 AND YEAR(enddate) = YEAR(CURDATE()) - 1 GROUP BY contract) clb', 'clb.contract = users.contract', 'left');
+        // Entitlement for leave bank current year
+        $this->db->join('(SELECT employee, SUM(days) AS days FROM entitleddays WHERE type = 3 AND YEAR(enddate) = YEAR(CURDATE()) GROUP BY employee) elbc', 'elbc.employee = users.id', 'left');
+        $this->db->join('(SELECT contract, SUM(days) AS days FROM entitleddays WHERE type = 3 AND YEAR(enddate) = YEAR(CURDATE()) GROUP BY contract) clbc', 'clbc.contract = users.contract', 'left');
+        // Leave taken for annual leave last year
+        $this->db->join('(SELECT employee, SUM(duration) AS duration FROM leaves WHERE type = 1 AND YEAR(startdate) = YEAR(CURDATE()) - 1 AND status IN (2, 3, 7) GROUP BY employee) alu', 'alu.employee = users.id', 'left');
+        // Leave taken for leave bank last year
+        $this->db->join('(SELECT employee, SUM(duration) AS duration FROM leaves WHERE type = 3 AND YEAR(startdate) = YEAR(CURDATE()) - 1 AND status IN (2, 3, 7) GROUP BY employee) lbu', 'lbu.employee = users.id', 'left');
+        $this->db->where('users.active', 1);
+        $this->db->order_by('users.id', 'ASC');
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    // Function to get the leave balances for each employee based on a specific year
+    public function get_leavebankbalances($year) {
+        $previous_year = $year - 1;
+        $this->db->select("
+            users.id AS employee_id,
+            CONCAT(users.firstname, ' ', users.lastname) AS fullname,
+            contracts.name AS contract_name,
+            -- Annual leave balance for last year
+            (COALESCE(eal.days, 0) + COALESCE(cal.days, 0) - COALESCE(alu.duration, 0)) AS annual_leave_balance_last_year,
+            -- Leave bank balance for last year
+            (COALESCE(elb.days, 0) + COALESCE(clb.days, 0) - COALESCE(lbu.duration, 0)) AS leave_bank_balance_last_year,
+            -- Leave bank entitlement for current year
+            (COALESCE(elbc.days, 0) + COALESCE(clbc.days, 0)) AS leave_bank_entitlement_this_year,
+            -- Burned leave
+            ((COALESCE(eal.days, 0) + COALESCE(cal.days, 0) - COALESCE(alu.duration, 0)) + 
+             (COALESCE(elb.days, 0) + COALESCE(clb.days, 0) - COALESCE(lbu.duration, 0)) - 
+             (COALESCE(elbc.days, 0) + COALESCE(clbc.days, 0))) AS leave_burned
+        ", false);
+        $this->db->from('users');
+        $this->db->join('contracts', 'users.contract = contracts.id', 'left');
+        // Entitlement for annual leave last year
+        $this->db->join("(SELECT employee, SUM(days) AS days FROM entitleddays WHERE type = 1 AND YEAR(enddate) = $previous_year GROUP BY employee) eal", 'eal.employee = users.id', 'left');
+        $this->db->join("(SELECT contract, SUM(days) AS days FROM entitleddays WHERE type = 1 AND YEAR(enddate) = $previous_year GROUP BY contract) cal", 'cal.contract = users.contract', 'left');
+        // Entitlement for leave bank last year
+        $this->db->join("(SELECT employee, SUM(days) AS days FROM entitleddays WHERE type = 3 AND YEAR(enddate) = $previous_year GROUP BY employee) elb", 'elb.employee = users.id', 'left');
+        $this->db->join("(SELECT contract, SUM(days) AS days FROM entitleddays WHERE type = 3 AND YEAR(enddate) = $previous_year GROUP BY contract) clb", 'clb.contract = users.contract', 'left');
+        // Entitlement for leave bank current year
+        $this->db->join("(SELECT employee, SUM(days) AS days FROM entitleddays WHERE type = 3 AND YEAR(enddate) = $year GROUP BY employee) elbc", 'elbc.employee = users.id', 'left');
+        $this->db->join("(SELECT contract, SUM(days) AS days FROM entitleddays WHERE type = 3 AND YEAR(enddate) = $year GROUP BY contract) clbc", 'clbc.contract = users.contract', 'left');
+        // Leave taken for annual leave last year
+        $this->db->join("(SELECT employee, SUM(duration) AS duration FROM leaves WHERE type = 1 AND YEAR(startdate) = $previous_year AND status IN (2, 3, 7) GROUP BY employee) alu", 'alu.employee = users.id', 'left');
+        // Leave taken for leave bank last year
+        $this->db->join("(SELECT employee, SUM(duration) AS duration FROM leaves WHERE type = 3 AND YEAR(startdate) = $previous_year AND status IN (2, 3, 7) GROUP BY employee) lbu", 'lbu.employee = users.id', 'left');
+        $this->db->where('users.active', 1);
+        $this->db->order_by('users.id', 'ASC');
+        
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    
 }

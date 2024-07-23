@@ -274,6 +274,10 @@ $route['setleave/exportsickleave'] = 'setleave/exportsickleave'; // Corrected to
 $route['setleave/setannualleave'] = 'setleave/setannualleave';
 $route['setleave/executeannualleave'] = 'setleave/executeannualleave'; // Corrected to call the right function
 $route['setleave/exportannualleave'] = 'setleave/exportannualleave'; // Corrected to match the controller name
+$route['setleave/setleavebank'] = 'setleave/setleavebank';
+$route['setleave/executeleavebank'] = 'setleave/executeleavebank'; // Corrected to call the right function
+$route['setleave/leavebank_entitleddays_year'] = 'setleave/leavebank_entitleddays_year'; // Corrected to call the right function
+$route['setleave/exportleavebank'] = 'setleave/exportleavebank'; // Corrected to match the controller name
 
 //_______________________________________________
 //Reports
