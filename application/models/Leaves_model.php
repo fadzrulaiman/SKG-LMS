@@ -632,6 +632,7 @@ public function setLeaves($employeeId, $attachmentPath) {
 
     return $newId;
 }
+
 /**
  * Create the same leave request for a list of employees
  * @param int $type Identifier of the leave type

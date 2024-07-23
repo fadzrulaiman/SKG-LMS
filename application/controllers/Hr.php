@@ -167,7 +167,7 @@ class Hr extends CI_Controller {
 
     /**
      * Ajax endpoint: create a leave request for a list of employees
-     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     * @autor Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function createLeaveRequest() {
         header("Content-Type: application/json");
@@ -183,12 +183,13 @@ class Hr extends CI_Controller {
             $cause = $this->input->post('cause', TRUE);
             $status = $this->input->post('status', TRUE);
             $employees = $this->input->post('employees', TRUE);
+            $attachment_path = $this->input->post('attachment_path', TRUE); // Add this line to get the attachment path
             $objectEmployees = json_decode($employees);
             $this->load->model('leaves_model');
             $result = $this->leaves_model->createRequestForUserList($type, $duration,
                     $startdate, $enddate, $startdatetype, $enddatetype, $cause, $status,
-                    $objectEmployees);
-            echo $result;
+                    $objectEmployees, $attachment_path); // Add the attachment path here
+            echo json_encode(['status' => 'success', 'affected_rows' => $result]);
         }
     }
 

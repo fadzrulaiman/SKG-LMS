@@ -169,7 +169,7 @@ INSERT INTO `actions` (`name`, `mask`, `Description`) VALUES
 ('team_calendar', b'0011000100110010', 'View the leaves of my team in a calendar'),
 ('update_user', b'0011000100110010', 'Update a user'),
 ('view_leaves', b'0011000100110010', 'View the details of a leave request'),
-('view_user', b'0011000100110010', 'View user\'s details');
+('view_user', b'0011000100110010', 'View users details');
 
 -- --------------------------------------------------------
 
@@ -610,7 +610,7 @@ CREATE TABLE `overtime` (
   `id` int(11) NOT NULL COMMENT 'Unique identifier of the overtime request',
   `employee` int(11) NOT NULL COMMENT 'Employee requesting the OT',
   `date` date NOT NULL COMMENT 'Date when the OT was done',
-  `duration` decimal(10,3) NOT NULL COMMENT 'Duration of the OT',
+  `duration` int(11) NOT NULL COMMENT 'Duration of the OT',
   `cause` text NOT NULL COMMENT 'Reason why the OT was done',
   `status` int(11) NOT NULL COMMENT 'Status of OT (Planned, Requested, Accepted, Rejected)'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Overtime worked (extra time)';

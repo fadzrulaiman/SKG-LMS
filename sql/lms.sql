@@ -169,7 +169,7 @@ INSERT INTO `actions` (`name`, `mask`, `Description`) VALUES
 ('team_calendar', b'0011000100110010', 'View the leaves of my team in a calendar'),
 ('update_user', b'0011000100110010', 'Update a user'),
 ('view_leaves', b'0011000100110010', 'View the details of a leave request'),
-('view_user', b'0011000100110010', 'View user\'s details');
+('view_user', b'0011000100110010', 'View users details');
 
 -- --------------------------------------------------------
 
