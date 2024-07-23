@@ -91,7 +91,7 @@ $lang['set_annualleave_with_entitlements'] = 'Employees With  Entitlements';
 
 $lang['set_leavebank_title'] = 'Set Leave Bank';
 $lang['set_leavebank_header'] = 'Entitle Leave Bank';
-$lang['set_leavebank_year'] = 'Select The Year To Allocate Leave Bank';
+$lang['set_leavebank_year'] = 'Select The Button To Allocate Leave Bank';
 $lang['set_leavebank_button'] = 'Set Leave Bank';
 $lang['set_leavebank_filter'] = 'Filter by year';
 $lang['set_leavebank_filterbutton'] = 'Filter Table';
@@ -102,6 +102,8 @@ $lang['set_leavebank_enddate'] = 'End Date';
 $lang['set_leavebank_annualleave_balance'] = 'Annual Leave Balance Last Year';
 $lang['set_leavebank_leavebank_balance'] = 'Leave Bank Balance Last Year';
 $lang['set_leavebank_daysentitled'] = 'Leave Bank Days Entitled This Year';
+$lang['set_leavebank_lastyearunusedleave'] = 'Unused Leave From Last Year';
 $lang['set_leavebank_exportexcel'] = 'Export To Excel';
 $lang['start_date_leavebank_daysentitled'] = 'Leave bank start validity';
 $lang['end_date_leavebank_daysentitled'] = 'Leave bank end validity';
+$lang['set_leavebank_filter'] = 'Filter';

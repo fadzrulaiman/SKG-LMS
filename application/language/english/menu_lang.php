@@ -38,6 +38,7 @@ $lang['menu_hr_setleave_divider'] = 'Set Leaves';
 $lang['menu_hr_report_leave_balance'] = 'Leave balance';
 $lang['menu_hr_setleave_sick_leave'] = 'Sick Leaves';
 $lang['menu_hr_setleave_leave_bank'] = 'Leave Bank';
+$lang['menu_hr_setleave_annualleave'] = 'Annual Leave';
 $lang['menu_hr_report_leaves'] = 'Monthly Leave requests';
 $lang['menu_hr_report_leavesbydate'] = 'Leave requests Report';
 

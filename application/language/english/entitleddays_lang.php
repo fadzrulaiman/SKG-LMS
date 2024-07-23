@@ -74,6 +74,7 @@ $lang['set_sickleave_exportexcel'] = 'Export To Excel';
 $lang['set_sickleave_no_entitlements'] = 'Employees With No Entitlements';
 $lang['set_sickleave_with_entitlements'] = 'Employees With Entitlements';
 
+
 $lang['set_annualleave_title'] = 'Set Annual Leave';
 $lang['set_annualleave_header'] = 'Entitle Annual Leave';
 $lang['set_annualleave_year'] = 'Select The Year To Allocate Annual Leave';
@@ -81,28 +82,30 @@ $lang['set_annualleave_button'] = 'Set Annual Leave';
 $lang['set_annualleave_filter'] = 'Filter by year';
 $lang['set_annualleave_filterbutton'] = 'Filter Table';
 $lang['set_annualleave_employeeid'] = 'Employee ID';
-$lang['set_annualleave_name'] = 'Name';
+$lang['set_annualleave_name'] = 'Contract Name';
 $lang['set_annualleave_startdate'] = 'Start Date';
 $lang['set_annualleave_enddate'] = 'End Date';
 $lang['set_annualleave_daysentitled'] = 'Days Entitled';
 $lang['set_annualleave_exportexcel'] = 'Export To Excel';
-$lang['set_annualleave_no_entitlements'] = 'Employees With No Entitlements';
-$lang['set_annualleave_with_entitlements'] = 'Employees With  Entitlements';
+$lang['set_annualleave_no_entitlements'] = 'Contracts With No Entitlements';
+$lang['set_annualleave_with_entitlements'] = 'Contracts With  Entitlements';
 
 $lang['set_leavebank_title'] = 'Set Leave Bank';
 $lang['set_leavebank_header'] = 'Entitle Leave Bank';
-$lang['set_leavebank_year'] = 'Select The Year To Allocate Leave Bank';
+$lang['set_leavebank_year'] = 'Select The Button To Allocate Leave Bank';
 $lang['set_leavebank_button'] = 'Set Leave Bank';
 $lang['set_leavebank_filter'] = 'Filter by year';
 $lang['set_leavebank_filterbutton'] = 'Filter Table';
 $lang['set_leavebank_employeeid'] = 'Employee ID';
 $lang['set_leavebank_name'] = 'Name';
-$lang['set_leavebank_startdate'] = 'Start Date';
+$lang['set_leavebank_contract'] = 'Contract';
 $lang['set_leavebank_enddate'] = 'End Date';
 $lang['set_leavebank_annualleave_balance'] = 'Annual Leave Balance Last Year';
 $lang['set_leavebank_leavebank_balance'] = 'Leave Bank Balance Last Year';
 $lang['set_leavebank_daysentitled'] = 'Leave Bank Days Entitled This Year';
+$lang['set_leavebank_lastyearunusedleave'] = 'Unused Leave From Last Year';
 $lang['set_leavebank_exportexcel'] = 'Export To Excel';
 $lang['start_date_leavebank_daysentitled'] = 'Leave bank start validity';
 $lang['end_date_leavebank_daysentitled'] = 'Leave bank end validity';
+$lang['set_leavebank_filter'] = 'Filter';
 
