@@ -215,7 +215,7 @@ public function leavebankaccept($id) {
             }
         }
 
-        $this->session->set_flashdata('msg', lang('requests_accept_all_flash_msg_success'));
+        $this->session->set_flashdata('msg', lang('requests_index_approve_all'));
         redirect('requests');
     }
 

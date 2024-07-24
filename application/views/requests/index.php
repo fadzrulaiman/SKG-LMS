@@ -14,13 +14,6 @@
             <?php endforeach ?>
         </select>&nbsp;&nbsp;
     </div>
-    <!-- Add this section for the Approve All button -->
-    <div class="span9 text-right">
-        <form action="<?php echo base_url('requests/approveAll'); ?>" method="post">
-            <?php echo form_hidden($this->security->get_csrf_token_name(), $this->security->get_csrf_hash()); ?>
-            <button type="submit" class="btn btn-success"><?php echo lang('requests_index_approve_all'); ?></button>
-        </form>
-    </div>
 </div>
 
 <table cellpadding="0" cellspacing="0" border="0" class="display" id="leaves" width="100%">
@@ -139,11 +132,12 @@
 </table>
 
 <div class="row-fluid">
-    <div class="span12">&nbsp;</div>
-</div>
-
-<div class="row-fluid">
     <div class="span12 text-center">
+        <form action="<?php echo base_url('requests/approveAll'); ?>" method="post" style="display:inline;">
+            <?php echo form_hidden($this->security->get_csrf_token_name(), $this->security->get_csrf_hash()); ?>
+            <button type="submit" class="btn btn-success"><?php echo lang('requests_index_approve_all'); ?></button>
+        </form>
+        &nbsp;&nbsp;
         <a href="<?php echo base_url();?>requests/export/<?php echo $filter; ?>" class="btn btn-primary"><i
                 class="mdi mdi-download"></i>&nbsp; <?php echo lang('requests_index_button_export');?></a>
         &nbsp;&nbsp;
@@ -156,6 +150,7 @@
         <?php if ($this->config->item('ics_enabled') == TRUE) {?>
         <a id="lnkICS" href="#"><i class="mdi mdi-earth nolink"></i> ICS</a>
         <?php }?>
+        &nbsp;&nbsp;
     </div>
 </div>
 
