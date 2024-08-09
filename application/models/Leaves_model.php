@@ -518,16 +518,20 @@ public function getLeaveBalanceForAllTypes($employeeId) {
         return []; // Return an empty array if the employee ID is not specified
     }
 
-    // Create a subquery to calculate entitled days, accounting for both employee and contract matching
+    // Get the current year
+    $currentYear = date('Y');
+
+    // Create a subquery to calculate entitled days for the current year, accounting for both employee and contract matching
     $entitledDaysSubquery = $this->db->select('e.type, FLOOR(SUM(e.days)) AS entitled')
         ->from('entitleddays e')
         ->join('users u', 'u.id = e.employee OR (e.employee IS NULL AND u.contract = e.contract)', 'left')
         ->where('u.id', (int)$employeeId)  // Ensuring we are looking at the right user
-        ->where('CURDATE() BETWEEN e.startdate AND e.enddate')
+        ->where("YEAR(e.startdate) =", $currentYear)
+        ->where("YEAR(e.enddate) =", $currentYear)
         ->group_by('e.type')
         ->get_compiled_select();
 
-    // Main query to calculate the leave balance per type
+    // Main query to calculate the leave balance per type for the current year
     $this->db->select('
         t.id AS type_id,
         t.name AS type_name,
@@ -537,7 +541,7 @@ public function getLeaveBalanceForAllTypes($employeeId) {
     ')
         ->from('types t')
         ->join("($entitledDaysSubquery) ed", 't.id = ed.type', 'left')
-        ->join('leaves l', 'l.employee = ' . (int)$employeeId . ' AND l.type = t.id AND l.status IN (2, 3)', 'left')
+        ->join('leaves l', 'l.employee = ' . (int)$employeeId . ' AND l.type = t.id AND YEAR(l.startdate) = ' . $currentYear . ' AND l.status IN (2, 3)', 'left')
         ->where('t.id !=', 0)
         ->group_by('t.id, t.name, ed.entitled')
         ->order_by('t.id');
@@ -546,6 +550,7 @@ public function getLeaveBalanceForAllTypes($employeeId) {
     $query = $this->db->get();
     return $query->result_array();
 }
+
 
 
 

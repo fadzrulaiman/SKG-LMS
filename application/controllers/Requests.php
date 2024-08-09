@@ -604,22 +604,22 @@ public function leavebankaccept($id) {
         $employee = $this->users_model->getUsers($leave['employee']);
         $supervisor = $this->organization_model->getSupervisor($employee['organization']);
         $status = $this->status_model->getStatus($leave['status']); // Assuming you have a status field in the leave record
-
+    
         // Send an e-mail to the employee
         $this->load->library('email');
         $this->load->library('polyglot');
         $usr_lang = $this->polyglot->code2language($employee['language']);
-
+    
         // We need to instance a different object as the languages of connected user may differ from the UI lang
         $lang_mail = new CI_Lang();
         $lang_mail->load('email', $usr_lang);
         $lang_mail->load('global', $usr_lang);
-
+    
         $date = new DateTime($leave['startdate']);
         $startdate = $date->format($lang_mail->line('global_date_format'));
         $date = new DateTime($leave['enddate']);
         $enddate = $date->format($lang_mail->line('global_date_format'));
-
+    
         switch ($transition) {
             case LMS_REQUESTED_ACCEPTED:
                 $title = $lang_mail->line('email_leave_request_validation_title');
@@ -642,18 +642,19 @@ public function leavebankaccept($id) {
                 $subject = $lang_mail->line('email_leave_cancel_accept_subject');
                 break;
         }
-
-        $comments = $leave['comments'];
+    
         $comment = '';
-        if (!empty($comments)) {
-            $comments = json_decode($comments);
-            foreach ($comments->comments as $comments_item) {
-                if ($comments_item->type == "comment") {
-                    $comment = $comments_item->value;
+        if (!empty($leave['comments'])) {
+            $comments = json_decode($leave['comments']);
+            if (isset($comments->comments)) {
+                foreach ($comments->comments as $comments_item) {
+                    if ($comments_item->type == "comment") {
+                        $comment = $comments_item->value;
+                    }
                 }
             }
         }
-
+    
         $data = array(
             'Title' => $title,
             'Firstname' => $employee['firstname'],
@@ -667,7 +668,7 @@ public function leavebankaccept($id) {
             'Comments' => $comment,
             'Status' => $status['name'] // Add status to the data array
         );
-
+    
         $this->load->library('parser');
         switch ($transition) {
             case LMS_REQUESTED_ACCEPTED:
@@ -689,7 +690,7 @@ public function leavebankaccept($id) {
         }
         sendMailByWrapper($this, $subject, $message, $employee['email'], is_null($supervisor) ? NULL : $supervisor->email);
     }
-
+    
 
     /**
      * Export the list of all leave requests (sent to the connected user) into an Excel file

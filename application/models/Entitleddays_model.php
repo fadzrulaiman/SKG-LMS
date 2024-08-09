@@ -464,13 +464,14 @@ class Entitleddays_model extends CI_Model {
             return false; // Entitled days already exist, do not insert
         }
         
+        $previous_year = date('Y') - 1;
         $data = array(
             'employee' => $employee_id,
             'type' => 3,
             'days' => $entitled_days,
             'startdate' => date('Y-01-01'),
             'enddate' => date('Y-12-31'),
-            'description' => 'Carry forward balance from previous year'
+            'description' => 'Carry forward balance from ' . $previous_year
         );
         return $this->db->insert('entitleddays', $data);
     }

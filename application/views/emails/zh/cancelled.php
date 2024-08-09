@@ -22,7 +22,7 @@
         <!-- Content -->
         <tr>
             <td style="padding: 20px; font-size: 14px;">
-                <p>{Firstname} {Lastname} cancelled a requested time off. See the <a href="{BaseUrl}leaves/leaves/{LeaveId}" style="color: #007bff;">details</a> below:</p>
+                <p>{Firstname} {Lastname} cancelled a leave request. See the <a href="{BaseUrl}leaves/leaves/{LeaveId}" style="color: #007bff;">details</a> below:</p>
                 <!-- Cancellation Details Table -->
                 <table width="100%" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">
                     <tr>

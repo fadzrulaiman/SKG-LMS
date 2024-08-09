@@ -50,7 +50,7 @@ msgstr ""
 msgid "You can check the *leave balance* before validating the leave request."
 msgstr ""
 
-msgid "{Firstname} {Lastname} cancelled a requested time off. See the *details* below:"
+msgid "{Firstname} {Lastname} cancelled a leave request. See the *details* below:"
 msgstr ""
 
 msgid "Login"
