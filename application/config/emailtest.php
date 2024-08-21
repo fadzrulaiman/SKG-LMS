@@ -3,13 +3,13 @@
 $config['useragent']        = 'PHPMailer';              // Mail engine switcher: 'CodeIgniter' or 'PHPMailer'
 $config['protocol']         = 'smtp';                   // 'mail', 'sendmail', or 'smtp'
 $config['mailpath']         = '/usr/sbin/sendmail';
-$config['smtp_host']        = 'smtp.gmail.com';
+$config['smtp_host']        = 'mail.sawitkinabalu.com.my';
 $config['smtp_auth']        = true;                     // Whether to use SMTP authentication, boolean TRUE/FALSE.
-$config['smtp_user']        = 'daniel.fadzrul@gmail.com';
-$config['smtp_pass']        = 'pdwpfpkvdsanfdup';       // Your SMTP password or App Password
+$config['smtp_user']        = 'lms@sawitkinabalu.com.my';
+$config['smtp_pass']        = 'lms1424';          // Replace 'your_password' with the actual SMTP password
 $config['smtp_port']        = 587;
 $config['smtp_timeout']     = 30;                       // (in seconds)
-$config['smtp_crypto']      = 'tls';                    // '' or 'tls' or 'ssl'
+$config['smtp_crypto']      = 'ssl';                    // '' or 'tls' or 'ssl'
 $config['smtp_debug']       = 0;                        // PHPMailer's SMTP debug info level: 0 = off
 $config['smtp_auto_tls']    = false;                    // Disable automatic TLS encryption
 $config['smtp_conn_options'] = array();                 // SMTP connection options
