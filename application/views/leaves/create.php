@@ -93,7 +93,7 @@
         <input type="hidden" value="2" name="status" id="status" />
         <br>
         <button id="submitButton" name="submit" type="submit" class="btn btn-primary">
-            <i class="mdi mdi-check"></i>&nbsp; <?php echo lang('Requested'); ?>
+            <i class="mdi mdi-check"></i>&nbsp; <?php echo lang('Apply'); ?>
         </button>
 
         <br /><br />

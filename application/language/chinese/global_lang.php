@@ -29,6 +29,7 @@ $lang['footer_link_go_top'] = '返回顶部';
 $lang['footer_copyright_notice'] = '&copy; 2014 Jorani Authors';
 
 $lang['Requested'] = '已申请';
+$lang['Apply'] = 'Apply Leave';
 $lang['Pending From HR'] = 'Pending HR Approval';
 $lang['Planned'] = '已计划';
 $lang['Accepted'] = '已接受';
