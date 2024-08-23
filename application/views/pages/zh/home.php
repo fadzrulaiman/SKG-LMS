@@ -86,6 +86,7 @@
             <ul>
                 <li><a href="<?php echo base_url();?>calendar/individual">我的日历</a></li>
                 <li><a href="<?php echo base_url();?>calendar/year">年度日历</a></li>
+                <li><a href="<?php echo base_url();?>calendar/workmates">我队友的日历</a></li>
                 <li><a href="<?php echo base_url();?>calendar/department">部门日历</a></li>
             </ul>
         </section>

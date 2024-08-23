@@ -87,6 +87,7 @@
             <ul>
                 <li><a href="<?php echo base_url();?>calendar/individual">My Calendar</a></li>
                 <li><a href="<?php echo base_url();?>calendar/year">Yearly Calendar</a></li>
+                <li><a href="<?php echo base_url();?>calendar/workmates">Teammates Calendar</a></li>
                 <li><a href="<?php echo base_url();?>calendar/department">Department Calendar</a></li>
             </ul>
         </section>

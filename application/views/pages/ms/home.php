@@ -86,6 +86,7 @@
             <ul>
                 <li><a href="<?php echo base_url();?>calendar/individual">Kalendar Saya</a></li>
                 <li><a href="<?php echo base_url();?>calendar/year">Kalendar Tahunan</a></li>
+                <li><a href="<?php echo base_url();?>calendar/workmates">Kalendar pasukan</a></li>               
                 <li><a href="<?php echo base_url();?>calendar/department">Kalendar Jabatan</a></li>
             </ul>
         </section>

@@ -20,15 +20,13 @@ $sheet->setTitle(mb_strimwidth(lang('requests_export_title'), 0, 28, "..."));  /
 $sheet->setCellValue('A1', lang('requests_export_thead_id'));
 $sheet->setCellValue('B1', lang('requests_export_thead_fullname'));
 $sheet->setCellValue('C1', lang('requests_export_thead_startdate'));
-$sheet->setCellValue('D1', lang('requests_export_thead_startdate_type'));
-$sheet->setCellValue('E1', lang('requests_export_thead_enddate'));
-$sheet->setCellValue('F1', lang('requests_export_thead_enddate_type'));
-$sheet->setCellValue('G1', lang('requests_export_thead_duration'));
-$sheet->setCellValue('H1', lang('requests_export_thead_type'));
-$sheet->setCellValue('I1', lang('requests_export_thead_cause'));
-$sheet->setCellValue('J1', lang('requests_export_thead_status'));
-$sheet->getStyle('A1:J1')->getFont()->setBold(true);
-$sheet->getStyle('A1:J1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$sheet->setCellValue('D1', lang('requests_export_thead_enddate'));
+$sheet->setCellValue('E1', lang('requests_export_thead_duration'));
+$sheet->setCellValue('F1', lang('requests_export_thead_type'));
+$sheet->setCellValue('G1', lang('requests_export_thead_cause'));
+$sheet->setCellValue('H1', lang('requests_export_thead_status'));
+$sheet->getStyle('A1:H1')->getFont()->setBold(true);
+$sheet->getStyle('A1:H1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
 ($filter == 'all')? $showAll = TRUE : $showAll = FALSE;
 $requests = $this->leaves_model->getLeavesRequestedToManager($this->user_id, $showAll);
@@ -41,13 +39,11 @@ foreach ($requests as $request) {
     $sheet->setCellValue('A' . $line, $request['leave_id']);
     $sheet->setCellValue('B' . $line, $request['firstname'] . ' ' . $request['lastname']);
     $sheet->setCellValue('C' . $line, $startdate);
-    $sheet->setCellValue('D' . $line, lang($request['startdatetype']));
-    $sheet->setCellValue('E' . $line, $enddate);
-    $sheet->setCellValue('F' . $line, lang($request['enddatetype']));
-    $sheet->setCellValue('G' . $line, $request['duration']);
-    $sheet->setCellValue('H' . $line, $request['type_name']);
-    $sheet->setCellValue('I' . $line, $request['cause']);
-    $sheet->setCellValue('J' . $line, lang($request['status_name']));
+    $sheet->setCellValue('D' . $line, $enddate);
+    $sheet->setCellValue('E' . $line, $request['duration']);
+    $sheet->setCellValue('F' . $line, $request['type_name']);
+    $sheet->setCellValue('G' . $line, $request['cause']);
+    $sheet->setCellValue('H' . $line, lang($request['status_name']));
     $line++;
 }
 
