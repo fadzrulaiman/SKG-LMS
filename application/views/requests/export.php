@@ -48,7 +48,7 @@ foreach ($requests as $request) {
 }
 
 //Autofit
-foreach(range('A', 'J') as $colD) {
+foreach(range('A', 'H') as $colD) {
     $sheet->getColumnDimension($colD)->setAutoSize(TRUE);
 }
 
