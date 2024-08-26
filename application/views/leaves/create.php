@@ -258,6 +258,10 @@ function toggleAttachmentField() {
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/lms/leave.edit-0.7.0.js"></script>
 <script type="text/javascript">
 function disableSubmitButton() {
+    var button = document.getElementById("submitButton");
+    button.innerHTML = "<?php echo lang('Applied'); ?>" ;
+    // Return false to prevent actual form submission for demo purposes
+    return false;
     document.getElementById('submitButton').disabled = true;
 }
 </script>
