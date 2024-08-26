@@ -45,7 +45,7 @@ foreach ($leaves as $leave) {
 }
 
 //Autofit
-foreach(range('A', 'I') as $colD) {
+foreach(range('A', 'G') as $colD) {
     $sheet->getColumnDimension($colD)->setAutoSize(TRUE);
 }
 

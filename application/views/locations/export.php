@@ -29,7 +29,7 @@ foreach ($locations as $location) {
 }
 
 //Autofit
-foreach(range('A', 'C') as $colD) {
+foreach(range('A', 'B') as $colD) {
     $sheet->getColumnDimension($colD)->setAutoSize(TRUE);
 }
 
