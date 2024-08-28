@@ -30,7 +30,7 @@
                 </select><br /> -->
                 <label for="duration"><?php echo lang('leaves_view_field_duration');?></label>
                 <input type="text" name="duration" value="<?php echo $leave['duration']; ?>" readonly />
-
+                
                 <label for="type"><?php echo lang('leaves_view_field_type');?></label>
                 <select name="type" readonly>
                     <option selected><?php echo $leave['type_name']; ?></option>
@@ -55,12 +55,14 @@
                         class="mdi mdi-check"></i>&nbsp;<?php echo lang('Requested');?></a>
                 <br /><br />
                 <?php } ?>
-                <?php if ($leave['status'] == LMS_REQUESTED && !$is_manager) { ?>
-                <a href="<?php echo base_url();?>leaves/cancel/<?php echo $leave['id'] ?>" class="btn btn-primary"><i
-                        class="mdi mdi-undo"></i>&nbsp;<?php echo lang('Cancel');?></a>
+                <?php if ($leave['status'] == LMS_REQUESTED && $leave['employee'] == $user_id) { ?>
+                <a href="<?php echo base_url();?>leaves/cancel/<?php echo $leave['id'] ?>" class="btn btn-primary">
+                    <i class="mdi mdi-undo"></i>&nbsp;<?php echo lang('Cancel');?>
+                </a>
                 <br /><br />
                 <?php } ?>
-                <?php if ($leave['status'] == LMS_REQUESTED && !$is_manager) { ?>
+                
+                <?php if ($leave['status'] == LMS_REQUESTED && $leave['employee'] == $user_id) { ?>
                 <a href="<?php echo base_url();?>leaves/reminder/<?php echo $leave['id']; ?>"
                     title="<?php echo lang('leaves_button_send_reminder');?>" class="btn btn-primary"><i
                         class="mdi mdi-email"></i>&nbsp;<?php echo lang('leaves_button_send_reminder');?></a>
