@@ -71,10 +71,10 @@
                             <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Total entitled leave"></i>
                         </th>
                         <th rowspan="2"><i class="mdi mdi-minus-circle" aria-hidden="true"></i>&nbsp;<?php echo lang('leaves_summary_thead_taken');?>
-                            <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Approved Leave"></i>
+                            <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Total Approved Leave"></i>
                         </th>
                         <th rowspan="2"><i class="mdi mdi-information" aria-hidden="true"></i>&nbsp;<span class="label label-warning"><?php echo lang('Requested');?></span>
-                            <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Requested & Pending For HR Approval"></i>
+                            <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Total Requested Leave"></i>
                         </th>
                     </tr>
                     <tr>
