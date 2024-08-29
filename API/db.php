@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect('localhost', 'skglms', 'Sawit2024');
+$conn = mysqli_connect('localhost', 'root', '');
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }

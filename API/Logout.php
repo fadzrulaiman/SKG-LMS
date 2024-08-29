@@ -6,6 +6,8 @@ include 'db.php'; // Ensure this file establishes a connection to your database
 $encodedData = file_get_contents('php://input');  // take data from react native fetch API
 $decodedData = json_decode($encodedData, true);
 $userId = $decodedData['user_id'] ?? null;
+$fcmToken = $decodedData['fcmToken'] ?? null;
+$verificationToken = $decodedData['verificationToken'] ?? null;
 
 if (!$userId) {
     echo json_encode(['success' => false, 'message' => 'No user ID provided']);
@@ -21,13 +23,13 @@ if (session_status() == PHP_SESSION_ACTIVE) {
     session_destroy();
 
     // Remove the access token for the current user from the oauth_access_tokens table
-    $stmt = $conn->prepare("DELETE FROM oauth_access_tokens WHERE user_id = ?");
-    $stmt->bind_param("i", $userId);
+    $stmt = $conn->prepare("DELETE FROM oauth_access_tokens WHERE access_token = ?");
+    $stmt->bind_param("i", $verificationToken);
 
     if ($stmt->execute()) {
         // Clear the FCM token from the users table
-        $stmt = $conn->prepare("UPDATE users SET fcm_token = '' WHERE id = ?");
-        $stmt->bind_param("i", $userId);
+        $stmt = $conn->prepare("DELETE FROM user_fcm_tokens WHERE fcm_token = ?");
+        $stmt->bind_param("i", $fcmToken);
 
         if ($stmt->execute()) {
             $response = ['success' => true, 'message' => 'Logout successful, access token and FCM token removed'];

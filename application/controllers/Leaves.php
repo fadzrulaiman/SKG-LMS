@@ -10,6 +10,8 @@ if (!defined('BASEPATH')) { exit('No direct script access allowed'); }
 
 //We can define custom triggers before saving the leave request into the database
 require_once FCPATH . "local/triggers/leave.php";
+require_once FCPATH . "API/notification_helper.php"; // Include the notification helper
+
 
 /**
  * This class allows an employee to list and manage its leave requests
@@ -254,6 +256,9 @@ public function view($source, $id) {
             // If the leave request status is 'requested', send an email to the manager
             if ($this->input->post('status') == LMS_REQUESTED) {
                 $this->sendMailOnLeaveRequestCreation($leave_id);
+                // Send push notification
+                $this->sendPushNotificationOnLeaveRequest($leave_id, 'Leave Request');
+
             }
             
             // Redirect to the source page or the leaves page
@@ -912,6 +917,35 @@ public function view($source, $id) {
         $start = $this->input->get('start', TRUE);
         $end = $this->input->get('end', TRUE);
         echo $this->leaves_model->department($department->id, $start, $end);
+    }
+
+    private function sendPushNotificationOnLeaveRequest($leave_id, $title) { //Send Push Notification to Manager
+        $this->load->model('users_model');
+        $this->load->model('leaves_model');
+        $this->load->model('user_fcm_tokens_model'); // Load the model for the new table
+        
+        // Get leave and user details
+        $leave = $this->leaves_model->getLeaves($leave_id);
+        $user = $this->users_model->getUsers($leave['employee']);
+        $manager = $this->users_model->getUsers($user['manager']);
+        
+        // Prepare notification data
+        $data = [
+            'leaveId' => $leave_id,
+            'userId' => $user['id'],
+            'leaveStatus' => $leave['status'],
+            'screen' => 'Leave Approval',
+        ];
+        
+        // Get all FCM tokens for the manager
+        $manager_fcm_tokens = $this->user_fcm_tokens_model->getFcmTokensByUserId($manager['id']);
+        
+        // Send push notification to all manager's FCM tokens
+        if (!empty($manager_fcm_tokens)) {
+            foreach ($manager_fcm_tokens as $fcm_token) {
+                sendPushNotification($fcm_token, $title, "[SKG-LMS] Leave Request from {$user['firstname']} {$user['lastname']}.", $data);
+            }
+        }
     }
 
     /**
