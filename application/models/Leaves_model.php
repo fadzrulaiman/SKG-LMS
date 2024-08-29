@@ -1402,17 +1402,21 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
         return $query->result_array();
     }
     
-    public function getAllPendingLeaves($manager_id) {
+    public function getAllPendingLeaves($user_id) {
         $this->db->select('leaves.*, users.manager');
         $this->db->from('leaves');
         $this->db->join('users', 'users.id = leaves.employee');
-        $this->db->where('users.manager', $manager_id);
+        $this->db->join('delegations', 'delegations.manager_id = users.manager', 'left');
         $this->db->group_start();
         $this->db->where('leaves.status', LMS_REQUESTED);
         $this->db->group_end();
+        $this->db->group_start();
+        $this->db->where('users.manager', $user_id);
+        $this->db->or_where('delegations.delegate_id', $user_id);
+        $this->db->group_end();
         $query = $this->db->get();
         return $query->result_array();
-    }
+    }    
     
     
     /**

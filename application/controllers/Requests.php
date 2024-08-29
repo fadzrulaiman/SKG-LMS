@@ -202,18 +202,20 @@ public function leavebankaccept($id) {
     
                 if ($employee_manager && $employee_id) {
                     $is_delegate = $this->delegations_model->isDelegateOfManager($this->user_id, $employee_manager);
-                    if (($this->user_id == $employee_manager) || ($this->is_hr) || ($is_delegate)) {
+                    $can_approve = ($this->user_id == $employee_manager) || $this->is_hr || $is_delegate;
+    
+                    if ($can_approve) {
                         if ($leave_type == LEAVE_BANK_TYPE_ID) {
                             $this->leaves_model->switchStatus($leave_id, LMS_REQUESTEDBANK);
                             $this->sendMail($leave_id, LMS_LEAVEBANK_MANAGER_ACCEPTED);
                             $this->sendMailOnLeaveBankRequestCreation($leave_id);
-                            // Call the function to send push notification to user and hr
+                            // Send push notification to user and HR
                             $this->sendPushNotificationToUserOnApprovalBank($leave_id, 'Leave Request');
                             $this->sendPushNotificationOnLeaveRequest($leave_id, 'Leave Request');
                         } else {
                             $this->leaves_model->switchStatus($leave_id, LMS_ACCEPTED);
                             $this->sendMail($leave_id, LMS_REQUESTED_ACCEPTED);
-                            // Call the function to send push notification to user
+                            // Send push notification to user
                             $this->sendPushNotificationToUserOnApproval($leave_id, 'Leave Request');
                         }
                     } else {
@@ -233,7 +235,7 @@ public function leavebankaccept($id) {
         $this->session->set_flashdata('msg', lang('requests_index_approve_all'));
         redirect('requests');
     }
-    
+            
     // Helper method to handle the case where the array key might not be set
     private function getArrayValue($array, $key, $default = null) {
         return isset($array[$key]) ? $array[$key] : $default;
