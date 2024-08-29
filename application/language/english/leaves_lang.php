@@ -11,11 +11,13 @@ $lang['leaves_summary_title_overtime'] = 'Overtime details (added to compensate 
 $lang['leaves_summary_key_overtime'] = 'Catch up for';
 $lang['leaves_summary_thead_type'] = 'Leave type';
 $lang['leaves_summary_thead_available'] = 'Available';
-$lang['leaves_summary_thead_taken'] = 'Taken';
-$lang['leaves_summary_thead_entitled'] = 'Entitled';
+$lang['leaves_summary_thead_taken'] = 'Leave Taken';
+$lang['leaves_summary_thead_entitled'] = 'Leave Entitlement';
+$lang['leaves_summary_thead_leaveapplied'] = 'Leave Applied (Pending For Approval)';
+
 $lang['leaves_summary_thead_description'] = 'Description';
-$lang['leaves_summary_thead_actual'] = 'actual';
-$lang['leaves_summary_thead_simulated'] = 'simulated';
+$lang['leaves_summary_thead_actual'] = 'Actual Leave Balance';
+$lang['leaves_summary_thead_simulated'] = 'Remaining Leave Balance';
 $lang['leaves_summary_tbody_empty'] = 'No entitled or taken days for this period. Please contact your HR Officer / Manager.';
 $lang['leaves_summary_flash_msg_error'] = 'It appears that you have no contract. Please contact your HR Officer / Manager.';
 $lang['leaves_summary_date_field'] = 'Date of report';

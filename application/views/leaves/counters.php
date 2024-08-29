@@ -49,7 +49,7 @@
             
             <div id="chartContainer">
                 <div id="pieChartContainer">
-                    <h3>Leave Balance</h3>
+                    <h3>Remaining Leave Balance</h3>
                     <canvas id="leaveBalancePieChart"></canvas>
                 </div>
                 <div id="barChartContainer">
@@ -68,18 +68,18 @@
                             <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Available leave balances"></i>
                         </th>
                         <th rowspan="2"><i class="mdi mdi-plus-circle" aria-hidden="true"></i>&nbsp;<?php echo lang('leaves_summary_thead_entitled');?>
-                            <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Total entitled leave"></i>
+                            <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Total Entitled Leave"></i>
                         </th>
                         <th rowspan="2"><i class="mdi mdi-minus-circle" aria-hidden="true"></i>&nbsp;<?php echo lang('leaves_summary_thead_taken');?>
                             <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Total Approved Leave"></i>
                         </th>
-                        <th rowspan="2"><i class="mdi mdi-information" aria-hidden="true"></i>&nbsp;<span class="label label-warning"><?php echo lang('Requested');?></span>
+                        <th rowspan="2"><i class="mdi mdi-information" aria-hidden="true"></i>&nbsp;<span class="label label-warning"><?php echo lang('leaves_summary_thead_leaveapplied');?></span>
                             <i class="mdi mdi-help-circle" data-toggle="tooltip" title="Total Requested Leave"></i>
                         </th>
                     </tr>
                     <tr>
-                        <th><?php echo lang('leaves_summary_thead_actual');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="Entitled - (Approved)"></i></th>
-                        <th><?php echo lang('leaves_summary_thead_simulated');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="Entitled - (Approved + Requested)"></i></th>
+                        <th><?php echo lang('leaves_summary_thead_actual');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="Leave Entitlement - Leave Taken"></i></th>
+                        <th><?php echo lang('leaves_summary_thead_simulated');?>&nbsp;<i class="mdi mdi-help-circle" data-toggle="tooltip" title="Leave Entitlement - (Leave Taken + Leave Applied)"></i></th>
                     </tr>
                 </thead>
                 <tbody>

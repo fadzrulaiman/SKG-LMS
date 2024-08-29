@@ -14,6 +14,8 @@ $lang['leaves_summary_thead_type'] = 'Jenis Cuti';
 $lang['leaves_summary_thead_available'] = 'Tersedia';
 $lang['leaves_summary_thead_taken'] = 'Diambil';
 $lang['leaves_summary_thead_entitled'] = 'Dibenarkan';
+$lang['leaves_summary_thead_leaveapplied'] = 'Leave Applied (Pending For Approval)';
+
 $lang['leaves_summary_thead_description'] = 'Penerangan';
 $lang['leaves_summary_thead_actual'] = 'sebenar';
 $lang['leaves_summary_thead_simulated'] = 'diasingkan';

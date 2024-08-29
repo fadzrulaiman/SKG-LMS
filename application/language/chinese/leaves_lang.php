@@ -15,6 +15,8 @@ $lang['leaves_summary_thead_type'] = '休假类别';
 $lang['leaves_summary_thead_available'] = '可行';
 $lang['leaves_summary_thead_taken'] = '拿取';
 $lang['leaves_summary_thead_entitled'] = '可享有权利';
+$lang['leaves_summary_thead_leaveapplied'] = 'Leave Applied (Pending For Approval)';
+
 $lang['leaves_summary_thead_description'] = '描述';
 $lang['leaves_summary_thead_actual'] = '实际';
 $lang['leaves_summary_thead_simulated'] = '模拟';
