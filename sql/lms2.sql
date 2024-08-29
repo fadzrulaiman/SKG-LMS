@@ -764,23 +764,19 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `login`, `email`, `password`, `role`, `manager`, `country`, `organization`, `contract`, `position`, `location`, `employmentdate`, `identifier`, `language`, `ldap_path`, `active`, `timezone`, `calendar`, `random_hash`, `user_properties`, `picture`) VALUES
 (1, 'Super ', 'Admin', 'SA', 'superadmin@email.com', '$2a$08$7lz6h2QY9PqLJvUy6RhwfusbPecUMaQhaQQZA.uOsaMtDAxmXkBvG', 8, 1, NULL, 0, 0, 1, NULL, '2000-01-01', 'Super Admin', 'en', NULL, 1, NULL, NULL, '5g5VUm5ZKf5TkK08yMtuKxe5', NULL, NULL),
 (2, 'HR', 'Administrator', 'hr', 'hr@email.com', '$2a$08$FuNqpgbyknoztrkBYcWWO.XLpsYSmbNQow3zS7m1FOZgoCWo9LJv6', 3, 2, NULL, 60, 3, 2, 1, '2024-05-01', 'HR', 'en', NULL, 1, 'Asia/Kuala_Lumpur', NULL, 'HSDvZh_nopJDvekzoSkFQOug', NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_fcm_tokens`
+-- Table structure for table `user_fcm_tokens`
 --
 
 CREATE TABLE `user_fcm_tokens` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `user_id` INT NOT NULL,
-    `fcm_token` VARCHAR(255) NOT NULL,
-    `device_id` VARCHAR(255) NOT NULL,
-    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `fcm_token` varchar(255) NOT NULL,
+  `device_id` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -1055,6 +1051,33 @@ ALTER TABLE `types`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique identifier of the user', AUTO_INCREMENT=3;
+COMMIT;
+
+-- Indexes for table `user_fcm_tokens`
+--
+ALTER TABLE `user_fcm_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `user_fcm_tokens`
+--
+ALTER TABLE `user_fcm_tokens`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `user_fcm_tokens`
+--
+ALTER TABLE `user_fcm_tokens`
+  ADD CONSTRAINT `user_fcm_tokens_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
