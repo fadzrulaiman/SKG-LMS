@@ -185,21 +185,21 @@ public function leavebankaccept($id) {
         $this->load->model('users_model');
         $this->load->model('delegations_model');
         $this->load->model('leaves_model');
-
+    
         $manager_id = $this->session->userdata('id'); // Assuming the manager's ID is stored in session
         $requests = $this->leaves_model->getAllPendingLeaves($manager_id);
-
+    
         foreach ($requests as $leave) {
             $employee_id = $this->getArrayValue($leave, 'employee');
             $leave_id = $this->getArrayValue($leave, 'id');
             $leave_type = $this->getArrayValue($leave, 'type');
             $leave_status = $this->getArrayValue($leave, 'status');
-
+    
             if ($employee_id && $leave_id && $leave_type) {
                 $employee = $this->users_model->getUsers($employee_id);
                 $employee_manager = $this->getArrayValue($employee, 'manager');
                 $employee_id = $this->getArrayValue($employee, 'id');
-
+    
                 if ($employee_manager && $employee_id) {
                     $is_delegate = $this->delegations_model->isDelegateOfManager($this->user_id, $employee_manager);
                     if (($this->user_id == $employee_manager) || ($this->is_hr) || ($is_delegate)) {
@@ -208,13 +208,13 @@ public function leavebankaccept($id) {
                             $this->sendMail($leave_id, LMS_LEAVEBANK_MANAGER_ACCEPTED);
                             $this->sendMailOnLeaveBankRequestCreation($leave_id);
                             // Call the function to send push notification to user and hr
-                            $this->sendPushNotificationToUserOnApprovalBank($id, 'Leave Request');
-                            $this->sendPushNotificationOnLeaveRequest($id, 'Leave Request');
+                            $this->sendPushNotificationToUserOnApprovalBank($leave_id, 'Leave Request');
+                            $this->sendPushNotificationOnLeaveRequest($leave_id, 'Leave Request');
                         } else {
                             $this->leaves_model->switchStatus($leave_id, LMS_ACCEPTED);
                             $this->sendMail($leave_id, LMS_REQUESTED_ACCEPTED);
                             // Call the function to send push notification to user
-                            $this->sendPushNotificationToUserOnApproval($id, 'Leave Request');
+                            $this->sendPushNotificationToUserOnApproval($leave_id, 'Leave Request');
                         }
                     } else {
                         log_message('error', 'User #' . $this->user_id . ' illegally tried to accept leave #' . $leave_id);
@@ -229,11 +229,11 @@ public function leavebankaccept($id) {
                 log_message('debug', 'Leave Data: ' . json_encode($leave));
             }
         }
-
+    
         $this->session->set_flashdata('msg', lang('requests_index_approve_all'));
         redirect('requests');
     }
-
+    
     // Helper method to handle the case where the array key might not be set
     private function getArrayValue($array, $key, $default = null) {
         return isset($array[$key]) ? $array[$key] : $default;
@@ -458,7 +458,8 @@ public function leavebankaccept($id) {
         }
     }
 
-    private function sendPushNotificationToUserOnApproval($leave_id, $title) { //Send Push Notification to User
+    private function sendPushNotificationToUserOnApproval($leave_id, $title) { 
+        // Send Push Notification to User
         $this->load->model('users_model');
         $this->load->model('leaves_model');
         $this->load->model('user_fcm_tokens_model'); // Load the model for the new table
@@ -468,7 +469,20 @@ public function leavebankaccept($id) {
         
         // Get leave and user details
         $leave = $this->leaves_model->getLeaves($leave_id);
+        
+        // Check if $leave is not null
+        if (!$leave) {
+            log_message('error', "Leave data not found for leave_id: $leave_id");
+            return; // Exit the function to prevent further errors
+        }
+        
         $user = $this->users_model->getUsers($leave['employee']);
+        
+        // Check if $user is not null
+        if (!$user) {
+            log_message('error', "User data not found for employee_id: " . $leave['employee']);
+            return; // Exit the function to prevent further errors
+        }
         
         // Prepare notification data
         $data = [
@@ -498,7 +512,7 @@ public function leavebankaccept($id) {
             log_message('debug', "No FCM tokens found for user {$user['id']}");
         }
     }
-
+    
     private function sendPushNotificationToUserOnReject($leave_id, $title) { //Send Push Notification to User
         $this->load->model('users_model');
         $this->load->model('leaves_model');
