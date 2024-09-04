@@ -181,7 +181,7 @@ def format_sql_value(value):
         return str(value)
 
 # Load data from Excel file
-excel_file_path = r"C:\Users\User\Downloads\Book3.xlsx"
+excel_file_path = r"C:\Users\SKG-USER-DTU\Downloads\UserData.xlsx"
 df_old = pd.read_excel(excel_file_path)
 
 # Keep track of existing logins
@@ -220,7 +220,7 @@ df_new = pd.DataFrame(data)
 print(df_new.head())
 
 # Save the new DataFrame to an Excel file
-output_excel_file_path = r"C:\Users\User\Downloads\Transformed_Data.xlsx"
+output_excel_file_path = r"C:\Users\SKG-USER-DTU\Downloads\Transformed_Data.xlsx"
 df_new.to_excel(output_excel_file_path, index=False)
 
 print(f"Transformed data has been saved to {output_excel_file_path}")
@@ -238,7 +238,7 @@ for _, row in df_new.iterrows():
 all_sql_statements = "\n".join(sql_statements)
 
 # Save SQL statements to a file
-output_sql_file_path = r"C:\Users\User\Downloads\insert_users.sql"
+output_sql_file_path = r"C:\Users\SKG-USER-DTU\Downloads\insert_users.sql"
 with open(output_sql_file_path, "w") as file:
     file.write(all_sql_statements)
 
