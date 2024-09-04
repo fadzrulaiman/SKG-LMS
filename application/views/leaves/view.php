@@ -30,7 +30,7 @@
                 </select><br /> -->
                 <label for="duration"><?php echo lang('leaves_view_field_duration');?></label>
                 <input type="text" name="duration" value="<?php echo $leave['duration']; ?>" readonly />
-                
+
                 <label for="type"><?php echo lang('leaves_view_field_type');?></label>
                 <select name="type" readonly>
                     <option selected><?php echo $leave['type_name']; ?></option>
@@ -61,7 +61,7 @@
                 </a>
                 <br /><br />
                 <?php } ?>
-                
+
                 <?php if ($leave['status'] == LMS_REQUESTED && $leave['employee'] == $user_id) { ?>
                 <a href="<?php echo base_url();?>leaves/reminder/<?php echo $leave['id']; ?>"
                     title="<?php echo lang('leaves_button_send_reminder');?>" class="btn btn-primary"><i

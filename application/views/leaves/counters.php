@@ -110,13 +110,13 @@ canvas {
                         <td><?php echo $estimated; ?></td>
                         <td><?php echo $simulated; ?></td>
                         <td><?php echo ((float) $value[1]); ?></td>
-                        <td><a href="<?php echo base_url();?>leaves?statuses=3|5&type=<?php echo $value[3]; ?>"
+                        <td><a href="<?php echo base_url();?>leaves?statuses=3&type=<?php echo $value[3]; ?>"
                                 target="_blank"><?php echo ((float) $value[0]); ?></a></td>
                         <td>
                             <?php if (empty($value[5])) { ?>
                             &nbsp;
                             <?php } else { ?>
-                            <a href="<?php echo base_url();?>leaves?statuses=2&type=<?php echo $value[3]; ?>"
+                            <a href="<?php echo base_url();?>leaves?statuses=2|5&type=<?php echo $value[3]; ?>"
                                 target="_blank"><?php echo ((float) $value[5]); ?></a>
                             <?php } ?>
                         </td>
