@@ -28,7 +28,8 @@ $dDay = 1;
     <div class="span4">
         <button id="cmdImportCalendar" class="btn btn-primary"><i class="mdi mdi-calendar-text"></i>&nbsp; <?php echo lang('contract_calendar_button_import');?></button>&nbsp;
         <a href="#frmSetRangeDayOff" class="btn btn-primary" data-toggle="modal"><i class="mdi mdi-twitter-retweet"></i>&nbsp; <?php echo lang('contract_calendar_button_series');?></a>
-    </div>
+        <a href="javascript:void(0);" class="btn btn-primary" id="cmdCopyToAllContracts"><i class="mdi mdi-twitter-retweet"></i>&nbsp; Copy To All Contracts</a>
+        </div>
     <div class="span3">
         <?php if (!empty($contracts)) { ?>
         <select name="contract" id="contract" title="<?php echo lang('contract_calendar_button_copy');?>">
@@ -53,7 +54,7 @@ $dDay = 1;
 
 <div class="row-fluid">
     <div class="span6">
-        <u><?php echo lang('contract_calendar_legend_title');?></u> <img src='<?php echo base_url();?>assets/images/day.png' /> <?php echo lang('contract_calendar_legend_allday');?>, <img src='<?php echo base_url();?>assets/images/morning.png' /> <?php echo lang('contract_calendar_legend_morning');?>, <img src='<?php echo base_url();?>assets/images/afternoon.png' /> <?php echo lang('contract_calendar_legend_afternoon');?>
+        <u><?php echo lang('contract_calendar_legend_title');?></u> <img src='<?php echo base_url();?>assets/images/day.png' /> <?php echo lang('contract_calendar_legend_allday');?>
     </div>
     <div class="span6">
         <?php if ($this->config->item('ics_enabled') == FALSE) {?>
@@ -361,6 +362,24 @@ function changeTextCopyButton() {
     $('#cmdContractCopy').html(text);
   }
 }
+
+// Handle Copy to All Contracts button click
+$("#cmdCopyToAllContracts").on("click", function() {
+    bootbox.confirm("Are you sure you want to copy this contract's days off to all contracts?", function(result) {
+        if (result) {
+            $.ajax({
+                url: "<?php echo base_url();?>contracts/copy_to_all_contracts/<?php echo $contract_id; ?>/<?php echo $year; ?>",
+                type: "POST",
+                success: function(response) {
+                    bootbox.alert("Days off copied successfully to all contracts.");
+                },
+                error: function(xhr, status, error) {
+                    bootbox.alert("There was an error copying the days off. Please try again.");
+                }
+            });
+        }
+    });
+});
 
 //On load
 $(function() {

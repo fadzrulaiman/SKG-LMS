@@ -205,6 +205,24 @@ class Contracts extends CI_Controller {
         redirect('contracts/' . $destination . '/calendar/' . $year);
     }
 
+    public function copy_to_all_contracts($contract_id, $year) {
+        // Ensure the user has permission to perform this action
+        $this->auth->checkIfOperationIsAllowed('calendar_contract');
+    
+        // Load the model where you have the logic to copy days off
+        $this->load->model('contracts_model');
+        
+        // Call the model function to copy days off to all contracts
+        $affected_rows = $this->contracts_model->copyListOfDaysOffToAllContracts($contract_id, $year);
+    
+        // Return success if rows were affected, or return an error
+        if ($affected_rows > 0) {
+            echo json_encode(['status' => 'success', 'message' => 'Days off copied successfully to all contracts.']);
+        } else {
+            echo json_encode(['status' => 'error', 'message' => 'No days off were copied.']);
+        }
+    }
+    
     /**
      * Display a form that allows to exclude some leave types from a contract
      * @param int $id Contract identifier

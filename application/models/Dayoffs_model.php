@@ -150,6 +150,43 @@ class Dayoffs_model extends CI_Model {
     }
 
     /**
+     * Copy a list of days off of a source contract to all destination contracts (for a given civil year)
+     * @param int $source identifier of the source contract
+     * @param string $year civil year (and not yearly period)
+     * @return int total number of affected rows
+     * @author Fadzrul
+     */
+    public function copyListOfDaysOffToAllContracts($source, $year) {
+        // Get all contracts except the source
+        $this->db->select('id');
+        $this->db->where('id !=', $source); // Exclude the source contract
+        $contracts = $this->db->get('contracts')->result_array();
+        
+        $totalAffectedRows = 0;
+
+        foreach ($contracts as $contract) {
+            $destination = $contract['id'];
+
+            // Delete all previous days off defined on the destination contract (to avoid duplicated data)
+            $this->db->where('contract', $destination);
+            $this->db->where('YEAR(date)', $year);
+            $this->db->delete('dayoffs');
+
+            // Copy days off from source to destination
+            $sql = 'INSERT dayoffs(contract, date, type, title) ' .
+                ' SELECT ' . $this->db->escape($destination) . ', date, type, title ' .
+                ' FROM dayoffs ' .
+                ' WHERE contract = ' . $this->db->escape($source) .
+                ' AND YEAR(date) = ' . $this->db->escape($year);
+
+            $query = $this->db->query($sql);
+            $totalAffectedRows += $this->db->affected_rows(); // Add affected rows to the total count
+        }
+
+        return $totalAffectedRows; // Return total affected rows
+    }
+
+    /**
      * Get the length of days off between two dates for a given contract
      * @param int $contract contract identifier
      * @param date $start start date
