@@ -183,6 +183,14 @@ if ($showAll == FALSE) {
     </form>
 </div>
 
+<div class="modal hide" id="loadingModal" data-backdrop="static" data-keyboard="false">
+    <div class="modal-header">
+        <h1><?php echo lang('global_msg_wait');?></h1>
+    </div>
+    <div class="modal-body">
+        <img src="<?php echo base_url();?>assets/images/loading.gif" align="middle">
+    </div>
+</div>
 
 <link href="<?php echo base_url();?>assets/datatable/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 <script type="text/javascript"
@@ -244,12 +252,14 @@ $(document).ready(function() {
         }
     });
 
-    // Prevent double click on accept and reject buttons
+    // Prevent double click on accept buttons and show loading modal
     $('#leaves').on('click', '.lnkAccept', function(event) {
         event.preventDefault();
         if (!clicked) {
             clicked = true;
-            window.location.href = "<?php echo base_url(); ?>requests/accept/" + $(this).data("id");
+            $('#loadingModal').modal('show');  // Show loading modal
+            var leaveId = $(this).data("id");
+            window.location.href = "<?php echo base_url(); ?>requests/accept/" + leaveId;
         }
     });
 

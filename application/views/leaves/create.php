@@ -259,11 +259,15 @@ function toggleAttachmentField() {
 <script type="text/javascript">
 function disableSubmitButton() {
     var button = document.getElementById("submitButton");
-    button.innerHTML = "<?php echo lang('Applied'); ?>" ;
-    // Return false to prevent actual form submission for demo purposes
-    return false;
-    document.getElementById('submitButton').disabled = true;
+    button.innerHTML = "<?php echo lang('Applied'); ?>";
+    button.disabled = true;
+
+    // Show the modal
+    $('#frmModalAjaxWait').modal('show');
+    
+    return true;  // Allow form submission
 }
+
 </script>
 <style>
 .dashboard-cards-wrapper {

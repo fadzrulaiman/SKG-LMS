@@ -20,7 +20,7 @@ $this->lang->load('menu', $language);?>
                 <h3 class="modal-title" id="changePasswordLabel"><?php echo lang('menu_password_popup_title'); ?></h3>
             </div>
             <div class="modal-body" id="frmChangeMyPwdBody">
-                <img src="<?php echo base_url(); ?>assets/images/loading.gif" alt="Loading...">
+                <img src="<?php echo base_url(); ?>assets/images/loadinggg.gif" alt="Loading...">
             </div>
         </div>
     </div>

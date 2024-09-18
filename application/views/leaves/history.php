@@ -82,9 +82,9 @@ if (!empty($leave)) {
     $objLeave->changedDate = '';
     $objLeave->changedBy = '';
     $date = new DateTime($leave['startdate']);
-    $objLeave->startDate = $date->format(lang('global_date_format')) . ' (' . lang($leave['startdatetype']) . ')';
+    $objLeave->startDate = $date->format(lang('global_date_format'));
     $date = new DateTime($leave['enddate']);
-    $objLeave->endDate = $date->format(lang('global_date_format')) . ' (' . lang($leave['enddatetype']) . ')';
+    $objLeave->endDate = $date->format(lang('global_date_format'));
     $objLeave->cause = $leave['cause'];
     $objLeave->duration = $leave['duration'];
     $objLeave->typeName = $leave['type_name'];

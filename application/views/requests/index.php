@@ -167,6 +167,15 @@
     </div>
 </div>
 
+<div class="modal hide" id="frmModalAjaxWait" data-backdrop="static" data-keyboard="false">
+    <div class="modal-header">
+        <h1><?php echo lang('global_msg_wait');?></h1>
+    </div>
+    <div class="modal-body">
+        <img src="<?php echo base_url();?>assets/images/loading.gif" align="middle">
+    </div>
+</div>
+
 <div id="frmLinkICS" class="modal hide fade">
     <div class="modal-header">
         <h3>ICS<a href="#" onclick="$('#frmLinkICS').modal('hide');" class="close">&times;</a></h3>
@@ -261,6 +270,10 @@ $(document).ready(function() {
         event.preventDefault();
         if (!clicked) {
             clicked = true;
+
+            // Show waiting modal
+            $('#frmModalAjaxWait').modal('show');
+
             var url = $(this).hasClass('lnkBankAccept') ?
                 "<?php echo base_url(); ?>requests/leavebankaccept/" :
                 "<?php echo base_url(); ?>requests/accept/";
@@ -285,11 +298,20 @@ $(document).ready(function() {
                         $("#sendComment #frmRejectLeaveForm").attr("action", validateUrl);
                         $("#sendComment #frmRejectLeaveForm input#comment").attr("value", result);
                         $("#sendComment #frmRejectLeaveForm").submit();
+                        // Show waiting modal
+                        $('#frmModalAjaxWait').modal('show');
                     } else {
                         clicked = false;
                     }
                 });
         }
+    });
+
+    // Approve all action
+    $('form[action$="requests/approveAll"]').on('submit', function() {
+        // Show waiting modal
+        $('#frmModalAjaxWait').modal('show');
+        return true; // Allow form submission
     });
 
     $('#leaves').on('click', '.lnkCancellationAccept', function(event) {
