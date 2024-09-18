@@ -124,6 +124,7 @@
                           {
                               case 1: $class = "planned"; break;  // Planned
                               case 2: $class = "requested"; break;  // Requested
+                              case 7: $class = "requested"; break;  // Requested
                               case 3: $class = "accepted"; break;  // Accepted
                               case 4: $class = "rejected"; break;  // Rejected
                               case 5: $class="dayoff"; break;
@@ -133,6 +134,7 @@
                           {
                               case 1: $class .= "planned"; break;  // Planned
                               case 2: $class .= "requested"; break;  // Requested
+                              case 7: $class .= "requested"; break;  // Requested
                               case 3: $class .= "accepted"; break;  // Accepted
                               case 4: $class .= "rejected"; break;  // Rejected
                               case 5: $class .="dayoff"; break;
@@ -144,6 +146,7 @@
                               {
                                   case 1: $class = "allplanned"; break;  // Planned
                                   case 2: $class = "allrequested"; break;  // Requested
+                                  case 7: $class = "allrequested"; break;  // Requested
                                   case 3: $class = "allaccepted"; break;  // Accepted
                                   case 4: $class = "allrejected"; break;  // Rejected
                                   //The 2 cases below would be weird...
@@ -163,6 +166,7 @@
                                 {
                                     case 1: $class = "allplanned"; break;  // Planned
                                     case 2: $class = "allrequested"; break;  // Requested
+                                    case 7: $class = "allrequested"; break;  // Requested
                                     case 3: $class = "allaccepted"; break;  // Accepted
                                     case 4: $class = "allrejected"; break;  // Rejected
                                 }
@@ -172,6 +176,7 @@
                                 {
                                     case 1: $class = "amplanned"; break;  // Planned
                                     case 2: $class = "amrequested"; break;  // Requested
+                                    case 7: $class = "amrequested"; break;  // Requested
                                     case 3: $class = "amaccepted"; break;  // Accepted
                                     case 4: $class = "amrejected"; break;  // Rejected
                                 }
@@ -181,6 +186,7 @@
                                 {
                                     case 1: $class = "pmplanned"; break;  // Planned
                                     case 2: $class = "pmrequested"; break;  // Requested
+                                    case 7: $class = "pmrequested"; break;  // Requested
                                     case 3: $class = "pmaccepted"; break;  // Accepted
                                     case 4: $class = "pmrejected"; break;  // Rejected
                                 }
@@ -234,8 +240,8 @@
         <td data-order="<?php echo $leave['id']; ?>">
             <a href="<?php echo base_url();?>leaves/edit/<?php echo $leave['id']; ?>?source=hr%2Fpresence%2Femployees%2F<?php echo $user_id; ?>%2F<?php echo $month; ?>%2F<?php echo $year; ?>" title="<?php echo lang('hr_presence_thead_tip_edit');?>"><?php echo $leave['id'] ?></a>
         </td>
-        <td data-order="<?php echo $tmpStartDate; ?>"><?php echo $startdate . ' (' . lang($leave['startdatetype']). ')'; ?></td>
-        <td data-order="<?php echo $tmpEndDate; ?>"><?php echo $enddate . ' (' . lang($leave['enddatetype']) . ')'; ?></td>
+        <td data-order="<?php echo $tmpStartDate; ?>"><?php echo $startdate; ?></td>
+        <td data-order="<?php echo $tmpEndDate; ?>"><?php echo $enddate; ?></td>
         <td><?php echo $leave['duration']; ?> Days</td>
         <td><?php echo $leave['type']; ?></td>
     </tr>
