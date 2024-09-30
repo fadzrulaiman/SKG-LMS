@@ -25,14 +25,19 @@
     </div>
 </div>
 
-<div class="modal hide" id="frmModalAjaxWait" data-backdrop="static" data-keyboard="false">
-        <div class="modal-header">
-            <h1><?php echo lang('global_msg_wait');?></h1>
+<div class="modal fade" id="frmModalAjaxWait" tabindex="-1" role="dialog" aria-labelledby="loadingLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100" id="loadingLabel"><?php echo lang('global_msg_wait'); ?></h5>
+            </div>
+            <div class="modal-body text-center">
+                <img src="<?php echo base_url(); ?>assets/images/loading.gif" alt="Loading..." class="img-fluid mb-3">
+                <p><?php echo lang('global_msg_wait_process'); ?></p>
+            </div>
         </div>
-        <div class="modal-body">
-            <img src="<?php echo base_url();?>assets/images/loading.gif"  align="middle">
-        </div>
- </div>
+    </div>
+</div>
 
 <link href="<?php echo base_url();?>assets/fullcalendar-2.8.0/fullcalendar.css" rel="stylesheet">
 <script type="text/javascript" src="<?php echo base_url();?>assets/fullcalendar-2.8.0/fullcalendar.min.js"></script>

@@ -10,6 +10,7 @@ $lang['Leave Management System'] = 'Sistem Pengurusan Cuti';
 $lang['global_link_tooltip_documentation'] = 'Pautan ke dokumentasi';
 $lang['global_msg_error_forbidden'] = 'Operasi (%s) tidak dibenarkan';
 $lang['global_msg_wait'] = 'Sila tunggu';
+$lang['global_msg_wait_process'] = 'Please wait while we process your request...';
 $lang['global_msg_old_browser'] = 'Internet Explorer 8 dan penyemak imbas yang lebih lama tidak disokong. Sila naik taraf ke IE9 atau gunakan Firefox, Chrome, dan lain-lain.';
 $lang['global_msg_not_found'] = 'Objek tidak dijumpai. Mungkin anda cuba mengakses objek yang telah dipadam.';
 $lang['global_date_format'] = 'Y/m/d';

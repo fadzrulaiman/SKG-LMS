@@ -10,6 +10,7 @@ $lang['Leave Management System'] = 'Leave Management System';
 $lang['global_link_tooltip_documentation'] = 'Link to documentation';
 $lang['global_msg_error_forbidden'] = 'Operation (%s) is not granted';
 $lang['global_msg_wait'] = 'Please wait';
+$lang['global_msg_wait_process'] = 'Please wait while we process your request...';
 $lang['global_msg_old_browser'] = 'Internet Explorer 8 and older browser are not supported. Please upgrade to IE9 or use Firefox, Chrome, etc.';
 $lang['global_msg_not_found'] = 'Object not found. Maybe that you are trying to access to an object that was deleted.';
 $lang['global_date_format'] = 'Y/m/d';

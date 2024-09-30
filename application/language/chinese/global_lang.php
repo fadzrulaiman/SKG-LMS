@@ -12,6 +12,7 @@ $lang['Leave Management System'] = '请假管理系统';
 $lang['global_link_tooltip_documentation'] = '链接至文档';
 $lang['global_msg_error_forbidden'] = '操作（%s）不被允许';
 $lang['global_msg_wait'] = '请稍候';
+$lang['global_msg_wait_process'] = 'Please wait while we process your request...';
 $lang['global_msg_old_browser'] = '在IE 8将不受支持，请更新至IE 9或使用Firefox、Chrome等';
 $lang['global_msg_not_found'] = '未找到结果，你搜索的条件可能已被删除';
 
