@@ -68,12 +68,11 @@ class Requests extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-
     /**
      * Display the list of leave bank requests
      * @param string $filter Filter the list of submitted leave bank requests (all or requested)
      */
-    public function leavebank($filter = 'requested') {
+    public function leavebank($filter = 'leavebankrequested') {
         $this->auth->checkIfOperationIsAllowed('leavebank_requests');
         $data = getUserContext($this);
         $this->load->model('types_model');
@@ -81,14 +80,14 @@ class Requests extends CI_Controller {
         $this->load->helper('form');
         
         // Validate filter parameter
-        $valid_filters = ['all', 'requested'];
+        $valid_filters = ['allleavebank', 'leavebankrequested'];
         if (!in_array($filter, $valid_filters)) {
             show_error('Invalid filter value', 400);
         }
         
         $data['filter'] = $filter;
         $data['title'] = 'Leave Bank Requests'; // Customize this title as needed
-        $showAll = ($filter === 'all');
+        $showAll = ($filter === 'allleavebank'); // Check whether showing all or just requested leave bank requests
         
         if ($this->config->item('enable_history') == TRUE) {
             $data['requests'] = $this->leaves_model->getLeavesBankRequestedWithHistory($showAll);
@@ -234,6 +233,52 @@ public function leavebankaccept($id) {
     
         $this->session->set_flashdata('msg', lang('requests_index_approve_all'));
         redirect('requests');
+    }
+
+    public function leavebankapproveAll() {
+        $this->auth->checkIfOperationIsAllowed('accept_requests');
+        $this->load->model('users_model');
+        $this->load->model('leaves_model');
+    
+        $requests = $this->leaves_model->getAllPendingLeaveBank();
+    
+        foreach ($requests as $leave) {
+            $employee_id = $this->getArrayValue($leave, 'employee');
+            $leave_id = $this->getArrayValue($leave, 'id');
+            $leave_type = $this->getArrayValue($leave, 'type');
+            $leave_status = $this->getArrayValue($leave, 'status');
+    
+            if ($employee_id && $leave_id && $leave_type) {
+                $employee = $this->users_model->getUsers($employee_id);
+                $employee_manager = $this->getArrayValue($employee, 'manager');
+                $employee_id = $this->getArrayValue($employee, 'id');
+    
+                if ($employee_manager && $employee_id) {
+                    $can_approve = ($this->user_id == $employee_manager) || $this->is_hr;
+    
+                    if ($can_approve) {
+                        if ($leave_type == LEAVE_BANK_TYPE_ID) {
+                            $this->leaves_model->switchStatus($leave_id, LMS_ACCEPTED);
+                            $this->sendMail($leave_id, LMS_REQUESTED_ACCEPTED);
+                            // Send push notification to user and HR
+                            $this->sendPushNotificationToUserOnApprovalBank($leave_id, 'Leave Request');
+                        } 
+                    } else {
+                        log_message('error', 'User #' . $this->user_id . ' illegally tried to accept leave #' . $leave_id);
+                        $this->session->set_flashdata('msg', lang('requests_accept_flash_msg_error'));
+                    }
+                } else {
+                    log_message('error', 'Manager or Employee ID missing for leave #' . $leave_id);
+                    log_message('debug', 'Employee Data: ' . json_encode($employee));
+                }
+            } else {
+                log_message('error', 'Employee data missing for leave #' . $leave_id);
+                log_message('debug', 'Leave Data: ' . json_encode($leave));
+            }
+        }
+    
+        $this->session->set_flashdata('msg', lang('requests_index_approve_all'));
+        redirect('leavebank');
     }
             
     // Helper method to handle the case where the array key might not be set
@@ -888,8 +933,32 @@ public function leavebankaccept($id) {
      * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
      */
     public function export($filter = 'requested') {
+        // Validate filter parameter
+        $valid_filters = ['all', 'requested'];
+        if (!in_array($filter, $valid_filters)) {
+            show_error('Invalid filter value', 400);
+        }
+                
         $data['filter'] = $filter;
         $this->load->view('requests/export', $data);
+    }
+
+    /**
+     * Export the list of all leave requests (sent to the connected user) into an Excel file
+     * @param string $filter Filter the list of submitted leave requests (allleavebank or leavebankrequested)
+     * @author Fadzrul Aiman<daniel.fadzrul@gmail.com>
+     */
+    public function exportleavebank($filter = 'leavebankrequested') {
+        // Validate filter parameter
+        $valid_filters = ['allleavebank', 'leavebankrequested'];
+        if (!in_array($filter, $valid_filters)) {
+            show_error('Invalid filter value', 400);
+        }
+        
+        $data['filter'] = $filter;
+        
+        // Pass the filter to the view to handle the export logic
+        $this->load->view('requests/exportleavebank', $data);
     }
 
     /**

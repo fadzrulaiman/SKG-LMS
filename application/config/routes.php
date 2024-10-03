@@ -223,6 +223,7 @@ $route['requests/createleave/(:num)'] = 'requests/createleave/$1';
 $route['requests/counters/(:num)'] = 'requests/counters/$1';
 $route['requests/counters/(:num)/(:num)'] = 'requests/counters/$1/$2';
 $route['requests/export/(:any)'] = 'requests/export/$1';
+$route['requests/leavebank/export/(:any)'] = 'requests/exportleavebank/$1';
 $route['requests/accept/(:num)'] = 'requests/accept/$1';
 $route['requests/leavebankaccept/(:num)'] = 'requests/leavebankaccept/$1';
 $route['requests/reject/(:num)'] = 'requests/reject/$1';
@@ -233,9 +234,11 @@ $route['requests/delegations'] = 'requests/delegations';
 $route['requests/ajax/delegations/delete'] = 'requests/deleteDelegations';
 $route['requests/ajax/delegations/add'] = 'requests/addDelegations';
 $route['requests/leavebank'] = 'requests/leavebank'; // New route for leavebank
+$route['requests/leavebankapproveAll'] = 'requests/leavebankapproveAll'; // New route for Approve All Requests
 $route['requests/approveAll'] = 'requests/approveAll'; // New route for Approve All Requests
 $route['requests/(:any)'] = 'requests/index/$1';
 $route['requests'] = 'requests/index/requested';
+$route['leavebank'] = 'requests/leavebank';
 
 
 //_______________________________________________

@@ -1418,6 +1418,15 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
         return $query->result_array();
     }    
     
+    public function getAllPendingLeaveBank() {
+        $this->db->select('leaves.*, users.manager');
+        $this->db->from('leaves');
+        $this->db->join('users', 'users.id = leaves.employee');
+        $this->db->where('leaves.status', LMS_REQUESTEDBANK);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+     
     
     /**
      * Get the list of history of an employee
@@ -1486,28 +1495,38 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
     }
 
     /**
-     * List all leave bank requests with a specific status.
-     * @param bool $all TRUE all requests, FALSE otherwise
+     * List all leave bank requests with a specific type or status.
+     * @param bool $all TRUE for all leave bank requests, FALSE for requested leave bank requests
      * @return array Recordset (can be empty if no requests)
      */
-    public function getLeavesBankRequested($all = FALSE) {
+    public function getLeavesBankRequested($allleavebank = FALSE) {
         $this->db->select('leaves.id as leave_id, users.*, leaves.*, types.name as type_label');
         $this->db->select('status.name as status_name, types.name as type_name');
         $this->db->join('status', 'leaves.status = status.id');
         $this->db->join('types', 'leaves.type = types.id');
         $this->db->join('users', 'users.id = leaves.employee');
-        $this->db->where('leaves.status', 7); // Status is 7 for leave bank requests
+        
+        // Filter based on whether all leave bank or just leave bank requests
+        if ($allleavebank) {
+            // Show all leave bank requests (type = 3)
+            $this->db->where('leaves.type', 3);
+        } else {
+            // Show only leave bank requests with status = 7
+            $this->db->where('leaves.status', 7);
+        }
+        
         $this->db->order_by('leaves.startdate', 'desc');
         $query = $this->db->get('leaves');
         return $query->result_array();
     }
 
+
     /**
-     * Get the list of leave bank request history with a specific status.
-     * @param bool $all TRUE all requests, FALSE otherwise
+     * Get the list of leave bank request history with a specific type or status.
+     * @param bool $all TRUE for all leave bank requests, FALSE for requested leave bank requests
      * @return array list of records
      */
-    public function getLeavesBankRequestedWithHistory($all = FALSE) {
+    public function getLeavesBankRequestedWithHistory($allleavebank = FALSE) {
         $query = "SELECT leaves.id as leave_id, users.*, leaves.*, types.name as type_label, 
                 status.name as status_name, types.name as type_name, lastchange.date as change_date, 
                 requested.date as request_date
@@ -1523,15 +1542,18 @@ public function updateLeaves($leaveId, $attachment_path = '', $userId = 0) {
                 LEFT OUTER JOIN (
                     SELECT id, MIN(change_date) as date
                     FROM leaves_history
-                    WHERE leaves_history.status = 2
+                    WHERE leaves_history.status = 7
                     GROUP BY id
                 ) requested ON leaves.id = requested.id
-                WHERE leaves.status = 7"; // Status is 7 for leave bank requests
+                WHERE ";
 
-        if ($all == FALSE) {
-            $query .= " AND (leaves.status = " . LMS_REQUESTED .
-                    " OR leaves.status = " . LMS_REQUESTEDBANK . ")";
+        // Filter based on whether all leave bank or just leave bank requests
+        if ($allleavebank) {
+            $query .= "leaves.type = 3"; // Show all leave bank requests (type = 3)
+        } else {
+            $query .= "leaves.status = 7"; // Show only leave bank requests with status = 7
         }
+
         $query .= " ORDER BY leaves.startdate DESC";
         $this->db->query('SET SQL_BIG_SELECTS=1');
         return $this->db->query($query)->result_array();

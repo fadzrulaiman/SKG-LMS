@@ -11,40 +11,6 @@
 
 <p><?php echo lang('leavebankrequests_index_description');?></p>
 
-<div class="row">
-    <div class="span3">
-        <?php echo lang('requests_index_thead_type'); ?>
-        <select name="cboLeaveType" id="cboLeaveType" class="form-control">
-            <?php foreach ($types as $type): ?>
-            <option value="<?php echo $type['id']; ?>" <?php echo ($type['id'] == 3) ? 'selected' : 'disabled'; ?>>
-                <?php echo $type['name']; ?>
-            </option>
-            <?php endforeach; ?>
-        </select>&nbsp;&nbsp;
-    </div>
-    <?php
-$disable = "";
-$checked = "checked";
-if ($showAll == FALSE) {
-    $disable = "disabled";
-    $checked = "";
-}
-?>
-    <div class="span1">&nbsp;</div>
-    <div class="span8">
-        <span class="label label-success"><input type="checkbox" <?php echo $checked;?> id="chkAccepted"
-                class="filterStatus" <?php echo $disable;?>> &nbsp;<?php echo lang('Accepted');?></span> &nbsp;
-        <span class="label label-warning"><input type="checkbox" checked id="chkRequested" class="filterStatus">
-            &nbsp;<?php echo lang('Pending From HR');?></span> &nbsp;
-        <span class="label label-important" style="background-color: #ff0000;"><input type="checkbox"
-                <?php echo $checked;?> id="chkRejected" class="filterStatus" <?php echo $disable;?>>
-            &nbsp;<?php echo lang('Rejected');?></span> &nbsp;
-        <span class="label label-important" style="background-color: #ff0000;"><input type="checkbox"
-                <?php echo $checked;?> id="chkCanceled" class="filterStatus" <?php echo $disable;?>>
-            &nbsp;<?php echo lang('Canceled');?></span>
-    </div>
-</div>
-
 <table cellpadding="0" cellspacing="0" border="0" class="display" id="leaves" width="100%">
     <thead>
         <tr>
@@ -64,44 +30,54 @@ if ($showAll == FALSE) {
     </thead>
     <tbody>
         <?php foreach ($requests as $request):
-    $date = new DateTime($request['startdate']);
-    $tmpStartDate = $date->getTimestamp();
-    $startdate = $date->format(lang('global_date_format'));
-    $date = new DateTime($request['enddate']);
-    $tmpEndDate = $date->getTimestamp();
-    $enddate = $date->format(lang('global_date_format'));
-    if ($this->config->item('enable_history') == TRUE){
-      if($request['request_date'] == NULL){
-        $tmpRequestDate = "";
-        $requestdate = "";
-      }else{
-        $datetimeRequested = new DateTime($request['request_date']);
-        $tmpRequestDate = $datetimeRequested->getTimestamp();
-        $requestdate = $datetimeRequested->format(lang('global_date_format'));
-      }
-      if($request['change_date'] == NULL){
-        $tmpLastChangeDate = "";
-        $lastchangedate = "";
-      }else{
-        $datetimelastChanged = new DateTime($request['change_date']);
-        $tmpLastChangeDate = $datetimelastChanged->getTimestamp();
-        $lastchangedate = $datetimelastChanged->format(lang('global_date_format'));
-      }
-    }
-    ?>
+            $date = new DateTime($request['startdate']);
+            $tmpStartDate = $date->getTimestamp();
+            $startdate = $date->format(lang('global_date_format'));
+            $date = new DateTime($request['enddate']);
+            $tmpEndDate = $date->getTimestamp();
+            $enddate = $date->format(lang('global_date_format'));
+            if ($this->config->item('enable_history') == TRUE){
+              if($request['request_date'] == NULL){
+                $tmpRequestDate = "";
+                $requestdate = "";
+              }else{
+                $datetimeRequested = new DateTime($request['request_date']);
+                $tmpRequestDate = $datetimeRequested->getTimestamp();
+                $requestdate = $datetimeRequested->format(lang('global_date_format'));
+              }
+              if($request['change_date'] == NULL){
+                $tmpLastChangeDate = "";
+                $lastchangedate = "";
+              }else{
+                $datetimelastChanged = new DateTime($request['change_date']);
+                $tmpLastChangeDate = $datetimelastChanged->getTimestamp();
+                $lastchangedate = $datetimelastChanged->format(lang('global_date_format'));
+              }
+            }
+            ?>
         <tr>
             <td data-order="<?php echo $request['leave_id']; ?>" class="text-center">
                 <a href="<?php echo base_url();?>leaves/requests/<?php echo $request['leave_id']; ?>"
                     title="<?php echo lang('requests_index_thead_tip_view');?>"><?php echo $request['leave_id']; ?></a>
                 &nbsp;
                 <div class="pull-right">
-                    <a href="#" class="lnkAccept" data-id="<?php echo $request['leave_id']; ?>"
+                    <?php if ($request['status'] == LMS_CANCELLATION) { ?>
+                    <a href="#" class="lnkCancellationAccept" data-id="<?php echo $request['leave_id']; ?>"
                         title="<?php echo lang('requests_index_thead_tip_accept');?>"><i
+                            class="mdi mdi-check nolink"></i></a>
+                    &nbsp;
+                    <a href="#" class="lnkCancellationReject" data-id="<?php echo $request['leave_id']; ?>"
+                        title="<?php echo lang('requests_index_thead_tip_reject');?>"><i
+                            class="mdi mdi-close nolink"></i></a>
+                    <?php } else if ($request['status'] == LMS_REQUESTEDBANK) { ?>
+                    <a href="#" class="lnkAccept" data-id="<?php echo $request['leave_id']; ?>"
+                        title="<?php echo lang('requests_index_thead_tip_accept'); ?>"><i
                             class="mdi mdi-check nolink"></i></a>
                     &nbsp;
                     <a href="#" class="lnkReject" data-id="<?php echo $request['leave_id']; ?>"
                         title="<?php echo lang('requests_index_thead_tip_reject');?>"><i
                             class="mdi mdi-close nolink"></i></a>
+                    <?php } ?>
                     <?php if ($this->config->item('enable_history') === TRUE) { ?>
                     &nbsp;
                     <a href="<?php echo base_url();?>leaves/leaves/<?php echo $request['leave_id']; ?>"
@@ -127,6 +103,7 @@ if ($showAll == FALSE) {
             <?php
         switch ($request['status']) {
             case 1: echo "<td class='text-center'><span class='label'>" . lang($request['status_name']) . "</span></td>"; break;
+            case 2: echo "<td class='text-center'><span class='label label-warning'>" . lang($request['status_name']) . "</span></td>"; break;
             case 3: echo "<td class='text-center'><span class='label label-success'>" . lang($request['status_name']) . "</span></td>"; break;
             case 7: echo "<td class='text-center'><span class='label label-warning'>" . lang($request['status_name']) . "</span></td>"; break;
             default: echo "<td class='text-center'><span class='label label-important' style='background-color: #ff0000;'>" . lang($request['status_name']) . "</span></td>"; break;
@@ -143,6 +120,29 @@ if ($showAll == FALSE) {
 </table>
 
 <div class="row-fluid">
+    <div class="span12 text-center">
+        <form action="<?php echo base_url('requests/leavebankapproveAll'); ?>" method="post" style="display:inline;">
+            <?php echo form_hidden($this->security->get_csrf_token_name(), $this->security->get_csrf_hash()); ?>
+            <button type="submit" class="btn btn-success"><?php echo lang('requests_index_approve_all'); ?></button>
+        </form>
+        &nbsp;&nbsp;
+        <a href="<?php echo base_url();?>requests/leavebank/export/<?php echo $filter; ?>" class="btn btn-primary"><i
+                class="mdi mdi-download"></i>&nbsp; <?php echo lang('requests_index_button_export');?></a>
+        &nbsp;&nbsp;
+        <a href="<?php echo base_url();?>requests/leavebank/allleavebank" class="btn btn-primary"><i
+                class="mdi mdi-filter-remove"></i>&nbsp; <?php echo lang('requests_index_button_show_all');?></a>
+        &nbsp;&nbsp;
+        <a href="<?php echo base_url();?>requests/leavebank/leavebankrequested" class="btn btn-primary"><i
+                class="mdi mdi-filter"></i>&nbsp; <?php echo lang('requests_index_button_show_pending');?></a>
+        &nbsp;&nbsp;
+        <?php if ($this->config->item('ics_enabled') == TRUE) {?>
+        <a id="lnkICS" href="#"><i class="mdi mdi-earth nolink"></i> ICS</a>
+        <?php }?>
+        &nbsp;&nbsp;
+    </div>
+</div>
+
+<div class="row-fluid">
     <div class="span12">&nbsp;</div>
 </div>
 
@@ -152,6 +152,20 @@ if ($showAll == FALSE) {
     </div>
     <div class="modal-footer">
         <a href="#" onclick="$('#frmShowHistory').modal('hide');" class="btn"><?php echo lang('OK');?></a>
+    </div>
+</div>
+
+<div class="modal fade" id="frmModalAjaxWait" tabindex="-1" role="dialog" aria-labelledby="loadingLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h5 class="modal-title w-100" id="loadingLabel"><?php echo lang('global_msg_wait'); ?></h5>
+            </div>
+            <div class="modal-body text-center">
+                <img src="<?php echo base_url(); ?>assets/images/loading.gif" alt="Loading..." class="img-fluid mb-3">
+                <p><?php echo lang('global_msg_wait_process'); ?></p>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -183,14 +197,6 @@ if ($showAll == FALSE) {
     </form>
 </div>
 
-<div class="modal hide" id="loadingModal" data-backdrop="static" data-keyboard="false">
-    <div class="modal-header">
-        <h1><?php echo lang('global_msg_wait');?></h1>
-    </div>
-    <div class="modal-body">
-        <img src="<?php echo base_url();?>assets/images/loading.gif" align="middle">
-    </div>
-</div>
 
 <link href="<?php echo base_url();?>assets/datatable/DataTables-1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
 <script type="text/javascript"
@@ -212,9 +218,9 @@ function getURLParameter(name) {
 function filterStatusColumn() {
     var filter = "^(";
     if ($('#chkAccepted').prop('checked')) filter += "<?php echo lang('Accepted');?>|";
-    if ($('#chkRequested').prop('checked')) filter += "<?php echo lang('Pending From HR');?>|";
+    if ($('#chkRequested').prop('checked')) filter += "<?php echo lang('Requested');?>|";
     if ($('#chkRejected').prop('checked')) filter += "<?php echo lang('Rejected');?>|";
-    if ($('#chkCancellation').prop('checked')) filter += "<?php echo lang('Cancellation');?>|";
+    if ($('#chkleavebank').prop('checked')) filter += "<?php echo lang('Pending From HR');?>|";
     if ($('#chkCanceled').prop('checked')) filter += "<?php echo lang('Canceled');?>|";
     filter = filter.slice(0, -1) + ")$";
     if (filter.indexOf('(') == -1) filter = 'nothing is selected';
@@ -222,10 +228,10 @@ function filterStatusColumn() {
 }
 
 $(document).ready(function() {
-    // Transform the HTML table into a fancy datatable
+    // Transform the HTML table into a fancy DataTable
     leaveTable = $('#leaves').DataTable({
         order: [
-            [2, "desc"]
+            [3, "desc"]
         ],
         language: {
             decimal: "<?php echo lang('datatable_sInfoThousands'); ?>",
@@ -252,14 +258,19 @@ $(document).ready(function() {
         }
     });
 
-    // Prevent double click on accept buttons and show loading modal
-    $('#leaves').on('click', '.lnkAccept', function(event) {
+    // Prevent double click on accept and reject buttons
+    $('#leaves').on('click', '.lnkAccept, .lnkBankAccept', function(event) {
         event.preventDefault();
         if (!clicked) {
             clicked = true;
-            $('#loadingModal').modal('show');  // Show loading modal
-            var leaveId = $(this).data("id");
-            window.location.href = "<?php echo base_url(); ?>requests/accept/" + leaveId;
+
+            // Show waiting modal
+            $('#frmModalAjaxWait').modal('show');
+
+            var url = $(this).hasClass('lnkBankAccept') ?
+                "<?php echo base_url(); ?>requests/leavebankaccept/" :
+                "<?php echo base_url(); ?>requests/accept/";
+            window.location.href = url + $(this).data("id");
         }
     });
 
@@ -267,7 +278,7 @@ $(document).ready(function() {
         event.preventDefault();
         if (!clicked) {
             clicked = true;
-            var validateUrl = "<?php echo base_url(); ?>requests/reject/" + $(this).data("id");
+            var validateUrl = "<?php echo base_url();?>requests/reject/" + $(this).data("id");
             bootbox.prompt('<?php echo (($this->config->item('mandatory_comment_on_reject') === TRUE)?'<i class="mdi mdi-alert"></i>&nbsp;':'') .
                     lang('requests_comment_reject_request_title');?>',
                 '<?php echo lang('requests_comment_reject_request_button_cancel');?>',
@@ -280,11 +291,20 @@ $(document).ready(function() {
                         $("#sendComment #frmRejectLeaveForm").attr("action", validateUrl);
                         $("#sendComment #frmRejectLeaveForm input#comment").attr("value", result);
                         $("#sendComment #frmRejectLeaveForm").submit();
+                        // Show waiting modal
+                        $('#frmModalAjaxWait').modal('show');
                     } else {
                         clicked = false;
                     }
                 });
         }
+    });
+
+    // Approve all action
+    $('form[action$="requests/leavebankapproveAll"]').on('submit', function() {
+        // Show waiting modal
+        $('#frmModalAjaxWait').modal('show');
+        return true; // Allow form submission
     });
 
     $('#leaves').on('click', '.lnkCancellationAccept', function(event) {
@@ -350,9 +370,9 @@ $(document).ready(function() {
     $('#cboLeaveType').on('change', function() {
         var leaveType = $("#cboLeaveType option:selected").text();
         if (leaveType != '') {
-            leaveTable.columns(5).search("^" + leaveType + "$", true, false).draw();
+            leaveTable.columns(6).search("^" + leaveType + "$", true, false).draw();
         } else {
-            leaveTable.columns(5).search("", true, false).draw();
+            leaveTable.columns(6).search("", true, false).draw();
         }
     });
 
@@ -360,7 +380,7 @@ $(document).ready(function() {
     if (getURLParameter('type') != null) {
         var leaveType = $("#cboLeaveType option[value='" + getURLParameter('type') + "']").text();
         $("#cboLeaveType option[value='" + getURLParameter('type') + "']").prop("selected", true);
-        leaveTable.columns(5).search("^" + leaveType + "$", true, false).draw();
+        leaveTable.columns(6).search("^" + leaveType + "$", true, false).draw();
     }
 
     // Filter on statuses is a list of inclusion
@@ -382,8 +402,8 @@ $(document).ready(function() {
                 case '4':
                     $("#chkRejected").prop("checked", true);
                     break;
-                case '5':
-                    $("#chkCancellation").prop("checked", true);
+                case '7':
+                    $("#chkleavebank").prop("checked", true);
                     break;
                 case '6':
                     $("#chkCanceled").prop("checked", true);
