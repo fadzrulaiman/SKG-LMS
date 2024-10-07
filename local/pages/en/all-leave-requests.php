@@ -45,8 +45,8 @@ $rows = $this->db->get()->result_array();
 <tr>
     <td><a href="leaves/edit/<?php echo $row['id'];?>?source=hr%2Fleaves%2F1" target="_blank"><?php echo $row['id'];?></a></td>
     <td><a href="hr/counters/employees/<?php echo $row['employee'];?>" target="_blank"><?php echo $row['firstname'] . ' ' . $row['lastname']; ?></a></td>
-    <td><?php echo $startdate . ' (' . lang($row['startdatetype']). ')'; ?></td>
-    <td><?php echo $enddate . ' (' . lang($row['enddatetype']) . ')'; ?></td>
+    <td><?php echo $startdate; ?></td>
+    <td><?php echo $enddate; ?></td>
     <td><?php echo $row['duration']; ?></td>
     <td><?php echo $row['type_name']; ?></td>
     <td><?php echo lang($row['status_name']); ?></td>

@@ -53,8 +53,8 @@ foreach ($rows as $row) {
     $enddate = $date->format(lang('global_date_format'));
     $sheet->setCellValue('A' . $line, $row['id']);
     $sheet->setCellValue('B' . $line, $row['firstname'] . ' ' . $row['lastname']);
-    $sheet->setCellValue('C' . $line, $startdate . ' (' . lang($row['startdatetype']). ')');
-    $sheet->setCellValue('D' . $line, $enddate . ' (' . lang($row['enddatetype']) . ')');
+    $sheet->setCellValue('C' . $line, $startdate);
+    $sheet->setCellValue('D' . $line, $enddate);
     $sheet->setCellValue('E' . $line, $row['duration']);
     $sheet->setCellValue('F' . $line, $row['type_name']);
     $sheet->setCellValue('G' . $line, lang($row['status_name']));

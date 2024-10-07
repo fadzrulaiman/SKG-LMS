@@ -14,19 +14,28 @@ def format_sql_value(value):
         return str(value)
 
 # Load data from Excel file
-excel_file_path = r"C:\Users\SKG-USER-DTU\Downloads\LeaveRecord.xlsx"
+excel_file_path = r"C:\Users\SKG-USER-DTU\Downloads\FINIT_Leave_2023.xlsx"
 df_old = pd.read_excel(excel_file_path)
+
+# Determine the 'type' based on 'Cause of Absence Code'
+def determine_leave_type(cause_code):
+    if cause_code == 'AL':
+        return 1  # Type 1 for Annual Leave
+    elif cause_code == 'SICK':
+        return 2  # Type 2 for Sick Leave
+    else:
+        return 'NULL'  # Default case if neither
 
 # Prepare the new DataFrame based on your transformed data
 data = {
     'startdate': df_old['From Date'],
     'enddate': df_old['To Date'],
-    'Status': 3,  
+    'Status': 3,  # Assuming this is a constant value
     'employee': df_old['Employee No_'],
-    'startdatetype': 'Morning', 
-    'enddatetype': 'Afternoon',  
+    'startdatetype': 'Morning',  # Assuming this is a constant value
+    'enddatetype': 'Afternoon',  # Assuming this is a constant value
     'duration': df_old['Quantity'],
-    'type': 1, 
+    'type': df_old['Cause of Absence Code'].apply(determine_leave_type),  # Dynamic leave type based on cause code
 }
 
 df_new = pd.DataFrame(data)
@@ -35,7 +44,7 @@ df_new = pd.DataFrame(data)
 print(df_new.head())
 
 # Save the new DataFrame to an Excel file
-output_excel_file_path = r"C:\Users\SKG-USER-DTU\Downloads\Leave_Transformed_Data.xlsx"
+output_excel_file_path = r"C:\Users\SKG-USER-DTU\Downloads\FINIT_Leave_2023.xlsx"
 df_new.to_excel(output_excel_file_path, index=False)
 
 print(f"Transformed data has been saved to {output_excel_file_path}")
@@ -53,7 +62,7 @@ for _, row in df_new.iterrows():
 all_sql_statements = "\n".join(sql_statements)
 
 # Save SQL statements to a file
-output_sql_file_path = r"C:\Users\SKG-USER-DTU\Downloads\insert_leave.sql"
+output_sql_file_path = r"C:\Users\SKG-USER-DTU\Downloads\FINIT_Leave_2023.sql"
 with open(output_sql_file_path, "w") as file:
     file.write(all_sql_statements)
 
