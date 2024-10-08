@@ -854,7 +854,7 @@ msgstr ""
 msgid "Create Leave Request"
 msgstr ""
 
-msgid "Presence report"
+msgid "Attendance report"
 msgstr ""
 
 msgid "Delegations"

@@ -14,7 +14,7 @@ $lang['hr_employees_thead_link_extra'] = 'OT Worked';
 $lang['hr_employees_thead_link_balance'] = 'Leave Balance';
 $lang['hr_employees_thead_link_create_leave'] = 'Create Leave Request';
 $lang['hr_employees_thead_link_calendar'] = 'Yearly calendar';
-$lang['hr_employees_thead_link_presence'] = 'Presence report';
+$lang['hr_employees_thead_link_presence'] = 'Attendance report';
 $lang['hr_employees_thead_link_delegation'] = 'Delegations';
 $lang['hr_employees_thead_id'] = 'ID';
 $lang['hr_employees_thead_firstname'] = 'First Name';
@@ -152,7 +152,7 @@ $lang['hr_summary_flash_msg_error'] = 'This employee has no contract.';
 $lang['hr_summary_button_list'] = 'List of employees';
 $lang['hr_summary_date_field'] = 'Date of report';
 
-$lang['hr_presence_title'] = 'Presence report';
+$lang['hr_presence_title'] = 'Attendance report';
 $lang['hr_presence_description'] = 'By default this report shows the values for the last month. Please note that the list of leaves shows only the approved leave requests.';
 $lang['hr_presence_thead_tip_edit'] = 'edit';
 $lang['hr_presence_thead_id'] = 'ID';

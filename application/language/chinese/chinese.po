@@ -780,7 +780,7 @@ msgstr "休假平衡點"
 msgid "Create Leave Request"
 msgstr "建立休假申請"
 
-msgid "Presence report"
+msgid "Attendance report"
 msgstr "簽署報告"
 
 msgid "Delegations"
