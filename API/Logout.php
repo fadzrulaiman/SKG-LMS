@@ -9,10 +9,10 @@ $userId = $decodedData['user_id'] ?? null;
 $fcmToken = $decodedData['fcmToken'] ?? null;
 $verificationToken = $decodedData['verificationToken'] ?? null;
 
-if (!$userId) {
+/*if (!$userId) {
     echo json_encode(['success' => false, 'message' => 'No user ID provided']);
     exit();
-}
+}*/
 
 // Check if session exists before trying to destroy it
 if (session_status() == PHP_SESSION_ACTIVE) {

@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['type'])) {
       $type = $_GET['type'];
 
       if ($type === 'types') {
-        $query = "SELECT * FROM types";
+        $query = "SELECT id, name FROM types";
         $result = mysqli_query($conn, $query);
         $leaveTypes = array();
       
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['type'])) {
       
         echo json_encode($leaveTypes);
       } elseif ($type === 'status') {
-        $query = "SELECT name FROM status WHERE id IN ('2', '3', '4', '6', '7')";
+        $query = "SELECT id, name FROM status WHERE id IN ('2', '3', '4', '6', '7')";
         $result = mysqli_query($conn, $query);
         $leaveStatus = array();
       

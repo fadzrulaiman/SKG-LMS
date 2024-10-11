@@ -140,7 +140,7 @@ function getManagerFcmTokens($userId, $conn) {
     $query = "
         SELECT uft.fcm_token 
         FROM user_fcm_tokens uft 
-        INNER JOIN users u ON u.manager = uft.id 
+        INNER JOIN users u ON u.manager = uft.user_id
         WHERE u.id = ?";
     $stmt = $conn->prepare($query);
     if (!$stmt) {
@@ -455,7 +455,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
 
         if ($type === 'individual') {
             // Get all leave for a specific user
-            $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.fcm_token
+            $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.lastname, u.fcm_token
                       FROM leaves l
                       JOIN status s ON l.status = s.id
                       JOIN types t ON l.type = t.id
@@ -471,7 +471,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
             }
 
             echo json_encode($leave);
-        } elseif ($type === 'organization') {
+        } elseif ($type === 'individualfilter') {
+            // Get the current date
+            $currentDate = date('Y-m-d');
+            
+            // Get all leave for a specific user with a start date on or after the current date
+            // or the current date is within the range of startdate and enddate
+            $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.lastname, u.fcm_token
+                      FROM leaves l
+                      JOIN status s ON l.status = s.id
+                      JOIN types t ON l.type = t.id
+                      JOIN users u ON l.employee = u.id
+                      WHERE l.employee = $userId 
+                      AND ('$currentDate' BETWEEN l.startdate AND l.enddate OR l.startdate >= '$currentDate' OR l.status = 2 OR l.status = 7)";
+        
+            $result = mysqli_query($conn, $query);
+            $leave = array();
+        
+            while ($row = mysqli_fetch_assoc($result)) {
+                $row['duration'] = round($row['duration']);  // Round to whole number
+                $leave[] = $row;
+            }
+        
+            echo json_encode($leave);
+        }
+         elseif ($type === 'organization') {
             // Get all leave for users in the same organization
             $organizationId = getUserOrganization($userId, $conn);
             if ($organizationId !== null) {
@@ -545,7 +569,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
         $leaveId = intval($_GET['leave_id']);
     
         // Get detailed information for a specific leave
-        $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.lastname, u.email, u.id, l.attachment
+        $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.lastname, u.email, u.id, l.attachment, l.id AS leave_id, l.status
                   FROM leaves l
                   JOIN status s ON l.status = s.id
                   JOIN types t ON l.type = t.id
@@ -630,6 +654,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
     $stmt->bind_param("iisssissss", $userId, $leaveType, $leaveDesc, $startDate, $endDate, $leaveDuration, $leaveStatus, $imagePath, $startDateType, $endDateType);
 
     if ($stmt->execute()) {
+        //echo "Success";
         $leaveId = $stmt->insert_id;
 
         // Log the created leave in leave_history table
@@ -680,6 +705,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
                 'Comments' => '',
                 'Status' => 'Requested',
                 'Email Title' => '[SKG-LMS] Leave Request from ' . $userDetails['firstname'] . ' ' . $userDetails['lastname'],
+                'Notify' => "[ Leave ID: $leaveId ] You have a $leaveType request from {$userDetails['firstname']} {$userDetails['lastname']}, from $startDate until $endDate.",
             ];
 
             $emailBody = buildEmailBody($templatePath, $emailData);
@@ -691,10 +717,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['ac
                 if ($managerFcmTokens) {
                     $data = [
                         'screen' => 'Leave Approval',
+                        'leaveId' => $emailData['LeaveId']
                     ];
                     
                     foreach ($managerFcmTokens as $managerFcmToken) {
-                        $pushSent = sendPushNotification($managerFcmToken,  $emailData['Title'], $emailData['Email Title'], $data);
+                        $pushSent = sendPushNotification($managerFcmToken,  $emailData['Title'], $emailData['Notify'], $data);
                         if (!$pushSent) {
                             error_log("Failed to send push notification to manager with token: $managerFcmToken");
                         } else {
@@ -743,6 +770,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                 $stmt->bind_param("si", $statusValue, $leaveId);
                 $stmt->execute();
                 if ($stmt->affected_rows > 0) {
+                    echo "Success";
                     $userEmail = getUserEmailByLeaveId($leaveId, $conn);
                     $userId = getUserIdByLeaveId($leaveId, $conn);
                     $userDetails = getUserDetailsById($userId, $conn);
@@ -783,6 +811,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                                     'Comments' => '',
                                     'Status' => 'Waiting HR Approval',
                                     'Email Title' => '[SKG-LMS] Leave Bank Request from ' . $userDetails['firstname'] . ' ' . $userDetails['lastname'],
+                                    'Notify' => "[ Leave ID: $leaveId ] You have a Leave Bank request from {$userDetails['firstname']} {$userDetails['lastname']}, from {$leaveDetails['startdate']} until {$leaveDetails['enddate']}.",
                                 ];
 
                                 $emailBody = buildEmailBody($templatePath, $emailData);
@@ -796,11 +825,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                                     $HrFcmTokens = getHrFcmTokens($conn);
                                     if ($HrFcmTokens) {
                                         $data = [
-                                            'screen' => 'Leave Bank Approval',
+                                            'screen' => 'Leave Approval',
+                                            'leaveId' => $emailData['LeaveId'],
+                                            'leaveStatus' => $statusValue,
                                         ];
 
                                         foreach ($HrFcmTokens as $HrFcmToken) {
-                                            $pushSent = sendPushNotification($HrFcmToken,  $emailData['Title'], $emailData['Email Title'], $data);
+                                            $pushSent = sendPushNotification($HrFcmToken,  $emailData['Title'], $emailData['Notify'], $data);
                                             if (!$pushSent) {
                                                 error_log("Failed to send push notification to HR with token: $HrFcmToken");
                                             } else {
@@ -815,12 +846,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                                     $templatePath = $templatePaths['approve_leave_bank'];
                                     $fcmtitle = 'Leave Request, [SKG-LMS] Waiting for HR approval';
 
-                                    /*if ($emailSent === true) {
-                                        echo "Success";
+                                    if ($emailSent === true) {
+                                        //echo "Success";
                                     } else {
                                         error_log("Leave submitted but email failed");
                                         sendJsonResponse('error', 'Leave submitted but email failed');
-                                    }*/
+                                    }
                                 } else {
                                     sendJsonResponse('error', 'Failed to read email template.');
                                 }
@@ -853,6 +884,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                             'Comments' => '',
                             'Status' => 'Waiting HR Approval',
                             'Email Title' => ($_GET['action'] === 'reject') ? '[SKG-LMS] Your leave request has been rejected' : '[SKG-LMS] Your leave request has been approved',
+                            'Notify' => "[ Leave ID: $leaveId ] Your {$leaveType} request on {$leaveDetails['startdate']} until {$leaveDetails['enddate']} is {$_GET['action']}",
                         ];
 
                         $emailBody = buildEmailBody($templatePath, $emailData);
@@ -863,11 +895,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                             $userFcmTokens = getUserFcmTokens($userId, $conn);
                             if ($userFcmTokens) {
                                 $data = [
-                                    'screen' => 'Leave History'
+                                    'screen' => 'Leave History',
+                                    'leaveId' => $emailData['LeaveId'],
+                                    'leaveStatus' => $statusValue,
                                 ];
 
                                 foreach ($userFcmTokens as $userFcmToken) {
-                                    $pushSent = sendPushNotification($userFcmToken, $fcmtitle, $data);
+                                    $pushSent = sendPushNotification($userFcmToken, $emailData['Title'], $emailData['Notify'], $data);
                                     if (!$pushSent) {
                                         error_log("Failed to send push notification to user with token: $userFcmToken");
                                     } else {
@@ -906,9 +940,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                             }
 
                             if ($emailSent === true) {
-                                echo "Success";
+                                //echo "Success";
                             } else {
-                                echo "Leave status updated but email failed: " . $emailSent;
+                                error_log ("Leave status updated but email failed: " . $emailSent);
+                                sendJsonResponse('error', 'Leave submitted but email failed');
                             }
                         } else {
                             echo "Leave status updated but failed to read email template.";
@@ -950,6 +985,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                 $stmt->bind_param("si", $statusValue, $leaveId);
                 $stmt->execute();
                 if ($stmt->affected_rows > 0) {
+                    echo "Success";
                     $userEmail = getUserEmailByLeaveId($leaveId, $conn);
                     $userId = getUserIdByLeaveId($leaveId, $conn);
                     $userDetails = getUserDetailsById($userId, $conn);
@@ -985,6 +1021,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                             'Cause' => $leaveDetails['cause'],
                             'Comments' => '',
                             'Email Title' => ($_GET['action'] === 'rejectBank') ? '[SKG-LMS] Your leave bank request has been rejected' : '[SKG-LMS] Your leave bank request has been approved',
+                            'Notify' => ($_GET['action'] === 'rejectBank') ? "[ Leave ID: $leaveId ] Your Leave Bank request on {$leaveDetails['startdate']} until {$leaveDetails['enddate']} is Approved" : "[ Leave ID: $leaveId ] Your Leave Bank request on {$leaveDetails['startdate']} until {$leaveDetails['enddate']} is Rejected",
                         ];
 
                         $emailBody = buildEmailBody($templatePath, $emailData);
@@ -996,10 +1033,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                             if ($userFcmTokens) {
                                 $data = [
                                     'screen' => 'Leave History',
+                                    'leaveId' => $emailData['LeaveId'],
+                                    'leaveStatus' => $statusValue,
                                 ];
 
                                 foreach ($userFcmTokens as $userFcmToken) {
-                                    $pushSent = sendPushNotification($userFcmToken,  $emailData['Title'], $emailData['Email Title'], $data);
+                                    $pushSent = sendPushNotification($userFcmToken,  $emailData['Title'], $emailData['Notify'], $data);
                                     if (!$pushSent) {
                                         error_log("Failed to send push notification to user with token: $userFcmToken");
                                     } else {
@@ -1038,9 +1077,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                             }
 
                             if ($emailSent === true) {
-                                echo "Success";
+                                //echo "Success";
                             } else {
-                                echo "Leave status updated but email failed: " . $emailSent;
+                                error_log ("Leave status updated but email failed: " . $emailSent);
+                                sendJsonResponse('error', 'Leave submitted but email failed');
                             }
                         } else {
                             echo "Leave status updated but failed to read email template.";
@@ -1083,6 +1123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && $_GET['act
                 $stmt->bind_param("si", $statusValue, $leaveId);
                 $stmt->execute();
                 if ($stmt->affected_rows > 0) {
+                    //echo "Success";
                     $userEmail = getUserEmailByLeaveId($leaveId, $conn);
                     $userId = getUserIdByLeaveId($leaveId, $conn);
                     $userDetails = getUserDetailsById($userId, $conn);
