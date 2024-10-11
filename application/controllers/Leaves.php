@@ -257,7 +257,7 @@ public function view($source, $id) {
             if ($this->input->post('status') == LMS_REQUESTED) {
                 $this->sendMailOnLeaveRequestCreation($leave_id);
                 // Send push notification
-                $this->sendPushNotificationOnLeaveRequest($leave_id, 'Leave Request');
+                $this->sendPushNotificationOnLeaveRequest($leave_id, '[SKG-LMS] Leave Request');
 
             }
             
@@ -919,10 +919,11 @@ public function view($source, $id) {
         echo $this->leaves_model->department($department->id, $start, $end);
     }
 
-    private function sendPushNotificationOnLeaveRequest($leave_id, $title) { //Send Push Notification to Manager
+    private function sendPushNotificationOnLeaveRequest($leave_id, $title) {
+        // Load the necessary models
         $this->load->model('users_model');
         $this->load->model('leaves_model');
-        $this->load->model('user_fcm_tokens_model'); // Load the model for the new table
+        $this->load->model('user_fcm_tokens_model');
         
         // Get leave and user details
         $leave = $this->leaves_model->getLeaves($leave_id);
@@ -937,16 +938,24 @@ public function view($source, $id) {
             'screen' => 'Leave Approval',
         ];
         
+        // Format the message to include leave type, start date, and end date
+        $leave_type = $leave['type_name'];
+        $start_date = date('d-m-Y', strtotime($leave['startdate']));
+        $end_date = date('d-m-Y', strtotime($leave['enddate']));
+        
+        $message = "[ Leave ID: $leave_id ] You have a $leave_type request from {$user['firstname']} {$user['lastname']}, from $start_date until $end_date.";
+        
         // Get all FCM tokens for the manager
         $manager_fcm_tokens = $this->user_fcm_tokens_model->getFcmTokensByUserId($manager['id']);
         
         // Send push notification to all manager's FCM tokens
         if (!empty($manager_fcm_tokens)) {
             foreach ($manager_fcm_tokens as $fcm_token) {
-                sendPushNotification($fcm_token, $title, "[SKG-LMS] Leave Request from {$user['firstname']} {$user['lastname']}.", $data);
+                sendPushNotification($fcm_token, $title, $message, $data);
             }
         }
     }
+    
 
     /**
      * Ajax endpoint. Result varies according to input :

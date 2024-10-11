@@ -122,7 +122,7 @@ class Requests extends CI_Controller {
             $this->leaves_model->switchStatus($id, LMS_ACCEPTED);
     
             // Call the function to send push notification to user
-            $this->sendPushNotificationToUserOnApproval($id, 'Leave Request'); //Send notification to user
+            $this->sendPushNotificationToUserOnApproval($id, '[SKG-LMS] Leave Request Approved'); //Send notification to user
     
             $this->sendMail($id, LMS_REQUESTED_ACCEPTED);
             $this->session->set_flashdata('msg', lang('requests_accept_flash_msg_success'));
@@ -165,8 +165,8 @@ public function leavebankaccept($id) {
             $this->session->set_flashdata('msg', lang('requests_accept_flash_msg_success'));
 
             // Call the function to send push notification to user and hr
-            $this->sendPushNotificationToUserOnApprovalBank($id, 'Leave Request'); //Send notification to user
-            $this->sendPushNotificationOnLeaveRequest($id, 'Leave Request'); //Send notification to Hr
+            $this->sendPushNotificationToUserOnApproval($id, '[SKG-LMS] Leave Request Waiting Hr Approval'); //Send notification to user
+            $this->sendPushNotificationOnLeaveRequest($id, '[SKG-LMS] Leave Bank Request'); //Send notification to Hr
 
             if (isset($_GET['source'])) {
                 redirect($_GET['source']);
@@ -208,14 +208,16 @@ public function leavebankaccept($id) {
                             $this->leaves_model->switchStatus($leave_id, LMS_REQUESTEDBANK);
                             $this->sendMail($leave_id, LMS_LEAVEBANK_MANAGER_ACCEPTED);
                             $this->sendMailOnLeaveBankRequestCreation($leave_id);
-                            // Send push notification to user and HR
-                            $this->sendPushNotificationToUserOnApprovalBank($leave_id, 'Leave Request');
-                            $this->sendPushNotificationOnLeaveRequest($leave_id, 'Leave Request');
+    
+                            // Send push notification to user and HR for leave bank
+                            $this->sendPushNotificationToUserOnApproval($leave_id, '[SKG-LMS] Leave Request Waiting HR Approval');
+                            $this->sendPushNotificationOnLeaveRequest($leave_id, '[SKG-LMS] Leave Bank Request');
                         } else {
                             $this->leaves_model->switchStatus($leave_id, LMS_ACCEPTED);
                             $this->sendMail($leave_id, LMS_REQUESTED_ACCEPTED);
-                            // Send push notification to user
-                            $this->sendPushNotificationToUserOnApproval($leave_id, 'Leave Request');
+    
+                            // Send push notification to user for regular leave approval
+                            $this->sendPushNotificationToUserOnApproval($leave_id, '[SKG-LMS] Leave Request Approved');
                         }
                     } else {
                         log_message('error', 'User #' . $this->user_id . ' illegally tried to accept leave #' . $leave_id);
@@ -311,7 +313,7 @@ public function leavebankaccept($id) {
             // Redirect back to the original page if possible
             $referrer = $this->input->server('HTTP_REFERER', TRUE);
             // Call the function to send push notification
-            $this->sendPushNotificationToUserOnReject($id, 'Leave Request');
+            $this->sendPushNotificationToUserOnApproval($id, '[SKG-LMS] Leave Request Rejected');
             if ($referrer) {
                 redirect($referrer);
             } else {
@@ -530,6 +532,9 @@ public function leavebankaccept($id) {
             log_message('error', "User data not found for employee_id: " . $leave['employee']);
             return; // Exit the function to prevent further errors
         }
+    
+        // Create the notification message
+        $message = "[ Leave ID: $leave_id ] Your {$leave['type_name']} request on {$leave['startdate']} until {$leave['enddate']} is {$leave['status_name']}";
         
         // Prepare notification data
         $data = [
@@ -537,6 +542,8 @@ public function leavebankaccept($id) {
             'userId' => $user['id'],
             'leaveStatus' => $leave['status'],
             'screen' => 'Leave History',
+            'title' => "[SKG-LMS] Leave Request {$leave['status_name']}",
+            'body' => "[ Leave ID: $leave_id ] Your {$leave['type_name']} request on {$leave['startdate']} until {$leave['enddate']} has been {$leave['status_name']}",
         ];
         
         // Get all FCM tokens for the user
@@ -550,7 +557,7 @@ public function leavebankaccept($id) {
             foreach ($user_fcm_tokens as $fcm_token) {
                 // Log each token and attempt to send notification
                 log_message('debug', "Sending push notification to token: $fcm_token");
-                $result = sendPushNotification($fcm_token, $title, "[SKG-LMS] Your leave request has been approved", $data);
+                $result = sendPushNotification($fcm_token, $title, $message, $data);
                 // Log the result of the notification sending
                 log_message('debug', "Push notification result: " . json_encode($result));
             }
@@ -642,37 +649,78 @@ public function leavebankaccept($id) {
         }
     }
 
-    private function sendPushNotificationOnLeaveRequest($leave_id, $title) { //Send Push Notification to Hr 
+    private function sendPushNotificationOnLeaveRequest($leave_id, $title) { 
         // Load the necessary models
         $this->load->model('users_model');
         $this->load->model('leaves_model');
         $this->load->model('user_fcm_tokens_model');
         
+        // Log the function call
+        log_message('debug', "sendPushNotificationOnLeaveRequest called with leave_id: $leave_id, title: $title");
+        
         // Get leave details
         $leave = $this->leaves_model->getLeaves($leave_id);
+        
+        // Check if $leave is not null
+        if (!$leave) {
+            log_message('error', "Leave data not found for leave_id: $leave_id");
+            return; // Exit the function to prevent further errors
+        }
+        
+        // Get user details
         $user = $this->users_model->getUsers($leave['employee']);
+        
+        // Check if $user is not null
+        if (!$user) {
+            log_message('error', "User data not found for employee_id: " . $leave['employee']);
+            return; // Exit the function to prevent further errors
+        }
+    
+        // Prepare notification message
+        $message = "[ Leave ID: $leave_id ] You have a {$leave['type_name']} request from {$user['firstname']} {$user['lastname']}, from {$leave['startdate']} until {$leave['enddate']}.";
         
         // Prepare notification data
         $data = [
             'leaveId' => $leave_id,
             'userId' => $user['id'],
             'leaveStatus' => $leave['status'],
-            'screen' => 'Leave Bank Approval',
+            'screen' => 'Leave Approval',
+            'title' => "[SKG-LMS] Leave Request {$leave['status_name']}",
+            'body' => "[ Leave ID: $leave_id ] Your {$leave['type_name']} request on {$leave['startdate']} until {$leave['enddate']} has been {$leave['status_name']}",
         ];
         
-        // Get all users with role 3
+        // Get all users with role 3 (HR role)
         $hr_users = $this->users_model->getUsersByRole(3);
         
-        // Send push notification to all FCM tokens of users with role 3
+        // Check if there are any HR users
         if (!empty($hr_users)) {
             foreach ($hr_users as $hr_user) {
+                // Get FCM tokens for each HR user
                 $hr_fcm_tokens = $this->user_fcm_tokens_model->getFcmTokensByUserId($hr_user['id']);
+                
+                // Log the HR user and their FCM tokens
+                log_message('debug', "HR user {$hr_user['id']} FCM tokens: " . json_encode($hr_fcm_tokens));
+                
+                // Check if there are any FCM tokens for the HR user
                 if (!empty($hr_fcm_tokens)) {
                     foreach ($hr_fcm_tokens as $fcm_token) {
-                        sendPushNotification($fcm_token, $title, "[SKG-LMS] Leave Request from {$user['firstname']} {$user['lastname']}.", $data);
+                        // Log the notification being sent
+                        log_message('debug', "Sending push notification to HR user {$hr_user['id']} with token: $fcm_token");
+                        
+                        // Send the push notification
+                        $result = sendPushNotification($fcm_token, $title, $message, $data);
+                        
+                        // Log the result of the notification sending
+                        log_message('debug', "Push notification result: " . json_encode($result));
                     }
+                } else {
+                    // Log if no tokens were found
+                    log_message('debug', "No FCM tokens found for HR user {$hr_user['id']}");
                 }
             }
+        } else {
+            // Log if no HR users were found
+            log_message('debug', "No HR users found with role 3");
         }
     }
 
