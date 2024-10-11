@@ -783,6 +783,21 @@ CREATE TABLE `user_fcm_tokens` (
 --
 
 --
+-- Table structure for table `reset_codes`
+--
+
+CREATE TABLE `reset_codes` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `code` varchar(6) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reset_codes`
+--
+--
+--
 -- Indexes for table `actions`
 --
 ALTER TABLE `actions`
@@ -1078,6 +1093,19 @@ ALTER TABLE `user_fcm_tokens`
 --
 ALTER TABLE `user_fcm_tokens`
   ADD CONSTRAINT `user_fcm_tokens_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+  --
+-- Indexes for table `reset_codes`
+--
+ALTER TABLE `reset_codes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+--
+-- AUTO_INCREMENT for table `reset_codes`
+--
+ALTER TABLE `reset_codes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

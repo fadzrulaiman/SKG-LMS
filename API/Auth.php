@@ -203,7 +203,7 @@ try {
                 $identifier = $row['identifier'];
 
                 $VerificationToken = bin2hex(random_bytes(16));
-                $refresh_token = bin2hex(random_bytes(16));
+                //$refresh_token = bin2hex(random_bytes(16));
                 // Create DateTime object for current time in UTC
                 $datetime = new DateTime('now', new DateTimeZone('UTC'));
 
@@ -212,7 +212,7 @@ try {
 
                 // Format the timestamp to the desired format and assign to variables
                 $access_token_expires = $datetime->modify('+5 minute')->format("Y-m-d H:i:s");  
-                $refresh_token_expires = $datetime->modify('+5 minutes')->format("Y-m-d H:i:s");
+                //$refresh_token_expires = $datetime->modify('+5 minutes')->format("Y-m-d H:i:s");
 
                 $expires = $datetime->modify('+5 minute')->format("Y-m-d H:i:s"); 
 
@@ -283,9 +283,9 @@ try {
                 $_SESSION['employmentdate'] = $employmentDate;
                 $_SESSION['identifier'] = $identifier;
                 $_SESSION['verification_token'] = $VerificationToken;
-                $_SESSION['refresh_token'] = $refresh_token;
+                //$_SESSION['refresh_token'] = $refresh_token;
                 $_SESSION['access_token_expires'] = $access_token_expires;
-                $_SESSION['refresh_token_expires'] = $refresh_token_expires;
+                //$_SESSION['refresh_token_expires'] = $refresh_token_expires;
             } else {
                 $Message = "Wrong Email or Password";
             }
