@@ -5,7 +5,7 @@ use Kreait\Firebase\Factory;
 
 function sendPushNotification($fcmToken, $title, $body, $data) {
     $factory = (new Factory)
-        ->withServiceAccount(__DIR__.'/push-notification-5ce03-firebase-adminsdk-6mh0o-57e390395e.json')
+        ->withServiceAccount(__DIR__.'/push-notification-5ce03-firebase-adminsdk-6mh0o-e23e907724.json')
         ->withDatabaseUri('https://60.51.93.226.firebaseio.com');
 
     $messaging = $factory->createMessaging();

@@ -232,12 +232,12 @@ try {
                 $insertStmt->bind_param("isss", $UserID, $clientID, $VerificationToken, $expires);
                 $insertStmt->execute();
 
-                // Create a new entry with the incremented client_id
+                /* Create a new entry with the incremented client_id
                 $clientID = "device " . $tokenCount;
                 $insertSQL = "INSERT INTO oauth_refresh_tokens (user_id, client_id, refresh_token, expires) VALUES (?, ?, ?, ?)";
                 $insertStmt = $conn->prepare($insertSQL);
                 $insertStmt->bind_param("isss", $UserID, $clientID, $refresh_token, $expires);
-                $insertStmt->execute();
+                $insertStmt->execute();*/
 
                 $query2 = "SELECT EXISTS (SELECT 1 FROM users WHERE manager = '$UserID') AS user_exists;";
                 $result2 = mysqli_query($conn, $query2);
@@ -312,9 +312,9 @@ try {
         "userExists" => (string) $userExists, // Ensure userExists is always defined
 
         "VerificationToken" => isset($_SESSION['verification_token']) ? $_SESSION['verification_token'] : null,
-        "refresh_token" => isset($_SESSION['refresh_token']) ? $_SESSION['refresh_token'] : null,
+        //"refresh_token" => isset($_SESSION['refresh_token']) ? $_SESSION['refresh_token'] : null,
         "access_token_expires" => isset($_SESSION['access_token_expires']) ? $_SESSION['access_token_expires'] : null,
-        "refresh_token_expires" => isset($_SESSION['refresh_token_expires']) ? $_SESSION['refresh_token_expires'] : null,
+        //"refresh_token_expires" => isset($_SESSION['refresh_token_expires']) ? $_SESSION['refresh_token_expires'] : null,
    
         "contract" => isset($_SESSION['contract']) ? $_SESSION['contract'] : null,
         "contractName" => isset($_SESSION['contract_name']) ? $_SESSION['contract_name'] : null,
