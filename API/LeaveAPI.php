@@ -1,6 +1,10 @@
 <?php
 require_once 'db.php';  // Include the database connection file
 require_once 'notification_helper.php'; // Include the notification helper file
+
+// Include email library (PHPMailer or CodeIgniter email)
+require '../application/config/email.php'; // Path to your email config
+
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT');
 header('Access-Control-Allow-Headers: Content-Type');
@@ -352,17 +356,19 @@ $templatePaths = [
 ];
 
 function sendEmail($recipient, $subject, $body) {
+    global $config; // Use the global config array from email.php
+    
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
-        $mail->SMTPAuth   = true;
-        $mail->Username   = 'sawitlms@gmail.com';
-        $mail->Password   = 'xxpzfvvljgesmorr';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port       = 587;
+        $mail->Host = $config['smtp_host'];
+        $mail->SMTPAuth = $config['smtp_auth'];
+        $mail->Username = $config['smtp_user'];
+        $mail->Password = $config['smtp_pass'];
+        $mail->SMTPSecure = $config['smtp_crypto'];
+        $mail->Port = $config['smtp_port'];
 
-        $mail->setFrom('sawitlms@gmail.com', 'SKG-LMS');
+        $mail->setFrom($config['smtp_user'], 'SKG-LMS');
         $mail->addAddress($recipient);
 
         $mail->isHTML(true);
