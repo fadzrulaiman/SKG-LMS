@@ -24,12 +24,12 @@ if (session_status() == PHP_SESSION_ACTIVE) {
 
     // Remove the access token for the current user from the oauth_access_tokens table
     $stmt = $conn->prepare("DELETE FROM oauth_access_tokens WHERE access_token = ?");
-    $stmt->bind_param("i", $verificationToken);
+    $stmt->bind_param("s", $verificationToken);
 
     if ($stmt->execute()) {
         // Clear the FCM token from the users table
         $stmt = $conn->prepare("DELETE FROM user_fcm_tokens WHERE fcm_token = ?");
-        $stmt->bind_param("i", $fcmToken);
+        $stmt->bind_param("s", $fcmToken);
 
         if ($stmt->execute()) {
             $response = ['success' => true, 'message' => 'Logout successful, access token and FCM token removed'];

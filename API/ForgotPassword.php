@@ -11,7 +11,7 @@ require 'vendor/autoload.php'; // Make sure to load the PHPMailer autoloader
 header('Content-Type: application/json');
 
 // Include email configuration file
-require '../application/config/email.php'; // Adjust path if needed
+require './config/email.php'; // Path to your email config
 
 function sendEmail($recipient, $subject, $body) {
     global $config; // Use the global config array from email.php

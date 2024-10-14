@@ -3,7 +3,7 @@ require_once 'db.php';  // Include the database connection file
 require_once 'notification_helper.php'; // Include the notification helper file
 
 // Include email library (PHPMailer or CodeIgniter email)
-require '../application/config/email.php'; // Path to your email config
+require './config/email.php'; // Path to your email config
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT');
