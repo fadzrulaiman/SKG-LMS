@@ -314,8 +314,8 @@ try {
         "lastname" => isset($_SESSION['lastname']) ? $_SESSION['lastname'] : null,
         "UserName" => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
         "Email" => isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null,
-        //"userExists" => (string) $userExists, // Ensure userExists is always defined
-        "userExists" => isset($_SESSION['userExists']) ? $_SESSION['userExists'] : 0,
+        "userExists" => (string) $userExists, // Ensure userExists is always defined
+        //"userExists" => isset($_SESSION['userExists']) ? $_SESSION['userExists'] : 0,
 
         "VerificationToken" => isset($_SESSION['verification_token']) ? $_SESSION['verification_token'] : null,
         //"refresh_token" => isset($_SESSION['refresh_token']) ? $_SESSION['refresh_token'] : null,

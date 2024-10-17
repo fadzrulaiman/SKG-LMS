@@ -461,7 +461,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
 
         if ($type === 'individual') {
             // Get all leave for a specific user
-            $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.lastname, u.fcm_token
+            $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.lastname
                       FROM leaves l
                       JOIN status s ON l.status = s.id
                       JOIN types t ON l.type = t.id
@@ -483,7 +483,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
             
             // Get all leave for a specific user with a start date on or after the current date
             // or the current date is within the range of startdate and enddate
-            $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.lastname, u.fcm_token
+            $query = "SELECT l.*, s.name AS status_name, t.name AS type_name, u.firstname, u.lastname
                       FROM leaves l
                       JOIN status s ON l.status = s.id
                       JOIN types t ON l.type = t.id
@@ -505,7 +505,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
             // Get all leave for users in the same organization
             $organizationId = getUserOrganization($userId, $conn);
             if ($organizationId !== null) {
-                $query = "SELECT l.*, u.firstname, u.lastname, s.name AS status_name, t.name AS type_name, u.fcm_token
+                $query = "SELECT l.*, u.firstname, u.lastname, s.name AS status_name, t.name AS type_name
                           FROM leaves l
                           JOIN users u ON l.employee = u.id
                           JOIN status s ON l.status = s.id
@@ -529,7 +529,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
             $userManagerId = getUserManagerId($userId, $conn);
             
             if ($userManagerId !== null) {
-                $query = "SELECT l.*, u.firstname, u.lastname, s.name AS status_name, t.name AS type_name, u.fcm_token
+                $query = "SELECT l.*, u.firstname, u.lastname, s.name AS status_name, t.name AS type_name
                           FROM leaves l
                           JOIN users u ON l.employee = u.id
                           JOIN status s ON l.status = s.id
@@ -551,7 +551,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
         }
         elseif ($type === 'manager') {
             // Get all leave for users managed by the current user
-            $query =   "SELECT l.*, u.firstname, u.lastname, s.name AS status_name, t.name AS type_name, u.fcm_token
+            $query =   "SELECT l.*, u.firstname, u.lastname, s.name AS status_name, t.name AS type_name
                         FROM leaves l
                         JOIN users u ON l.employee = u.id
                         JOIN status s ON l.status = s.id
@@ -571,7 +571,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
         } 
         elseif ($type === 'subordinate') {
             // Get all leave for users managed by the current user
-            $query =   "SELECT l.*, u.firstname, u.lastname, s.name AS status_name, t.name AS type_name, u.fcm_token
+            $query =   "SELECT l.*, u.firstname, u.lastname, s.name AS status_name, t.name AS type_name
                         FROM leaves l
                         JOIN users u ON l.employee = u.id
                         JOIN status s ON l.status = s.id
@@ -619,7 +619,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
 
         if ($type === 'hr' && $role === 3) {
             // Get all leave for users managed by the current user
-            $query = "SELECT l.*, u.firstname, s.name AS status_name, t.name AS type_name, u.fcm_token
+            $query = "SELECT l.*, u.firstname, s.name AS status_name, t.name AS type_name
                       FROM leaves l
                       JOIN users u ON l.employee = u.id
                       JOIN status s ON l.status = s.id
