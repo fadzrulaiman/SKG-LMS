@@ -1,6 +1,6 @@
 <?php
 // Try the first connection attempt
-$conn = mysqli_connect('localhost', 'root', '');
+$conn = mysqli_connect('localhost', 'skglms', 'Sawit2024');
 
 if (!$conn) {
     // If the first attempt fails, try the second connection
