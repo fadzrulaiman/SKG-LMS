@@ -22,7 +22,12 @@ $link = ''; //'www.google.com.my' or '' */
 
 /*/ Maintenance mode on
 $maintenance_mode = 'on'; //off, on, warn
-$alert = '[SKG-LMS] Maintenance complete, please update the app by downloading and install the latest version of this app'; //A new version of this app is available. Please update the app by downloading and install the latest version of this app
+$alert = '[SKG-LMS] System is under maintenance, Estimate complete by [YYYY-MM-DD, HH:MM(AM/PM)]'; 
+$link = 'www.google.com.my'; //'www.google.com.my' or '' */
+
+/*/ Maintenance mode done
+$maintenance_mode = 'off'; //off, on, warn
+$alert = '[SKG-LMS] Please update the app by downloading and install the latest version of this app'; //A new version of this app is available. Please update the app by downloading and install the latest version of this app
 $link = 'www.google.com.my'; //'www.google.com.my' or '' */
 
 try {
@@ -309,7 +314,8 @@ try {
         "lastname" => isset($_SESSION['lastname']) ? $_SESSION['lastname'] : null,
         "UserName" => isset($_SESSION['user_name']) ? $_SESSION['user_name'] : null,
         "Email" => isset($_SESSION['user_email']) ? $_SESSION['user_email'] : null,
-        "userExists" => (string) $userExists, // Ensure userExists is always defined
+        //"userExists" => (string) $userExists, // Ensure userExists is always defined
+        "userExists" => isset($_SESSION['userExists']) ? $_SESSION['userExists'] : 0,
 
         "VerificationToken" => isset($_SESSION['verification_token']) ? $_SESSION['verification_token'] : null,
         //"refresh_token" => isset($_SESSION['refresh_token']) ? $_SESSION['refresh_token'] : null,

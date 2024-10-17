@@ -15,6 +15,8 @@ if (!$user_id) {
     exit();
 }
 
+$currentYear = date('Y'); // Get the current year, e.g., 2024
+
 // Step 1: Get user's contract value from users table
 $sql = "SELECT contract FROM users WHERE id = ?";
 $stmt = $conn->prepare($sql);
@@ -30,18 +32,18 @@ if ($result->num_rows == 0) {
 $user = $result->fetch_assoc();
 $user_contract = $user['contract'];
 
-// Step 2: Compare with contract value from entitleddays table and get leave type and days
-$sql = "SELECT type, days FROM entitleddays WHERE contract = ?";
+// Step 2: Compare with contract value from entitleddays table and get leave type and days for the current year
+$sql = "SELECT type, days, startdate, enddate 
+        FROM entitleddays 
+        WHERE contract = ? 
+        AND (startdate <= ? AND (enddate >= ? OR enddate IS NULL))"; // Filter for current year
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $user_contract);
+$currentYearStart = $currentYear . '-01-01'; // e.g., 2024-01-01
+$currentYearEnd = $currentYear . '-12-31';   // e.g., 2024-12-31
+$stmt->bind_param("sss", $user_contract, $currentYearEnd, $currentYearStart); 
 $stmt->execute();
 $result = $stmt->get_result();
-/*
-if ($result->num_rows == 0) {
-    echo json_encode(["error" => "No entitled days found for the user's contract"]);
-    exit;
-}
-*/
+
 $entitled_days = [];
 $max_leave_days = [];
 while ($row = $result->fetch_assoc()) {
@@ -51,13 +53,18 @@ while ($row = $result->fetch_assoc()) {
 
 // Ensure that the maximum leave days for leave bank and annual leave are the same
 if (isset($max_leave_days[1])) {
-    $max_leave_days[3] = $max_leave_days[1];
+    $max_leave_days[3] = $max_leave_days[1]; // Synchronize with leave bank if necessary
 }
 
-// Step 3: Get the sum of leave durations from leaves table for the same user and leave types with status 2 or 3
-$sql = "SELECT type, SUM(duration) as total_duration FROM leaves WHERE employee = ? AND (status = 2 OR status = 3) GROUP BY type";
+// Step 3: Get the sum of leave durations from leaves table for the current year and same user and leave types with status 2 or 3
+$sql = "SELECT type, SUM(duration) as total_duration 
+        FROM leaves 
+        WHERE employee = ? 
+        AND YEAR(startdate) = ? 
+        AND (status = 2 OR status = 3) 
+        GROUP BY type";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
+$stmt->bind_param("ii", $user_id, $currentYear);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -66,10 +73,13 @@ while ($row = $result->fetch_assoc()) {
     $used_days[$row['type']] = $row['total_duration'];
 }
 
-// Step 4: Get the initial leave bank days based on the user ID from entitleddays table
-$sql = "SELECT days FROM entitleddays WHERE type = '3' AND employee = ?";
+// Step 4: Get the initial leave bank days for the current year using employee = ?
+$sql = "SELECT days 
+        FROM entitleddays 
+        WHERE type = '3' AND employee = ? 
+        AND (startdate <= ? AND (enddate >= ? OR enddate IS NULL))"; // Check for leave bank within current year
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
+$stmt->bind_param("iss", $user_id, $currentYearEnd, $currentYearStart);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -79,10 +89,15 @@ if ($result->num_rows > 0) {
     $leave_bank_initial = $leave_bank['days'];
 }
 
-// Step 5: Get the used leave bank days from the leaves table with status 2 or 3
-$sql = "SELECT SUM(duration) as total_duration FROM leaves WHERE employee = ? AND type = '3' AND (status = 2 OR status = 3)";
+// Step 5: Get the used leave bank days for the current year using employee = ?
+$sql = "SELECT SUM(duration) as total_duration 
+        FROM leaves 
+        WHERE employee = ? 
+        AND type = '3' 
+        AND YEAR(startdate) = ? 
+        AND (status = 2 OR status = 3)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
+$stmt->bind_param("ii", $user_id, $currentYear);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -95,10 +110,13 @@ if ($result->num_rows > 0) {
 // Calculate the leave bank balance
 $leave_balance['3'] = $leave_bank_initial - $leave_bank_used;
 
-// Step 6: Get the sick leave balance from the contracts table where type = 2 and id = user_id
-$sql = "SELECT days FROM entitleddays WHERE type = '2' AND employee = ?";
+// Step 6: Get the sick leave balance for the current year using employee = ?
+$sql = "SELECT days 
+        FROM entitleddays 
+        WHERE type = '2' AND employee = ? 
+        AND (startdate <= ? AND (enddate >= ? OR enddate IS NULL))"; // Check for sick leave within current year
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
+$stmt->bind_param("iss", $user_id, $currentYearEnd, $currentYearStart);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -108,10 +126,15 @@ if ($result->num_rows > 0) {
     $sick_leave_balance = $contract['days'];
 }
 
-// Step 7: Get the used sick leave days from the leaves table with status 2 or 3
-$sql = "SELECT SUM(duration) as total_duration FROM leaves WHERE employee = ? AND type = '2' AND (status = 2 OR status = 3)";
+// Step 7: Get the used sick leave days for the current year using employee = ?
+$sql = "SELECT SUM(duration) as total_duration 
+        FROM leaves 
+        WHERE employee = ? 
+        AND type = '2' 
+        AND YEAR(startdate) = ? 
+        AND (status = 2 OR status = 3)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
+$stmt->bind_param("ii", $user_id, $currentYear);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -121,11 +144,11 @@ if ($result->num_rows > 0) {
     $sick_leave_used = $leave['total_duration'];
 }
 
-// Include the sick leave balance in the leave balance
+// Calculate the sick leave balance
 $leave_balance['2'] = $sick_leave_balance - $sick_leave_used;
 $max_leave_days['2'] = $sick_leave_balance;
 
-// Step 8: Calculate the leave balance for other leave types
+// Step 8: Calculate the leave balance for other leave types based on current year
 foreach ($entitled_days as $type => $entitled_days_count) {
     if ($type != '3' && $type != '2') { // Skip leave bank and sick leave as they're already calculated
         $used_days_count = $used_days[$type] ?? 0;

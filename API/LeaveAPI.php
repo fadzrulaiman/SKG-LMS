@@ -551,7 +551,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
         }
         elseif ($type === 'manager') {
             // Get all leave for users managed by the current user
-            $query =   "SELECT l.*, u.firstname, s.name AS status_name, t.name AS type_name, u.fcm_token
+            $query =   "SELECT l.*, u.firstname, u.lastname, s.name AS status_name, t.name AS type_name, u.fcm_token
                         FROM leaves l
                         JOIN users u ON l.employee = u.id
                         JOIN status s ON l.status = s.id
@@ -568,7 +568,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
             }
 
             echo json_encode($leave);
-        } else {
+        } 
+        elseif ($type === 'subordinate') {
+            // Get all leave for users managed by the current user
+            $query =   "SELECT l.*, u.firstname, u.lastname, s.name AS status_name, t.name AS type_name, u.fcm_token
+                        FROM leaves l
+                        JOIN users u ON l.employee = u.id
+                        JOIN status s ON l.status = s.id
+                        JOIN types t ON l.type = t.id
+                        LEFT JOIN delegations d ON u.manager = d.manager_id AND d.delegate_id = $userId
+                        WHERE (u.manager = $userId OR d.delegate_id = $userId) ";// Assuming status 2 is 'Pending'
+            $result = mysqli_query($conn, $query);
+            $leave = array();
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $row['duration'] = round($row['duration']);  // Round to whole number
+
+                $leave[] = $row;
+            }
+
+            echo json_encode($leave);
+        }else {
             echo json_encode(array("error" => "Invalid type provided."));
         }
     } elseif (isset($_GET['leave_id'])) {
@@ -597,7 +617,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') { //get leave data
         $role = intval($_GET['role']);
         $type = $_GET['type'];
 
-        if ($type === 'hr') {
+        if ($type === 'hr' && $role === 3) {
             // Get all leave for users managed by the current user
             $query = "SELECT l.*, u.firstname, s.name AS status_name, t.name AS type_name, u.fcm_token
                       FROM leaves l
@@ -763,17 +783,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
         $decodedData = json_decode($encodedData, true);
         if (isset($decodedData['leave_id'])) {
             $leaveId = intval($decodedData['leave_id']);
+            $comments = isset($decodedData['comments']) ? trim($decodedData['comments']) : '';  // Handle comments as a string
             $leaveType = getLeaveTypeByLeaveId($leaveId, $conn);
             if (!$leaveType) {
                 echo "Error: Invalid leave ID.";
                 exit();
             }
             $statusValue = ($_GET['action'] === 'approve') ? ($leaveType == 3 ? 7 : 3) : 4;
-            $query = "UPDATE leaves SET status = ? WHERE id = ?";
+            $query = "UPDATE leaves SET status = ?, comments = ? WHERE id = ?";
             $stmt = $conn->prepare($query);
 
             if ($stmt) {
-                $stmt->bind_param("si", $statusValue, $leaveId);
+                $stmt->bind_param("ssi", $statusValue, $comments, $leaveId);
                 $stmt->execute();
                 if ($stmt->affected_rows > 0) {
                     echo "Success";
@@ -814,7 +835,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                                     'Duration' => $leaveDetails['duration'],
                                     'Balance' => '',   // You can calculate and fill this if needed
                                     'Reason' => $leaveDetails['cause'],
-                                    'Comments' => '',
+                                    'Comments' => $leaveDetails['comments'],
                                     'Status' => 'Waiting HR Approval',
                                     'Email Title' => '[SKG-LMS] Leave Bank Request from ' . $userDetails['firstname'] . ' ' . $userDetails['lastname'],
                                     'Notify' => "[ Leave ID: $leaveId ] You have a Leave Bank request from {$userDetails['firstname']} {$userDetails['lastname']}, from {$leaveDetails['startdate']} until {$leaveDetails['enddate']}.",
@@ -887,7 +908,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                             'Duration' => $leaveDetails['duration'],
                             'Balance' => '',   // You can calculate and fill this if needed
                             'Cause' => $leaveDetails['cause'],
-                            'Comments' => '',
+                            'Comments' => $leaveDetails['comments'],
                             'Status' => 'Waiting HR Approval',
                             'Email Title' => ($_GET['action'] === 'reject') ? '[SKG-LMS] Your leave request has been rejected' : '[SKG-LMS] Your leave request has been approved',
                             'Notify' => "[ Leave ID: $leaveId ] Your {$leaveType} request on {$leaveDetails['startdate']} until {$leaveDetails['enddate']} is {$_GET['action']}",
@@ -930,7 +951,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                                 $newComment = [
                                     'type' => 'change',
                                     'status_number' => $statusValue,
-                                    'date' => $currentDate
+                                    'date' => $currentDate,
+                                    'comment' => $comments  // Include the new comment
                                 ];
                                 $existingComments['comments'][] = $newComment;
                                 $comments = json_encode($existingComments);
@@ -978,6 +1000,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
         $decodedData = json_decode($encodedData, true);
         if (isset($decodedData['leave_id'])) {
             $leaveId = intval($decodedData['leave_id']);
+            $comments = intval($decodedData['comments']);
             $leaveType = getLeaveTypeByLeaveId($leaveId, $conn);
             if (!$leaveType) {
                 echo "Error: Invalid leave ID.";
@@ -1025,7 +1048,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT' && isset($_GET['action']) && ($_GET['ac
                             'Duration' => $leaveDetails['duration'],  // You can calculate and fill this if needed
                             'Balance' => '',   // You can calculate and fill this if needed
                             'Cause' => $leaveDetails['cause'],
-                            'Comments' => '',
+                            'Comments' => $leaveDetails['comments'],
                             'Email Title' => ($_GET['action'] === 'rejectBank') ? '[SKG-LMS] Your leave bank request has been rejected' : '[SKG-LMS] Your leave bank request has been approved',
                             'Notify' => ($_GET['action'] === 'rejectBank') ? "[ Leave ID: $leaveId ] Your Leave Bank request on {$leaveDetails['startdate']} until {$leaveDetails['enddate']} is Approved" : "[ Leave ID: $leaveId ] Your Leave Bank request on {$leaveDetails['startdate']} until {$leaveDetails['enddate']} is Rejected",
                         ];
