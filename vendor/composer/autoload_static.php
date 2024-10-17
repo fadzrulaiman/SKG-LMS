@@ -7,14 +7,18 @@ namespace Composer\Autoload;
 class ComposerStaticInitdc185e547ffb825587c6a31a4bab0d77
 {
     public static $files = array (
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '1232758e40b1d31bb295b6907de02c63' => __DIR__ . '/..' . '/beste/clock/src/Clock.php',
         '383eaff206634a77a1be54e64e6459c7' => __DIR__ . '/..' . '/sabre/uri/lib/functions.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
+        '06b8a576aaa70a8517a94b7ff6b37e5c' => __DIR__ . '/..' . '/beste/json/src/Json.php',
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
+        'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
         '2df68f9e79c919e2d88506611769ed2e' => __DIR__ . '/..' . '/respect/stringifier/src/stringify.php',
         '3569eecfeed3bcf0bad3c998a494ecb8' => __DIR__ . '/..' . '/sabre/xml/lib/Deserializer/functions.php',
         '93aa591bc4ca510c520999e34229ee79' => __DIR__ . '/..' . '/sabre/xml/lib/Serializer/functions.php',
@@ -46,8 +50,11 @@ class ComposerStaticInitdc185e547ffb825587c6a31a4bab0d77
         'R' => 
         array (
             'RobRichards\\XMLSecLibs\\' => 23,
+            'Rize\\' => 5,
             'Respect\\Validation\\' => 19,
             'Respect\\Stringifier\\' => 20,
+            'Ramsey\\Uuid\\' => 12,
+            'Ramsey\\Collection\\' => 18,
         ),
         'P' => 
         array (
@@ -55,6 +62,8 @@ class ComposerStaticInitdc185e547ffb825587c6a31a4bab0d77
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
+            'Psr\\Clock\\' => 10,
+            'Psr\\Cache\\' => 10,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
             'PHPMailer\\PHPMailer\\' => 20,
         ),
@@ -66,21 +75,66 @@ class ComposerStaticInitdc185e547ffb825587c6a31a4bab0d77
         'M' => 
         array (
             'MyCLabs\\Enum\\' => 13,
+            'Monolog\\' => 8,
             'Matrix\\' => 7,
         ),
         'L' => 
         array (
             'League\\OAuth2\\Client\\' => 21,
+            'Lcobucci\\JWT\\' => 13,
+        ),
+        'K' => 
+        array (
+            'Kreait\\Firebase\\JWT\\' => 20,
+            'Kreait\\Firebase\\' => 16,
+        ),
+        'J' => 
+        array (
+            'JmesPath\\' => 9,
         ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+            'Grpc\\Gcp\\' => 9,
+            'Grpc\\' => 5,
+            'Google\\Type\\' => 12,
+            'Google\\Rpc\\' => 11,
+            'Google\\Protobuf\\' => 16,
+            'Google\\LongRunning\\' => 19,
+            'Google\\Iam\\' => 11,
+            'Google\\Cloud\\Storage\\' => 21,
+            'Google\\Cloud\\Core\\' => 18,
+            'Google\\Cloud\\' => 13,
+            'Google\\Auth\\' => 12,
+            'Google\\Api\\' => 11,
+            'Google\\ApiCore\\LongRunning\\' => 27,
+            'Google\\ApiCore\\' => 15,
+            'GPBMetadata\\Google\\Type\\' => 24,
+            'GPBMetadata\\Google\\Rpc\\' => 23,
+            'GPBMetadata\\Google\\Protobuf\\' => 28,
+            'GPBMetadata\\Google\\Longrunning\\' => 31,
+            'GPBMetadata\\Google\\Logging\\' => 27,
+            'GPBMetadata\\Google\\Iam\\' => 23,
+            'GPBMetadata\\Google\\Cloud\\' => 25,
+            'GPBMetadata\\Google\\Api\\' => 23,
+            'GPBMetadata\\ApiCore\\' => 20,
+        ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
+            'Fig\\Http\\Message\\' => 17,
         ),
         'C' => 
         array (
             'Complex\\' => 8,
+        ),
+        'B' => 
+        array (
+            'Brick\\Math\\' => 11,
+            'Beste\\Clock\\' => 12,
+            'Beste\\Cache\\' => 12,
         ),
     );
 
@@ -137,6 +191,10 @@ class ComposerStaticInitdc185e547ffb825587c6a31a4bab0d77
         array (
             0 => __DIR__ . '/..' . '/robrichards/xmlseclibs/src',
         ),
+        'Rize\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/rize/uri-template/src/Rize',
+        ),
         'Respect\\Validation\\' => 
         array (
             0 => __DIR__ . '/..' . '/respect/validation/library',
@@ -144,6 +202,14 @@ class ComposerStaticInitdc185e547ffb825587c6a31a4bab0d77
         'Respect\\Stringifier\\' => 
         array (
             0 => __DIR__ . '/..' . '/respect/stringifier/src',
+        ),
+        'Ramsey\\Uuid\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/uuid/src',
+        ),
+        'Ramsey\\Collection\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ramsey/collection/src',
         ),
         'Psr\\SimpleCache\\' => 
         array (
@@ -161,6 +227,14 @@ class ComposerStaticInitdc185e547ffb825587c6a31a4bab0d77
         'Psr\\Http\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
+        ),
+        'Psr\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/clock/src',
+        ),
+        'Psr\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
         'PhpOffice\\PhpSpreadsheet\\' => 
         array (
@@ -182,6 +256,10 @@ class ComposerStaticInitdc185e547ffb825587c6a31a4bab0d77
         array (
             0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
         ),
+        'Monolog\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
@@ -190,6 +268,22 @@ class ComposerStaticInitdc185e547ffb825587c6a31a4bab0d77
         array (
             0 => __DIR__ . '/..' . '/league/oauth2-client/src',
             1 => __DIR__ . '/..' . '/league/oauth2-google/src',
+        ),
+        'Lcobucci\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
+        ),
+        'Kreait\\Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kreait/firebase-tokens/src/JWT',
+        ),
+        'Kreait\\Firebase\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kreait/firebase-php/src/Firebase',
+        ),
+        'JmesPath\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mtdowling/jmespath.php/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -203,9 +297,121 @@ class ComposerStaticInitdc185e547ffb825587c6a31a4bab0d77
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
+        'Grpc\\Gcp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/grpc-gcp/src',
+        ),
+        'Grpc\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/grpc/grpc/src/lib',
+        ),
+        'Google\\Type\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/common-protos/src/Type',
+        ),
+        'Google\\Rpc\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/common-protos/src/Rpc',
+        ),
+        'Google\\Protobuf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/protobuf/src/Google/Protobuf',
+        ),
+        'Google\\LongRunning\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/longrunning/src/LongRunning',
+        ),
+        'Google\\Iam\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/common-protos/src/Iam',
+        ),
+        'Google\\Cloud\\Storage\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/cloud-storage/src',
+        ),
+        'Google\\Cloud\\Core\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/cloud-core/src',
+        ),
+        'Google\\Cloud\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/common-protos/src/Cloud',
+        ),
+        'Google\\Auth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/auth/src',
+        ),
+        'Google\\Api\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/common-protos/src/Api',
+        ),
+        'Google\\ApiCore\\LongRunning\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/longrunning/src/ApiCore/LongRunning',
+        ),
+        'Google\\ApiCore\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/gax/src',
+        ),
+        'GPBMetadata\\Google\\Type\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/common-protos/metadata/Type',
+        ),
+        'GPBMetadata\\Google\\Rpc\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/common-protos/metadata/Rpc',
+        ),
+        'GPBMetadata\\Google\\Protobuf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/protobuf/src/GPBMetadata/Google/Protobuf',
+        ),
+        'GPBMetadata\\Google\\Longrunning\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/longrunning/metadata/Longrunning',
+        ),
+        'GPBMetadata\\Google\\Logging\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/common-protos/metadata/Logging',
+        ),
+        'GPBMetadata\\Google\\Iam\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/common-protos/metadata/Iam',
+        ),
+        'GPBMetadata\\Google\\Cloud\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/common-protos/metadata/Cloud',
+        ),
+        'GPBMetadata\\Google\\Api\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/common-protos/metadata/Api',
+        ),
+        'GPBMetadata\\ApiCore\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/gax/metadata/ApiCore',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
+        'Fig\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fig/http-message-util/src',
+        ),
         'Complex\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
+        ),
+        'Brick\\Math\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+        'Beste\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/beste/clock/src/Clock',
+        ),
+        'Beste\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/beste/in-memory-cache/src',
         ),
     );
 
@@ -229,6 +435,12 @@ class ComposerStaticInitdc185e547ffb825587c6a31a4bab0d77
     public static $classMap = array (
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'GPBMetadata\\GrpcGcp' => __DIR__ . '/..' . '/google/grpc-gcp/src/generated/GPBMetadata/GrpcGcp.php',
+        'Grpc\\Gcp\\AffinityConfig' => __DIR__ . '/..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/AffinityConfig.php',
+        'Grpc\\Gcp\\AffinityConfig_Command' => __DIR__ . '/..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/AffinityConfig_Command.php',
+        'Grpc\\Gcp\\ApiConfig' => __DIR__ . '/..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/ApiConfig.php',
+        'Grpc\\Gcp\\ChannelPoolConfig' => __DIR__ . '/..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/ChannelPoolConfig.php',
+        'Grpc\\Gcp\\MethodConfig' => __DIR__ . '/..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/MethodConfig.php',
         'JpGraph\\JpGraph' => __DIR__ . '/..' . '/jpgraph/jpgraph/lib/JpGraph.php',
         'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',

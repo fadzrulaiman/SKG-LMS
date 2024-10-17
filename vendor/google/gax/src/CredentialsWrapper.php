@@ -42,6 +42,7 @@ use Google\Auth\FetchAuthTokenCache;
 use Google\Auth\FetchAuthTokenInterface;
 use Google\Auth\GetQuotaProjectInterface;
 use Google\Auth\GetUniverseDomainInterface;
+use Google\Auth\Credentials\GCECredentials;
 use Google\Auth\HttpHandler\Guzzle6HttpHandler;
 use Google\Auth\HttpHandler\Guzzle7HttpHandler;
 use Google\Auth\HttpHandler\HttpHandlerFactory;
@@ -81,7 +82,7 @@ class CredentialsWrapper implements ProjectIdProviderInterface
         string $universeDomain = GetUniverseDomainInterface::DEFAULT_UNIVERSE_DOMAIN
     ) {
         $this->credentialsFetcher = $credentialsFetcher;
-        $this->authHttpHandler = $authHttpHandler ?: self::buildHttpHandlerFactory();
+        $this->authHttpHandler = $authHttpHandler;
         if (empty($universeDomain)) {
             throw new ValidationException('The universe domain cannot be empty');
         }
@@ -141,12 +142,11 @@ class CredentialsWrapper implements ProjectIdProviderInterface
         ];
 
         $keyFile = $args['keyFile'];
-        $authHttpHandler = $args['authHttpHandler'] ?: self::buildHttpHandlerFactory();
 
         if (is_null($keyFile)) {
             $loader = self::buildApplicationDefaultCredentials(
                 $args['scopes'],
-                $authHttpHandler,
+                $args['authHttpHandler'],
                 $args['authCacheOptions'],
                 $args['authCache'],
                 $args['quotaProject'],
@@ -189,7 +189,7 @@ class CredentialsWrapper implements ProjectIdProviderInterface
             );
         }
 
-        return new CredentialsWrapper($loader, $authHttpHandler, $universeDomain);
+        return new CredentialsWrapper($loader, $args['authHttpHandler'], $universeDomain);
     }
 
     /**
@@ -251,7 +251,7 @@ class CredentialsWrapper implements ProjectIdProviderInterface
 
                 // Call updateMetadata to take advantage of self-signed JWTs
                 if ($this->credentialsFetcher instanceof UpdateMetadataInterface) {
-                    return $this->credentialsFetcher->updateMetadata([], $audience);
+                    return $this->credentialsFetcher->updateMetadata([], $audience, $this->authHttpHandler);
                 }
 
                 // In case a custom fetcher is provided (unlikely) which doesn't
@@ -274,7 +274,7 @@ class CredentialsWrapper implements ProjectIdProviderInterface
      */
     public function checkUniverseDomain()
     {
-        if (false === $this->hasCheckedUniverse) {
+        if (false === $this->hasCheckedUniverse && $this->shouldCheckUniverseDomain()) {
             $credentialsUniverse = $this->credentialsFetcher instanceof GetUniverseDomainInterface
                 ? $this->credentialsFetcher->getUniverseDomain()
                 : GetUniverseDomainInterface::DEFAULT_UNIVERSE_DOMAIN;
@@ -290,16 +290,21 @@ class CredentialsWrapper implements ProjectIdProviderInterface
     }
 
     /**
-     * @return Guzzle6HttpHandler|Guzzle7HttpHandler
-     * @throws ValidationException
+     * Skip universe domain check for Metadata server (e.g. GCE) credentials.
+     *
+     * @return bool
      */
-    private static function buildHttpHandlerFactory()
+    private function shouldCheckUniverseDomain(): bool
     {
-        try {
-            return HttpHandlerFactory::build();
-        } catch (Exception $ex) {
-            throw new ValidationException("Failed to build HttpHandler", $ex->getCode(), $ex);
+        $fetcher = $this->credentialsFetcher instanceof FetchAuthTokenCache
+            ? $this->credentialsFetcher->getFetcher()
+            : $this->credentialsFetcher;
+
+        if ($fetcher instanceof GCECredentials) {
+            return false;
         }
+
+        return true;
     }
 
     /**
